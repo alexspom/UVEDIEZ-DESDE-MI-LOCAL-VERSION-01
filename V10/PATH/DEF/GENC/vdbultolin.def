@@ -1,0 +1,24 @@
+#***
+# VDBULLIN.DEF - Generación automática del código c para la tabla de Línea de Bulto                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDBULLIN
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 3-03-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=BUL
+
+RECORRE=CODMOV,CODMOV;
+RECORRE=BULCODART,CODBULTO,CODART;
+RECORRE=BULCODARTCODLOT,CODBULTO,CODART,CODLOT;
+RECORRE=LINBULTO,CODBULTO;
+RECORRE=LINBULPDTE,CODBULTO;WHERE=STATUS=VDST.FBULASERVIR;
+
+UPDATE=CODMOV,CODMOV;
+UPDATE=CANTPEDIDA,CANTPEDIDA;
+
+INSERT 
+DELETE

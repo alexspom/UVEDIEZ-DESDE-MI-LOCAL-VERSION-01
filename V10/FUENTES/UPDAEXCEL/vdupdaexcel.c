@@ -1,0 +1,66 @@
+#include "execproc/vdexec.h"
+
+typedef struct {
+	char directorio[MAXPATH];
+	char patron[MAXPATH];
+	char nombre[MAXPATH], base[MAXPATH], ext[MAXPATH],nombrecompleto[MAXPATH];
+	long seccarga, rechazados;
+} updaexcels;
+
+#define CUPDAEXCEL "BEGIN :SECCARGA := VDEXCELUPDATE.CARGATABLA(:MITABLA,:RECHAZADOS); END;"
+static v10cursors *v10updaexcel;
+
+static void initcursores(void)
+{
+	v10updaexcel = abrecursor(CUPDAEXCEL);
+}
+
+
+VDEXPORT int vdprocesaexcel(void *ptr, char *param)
+{
+	int ret = 0;
+	updaexcels *updaexcel = ptr;
+	char tabla[MAXPATH];
+	if (v10updaexcel == NULL) initcursores();
+	sprintf(tabla, "%s_UPDATE", updaexcel->base);
+	excel2ora(updaexcel->nombrecompleto, tabla, 1, 0);
+	bindtodo(v10updaexcel, "SECCARGA", &updaexcel->seccarga, sizeof(updaexcel->seccarga), V10LONG,
+		"MITABLA", updaexcel->base, sizeof(updaexcel->base), V10CADENA,
+		"RECHAZADOS", &updaexcel->rechazados, sizeof(updaexcel->rechazados), V10LONG, NULL);
+	ret = ejecutacursor(v10updaexcel);
+	if (ret == 0) {
+		char nombreback[MAXPATH];
+		char sql[MAXPATH];
+		sprintf(nombreback, "%sBAK\\%s%05d.%s", updaexcel->directorio, updaexcel->base, updaexcel->seccarga, updaexcel->ext);
+		muevefich(updaexcel->nombrecompleto, nombreback);
+		sprintf(nombreback, "%sBAK\\%s%05d_RECHAZADO.%s", updaexcel->directorio, updaexcel->base, updaexcel->seccarga, updaexcel->ext);
+		sprintf(sql, "SELECT * FROM %s_RECHAZADO", updaexcel->base);
+		if (updaexcel->rechazados) sql2excel(sql, "", nombreback, 1);
+	}
+	commit();
+	return(0);
+}
+
+VDEXPORT void vdprocesaupdates(procesos *proceso)
+{
+	updaexcels updaexcel;
+	HANDLE handle;
+	WIN32_FIND_DATA finddata;
+	char directorio[MAXPATH];
+	piece(proceso->proc.param, directorio, "#", 1);
+	piece(proceso->proc.param, updaexcel.patron, "#", 2);
+	traduceentorno(directorio, updaexcel.directorio);
+	if (updaexcel.directorio[strlen(updaexcel.directorio) - 1] != '\\') strcat(updaexcel.directorio, "\\");
+	sprintf(updaexcel.nombre, "%s%s", updaexcel.directorio, updaexcel.patron);;
+	handle = FindFirstFile(updaexcel.nombre,  &finddata);
+	while (handle && handle!=INVALID_HANDLE_VALUE) {
+		if (*finddata.cFileName != '.' || (finddata.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY))  {
+			piece(finddata.cFileName, updaexcel.base, ".", 1);
+			piece(finddata.cFileName, updaexcel.ext, ".", 2);
+			sprintf(updaexcel.nombrecompleto,"%s%s", updaexcel.directorio, finddata.cFileName);
+			VDEXECejecuta(proceso, &updaexcel, "#", "%s#%s#", updaexcel.base, updaexcel.ext);
+		}
+		if (FindNextFile(handle, &finddata) == 0) break;
+	}
+	FindClose(handle);
+}

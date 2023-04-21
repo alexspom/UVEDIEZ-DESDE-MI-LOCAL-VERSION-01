@@ -1,0 +1,44 @@
+# Módulo   : VDFACPED.PAN
+# Función  : Listado de Facturacion
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+#
+# Comentarios:
+#  Si es un pedido de REPALETIZACION, el pedido original lo marcaremos con 'R' en el 
+#  campo REPALETIZACION y con 'S' en REPALETIZACION del pedido nuevo. Los pedidos
+#  marcados con 'S' no se facturara la manipulacion ni transporte en SAP. Nos basaremos
+#  en el pedido original  ya que facturamos por peso y no por bultos.
+# OJO IMPMENVENTA E IMPMENCOSTE SON DE UNA TABLA AUXILIAR
+###########################################
+DATOS FACTURA
+  Total     E.IVA   Fijo        Peso        Bultos      P.O.D.    Firma AT Reembolso    Seguro      Dua         Mensaje
+#L,#####.##   _   #L,#####.## #L,#####.##  #L,#####.## #L,###.## #L,###.## #L,#####.## #L,#####.## #L,#####.##  _1024_____________________________________________________________
+
+
+|
+   
+ 
+TABLA=DUAL
+REGPAG=1
+
+CAMPO=PRECTOTAL,AUXILIAR,VIRTUAL,NOENTER,TITULO("Total"),WLONX=30
+CAMPO=EXENTOIVAC,AUXILIAR,VIRTUAL,NOENTER,TITULO("Exento Iva"),WLONX=60
+CAMPO=PRECFIJO,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Fijo"),WLONX=30
+CAMPO=PRECPESO,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Peso"),WLONX=30
+CAMPO=PRECBULTOS,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Bultos"),WLONX=30
+CAMPO=PRECSELLAR,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Sellar"),WLONX=30
+CAMPO=PRECFIRMA,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Firma"),WLONX=30
+CAMPO=PRECREEMB,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Reemb."),WLONX=30
+CAMPO=PRECSEGURO,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Seguro"),WLONX=30
+CAMPO=PRECDUA,AUXILIAR,VIRTUAL,NOENTER,TITULO("Precio Dua"),WLONX=30
+CAMPO=MENSAJE,AUXILIAR,VIRTUAL,NOENTER,TITULO("Mensaje"),WLONX=30
+
+
+######################################################################################################
+####################### CAMPOS OCULTOS ###############################################################
+######################################################################################################
+
+TECLA=SF10,FEJECUTAFORM("VDPEDIDOS","S","CODDIV=:CODDIV AND CODPED=:CODPED AND ANOPED=:ANOPED AND SEQPED=:SEQPED","","","","S")
+
+ONLINE=       {F5} Borra pantalla    {F11} Exportar a Excel    {May-F10} Consultar Pedido    {Esc} Salir;

@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<html lang="es"> <!--<![endif]-->
+
+<head>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Acceso a usuarios</title>
+
+	<script src="../html/jquery-1.11.3.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen" />
+    <style>
+        #clock {
+	position: absolute;
+	top: 155px;
+	margin: -100px 0 0 -200px;
+	width: 400px;
+	height: 135px;
+	text-align: center;
+	font-size: 12px;
+	border: 0px;
+	padding: 65px 0 0 0;
+	font-family: Verdana, Geneva;
+	color: #363535;
+	font-weight: bold;
+}
+
+.containerlogin {
+	left: 50%;
+	position: absolute;
+	top: 40%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+
+/* ---------- LOGIN ---------- */
+
+#login {
+	width: 400px;
+	vertical-align: middle;
+}
+
+.button {
+	background-color: #e68f03;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 8px;
+}
+
+#login h2 {
+	font-family: 'Verdana';
+	font-style: normal;
+	padding-left: 29%;
+	border-radius: 10px 10px 0 0;
+	background-color: #ff8d00;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ff8d00), to(#525152));
+	background-image: -webkit-linear-gradient(top, #ff8d00, #525152);
+	background-image: -moz-linear-gradient(top, #ff8d00, #525152);
+	background-image: -ms-linear-gradient(top, #ff8d00, #525152);
+	background-image: -o-linear-gradient(top, #ff8d00, #525152);
+	background-image: linear-gradient(top, #ff8d00, #525152);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+	border-top: none;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+	color: #ffffff;
+	font-size: 18px;
+	padding-bottom: 10px;
+	font-weight: normal !important;
+}
+
+#login fieldset {
+	background: #fff;
+	border-radius: 0 0 10px 10px;
+	padding: 20px 20px;
+}
+
+#login fieldset p {
+	color: #777;
+}
+
+#login fieldset div input[type="button"] {
+	background: #e68f03;
+	color: #fff;
+	display: block;
+	margin: 0 auto;
+	padding: 4px 0;
+	width: 100px;
+}
+
+#login fieldset input[type="button"]:hover {
+	background: #e68f03;
+}
+
+.inputredondo {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 100%;
+	height: 30px;
+}
+
+label {
+	font-family: verdana;
+	font-size: 14px;
+}
+    </style>
+	
+<script type="text/javascript">
+
+function reseteatitulo(){
+var currentTime = new Date()
+var year = currentTime.getFullYear()
+top.document.title="Acceso a usuarios";
+}
+</script>	
+
+</head>
+
+
+<!--Código organizado, corregido y actualizado el 20/04/2015 por Eduardo L. Arana-->
+
+
+<body oncontextmenu="foncontextmenu()" onload="fonload();reseteatitulo();" onkeydown="fonkeydown()" onclick="fonclick()" onmousedown="fonmousedown()" onhelp="fonhelp()">
+    <!--V10MENSAJE-->
+    <!--V10IMGTECLADOVIRTUAL-->
+    <!--V10TECLADOVIRTUAL-->
+
+    <img id="imgdebug" class="imgdebuglogin" src="../img/gears1.gif" />
+    <img id="imgrelojar" style="margin-left:-190px;margin-top:-50px" class="imgrelojarlogin" src="../img/spinner.gif" />
+
+
+
+<table id='tdsubmenuzoom' class='v10zoomsubmenu' style='visibility:hidden'><tr><td>
+<textarea id='submenuzoom' style='background-color:yellow;color:darkblue' rows='5' cols='50'></textarea>
+</td></tr></table>
+<table id='menufrm' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' cellspacing='1px' cellspadding='0' class='v10submenueditapanfondo' style='position:absolute;visibility:hidden'>
+<tr index='1'><td mihover='naveditapanarriba' align='center'>Editar Men&#250 Actual</td></tr>
+<tr index='2'><td mihover='naveditapancentro'align='center'>Editar .PAN Actual</td></tr>
+<tr index='3'><td mihover='naveditapancentro'align='center'>Editar .FRM Actual</td></tr>
+<tr index='4'><td mihover='naveditapancentro'align='center'>Editar Todos Actual</td></tr>
+<tr><td><hr class='hreditapan'/></td></tr>
+<tr index='5'><td mihover='naveditapancentro'align='center'>(ESC) Atr&#225s</td></tr>
+<tr index='6'><td mihover='naveditapancentro'align='center'>(S+F10) Men&#250</td></tr>
+<tr index='7'><td mihover='naveditapancentro'align='center'>(Alt+D) Debug</td></tr>
+<tr index='8'><td mihover='naveditapanabajo'align='center'>(Alt+F10) Salir</td></tr>
+</table>
+
+<table id='menucampo' cellspacing='1px' cellspadding='0' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' class='v10submenufondo' style='position:absolute;visibility:hidden'>
+<tr index='9'><td mihover='navceldarriba'  align='center'>Cortar</td></tr>
+<tr index='10'><td mihover='navceldacentro' align='center'>Copiar</td></tr>
+<tr index='11'><td mihover='navceldacentro' align='center'>Pegar</td></tr>
+<tr index='12'><td mihover='navceldacentro' align='center'>Zoom</td></tr>
+<tr index='16'><td  mihover='navceldabajo'align='center'>Ir...</td></tr>
+</table>
+
+
+
+    <div id="container1">
+
+        <div id="header1">
+            <div class="wrapperpibe">
+                <div class="leftpibe">
+                    <div class="contenido">
+                        <div class="cabecera">
+                            <div class="logov10soluciones"><img src="../img/logov10.png" alt="" width="50" style="padding-left:10px;vertical-align: middle;" />
+                                <!--<span class="textoempresa">SOLUCIONES</span>-->
+                                <div style="height:10px;"></div>
+                                <div class="barrita">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="rightpibe" style="margin-top:-180px;margin-right:-80px;">
+                        <div id="clock">
+                            <div id="reloj" style="margin-left:72px;margin-top:2px;"></div>
+                            <div id="date" style="margin-top:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fixie10m">
+                <!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+
+                <div id="body1">
+
+                    <div class="wrapperpibe2">
+                        <div class="containerlogin">
+						
+						<div id="login">
+				
+						<h2>Acceso a usuarios</h2>
+				
+						<form action="#" method="POST">
+				
+						<fieldset>
+				
+							<p><label for="email">Usuario</label></p>
+							<p><input id="bl0f1c1" campo="CODOPE" value="&bl0_01_CODOPE&" class="inputredondo" type="text" title="C&oacute;digo de usuario en v10" maxlength="15" onblur="fonblur('bl0f1c1')"/></p>
+				
+							<p><label for="password">Contrase&ntilde;a</label></p>
+							<p><input id="bl0f1c2" campo="password" value="&bl0_01_PASSWORD&" class="inputredondo" type="password" title="Contrase&ntilde;a del usuario en v10" maxlength="10" onblur="fonblur('bl0f1c2')"/></p>
+				
+							<div "width:400px">
+							<input class="button" style="display: inline-block;" name="prueba1" id="prueba1" tecla="115" teclaespecial="onkeyup" title="login" notab type="button" value="Login"/>
+							<input class="button" 	style="display: inline-block;width:200px;margin-left:45px;" name="CAMBIARPASS" id="bl0CAMBIARPASS" tecla="121" teclaespecial="onkeyup_shift" NOTAB type="button" onclick="v10lib.mandaevento('','onkeyup_shift',121);" value="Cambiar Contrase&ntilde;a" />
+							</div>
+				
+						</fieldset>
+				
+						</form>
+				
+					</div>
+						
+
+                        </div>
+                        <!-- rpzdt -->
+
+                        <span id="timeenvio" class="timeenvio"></span>
+
+<FORM name='v10form' tabindex='0' method='post' id='v10form1'>
+<input name='sesion' tabindex='1' id='sesion' type='hidden' value='"+sesion+"'/>
+<input name='idobjeto' tabindex='2' id='objeto' type='hidden'/>
+<input name='evento' tabindex='4' id='evento' type='hidden' />
+<input name='valor' tabindex='5' id='valor' type='hidden' />
+<input name='antid' tabindex='6' id='antid' type='hidden' />
+<input name='antvalor' tabindex='7' id='antvalor' type='hidden' />
+</FORM>
+                        <script>
+                            var v10lib;
+                            var v10libcargada = false;
+
+
+                            function v10libnocargada() {
+                                "use strict";
+								window.status = 'ATENCIÓN! > v10libreriajs.html aún no cargada.';
+                                v10libcargada =
+                                    /*jslint browser: true, devel: true */
+                                    setTimeout(function() {
+                                        v10ponlibcargada();
+                                    }, 10);
+                            }
+
+
+                            function v10ponlibcargada() {
+                                "use strict";
+                                if (v10lib && v10lib.loaded) {
+                                    v10libcargada = true;
+                                } else {
+                                    v10libcargada = false;
+                                    v10libnocargada();
+                                    v10libcargada =
+                                        /*jslint browser: true, devel: true */
+                                        setTimeout(function() {
+                                            v10ponlibcargada();
+                                        }, 10);
+                                }
+                            }
+
+
+                            v10lib = parent.frames[0];
+                            v10ponlibcargada();
+                            while (!v10libcargada) {}
+                            if (v10lib && v10lib.loaded) {
+                                v10lib.loadinit(window);
+                                v10lib.generavars(window, '<!--IDSESION-->');
+                            } else {
+                                setTimeout(function() {
+                                    v10ponlibcargada();
+                                }, 10);
+                            }
+
+                            <!--SCRIPTS-->
+
+                            function fonload() {
+                                while (!v10libcargada) {}
+                                <!--ONLINE-->
+                                v10lib.ayudaonline();
+                                <!--ONLOAD-->
+                                if (window.status.length > 0) window.status = 'OK > v10libreriajs.html cargada correctamente.';
+								
+                            }
+
+                            function clearText(thefield) {
+                                if (thefield.defaultValue == thefield.value)
+                                    thefield.value = ""
+                            }
+
+                            function fonkeydown() {
+                                if (v10libcargada) v10lib.fonkeydown();
+                            }
+
+                            function fonclick() {
+                                if (v10libcargada) v10lib.fonclick();
+                            }
+
+                            function fonmousedown() {
+                                if (v10libcargada) v10lib.fonmousedown();
+                            }
+
+                            function fonmouseover() {
+                                if (v10libcargada) v10lib.fonmouseover();
+                            }
+
+                            function fonmouseout() {
+                                if (v10libcargada) v10lib.fonmouseout();
+                            }
+
+                            function fonhelp() {
+                                if (v10libcargada) v10lib.fonhelp();
+                            }
+
+                            function fonunload() {
+                                <!--ONUNLOAD-->
+                                if (v10libcargada) v10lib.fonunload();
+                            }
+
+                            function foncontextmenu() {
+                                if (v10libcargada) v10lib.foncontextmenu();
+                            }
+
+                            function fonclickbotonera() {
+                                if (v10libcargada) v10lib.fonclickbotonrea();
+                            }
+
+                            function fmuestrabotonera() {
+                                if (v10libcargada) v10lib.fmuestrabotonera();
+                            }
+
+                            function fbotoneraover() {
+                                if (v10libcargada) v10lib.fbotoneraover();
+                            }
+
+                            function fbotoneraout() {
+                                if (v10libcargada) v10lib.fbotoneraout();
+                            }
+
+                            function fonblur(id) {
+                                if (v10libcargada) v10lib.fonblur(id);
+                            }
+                        </script>
+                        
+                        <script type="text/javascript">
+                            $(document).ready(function() {
+
+                                var months = new Array(12);
+                                months[0] = "Enero";
+                                months[1] = "Febrero";
+                                months[2] = "Marzo";
+                                months[3] = "Abril";
+                                months[4] = "Mayo";
+                                months[5] = "Junio";
+                                months[6] = "Julio";
+                                months[7] = "Agosto";
+                                months[8] = "Septiembre";
+                                months[9] = "Octubre";
+                                months[10] = "Noviembre";
+                                months[11] = "Diciembre";
+
+                                var day = new Array(7);
+                                day[0] = "Domingo";
+                                day[1] = "Lunes";
+                                day[2] = "Martes";
+                                day[3] = "Miercoles";
+                                day[4] = "Jueves";
+                                day[5] = "Viernes";
+                                day[6] = "Sabado";
+
+                                var date = new Date();
+                                var month_value = date.getMonth();
+                                var day_value = date.getDay();
+                                var daydate = date.getDate();
+                                var year = date.getFullYear();
+
+                                if (daydate < 10) daydate = "0" + daydate;
+
+                                $('#date').html(day[day_value] + "&nbsp;" + daydate + "&nbsp;" + "de" + "&nbsp;" + months[month_value] + "&nbsp;" + "del" + "&nbsp;" + year);
+
+                                function startTime() {
+								var today = new Date();
+								var h = today.getHours();
+								var m = today.getMinutes();
+								var s = today.getSeconds();
+								m = checkTime(m);
+								s = checkTime(s);
+								document.getElementById('reloj').innerHTML =
+								h + ":" + m + ":" + s;
+								var t = setTimeout(startTime, 500);
+								}
+								function checkTime(i) {
+								if (i < 10) {i = "0" + i};
+								return i;
+								}
+								startTime();
+                            });
+                        </script>
+
+                        <div style="height:800px;">&nbsp;</div>
+
+
+                    </div>
+                </div>
+
+                <div class="leftpibe1" style="margin-left:10px;margin-top:-70px;position: absolute;"></div>
+                <!--<div class="footer"><div class="barrita">&nbsp;</div>&nbsp;&nbsp;&copy; 2015 UveDiez Supply Chain, S.L.</div>-->
+                <div class="rightpibe1" style="position: absolute;margin-top:-600px;margin-right:220px;">
+
+				</div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

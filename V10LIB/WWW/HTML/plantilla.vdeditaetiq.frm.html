@@ -1,0 +1,475 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<html lang="es" class="fixchrome"> <!--<![endif]-->
+   <head>
+   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+      <title>V10 Software</title>
+      <meta http-equiv="content-type" content= "text/html; charset=iso-8859-1"/>
+      <meta http-equiv="cache-control" content="public"/>
+      <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+	  <!--V10DELAYCHARTS-->
+      <!--V10REFCHARTS-->
+      <!--V10INCLUDECSS-->
+      <link href="HTTP://192.168.1.209:5001/HTML/style/style.css" rel="stylesheet" type="text/css" />
+	  
+	    <link rel="stylesheet" href="../html/editoretiquetas/bootstrap.min.css">
+
+        <!-- Custom styling -->
+        <style type="text/css">
+            div.pull-left {
+                padding-right: 1em;
+            }
+			.botonetiqueta {border: none;
+    display: block;
+    background: #136899;
+    height: 40px;
+    width: 150px;
+    color: #ffffff;
+    text-align: center;
+	font-weight:bold;
+    border-radius: 5px;
+    /*box-shadow: 0px 3px 1px #2075aa;*/
+  	-webkit-transition: all 0.15s linear;
+	  -moz-transition: all 0.15s linear;
+	  transition: all 0.15s linear;
+	  margin-top:10px;
+	  white-space: nowrap;}
+			
+        </style>
+		
+		
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../html/editoretiquetas/jquery-1.11.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../html/editoretiquetas/bootstrap.min.js"></script>
+
+    </head>
+
+<!--Código organizado, corregido y actualizado el 14/04/2015 por Eduardo L. Arana-->
+	
+<body>
+
+<div class="fixie10"><!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+<!--V10CHARTS-->
+<table id="msginfo" class="titusecunsup" style="visibility:hidden" width="752" height="30" border="0" ><tr><td><span class="texsecunsup"><!--v10mensajeinfo--></span></td></tr></table>
+<div class="online" id="botonera" style="top:-1px;left:0px;position:absolute;height:15px;width:120px" title="Botonera de la Aplicacion">Accesos Directos:</div>
+<div class="online" id="ayudaonline"  style="cursor:hand;top:-1px;left:120px;position:absolute;height:15px;width:2000px" title="Ayuda online"><font color="#FFFFFF"/>Tras realizar los cambios pertinentes, copiar el texto del cuadro editable y pegarlo en fichero para asociar los campos a la etiqueta.</div> 
+<div class="v10estilodebotonerasuperior"></div> 
+<!--V10IMGTECLADOVIRTUAL-->
+<img id="imgdebug" class="imgdebug" src="../img/gears1.gif"/>
+<img id="imgrelojar" class="imgrelojar" src="../img/spinner.gif"/>
+<!--<div class="popupWrapespera" id="imgrelojar" style="top:20%;left:20%;width:300px;height:300px;">
+    <div class="popupTitle">
+        <span class="v10titulomens">Espere por favor...</span>
+    </div>
+	<p class="v10textomensajehtml" style="position:absolute;top:90px;"><img src="../img/flat-clockf.gif" style="width:290px;"></p>
+</div>-->
+<span id="timeenvio" class="timeenvio"></span>
+<!--V10MENSAJE-->
+<!--V10HELP-->
+<!--CARGA DEL FRM-->
+<table tbbloque="0" class="proptabla" style="position:absolute;top:44px;left:7px" border="0" cellpadding="0" CELLSPACING="0" onclick="fonclick()">
+<tr class="v10pantarribaizq"><td  id="bl0"></td><td id="bl0"class="v10pantarribamed" ><span id="bl0" class="v10titulopantallas">
+Editor de Etiquetas en formato ZPL | Adaptado para V10 por Eduardo L. Arana | Este script necesita conexión a internet.</span></td>
+<td scr=1 id="bl0" class="v10pantarribader">&hArr;</td></tr><tr><td class="v10pantmedioizq"></td> 
+<td  id="bl0" class="v10pantmediomed" style="width:87px;height:12px">
+
+
+        <div class="container" style="width:1200px;"><br />
+		<p style="font-size:12px;">&nbsp;&nbsp;Para editar otra etiqueta, copiar el código en formato ZPL en el siguiente recuadro y pulsar DIBUJAR ETIQUETA.</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <form>
+            <textarea id="zpl" cols="80" rows="25" spellcheck="false">
+
+#etiqueta de ejemplo diseñada por E.Arana
+
+^XA
+^CI10
+^FT0752,0531
+#----------------------------------------------------------------INICIO-DISEÑO
+#cuadro general
+^FT0001,1210
+^GB810,1210,2^FS
+
+#cuadro distribuidor
+^FT0000,0360
+^GB320,360,2^FS
+
+#cuadro destinatario
+^FT0320,0360
+^GB500,360,2^FS
+
+#cuadro remitente
+^FT0320,0360
+^GB500,80,2^FS
+
+#cuadro OBSERVACIONES
+^FT0001,0500
+^GB810,140,2^FS
+
+#cuadro expediciones
+^FT0001,0670
+^GB810,170,2^FS
+
+#cuadro datos del bulto y pedido
+^FT0449,970
+^GB360,300,2^FS
+
+#cuadro temperatura
+^FT0001,820
+^GB450,150,2^FS
+
+#cuadro zona
+^FT0001,970
+^GB450,150,2^FS
+
+#cuadro servicio
+^FT0001,1090
+^GB450,120,2^FS
+
+
+#cuadro contiene albaran
+^FT0450,1090
+^GB450,120,2^FS
+
+#cuadro PLAZA
+^FT0001,1210
+^GB810,120,2^FS
+
+^FX 
+
+#Definición de titulos.
+^LRY
+
+^FT25,35^A0N,36,30^FDDISTRIBUDOR^FS
+
+^FT350,35^A0N,36,30^FDDESTINATARIO^FS
+
+^FT330,310^A0N,36,30^FDREMITENTE^FS
+
+^FT25,395^A0N,36,30^FDOBSERVACIONES:^FS
+
+^FT25,705^A0N,36,30^FDTEMPERATURA CONSERVACIÓN^FS
+
+^FO25,825^A0N,36,30^FDZONA^FS
+
+^FO25,1050^A0N,36,30^FDSERVICIO:^FS
+
+^FO25,1095^A0N,36,30^FDPLAZA:^FS
+
+^FT475,705^A0N,36,30^FDBULTOS:^FS
+^FT475,755^A0N,36,30^FDPESO:^FS
+^FT475,805^A0N,36,30^FDVOLUMEN:^FS
+^FT475,855^A0N,36,30^FDPORTES:^FS
+^FT475,905^A0N,36,30^FDREEMBOLSO:^FS
+^FT475,955^A0N,36,30^FDPOD:^FS
+
+#Texto con fondo negro
+
+#remitente
+^FT0320,0360^GB500,45,45^FS
+
+
+#exp.decophar
+^FT0001,543^GB500,40,40^FS
+^FO25,503^A0N,36,30^FDEXP. DECOPHAR:^FS
+
+#contiene albaran
+^FT0480,1015^GB300,35,35^FS
+^FT0480,1075^GB300,35,35^FS
+^FT485,1008^A0N,40,50^FDC O N T I E N E^FS
+^FT500,1070^A0N,40,50^FDA L B A R A N^FS
+
+#definición del código de barras
+^FO50,545^A0N,36,30^
+^MD10
+^BC,120,N,N,N
+^FDAquí va el código BX713276^FS
+
+#-------------------------------------------------------------FIN-DISEÑO
+
+#-------------------------------------------------------------INICIO-DATOS
+
+#datos del distribuidor
+^FT25,80^A0N,30,35^FDDECOPHARMA^FS
+
+^FT25,130^A0N,25,25^FDPOLG. IND.SUR^FS
+^FT25,150^A0N,25,25^FDCTRA. A1 KM 31,100^FS
+^FT25,170^A0N,25,25^FDC/La Lobera S/N^FS
+^FT25,190^A0N,25,25^FD28750 S. Agustin del Guadalix^FS
+^FT25,230^A0N,25,25^FDMADRID - ESPAÑA^FS
+^FT25,270^A0N,25,25^FDTELF. +34 918489534^FS
+^FT25,290^A0N,25,25^FDFAX +34 918436445^FS
+^FT25,330^A0N,25,25^FDWWW.DECOPHARMA.COM^FS
+
+#datos del destinatario
+#FECHA
+^FT650,35^A0N,36,30^FD21/04/2015^FS
+#DESTINATARIO
+^FT350,85^A0N,36,26^FDC.H.TRAS-OS-MONTES E ALTO DOURO^FS
+#DIR DESTINATARIO
+^FT350,205^A0N,36,26^FDAV.DA NORUEGA-LORDELO^FS
+#CP DESTINATARIO
+^FT350,270^A0N,76,46^FD95000-508^FS
+#LOC DESTINATARIO
+^FT550,260^A0N,36,26^FDVILA REAL               PG^FS
+
+#remitente
+^FT330,350^A0N,36,30^FDHORIBA ABX^FS
+
+#codped exp
+^FO270,503^A0N,36,30^FDCODPED^FS
+
+#datos del cuadro de bultos
+^FT650,705^A0N,36,30^FD1 / 1^FS
+^FT650,755^A0N,36,30^FD513,80^FS
+^FT650,805^A0N,36,30^FDVOLUMEN^FS
+^FT650,855^A0N,36,30^FDPAGADOS^FS
+^FT650,905^A0N,36,30^FDSI^FS
+^FT650,955^A0N,36,30^FDPOD^FS
+
+#datos del servicio
+#CODAGE
+^FT25,1030^A0N,76,46^FD614 RAMONEDA DECO^FS
+^FO155,1050^A0N,36,30^FDRAMONEDA^FS
+
+#datos de la plaza
+#PLAZA
+^FT25,1190^A0N,76,46^FDPORTO^FS
+
+#-----------------------------------------------------------------------------FIN-DATOS
+
+^XZ
+</textarea>
+            <div class="controls">
+                <button type="button" class="botonetiqueta" id="redraw"><i class="fa fa-pencil-square-o"></i> Dibujar Etiqueta</button>
+                <br>
+                <label for="density">Densidad de impresión</label>
+                <select name="density" id="density" required="required">
+                    <option value="6">6 dpmm (152 dpi)</option>
+                    <option value="8" selected="">8 dpmm (203 dpi)</option>
+                    <option value="12">12 dpmm (300 dpi)</option>
+                    <option value="24">24 dpmm (600 dpi)</option>
+                </select>
+                <br>
+                <label for="width">Tamaño de la etiqueta:</label>
+                <input type="number" placeholder="width" min="1" step="any" required="required" name="width" id="width" value="4">
+                <span>x</span>
+                <input type="number" placeholder="height" min="1" step="any" required="required" name="height" id="height" value="6">
+                <select name="units" id="units" required="required">
+                    <option value="1" selected="">pulgadas</option>
+                    <option value="0.393701">cm</option>
+                    <option value="0.0393701">mm</option>
+                </select>
+                <input type="file" id="file" accept="image/*">
+				<br /><br /><br /><br />
+            </div>
+        </form>
+     <img id="label" alt="Label" onload="adjustImageSize(this, 400, 600)" src="" height="600" style="position:absolute;margin-left:750px;margin-top:-590px;">
+	</div>
+    </div>
+</div>
+</td><td class="v10pantmedioder"></td></tr><tr><td class="v10pantabajoizq"></td><td class="v10pantabajomed"></td><td class="v10pantabajoder"></td></tr></table>
+<script>
+
+    function refreshLabel() {
+        var density = $('#density').val();
+        var width = $('#width').val() * $('#units').val();
+        var height = $('#height').val() * $('#units').val();
+        var zpl = encodeURIComponent($('#zpl').val());
+        $('#label').attr('src', 'http://api.labelary.com/v1/printers/' + density + 'dpmm/labels/' + width + 'x' + height + '/0/' + zpl);
+    }
+
+    function adjustImageSize(img, maxWidth, maxHeight) {
+        if (img.naturalWidth / maxWidth > img.naturalHeight / maxHeight) {
+            img.removeAttribute('height');
+            img.width = maxWidth;
+        } else {
+            img.removeAttribute('width');
+            img.height = maxHeight;
+        }
+    }
+
+    function refreshPermalink() {
+        var density = $('#density').val();
+        var width = $('#width').val();
+        var height = $('#height').val();
+        var units = $('#units option:selected').text();
+        var zpl = encodeURIComponent($('#zpl').val());
+        $('#permalink').attr('href', '?density=' + density + '&width=' + width + '&height=' + height + '&units=' + units + '&zpl=' + zpl);
+    }
+
+    function setSelectionRange(input, selectionStart, selectionEnd) {
+        if (input.setSelectionRange) {
+            input.focus();
+            input.setSelectionRange(selectionStart, selectionEnd);
+        } else if (input.createTextRange) {
+            var range = input.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', selectionEnd);
+            range.moveStart('character', selectionStart);
+            range.select();
+        }
+    }
+
+    // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results == null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // http://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously-with-jquery
+    function uploadImage() {
+        var formData = new FormData();
+        formData.append('file', $('#file')[0].files[0]);
+        $.ajax({
+            url: 'http://api.labelary.com/v1/graphics',
+            headers: { Accept: 'application/json' },
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                var zpl = $('#zpl').val();
+                var index = zpl.toUpperCase().indexOf('^XA');
+                var cmd =
+                      '\n'
+                    + '\n'
+                    + '^FO50,50^GFA,' + data.totalBytes + ',' + data.totalBytes + ',' + data.rowBytes + ',' + data.data + '^FS\n'
+                    + '\n'
+                    + '\n';
+                if (index == -1) {
+                    zpl = cmd + zpl;
+                } else {
+                    zpl = zpl.substring(0, index + 3) + cmd + zpl.substring(index + 3);
+                }
+                $('#zpl').val(zpl);
+                refreshLabel();
+                refreshPermalink();
+            }
+        });
+    }
+   var ga;
+   var track;
+    function track(event) {
+        //ga('send', 'event', 'Viewer', event.data.action);
+    }
+
+    // http://stackoverflow.com/questions/572768/styling-an-input-type-file-button
+    $('#addImage').on('click', function() { $('#file').click(); });
+    $('#file').on('change', uploadImage).on('change', { action: 'Add Image' }, track);
+    $('#zpl').on('change keyup paste', refreshPermalink);
+    $('#redraw').on('click', refreshLabel).on('click', { action: 'Redraw' }, track);
+    $('#density').on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Density' }, track);
+    $('#width').on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Width' }, track);
+    $('#height').on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Height' }, track);
+    $('#units').on('change', refreshLabel).on('change', refreshPermalink).on('change', { action: 'Change Units' }, track);
+
+    $(document).ready(function() {
+
+        var zpl = getParameterByName('zpl');
+        if (zpl) {
+            // custom ZPL requested via query string
+            $('#zpl').val(zpl);
+        } else {
+            // select recipient name in standard sample ZPL, if it's there
+            var input = document.getElementById('zpl');
+            var index = input.value.indexOf('John Doe');
+            if (index >= 0) {
+                setSelectionRange(input, 414, 422);
+            }
+        }
+
+        var density = getParameterByName('density');
+        if (density) {
+            // custom print density requested via query string
+            $('#density').val(density);
+        }
+
+        var width = getParameterByName('width');
+        if (width) {
+            // custom width requested via query string
+            $('#width').val(width);
+        }
+
+        var height = getParameterByName('height');
+        if (height) {
+            // custom height requested via query string
+            $('#height').val(height);
+        }
+
+        var units = getParameterByName('units');
+        if (units) {
+            // custom label size units requested via query string
+            $('#units option').filter(function () { return $(this).html() == units; }).prop('selected', true);
+        }
+
+        refreshLabel();
+        refreshPermalink();
+    });
+
+</script>
+
+<style>
+    #label {
+        border: 1px solid darkgray;
+    }
+    .controls {
+        margin-top: 1em;
+    }
+    .controls > * {
+        margin-right: 1em;
+        margin-bottom: 1em;
+    }
+    input[type="number"] {
+        width: 5em;
+    }
+    #file {
+        display: none;
+    }
+</style>
+        </div>
+</fieldset>
+	
+<input name="ESC"id ="bl0ESC" tecla="27" teclaespecial="onkeyup" title="Salir" NOTAB type="button" onclick="v10lib.mandaevento('','onkeyup',27);" class="v10button " value="" style="width:52px;height:30px;top:15px;left:10px; background-image:url(../img/pibe/salir.png);background-repeat:no-repeat;cursor:hand;color:black;background-color:transparent;background-position:center;width:25px;height:25px; "/>
+
+                        </div>
+                        <!-- rpzdt -->
+                        
+                        <span id="timeenvio" class="timeenvio"></span>
+<!--V10MENSAJE-->
+<!--CARGA DEL FRM-->
+<!--V10FRMDATA-->	
+<!--V10BOTONES-->
+<!--V10COMPONENTES-->
+					
+						
+                        <script>
+  var v10lib=parent.frames[0];
+  v10lib.loadinit(window);
+  v10lib.generavars(window,'<!--IDSESION-->');
+  var v10libcargada =true;
+  <!--SCRIPTS-->
+  <!--AJAX-->
+  function fonkeyup(){return v10lib.fonkeyup();}
+  function fonclick(){v10lib.fonkeyup();}
+  function fonhelp(){v10lib.fonhelp();}
+  function fonunload(){
+  <!--ONUNLOAD-->
+  v10lib.fonunload();}
+  function fdummy() {v10lib.fdummy();}
+  function fonload() {
+  while(v10libcargada===false);
+  <!--ONLOAD-->
+  <!--ONLINE-->
+  //if (window.document.getElementById('sideBarfrm')) {extendInicial(); window.document.getElementById('poxit').innerHTML=v10lib.v10clipboard;}
+  //v10lib.ayudaonline();
+  //v10lib.showtime();
+  }
+</script>	
+</body>
+</html>

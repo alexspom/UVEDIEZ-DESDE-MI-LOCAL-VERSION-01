@@ -1,0 +1,22 @@
+# Modulo : VDINFOMENUS.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFOMENUS
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 21-01-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=IME
+EXTRA=ORDENDESDE,V10LONG
+EXTRA=ORDENHASTA,V10LONG
+
+CLAVE=IDMENU,IDMENU;
+CLAVE=SIGPADRE,PADREMENU,ORDENDESDE,WHERE=ORDENMENU>:ORDENDESDE;ORDERBY=ORDENMENU;
+CLAVE=ANTPADRE,PADREMENU,ORDENHASTA,WHERE=ORDENMENU<:ORDENHASTA;,ORDERBY=ORDENMENU DESC;
+
+CLAVE=STATUSORIGZONA,STATUSORIGZONA;ORDERBY=ORDENMENU;
+
+INSERT

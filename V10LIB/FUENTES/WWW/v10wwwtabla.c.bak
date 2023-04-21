@@ -1,0 +1,222 @@
+#include "v10wwwform.h"
+
+typedef struct {
+	char titulo[MAXPATH];
+	int colspan;
+	int width;
+    int pcol;
+} _thtitulos;
+_thtitulos thtitulos[100];
+static int numthtitulos=0;
+
+static void colorcombox(char *ptrout,int nbloque,bloques *b,int fila,int col,fcampos *c,int ancho) 
+{
+	char sucolor[MAXCADENA]="";
+	v10tipo2a(c->v->dato,c->tipo,c->lvar,c->format,c->dec,sucolor,1);
+	sprintf(ptrout+strlen(ptrout),"<input id=\"colorbl%df%dc%d\" value=\"\" type=\"button\" icolor=\"bl%df%dc%d\" style=\"border-width:1px;z-index:9999;background-color:%s;top:%dpx;left:%dpx;height:%dpx;width:%dpx\"/>",
+				nbloque,fila,col,nbloque,fila,col,trim(sucolor),-2,(ancho-16),damepxfila(b)-2,11);			
+}
+
+static void imgcombox(char *ptrout,int nbloque,bloques *b,int fila,int col,fcampos *c,int ancho) 
+{
+	sprintf(ptrout+strlen(ptrout),"<img iselect=\"bl%df%dc%d\"class=\"v10comboximgmul\"style=\"left:%dpx;\" src=\"../img/desplegable.png\"",nbloque,fila,col,(ancho-4));
+	if (c->combox.activo && b->vi.act==c->v && muestracombox) strcat(ptrout,"comboxshowed=1");
+	strcat(ptrout,"/>");		
+}
+
+
+static void v10celda2html(char *ptrout,int nbloque,bloques *b,int fila,int col,fcampos *c,int esfilaactual, fcampos *cant, fcampos *csgte,int toptb,int lefttb,int incluyevalores) 
+{
+	int anchocelda;
+	fcampos *cgtevisible=NULL;
+	char valor[MAXCADENA]="",clase[MAXPATH]="",miestilocss[MAXPATH]="",miclassorig[MAXPATH]="";
+    anchocelda=v10x2pxsm(c->v->lpan==1?c->v->lpan+1:c->v->lpan,damepxcol(b));
+	if (c->vipx.lonx) anchocelda+=c->vipx.lonx;	
+    strcat(ptrout, "<td style=\"border: 1px doted darkgray;");
+    if (c->combox.activo == 0) sprintf(ptrout + strlen(ptrout), "width:%ipx;", anchocelda);
+	if (!strcmp(cssalign(c),"right")) strcat(ptrout,"text-align:right;"); 
+	if (*c->includecss) strcpy(ptrout+strlen(ptrout),c->includecss);
+	strcat(ptrout,"\"");
+    if (c->combox.activo) anchocelda += 2;
+	if (incluyevalores) damevbloquei(b,fila-1); // captura los datos oracle del registro actual	
+	*clase=0;
+	if (entrablecampo(c)) {
+		//strcpy(miclassorig,"cnet");
+		if (esfilaactual) strcat(clase,"cact");
+	} else {
+		strcpy(miclassorig,"cnet");
+		strcat(ptrout,"nent=1 ");
+		if (esfilaactual) {			
+			if (b==v10damebloqueactual()) {
+				/*if (!entrablebloque(b)) strcat(clase,"cnetres2");			
+				else strcat(clase,"cnetres");*/
+				strcat(clase,"cnetres2");			
+			}
+			else strcat(clase,"cnetact");
+		} else strcat(clase,"cnet");    
+		
+	}
+	if (c->v->invisible<=0) {		
+		if (*clase || *c->estilocss || c->v->color>0) {
+			strcat(miestilocss,clase);
+			if (*c->estilocss) {
+				strcat(miestilocss," ");		
+				strcat(miclassorig," ");
+				strcpy(miestilocss+strlen(miestilocss),c->estilocss);
+				strcpy(miclassorig+strlen(miclassorig),c->estilocss);
+			}
+			if (c->v->color>0) {
+				if (esfilaactual==0) sprintf(miestilocss+strlen(miestilocss)," color%d",c->v->color);			
+				sprintf(miclassorig+strlen(miclassorig)," color%d",c->v->color);			
+			}
+			sprintf(ptrout+strlen(ptrout),"class=\"%s\"",miestilocss);
+    		if (esfilaactual) sprintf(ptrout+strlen(ptrout)," classorig=\"%s\"",miclassorig);
+		}
+	} else strcat(ptrout,"class=\"cinv\"");
+	
+	if (c->combox.activo) strcat(ptrout," iselect=\"1\"");
+    if (c->tooltip && esfilaactual && !entrablecampo(c)) {
+        char htmltool[MAXCADENA],parcial[MAXCADENA];
+        bcampo2aex(b,c->nombre,parcial,0,-1);        
+        v10tooltip2html(b,c,htmltool);
+        if (strlen(parcial)>c->v->lpan) {
+           sprintf(htmltool+strlen(htmltool),"\n%s",parcial);
+        } else strcpy(parcial,htmltool); 		
+        sprintf(ptrout+strlen(ptrout)," title=\"%s\" ",parcial);
+    }
+	sprintf(ptrout+strlen(ptrout),"id=\"tdbl%df%dc%d\">",nbloque,fila,col); 	 // campo=\"%s\" ,c->nombre
+	if (c->v->invisible<=0) {	
+		v10ora2campo(incluyevalores,nbloque,b,c,fila,c->nombre,0,valor);
+		if (entrablecampo(c) && c->checkbox && (!strcmp(c->checkbox->valor_false,valor) || !strcmp(c->checkbox->valor_true,valor))) v10checkbox2html(ptrout+strlen(ptrout),nbloque,1,fila,col,b,c,incluyevalores);
+		else {
+			if (entrablecampo(c) && esfilaactual) {
+				v10inputcelda2html(ptrout+strlen(ptrout),nbloque,anchocelda,fila,col,b,c,b->vi.act==c->v?0:1,incluyevalores);   
+				if (c->combox.activo) {
+					if (!strcmp(c->combox.opc[0],"COLOR")) colorcombox(ptrout+strlen(ptrout),nbloque,b,fila,col,c,anchocelda);
+					else imgcombox(ptrout+strlen(ptrout),nbloque,b,fila,col,c,anchocelda);
+					if (c->v && b->vi.act==c->v && b==v10damebloqueactual()) v10combox2html(ptrout+strlen(ptrout),nbloque,1,fila,col,toptb,lefttb,b,c,incluyevalores);		
+				}		  			
+			} else {
+				if (c->combox.activo && !strcmp(c->combox.opc[0],"COLOR")) colorcombox(ptrout+strlen(ptrout),nbloque,b,fila,col,c,anchocelda);				
+                sprintf(ptrout + strlen(ptrout), "<span style=\"white-space: pre;text-overflow: clip;%s\" >%s</span>", c->v->password ? "visibility:hidden" : "visibility=visible",valor);
+			}
+		}
+	}
+	strcat(ptrout,"</td>");
+}
+
+
+static void v10fila2html(int nbloque,bloques *b,int fila,int incluyevalores,int toptb,int lefttb,char *ptrout) 
+{
+	int i,ant,sgte,esfilaactual,ncol=1; 
+	int impar=fila%2;
+	char clasecss[MAXPATH]="";
+	if (!b->invisible) {
+		int ncamp=0;
+		for (ncamp=0;ncamp<b->ncamp;ncamp++) recargadefectos(b,b->c+ncamp);
+	}
+	// generar los datos de <td>
+	sprintf(ptrout,"<tr id=\"trbl%df%dc1\"",nbloque,fila);
+	if (!CABECERA(b)->antiguo) strcat(ptrout," tohost='S' ");
+	if (entrablebloque(b) && !b->noinput) {
+		if (impar) strcat(clasecss,"fimpar");
+		else strcat(clasecss,"fpar");
+	} else strcat(clasecss,"fnet");
+	sprintf(ptrout+strlen(ptrout),"class=\"%s\" onclick=\"fonclick()\">", clasecss);
+	for (i=0;i<b->ncamp;i++) {
+		if (!b->c[i].v /*|| b->c[i].v->invisible*/) continue;
+		// indicar si es el último campo o el primero
+		// busco el campo visible anterior
+		for (ant=i-1;ant>=0;ant--) if (b->c[ant].v!=NULL) break;
+		// busco el campo visible posterior
+		for (sgte=i+1;sgte<b->ncamp;sgte++) if (b->c[sgte].v!=NULL)	 break;	
+		esfilaactual=(b->s->clin-b->s->plin)==fila-1?1:0;		
+        ptrout = ptrout + strlen(ptrout);
+		v10celda2html(ptrout,nbloque,b,fila,ncol++,b->c+i,esfilaactual,(ant>=0)?b->c+(ant):NULL,(sgte==b->ncamp)?NULL:b->c+(sgte),toptb,lefttb,incluyevalores);
+	}
+	strcat(ptrout,"</tr>");
+	if (b==v10damebloqueactual()) maxcolumnas=ncol-1;	
+}
+
+static void v10cabeceratabla(char *ptrout,int nbloque,bloques *b,int left,int top)  
+{
+	int colspan=0,i=0,anchocelda=0,visibles=0;
+    char mititulo[MAXCADENA]="";	
+    if (b->wtitulos) {
+        memset(thtitulos,0,sizeof(_thtitulos)*100);
+        numthtitulos=0;
+        for (i=0;i<b->ncamp;i++) {
+            fcampos *c=b->c+i;
+            if (!c->v) continue;
+            visibles = visibles + 1;
+            anchocelda=v10x2pxsm(c->v->lpan==1?c->v->lpan+1:c->v->lpan,damepxcol(b));
+	        if (c->vipx.lonx) anchocelda+=c->vipx.lonx;	
+		    if (c->combox.activo) anchocelda+=2;
+            if (c->titulo) {
+                strcpy(thtitulos[numthtitulos].titulo,v10translate(c->titulo));
+                thtitulos[numthtitulos].width += anchocelda;
+                thtitulos[numthtitulos].colspan++;
+                thtitulos[numthtitulos].pcol=visibles;
+                numthtitulos++;
+            } else {
+                if (numthtitulos==0) {
+                    thtitulos[0].width+=anchocelda;
+                    thtitulos[0].colspan++;		
+                } else {
+                    thtitulos[numthtitulos-1].width+=anchocelda;
+                    thtitulos[numthtitulos-1].colspan++;
+                }
+            }		
+        }	
+    }
+	strcat(ptrout,"<thead>\n<tr>");
+	for (i=0;i<numthtitulos;i++) {
+        sprintf(ptrout + strlen(ptrout), "<th id=\"tbbl%dc%d\" class=\"%s\"colspan=%d style=\"width:%dpx\" onclick=\"fonclick()\">%s</th>\n",
+                nbloque, thtitulos[i].pcol, (b == v10damebloqueactual()) ? "v10theadact" : "v10thead", thtitulos[i].colspan, thtitulos[i].width, thtitulos[i].titulo);
+	}
+	strcat(ptrout,"</tr></thead>\n");
+}
+
+void v10tabla2html(int nbloque,bloques *b,int incluyevalores,formtabs *ftab) 
+{
+	int i, left, top;
+	int ancho, largo;
+	char estilotabla[MAXPATH]="";
+    char *ptrout = v10datoshtml + strlen(v10datoshtml);
+	maxfilas=(b->s->ulin - b->s->plin)+1; 
+	if (b->s->ulin<0) maxfilas=((b->s->numlin-1) - b->s->plin);
+	// si estamos generando la plantilla del bloque,  genera todas las filas
+	if (maxfilas<1) maxfilas = 1;
+	v10damedimensionesbloque(b, &left, &top, &ancho, &largo);
+	for (i=0;i<b->ncamp;i++) {
+		if (!b->c[i].v) continue;
+		else break;
+	}
+	top=v10y2pxsm((b->s->v.y1-(b->vi.w.y1)),damepxfila(b));
+	if (b->wtipomarco==MARCOFRAME ||  b->wtipomarco==MARCOPESTANA) top+=22;
+	if (top==0) top=damepxfila(b);
+	left=v10x2px(b->c[i].v->posx,damepxcol(b));  	
+	strcat(ptrout,"<table align='left' border=\"0\" cellpadding=\"0\"cellspacing=\"0px\" rules=\"all\"class=\"v10tabla\" ");
+	if (*b->includetdcss) sprintf(estilotabla, b->includetdcss+1,strlen(b->includetdcss+1)-1);
+	sprintf(ptrout + strlen(ptrout), "id=\"tbbl%d\" style=\"left:%ipx;top:%ipx;width:%d;%s\">",
+		nbloque,left,0,ancho,estilotabla);	
+    if (b->wtitulos) v10cabeceratabla(ptrout + strlen(ptrout), nbloque, b, left, top - 18);
+    //top-=v10y2px(0,1);
+	if (incluyevalores) {
+        sprintf(ptrout + strlen(ptrout), "<!-- %s.PAN con valores cargados-->\n", b->nombre);
+		initvbloque(b);
+	}
+    strcat(ptrout, "<tbody>");
+	for (i=1;i<=maxfilas;i++) {
+        ptrout += strlen(ptrout);
+		leeregistroi(b,b->s->plin+(i-1));		
+		if (b->noinsert && !CABECERA(b)->antiguo && (b->s->plin+(i-1))>0)  {
+			maxfilas--;
+			break;
+		} else v10fila2html(nbloque,b,i,incluyevalores,top,left,ptrout);  		
+	}
+    strcat(ptrout, "</tbody>");
+	if (incluyevalores) finvbloque(b);
+    strcat(ptrout, "</table>");
+	leeregistroi(b,b->s->clin);	
+}

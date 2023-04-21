@@ -1,0 +1,31 @@
+# Módulo   : VDMOVPARCIALERRCONGELA.PAN
+# Función  : Muestra el error de que no puede congelar un movto
+#
+# Creación : 20-05-2008
+# Autor    : JMM
+###########################################
+# Histórico de cambios:
+#
+MOVIMIENTO DE STOCK PARCIAL
+_10_______ _10_______
+MOVIMIENTO PARCIAL
+
+
+ERROR AL SERVIR MOVTOS 
+DE UBICACION _12__________
+
+SE DEJA ESPERANDO 
+STOCK
+
+PULSE ENTER _
+
+|
+
+POSTQUERY=FEJECUTA(FCARGAFORM(""),"ERROR\n AL VOLVER AL MENU") 
+
+
+# DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,VIRTUAL,NOENTER
+CAMPO=CODOPE,VIRTUAL,NOENTER
+CAMPO=CODUBIORI,VIRTUAL,NOENTER
+CAMPO=SALIR

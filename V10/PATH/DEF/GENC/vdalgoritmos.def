@@ -1,0 +1,15 @@
+#***
+# VDALGORITMOS.c - Generación automática del código c para la tabla VDCOMEN
+#
+# Propósito: Funciones de acceso a la tabla VDALGORITMOS
+#
+# Autor	 : JCSR
+# Revisado por:
+# Fecha  : 24-01-2008
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=ALG
+PRIMARIA=PROCESO,NOMBREALG
+RECORRE=ALGORITMO,PROCESO,ACTIVO
+CLAVE=ALGPROC, PROCESO, NOMBREALG

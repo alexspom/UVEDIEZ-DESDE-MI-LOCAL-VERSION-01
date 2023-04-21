@@ -1,0 +1,31 @@
+#***
+# VDSTOCKFUENTEAUX.DEF - Generación automática del código c SOLOQUERY sobre la tabla VDSOTCKFUENTE                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 17-07-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=STKFTEAUX;
+EXTRA=RET,V10LONG
+EXTRA=CREARCONTE,V10CADENA,2
+EXTRA=CREARLOTE,V10CADENA,2
+ 
+PROCEDURE=FUENTESTK, BEGIN
+                         VDSTK.FUENTESTK( :VDSTOCKFUENTE.TIPOFUENTE,:VDSTOCKFUENTE.CODUBI,:VDSTOCKFUENTE.CODMAT,
+                                          :VDSTOCKFUENTE.TIPOCONTE ,:VDSTOCKFUENTE.CODART ,:VDSTOCKFUENTE.CODLOT ,
+                                          :VDSTOCKFUENTE.CANTIDADHOST ,:VDSTOCKFUENTE.UNIDADESHOST ,:VDSTOCKFUENTE.UNIEMBHOST ,
+                                          :VDSTOCKFUENTE.EMBCONT ,:VDSTOCKFUENTE.TIPOEMBA ,:VDSTOCKFUENTE.PRECIOUNI,
+                                          :VDSTOCKFUENTE.BLOQUEOS, :VDSTOCKFUENTE.BULTO, :VDSTOCKFUENTE.MARCASTK, 
+                                          :VDSTOCKFUENTE.NUMEROSERIE,:VDSTOCKFUENTE.CODRECEP ,:VDSTOCKFUENTE.PESOUNI,
+                                          :VDLOTES.CODLOTPROV, :VDLOTES.CADUCI, :VDLOTES.RETEST, :VDLOTES.BLOQLOTE,
+                                          :VDLOTES.POTENCIA, :VDLOTES.SWTPRECIO, :VDLOTES.MUESTREADO, :VDSTOCKFUENTE.VDEXTRA, :VDCOMEN.COMENTARIO, :RET);
+                     END;@
+ 
+ PROCEDURE=CREASTK, BEGIN
+                         VDSTK.CREASTK( :VDSTOCKFUENTE.SEQFUENTE,:VDCONCEPTO.CODCONCE,:VDUBICA.CODUBI,:CREARCONTE,:CREARLOTE,
+                                        :VDSTOCKFUENTE.VDEXTRA,:VDCOMEN.COMENTARIO,:VDMOVIM.CODMOV,:RET);
+                     END;@                                        

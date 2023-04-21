@@ -1,0 +1,16 @@
+#***
+# VDZONASAUX.DEF - Generación automática del código c SOLOQUERY 
+# 
+# Propósito: idem.
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 27-05-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=ZONAUX;
+EXTRA=CUANTOS,V10LONG;
+
+
+CURSOR=BULTOSENZONA, SELECT VDZONA.BULTOSENZONA(:VDZONAS.CODZONA) CUANTOS FROM DUAL;

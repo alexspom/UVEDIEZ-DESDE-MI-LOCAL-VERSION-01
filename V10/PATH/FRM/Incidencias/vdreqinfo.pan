@@ -1,0 +1,41 @@
+# Módulo   : VDREQINFO.PAN
+# Función  : PANTALLA PARA MANDAR CORREO A CLIENTE PIDIENDO INFORMACIÓN ADICIONAL REFERENTE A UNA INCIDENCIA
+#
+# Creación : 26-09-2009
+# Autor    : JCSR
+###########################################
+# Histórico de cambios:
+TEXTO DEL CORREO
+
+Texto _500________________________________________________________
+
+|
+
+SOLOQUERY
+
+
+CAMPO = CODINCI, AUXILIAR , VIRTUAL ,  OCULTO
+CAMPO = CADENA, AUXILIAR
+
+TECLA = F4, FEJECUTA ("CINSERTACORREO", " No puedo generar el correo ",
+                      "CINSERTALINEAS", " No puedo actualizar la incidencia",
+					  "CUPDATESTATUS" , " No puedo actualizar el status de la incidencia. ",
+					  FCOMMIT, "",
+					  %FFAILURE, " Correo generado con éxito ",
+					  FPULSATECLAS ("ESC"), "")
+					  
+CURSOR = CINSERTACORREO BEGIN VDESCRIBECORREOS.CORREO_PIDE_INFO (:CODINCI, :CADENA); END;@
+
+CURSOR = CINSERTALINEAS INSERT ALL 
+						INTO VDINCILIN (CODINCI, SEQLINEA, ACTUACION, CODOPEMODIF) 
+						VALUES (:CODINCI, SEQLINEA, SUBSTR('Se envía correo al cliente pidiendo la siguiente información: '||:CADENA, 1, 500), VDUSER.GETUSER)
+						INTO VDINCILINOPE (CODINCI, SEQLINEA, CODOPE, TIEMPO, CODOPEMODIF)
+						VALUES ( :CODINCI, SEQLINEA, VDUSER.GETUSER, 0, VDUSER.GETUSER)
+						SELECT MAX(SEQLINEA)+1 SEQLINEA 
+						  FROM VDINCILIN 
+						WHERE CODINCI = :CODINCI;
+
+CURSOR = CUPDATESTATUS UPDATE VDINCICAB SET STATUS = VDST.FINCPEDINFO, CODOPEMODIF = VDUSER.GETUSER, FECMODIF = VD.FECHASYS ,HORAMODIF = VD.HORASYS 
+                        WHERE CODINCI = :CODINCI;
+
+  TECLA = SF6, FEJECUTA (%FFAILURE, ":CODINCI")

@@ -1,0 +1,241 @@
+/****
+* VDPEDIDOS.C
+*                                                    
+* Propósito: Procesos y algoritmos en C propios del tratamiento de pedidos 
+*                                            
+* Autor  : FGS
+* Fecha  : 5-3-2008                                                        
+******
+*  Modificaciones:
+****/
+
+#include "vdpedidos.h"
+
+
+// Algoritmo que genera bultos a pedido
+// parámetros
+// PARAM1: Estructura del pedido al que crear bultos. 
+// PARAM2: Flujo para Contenedores. 
+// PARAM3: Flujo para Embalajes.
+// PARAM4: Flujo para Unidades.
+// PARAM5: Dígito EAN de la unidad de envío.
+// PARAM6: Estado en el que dejar el pedido si todo ha ido correctamente
+VDEXPORT int vdcreabultos(void *ptr,char *param) 
+{
+	vdpedidocabs *pec=ptr;
+	vdbultos bulto;
+    vdstatuss sta;
+	char flucnt[LTAREA],fluemba[LTAREA],fluprepicking[LTAREA],flupickinv[LTAREA],fluuni[LTAREA];
+	char digitoean[2];
+    int ret;
+	//Comprobar parámetros recibidos
+	ret=numpieces(param,"#");
+    if (ret < 7) {
+        v10log(LOGERROR,"vdcreabultos: Número de parámetros incorrecto, recibe %d necesita 7\n", ret);
+		return(0);
+	}
+    piece(param,flucnt,"#",1);  
+    piece(param,fluemba,"#",2);
+	piece(param,fluprepicking,"#",3);
+	piece(param,flupickinv,"#",4);
+    piece(param,fluuni,"#",5); 
+    piece(param,digitoean,"#",6);
+    if (ret=damestabreviada("vdcreabultos",param, 7, "#",NULL, "PEC", &sta, 0)) {
+		v10logcomen(LOGERROR,pec->comenpec,"vdcreabultos - ERROR Status PEC %s de pedido no existe para algoritmo vdcreabultos \n",sta.dabstatus);
+		return(-1);
+	}
+    BULTOproccreabultos(pec->coddiv,pec->anoped,pec->codped,pec->seqped,flucnt,fluemba,fluprepicking, flupickinv,fluuni,digitoean,0,&bulto);
+	if (bulto.ret==-1) 
+		return(bulto.ret);
+	pec->status=sta.status;
+	ret=PECactualizastatus(pec,NOVERIFICA);
+	return(0);
+}
+// Crea versión de un pedido, si procede
+// PARAM1: (ptr) puntero al pedido
+// PARAM2: Estado en el que dejar el pedido si todo ha ido correctamente
+VDEXPORT int vdcreaversiones(void *ptr,char *param) 
+{
+	int ret;
+    vdstatuss stfinpedido;
+	vdpedidos ped;
+    vdpedidocabs *pec=ptr;
+    if (ret=damestabreviada("vdcreaversiones",param, 1, "#", NULL, "PEC", &stfinpedido, STPECFINALIZADO)) return(ret);
+	ret=PEDIDOproccreaversion(pec->coddiv,pec->anoped,pec->codped,pec->seqped,"",ret,&ped);
+    if (ret) {
+		v10log(LOGERROR,"vdcreaversiones: Error ejecutando VDPED.CREAVERSION(%s,%ld)\n",pec->codped,stfinpedido.status);
+		return(ret);
+	}
+    if (*ped.comentario) strcpy(pec->comenpec,ped.comentario);
+	if (ped.ret==0) pec->status=stfinpedido.status;
+    return(ped.ret);
+}
+
+
+// Finaliza un pedido
+// PARAM1: (ptr) puntero al pedido
+// PARAM2: Estado en el que dejar el pedido si todo ha ido correctamente
+// PARAM3: Estado para finalizar la serie de preparación
+// PARAM4: Estado para finalizar la serie de expedición
+VDEXPORT int vdfinpedido(void *ptr,char *param) 
+{
+	int ret;
+    vdstatuss stfinpedido,
+		      stfinserieprep,
+			  stfinserieexp;
+	vdpedidos ped;
+    vdpedidocabs *pec=ptr;
+    if (ret=damestabreviada("vdfinpedido",param, 1, "#", NULL, "PEC", &stfinpedido, STPECFINALIZADO)) return(ret);
+    if (ret=damestabreviada("vdfinpedido",param, 2, "#", NULL, "SPR", &stfinserieprep, STSPRFINALIZADA)) return(ret);
+    if (ret=damestabreviada("vdfinpedido",param, 3, "#", NULL, "SEX", &stfinserieexp, STSEXFINALIZADA)) return(ret);
+	ret=PEDIDOprocfinpedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,stfinpedido.status,stfinserieprep.status,
+		                stfinserieexp.status,ret,&ped);
+    if (ret) {
+		v10log(LOGERROR,"vdfinpedido: Error ejecutando VDPED.FINPEDIDO(%s,%ld)\n",pec->codped,stfinpedido.status);
+		return(ret);
+	}
+	return(ped.ret);
+}
+
+static int paramslanzapedidosstd(vdpedidocabs *pec,
+                                 char *param,procesos **proceso,vddemandatipos *demt,
+                                 vdstatuss *stdemc,char *codubiexped,char *agrupalinea,
+                                 char *tipocomendemanda) 
+{
+    int ret=0;
+    char procesoreserva[LPROCESO]="";
+    if ((ret=piece(param,procesoreserva,"#",1))<0) {
+        v10log(LOGERROR,"lanzapedidosstd: no se ha informado proceso de reserva para pedido. %s\n",PEClog(pec));
+        return(ret);
+    }
+      // busca el proceso de reserva
+    *proceso=buscaproceso(procesoreserva);
+    if (*proceso==NULL || (*proceso)->fnproceso==NULL){
+        v10log(LOGERROR,"lanzapedidosstd: NO EXISTE FUNCION O PROCESO %s que realice la reserva del pedido %s.\n",procesoreserva,PEClog(pec));
+        return(ret);
+    }
+    memset(demt,0,sizeof(vddemandatipos));
+    if ((ret=piece(param,demt->tipodemanda,"#",2)) < 0) {
+        v10log(LOGERROR,"lanzarecargasstd: no se ha informado tipo de demanda para reserva del pedido %s.\n",PEClog(pec));        
+        return(ret);
+    }
+    if (ret=DEMTselvddemandatipo(demt->tipodemanda, demt)) {
+        v10log(LOGERROR,"paramslanzarecargasstd: No existe tipo de demanda %s\n",demt->tipodemanda);
+        return(ret);
+    }
+    if (ret=damestabreviada("lanzapedidosstd:",param, 3, "#",NULL, "DEL", stdemc, STDECPDTERESERV)) return(ret);
+    piece(param,codubiexped,"#",4); 
+    if (piece(param,agrupalinea,"#",5)<0) *agrupalinea='S';  
+    // se guarda el tipo de comentarios que se va a guardar en la demanda
+    piece(param,tipocomendemanda,"#",7);    
+    return(ret);  
+}
+
+
+// mueve los comentarios de las líneas de  demanda a las líneas de pedido, del tipo especificado
+static void muevecomenDEML2PEL(vdpedidocabs *pec, char *listacodcomen, char *tipocomen) 
+{
+    vdplsqlcomens plsqlcomen;
+    PLSQLCOMENprocmuevecomendeml2pel(pec->coddiv,pec->anoped,pec->codped,pec->seqped,listacodcomen,tipocomen,&plsqlcomen);
+}
+
+
+// borra los comentarios de este tipo, de las líneas del pedido pasado
+static void borracomenPEL(vdpedidocabs *pec,char *tipocomen) {    
+    int ret;
+    vdpedidolins pel; 
+    ret=PELbuscapedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pel);
+    while (ret==0) {
+        v10deletecomenportipo(pel.codcomen, tipocomen, NULL);
+        ret=PELnextpedido(&pel);
+    }
+}
+
+
+// ALGORITMO. Recoge los parámetros, genera la demanda y lanza el proceso de reserva en memoria
+// PARAM 1: Proceso que realiza la reserva
+// PARAM 2: Tipo de demanda del pedido
+// PARAM 3: Estado con el que se crea la cabecera de Demanda
+// PARAM 4: Ubicación forzada de destino de las líneas de demanda
+// PARAM 5: Si se agrupan las líneas por articulo, dentro del mismo pedidohost.
+
+// Parámetros para pasarle al proceso que ejecuta en memoria para reservar la demanda al completo
+// PARAM 6: evaluar todas las lineas de la demanda
+// PARAM 7: tipo de comentario, de la cabecera de demanda y cabecera de pedido
+// PARAM 8: código de clasif. para montar con la clase del artículo el discriminante 
+
+VDEXPORT int vdlanzapedidosstd(void *ptr,char *param) 
+{
+    int ret,i,numparams;
+    char codubiexped[LCODUBI]="",agrupalinea[2]="";
+    char procesoreserva[LPROCESO]="",tipocomendemanda[LTIPOCOMEN]="";
+    char parami[MAXCADENA]="";
+    procesos *proceso;
+    vdstatuss stdemc;
+    vdpedidocabs *pec=ptr;
+    vddemandatipos demt;
+    vddemandacabs demc;
+    savepoint("lanzapedidosstd");
+    // carga los parámetros del algoritmo
+    if (ret=paramslanzapedidosstd(pec,param,&proceso,&demt,&stdemc,codubiexped,agrupalinea,tipocomendemanda)) return(ret);  
+    memset(&demc,0,sizeof(demc));
+    if (ret=creademandapedido(pec,demt.tipodemanda,stdemc.status,codubiexped,"T"/*pec->backorder*/,agrupalinea,demc.coddemanda)) {
+        rollbacksavepoint("lanzapedidosstd");   
+        v10log(LOGERROR,"lanzapedidosstd: Error al generar la demanda de tipo %s para pedido. %s\n",demt.tipodemanda,PEClog(pec));
+        return(ret);
+    }
+    strcpy(demc.tipodemanda,demt.tipodemanda);
+    // forma los parámetros a pasarle al proceso de reserva
+   	numparams=numpieces(param,"#");    
+    sprintf(proceso->proc.param,"%s#%s#%c",demc.coddemanda,demc.tipodemanda,'N');
+    // primer parámetro de proceso empieza en la posición 6
+    for (i=6;i<=numparams;i++) {
+        piece(param,parami,"#",i);
+        sprintf(proceso->proc.param+strlen(proceso->proc.param),"#%s",parami);
+    }
+    // ejecuta la tarea de reserva
+    (proceso->fnproceso)(proceso);
+    // busca la demanda que se ha intentado reservar
+    if ((ret=DEMCselvddemandacab(demc.tipodemanda,demc.coddemanda,&demc))) {
+        rollbacksavepoint("lanzapedidosstd");      
+        v10log(LOGERROR,"lanzapedidosstd: Demanda %s no existe despues de ejecutar proceso de reserva %s\n",
+            DEMClog(&demc), procesoreserva);
+        return(ret);
+    }
+    if (demc.status!=STDECRESERVADA) {
+        vddems demaux;
+        // pasar pedidos de las líneas de demandas a las de pedidos
+        memset(&demaux,0,sizeof(demaux));
+        DEMbuscalistacodcomen(demc.coddemanda,demc.tipodemanda,&demaux);       
+        rollbacksavepoint("lanzapedidosstd");  
+        borracomenPEL(pec,tipocomendemanda);
+        muevecomenDEML2PEL(pec, demaux.vdextra,tipocomendemanda);      
+        *pec->coddemanda=0;
+        *pec->tipodemanda=0;
+        pec->status=STPECPDTESTOCK;   
+        v10log(LOGNORMAL,"vdlanzapedidosstd: pedido %s pasa a estado %ld\n",PEClog(pec),STPECPDTESTOCK);
+    } else {
+        borracomenPEL(pec,tipocomendemanda);     
+        strcpy(pec->coddemanda,demc.coddemanda);
+        strcpy(pec->tipodemanda,demc.tipodemanda);
+        pec->status=STPECRESERVADO;   
+        v10log(LOGNORMAL,"vdlanzapedidosstd: pedido %s pasa a estado %ld\n",PEClog(pec),STPECRESERVADO);
+
+        // me falta actualizar fecreserva en el pedido, ya no es fecaper, es la nueva
+
+        pec->fecreserva=damedate();
+        cent2a(gettime(),0,':',pec->horareserva);
+        ret=PECactualizareserva(pec,NOVERIFICA);
+        if (ret) {
+            rollbacksavepoint("lanzapedidosstd");
+            v10log(LOGERROR,"lanzapedidosstd: Error al actualizar fechay hora de la reserva del pedido. %s\n",PEClog(pec));
+            return(ret);
+        }
+    }    
+    ret=PECactualizastatusydemanda(pec,NOVERIFICA);
+    if (ret) {
+        rollbacksavepoint("lanzapedidosstd");
+        v10log(LOGERROR,"lanzapedidosstd: Error al actualizar estado del pedido. %s\n",PEClog(pec));
+    }
+    return(ret);
+}

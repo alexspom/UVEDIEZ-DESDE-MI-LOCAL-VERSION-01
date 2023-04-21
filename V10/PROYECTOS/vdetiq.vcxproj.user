@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>$(OutDir)VDEXEC.EXE</LocalDebuggerCommand>
+    <LocalDebuggerCommandArguments>-OUMCR/MCR@COLIBRI -WV"SPOOL DE IMPRESION" -TSPOOLIMPRE -LNIMPRESIONES</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>$(OutDir)VDEXEC.EXE</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>-OUpf6/PF6@PRODPF6 -WV"SPOOL DE IMPRESION ETIQUETADORAS" -TSPOOLIMPREETIQ -TSPOOLFICHEROETIQ -LNIMPRESIONESETIQ</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+</Project>

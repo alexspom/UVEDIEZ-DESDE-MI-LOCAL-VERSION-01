@@ -1,0 +1,53 @@
+<script DEFER>
+	
+	function  borrartecla() {
+		if (v10lib.objactivo.tagName=='INPUT' && v10lib.objactivo.value.length>0) {
+			var num=v10lib.objactivo.value.length;
+			var aux=v10lib.objactivo.value.substr(0,num-1);
+			v10lib.objactivo.value = aux;
+			
+		}		
+		v10lib.desonkeyefectos(window.event);	
+		v10lib.objactivo.focus();	
+	}	
+	
+	function enviatecla(tecla) {
+		v10lib.mandaevento(v10lib.objactivo.id,'onkeyup',tecla);
+	}
+	
+	function mionclick() {
+		  v10lib.desonkeyefectos(window.event);		
+		  v10lib.objactivo.focus();
+	}
+	
+	function campotactil(arg) {		  
+		  v10lib.desonkeyefectos(window.event);
+			if (v10lib.objactivo.tagName=='INPUT' && arg>='0' && arg<='9') {				
+				v10lib.objactivo.value = v10lib.objactivo.value + arg;
+		  }
+	  	v10lib.objactivo.focus();
+	}
+</script>	
+<table id="tactil" width="200" border="0" style="position:absolute;top:350px;left:785px;z-index:9000" cellpadding="0" cellspacing="5">
+  <tr>
+    <td>
+    <input type="image" src="../img/btactil/1.png" name="jscbutton" onclick="mionclick()" onmousedown="{this.src='../img/btactil/11.png';campotactil('1')}" onmouseup="this.src='../img/btactil/1.png'" /></td>
+    <td><input type="image" src="../img/btactil/2.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/22.png';campotactil('2');}" onmouseup="this.src='../img/btactil/2.png'" /></td>
+    <td><input type="image" src="../img/btactil/3.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/33.png';campotactil('3');}" onmouseup="this.src='../img/btactil/3.png'" /></td>
+  </tr>
+  <tr>
+    <td><input type="image" src="../img/btactil/4.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/44.png';campotactil('4');}" onmouseup="this.src='../img/btactil/4.png'" /></td>
+    <td><input type="image" src="../img/btactil/5.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/55.png';campotactil('5');}" onmouseup="this.src='../img/btactil/5.png'" /></td>
+    <td><input type="image" src="../img/btactil/6.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/66.png';campotactil('6');}" onmouseup="this.src='../img/btactil/6.png'" /></td>
+  </tr>
+  <tr>
+    <td><input type="image" src="../img/btactil/7.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/77.png';campotactil('7');}" onmouseup="this.src='../img/btactil/7.png'" /></td>
+    <td><input type="image" src="../img/btactil/8.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/88.png';campotactil('8');}" onmouseup="this.src='../img/btactil/8.png'" /></td>
+    <td><input type="image" src="../img/btactil/9.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/99.png';campotactil('9');}" onmouseup="this.src='../img/btactil/9.png'" /></td>
+  </tr>
+  <tr>
+    <td><input type="image" src="../img/btactil/0.png" name="jscbutton" onclick="mionclick()"onmousedown="{this.src='../img/btactil/00.png';campotactil('0');}" onmouseup="this.src='../img/btactil/0.png'" /></td>    
+    <td><input type="image" style="width:75px;height:83px" src="../img/btactil/borrar.png" name="jscbutton" onclick="borrartecla()"onmousedown="{this.src='../img/btactil/borrar1.png';campotactil('D');}" onmouseup="this.src='../img/btactil/borrar.png'"/></td>
+    <td><input type="image" style="width:75px;height:83px" src="../img/btactil/introyshift.png" name="jscbutton" onclick="enviatecla(13)"onmousedown="{this.src='../img/btactil/introyshift1.png';campotactil('D');}" onmouseup="this.src='../img/btactil/introyshift.png'"/></td>
+</tr>
+</table>

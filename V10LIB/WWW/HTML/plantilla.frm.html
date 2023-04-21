@@ -1,0 +1,177 @@
+<html lang="es"> <!--<![endif]-->
+   <head>
+   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+      <title>V10 Software</title>
+      <meta http-equiv="content-type" content= "text/html; charset=iso-8859-1"/>
+      <meta http-equiv="Cache-control" content="no-cache">
+      <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+<!--	  <script src="../html/jquery-1.11.3.min.js"></script>*/-->
+
+	  <!--V10DELAYCHARTS-->
+      <!--V10REFCHARTS-->
+      <!--V10INCLUDECSS-->
+	  
+<!--[if IE]><script src="../html/excanvas.js"></script><![endif]-->	  
+
+<style>
+	#clock {
+	position: absolute;
+	top: 155px;
+	margin: -100px 0 0 -200px;
+	width: 400px;
+	height: 135px;
+	text-align: center;
+	font-size: 12px;
+	border: 0px;
+	padding: 65px 0 0 0;
+	font-family: Verdana, Geneva;
+	color: #363535;
+	font-weight: bold;
+}
+</style>
+
+<FORM name='v10form' tabindex='0' method='post' id='v10form1'>
+<input name='sesion' tabindex='1' id='sesion' type='hidden' value='"+sesion+"'/>
+<input name='idobjeto' tabindex='2' id='objeto' type='hidden'/>
+<input name='evento' tabindex='4' id='evento' type='hidden' />
+<input name='valor' tabindex='5' id='valor' type='hidden' />
+<input name='antid' tabindex='6' id='antid' type='hidden' />
+<input name='antvalor' tabindex='7' id='antvalor' type='hidden' />
+</FORM>
+<script>
+  
+function ftratarueda() {
+var e=window.event;
+var tecla=0;
+var objeto;
+  e.cancelBubble=true;e.returnValue=false;
+  if (typeof v10lib === 'undefined') return false;
+  if (typeof v10lib.loaded === 'undefined') return false;
+  if (v10lib.loaded!=true) return false;
+  if (e.ctrlKey) return true;
+  if (e.wheelDelta<0) {
+     if (e.wheelDelta<-120) tecla=4000; else tecla=40;	 
+    } else {
+     tecla=38;	 
+	}
+  objeto=v10lib.objactivo;
+  if (objeto!='') {
+     v10lib.valorobjactivo();
+     v10lib.mandaevento(objeto.id,'onkeyup',tecla);
+   }
+  return true;
+}
+  var v10lib=parent.frames[0];
+  v10lib.loadinit(window);
+  v10lib.generavars(window,'<!--IDSESION-->');
+  <!--SCRIPTS-->
+  <!--AJAX-->
+  function fonkeydown(){return v10lib.fonkeydown();}
+  function fonclick(){v10lib.fonclick();}
+  function fonmousedown(){v10lib.fonmousedown();}
+  function fonmouseover(){v10lib.fonmouseover();}
+  function fonmouseout(){v10lib.fonmouseout();}
+  function fonhelp(){v10lib.fonhelp();}
+  function fonunload(){
+  <!--ONUNLOAD-->
+  v10lib.fonunload();}
+  function foncontextmenu(){v10lib.foncontextmenu();}
+  function fonclickbotonera(){v10lib.fonclickbotonrea();}
+  function fmuestrabotonera(){v10lib.fmuestrabotonera();}
+  function fbotoneraover(){v10lib.fbotoneraover();}
+  function fbotoneraout(){v10lib.fbotoneraout();}
+  function fonblur(id){v10lib.fonblur(id);}
+  function fdummy() {v10lib.fdummy();}
+
+  function fonload() {
+  <!--ONLOAD-->
+  <!--ONLINE-->
+  v10lib.ayudaonline();
+  }
+  
+</script>
+	  
+</head>
+
+<!--Código organizado, corregido y actualizado el 14/04/2015 por Eduardo L. Arana-->
+	
+<body oncontextmenu="return foncontextmenu()" onkeydown="return v10lib.fonkeydown();" onload="fonload()"  onclick="fonclick();" onmousedown="fonmousedown()" onhelp="fonhelp()"  onunload="fonunload()" onmousewheel="return ftratarueda()">  
+<!--V10USER-->
+<script languaje="javascript">top.document.title = "USUARIO: "+userv10+" BD: "+userdb+" HOST: "+host+" PID: "+pidform;</script>
+<!--información de sesión-->
+ <div class="wrapperpibe">
+                <div class="leftpibe">
+                    <div class="contenido">
+                        <div class="cabecera">
+                            <div class="logov10soluciones"><br /><br /><div style="height:10px;"></div><div class="barrita">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="rightpibe" style="margin-top:-180px;margin-right:-80px;">
+                        <div id="clock">
+                            <div id="reloj" style="margin-left:72px;margin-top:10px;"></div>
+                            <div id="date" style="margin-top:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+
+<div class="fixie10">
+<!--V10BOTONES-->
+<!--V10BOTONERADEF-->
+<!--V10CHARTS-->
+
+<table id='tdsubmenuzoom' class='v10zoomsubmenu' style='visibility:hidden'><tr><td>
+<textarea id='submenuzoom' style='background-color:yellow;color:darkblue' rows='5' cols='50'></textarea>
+</td></tr></table>
+<table id='menufrm' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' cellspacing='1px' cellspadding='0' class='v10submenueditapanfondo' style='position:absolute;visibility:hidden'>
+<tr index='1'><td mihover='naveditapanarriba' align='center'>Editar Men&#250 Actual</td></tr>
+<tr index='2'><td mihover='naveditapancentro'align='center'>Editar .PAN Actual</td></tr>
+<tr index='3'><td mihover='naveditapancentro'align='center'>Editar .FRM Actual</td></tr>
+<tr index='4'><td mihover='naveditapancentro'align='center'>Editar Todos Actual</td></tr>
+<tr><td><hr class='hreditapan'/></td></tr>
+<tr index='5'><td mihover='naveditapancentro'align='center'>(ESC) Atr&#225s</td></tr>
+<tr index='6'><td mihover='naveditapancentro'align='center'>(S+F10) Men&#250</td></tr>
+<tr index='7'><td mihover='naveditapancentro'align='center'>(Alt+D) Debug</td></tr>
+<tr index='8'><td mihover='naveditapanabajo'align='center'>(Alt+F10) Salir</td></tr>
+</table>
+
+<table id='menucampo' cellspacing='1px' cellspadding='0' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' class='v10submenufondo' style='position:absolute;visibility:hidden'>
+<tr index='9'><td mihover='navceldarriba'  align='center'>Cortar</td></tr>
+<tr index='10'><td mihover='navceldacentro' align='center'>Copiar</td></tr>
+<tr index='11'><td mihover='navceldacentro' align='center'>Pegar</td></tr>
+<tr index='12'><td mihover='navceldacentro' align='center'>Zoom</td></tr>
+<tr index='16'><td  mihover='navceldabajo'align='center'>Ir...</td></tr>
+</table>
+
+
+<table id="msginfo" class="titusecunsup" style="visibility:hidden" width="752" height="30" border="0" ><tr><td><span class="texsecunsup"><!--v10mensajeinfo--></span></td></tr></table>
+<div class="online" id="botonera" style="top:-55px;left:0px;position:absolute;height:15px;width:120px" title="Botonera de la Aplicacion">Accesos directos:</div>
+<div class="online colorfondoayudaonline" id="ayudaonline" style="cursor:hand;top:-55px;left:120px;position:absolute;height:15px;width:1000px" title="Ayuda online"><font color="#FFFFFF"/>Ayuda online</div>
+
+<!--V10IMGTECLADOVIRTUAL-->
+<img id="imgdebug" class="imgdebug" src="../img/gears1.gif"/>
+<img id="imgrelojar" class="imgrelojar" style="margin-top:-50px;" src="../img/spinner.gif"/>
+<!--<div class="popupWrapespera" id="imgrelojar" style="top:20%;left:20%;width:300px;height:300px;">
+    <div class="popupTitle">
+        <span class="v10titulomens">Espere por favor...</span>
+    </div>
+	<p class="v10textomensajehtml" style="position:absolute;top:90px;"><img src="../img/flat-clockf.gif" style="width:290px;"></p>
+</div>-->
+<span id="timeenvio" class="timeenvio"></span>
+<!--V10MENSAJE-->
+<!--V10HELP-->
+<!--CARGA DEL FRM-->
+<!--V10FRMDATA-->	
+<!--V10CALENDARIO-->
+<!--V10TECLADOVIRTUAL-->
+<!--V10SIDEBAR-->
+<!--V10COMPONENTES-->
+<!--V10INCLUDEHTML-->
+<!--CAMPOV10HTML-->
+</div>
+</body>
+</html>

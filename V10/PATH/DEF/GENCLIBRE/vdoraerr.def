@@ -1,0 +1,15 @@
+#***
+# VDORAERR.DEF - Generación automática del código c SOLOQUERY sobre la tabla VDORAERR                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 19-11-2009                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=ORAERR;
+
+CURSOR=HANDLEERROR,SELECT ORDEN, NIVELERR, RANGOEXE, RANGOERROR,DESCERROR,LIBALGORITMO,FUNCIONALG,PARAM, TIEMPOESPERA FROM VDORAERR
+                       WHERE VD.CONTIENE(RANGOEXE,UPPER(:VDORAERR.RANGOEXE))>0 ORDER BY ORDEN;

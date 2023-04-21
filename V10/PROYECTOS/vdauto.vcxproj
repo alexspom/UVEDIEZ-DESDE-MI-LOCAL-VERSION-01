@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{87EF6C08-318F-4D82-A1D2-5E6F8B302496}</ProjectGuid>
+    <RootNamespace>VDAUTO</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\BIN$(Platform)\</OutDir>
+    <IntDir>..\TEMP$(Platform)\$(TargetName)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <IncludePath>$(DIRV10INCLUDE);$(IncludePath)</IncludePath>
+    <LibraryPath>$(DIRV10LIB);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <IncludePath>$(DIRV10INCLUDE);$(IncludePath)</IncludePath>
+    <LibraryPath>$(DIRV10LIB);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+    <IncludePath>$(DIRV10INCLUDE);$(IncludePath)</IncludePath>
+    <OutDir>..\BIN$(Platform)\</OutDir>
+    <IntDir>..\TEMP$(Platform)\$(TargetName)\</IntDir>
+    <LibraryPath>$(DIRV10LIB);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\bin/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/D /D /J %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\FUENTES;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>V10WIN.LIB;V10ORA.LIB;VDDICCIONARIO.LIB;WSOCK32.LIB;VERSION.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)\$(ProjectName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TypeLibraryName>.\..\bin/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/D /D /J %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\FUENTES;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>V10WIN.LIB;V10ORA.LIB;VDDICCIONARIO.LIB;WSOCK32.LIB;VERSION.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)\$(ProjectName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(OutDir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TypeLibraryName>.\..\bin/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/D /D /J %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <PrecompiledHeaderOutputFile>$(IntDir)$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>V10WIN.LIB;V10ORA.LIB;VDDICCIONARIO.LIB;WSOCK32.LIB;VERSION.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)\$(TargetName).pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>$(Intdir)$(TargetName).bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USRDLL;VDAUTO_EXPORTS;_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/VDAUTO.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level2</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>.\Release/VDAUTO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/VDAUTO.pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <ImportLibrary>.\Release/VDAUTO.lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/VDAUTO.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TypeLibraryName>.\Release/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USRDLL;VDAUTO_EXPORTS;_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/VDAUTO.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level2</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>.\Release/VDAUTO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/VDAUTO.pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>.\Release/VDAUTO.lib</ImportLibrary>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/VDAUTO.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TypeLibraryName>.\Release/VDAUTO.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_USRDLL;VDAUTO_EXPORTS;_RTLDLL;STRICT;_WINDOWS;WIN32S;DEBUG_DINAMICA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/VDAUTO.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level2</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0c0a</Culture>
+    </ResourceCompile>
+    <Link>
+      <OutputFile>.\Release/VDAUTO.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/VDAUTO.pdb</ProgramDatabaseFile>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <ImportLibrary>.\Release/VDAUTO.lib</ImportLibrary>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/VDAUTO.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDACTSTKBUL.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDARTICULOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDASIGNAGEAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDBULTOAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDBULTOSPINV.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDCAJAVOLAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDCOMENTARIOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDCONTEAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDCORREOSAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDDEMANDAAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDIMPRESIONAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDINTERFASES.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDMOVAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDORAERR.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDPEDIDOAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDPEDIDORIGAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDPICKING.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDPICKINV.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDRECARGAAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDRESERVAAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDRUTAS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDSEMAFOROAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDSERIEAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDSERVICIOAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDSTOCKAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDSTOCKFUENTEAUX.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDUBICAR.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\VDVERIF.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDAGENCIA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDALGORITMOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDALMA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDAREA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDARTIC.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDASIGNAGE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDBULTOCAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDBULTOCABPINV.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDBULTOLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCAJAS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCLASEARTIC.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCLIENTES.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCOLCAMBIOVOL.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCOMEN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCONCEPTOFORM.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCONFI.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCONTE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCONVERSIONES.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDCORRSMTP.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDEFBLOQUE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDEFCAMPO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDEMANDACAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDEMANDALIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDEMANDATIPO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDDIVIS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDEMPRE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDFLUJOPARAM.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDGRAFICA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDGRAFICAEJE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDGRAFICAPIE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDGRUPOSERV.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDIMPREASIG.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDIMPREGRUPO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDIMPRESORAS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDIMPRESPOOL.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDIMPRETIPO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINFODISP.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINFOHARD.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINFOHARDDISP.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINFOLECTURAS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINTERFASECAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINTERFASELIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINTERFASETAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINTERFCARGACAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDINTERFCARGALIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDLOTEBLOQ.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDLOTES.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDLOTESHIST.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDMOVIM.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDOPEACTIVIDAD.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDORDENADORES.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDORDRECCAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDORDRECLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPAIS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPEDIDOCAB.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPEDIDOLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPEDIDORIGCAB.c">
+      <ShowIncludes Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ShowIncludes>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPEDIDORIGLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPERFILTAREA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPREPOSTALGORITMOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDPROCESOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDRECEPLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDRECTAREA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDRECURSO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSCANLECT.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSCANMIRROR.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSCANNUMSERIE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSERIEEXP.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSERIEPREP.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSERVICIOS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSTATUS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSTOCK.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDSTOCKFUENTE.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDTAREAS.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDTIPOCOMEN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDTIPORDRECLIN.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDTRADCODIGO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDUBICA.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDUSUARIO.c" />
+    <ClCompile Include="..\FUENTES\AUTO\GENC\VDZONAS.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="VDDICCIONARIO.vcxproj">
+      <Project>{8702e850-b01e-44aa-86f4-1aba4fee77d6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

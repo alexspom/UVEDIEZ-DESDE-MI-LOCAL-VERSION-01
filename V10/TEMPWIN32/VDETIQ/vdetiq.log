@@ -1,0 +1,35 @@
+﻿Build started 25/05/2020 11:23:21.
+     1>Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\vdetiq.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\FUENTES /Zi /nologo /W3 /WX /MP /Od /Oy- /D _RTLDLL /D STRICT /D _WINDOWS /D WIN32S /D DEBUG_DINAMICA /D _CRT_SECURE_NO_WARNINGS /D _CRT_NONSTDC_NO_DEPRECATE /D _WINDLL /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\TEMPWin32\VDETIQ\\" /Fd"..\TEMPWin32\VDETIQ\vc120.pdb" /FR"..\TEMPWin32\VDETIQ\\" /Gd /TC /analyze- /errorReport:prompt /J /wd4018 ..\FUENTES\ETIQUETAS\V10CAB.C ..\fuentes\etiquetas\v10cursordin.c ..\fuentes\etiquetas\v10genetiq.c ..\fuentes\etiquetas\v10impreetiq.c ..\FUENTES\ETIQUETAS\V10METO.C ..\FUENTES\ETIQUETAS\V10METOII.C ..\FUENTES\ETIQUETAS\v10SATO.c ..\FUENTES\ETIQUETAS\V10TEC.C ..\fuentes\etiquetas\V10ZPL.C ..\FUENTES\ETIQUETAS\vdmarkpoint.c
+         V10CAB.C
+         v10cursordin.c
+         v10genetiq.c
+         v10impreetiq.c
+         V10METO.C
+         V10METOII.C
+         v10SATO.c
+         V10TEC.C
+         V10ZPL.C
+         vdmarkpoint.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\BINWin32\VDETIQ.dll" /INCREMENTAL:NO /NOLOGO V10WIN.LIB V10ORA.LIB VDDICCIONARIO.LIB VDAUTO.LIB WSOCK32.LIB VERSION.LIB kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\BINWin32\VDETIQ.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"..\BINWin32\VDETIQ.lib" /MACHINE:X86 /SAFESEH /DLL ..\TEMPWin32\VDETIQ\V10CAB.obj
+         ..\TEMPWin32\VDETIQ\v10cursordin.obj
+         ..\TEMPWin32\VDETIQ\v10genetiq.obj
+         ..\TEMPWin32\VDETIQ\v10impreetiq.obj
+         ..\TEMPWin32\VDETIQ\V10METO.obj
+         ..\TEMPWin32\VDETIQ\V10METOII.obj
+         ..\TEMPWin32\VDETIQ\v10SATO.obj
+         ..\TEMPWin32\VDETIQ\V10TEC.obj
+         ..\TEMPWin32\VDETIQ\V10ZPL.obj
+         ..\TEMPWin32\VDETIQ\vdmarkpoint.obj
+         E:\V10\productos\REDUR20200430\V10\BINWin32\VDDICCIONARIO.lib
+            Creating library ..\BINWin32\VDETIQ.lib and object ..\BINWin32\VDETIQ.exp
+         vdetiq.vcxproj -> E:\V10\productos\REDUR20200430\V10\PROYECTOS\..\BINWin32\VDETIQ.dll
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"..\BINWin32\VDETIQ.bsc" ..\TEMPWin32\VDETIQ\V10CAB.sbr ..\TEMPWin32\VDETIQ\v10cursordin.sbr ..\TEMPWin32\VDETIQ\v10genetiq.sbr ..\TEMPWin32\VDETIQ\v10impreetiq.sbr ..\TEMPWin32\VDETIQ\V10METO.sbr ..\TEMPWin32\VDETIQ\V10METOII.sbr ..\TEMPWin32\VDETIQ\v10SATO.sbr ..\TEMPWin32\VDETIQ\V10TEC.sbr ..\TEMPWin32\VDETIQ\V10ZPL.sbr ..\TEMPWin32\VDETIQ\vdmarkpoint.sbr
+     1>Done Building Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\vdetiq.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.76

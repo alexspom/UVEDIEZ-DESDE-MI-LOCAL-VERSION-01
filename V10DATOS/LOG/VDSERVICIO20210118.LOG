@@ -1,0 +1,393 @@
+00 09:18:11:526 Fichero de log abierto PID 8028
+
+02 09:18:11:526 Intentando abrir fichero v10.ini
+03 09:18:11:526 Busco v10.ini en 3805 ficheros
+02 09:18:11:527 Cargando driver v10oracle funcion damedriveroracle
+02 09:18:11:643 Conectado a base de datos
+03 09:18:11:648 Siguiente vdret 0. 
+03 09:18:11:648 Siguiente vdret 0. 
+02 09:18:11:650 El programa se esta ejecutando en modo normal
+02 09:18:11:701 Arrancado servidor de visualizadores, en puerto 5300
+
+00 09:18:59:952 Fichero de log cerrado.
+
+00 09:20:38:922 Fichero de log abierto PID 1564
+
+02 09:20:38:922 Intentando abrir fichero v10.ini
+03 09:20:38:922 Busco v10.ini en 3805 ficheros
+02 09:20:38:925 Cargando driver v10oracle funcion damedriveroracle
+02 09:20:38:983 Conectado a base de datos
+03 09:20:38:987 Siguiente vdret 0. 
+03 09:20:38:987 Siguiente vdret 0. 
+02 09:20:38:987 El programa se esta ejecutando en modo normal
+02 09:20:38:992 Cargando grupo AGENCIAS
+02 09:20:38:995 Cargando grupo FMD
+02 09:20:38:995     Cargando servicio INTERFMD
+02 09:20:38:995 Cargando grupo GENERALES
+02 09:20:38:995     Cargando servicio V10CALIFSTOCK
+00 09:20:39:071 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:071  Defines
+00 09:20:39:071  Binds
+02 09:20:39:083     Cargando servicio V10CORREOS
+00 09:20:39:086 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:086  Defines
+00 09:20:39:086  Binds
+02 09:20:39:087     Cargando servicio V10DEMANDAS
+02 09:20:39:087     Cargando servicio V10DEMANDASFIN
+02 09:20:39:087     Cargando servicio V10FUENTESTOCK
+00 09:20:39:090 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:090  Defines
+00 09:20:39:090  Binds
+02 09:20:39:092     Cargando servicio V10REUBICADOR
+00 09:20:39:095 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:095  Defines
+00 09:20:39:095  Binds
+02 09:20:39:095     Cargando servicio V10SPOOL
+02 09:20:39:095     Cargando servicio V10SPOOLETIQ
+02 09:20:39:096     Cargando servicio V10SPOOLJAVA
+02 09:20:39:096 Cargando grupo INTERFACES
+02 09:20:39:096     Cargando servicio BAJADAFTP
+02 09:20:39:096     Cargando servicio CARGA_ARTICULOS
+00 09:20:39:098 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:098  Defines
+00 09:20:39:098  Binds
+02 09:20:39:101     Cargando servicio CARGA_CLIENTES
+00 09:20:39:102 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:102  Defines
+00 09:20:39:102  Binds
+02 09:20:39:105     Cargando servicio CARGA_CODARTALT
+00 09:20:39:107 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:107  Defines
+00 09:20:39:107  Binds
+02 09:20:39:110     Cargando servicio CARGA_CP
+00 09:20:39:112 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:112  Defines
+00 09:20:39:112  Binds
+02 09:20:39:112     Cargando servicio CARGA_ORDENRECEP
+02 09:20:39:115     Cargando servicio CARGA_PEDIDOS
+00 09:20:39:117 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:117  Defines
+00 09:20:39:117  Binds
+02 09:20:39:118     Cargando servicio CARGA_PROVEES
+00 09:20:39:122 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:122  Defines
+00 09:20:39:122  Binds
+02 09:20:39:123     Cargando servicio ENVIOMOVIM
+00 09:20:39:127 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:127  Defines
+00 09:20:39:127  Binds
+02 09:20:39:127     Cargando servicio ENVIOPEDIDOS
+00 09:20:39:131 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:131  Defines
+00 09:20:39:132  Binds
+02 09:20:39:133     Cargando servicio ENVIORECEP
+00 09:20:39:137 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:137  Defines
+00 09:20:39:137  Binds
+02 09:20:39:140     Cargando servicio ENVIOREDUR
+00 09:20:39:142 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:142  Defines
+00 09:20:39:142  Binds
+02 09:20:39:145     Cargando servicio ENVIOSTOCK
+02 09:20:39:145     Cargando servicio SUBIDAFTP
+02 09:20:39:146 Cargando grupo MOVIMIENTOS
+02 09:20:39:147     Cargando servicio V10ACTSTOCK
+00 09:20:39:150 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:150  Defines
+00 09:20:39:150  Binds
+02 09:20:39:177     Cargando servicio V10ENRUTADOR
+00 09:20:39:181 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:181  Defines
+00 09:20:39:181  Binds
+02 09:20:39:183     Cargando servicio V10FINMOV
+00 09:20:39:186 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:186  Defines
+00 09:20:39:186  Binds
+02 09:20:39:187     Cargando servicio V10INTERFASAMOV
+00 09:20:39:190 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:190  Defines
+00 09:20:39:190  Binds
+02 09:20:39:192     Cargando servicio V10PERIODICOMOV
+02 09:20:39:192     Cargando servicio V10RECARGAS
+00 09:20:39:196 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:197  Defines
+00 09:20:39:197  Binds
+02 09:20:39:200 Cargando grupo PEDIDOS
+02 09:20:39:200     Cargando servicio V10ASIGNAAGE
+00 09:20:39:202 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:202  Defines
+00 09:20:39:202  Binds
+02 09:20:39:205     Cargando servicio V10CARGAPEDIDO
+00 09:20:39:207 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:207  Defines
+00 09:20:39:207  Binds
+02 09:20:39:210     Cargando servicio V10CREABULTOS
+00 09:20:39:212 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:212  Defines
+00 09:20:39:212  Binds
+02 09:20:39:213     Cargando servicio V10EQUILIBRA
+00 09:20:39:217 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:217  Defines
+00 09:20:39:217  Binds
+02 09:20:39:218     Cargando servicio V10EXPEDICIóN
+02 09:20:39:218     Cargando servicio V10FINPEDIDOS
+00 09:20:39:222 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:222  Defines
+00 09:20:39:222  Binds
+02 09:20:39:223     Cargando servicio V10HORACORTE
+00 09:20:39:226 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:226  Defines
+00 09:20:39:226  Binds
+02 09:20:39:227     Cargando servicio V10MONOPEDIDO
+00 09:20:39:230 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:230  Defines
+00 09:20:39:230  Binds
+02 09:20:39:232     Cargando servicio V10RESERVAPEDIDO
+00 09:20:39:235 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:235  Defines
+00 09:20:39:235  Binds
+02 09:20:39:236     Cargando servicio V10VERSIONES
+02 09:20:39:237 Cargando grupo PERIODICOS
+02 09:20:39:237     Cargando servicio ACTDIURNAS
+00 09:20:39:240 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:240  Defines
+00 09:20:39:240  Binds
+02 09:20:39:242     Cargando servicio ACTNOCTURNAS
+02 09:20:39:242 Cargando grupo PICKING
+02 09:20:39:242     Cargando servicio INFOHARD
+00 09:20:39:246 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:246  Defines
+00 09:20:39:246  Binds
+02 09:20:39:246     Cargando servicio LECTURAS
+00 09:20:39:247 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:247  Defines
+00 09:20:39:247  Binds
+02 09:20:39:247     Cargando servicio PICKINGUNI
+02 09:20:39:248 Cargando grupo PLANIFICADAS
+02 09:20:39:248     Cargando servicio BORRAFICH
+02 09:20:39:248     Cargando servicio COMPRIME
+00 09:20:39:252 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:252  Defines
+00 09:20:39:252  Binds
+02 09:20:39:252     Cargando servicio MATAFORMS
+02 09:20:39:252 Cargando grupo RADIOS
+02 09:20:39:252     Cargando servicio PLANIFRADIO
+00 09:20:39:255 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:255  Defines
+00 09:20:39:255  Binds
+02 09:20:39:256     Cargando servicio RADIOS
+00 09:20:39:258 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:20:39:258  Defines
+00 09:20:39:258  Binds
+02 09:20:39:261 Cargando grupo SGT
+02 09:20:39:261     Cargando servicio SGT
+02 09:20:39:262 Cargando grupo WEB
+02 09:20:39:262     Cargando servicio V10LISTENER
+02 09:20:39:262     Cargando servicio V10LISTENEREXT
+02 09:20:39:265     Cargando servicio V10SERVERFILES
+02 09:20:39:527 Arrancado servidor de visualizadores, en puerto 5300
+
+00 09:20:59:072 Fichero de log cerrado.
+
+00 09:25:03:332 Fichero de log abierto PID 8376
+
+02 09:25:03:332 Intentando abrir fichero v10.ini
+03 09:25:03:332 Busco v10.ini en 3805 ficheros
+02 09:25:03:337 Cargando driver v10oracle funcion damedriveroracle
+02 09:25:03:393 Conectado a base de datos
+03 09:25:03:397 Siguiente vdret 0. 
+03 09:25:03:397 Siguiente vdret 0. 
+02 09:25:03:397 El programa se esta ejecutando en modo normal
+02 09:25:03:402 Cargando grupo AGENCIAS
+02 09:25:03:402 Cargando grupo FMD
+02 09:25:03:402     Cargando servicio INTERFMD
+02 09:25:03:402 Cargando grupo GENERALES
+02 09:25:03:402     Cargando servicio V10CALIFSTOCK
+00 09:25:03:403 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:403  Defines
+00 09:25:03:403  Binds
+02 09:25:03:403     Cargando servicio V10CORREOS
+00 09:25:03:405 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:405  Defines
+00 09:25:03:405  Binds
+02 09:25:03:406     Cargando servicio V10DEMANDAS
+02 09:25:03:406     Cargando servicio V10DEMANDASFIN
+02 09:25:03:406     Cargando servicio V10FUENTESTOCK
+00 09:25:03:407 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:407  Defines
+00 09:25:03:407  Binds
+02 09:25:03:407     Cargando servicio V10REUBICADOR
+00 09:25:03:407 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:407  Defines
+00 09:25:03:407  Binds
+02 09:25:03:407     Cargando servicio V10SPOOL
+02 09:25:03:407     Cargando servicio V10SPOOLETIQ
+02 09:25:03:407     Cargando servicio V10SPOOLJAVA
+02 09:25:03:407 Cargando grupo INTERFACES
+02 09:25:03:407     Cargando servicio BAJADAFTP
+02 09:25:03:407     Cargando servicio CARGA_ARTICULOS
+00 09:25:03:408 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:408  Defines
+00 09:25:03:408  Binds
+02 09:25:03:408     Cargando servicio CARGA_CLIENTES
+00 09:25:03:411 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:411  Defines
+00 09:25:03:411  Binds
+02 09:25:03:411     Cargando servicio CARGA_CODARTALT
+00 09:25:03:411 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:412  Defines
+00 09:25:03:412  Binds
+02 09:25:03:412     Cargando servicio CARGA_CP
+00 09:25:03:412 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:412  Defines
+00 09:25:03:412  Binds
+02 09:25:03:412     Cargando servicio CARGA_ORDENRECEP
+02 09:25:03:412     Cargando servicio CARGA_PEDIDOS
+00 09:25:03:412 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:412  Defines
+00 09:25:03:412  Binds
+02 09:25:03:413     Cargando servicio CARGA_PROVEES
+00 09:25:03:415 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:415  Defines
+00 09:25:03:415  Binds
+02 09:25:03:415     Cargando servicio ENVIOMOVIM
+00 09:25:03:416 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:416  Defines
+00 09:25:03:416  Binds
+02 09:25:03:416     Cargando servicio ENVIOPEDIDOS
+00 09:25:03:417 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:417  Defines
+00 09:25:03:417  Binds
+02 09:25:03:417     Cargando servicio ENVIORECEP
+00 09:25:03:417 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:417  Defines
+00 09:25:03:417  Binds
+02 09:25:03:418     Cargando servicio ENVIOREDUR
+00 09:25:03:420 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:420  Defines
+00 09:25:03:420  Binds
+02 09:25:03:420     Cargando servicio ENVIOSTOCK
+02 09:25:03:420     Cargando servicio SUBIDAFTP
+02 09:25:03:421 Cargando grupo MOVIMIENTOS
+02 09:25:03:421     Cargando servicio V10ACTSTOCK
+00 09:25:03:422 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:422  Defines
+00 09:25:03:422  Binds
+02 09:25:03:422     Cargando servicio V10ENRUTADOR
+00 09:25:03:422 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:422  Defines
+00 09:25:03:422  Binds
+02 09:25:03:422     Cargando servicio V10FINMOV
+00 09:25:03:422 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:423  Defines
+00 09:25:03:423  Binds
+02 09:25:03:423     Cargando servicio V10INTERFASAMOV
+00 09:25:03:426 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:426  Defines
+00 09:25:03:426  Binds
+02 09:25:03:426     Cargando servicio V10PERIODICOMOV
+02 09:25:03:426     Cargando servicio V10RECARGAS
+00 09:25:03:428 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:428  Defines
+00 09:25:03:428  Binds
+02 09:25:03:430 Cargando grupo PEDIDOS
+02 09:25:03:430     Cargando servicio V10ASIGNAAGE
+00 09:25:03:432 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:432  Defines
+00 09:25:03:432  Binds
+02 09:25:03:432     Cargando servicio V10CARGAPEDIDO
+00 09:25:03:433 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:433  Defines
+00 09:25:03:433  Binds
+02 09:25:03:433     Cargando servicio V10CREABULTOS
+00 09:25:03:437 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:437  Defines
+00 09:25:03:437  Binds
+02 09:25:03:437     Cargando servicio V10EQUILIBRA
+00 09:25:03:438 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:438  Defines
+00 09:25:03:438  Binds
+02 09:25:03:438     Cargando servicio V10EXPEDICIóN
+02 09:25:03:438     Cargando servicio V10FINPEDIDOS
+00 09:25:03:441 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:441  Defines
+00 09:25:03:441  Binds
+02 09:25:03:442     Cargando servicio V10HORACORTE
+00 09:25:03:443 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:443  Defines
+00 09:25:03:443  Binds
+02 09:25:03:443     Cargando servicio V10MONOPEDIDO
+00 09:25:03:446 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:446  Defines
+00 09:25:03:446  Binds
+02 09:25:03:446     Cargando servicio V10RESERVAPEDIDO
+00 09:25:03:447 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:447  Defines
+00 09:25:03:447  Binds
+02 09:25:03:447     Cargando servicio V10VERSIONES
+02 09:25:03:448 Cargando grupo PERIODICOS
+02 09:25:03:448     Cargando servicio ACTDIURNAS
+00 09:25:03:451 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:451  Defines
+00 09:25:03:451  Binds
+02 09:25:03:451     Cargando servicio ACTNOCTURNAS
+02 09:25:03:452 Cargando grupo PICKING
+02 09:25:03:452     Cargando servicio INFOHARD
+00 09:25:03:455 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:455  Defines
+00 09:25:03:455  Binds
+02 09:25:03:455     Cargando servicio LECTURAS
+00 09:25:03:457 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:457  Defines
+00 09:25:03:457  Binds
+02 09:25:03:457     Cargando servicio PICKINGUNI
+02 09:25:03:457 Cargando grupo PLANIFICADAS
+02 09:25:03:457     Cargando servicio BORRAFICH
+02 09:25:03:457     Cargando servicio COMPRIME
+00 09:25:03:460 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:460  Defines
+00 09:25:03:460  Binds
+02 09:25:03:460     Cargando servicio MATAFORMS
+02 09:25:03:461 Cargando grupo RADIOS
+02 09:25:03:461     Cargando servicio PLANIFRADIO
+00 09:25:03:462 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:462  Defines
+00 09:25:03:462  Binds
+02 09:25:03:462     Cargando servicio RADIOS
+00 09:25:03:465 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:25:03:465  Defines
+00 09:25:03:465  Binds
+02 09:25:03:467 Cargando grupo SGT
+02 09:25:03:467     Cargando servicio SGT
+02 09:25:03:467 Cargando grupo WEB
+02 09:25:03:467     Cargando servicio V10LISTENER
+02 09:25:03:467     Cargando servicio V10LISTENEREXT
+02 09:25:03:467     Cargando servicio V10SERVERFILES
+02 09:25:03:495 Arrancado servidor de visualizadores, en puerto 5300
+03 09:26:20:895 Conectado cliente 127.000.000.001 pendientes 1 abiertos 0
+02 09:26:20:902 Creada conexion de cliente visualiza número 1
+02 09:26:21:002 Cliente visualiza 1 solicita menu de servicios
+02 09:26:27:255 Se cierra conexión de cliente visualiza 1
+03 09:30:00:065 Variable de entorno 
+02 09:30:00:066 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:30:00:066 Variable de entorno PATH=E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:30:00:067 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+03 09:30:00:067 Variable de entorno PATHV10=E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+02 09:30:00:067 Ejecutando E:\V10\productos\REDUR20200430\REDUR\CMD\MATAFORMS.CMD -WS1 -LM2 -WM  -OUREDUR/REDUR@local  -SP5301 -SL5302
+03 09:30:00:076 Variable de entorno PATH=E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:30:00:076 Variable de entorno PATHV10=E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+03 09:30:00:076 Variable de entorno LD_LIBRARY_PATH=
+02 09:30:00:076 Ejecucion correcta de servicio MATAFORMS de grupo PLANIFICADAS: pid 3380
+03 09:35:00:052 Variable de entorno 
+02 09:35:00:052 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:35:00:053 Variable de entorno PATH=E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:35:00:055 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+03 09:35:00:055 Variable de entorno PATHV10=E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+02 09:35:00:056 Ejecutando E:\V10\productos\REDUR20200430\REDUR\CMD\MATAFORMS.CMD -WS1 -LM2 -WM  -OUREDUR/REDUR@local  -SP5301 -SL5302
+03 09:35:00:058 Variable de entorno PATH=E:\V10\productos\REDUR20200430\V10LIB\BINwin32;E:\V10\productos\REDUR20200430\REDUR\BINwin32;E:\V10\productos\REDUR20200430\V10\BINwin32;E:\oracle\product\12.1.0\client_1\bin;E:\oracle\product\12.1.0\dbhome_1\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\AOMEI Backupper;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Oracle\VirtualBox;C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps;;C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:35:00:058 Variable de entorno PATHV10=E:\V10\productos\REDUR20200430\REDUR\PATH;E:\V10\productos\REDUR20200430\V10\PATH;E:\V10\productos\REDUR20200430\REDUR\FUENTES;E:\V10\productos\REDUR20200430\V10\FUENTES\ST;E:\V10\productos\REDUR20200430\V10LIB\WWW;E:\V10\productos\REDUR20200430\V10\BINwin32
+03 09:35:00:058 Variable de entorno LD_LIBRARY_PATH=
+02 09:35:00:058 Ejecucion correcta de servicio MATAFORMS de grupo PLANIFICADAS: pid 2232
+
+00 09:42:15:857 Fichero de log cerrado.
+

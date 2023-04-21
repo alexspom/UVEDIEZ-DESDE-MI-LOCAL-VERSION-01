@@ -1,0 +1,18 @@
+#***
+# VDNUMSERIELEIDOS.c - Generación automática del código c para la tabla VDNUMSERIELEIDOS                                              
+# 
+# Propósito: Funciones de acceso a la tabla VDNUMSERIELEIDOS
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 12-01-2010
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=NSL
+
+CLAVE=CONTNS, CODMAT, GENCOUNT=NUMEROSERIE;
+
+RECORRE=CODMAT,CODMAT;
+DELETE;
+

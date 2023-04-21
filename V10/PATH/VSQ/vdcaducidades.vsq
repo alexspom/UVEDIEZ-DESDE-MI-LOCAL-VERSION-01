@@ -1,0 +1,7 @@
+#PROCESOS DE CADUCIDADES
+#
+#Caduca o precaduca los lotes que llegan a la fecha de caducidad.
+CURSOR=CCADUCI BEGIN 
+                 VDLOT.TESTCADUCI;
+               END;@
+

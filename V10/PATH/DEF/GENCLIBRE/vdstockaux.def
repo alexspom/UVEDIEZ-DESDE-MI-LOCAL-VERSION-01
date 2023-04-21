@@ -1,0 +1,171 @@
+#***
+# VDSTOCKAUX.DEF - Generación automática del código c SOLOQUERY sobre la tabla VDSOTCK                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 19-02-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=STKAUX;
+EXTRA=STATUSAUX,V10LONG
+EXTRA=RET,V10LONG
+EXTRA=CODMATESPERADO,V10CADENA,19
+EXTRA=CODMATLEIDO,V10CADENA,19
+EXTRA=CODCONCEENTRADA,V10CADENA,10
+EXTRA=CODCONCESALIDA,V10CADENA,10
+EXTRA=FUENTE,V10CADENA,12
+EXTRA=SUMIDERO,V10CADENA,12
+EXTRA=OBSERV,V10CADENA,4096
+EXTRA=MSJERROR,V10CADENA,1024
+EXTRA=CODMOVENTRADA,V10DOUBLE
+EXTRA=CODMOVSALIDA,V10DOUBLE
+EXTRA=CODMOVINTERNO,V10DOUBLE
+EXTRA=NUEVOORDENSTK,V10LONG
+EXTRA=DIFF,V10DOUBLE
+EXTRA=FUERZASTOCK,V10LONG
+EXTRA=VDSTOCK.CANTIDAD
+EXTRA=LIMPIAR,V10CADENA,1
+EXTRA=CODRECURSO,V10CADENA,32
+EXTRA=CODZONA,V10LONG
+EXTRA=TOTALNSL,V10LONG
+EXTRA=PATRONBLOQUEOSORI,V10CADENA,20
+EXTRA=OBSERV,V10CADENA,4096
+
+CURSOR=RESERVADOENCODMAT,SELECT  VDSTK.CNTRESERVADO (:VDCONTE.CODMAT, :VDUBICA.UNICAPAC, :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS) CANTIDAD FROM DUAL;
+
+CURSOR=DISPONIBLEENCODMAT,SELECT VDSTK.CNTDISPONIBLE(:VDCONTE.CODMAT, :VDUBICA.UNICAPAC, :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS) CANTIDAD FROM DUAL;
+   
+CURSOR=STOCKENCODMAT,SELECT VDSTK.CNTSTOCK(:VDCONTE.CODMAT, :VDUBICA.UNICAPAC, :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS) CANTIDAD FROM DUAL;
+   
+CURSOR=STOCKENCODUBI,SELECT VDSTK.UBISTOCK(:VDUBICA.CODUBI, :VDUBICA.UNICAPAC, :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS) CANTIDAD FROM DUAL;
+ 
+CURSOR=STOCKLOTE, SELECT VDLOT.DAMECANTIDAD(:VDSTOCK.CODART, :VDSTOCK.CODLOT, :PATRONBLOQUEOSORI) CANTIDAD FROM DUAL;
+
+PROCEDURE=ACTSTOCKORI, BEGIN
+                         :RET :=VDACTSTOCK.actstkori(:VDMOVIM.CODMOV,:STATUSAUX);
+                      END;@
+
+PROCEDURE=ACTSTOCKDEST, BEGIN
+                         :RET :=VDACTSTOCK.actstkdest(:VDMOVIM.CODMOV,:STATUSAUX);
+                       END;@
+
+PROCEDURE=RECOGESTK,BEGIN
+                         VDMOV.RECOGESTK(:VDMOVIM.CODMOV,:STATUSAUX,:RET,:VDRECURSO.CODRECURSO);
+                    END;@
+                    
+PROCEDURE=DEPOSITASTK,BEGIN
+                         VDMOV.DEPOSITASTK(:VDMOVIM.CODMOV,:STATUSAUX,:RET);
+                    END;@            
+
+PROCEDURE=CONGELA,BEGIN
+                      :RET :=VDMOV.CONGELA(:VDMOVIM.CODMOV, :LIMPIAR);
+                  END;@    
+                  
+PROCEDURE=DESCONGELA,BEGIN
+                      VDMOV.LIMPIAMOV(:VDMOVIM.CODMOV);
+                     END;@    
+                                                            
+                         
+PROCEDURE=TRANSFORMASTK,BEGIN
+                           VDSTK.TRANSFORMASTK(:VDSTOCK.CODMAT, :VDSTOCK.ORDENSTK,
+                                               :CODCONCEENTRADA, :FUENTE, 
+                                               :CODCONCESALIDA, :SUMIDERO, :OBSERV, 
+                                               :VDSTOCK.CODART, :VDSTOCK.CODLOT, :VDSTOCK.NUMEROSERIE,
+                                               :VDSTOCK.BULTO,  :VDSTOCK.MARCASTK, :VDSTOCK.CODRECEP,
+                                               :VDSTOCK.UNIEMB, :VDSTOCK.EMBCONT, :VDSTOCK.TIPOEMBA,
+                                               :VDSTOCK.PRECIOUNI, :VDSTOCK.PESOUNI, :VDSTOCK.BLOQUEOS,
+                                               :MSJERROR, :CODMOVENTRADA, :CODMOVSALIDA, :CODMOVINTERNO, :RET);
+                       END;@
+                       
+PROCEDURE=REGULARIZASTK,BEGIN
+                           VDSTK.REGULARIZASTK(:VDSTOCK.CODMAT, :VDSTOCK.ORDENSTK,
+                                               :VDMOVIM.CODCONCE, :VDCONTE.CODUBI, 
+                                               :DIFF,  :OBSERV, :MSJERROR, :VDMOVIM.CODMOV, :RET);
+                        END;@ 
+                        
+PROCEDURE=DIVIDETK,BEGIN
+                           VDSTK.DIVIDESTK(:VDSTOCK.CODMAT, :VDSTOCK.ORDENSTK,
+                                               :CODCONCEENTRADA, :FUENTE, 
+                                               :CODCONCESALIDA, :SUMIDERO,
+                                               :DIFF, :OBSERV, :MSJERROR, :CODMOVENTRADA, :CODMOVSALIDA, :NUEVOORDENSTK, :RET);
+                        END;@                                               
+                         
+                         
+PROCEDURE=CREASTK,BEGIN
+                           VDSTK.CREASTK(:VDSTOCK.CODMAT, :VDSTOCK.ORDENSTK,
+                                               :VDSTOCK.CODART, :VDSTOCK.CODLOT, :VDSTOCK.NUMEROSERIE,
+                                               :VDSTOCK.BULTO,  :VDSTOCK.MARCASTK, :VDSTOCK.CODRECEP,
+                                               :VDSTOCK.UNIEMB, :VDSTOCK.EMBCONT, :VDSTOCK.TIPOEMBA,
+                                               :VDSTOCK.PRECIOUNI, :VDSTOCK.PESOUNI, :VDSTOCK.BLOQUEOS,
+                                               :CANTIDAD,:CODCONCEENTRADA, :FUENTE, :OBSERV,:MSJERROR,:CODMOVENTRADA,:FUERZASTOCK,:RET);
+                       END;@    
+                       
+
+PROCEDURE=BLOQUEOSSTKBULTO, BEGIN
+                              VDLIBERA.BLOQUEOSSTKBULTO(:VDSTOCK.BULTO,:VDSTOCK.CODART,:VDSTOCK.CODLOT,:CODCONCEENTRADA, :FUENTE,:CODCONCESALIDA, :SUMIDERO,:PATRONBLOQUEOSORI,:VDSTOCK.BLOQUEOS,:OBSERV,:VDSTOCK.CANTIDAD,:VDCOMEN.COMENTARIO,:RET);
+                            END;@
+                            
+PROCEDURE=BLOQUEOSSTKRECEP, BEGIN
+                              VDLIBERA.BLOQUEOSSTKRECEP(:VDSTOCK.CODRECEP,:VDSTOCK.CODART,:VDSTOCK.CODLOT,:CODCONCEENTRADA, :FUENTE,:CODCONCESALIDA, :SUMIDERO, :PATRONBLOQUEOSORI,:VDSTOCK.BLOQUEOS,:OBSERV,:VDSTOCK.CANTIDAD,:VDCOMEN.COMENTARIO,:RET);
+                            END;@                                                   
+
+PROCEDURE=ACTSTKNS,BEGIN 
+                        VDSTK.ACTSTOCKNS(:VDSTOCK.CODMAT, :VDSTOCK.NUMEROSERIE, :VDSTOCK.CODOPEMODIF, :CODRECURSO, :CODZONA);
+                    END;@
+
+
+PROCEDURE=DELNUMLEIDOS, BEGIN VDSTK.DELNUMLEIDOS(:VDCONTE.CODMAT); END;@                    
+
+PROCEDURE=LIMPIANSSTOCK,BEGIN 
+                        VDSTK.LIMPIANSSTOCK(:VDSTOCK.CODMAT);
+                    END;@          
+
+
+
+
+PROCEDURE=ORDENASTOCKCONNS, BEGIN  
+                              VDSTK.ORDENASTOCKCONNS(:VDSTOCK.CODMAT, :TOTALNSL); 
+                            END;@
+
+
+
+
+%%h
+ VDEXPORT int STKAUXactstockori(void *ptr,int statusfinal);
+ VDEXPORT int STKAUXactstockdest(void *ptr,int statusfinal);
+ 
+%%c      
+ //Actualiza el stock origen y deja el movimiento preparado para que pase el actualizador de stock destino.
+ VDEXPORT int STKAUXactstockori(void *ptr,int statusfinal) {
+   int ret=0;
+   vdmovims *mov=ptr;   
+   vdstkauxs stock;
+    
+   ret=STKAUXprocactstockori(ret,mov->codmov, statusfinal, &stock);
+   if (ret) {
+     *mov->comen=0;   
+   	strcpy(mov->comen,"STKactstockori: error ejecutando algoritmo PLSQL VDACTSTOCK.algactstkori\n");
+     v10log(LOGERROR,mov->comen);
+   	return(-1);
+   }
+   return(stock.ret);
+ }  
+ 
+ //Actualiza el stock en la ubicación destino.
+ VDEXPORT int STKAUXactstockdest(void *ptr,int statusfinal) {
+    int ret=0;
+    vdmovims *mov=ptr;   
+    vdstkauxs stock;
+    
+    ret=STKAUXprocactstockdest(ret,mov->codmov, statusfinal, &stock);   
+    if (ret) {
+     *mov->comen=0;
+     strcpy(mov->comen,"STKactstockori: error ejecutando algoritmo PLSQL VDACTSTOCK.algactstkdest\n");
+   	v10log(LOGERROR,mov->comen);
+   	return(-1);
+    }
+    return(stock.ret);
+ }  

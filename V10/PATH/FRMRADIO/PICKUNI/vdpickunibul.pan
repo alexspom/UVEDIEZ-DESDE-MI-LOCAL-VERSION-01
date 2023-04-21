@@ -1,0 +1,59 @@
+# Módulo   : VDPICKUNIBUL.PAN
+# Función  : Formulario de recogida de bultos de unidades.
+#            Pantalla de lectura de bulto.
+#
+# Creación : 13-05-2008
+# Autor    : JMM
+###########################################
+# Histórico de cambios:
+#
+PICKING POR TERMINAL
+_10_______ _10_______  
+
+LEER BULTO  
+_255_______________________________
+|
+
+PREQUERY=FEJECUTA("+CINITCAMPOS","")
+
+POSTQUERY=FEJECUTA( FIF("CSELNOTNULL",FCARGAFORM(""),FSUCCESS),"ERROR\n AL VOLVER AL MENU",
+                    +FANALIZAEANRAD("CODBULTOIN","00","CODBULTO"),"",
+                    "CSELBULTO", "\n\n ERROR \n EL BULTO\n :CODBULTOIN\n NO EXISTE",
+                    "CCHECKBULTO","\n\n ESTADO DEL BULTO\n :CODBULTO\n\n INCORRECTO",
+                    "CUPDMOVS","\n\n\nNO SE PUEDEN\nACTUALIZAR\nMOVIMIENTOS\nDEL BULTO",
+                    FCOMMIT,"",
+                    FPOSICIONABLOQUE("VDPICKUNIDEC.PAN") , "ERROR\n AL CARGAR BLOQUE VDPICKUNIDEC.PAN")
+
+# DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL
+CAMPO=CODBULTOIN,SCAN,AUTOENTER
+CAMPO=CODBULTO, OCULTO, "_18________________"
+
+# DEFINICION DE CURSORES
+CURSOR=CINITCAMPOS SELECT NULL CODBULTOIN, NULL CODBULTO FROM DUAL;
+
+CURSOR=CSELNOTNULL SELECT :CODBULTOIN
+                     FROM DUAL
+                    WHERE :CODBULTOIN IS NULL;
+
+CURSOR=CSELBULTO SELECT CODBULTO
+                   FROM VDBULTOCAB 
+                  WHERE CODBULTO=:CODBULTO OR CODBULTO = :CODBULTOIN;
+
+CURSOR=CCHECKBULTO SELECT CODBULTO
+                     FROM VDBULTOCAB
+                    WHERE CODBULTO=:CODBULTO AND STATUS=VDST.FBUCPDTESERVIR;
+                    
+CURSOR=CUPDMOVS UPDATE VDMOVIM
+                   SET STATUS=VDST.FMOVASIGNADO,
+                       CODRECURSO=:CODRECURSO,
+                       CODOPEMODIF=:CODOPE,
+                       FECMODIF=VD.FECHASYS,
+                       HORAMODIF=VD.HORASYS
+                 WHERE CODMOV IN
+                       (SELECT BUL.CODMOV FROM VDBULTOLIN BUL,VDMOVIM MOV 
+                         WHERE BUL.CODBULTO=:CODBULTO AND BUL.CODMOV=MOV.CODMOV AND
+                               MOV.STATUS+0=VDST.FMOVPDTERECOGE AND MOV.TAREA=VD.GETPROP('TAREAPEDUNI'));
+
+                    

@@ -1,0 +1,105 @@
+// Modulo generado automaticamente a partir de VDDEMANDATIPO.DEF
+//#***
+//# VDDEMANDATIPO.c - Generación automática del código c para la tabla de Tipos de Demandas                                                      
+//# 
+//# Propósito: Funciones de acceso a la tabla VDDEMANDATIPO
+//#           
+//# Autor	 : FGS
+//# Revisado por: 
+//# Fecha  : 11-03-2008                                               
+//#********************************************************************************
+//# Modificaciones
+//#***
+//TABLE=DEMT
+
+#include "VD.H"
+#define SELDEMTVDDEMANDATIPO "SELECT VDDEMANDATIPO.ROWID,VDDEMANDATIPO.TIPODEMANDA,VDDEMANDATIPO.DESTIPO, "\
+                    " VDDEMANDATIPO.CODOPEMODIF,VDDEMANDATIPO.FECMODIF,VDDEMANDATIPO.HORAMODIF, "\
+                    " VDDEMANDATIPO.CODCOMEN "\
+        " FROM VDDEMANDATIPO"\
+        " WHERE "\
+               " VDDEMANDATIPO.TIPODEMANDA=:TIPODEMANDA "
+static v10cursors *vdseldemtvddemandatipo;
+
+static vddemandatipos svddemandatipo;
+
+static diccols colvddemandatipo[]={
+	{"ROWID",V10CADENA,(size_t)&svddemandatipo.rowid,sizeof(svddemandatipo.rowid)},
+	{"TIPODEMANDA",V10CADENA,(size_t)&svddemandatipo.tipodemanda,sizeof(svddemandatipo.tipodemanda)},
+	{"DESTIPO",V10CADENA,(size_t)&svddemandatipo.destipo,sizeof(svddemandatipo.destipo)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svddemandatipo.codopemodif,sizeof(svddemandatipo.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svddemandatipo.fecmodif,sizeof(svddemandatipo.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svddemandatipo.horamodif,sizeof(svddemandatipo.horamodif)},
+	{"CODCOMEN",V10LONG,(size_t)&svddemandatipo.codcomen,sizeof(svddemandatipo.codcomen)}
+	};
+static diccionarios dvddemandatipo[]={
+    {colvddemandatipo,7}
+};
+diccionario ddemt={dvddemandatipo,1};
+
+static char msglogDEMT[LCADENA];
+static char msgdebugDEMT[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_demt(void)
+{
+if (vdseldemtvddemandatipo) {
+    liberacursor(vdseldemtvddemandatipo);
+    vdseldemtvddemandatipo = NULL;
+}
+}
+static void init_seldemtvddemandatipo(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvddemandatipo[0].numcol;nc++) dvddemandatipo[0].c[nc].offset-=(size_t)&svddemandatipo;
+    vdseldemtvddemandatipo=abrecursordebug(SELDEMTVDDEMANDATIPO,1280);
+    definetodo(vdseldemtvddemandatipo,svddemandatipo.rowid,sizeof(svddemandatipo.rowid),V10CADENA,
+                          svddemandatipo.tipodemanda,sizeof(svddemandatipo.tipodemanda),V10CADENA,
+                          svddemandatipo.destipo,sizeof(svddemandatipo.destipo),V10CADENA,
+                          svddemandatipo.codopemodif,sizeof(svddemandatipo.codopemodif),V10CADENA,
+                          &svddemandatipo.fecmodif,sizeof(svddemandatipo.fecmodif),V10LONG,
+                          svddemandatipo.horamodif,sizeof(svddemandatipo.horamodif),V10CADENA,
+                          &svddemandatipo.codcomen,sizeof(svddemandatipo.codcomen),V10LONG,
+                          NULL);
+    bindtodo(vdseldemtvddemandatipo,"TIPODEMANDA",svddemandatipo.tipodemanda,sizeof(svddemandatipo.tipodemanda),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_demt);
+        init = 1;
+    }
+}
+
+diccionario *DEMTdamediccionario(void)
+{
+     return(&ddemt);
+}
+
+int DEMTselvddemandatipo(char *tipodemanda,vddemandatipos *demt)
+{
+  int vdret;
+  if (vdseldemtvddemandatipo==NULL) init_seldemtvddemandatipo();
+  memset(&svddemandatipo,0,sizeof(svddemandatipo));
+  strcpy(svddemandatipo.tipodemanda,tipodemanda);
+  vdret=ejefetchcursor(vdseldemtvddemandatipo);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdseldemtvddemandatipo. vdret %d. \n",DEMTlog(&svddemandatipo),vdret);
+    return(VD_EERRORACLE);
+   }
+  *demt=svddemandatipo;
+  return(vdret);
+}
+
+char * DEMTlog(vddemandatipos *demt)
+{
+    sprintf(msglogDEMT, "VDDEMANDATIPO: tipodemanda %s ",demt->tipodemanda);
+    return(msglogDEMT);
+}
+
+char * DEMTdebug(vddemandatipos *demt)
+{
+    debugestruct(&ddemt,demt,msgdebugDEMT);
+    return(msgdebugDEMT);
+}
+

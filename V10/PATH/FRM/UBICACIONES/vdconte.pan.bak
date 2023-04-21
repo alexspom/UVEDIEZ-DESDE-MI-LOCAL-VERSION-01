@@ -1,0 +1,48 @@
+# Módulo   : VDCONTE.PAN
+# Función  : Mantenimiento de contenedores
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# Histórico de cambios:
+MANTENIMIENTO DE CONTENEDORES
+Matrícula          Tipo        Código seriado       Ubicación    Pos.   Altura   Stat.  Designación    Entrada             Extra       Coment.   Última modificación
+_18_______________ _10________ _20_________________ ____________ @L9@@@ @L9@@@   @L@@@  _40___________ ¿D-MM-Y.YY ________ _255_______ @L@@@@@@@ _32________ ¿D-MM-Y.YY  ________
+|
+TABLA=VDCONTE
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+
+
+
+CAMPO=CODMAT,NOUPDATE,TOOLTIP("Matricula del contenedor"),TITULO("Matrícula")
+CAMPO=TIPOCONTE,TOOLTIP("Tipo de contenedor"),POSTCHANGE=FDESIGNACION("CVERTIPO","No existe el tipo de contenedor"),
+                TITULO("Tipo")
+CAMPO=CNTSSCC,TOOLTIP("Código seriado del contenedor"),TITULO("Código Seriado")
+CAMPO=CODUBI,TOOLTIP("Ubicación donde está el contenedor"),POSTCHANGE=FDESIGNACION("CVERUBI","No existe ubicación"),TITULO("Ubicación")
+CAMPO=POSCONTE,TOOLTIP("Posición del contenedor en la ubicación"),TITULO("Pos.")
+CAMPO=ALTURACONTE,TOOLTIP("Altura del contenedor"),TITULO("Altura")
+CAMPO=STATUS,TOOLTIP("Estado del contenedor"),POSTCHANGE=FDESIGNACION("CSELSTATUS","No existe estado"),
+                CONTEXTUAL=FEJECUTAFORM("VDSTATUS","N","TIPOSTATUS='CNT'","","STATUS=:STATUS","Selección de status","S"),
+                TITULO("Stat")
+CAMPO=DESSTATUS,AUXILIAR,NOENTER,TOOLTIP("Designación del estado del contenedor"),TITULO("Designación")
+CAMPO=FECENTRADA,TOOLTIP("Fecha de entrada del contenedor en el sistema"),TITULO("Entrada")
+CAMPO=HORAENTRADA,TOOLTIP("Hora de entrada del contenedor en el sistema")
+CAMPO=VDEXTRA,TOOLTIP("Información extra disponible para el implantador"),TITULO("Extra")
+CAMPO=CODCOMEN,TOOLTIP("Código de comentario del contenedor"),TITULO("Comen")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizó la última modificación"),TITULO("Última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF,VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CVERTIPO SELECT :TIPOCONTE FROM VDTIPOCONTE WHERE TIPOCONTE=:TIPOCONTE;
+
+CURSOR=CVERUBI SELECT :CODUBI FROM VDUBICA WHERE CODUBI=:CODUBI OR :CODUBI IS NULL;
+
+CURSOR=CSELSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE TIPOSTATUS='CNT' AND STATUS=:STATUS;
+
+
+TECLA=SF7,FEJECUTA(FIMPRIME("INFORME","REETIQCONTE.RPT","FORMCODMAT=:CODMAT",""),":V10ERROR")
+

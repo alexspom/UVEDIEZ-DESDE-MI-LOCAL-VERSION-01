@@ -1,0 +1,22 @@
+#***
+# VDSTOCKFUENTE.DEF - Generación automática del código c para la tabla de Fuente de Stock                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDSTOCKFUENTE
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 17-07-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=FTE
+EXTRA=COMEN,V10CADENA,1025
+
+RECORRE=STATUS,STATUS;
+UPDATE=STATUS,STATUS;
+
+INTERFASE
+UPDATE
+LOCK
+INSERT 
+DELETE

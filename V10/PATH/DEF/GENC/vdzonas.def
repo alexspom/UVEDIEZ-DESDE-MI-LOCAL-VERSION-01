@@ -1,0 +1,23 @@
+#***
+# VDZONAS.DEF - Generación automática del código c para la tabla de ZONAS                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDZONAS
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 27-05-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=ZON
+CLAVE=SCANNER,REDSCAN,SCANNER
+CLAVE=NUMDISP,IDINFOPICK,NUMDISP
+RECORRE=TICK,IDINFOGEST, WHERE NEXTTICK IS NOT NULL AND NEXTTICK<=VD.FECHASEC;
+
+UPDATE=CODOPE,CODOPE
+UPDATE=IDMENU,IDMENU
+UPDATE=STATUS,STATUS
+UPDATE=PROCESOS,STATUS,PROCESOZONA,PROCESODISP
+
+INSERT 
+DELETE

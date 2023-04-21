@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+   <head>
+      <title>Ventana de mensaje</title>
+     <meta http-equiv="content-type" content= "text/html; charset=iso-8859-1"/>
+      <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+	  <script type='text/javascript'>//<![CDATA[ 
+      window.onload=function(){}//]]>  
+      </script>
+   </head>
+   
+<!--Código organizado, corregido y actualizado el 04/05/2015 por Eduardo L. Arana-->
+
+<body>
+     <!--V10INCLUDEDATA-->
+<script DEFER>
+function fonkeyupmsj(mievento,tecla){
+var objventana=window.document.getElementById('msgselwhere'); 
+switch(tecla){
+case 27:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','selwhere',0);break;
+case 13:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','selwhere',v10lib.opczoom);break;
+case 40://cuu
+v10lib.desonkeyefectos(mievento);v10lib.selopcionzoom(v10lib.opczoom+1);break;
+case 38://cua
+v10lib.desonkeyefectos(mievento);v10lib.selopcionzoom(v10lib.opczoom-1);break;
+case 46://supr
+objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','delwhere',v10lib.opczoom);break;
+default:v10lib.desonkeyefectos(mievento);}}
+</script>
+<table id='msgselwhere'ondblclick="v10lib.fondblclick()"onclick="v10lib.fondblclick()"border="0"cellspacing="0"cellpadding="0"style="z-index:98;position:absolute;top:60px;left:5px;">
+<tr onmousedown="v10lib.BeginDrag('msgselwhere')"class="v10ventarribaizq"><td></td><td class="v10ventarribamed"><span class="v10titulomens"><!--V10TITULO--></span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed"><br/>
+<table style="cursor:hand;"id="tbmsgzoom"onmouseover="fonmouseover()"width="300"class="v10opczooms"border="0"cellspacing="0"cellpadding="0">
+<!--V10TEXTOMENSAJE-->
+</table></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table>
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

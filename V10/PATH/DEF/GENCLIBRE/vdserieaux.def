@@ -1,0 +1,28 @@
+#***
+# VDSERIEAUX.DEF - Generación automática del código c SOLOQUERY para Series                                                       
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 24-06-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=SERIES;
+
+EXTRA=RET,V10LONG;
+EXTRA=STPECLIMITE,V10LONG;
+EXTRA=STPECEXPEDIDO,V10LONG;
+
+PROCEDURE=EXPIDESERIE,BEGIN 
+
+                           VDSERIES.EXPIDEMERCANCIA(:VDSERIEEXP.CODSERIEEXP,
+                                                    :VDSERIEEXP.STATUS,
+                                                    :STPECLIMITE,:STPECEXPEDIDO,                                                    
+                                                    :VDCONCEPTO.CODCONCE,:VDMOVIM.CODUBIDEST,
+                                                    :VDCOMEN.COMENTARIO, :RET);
+                     END;@
+                     
+                            
+                                                                                       	

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body>
+<!--V10INCLUDEDATA-->
+<style>
+.dpar{background-color: #FFFF99;color: black;}
+.dimpar{background-color:lightyellow;color:black;}
+.actual{background-color:orange;color:white;font-weight:bold;}
+.marca{border-color:white;border-width:1px 1px 1px 1px;border-style:solid;background-color:orange;font-size:13px;text-align:center;color:white;font-weight:bold;}
+
+</style>
+<script DEFER>
+var filaact=0;
+var objeto;
+var mitb;
+var miinput;
+
+function ftratarueda() {
+var e=window.event;
+  e.cancelBubble=true;e.returnValue=false;
+  if (e.wheelDelta<0) {
+     muevefila(1); reposiciona(filaact);
+    } else {
+     muevefila(-1); reposiciona(filaact); 
+    }
+}
+function reposiciona(nfila)
+{
+  var reales=0;
+  for (i=0;i<nfila;i++) {
+      var fila=mitb.childNodes[0].childNodes[i];
+	  if (fila.style.display==='') reales++;
+  }
+  reales--;
+  if (objeto.style.overflowY!='scroll') return; 
+  var miheight = objeto.style.height;
+  var alto = miheight.substr(0,miheight.length-2);
+  var rango = alto/16;
+  if (objeto.scrollTop < ((reales-1)*15)) objeto.scrollTop=(reales-1)*15;
+   else if (objeto.scrollTop > ((reales-1)*15)) objeto.scrollTop=(reales-1)*15;
+}
+
+function muevefila(direccion)
+{
+  nuevafila=filaact+direccion;
+  while (nuevafila>0 && nuevafila<=mitb.childNodes[0].childNodes.length) {
+        var fila=mitb.childNodes[0].childNodes[nuevafila-1];
+        if (fila.style.display==='') {
+		   ponfila(nuevafila);
+		   return;
+		 }
+        nuevafila=nuevafila+direccion;		
+  }
+}
+ 
+
+function marcafila() 
+{
+  if (mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML=='X') 
+  	mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML='';
+  else mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML='X';
+}
+
+function fonkeyupmsj(mievento,tecla)
+{
+  var retorno,primero=1;
+  switch(tecla){
+    case 38: {v10lib.desonkeyefectos(mievento);muevefila(-1); reposiciona(filaact); break; }
+    case 40: {v10lib.desonkeyefectos(mievento);muevefila(1); reposiciona(filaact); break; }
+    case 27:v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','dummy','');break;
+
+    case 13: 	
+           retorno='';
+           for (i=0;i<mitb.childNodes[0].childNodes.length;i++) {
+           		if (mitb.childNodes[0].childNodes[i].childNodes[0].innerHTML=='X') {
+           		  if (primero==1) retorno = retorno + mitb.childNodes[0].childNodes[i].childNodes[1].innerHTML;
+           		  else retorno = retorno + ',' + mitb.childNodes[0].childNodes[i].childNodes[1].innerHTML;
+           			primero=0;
+           		}
+           }
+           v10lib.desonkeyefectos(mievento);
+           v10lib.mandaevento('','selectcombox',retorno);
+           break;
+    case 32:
+           //var mitb=window.document.getElementById("tbcombox");
+           marcafila();
+           v10lib.desonkeyefectos(mievento);       
+           //v10lib.mandaevento('','selectcombox',mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML);
+    default:if ((tecla>=32 && tecla<="z".charCodeAt()) || tecla===8) return false;
+	        v10lib.desonkeyefectos(mievento);
+  }
+}
+
+function filtra()
+{
+  var valor=miinput.value.toUpperCase();
+  var ultvalida=-1;
+  var filas=mitb.childNodes[0].childNodes;
+  var lon=filas.length;
+  mitb.style.display='none';
+  for (i=0;i<lon;i++) {
+      var fila=filas[i];
+	  var col=fila.childNodes.length;
+	  var nuevoestilo='none';
+	  var antestilo=fila.style.display;
+	  for (j=0;j<col;j++) {
+	      if (fila.childNodes[j].innerText.toUpperCase().indexOf(valor)>=0) {
+			 nuevoestilo='';
+			 break;
+			} 
+	   }
+	  if (nuevoestilo!=antestilo) fila.style.display=nuevoestilo;
+	  if (ultvalida<filaact) if (nuevoestilo==='') ultvalida=i+1;
+  } 
+  if (ultvalida!=filaact) {
+     ponfila(ultvalida);
+	 reposiciona(filaact);
+  }  
+  mitb.style.display='';
+  return(false);
+}
+
+function ponfila(nfila)
+{
+  if(nfila==filaact) return;
+  if(nfila>mitb.childNodes[0].childNodes.length)return;
+  if(nfila <= 0)return;
+  if (filaact>0){
+     if (filaact%2==0) mitb.childNodes[0].childNodes[filaact-1].className = "dimpar";
+	 else  mitb.childNodes[0].childNodes[filaact-1].className = "dpar";}
+  if (nfila>0) {
+     mitb.childNodes[0].childNodes[nfila-1].className = "actual";
+	 filaact=nfila;
+   }
+}
+
+function ponfilaini(nfila)
+{
+    objeto=document.getElementById("miv10c");
+    mitb=window.document.getElementById("tbcombox");
+    miinput=window.document.getElementById("inputcombox");
+    objeto.scrollTop = (nfila-1)*15;
+    ponfila(nfila);
+    miinput.focus();
+}
+
+function fonclickmsj()
+{
+  var miele=window.event.srcElement;
+  if (miele.tagName=='TR') {
+     ponfila(parseInt(miele.getAttribute("fila")));
+   }
+  if (miele.tagName=='TD') {
+     ponfila(parseInt(miele.parentNode.getAttribute("fila")));
+   } 
+   if (miele.getAttribute("multsel")) marcafila(); 
+   miinput.focus();
+   window.event.cancelBubble=true; window.event.returnValue=false;
+ }
+
+function fondblclickmsj()
+{
+  var miele;
+  miele=window.event.srcElement;
+  if (miele.tagName=='TR') ponfila(parseInt(miele.getAttribute("fila")));
+  if(miele.tagName=='TD') ponfila(parseInt(miele.parentNode.getAttribute("fila")));
+   marcafila();
+ }
+</script>
+<!--V10TEXTOMENSAJE-->
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

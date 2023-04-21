@@ -1,0 +1,17 @@
+# Modulo : VDINFOZONAS.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDSCANLECT
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 10-02-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=PREPOST
+
+RECORRE=ALGORITMO,WHERE=VDPREPOSTALGORITMOS.ACTIVO='S' AND VDPREPOSTALGORITMOS.TIPOALG=:TIPOALG AND PROCESO=:PROCESO AND NOMBREALG=:NOMBREALG;ORDERBY=PRIORIDAD;
+
+
+

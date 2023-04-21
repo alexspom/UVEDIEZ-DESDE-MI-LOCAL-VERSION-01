@@ -1,0 +1,19 @@
+# Modulo : VDINFOPARAMCC.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFODISP
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 20-01-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=IPC;
+
+
+UPDATE=TEXTOYPARAM,TEXTO,PARAM
+UPDATE=TEXTOPARAMYPRIORIDAD,TEXTO,PARAM,PRIORIDAD
+
+INSERT
+DELETE

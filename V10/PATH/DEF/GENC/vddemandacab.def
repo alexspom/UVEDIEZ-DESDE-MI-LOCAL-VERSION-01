@@ -1,0 +1,30 @@
+#***
+# VDDEMANDACAB.c - Generación automática del código c para la tabla de Cabecera de Demandas                                                      
+# 
+# Propósito: Funciones de acceso a la tabla VDDEMANDACAB
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 5-03-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=DEMC
+EXTRA=COMENDEMC,V10CADENA,1024
+
+RECORRE=SINLINEASPDTES,WHERE= CODDEMANDA=:CODDEMANDA AND TIPODEMANDA=:TIPODEMANDA 
+                              AND NOT EXISTS (SELECT 1 FROM VDDEMANDALIN DEML WHERE 
+                                                  VDDEMANDACAB.TIPODEMANDA=DEML.TIPODEMANDA AND 
+                                                  VDDEMANDACAB.CODDEMANDA=DEML.CODDEMANDA AND                                                  
+                                                  STATUS< "CSTDELRESERVADA");
+                                                  
+RECORRE=SINLINEASPORFINALIZAR,WHERE= CODDEMANDA=:CODDEMANDA AND TIPODEMANDA=:TIPODEMANDA 
+                              AND NOT EXISTS (SELECT 1 FROM VDDEMANDALIN DEML WHERE 
+                                                  VDDEMANDACAB.TIPODEMANDA=DEML.TIPODEMANDA AND 
+                                                  VDDEMANDACAB.CODDEMANDA=DEML.CODDEMANDA AND                                                 
+                                                  STATUS< "CSTDELMVFINAL");                                                  
+RECORRE=TIPOYSTATUS,TIPODEMANDA,STATUS;
+UPDATE=STATUS,STATUS;
+UPDATE=FECHAINICIO,FECINI,HORAINI;
+UPDATE=FECHAFINAL,FECFIN,HORAFIN;
+LOCK

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.1-ac0eebdb29e4c0985457bab279a6db744d661530  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VDRECEPDATOS" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fd3c091e-4a19-4bdc-8fc4-c57f0ab78181">
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="RDRD"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="lineas" uuid="21245829-83da-4726-8b25-fee05992ab20">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="RDRD"/>
+		<parameter name="CODRECEP" class="java.lang.String"/>
+		<parameter name="CODDIV" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT RCL.CODART,RCL.CODLOT,ART.DESART,SUM(RCL.CANTIDADR) CANTIDAD,
+           (SELECT COUNT(DISTINCT CODMATDEST)
+              FROM VDMOVIM
+             WHERE CODRECEP =RCL.CODRECEP AND CODUBIORI IN (SELECT CODUBI FROM VDUBICA WHERE STOCK='N')
+                          AND TAREA = VD.GETPROP('TAREARECEP') 
+                         AND STATUS < VDST.FMOVANULADO AND CODART=RCL.CODART AND RCL.CODLOT=CODLOT
+                        AND (CODCONCE IN (SELECT CODCONCE||'M'
+                                                                     FROM VDTIPORDRECCAB
+                                                                    WHERE TIPORDREC =RCC.TIPORDREC
+                                                        UNION
+                                                                  SELECT CODCONCE 
+                                                                     FROM VDTIPORDRECCAB
+                                                                     WHERE TIPORDREC = RCC.TIPORDREC
+                                                      UNION
+                                                                    SELECT CODCONCE||'-'
+                                                                       FROM VDTIPORDRECCAB
+                                                                      WHERE TIPORDREC = RCC.TIPORDREC)
+            OR CODCONCE IN (VD.GETPROP('REGULARIZA-'),VD.GETPROP('REGULARIZA+')))) PALETS
+    FROM VDRECEPLIN RCL,VDARTIC ART,VDRECEPCAB RCC
+    WHERE RCC.CODORDREC=RCL.CODORDREC AND RCC.CODDIV=RCL.CODDIV AND RCL.CODART=ART.CODART  AND RCL.CODRECEP= $P{CODRECEP}  AND RCL.CODDIV= $P{CODDIV} 
+    GROUP BY RCL.CODART,ART.DESART,RCL.CODLOT,RCL.CODRECEP,RCC.TIPORDREC]]>
+		</queryString>
+		<field name="CODART" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="CODART"/>
+		</field>
+		<field name="CODLOT" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="CODLOT"/>
+		</field>
+		<field name="DESART" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="DESART"/>
+		</field>
+		<field name="CANTIDAD" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="CANTIDAD"/>
+		</field>
+		<field name="PALETS" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="PALETS"/>
+		</field>
+	</subDataset>
+	<parameter name="CODRECEP" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["71"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODDIV" class="java.lang.String">
+		<defaultValueExpression><![CDATA["BEL"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT RCC.CODORDREC,RCC.CODDIV,RCC.CODRECEP,RCC.CODALBTRAN,RCC.DESTRAN,RCC.CODALBPROVE,TO_CHAR(TO_DATE(RCC.FECRECEP,'J'),'DD-MM-YYYY') FECRECEP,RCC.HORARECEP
+ FROM VDRECEPCAB RCC
+ WHERE CODRECEP= $P{CODRECEP}  AND CODDIV= $P{CODDIV}]]>
+	</queryString>
+	<field name="CODORDREC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODORDREC"/>
+	</field>
+	<field name="CODDIV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODDIV"/>
+	</field>
+	<field name="CODRECEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODRECEP"/>
+	</field>
+	<field name="CODALBTRAN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODALBTRAN"/>
+	</field>
+	<field name="DESTRAN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESTRAN"/>
+	</field>
+	<field name="CODALBPROVE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODALBPROVE"/>
+	</field>
+	<field name="FECRECEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FECRECEP"/>
+	</field>
+	<field name="HORARECEP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="HORARECEP"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="99" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="36" width="100" height="15" uuid="9d4101c4-240f-4533-9aff-b66738af0420">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODRECEP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="36" width="60" height="15" uuid="af601659-e029-4e41-a089-2d069181ac65">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Recepción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="36" width="60" height="15" uuid="e11d0f60-c508-478f-a2ad-82e5ccbe3d58">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Orden]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="230" y="36" width="100" height="15" uuid="10ea6451-a49e-47ad-85ca-337c049e8787">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODORDREC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="36" width="60" height="15" uuid="85947afc-d9b9-434e-9b40-8d5f936a6298">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="36" width="100" height="15" uuid="caa04d30-86ce-4bd9-a996-6df24ec1b084">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECRECEP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="36" width="100" height="15" uuid="8ccbdc3a-0602-40b1-8998-45931adfd920">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HORARECEP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="70" width="60" height="15" uuid="60bc78dd-67f9-485c-94d3-9632e2e534f9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Albarán]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="70" width="60" height="15" uuid="8d850624-7902-4ea8-8a78-eff1bcc5045f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="70" width="100" height="15" uuid="00d5a0ca-dd57-4516-8812-2459962f5f12">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODALBTRAN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="70" width="100" height="15" uuid="8f49f27c-51f4-4f97-957f-c0bb9756967b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESTRAN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="70" width="100" height="15" uuid="bd52f5b5-53c3-4b48-b8a5-e54d7e284589">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODALBPROVE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="3" width="399" height="33" uuid="4c7fa227-8c79-49b0-8ec8-bf0c9a8a5943">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE RECEPCION]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="256" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="56" width="540" height="200" uuid="be8da8bd-5893-484e-9c22-00bd220770be">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="lineas" uuid="d2fc995c-7cf6-4cc5-80ed-60aa28a25c7b">
+						<datasetParameter name="CODRECEP">
+							<datasetParameterExpression><![CDATA[$P{CODRECEP}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="CODDIV">
+							<datasetParameterExpression><![CDATA[$P{CODDIV}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="110" uuid="4e81e3bc-546b-40de-b17d-cdad48305644">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="110" height="30" uuid="0552ae2a-c835-4531-9b05-bdbff790d2f2"/>
+								<textFieldExpression><![CDATA[$F{CODART}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="300" uuid="f44759a8-db5b-4ee1-b244-7f765522023f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="300" height="30" uuid="fd511e0f-f8f3-4348-9fbf-ec15f889a9b2"/>
+								<textFieldExpression><![CDATA[$F{DESART}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="d14d3fbe-06f6-4436-9708-d1c70b8a7741">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="30" uuid="f78d4cd3-0d38-4b29-8a3a-f199f002d6ff"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="ab9b5a71-cead-4505-a2eb-d36e9a1159c9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="d54f326e-1092-4f49-a1f3-d83688b375ed"/>
+								<textElement textAlignment="Right"/>
+								<textFieldExpression><![CDATA[$F{PALETS}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

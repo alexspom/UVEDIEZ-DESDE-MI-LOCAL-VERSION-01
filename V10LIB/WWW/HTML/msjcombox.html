@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body>
+<!--V10INCLUDEDATA-->
+<style>
+.dpar{background-color: #FFFF99;color: black;}
+.dimpar{background-color:lightyellow;color:black;}
+.actual{background-color:orange;color:white;font-weight:bold;}
+</style>
+<script DEFER>
+var filaact=0;
+var objeto;
+var mitb;
+var miinput;
+var milabel;
+var mitotal=0;
+
+function ftratarueda() {
+var e=window.event;
+  e.cancelBubble=true;e.returnValue=false;
+  if (e.wheelDelta<0) {
+     muevefila(1); reposiciona(filaact);
+    } else {
+     muevefila(-1); reposiciona(filaact); 
+    }
+}
+
+function reposiciona(nfila)
+{
+  var reales=0;
+  var altura=parseInt(objeto.style.height.substr(0,objeto.style.height.length-2));
+  for (i=0;i<nfila;i++) {
+      var fila=mitb.childNodes[0].childNodes[i];
+	  if (fila.style.display==='') {         
+         reales++;
+       }
+  }
+  milabel.innerText=' Reg: '+reales+'/'+mitotal;//+' Scroll: '+objeto.scrollTop;
+  reales--;
+  if (reales==0) return;
+  if (objeto.style.overflowY!='scroll') return; 
+  if (objeto.scrollTop +altura<= (reales+1)*15) objeto.scrollTop=(reales+2)*15-altura;
+   else if (objeto.scrollTop > (reales-1)*15) objeto.scrollTop=(reales-1)*15;
+}
+
+function muevefila(direccion)
+{
+  nuevafila=filaact+direccion;
+  while (nuevafila>0 && nuevafila<=mitb.childNodes[0].childNodes.length) {
+        var fila=mitb.childNodes[0].childNodes[nuevafila-1];
+        if (fila.style.display==='') {
+		   ponfila(nuevafila);
+		   return;
+		 }
+        nuevafila=nuevafila+direccion;		
+  }
+}        
+
+function fonkeyupmsj(mievento,tecla)
+{
+  switch(tecla){
+    case 38: {v10lib.desonkeyefectos(mievento);muevefila(-1); reposiciona(filaact); break; }
+    case 40: {v10lib.desonkeyefectos(mievento);muevefila(1); reposiciona(filaact); break; }
+    case 27:v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','dummy','');break;
+    case 13:var mitb=window.document.getElementById("tbcombox");
+            v10lib.desonkeyefectos(mievento);
+            if (mitb.childNodes[0].childNodes.length>0) v10lib.mandaevento('','selectcombox',mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML);
+             else v10lib.mandaevento('','dummy','');
+            break;
+    default:if ((tecla>=32 && tecla<=200) || tecla===8) return false;
+	        v10lib.desonkeyefectos(mievento);
+  }
+}
+
+function filtra(mievento,tecla)
+{
+  var mievento=window.event;
+  var tecla; 
+  var filas;
+  tecla=mievento.keyCode;
+  var valor=miinput.value.toUpperCase();
+  var ultvalida=-1;
+  if (mitb.childNodes[0] ===undefined || mitb.childNodes[0].childNodes===undefined) return;  //fix ie10
+  filas=mitb.childNodes[0].childNodes;
+  var lon=filas.length;
+  var reales=0;
+  if (tecla===38 || tecla==40) return;
+  mitotal=0;
+  mitb.style.display='none';
+  for (i=0;i<lon;i++) {
+      var fila=filas[i];
+	  var col=fila.childNodes.length;
+	  var nuevoestilo='none';
+	  var antestilo=fila.style.display;
+	  for (j=0;j<col;j++) {
+	      if (fila.childNodes[j].innerText.toUpperCase().indexOf(valor)>=0) {
+			 nuevoestilo='';
+             if (mitotal%2===1) fila.className = "dimpar";
+               else   fila.className = "dpar";
+             mitotal++;
+			 break;
+			} 
+	   }
+	  if (nuevoestilo!=antestilo) fila.style.display=nuevoestilo;
+	  if (ultvalida<filaact ||ultvalida==-1) {
+         if (nuevoestilo==='') {
+            ultvalida=i+1;
+            reales++;
+          }
+       }
+  } 
+  if (ultvalida<0) return;
+  mitb.childNodes[0].childNodes[ultvalida-1].className = "actual";
+  if (ultvalida!=filaact) {
+     ponfila(ultvalida);
+  }
+  mitb.style.display='';
+  reposiciona(filaact);
+  return(false);
+}
+   
+
+function ponfila(nfila)
+{
+  if(nfila===filaact) return;
+  if (mitb.childNodes[0] ===undefined || mitb.childNodes[0].childNodes===undefined) return;
+  if(nfila>mitb.childNodes[0].childNodes.length) return;
+  if(nfila <= 0) return;
+  if (filaact>0){
+      if (filaact%2===0) mitb.childNodes[0].childNodes[filaact-1].className = "dimpar";
+       else   mitb.childNodes[0].childNodes[filaact-1].className = "dpar";
+   }
+  if (nfila>0){
+     mitb.childNodes[0].childNodes[nfila-1].className = "actual";
+     filaact=nfila;
+   }
+}
+
+function ponfilaini(nfila)
+{
+  objeto=document.getElementById("miv10c");
+  mitb=window.document.getElementById("tbcombox");
+  miinput=window.document.getElementById("inputcombox");
+  milabel=window.document.getElementById("labelcombox");
+  if (mitb.childNodes[0] ===undefined || mitb.childNodes[0].childNodes===undefined) return; //fix ie10
+  mitotal=mitb.childNodes[0].childNodes.length;
+  if (mitotal==0) return;
+  objeto.scrollTop = (nfila-1)*15;
+  ponfila(nfila);
+  reposiciona(filaact);
+  miinput.focus();
+}
+
+function fonclickmsj()
+{
+  var miele=window.event.srcElement;
+  if (miele.tagName=='TR') {
+     ponfila(parseInt(miele.getAttribute("fila")));
+     reposiciona(filaact);
+     return;
+   }
+  if (miele.tagName=='TD') {
+     ponfila(parseInt(miele.parentNode.getAttribute("fila")));
+     reposiciona(filaact);
+     return;
+   } 
+   miinput.focus();
+   window.event.cancelBubble=true; window.event.returnValue=false;
+   return false;
+}
+
+function fondblclickmsj()
+{
+  var miele;
+  miele=window.event.srcElement;
+  if (miele.tagName=='TR') ponfila(parseInt(miele.getAttribute("fila")));
+  if(miele.tagName=='TD') ponfila(parseInt(miele.parentNode.getAttribute("fila")));
+  v10lib.mandaevento('','selectcombox',mitb.childNodes[0].childNodes[filaact-1].childNodes[0].innerHTML);
+}
+</script>
+<!--V10TEXTOMENSAJE-->
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

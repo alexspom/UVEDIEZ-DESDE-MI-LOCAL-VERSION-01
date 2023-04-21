@@ -1,0 +1,2034 @@
+00 08:19:03:200 Fichero de log abierto PID 16960
+
+02 08:19:03:201 Intentando abrir fichero v10.ini
+02 08:19:03:210 Cargando driver v10oracle funcion damedriveroracle
+02 08:19:03:467 Conectado a base de datos
+02 08:19:03:468 Asignando RELEECONF a 500
+02 08:19:03:470 Asignando ACCESO a V10LOGIN
+02 08:19:03:470 Asignando NIVELLOG a 2
+02 08:19:03:471 Asignando PROTEGIDO a 500
+02 08:19:03:471 Asignando DEBUGHTTP a 2
+02 08:19:03:471 Asignando VISIBLEEXE a 0
+02 08:19:03:472 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 08:19:03:472 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 08:19:03:472 Asignando SERVIDOR a HTTP://127.0.0.1
+02 08:19:03:473 Asignando SERVERPORT a 5000
+02 08:19:03:473 Asignando SERVERPORTFILES a 5001
+02 08:19:03:475 Asignando PUERTOINICIAL a 5002
+02 08:19:03:475 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 08:19:03:475 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 08:19:03:476 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 08:19:03:476 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 08:19:03:477 Asignando FILEEXPIRED a 3600
+02 08:19:03:477 Asignando TIEMPOESPERA a 240
+02 08:19:03:480 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 08:19:03:480 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 08:19:03:480 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 08:19:03:481 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 08:19:03:481 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 08:19:03:482 Asignando COMPRIMIR a 1
+02 08:19:03:748 Escuchando en el puerto 5002
+02 08:19:04:262 Conectado Listener en el puerto 5002
+02 08:19:04:277 Abriendo conexion HTTP en el puerto 5002
+02 08:19:04:277 Abierta conexion HTTP en el puerto 5002
+02 08:19:05:272 Conexión de cliente establecida
+02 08:19:05:272 v10formserver vale 0
+02 08:19:05:272 Conexion 054FFD9C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 08:19:05:272 La conexion 0 recibe peticion en socket 054FFD9C
+02 08:19:05:273 Tratapeticion: Server cambia de valor de 00000000 a 054FFD9C
+02 08:19:05:273 Sesion 0 Solicita Fichero V10.HTML 
+02 08:19:05:273 Sesion 0 Enviara Fichero V10.HTML
+02 08:19:05:275 Tiempo en abrir 0.000800 seg.
+02 08:19:05:276 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 08:19:05:276 Tiempo en carga de fichero 0.001630 seg.
+02 08:19:05:277 Compresion fin
+02 08:19:05:277 Envio un total de 0.64 KB
+02 08:19:05:277 Fichero v10.html enviado
+02 08:19:05:285 Timeout es 99999.000000
+02 08:19:05:287 Sesion 0 socket 054FFD9C Finalizada por rotura de conexion 5
+02 08:19:05:287 Libera 54ffd9c
+02 08:19:05:306 Sesion 0 Conectada socket 054EFEEC
+02 08:19:05:317 Conexion 054EFEEC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 08:19:05:317 La conexion 0 recibe peticion en socket 054EFEEC
+02 08:19:05:317 Tratapeticion: Server cambia de valor de 054FFD9C a 054EFEEC
+02 08:19:05:317 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 08:19:05:317 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 08:19:05:318 Tiempo en abrir 0.000857 seg.
+02 08:19:05:320 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 08:19:05:320 Tiempo en carga de fichero 0.001963 seg.
+02 08:19:05:327 Compresion fin
+02 08:19:05:327 Envio un total de 15.81 KB
+02 08:19:05:327 Fichero v10libreriajs.html enviado
+02 08:19:05:332 Sesion 0 socket 054EFEEC Finalizada por rotura de conexion 5
+02 08:19:05:332 Libera 54efeec
+02 08:19:05:351 Sesion 0 Conectada socket 054EFCBC
+02 08:19:05:363 Conexion 054EFCBC recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 08:19:05:365 La conexion 0 recibe peticion en socket 054EFCBC
+02 08:19:05:365 Tratapeticion: Server cambia de valor de 054EFEEC a 054EFCBC
+02 08:19:05:365 Recibida cadena de acceso
+00 08:19:05:502 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 08:19:05:502 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 08:19:05:520 Error al abrir fichero VDST.H
+02 08:19:05:603 Empiezo a leer forms vduser.frm
+02 08:19:05:777 Leyendo caracteristicas del bloque 
+02 08:19:05:777 Leidas caracteristicas del bloque 
+02 08:19:05:827 Termino parse forms vduser.frm
+02 08:19:05:862 v10formserver vale 54efcbc
+02 08:19:05:862 Inicio envío
+02 08:19:05:863 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:19:05:865 Html calculado. Tiempo de envío 0.002086 segundos
+02 08:19:05:867 Compresion fin
+02 08:19:05:867 Envio un total de 4.18 KB
+02 08:19:05:867 Enviada la respuesta a socket 054EFCBC
+02 08:19:05:867 Html enviado. Tiempo de envío 0.004770 segundos
+02 08:19:05:877 Sesion 0 socket 054EFCBC Finalizada por rotura de conexion 5
+02 08:19:05:877 Libera 54efcbc
+02 08:19:09:168 Sesion 0 Conectada socket 145379EC
+02 08:19:09:183 Conexion 145379EC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:09:183 La conexion 0 recibe peticion en socket 145379EC
+02 08:19:09:183 Tratapeticion: Server cambia de valor de 054EFCBC a 145379EC
+02 08:19:09:183 AtiendePost: Server cambia de valor de 145379EC a 145379EC
+02 08:19:09:187 Detectado evento
+02 08:19:09:187 Evento recibido
+02 08:19:09:187 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 08:19:09:187 Fin Evento recibido
+02 08:19:09:188 v10formserver vale 145379ec
+02 08:19:09:308 v10formserver vale 145379ec
+02 08:19:09:308 Inicio envío
+02 08:19:09:310 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:19:09:310 Html calculado. Tiempo de envío 0.001026 segundos
+02 08:19:09:312 Compresion fin
+02 08:19:09:312 Envio un total de 4.19 KB
+02 08:19:09:312 Enviada la respuesta a socket 145379EC
+02 08:19:09:312 Html enviado. Tiempo de envío 0.003192 segundos
+02 08:19:09:716 Conexion 145379EC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:09:716 La conexion 0 recibe peticion en socket 145379EC
+02 08:19:09:716 Tratapeticion: Server cambia de valor de 145379EC a 145379EC
+02 08:19:09:716 AtiendePost: Server cambia de valor de 145379EC a 145379EC
+02 08:19:09:733 Detectado evento
+02 08:19:09:733 Evento recibido
+02 08:19:09:733 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 08:19:09:735 Fin Evento recibido
+02 08:19:09:735 v10formserver vale 145379ec
+02 08:19:09:735 v10formserver vale 145379ec
+02 08:19:10:555 v10formserver vale 145379ec
+02 08:19:10:736 Compresion fin
+02 08:19:10:737 Envio un total de 7.93 KB
+02 08:19:10:737 Enviada la respuesta a socket 145379EC
+02 08:19:10:743 Sesion 0 socket 145379EC Finalizada por rotura de conexion 5
+02 08:19:10:745 Libera 145379ec
+02 08:19:15:506 Sesion 0 Conectada socket 145B5EFC
+02 08:19:15:520 Conexion 145B5EFC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:15:520 La conexion 0 recibe peticion en socket 145B5EFC
+02 08:19:15:520 Tratapeticion: Server cambia de valor de 145379EC a 145B5EFC
+02 08:19:15:520 AtiendePost: Server cambia de valor de 145B5EFC a 145B5EFC
+02 08:19:15:527 Detectado evento
+02 08:19:15:527 Evento recibido
+02 08:19:15:528 
+	Objeto: 
+	Evento: selmenu
+	Dato: 18
+	Antid: 
+	Antvalor: 
+02 08:19:15:528 Fin Evento recibido
+02 08:19:15:580 Leyendo caracteristicas del bloque 
+02 08:19:15:580 Leidas caracteristicas del bloque 
+02 08:19:15:687 v10formserver vale 145b5efc
+02 08:19:15:687 Inicio envío
+02 08:19:15:718 Html calculado. Tiempo de envío 0.032877 segundos
+02 08:19:15:722 Compresion fin
+02 08:19:15:722 Envio un total de 4.60 KB
+02 08:19:15:722 Enviada la respuesta a socket 145B5EFC
+02 08:19:15:722 Html enviado. Tiempo de envío 0.035791 segundos
+02 08:19:15:786 Sesion 0 socket 145B5EFC Finalizada por rotura de conexion 5
+02 08:19:15:786 Libera 145b5efc
+02 08:19:18:027 Sesion 0 Conectada socket 145B5BB4
+02 08:19:18:042 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 102
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:18:042 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:18:042 Tratapeticion: Server cambia de valor de 145B5EFC a 145B5BB4
+02 08:19:18:042 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:18:046 Detectado evento
+02 08:19:18:046 Evento recibido
+02 08:19:18:046 
+	Objeto: bl0F2
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: 
+02 08:19:18:047 Fin Evento recibido
+02 08:19:18:047 v10formserver vale 145b5bb4
+02 08:19:18:101 v10formserver vale 145b5bb4
+02 08:19:18:101 Inicio envío
+02 08:19:18:110 Html calculado. Tiempo de envío 0.008282 segundos
+02 08:19:18:113 Compresion fin
+02 08:19:18:113 Envio un total de 7.44 KB
+02 08:19:18:113 Enviada la respuesta a socket 145B5BB4
+02 08:19:18:113 Html enviado. Tiempo de envío 0.013010 segundos
+02 08:19:22:535 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 106
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:22:535 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:22:535 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:22:535 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:22:552 Detectado evento
+02 08:19:22:552 Evento recibido
+02 08:19:22:553 
+	Objeto: tdbl0f6c3
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 100
+02 08:19:22:553 Fin Evento recibido
+02 08:19:22:553 v10formserver vale 145b5bb4
+02 08:19:22:553 v10formserver vale 145b5bb4
+02 08:19:22:555 Inicio envío
+02 08:19:22:562 Html calculado. Tiempo de envío 0.007883 segundos
+02 08:19:22:566 Compresion fin
+02 08:19:22:567 Envio un total de 7.47 KB
+02 08:19:22:567 Enviada la respuesta a socket 145B5BB4
+02 08:19:22:567 Html enviado. Tiempo de envío 0.012267 segundos
+02 08:19:29:422 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 126
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:29:422 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:29:422 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:29:422 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:29:437 Detectado evento
+02 08:19:29:437 Evento recibido
+02 08:19:29:437 
+	Objeto: bl0f6c3
+	Evento: onkeyup
+	Dato: 122
+	Antid: bl0f6c3
+	Antvalor: PRESENTADO+EN+TERMINAL
+02 08:19:29:438 Fin Evento recibido
+02 08:19:29:438 v10formserver vale 145b5bb4
+02 08:19:35:203 Inicio envío
+02 08:19:35:255 Html calculado. Tiempo de envío 0.050936 segundos
+02 08:19:35:258 Compresion fin
+02 08:19:35:258 Envio un total de 7.47 KB
+02 08:19:35:258 Enviada la respuesta a socket 145B5BB4
+02 08:19:35:258 Html enviado. Tiempo de envío 0.055317 segundos
+02 08:19:36:727 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:36:727 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:36:727 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:36:727 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:36:743 Detectado evento
+02 08:19:36:743 Evento recibido
+02 08:19:36:743 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:36:745 Fin Evento recibido
+02 08:19:36:747 Inicio envío
+02 08:19:36:760 Html calculado. Tiempo de envío 0.012908 segundos
+02 08:19:36:766 Compresion fin
+02 08:19:36:766 Envio un total de 7.47 KB
+02 08:19:36:766 Enviada la respuesta a socket 145B5BB4
+02 08:19:36:766 Html enviado. Tiempo de envío 0.019664 segundos
+02 08:19:38:417 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:38:417 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:38:417 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:38:417 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:38:435 Detectado evento
+02 08:19:38:435 Evento recibido
+02 08:19:38:435 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:38:436 Fin Evento recibido
+02 08:19:38:437 Inicio envío
+02 08:19:38:447 Html calculado. Tiempo de envío 0.010081 segundos
+02 08:19:38:452 Compresion fin
+02 08:19:38:452 Envio un total de 7.47 KB
+02 08:19:38:452 Enviada la respuesta a socket 145B5BB4
+02 08:19:38:452 Html enviado. Tiempo de envío 0.015681 segundos
+02 08:19:40:712 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:40:712 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:40:712 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:40:712 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:40:730 Detectado evento
+02 08:19:40:730 Evento recibido
+02 08:19:40:730 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:40:730 Fin Evento recibido
+02 08:19:40:732 Inicio envío
+02 08:19:40:741 Html calculado. Tiempo de envío 0.008916 segundos
+02 08:19:40:745 Compresion fin
+02 08:19:40:746 Envio un total de 7.47 KB
+02 08:19:40:746 Enviada la respuesta a socket 145B5BB4
+02 08:19:40:746 Html enviado. Tiempo de envío 0.013555 segundos
+02 08:19:41:315 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:41:315 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:41:315 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:41:315 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:41:332 Detectado evento
+02 08:19:41:332 Evento recibido
+02 08:19:41:332 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:41:332 Fin Evento recibido
+02 08:19:41:333 Inicio envío
+02 08:19:41:346 Html calculado. Tiempo de envío 0.011805 segundos
+02 08:19:41:350 Compresion fin
+02 08:19:41:350 Envio un total de 7.47 KB
+02 08:19:41:350 Enviada la respuesta a socket 145B5BB4
+02 08:19:41:350 Html enviado. Tiempo de envío 0.016118 segundos
+02 08:19:41:762 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:41:762 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:41:762 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:41:762 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:41:781 Detectado evento
+02 08:19:41:781 Evento recibido
+02 08:19:41:781 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:41:782 Fin Evento recibido
+02 08:19:41:782 Inicio envío
+02 08:19:41:792 Html calculado. Tiempo de envío 0.009770 segundos
+02 08:19:41:798 Compresion fin
+02 08:19:41:798 Envio un total de 7.47 KB
+02 08:19:41:798 Enviada la respuesta a socket 145B5BB4
+02 08:19:41:798 Html enviado. Tiempo de envío 0.016104 segundos
+02 08:19:42:012 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:42:012 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:42:012 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:012 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:031 Detectado evento
+02 08:19:42:031 Evento recibido
+02 08:19:42:031 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:42:031 Fin Evento recibido
+02 08:19:42:032 Inicio envío
+02 08:19:42:043 Html calculado. Tiempo de envío 0.011637 segundos
+02 08:19:42:050 Compresion fin
+02 08:19:42:050 Envio un total de 7.47 KB
+02 08:19:42:050 Enviada la respuesta a socket 145B5BB4
+02 08:19:42:050 Html enviado. Tiempo de envío 0.017510 segundos
+02 08:19:42:248 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:42:248 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:42:248 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:248 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:267 Detectado evento
+02 08:19:42:267 Evento recibido
+02 08:19:42:267 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:42:267 Fin Evento recibido
+02 08:19:42:268 Inicio envío
+02 08:19:42:281 Html calculado. Tiempo de envío 0.012360 segundos
+02 08:19:42:287 Compresion fin
+02 08:19:42:287 Envio un total de 7.47 KB
+02 08:19:42:287 Enviada la respuesta a socket 145B5BB4
+02 08:19:42:287 Html enviado. Tiempo de envío 0.018465 segundos
+02 08:19:42:482 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:42:482 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:42:482 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:482 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:501 Detectado evento
+02 08:19:42:501 Evento recibido
+02 08:19:42:501 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:42:501 Fin Evento recibido
+02 08:19:42:502 Inicio envío
+02 08:19:42:512 Html calculado. Tiempo de envío 0.011243 segundos
+02 08:19:42:520 Compresion fin
+02 08:19:42:520 Envio un total de 7.47 KB
+02 08:19:42:520 Enviada la respuesta a socket 145B5BB4
+02 08:19:42:520 Html enviado. Tiempo de envío 0.017995 segundos
+02 08:19:42:802 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:42:802 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:42:802 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:802 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:42:821 Detectado evento
+02 08:19:42:821 Evento recibido
+02 08:19:42:821 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:19:42:822 Fin Evento recibido
+02 08:19:44:917 v10formserver vale 145b5bb4
+02 08:19:44:917 Inicio envío
+02 08:19:44:937 Html calculado. Tiempo de envío 0.020606 segundos
+02 08:19:44:945 Compresion fin
+02 08:19:44:945 Envio un total de 7.56 KB
+02 08:19:44:945 Enviada la respuesta a socket 145B5BB4
+02 08:19:44:945 Html enviado. Tiempo de envío 0.027776 segundos
+02 08:19:56:306 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 116
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:56:306 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:56:306 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:56:307 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:56:312 Detectado evento
+02 08:19:56:312 Evento recibido
+02 08:19:56:312 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: bl0f6c3
+	Antvalor: PRESENTADO+EN+TERMINAL
+02 08:19:56:312 Fin Evento recibido
+02 08:19:56:312 v10formserver vale 145b5bb4
+02 08:19:56:312 v10formserver vale 145b5bb4
+02 08:19:56:312 Inicio envío
+02 08:19:56:325 Html calculado. Tiempo de envío 0.012202 segundos
+02 08:19:56:331 Compresion fin
+02 08:19:56:331 Envio un total de 7.47 KB
+02 08:19:56:331 Enviada la respuesta a socket 145B5BB4
+02 08:19:56:331 Html enviado. Tiempo de envío 0.018488 segundos
+02 08:19:57:166 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 133
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:19:57:166 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:19:57:166 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:57:166 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:19:57:171 Detectado evento
+02 08:19:57:171 Evento recibido
+02 08:19:57:171 
+	Objeto: bl0f6c3
+	Evento: ctrlcontextual
+	Dato: 121
+	Antid: bl0f6c3
+	Antvalor: PRESENTADO+EN+TERMINAL
+02 08:19:57:171 Fin Evento recibido
+02 08:19:57:171 v10formserver vale 145b5bb4
+02 08:19:57:172 v10formserver vale 145b5bb4
+02 08:19:57:172 Inicio envío
+02 08:19:57:182 Html calculado. Tiempo de envío 0.010128 segundos
+02 08:19:57:187 Compresion fin
+02 08:19:57:187 Envio un total de 7.47 KB
+02 08:19:57:187 Enviada la respuesta a socket 145B5BB4
+02 08:19:57:187 Html enviado. Tiempo de envío 0.015776 segundos
+02 08:20:01:942 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 124
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:01:942 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:01:943 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:01:943 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:01:960 Detectado evento
+02 08:20:01:960 Evento recibido
+02 08:20:01:961 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f6c3
+	Antvalor: PRESENTADO+EN+TERMINAL
+02 08:20:01:961 Fin Evento recibido
+02 08:20:01:961 v10formserver vale 145b5bb4
+02 08:20:01:961 Inicio envío
+02 08:20:01:977 Html calculado. Tiempo de envío 0.016414 segundos
+02 08:20:01:983 Compresion fin
+02 08:20:01:983 Envio un total de 8.10 KB
+02 08:20:01:983 Enviada la respuesta a socket 145B5BB4
+02 08:20:01:983 Html enviado. Tiempo de envío 0.023014 segundos
+02 08:20:04:670 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:04:670 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:04:670 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:04:670 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:04:687 Detectado evento
+02 08:20:04:687 Evento recibido
+02 08:20:04:687 
+	Objeto: 
+	Evento: confirma
+	Dato: 78
+	Antid: 
+	Antvalor: 
+02 08:20:04:687 Fin Evento recibido
+02 08:20:04:698 Compresion fin
+02 08:20:04:698 Envio un total de 7.93 KB
+02 08:20:04:698 Enviada la respuesta a socket 145B5BB4
+02 08:20:08:775 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:08:775 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:08:776 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:08:776 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:08:793 Detectado evento
+02 08:20:08:793 Evento recibido
+02 08:20:08:793 
+	Objeto: 
+	Evento: selmenu
+	Dato: 251
+	Antid: 
+	Antvalor: 
+02 08:20:08:795 Fin Evento recibido
+02 08:20:08:795 Empiezo a leer forms vdarticulosgridalex.frm
+02 08:20:08:847 Leyendo caracteristicas del bloque 
+02 08:20:08:847 Leidas caracteristicas del bloque 
+02 08:20:08:873 Leyendo caracteristicas del campo CODART
+02 08:20:08:873 Leidas caracteristicas del campo CODART
+02 08:20:08:876 Termino parse forms vdarticulosgridalex.frm
+02 08:20:08:877 v10formserver vale 145b5bb4
+02 08:20:08:877 Inicio envío
+02 08:20:08:877 Html calculado. Tiempo de envío 0.001874 segundos
+02 08:20:08:882 Compresion fin
+02 08:20:08:882 Envio un total de 4.17 KB
+02 08:20:08:882 Enviada la respuesta a socket 145B5BB4
+02 08:20:08:882 Html enviado. Tiempo de envío 0.005329 segundos
+02 08:20:09:622 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:09:622 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:09:622 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:09:622 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:09:640 Detectado evento
+02 08:20:09:640 Evento recibido
+02 08:20:09:640 
+	Objeto: fsbl0
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:09:640 Fin Evento recibido
+02 08:20:09:640 v10formserver vale 145b5bb4
+02 08:20:09:641 v10formserver vale 145b5bb4
+02 08:20:09:641 Inicio envío
+02 08:20:09:642 Html calculado. Tiempo de envío 0.001365 segundos
+02 08:20:09:643 Compresion fin
+02 08:20:09:643 Envio un total de 4.17 KB
+02 08:20:09:643 Enviada la respuesta a socket 145B5BB4
+02 08:20:09:643 Html enviado. Tiempo de envío 0.003359 segundos
+02 08:20:10:671 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 111
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:10:671 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:10:671 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:10:671 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:10:687 Detectado evento
+02 08:20:10:687 Evento recibido
+02 08:20:10:687 
+	Objeto: bl0f1c2
+	Evento: ctrlcontextual
+	Dato: 121
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:10:687 Fin Evento recibido
+02 08:20:10:687 v10formserver vale 145b5bb4
+02 08:20:10:688 v10formserver vale 145b5bb4
+02 08:20:10:688 Inicio envío
+02 08:20:10:692 Html calculado. Tiempo de envío 0.001876 segundos
+02 08:20:10:692 Compresion fin
+02 08:20:10:692 Envio un total de 4.17 KB
+02 08:20:10:693 Enviada la respuesta a socket 145B5BB4
+02 08:20:10:693 Html enviado. Tiempo de envío 0.004545 segundos
+02 08:20:14:002 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:14:002 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:14:002 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:14:002 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:14:021 Detectado evento
+02 08:20:14:021 Evento recibido
+02 08:20:14:021 
+	Objeto: fsbl0
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:14:021 Fin Evento recibido
+02 08:20:14:021 v10formserver vale 145b5bb4
+02 08:20:14:021 v10formserver vale 145b5bb4
+02 08:20:14:021 Inicio envío
+02 08:20:14:022 Html calculado. Tiempo de envío 0.001339 segundos
+02 08:20:14:023 Compresion fin
+02 08:20:14:023 Envio un total de 4.17 KB
+02 08:20:14:025 Enviada la respuesta a socket 145B5BB4
+02 08:20:14:025 Html enviado. Tiempo de envío 0.003372 segundos
+02 08:20:16:663 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:16:663 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:16:663 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:16:665 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:16:682 Detectado evento
+02 08:20:16:682 Evento recibido
+02 08:20:16:682 
+	Objeto: fsbl0
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:16:682 Fin Evento recibido
+02 08:20:16:682 v10formserver vale 145b5bb4
+02 08:20:16:683 v10formserver vale 145b5bb4
+02 08:20:16:683 Inicio envío
+02 08:20:16:685 Html calculado. Tiempo de envío 0.001799 segundos
+02 08:20:16:687 Compresion fin
+02 08:20:16:687 Envio un total de 4.17 KB
+02 08:20:16:688 Enviada la respuesta a socket 145B5BB4
+02 08:20:16:688 Html enviado. Tiempo de envío 0.005029 segundos
+02 08:20:17:828 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 111
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:17:828 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:17:828 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:17:828 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:17:847 Detectado evento
+02 08:20:17:847 Evento recibido
+02 08:20:17:847 
+	Objeto: bl0f1c2
+	Evento: ctrlcontextual
+	Dato: 121
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:17:847 Fin Evento recibido
+02 08:20:17:847 v10formserver vale 145b5bb4
+02 08:20:17:848 v10formserver vale 145b5bb4
+02 08:20:17:848 Inicio envío
+02 08:20:17:851 Html calculado. Tiempo de envío 0.001951 segundos
+02 08:20:17:853 Compresion fin
+02 08:20:17:853 Envio un total de 4.17 KB
+02 08:20:17:853 Enviada la respuesta a socket 145B5BB4
+02 08:20:17:853 Html enviado. Tiempo de envío 0.004739 segundos
+02 08:20:27:168 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:27:168 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:27:168 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:27:168 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:27:187 Detectado evento
+02 08:20:27:187 Evento recibido
+02 08:20:27:187 
+	Objeto: fsbl0
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:27:187 Fin Evento recibido
+02 08:20:27:187 v10formserver vale 145b5bb4
+02 08:20:27:187 v10formserver vale 145b5bb4
+02 08:20:27:187 Inicio envío
+02 08:20:27:190 Html calculado. Tiempo de envío 0.001824 segundos
+02 08:20:27:192 Compresion fin
+02 08:20:27:192 Envio un total de 4.17 KB
+02 08:20:27:192 Enviada la respuesta a socket 145B5BB4
+02 08:20:27:192 Html enviado. Tiempo de envío 0.004525 segundos
+02 08:20:29:597 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 111
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:29:597 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:29:597 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:29:597 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:29:615 Detectado evento
+02 08:20:29:615 Evento recibido
+02 08:20:29:615 
+	Objeto: bl0f1c2
+	Evento: ctrlcontextual
+	Dato: 121
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:29:615 Fin Evento recibido
+02 08:20:29:615 v10formserver vale 145b5bb4
+02 08:20:29:616 v10formserver vale 145b5bb4
+02 08:20:29:616 Inicio envío
+02 08:20:29:618 Html calculado. Tiempo de envío 0.003166 segundos
+02 08:20:29:621 Compresion fin
+02 08:20:29:622 Envio un total de 4.17 KB
+02 08:20:29:622 Enviada la respuesta a socket 145B5BB4
+02 08:20:29:622 Html enviado. Tiempo de envío 0.005747 segundos
+02 08:20:30:177 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 109
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:30:177 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:30:177 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:30:177 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:30:196 Detectado evento
+02 08:20:30:197 Evento recibido
+02 08:20:30:197 
+	Objeto: bl0f1c2
+	Evento: onkeyup_ctrl
+	Dato: 120
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:30:197 Fin Evento recibido
+02 08:20:30:197 v10formserver vale 145b5bb4
+02 08:20:30:197 Inicio envío
+02 08:20:30:292 Html calculado. Tiempo de envío 0.093606 segundos
+02 08:20:30:293 Compresion fin
+02 08:20:30:293 Envio un total de 5.51 KB
+02 08:20:30:293 Enviada la respuesta a socket 145B5BB4
+02 08:20:30:293 Html enviado. Tiempo de envío 0.095873 segundos
+02 08:20:33:183 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:33:183 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:33:183 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:33:183 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:33:201 Detectado evento
+02 08:20:33:201 Evento recibido
+02 08:20:33:201 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: 
+	Antvalor: 
+02 08:20:33:201 Fin Evento recibido
+02 08:20:33:201 v10formserver vale 145b5bb4
+02 08:20:33:201 Inicio envío
+02 08:20:33:202 Html calculado. Tiempo de envío 0.001341 segundos
+02 08:20:33:205 Compresion fin
+02 08:20:33:205 Envio un total de 4.17 KB
+02 08:20:33:206 Enviada la respuesta a socket 145B5BB4
+02 08:20:33:206 Html enviado. Tiempo de envío 0.004376 segundos
+02 08:20:33:891 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 94
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:33:891 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:33:891 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:33:891 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:33:908 Detectado evento
+02 08:20:33:908 Evento recibido
+02 08:20:33:908 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:33:910 Fin Evento recibido
+02 08:20:33:910 v10formserver vale 145b5bb4
+02 08:20:33:910 v10formserver vale 145b5bb4
+02 08:20:33:910 Inicio envío
+02 08:20:33:912 Html calculado. Tiempo de envío 0.001848 segundos
+02 08:20:33:913 Compresion fin
+02 08:20:33:913 Envio un total de 4.17 KB
+02 08:20:33:913 Enviada la respuesta a socket 145B5BB4
+02 08:20:33:915 Html enviado. Tiempo de envío 0.004488 segundos
+02 08:20:34:723 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 109
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:34:723 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:34:725 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:34:725 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:34:742 Detectado evento
+02 08:20:34:742 Evento recibido
+02 08:20:34:742 
+	Objeto: bl0f1c2
+	Evento: onkeyup_ctrl
+	Dato: 120
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:34:742 Fin Evento recibido
+02 08:20:34:742 v10formserver vale 145b5bb4
+02 08:20:34:743 Inicio envío
+02 08:20:34:745 Html calculado. Tiempo de envío 0.001614 segundos
+02 08:20:34:747 Compresion fin
+02 08:20:34:747 Envio un total de 5.49 KB
+02 08:20:34:747 Enviada la respuesta a socket 145B5BB4
+02 08:20:34:747 Html enviado. Tiempo de envío 0.003941 segundos
+02 08:20:38:217 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:38:217 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:38:217 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:38:217 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:38:237 Detectado evento
+02 08:20:38:237 Evento recibido
+02 08:20:38:237 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: 
+	Antvalor: 
+02 08:20:38:237 Fin Evento recibido
+02 08:20:38:237 v10formserver vale 145b5bb4
+02 08:20:38:237 Inicio envío
+02 08:20:38:238 Html calculado. Tiempo de envío 0.001831 segundos
+02 08:20:38:242 Compresion fin
+02 08:20:38:242 Envio un total de 4.17 KB
+02 08:20:38:242 Enviada la respuesta a socket 145B5BB4
+02 08:20:38:242 Html enviado. Tiempo de envío 0.005256 segundos
+02 08:20:39:591 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 102
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:39:591 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:39:591 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:39:591 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:39:608 Detectado evento
+02 08:20:39:608 Evento recibido
+02 08:20:39:608 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:20:39:608 Fin Evento recibido
+02 08:20:39:608 v10formserver vale 145b5bb4
+02 08:20:39:618 Compresion fin
+02 08:20:39:618 Envio un total de 7.93 KB
+02 08:20:39:618 Enviada la respuesta a socket 145B5BB4
+02 08:20:45:075 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:45:075 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:45:075 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:45:075 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:45:092 Detectado evento
+02 08:20:45:092 Evento recibido
+02 08:20:45:092 
+	Objeto: 
+	Evento: selmenu
+	Dato: 18
+	Antid: 
+	Antvalor: 
+02 08:20:45:092 Fin Evento recibido
+02 08:20:45:113 Leyendo caracteristicas del bloque 
+02 08:20:45:113 Leidas caracteristicas del bloque 
+02 08:20:45:117 v10formserver vale 145b5bb4
+02 08:20:45:118 Inicio envío
+02 08:20:45:121 Html calculado. Tiempo de envío 0.002523 segundos
+02 08:20:45:122 Compresion fin
+02 08:20:45:123 Envio un total de 4.60 KB
+02 08:20:45:123 Enviada la respuesta a socket 145B5BB4
+02 08:20:45:123 Html enviado. Tiempo de envío 0.005234 segundos
+02 08:20:46:148 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:46:148 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:46:148 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:46:148 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:46:167 Detectado evento
+02 08:20:46:167 Evento recibido
+02 08:20:46:167 
+	Objeto: fsbl0
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 08:20:46:167 Fin Evento recibido
+02 08:20:46:167 v10formserver vale 145b5bb4
+02 08:20:46:167 v10formserver vale 145b5bb4
+02 08:20:46:167 Inicio envío
+02 08:20:46:170 Html calculado. Tiempo de envío 0.002485 segundos
+02 08:20:46:172 Compresion fin
+02 08:20:46:172 Envio un total de 4.60 KB
+02 08:20:46:172 Enviada la respuesta a socket 145B5BB4
+02 08:20:46:172 Html enviado. Tiempo de envío 0.004721 segundos
+02 08:20:48:790 Conexion 145B5BB4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 109
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:20:48:790 La conexion 0 recibe peticion en socket 145B5BB4
+02 08:20:48:790 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:48:790 AtiendePost: Server cambia de valor de 145B5BB4 a 145B5BB4
+02 08:20:48:795 Detectado evento
+02 08:20:48:795 Evento recibido
+02 08:20:48:795 
+	Objeto: bl0f1c1
+	Evento: onkeyup_ctrl
+	Dato: 120
+	Antid: bl0f1c1
+	Antvalor: 
+02 08:20:48:796 Fin Evento recibido
+02 08:20:48:796 v10formserver vale 145b5bb4
+02 08:20:48:806 Inicio envío
+02 08:20:48:807 Html calculado. Tiempo de envío 0.001759 segundos
+02 08:20:48:810 Compresion fin
+02 08:20:48:810 Envio un total de 5.89 KB
+02 08:20:48:811 Enviada la respuesta a socket 145B5BB4
+02 08:20:48:811 Html enviado. Tiempo de envío 0.004251 segundos
+02 08:22:42:633 Sesion 0 socket 145B5BB4 Finalizada por rotura de conexion 5
+02 08:22:42:633 Libera 145b5bb4
+02 08:22:47:152 Sesion 0 Conectada socket 145B6394
+02 08:22:47:167 Conexion 145B6394 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:22:47:167 La conexion 0 recibe peticion en socket 145B6394
+02 08:22:47:167 Tratapeticion: Server cambia de valor de 145B5BB4 a 145B6394
+02 08:22:47:167 AtiendePost: Server cambia de valor de 145B6394 a 145B6394
+02 08:22:47:172 Detectado evento
+02 08:22:47:172 Evento recibido
+02 08:22:47:172 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: 
+	Antvalor: 
+02 08:22:47:172 Fin Evento recibido
+02 08:22:47:172 v10formserver vale 145b6394
+02 08:22:47:172 Inicio envío
+02 08:22:47:175 Html calculado. Tiempo de envío 0.001685 segundos
+02 08:22:47:177 Compresion fin
+02 08:22:47:177 Envio un total de 4.60 KB
+02 08:22:47:177 Enviada la respuesta a socket 145B6394
+02 08:22:47:177 Html enviado. Tiempo de envío 0.003788 segundos
+02 08:22:48:441 Conexion 145B6394 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 102
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:22:48:441 La conexion 0 recibe peticion en socket 145B6394
+02 08:22:48:441 Tratapeticion: Server cambia de valor de 145B6394 a 145B6394
+02 08:22:48:441 AtiendePost: Server cambia de valor de 145B6394 a 145B6394
+02 08:22:48:457 Detectado evento
+02 08:22:48:458 Evento recibido
+02 08:22:48:458 
+	Objeto: bl0F2
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: 
+02 08:22:48:458 Fin Evento recibido
+02 08:22:48:458 v10formserver vale 145b6394
+02 08:22:48:512 v10formserver vale 145b6394
+02 08:22:48:512 Inicio envío
+02 08:22:48:523 Html calculado. Tiempo de envío 0.010975 segundos
+02 08:22:48:528 Compresion fin
+02 08:22:48:528 Envio un total de 7.44 KB
+02 08:22:48:528 Enviada la respuesta a socket 145B6394
+02 08:22:48:528 Html enviado. Tiempo de envío 0.016680 segundos
+02 08:23:54:403 Sesion 1 Conectada socket 145B64E4
+02 08:23:54:403 Sesion 0 socket 145B6394 Finalizada por rotura de conexion 5
+02 08:23:54:403 Libera 145b6394
+02 08:23:54:403 Conexion 145B64E4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 106
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:23:54:405 La conexion 1 recibe peticion en socket 145B64E4
+02 08:23:54:405 Tratapeticion: Server cambia de valor de 145B6394 a 145B64E4
+02 08:23:54:405 AtiendePost: Server cambia de valor de 145B64E4 a 145B64E4
+02 08:23:54:422 Detectado evento
+02 08:23:54:422 Evento recibido
+02 08:23:54:422 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 40
+	Antid: bl0f1c2
+	Antvalor: 100
+02 08:23:54:422 Fin Evento recibido
+02 08:23:54:422 v10formserver vale 145b64e4
+02 08:23:54:423 v10formserver vale 145b64e4
+02 08:23:54:423 Inicio envío
+02 08:23:54:432 Html calculado. Tiempo de envío 0.007909 segundos
+02 08:23:54:435 Compresion fin
+02 08:23:54:435 Envio un total de 7.45 KB
+02 08:23:54:436 Enviada la respuesta a socket 145B64E4
+02 08:23:54:436 Html enviado. Tiempo de envío 0.012276 segundos
+02 08:23:55:393 Conexion 145B64E4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 106
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:23:55:393 La conexion 1 recibe peticion en socket 145B64E4
+02 08:23:55:393 Tratapeticion: Server cambia de valor de 145B64E4 a 145B64E4
+02 08:23:55:393 AtiendePost: Server cambia de valor de 145B64E4 a 145B64E4
+02 08:23:55:412 Detectado evento
+02 08:23:55:412 Evento recibido
+02 08:23:55:412 
+	Objeto: bl0f2c2
+	Evento: onkeyup
+	Dato: 38
+	Antid: bl0f2c2
+	Antvalor: 200
+02 08:23:55:412 Fin Evento recibido
+02 08:23:55:412 v10formserver vale 145b64e4
+02 08:23:55:412 v10formserver vale 145b64e4
+02 08:23:55:412 Inicio envío
+02 08:23:55:421 Html calculado. Tiempo de envío 0.007779 segundos
+02 08:23:55:426 Compresion fin
+02 08:23:55:426 Envio un total de 7.44 KB
+02 08:23:55:426 Enviada la respuesta a socket 145B64E4
+02 08:23:55:426 Html enviado. Tiempo de envío 0.013465 segundos
+02 08:26:22:640 Sesion 1 socket 145B64E4 Finalizada por rotura de conexion 5
+02 08:26:22:640 Libera 145b64e4
+02 12:23:55:429 Sobrepasado tiempo de espera, se sale de la sesión
+
+00 12:23:55:440 Fichero de log cerrado.
+
+00 14:21:48:507 Fichero de log abierto PID 8196
+
+02 14:21:48:522 Intentando abrir fichero v10.ini
+02 14:21:48:522 Cargando driver v10oracle funcion damedriveroracle
+02 14:21:48:777 Conectado a base de datos
+02 14:21:48:792 Asignando RELEECONF a 500
+02 14:21:48:792 Asignando ACCESO a V10LOGIN
+02 14:21:48:792 Asignando NIVELLOG a 2
+02 14:21:48:792 Asignando PROTEGIDO a 500
+02 14:21:48:792 Asignando DEBUGHTTP a 2
+02 14:21:48:792 Asignando VISIBLEEXE a 0
+02 14:21:48:792 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 14:21:48:792 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 14:21:48:792 Asignando SERVIDOR a HTTP://127.0.0.1
+02 14:21:48:792 Asignando SERVERPORT a 5000
+02 14:21:48:792 Asignando SERVERPORTFILES a 5001
+02 14:21:48:792 Asignando PUERTOINICIAL a 5002
+02 14:21:48:792 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 14:21:48:792 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 14:21:48:792 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 14:21:48:792 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 14:21:48:792 Asignando FILEEXPIRED a 3600
+02 14:21:48:792 Asignando TIEMPOESPERA a 240
+02 14:21:48:792 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 14:21:48:792 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 14:21:48:792 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 14:21:48:792 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 14:21:48:792 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 14:21:48:792 Asignando COMPRIMIR a 1
+02 14:21:48:824 Escuchando en el puerto 5002
+02 14:21:48:940 Conectado Listener en el puerto 5002
+02 14:21:48:962 Abriendo conexion HTTP en el puerto 5002
+02 14:21:48:962 Abierta conexion HTTP en el puerto 5002
+02 14:21:49:979 Conexión de cliente establecida
+02 14:21:49:979 v10formserver vale 0
+02 14:21:49:979 Conexion 0562862C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 14:21:49:979 La conexion 0 recibe peticion en socket 0562862C
+02 14:21:49:979 Tratapeticion: Server cambia de valor de 00000000 a 0562862C
+02 14:21:49:979 Sesion 0 Solicita Fichero V10.HTML 
+02 14:21:49:979 Sesion 0 Enviara Fichero V10.HTML
+02 14:21:49:979 Tiempo en abrir 0.000481 seg.
+02 14:21:49:979 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 14:21:49:979 Tiempo en carga de fichero 0.001153 seg.
+02 14:21:49:979 Compresion fin
+02 14:21:49:979 Envio un total de 0.64 KB
+02 14:21:49:979 Fichero v10.html enviado
+02 14:21:49:979 Timeout es 99999.000000
+02 14:21:49:995 Sesion 0 socket 0562862C Finalizada por rotura de conexion 5
+02 14:21:49:995 Libera 562862c
+02 14:21:50:010 Sesion 0 Conectada socket 05617FBC
+02 14:21:50:025 Conexion 05617FBC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 14:21:50:025 La conexion 0 recibe peticion en socket 05617FBC
+02 14:21:50:025 Tratapeticion: Server cambia de valor de 0562862C a 05617FBC
+02 14:21:50:025 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 14:21:50:025 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 14:21:50:025 Tiempo en abrir 0.000698 seg.
+02 14:21:50:025 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 14:21:50:025 Tiempo en carga de fichero 0.001219 seg.
+02 14:21:50:025 Compresion fin
+02 14:21:50:025 Envio un total de 15.81 KB
+02 14:21:50:025 Fichero v10libreriajs.html enviado
+02 14:21:50:042 Sesion 0 socket 05617FBC Finalizada por rotura de conexion 5
+02 14:21:50:042 Libera 5617fbc
+02 14:21:50:064 Sesion 0 Conectada socket 05617DC4
+02 14:21:50:064 Conexion 05617DC4 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 14:21:50:064 La conexion 0 recibe peticion en socket 05617DC4
+02 14:21:50:064 Tratapeticion: Server cambia de valor de 05617FBC a 05617DC4
+02 14:21:50:064 Recibida cadena de acceso
+00 14:21:50:147 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 14:21:50:147 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 14:21:50:164 Error al abrir fichero VDST.H
+02 14:21:50:164 Empiezo a leer forms vduser.frm
+02 14:21:50:179 Leyendo caracteristicas del bloque 
+02 14:21:50:179 Leidas caracteristicas del bloque 
+02 14:21:50:210 Termino parse forms vduser.frm
+02 14:21:50:210 v10formserver vale 5617dc4
+02 14:21:50:210 Inicio envío
+02 14:21:50:225 Cargada plantilla plantilla.VDUSER.frm.html
+02 14:21:50:225 Html calculado. Tiempo de envío 0.001661 segundos
+02 14:21:50:225 Compresion fin
+02 14:21:50:225 Envio un total de 4.18 KB
+02 14:21:50:225 Enviada la respuesta a socket 05617DC4
+02 14:21:50:225 Html enviado. Tiempo de envío 0.003337 segundos
+02 14:21:52:415 Conexion 05617DC4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:21:52:415 La conexion 0 recibe peticion en socket 05617DC4
+02 14:21:52:415 Tratapeticion: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:21:52:415 AtiendePost: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:21:52:430 Detectado evento
+02 14:21:52:430 Evento recibido
+02 14:21:52:430 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 14:21:52:430 Fin Evento recibido
+02 14:21:52:430 v10formserver vale 5617dc4
+02 14:21:52:430 v10formserver vale 5617dc4
+02 14:21:52:430 Inicio envío
+02 14:21:52:430 Cargada plantilla plantilla.VDUSER.frm.html
+02 14:21:52:430 Html calculado. Tiempo de envío 0.000727 segundos
+02 14:21:52:430 Compresion fin
+02 14:21:52:430 Envio un total de 4.19 KB
+02 14:21:52:430 Enviada la respuesta a socket 05617DC4
+02 14:21:52:430 Html enviado. Tiempo de envío 0.002377 segundos
+02 14:21:52:915 Conexion 05617DC4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:21:52:915 La conexion 0 recibe peticion en socket 05617DC4
+02 14:21:52:915 Tratapeticion: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:21:52:915 AtiendePost: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:21:52:930 Detectado evento
+02 14:21:52:930 Evento recibido
+02 14:21:52:930 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 14:21:52:930 Fin Evento recibido
+02 14:21:52:930 v10formserver vale 5617dc4
+02 14:21:52:930 v10formserver vale 5617dc4
+02 14:21:53:052 v10formserver vale 5617dc4
+02 14:21:53:132 Compresion fin
+02 14:21:53:132 Envio un total de 7.93 KB
+02 14:21:53:132 Enviada la respuesta a socket 05617DC4
+02 14:22:02:727 Conexion 05617DC4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:02:727 La conexion 0 recibe peticion en socket 05617DC4
+02 14:22:02:727 Tratapeticion: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:22:02:727 AtiendePost: Server cambia de valor de 05617DC4 a 05617DC4
+02 14:22:02:727 Detectado evento
+02 14:22:02:727 Evento recibido
+02 14:22:02:727 
+	Objeto: 
+	Evento: selmenu
+	Dato: 132
+	Antid: 
+	Antvalor: 
+02 14:22:02:727 Fin Evento recibido
+02 14:22:02:727 Empiezo a leer forms vdpedidos.frm
+02 14:22:02:780 Leyendo caracteristicas del bloque 
+02 14:22:02:780 Leidas caracteristicas del bloque 
+02 14:22:02:865 Leyendo caracteristicas del bloque 
+02 14:22:02:865 Leidas caracteristicas del bloque 
+02 14:22:02:865 Leyendo caracteristicas del campo CODART
+02 14:22:02:865 Leidas caracteristicas del campo CODART
+02 14:22:02:865 Leyendo caracteristicas del campo CADUCI
+02 14:22:02:865 Leidas caracteristicas del campo CADUCI
+02 14:22:02:882 Termino parse forms vdpedidos.frm
+02 14:22:02:882 v10formserver vale 5617dc4
+02 14:22:02:882 Inicio envío
+02 14:22:02:944 Html calculado. Tiempo de envío 0.057191 segundos
+02 14:22:02:944 Compresion fin
+02 14:22:02:944 Envio un total de 11.19 KB
+02 14:22:02:944 Enviada la respuesta a socket 05617DC4
+02 14:22:02:944 Html enviado. Tiempo de envío 0.061984 segundos
+02 14:22:02:960 Sesion 0 socket 05617DC4 Finalizada por rotura de conexion 5
+02 14:22:02:960 Libera 5617dc4
+02 14:22:13:639 Sesion 0 Conectada socket 14642F6C
+02 14:22:13:655 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 94
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:13:655 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:13:655 Tratapeticion: Server cambia de valor de 05617DC4 a 14642F6C
+02 14:22:13:655 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:13:655 Detectado evento
+02 14:22:13:655 Evento recibido
+02 14:22:13:655 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 14:22:13:655 Fin Evento recibido
+02 14:22:13:655 v10formserver vale 14642f6c
+02 14:22:13:655 v10formserver vale 14642f6c
+02 14:22:13:655 Inicio envío
+02 14:22:13:655 Html calculado. Tiempo de envío 0.004401 segundos
+02 14:22:13:655 Compresion fin
+02 14:22:13:655 Envio un total de 11.19 KB
+02 14:22:13:655 Enviada la respuesta a socket 14642F6C
+02 14:22:13:655 Html enviado. Tiempo de envío 0.008985 segundos
+02 14:22:16:727 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:16:727 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:16:727 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:16:727 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:16:742 Detectado evento
+02 14:22:16:742 Evento recibido
+02 14:22:16:742 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 121
+	Antid: bl0f1c1
+	Antvalor: 
+02 14:22:16:742 Fin Evento recibido
+02 14:22:16:742 v10formserver vale 14642f6c
+00 14:22:16:874 vdimprimepedido: No se encuentra pedido  0  002 14:22:16:874 Inicio envío
+02 14:22:16:897 Html calculado. Tiempo de envío 0.021751 segundos
+02 14:22:16:897 Compresion fin
+02 14:22:16:897 Envio un total de 11.62 KB
+02 14:22:16:897 Enviada la respuesta a socket 14642F6C
+02 14:22:16:897 Html enviado. Tiempo de envío 0.026658 segundos
+02 14:22:19:299 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:19:299 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:19:299 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:19:299 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:19:315 Detectado evento
+02 14:22:19:315 Evento recibido
+02 14:22:19:315 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 14:22:19:315 Fin Evento recibido
+02 14:22:19:315 v10formserver vale 14642f6c
+02 14:22:19:315 Inicio envío
+02 14:22:19:315 Html calculado. Tiempo de envío 0.004772 segundos
+02 14:22:19:315 Compresion fin
+02 14:22:19:315 Envio un total de 11.19 KB
+02 14:22:19:315 Enviada la respuesta a socket 14642F6C
+02 14:22:19:315 Html enviado. Tiempo de envío 0.009301 segundos
+02 14:22:25:610 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 102
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:25:610 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:25:610 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:25:610 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:25:625 Detectado evento
+02 14:22:25:625 Evento recibido
+02 14:22:25:625 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f1c1
+	Antvalor: 
+02 14:22:25:625 Fin Evento recibido
+02 14:22:25:625 v10formserver vale 14642f6c
+02 14:22:25:625 Inicio envío
+02 14:22:25:640 Html calculado. Tiempo de envío 0.016413 segundos
+02 14:22:25:640 Compresion fin
+02 14:22:25:640 Envio un total de 11.80 KB
+02 14:22:25:640 Enviada la respuesta a socket 14642F6C
+02 14:22:25:640 Html enviado. Tiempo de envío 0.025192 segundos
+02 14:22:28:045 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:28:045 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:28:045 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:28:045 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:28:060 Detectado evento
+02 14:22:28:060 Evento recibido
+02 14:22:28:060 
+	Objeto: 
+	Evento: confirma
+	Dato: 83
+	Antid: 
+	Antvalor: 
+02 14:22:28:060 Fin Evento recibido
+02 14:22:28:092 Inicio envío
+02 14:22:28:099 Html calculado. Tiempo de envío 0.006663 segundos
+02 14:22:28:099 Compresion fin
+02 14:22:28:099 Envio un total de 11.61 KB
+02 14:22:28:099 Enviada la respuesta a socket 14642F6C
+02 14:22:28:099 Html enviado. Tiempo de envío 0.012104 segundos
+02 14:22:29:365 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:29:365 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:29:365 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:29:365 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:29:380 Detectado evento
+02 14:22:29:380 Evento recibido
+02 14:22:29:380 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 14:22:29:380 Fin Evento recibido
+02 14:22:29:465 v10formserver vale 14642f6c
+02 14:22:29:465 Inicio envío
+02 14:22:29:465 Html calculado. Tiempo de envío 0.006042 segundos
+02 14:22:29:480 Compresion fin
+02 14:22:29:480 Envio un total de 11.19 KB
+02 14:22:29:480 Enviada la respuesta a socket 14642F6C
+02 14:22:29:480 Html enviado. Tiempo de envío 0.012719 segundos
+02 14:22:30:852 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 102
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:30:852 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:30:852 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:30:852 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:30:867 Detectado evento
+02 14:22:30:867 Evento recibido
+02 14:22:30:867 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f1c2
+	Antvalor: 
+02 14:22:30:867 Fin Evento recibido
+02 14:22:30:867 v10formserver vale 14642f6c
+02 14:22:30:867 Inicio envío
+02 14:22:30:867 Html calculado. Tiempo de envío 0.005727 segundos
+02 14:22:30:882 Compresion fin
+02 14:22:30:882 Envio un total de 11.80 KB
+02 14:22:30:882 Enviada la respuesta a socket 14642F6C
+02 14:22:30:882 Html enviado. Tiempo de envío 0.014023 segundos
+02 14:22:31:900 Conexion 14642F6C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:22:31:900 La conexion 0 recibe peticion en socket 14642F6C
+02 14:22:31:900 Tratapeticion: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:31:900 AtiendePost: Server cambia de valor de 14642F6C a 14642F6C
+02 14:22:31:924 Detectado evento
+02 14:22:31:924 Evento recibido
+02 14:22:31:924 
+	Objeto: 
+	Evento: confirma
+	Dato: 78
+	Antid: 
+	Antvalor: 
+02 14:22:31:924 Fin Evento recibido
+02 14:22:31:924 Compresion fin
+02 14:22:31:924 Envio un total de 7.93 KB
+02 14:22:31:924 Enviada la respuesta a socket 14642F6C
+02 14:23:37:775 Sesion 0 socket 14642F6C Finalizada por rotura de conexion 5
+02 14:23:37:775 Libera 14642f6c
+02 14:26:13:109 Sesion 0 Conectada socket 14643324
+02 14:26:13:109 Conexion 14643324 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:26:13:109 La conexion 0 recibe peticion en socket 14643324
+02 14:26:13:109 Tratapeticion: Server cambia de valor de 14642F6C a 14643324
+02 14:26:13:109 AtiendePost: Server cambia de valor de 14643324 a 14643324
+02 14:26:13:115 Detectado evento
+02 14:26:13:115 Evento recibido
+02 14:26:13:115 
+	Objeto: 
+	Evento: selmenu
+	Dato: 18
+	Antid: 
+	Antvalor: 
+02 14:26:13:115 Fin Evento recibido
+02 14:26:13:135 Leyendo caracteristicas del bloque 
+02 14:26:13:135 Leidas caracteristicas del bloque 
+02 14:26:13:140 v10formserver vale 14643324
+02 14:26:13:140 Inicio envío
+02 14:26:13:142 Html calculado. Tiempo de envío 0.001737 segundos
+02 14:26:13:142 Compresion fin
+02 14:26:13:142 Envio un total de 4.60 KB
+02 14:26:13:142 Enviada la respuesta a socket 14643324
+02 14:26:13:142 Html enviado. Tiempo de envío 0.003961 segundos
+02 14:26:20:685 Conexion 14643324 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 107
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:26:20:685 La conexion 0 recibe peticion en socket 14643324
+02 14:26:20:685 Tratapeticion: Server cambia de valor de 14643324 a 14643324
+02 14:26:20:685 AtiendePost: Server cambia de valor de 14643324 a 14643324
+02 14:26:20:702 Detectado evento
+02 14:26:20:702 Evento recibido
+02 14:26:20:702 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: DSL
+02 14:26:20:702 Fin Evento recibido
+02 14:26:20:702 v10formserver vale 14643324
+02 14:26:20:722 v10formserver vale 14643324
+02 14:26:20:722 Inicio envío
+02 14:26:20:722 Html calculado. Tiempo de envío 0.002998 segundos
+02 14:26:20:739 Compresion fin
+02 14:26:20:739 Envio un total de 4.91 KB
+02 14:26:20:739 Enviada la respuesta a socket 14643324
+02 14:26:20:739 Html enviado. Tiempo de envío 0.006657 segundos
+02 14:26:43:892 Conexion 14643324 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 107
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:26:43:892 La conexion 0 recibe peticion en socket 14643324
+02 14:26:43:892 Tratapeticion: Server cambia de valor de 14643324 a 14643324
+02 14:26:43:892 AtiendePost: Server cambia de valor de 14643324 a 14643324
+02 14:26:43:909 Detectado evento
+02 14:26:43:909 Evento recibido
+02 14:26:43:909 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 114
+	Antid: bl0f1c2
+	Antvalor: 100
+02 14:26:43:909 Fin Evento recibido
+02 14:26:43:909 v10formserver vale 14643324
+02 14:26:43:909 v10formserver vale 14643324
+02 14:26:43:909 Inicio envío
+02 14:26:43:909 Html calculado. Tiempo de envío 0.002569 segundos
+02 14:26:43:909 Compresion fin
+02 14:26:43:909 Envio un total de 4.60 KB
+02 14:26:43:909 Enviada la respuesta a socket 14643324
+02 14:26:43:909 Html enviado. Tiempo de envío 0.005691 segundos
+02 14:26:44:340 Conexion 14643324 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 14:26:44:340 La conexion 0 recibe peticion en socket 14643324
+02 14:26:44:340 Tratapeticion: Server cambia de valor de 14643324 a 14643324
+02 14:26:44:340 AtiendePost: Server cambia de valor de 14643324 a 14643324
+02 14:26:44:362 Detectado evento
+02 14:26:44:362 Evento recibido
+02 14:26:44:362 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: 
+02 14:26:44:362 Fin Evento recibido
+02 14:26:44:362 v10formserver vale 14643324
+02 14:26:44:394 v10formserver vale 14643324
+02 14:26:44:394 Inicio envío
+02 14:26:44:409 Html calculado. Tiempo de envío 0.008209 segundos
+02 14:26:44:409 Compresion fin
+02 14:26:44:409 Envio un total de 7.44 KB
+02 14:26:44:409 Enviada la respuesta a socket 14643324
+02 14:26:44:409 Html enviado. Tiempo de envío 0.012783 segundos
+02 14:28:03:114 Sesion 0 socket 14643324 Finalizada por rotura de conexion 5
+02 14:28:03:114 Libera 14643324
+
+00 15:46:24:015 Fichero de log cerrado.
+

@@ -1,0 +1,210 @@
+# Módulo   : VDRECARTICULO.PAN
+# Función  : RECEPCIÓN DE MERCANCÍA: Selección del artículo que se va a recepcionar
+#            Validaciones:
+#             Se podrá leer tanto el código de barras como introducir el código del artículo.
+#             - Tipo palet: mostrará el que tenga por defecto en vdartic.tipopalet, si no 
+#                contiene ningún valor, se mostrará el de la varialbe TIPOPALET. Deberá
+#                existir como tipo de palet.
+#             - Capacidad (emb/cont): mostrará el que tenga por defecto en vdartic.embcont, 
+#                pero siempre se podrá modificar.
+#             - Precio unidad: No se valida
+#             - Buscar código de recepción del operario que esté pendiente de validar o
+#               crear un nuevo código de recepción, idem para la línea de recepción.
+#            
+# Creación : 31-01-2008
+# Autor    : ICC
+###########################################
+# Histórico de cambios:
+# 
+SELECCION ARTICULO
+ _10_______ _10_______
+
+ /* LEER ARTICULO */
+ 
+ PULMON: _12_________
+ _11__ _20________________
+ REC.: _20________________
+ DIV.: _4__ _40___________
+ MAT.: _18_______________
+
+ ART.: _255____________________________________________________________________________________________________________
+       _255____________________________________________________________________________________________________________
+
+ TIPO PALET: @L@@@ 
+ MULTIARTICULO: _
+ CAPACIDAD: ##### EMB/CONT
+ 
+ EMBALAJE: _10_______
+ PRECIO  : #L############## 
+          (Con # decimales)
+|
+
+
+PREQUERY=FEJECUTA("CLIMPIAR","\nERROR,\nAL LIMPIAR LOS CAMPOS",
+                  "+CSELTIPOCONTE","",
+                  "CRECEP","\nERROR,\nOBTENIENDO LA RECEPCION",
+                  FCOMMIT,"",
+                  "COCULTACAMPOS", "\nERROR,\nOCULTANDO CÓDIGO DE BARRAS 2",
+                  FPOSICIONACAMPO(FSUCCESS,"CODBARRAS1"),"\nERROR,\nAL POSICIONARSE EN EL CAMPO")
+
+POSTQUERY=FEJECUTA(FIF("CSELNOTNULL",FPOSICIONABLOQUE("2"),FSUCCESS),"",
+                   "CSELCLASEART", "\nERROR,\nEL ARTICULO :CODART\nNO ESTA CLASIFICADO\nPARA EL TIPO DE RECEPCION\n :TIPORDREC",
+				   FIF("CSELCARRO",FSUCCESS,
+				                   "CSELCLASEUBICAR"),"\n ERROR!!\n\n LA MATRICULA :CODMAT YA \n CONTIENE ARTICULOS CON OTRA \n CLASIFICACION PARA UBICAR\n",
+                   FPOSICIONABLOQUE("VDRECCANTIDAD.PAN"),"\nNO SE PUEDE POSICIONAR\nEN EL SIG. BLOQUE")
+
+
+CAMPO=CODPROTO,OCULTO,VIRTUAL
+CAMPO=BLOQUEOS,OCULTO,VIRTUAL
+CAMPO=BLOQUEOSORIG,OCULTO,VIRTUAL
+CAMPO=TIPORDREC,OCULTO,VIRTUAL
+CAMPO=NBULTOS,OCULTO,VIRTUAL
+CAMPO=CONTBULTOS,OCULTO,VIRTUAL
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL
+CAMPO=PULMON,NOENTER,VIRTUAL
+CAMPO=NCODORDREC,NOENTER
+CAMPO=CODORDREC,NOENTER,VIRTUAL
+CAMPO=CODRECEP,NOENTER
+CAMPO=CODDIV,NOENTER,VIRTUAL
+CAMPO=DESDIV,NOENTER,VIRTUAL
+CAMPO=CODMAT,NOENTER,VIRTUAL
+CAMPO=CODBARRAS1,SCAN,POSTCHANGE=FDESIGNACION(FIF("CSELNOTNULL",FPOSICIONABLOQUE("2"),FSUCCESS),"",
+                                              +FLEEARTICULO("CODBARRAS1", "CODART",""),"ERROR :V10ERROR",
+                                              +FANALIZAEANRAD("CODBARRAS1", "37","UNIEMB","17", "CADUCI","10","CODLOT"),"\nERROR,\nEN LECTURA DEL\nCODIGO DE BARRAS", 
+                                              "CSELART", "\nERROR,\nNO EXISTE EL ARTICULO\n :CODART",
+                                              "CSELORDENART", "\nERROR,\nEL ARTICULO :CODART\nNO SE ENCUENTRA \nEN LA ORDEN :CODORDREC\nO ESTÁ INACTIVO") 
+
+CAMPO=CODBARRAS2,SCAN,POSTCHANGE=FDESIGNACION(FIF("CSELARTNOTNULL",FSUCCESS,+FLEEARTICULO("CODBARRAS2", "CODART","")),"ERROR :V10ERROR",
+                                                   +FANALIZAEANRAD("CODBARRAS2", "37","UNIEMB","17", "CADUCI","10","CODLOT"),"\nERROR,\nEN LECTURA DEL\nCODIGO DE BARRAS", 
+                                                   "CSELART", "\nERROR,\nNO EXISTE EL ARTICULO\n :CODART",
+                                                   "CSELORDENART", "\nERROR,\nEL ARTICULO :CODART\nNO SE ENCUENTRA EN LA ORDEN :CODORDREC\n O ESTÁ INACTIVO") 
+ 
+CAMPO=TIPOCONTE,POSTCHANGE=FEJECUTA("CVALTIPOPALET","\nERROR,\nNO EXISTE TIPO DE PALET\n :TIPOCONTE") ,OCULTO,"___________________________"
+CAMPO=ALTCONTE,POSTCHANGE=FEJECUTA("CSELTIPOCONTEALT","\nERROR,\nNO EXISTE TIPO DE PALET\n :TIPOCONTE")
+CAMPO=MULTIARTICULO,VIRTUAL,NOENTER
+CAMPO=EMBCONT
+CAMPO=TIPOEMBA,POSTCHANGE=FEJECUTA("CVALTIPOEMBA","\nERROR,\nNO EXISTE TIPO DE EMBALAJE\n :TIPOEMBA") 
+CAMPO=PRECIOUNI,POSTCHANGE=FEJECUTA("-CPVPCERO","DEBE INFORMAR EL PRECIO,\nSE ENCUENTRA EN PERIODO DE\n REETIQUETAJE")
+CAMPO=DECIMALES,NOENTER
+CAMPO=CODART,OCULTO,"_40_________________"
+CAMPO=CODLOT,OCULTO,"_20_________________"
+CAMPO=CADUCI,OCULTO,"_8______"
+CAMPO=UNIEMB,OCULTO,"#L############"
+CAMPO=ESTADOS_STOCK, OCULTO,"_10_______"
+CAMPO=INDLOTE,  OCULTO,"_"
+CAMPO=MUESTREAR,OCULTO,"_"
+CAMPO=DIASANTFECPREV,OCULTO,"###"
+CAMPO=DIASRETFECPREV,OCULTO,"###"
+CAMPO=PVPVIGENTE,OCULTO,"#L##########.###"
+CAMPO=PVPNUEVO,OCULTO,"#L##########.###"
+CAMPO=PANTANTERIOR,OCULTO,"_20______________"
+CAMPO=DUMMY,OCULTO,"#"
+CAMPO=CODALBTRAN,OCULTO,VIRTUAL
+CAMPO=CODALBPROVE,OCULTO,VIRTUAL
+CAMPO=CODAGE,OCULTO,VIRTUAL
+
+CURSOR=CSELTIPOCONTEALT SELECT VDCNT.DAMECONTE(:ALTCONTE) TIPOCONTE FROM DUAL;
+
+
+CURSOR=CLIMPIAR SELECT '' CODBARRAS1, '' CODBARRAS2, '' TIPOCONTE,  0 EMBCONT, '' TIPOEMBA,
+                       '' CODART, '' CODLOT, 0 UNIEMB, '' CADUCI, 0 PRECIOUNI, 'VDRECARTICULO.PAN' PANTANTERIOR,0 ALTCONTE
+                  FROM DUAL;
+
+CURSOR=CSELNOTNULL SELECT 1 DUMMY FROM DUAL 
+                    WHERE :CODBARRAS1 IS NULL AND :CODBARRAS2 IS NULL;
+
+#CURSOR=CSELNOTNULL SELECT 1 DUMMY FROM DUAL 
+#                    WHERE :CODBARRAS1 IS NULL AND :CODBARRAS2 IS NULL AND :TIPOCONTE IS NULL AND :PRECIOUNI = 0;
+					
+CURSOR=COCULTACAMPOS SELECT DECODE(:CODORDREC, null, 0, 1) NCODORDREC__INVISIBLE,
+                            DECODE(:CODORDREC, null, 0, 1) CODORDREC__INVISIBLE,
+                            DECODE(VD.GETPROP('NCODBARRAS'), 2, 0, 1) CODBARRAS2__INVISIBLE,
+                            'ORD.:' NCODORDREC
+                        FROM DUAL;
+
+#Recupera una recepción que haya realizado el recurso y no se haya validado, siendo para la misma orden de 
+#recepción y para el mismo albarán, si se recepcionara contra una orden. En caso de no encontrar ninguna, crea una nueva
+CURSOR=CRECEP BEGIN
+                :CODRECEP := VDRECEP.OBTRECEP (:CODORDREC, :TIPORDREC, :CODDIV, :CODRECURSO, :CODALBPROVE, :CODPROTO, :CODALBTRAN, :CODAGE);
+              END;@
+
+#VALIDACIONES
+CURSOR=CSELTIPOCONTE SELECT TIPOCONTE FROM VDCONTE WHERE CODMAT=:CODMAT AND TIPOCONTE=VD.GETPROP('TIPOCONTE');
+
+CURSOR=CSELART SELECT NVL(:TIPOCONTE,NVL(TIPOCONTEDEF, VD.GETPROP('TIPOCONTE'))) TIPOCONTE, 
+                      NVL(:TIPOEMBA,NVL(TIPOEMBADEF, VD.GETPROP('TIPOEMBA'))) TIPOEMBA, EMBCONT,
+                      4 PRECIOUNI__DECIMALES, 4 DECIMALES, PVPVIGENTE, PVPNUEVO
+                 FROM VDARTIC
+                WHERE CODART = :CODART
+                  OR :CODART IS NULL;
+                  
+CURSOR=CSELARTNOTNULL SELECT :CODART FROM DUAL WHERE :CODART IS NOT NULL;
+                       
+CURSOR=CSELORDENART SELECT 1 DUMMY
+                      FROM VDORDRECLIN
+                     WHERE CODORDREC = :CODORDREC
+                       AND CODDIV    = :CODDIV
+                       AND CODART    = :CODART
+                       AND STATUS    = VDST.FORLACTIVA
+                   UNION
+                    SELECT 1 DUMMY
+                      FROM DUAL 
+                     WHERE :CODORDREC IS NULL
+                        or :CODART IS NULL;
+
+CURSOR=CSELCLASEUBICAR SELECT 1 DUMMY 
+                         FROM VDCLASEARTIC CLA 
+						 WHERE CLA.CODCLASIF='UBICACION' AND CLA.CODART=:CODART 
+						  AND (CLA.CODCLASE IN (SELECT CLA2.CODCLASE  
+						                         FROM  VDSTOCK STK, VDCLASEARTIC CLA2 
+								  			     WHERE  STK.CODART=CLA2.CODART AND CLA2.CODCLASIF='UBICACION' AND STK.CODMAT=:CODMAT)
+							   OR NOT EXISTS (SELECT CODART FROM VDSTOCK WHERE CODMAT=:CODMAT));
+						
+CURSOR=CSELCLASEART SELECT TOL.ESTADOS_STOCK, INDLOTE, MUESTREAR, DIASANTFECPREV, DIASRETFECPREV
+                      FROM VDCLASEARTIC CLA, VDTIPORDRECLIN TOL
+                     WHERE CLA.CODART = :CODART
+                       AND TOL.CODCLASIF = CLA.CODCLASIF
+                       AND TOL.CODCLASE = CLA.CODCLASE
+                       AND TOL.TIPORDREC = :TIPORDREC;
+                                              
+CURSOR=CVALTIPOPALET SELECT 1 DUMMY           
+                       FROM VDTIPOCONTE       
+                      WHERE TIPOCONTE = :TIPOCONTE OR TIPOCONTE IS NULL;
+                                              
+CURSOR=CVALTIPOEMBA SELECT 1 DUMMY            
+                      FROM VDTIPOEMBA
+                     WHERE TIPOEMBA = :TIPOEMBA;
+
+CURSOR=CPVPCERO SELECT 1 DUMMY
+                  FROM DUAL
+                 WHERE :PRECIOUNI = '0'
+                   AND :PVPVIGENTE != :PVPNUEVO;
+
+CURSOR=CSELCARRO SELECT CODMAT FROM VDCONTE WHERE CODMAT=:CODMAT AND TIPOCONTE=VD.GETPROP('TIPOCONTECARRO');
+
+CURSOR=CANALIZAEAN BEGIN
+                     SELECT CODART INTO :CODART FROM VDARTIC WHERE CODART=:CODBARRAS1;
+					 EXCEPTION
+					   WHEN NO_DATA_FOUND THEN
+							 SELECT VDEAN.VALOR(:CODBARRAS1,240) CODART,VDEAN.VALOR(:CODBARRAS1,37) UNIEMB,VDEAN.VALOR(:CODBARRAS1,17) CADUCI,VDEAN.VALOR(:CODBARRAS1,10) CODLOT
+							   INTO :CODART,:UNIEMB,:CADUCI,:CODLOT
+							   FROM DUAL;
+							 IF :CODART IS NULL THEN
+							  SELECT TRIM(VDEAN.VALOR(:CODBARRAS1,241)) CODART,VDEAN.VALOR(:CODBARRAS1,37) UNIEMB,VDEAN.VALOR(:CODBARRAS1,17) CADUCI,VDEAN.VALOR(:CODBARRAS1,10) CODLOT
+								INTO :CODART,:UNIEMB,:CADUCI,:CODLOT
+								FROM DUAL;
+							  END IF;                    
+							 IF :CODART IS NULL THEN
+							   BEGIN
+								  SELECT VDEAN.VALOR(:CODBARRAS1,'01') INTO :CODART FROM DUAL;
+								  SELECT CODART INTO :CODART FROM VDARTIC WHERE CODEAN=NVL(:CODART,'XXXX');
+								  EXCEPTION WHEN NO_DATA_FOUND THEN
+								    BEGIN
+									  SELECT CODART INTO :CODART FROM VDARTIC WHERE CODEAN=:CODBARRAS1;
+								      EXCEPTION WHEN NO_DATA_FOUND THEN NULL; 
+									  END;
+								  END;
+							   END IF;
+                     END;@
+CURSOR=CVERMATLOTE SELECT :CODART FROM VDSTOCK WHERE CODMAT=:CODMAT AND (CODART!=:CODART OR CODLOT!=:CODLOT);

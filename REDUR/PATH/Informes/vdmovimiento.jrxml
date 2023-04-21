@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.1-ac0eebdb29e4c0985457bab279a6db744d661530  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vdmovimiento" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="db319335-74d2-4f9f-91c9-629a635ddf71">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="CODMOV" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT MOV.CODMOV,MOV.TAREA,MOV.CODRECURSO,MOV.CODCONCE,MOV.CODUBIORI,MOV.CODMATORI,MOV.CODUBIDEST,MOV.CODMATDEST,MOV.CODART,MOV.CANTIDAD,MOV.CODLOT,
+              ART.DESART,ART.UNIEMB,ART.EMBCONT,
+              UBIO.CODAREA CODAREAO,UBID.CODAREA CODAREAD
+     FROM VDMOVIM MOV,VDARTIC ART,VDUBICA UBIO,VDUBICA UBID
+     WHERE MOV.CODUBIORI=UBIO.CODUBI AND MOV.CODUBIDEST=UBID.CODUBI AND MOV.CODART=ART.CODART AND
+                    MOV.CODMOV= $P{CODMOV}]]>
+	</queryString>
+	<field name="CODMOV" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CODMOV"/>
+	</field>
+	<field name="TAREA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TAREA"/>
+	</field>
+	<field name="CODRECURSO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODRECURSO"/>
+	</field>
+	<field name="CODCONCE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODCONCE"/>
+	</field>
+	<field name="CODUBIORI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODUBIORI"/>
+	</field>
+	<field name="CODMATORI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODMATORI"/>
+	</field>
+	<field name="CODUBIDEST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODUBIDEST"/>
+	</field>
+	<field name="CODMATDEST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODMATDEST"/>
+	</field>
+	<field name="CODART" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODART"/>
+	</field>
+	<field name="CANTIDAD" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CANTIDAD"/>
+	</field>
+	<field name="CODLOT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODLOT"/>
+	</field>
+	<field name="DESART" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESART"/>
+	</field>
+	<field name="UNIEMB" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="UNIEMB"/>
+	</field>
+	<field name="EMBCONT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="EMBCONT"/>
+	</field>
+	<field name="CODAREAO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODAREAO"/>
+	</field>
+	<field name="CODAREAD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODAREAD"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="375" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="280" y="120" width="218" height="75" uuid="5ad06d63-f63a-4495-9eca-f934368a1ba4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="24" y="120" width="246" height="75" uuid="3a2a508e-d85b-49fc-9741-3a286c17c362"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="60" width="528" height="270" uuid="321ed215-2ea7-482f-b56b-337cd01ec3b3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="7" width="212" height="20" uuid="f1d31963-0e36-48a1-8011-71818c061ffe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTADO DE MOVIMIENTO]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="460" y="6" width="100" height="15" uuid="3ae05ee7-e587-4365-84cb-40e86c0497f3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement x="460" y="22" width="100" height="15" uuid="477ce425-72bb-4c3f-b952-be2946a67d21">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="77" width="90" height="15" uuid="58f24f03-a0a0-4827-8c57-b032d7a41493">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA["MOVIMIENTO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="77" width="40" height="15" uuid="0f4f5d4a-3d94-4652-8259-6b7a1b6e5638">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODMOV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="77" width="50" height="15" uuid="9718e67a-5e92-4942-80ca-48815fce2afc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TAREA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="77" width="70" height="15" uuid="f5e52343-d751-413f-9f8a-a5852db323f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TAREA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="284" y="77" width="70" height="15" uuid="ba8bf7a2-d077-45da-8f83-9c2f922d8690">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[CONCEPTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="362" y="77" width="50" height="15" uuid="65e0dcbd-4f86-4068-a02b-395ae8a5b186">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODCONCE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="411" y="77" width="55" height="15" uuid="17a5d7b0-565f-4ea7-ada4-5c7f9d0a246c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[RECURSO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="469" y="77" width="50" height="15" uuid="816aa760-6912-4575-91e8-5c4debbc094a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODRECURSO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="145" width="70" height="15" uuid="601f2ae0-7ba0-4579-b04c-beb7d41de775">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[UBICACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="145" width="70" height="15" uuid="cc631d3c-29c2-41f4-a565-090152739f0f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[UBICACION]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="145" width="75" height="15" uuid="66831713-04af-4b2d-9eef-71f06e89985e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODUBIORI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="145" width="60" height="15" uuid="c1df7ded-8467-4cae-9234-720fb891857c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODAREAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="145" width="60" height="15" uuid="dec9f6f9-a5a5-4ab5-9802-faaa19734edd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODUBIDEST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="145" width="60" height="15" uuid="cf9ac731-53ae-440d-a4e5-45d24e56e2c9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODAREAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="180" width="65" height="15" uuid="7daca781-2089-4000-9bac-fb8fc57eea10">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MATRICULA"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="180" width="60" height="15" uuid="7873193e-5e3c-44d6-baae-4f97e074f6cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODMATORI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="180" width="65" height="15" uuid="89f0c8ae-edfb-422c-ab94-20bc96fdccb9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MATRICULA"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="180" width="60" height="15" uuid="e0209389-f0de-435c-817d-0ee5b555db3e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODMATDEST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="220" width="60" height="15" uuid="dfe3d27c-ae13-4c33-b4f7-b255ce04a398">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ARTICULO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="220" width="60" height="15" uuid="c7071966-42d5-4641-a85c-de62ad3f416a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODART}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="220" width="308" height="15" uuid="c851388a-e102-4d0c-b13e-f80442f5a4bf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESART}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="260" width="60" height="15" uuid="4517c4e9-ee40-47a5-bc81-e258a9fa025f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LOTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="260" width="60" height="15" uuid="7c9205bd-a7f0-4dee-b719-cafefdcb81a2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODLOT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="260" width="60" height="15" uuid="fb841f0a-0dcd-4035-b77e-ac8597bdb03f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CANTIDAD"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="300" width="80" height="15" uuid="f0124163-987c-4201-b2c8-ade6cdf81dd3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["UNID X CAJA"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="115" y="300" width="60" height="15" uuid="38a92b37-1d74-4439-8a47-1d76906fe687">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIEMB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="300" width="90" height="15" uuid="6caec961-e580-487b-b980-8b435bed7895">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CAJAS X PALET"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="287" y="300" width="60" height="15" uuid="6356ac56-693f-4f70-b098-ae2a1d07b904">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMBCONT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="93" y="125" width="80" height="20" uuid="645c635a-a704-4a2c-9824-683304d840ed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORIGEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="125" width="80" height="20" uuid="74d66136-b0dc-475d-afeb-0b9cf0f4a45f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESTINO]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="287" y="260" width="60" height="15" uuid="cbca8361-82c2-42e2-892f-63805c74b271">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

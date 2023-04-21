@@ -1,0 +1,16 @@
+MANTENIMIENTO DE TRADUCCIONES
+Texto                               Tipo  M Trad                             Entorno
+_1000______________________________ _20__ _ _1000___________________________ _1000____________________________
+|
+
+TABLA=VDTRADUCE
+REGPAG=40
+CAMPO=TEXTOORIG,MIXED
+CAMPO=TIPO
+CAMPO=MARCATEXTO
+CAMPO=TRADUCCION
+CAMPO=ENTORNOTRAD,MIXED
+
+CURSOR=CCOPIATRAD SELECT :TEXTOORIG TRADUCCION FROM DUAL;
+
+TECLA=F8,FDESIGNACION("CCOPIATRAD","")

@@ -1,0 +1,6756 @@
+Terminals unused in grammar
+
+   FTRIGER
+   LISTA
+   LEXEOF
+   TITULOCAMPO
+
+
+Gramática
+
+    0 $accept: modulo $end
+
+    1 modulo: lista_frm
+    2       | menu
+    3       | cuerpo_bloque
+
+    4 lista_frm: definidor_frm lista_frm
+    5          | /* vacío */
+
+    6 definidor_frm: definidor_campo
+    7              | triger_form
+    8              | INCLUDECSS '=' cadena_parser
+    9              | INCLUDEFICHEROCSS '=' cadena_parser
+   10              | INCLUDEHTML '=' cadena_parser
+   11              | INCLUDEFICHEROHTML '=' cadena_parser
+   12              | definidor_bloque
+
+   13 triger_form: PREFORM '=' definidor_triger
+   14            | POSTFORM '=' definidor_triger
+   15            | PRECOMMIT '=' definidor_triger
+   16            | POSTCOMMIT '=' definidor_triger
+   17            | PREROLLBACK '=' definidor_triger
+   18            | POSTROLLBACK '=' definidor_triger
+
+   19 unacadena_parser: LEXCADENA
+   20                 | LEXCADENA cadena_parser
+
+   21 cadena_parser: unacadena_parser
+
+   22 texto_sql: TEXTO_SQL
+
+   23 definidor_campo: nombre_campo modificadores_campo
+
+   24 nombrecampo: IDENTIFICADOR
+   25            | CAMPO
+   26            | TABLA
+   27            | FICHERO
+
+   28 nombre_campo: CAMPO '=' nombrecampo
+
+   29 definidor_bloque: nombre_bloque cuerpo_bloque ENDBLOQUE
+   30                 | nombre_bloqueinter modificadores_bloque ENDBLOQUE
+   31                 | nombre_bloquepan cuerpo_bloque ENDBLOQUE
+
+   32 nombre_bloqueinter: BEGINBLOQUEFRM '=' IDENTIFICADOR
+
+   33 nombre_bloquepan: BEGINBLOQUEPAN '=' IDENTIFICADOR
+
+   34 nombre_bloque: BEGINBLOQUE '=' IDENTIFICADOR
+
+   35 pintado_pantalla: PINTADO_PANTALLA
+
+   36 cuerpo_bloque: pintado_pantalla modificadores_bloque
+
+   37 modificadores_bloque: modificadores_bloque modificador_bloque
+   38                     | /* vacío */
+
+   39 nombre_tecla: IDENTIFICADOR
+   40             | NUMERO
+
+   41 modificador_bloque: PADRE '=' IDENTIFICADOR
+   42                   | TABLA '=' IDENTIFICADOR
+   43                   | TABLA '=' IDENTIFICADOR IDENTIFICADOR
+   44                   | EXTRAPARSER '(' cadena_parser ',' cadena_parser ')'
+   45                   | NOROWID
+   46                   | POSX '=' NUMERO
+   47                   | POSY '=' NUMERO
+   48                   | INCLUDETDCSS '=' cadena_parser
+   49                   | INCLUDECSS '=' cadena_parser
+   50                   | INCLUDEFICHEROCSS '=' cadena_parser
+   51                   | INCLUDEHTML '=' cadena_parser
+   52                   | INCLUDEFICHEROHTML '=' cadena_parser
+   53                   | WMARCOFRAME
+   54                   | WMARCOPESTANNA
+   55                   | WSINMARCO
+   56                   | WPLEGADO
+   57                   | WDESPLEGADO
+   58                   | WPOSX '=' NUMERO
+   59                   | WPOSY '=' NUMERO
+   60                   | WLONX '=' NUMERO
+   61                   | WLONY '=' NUMERO
+   62                   | WREGPAG '=' NUMERO
+   63                   | WPIXELX '=' NUMERO
+   64                   | WPIXELY '=' NUMERO
+   65                   | WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+   66                   | LEXCOLOR '=' IDENTIFICADOR
+   67                   | UPPER
+   68                   | LOWER
+   69                   | MIXED
+   70                   | definidor_titulo
+   71                   | REGPAG '=' NUMERO
+   72                   | TIMEOUT '=' definidor_triger ',' NUMERO
+   73                   | PRETECLA '=' nombre_tecla ',' definidor_triger
+   74                   | POSTTECLA '=' nombre_tecla ',' definidor_triger
+   75                   | TECLA '=' nombre_tecla ',' definidor_triger
+   76                   | proteccion_bloque
+   77                   | modificador_oracle
+   78                   | AQUERY
+   79                   | PQUERY
+   80                   | TQUERY
+   81                   | SOLOQUERY
+   82                   | modificador_online
+   83                   | definidor_campo
+   84                   | definidor_cursor
+   85                   | PREINSERT '=' definidor_triger
+   86                   | CONTEXTUAL '=' definidor_triger
+   87                   | POSTINSERT '=' definidor_triger
+   88                   | PREUPDATE '=' definidor_triger
+   89                   | POSTUPDATE '=' definidor_triger
+   90                   | PREDELETE '=' definidor_triger
+   91                   | POSTDELETE '=' definidor_triger
+   92                   | FINQUERY '=' definidor_triger
+   93                   | PREBLOQUE '=' definidor_triger
+   94                   | POSTBLOQUE '=' definidor_triger
+   95                   | PREQUERY '=' definidor_triger
+   96                   | POSTQUERY '=' definidor_triger
+   97                   | PREREGISTRO '=' definidor_triger
+   98                   | POSTREGISTRO '=' definidor_triger
+   99                   | PRECOMMIT '=' definidor_triger
+  100                   | POSTCOMMIT '=' definidor_triger
+  101                   | PREROLLBACK '=' definidor_triger
+  102                   | POSTROLLBACK '=' definidor_triger
+  103                   | PREPINTA '=' definidor_triger
+  104                   | POSTPINTA '=' definidor_triger
+  105                   | ONPINTA '=' definidor_triger
+  106                   | ONCLICK '=' definidor_triger
+  107                   | ONRIGHTCLICK '=' definidor_triger
+  108                   | ONCENTERCLICK '=' definidor_triger
+  109                   | ONMOUSEOVER '=' definidor_triger
+  110                   | ONMOUSEOUT '=' definidor_triger
+  111                   | ONDBCLICK '=' definidor_triger
+  112                   | ONMOUSEMOVE '=' definidor_triger
+  113                   | WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+  114                   | definidor_boton
+  115                   | BOTONERA '=' IDENTIFICADOR
+  116                   | BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+  117                   | INCLUDE '=' IDENTIFICADOR
+  118                   | AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+  119                   | SIDEBAROCULTO
+  120                   | SIDEBARVISIBLE
+  121                   | COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+  122 modificador_boton: INCLUDECSS '=' cadena_parser
+  123                  | ESTILOCSS '=' cadena_parser
+  124                  | BOTONOCULTO '=' NUMERO
+  125                  | BOTONDISABLED '=' NUMERO
+
+  126 modificadores_boton: ',' modificador_boton modificadores_boton
+  127                    | /* vacío */
+
+  128 nombre_boton: BOTON '=' IDENTIFICADOR ','
+
+  129 nombre_boton_dupl: BOTON '=' IDENTIFICADOR
+
+  130 definidor_boton: nombre_boton_dupl
+  131                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+  133 lista_botones: ',' IDENTIFICADOR lista_botones
+  134              | /* vacío */
+
+  135 identificador_triger: IDENTIFICADOR
+
+  136 definicion_triger: lista_mod_triger identificador_triger
+  137                  | lista_mod_triger identificador_triger '(' lista_parametros ')'
+  138                  | TNULL
+
+  139 modificador_triger: '-'
+  140                   | '$'
+  141                   | '%'
+  142                   | '@'
+  143                   | '+'
+  144                   | '!'
+  145                   | '&'
+
+  146 lista_mod_triger: modificador_triger lista_mod_triger
+  147                 | /* vacío */
+
+  148 triger_protegido: condicion_proteccion ',' definicion_triger
+  149                 | definicion_triger
+
+  150 definidor_triger: triger_protegido
+
+  151 lista_parametros: parametro
+  152                 | lista_parametros ',' parametro
+
+  153 parametro: cadena_parser
+  154          | definicion_triger
+
+  155 modificadores_campo: ',' modificador_campo modificadores_campo
+  156                    | /* vacío */
+
+  157 lista_privilegios: cadena_parser
+  158                  | cadena_parser ',' lista_privilegios
+
+  159 condicion_proteccion: PROTECT
+  160                     | PROTECT '(' lista_privilegios ')'
+
+  161 modificador_where: WHERE '='
+
+  162 opciones_combox: cadena_parser
+  163                | cadena_parser ',' opciones_combox
+
+  164 modificador_campo: NOENTER
+  165                  | NOENTER '(' lista_privilegios ')'
+  166                  | INCLUDECSS '=' cadena_parser
+  167                  | ESTILOCSS '=' cadena_parser
+  168                  | NOINPUT
+  169                  | NOINPUT '(' lista_privilegios ')'
+  170                  | modificador_where texto_sql
+  171                  | AUTOENTER
+  172                  | UPPER
+  173                  | LOWER
+  174                  | MIXED
+  175                  | TRADUCIBLE
+  176                  | TRADUCIBLE '(' cadena_parser ')'
+  177                  | TOOLTIP '(' cadena_parser ')'
+  178                  | FUNTOOLTIP '=' definidor_triger
+  179                  | NOPREF
+  180                  | AUXILIAR
+  181                  | NOUPDATE
+  182                  | NOUPDATE '(' lista_privilegios ')'
+  183                  | UPDATE
+  184                  | UPDATE '(' lista_privilegios ')'
+  185                  | SCAN
+  186                  | SCAN '(' NUMERO ')'
+  187                  | PREFIJO '=' IDENTIFICADOR
+  188                  | AUTOTRANSMIT
+  189                  | condicion_proteccion
+  190                  | DISPLAY
+  191                  | DISPLAY '(' lista_privilegios ')'
+  192                  | VIRTUAL
+  193                  | VIRTUAL '(' cadena_parser ')'
+  194                  | OCULTO
+  195                  | cadena_parser
+  196                  | TITULO '(' cadena_parser ')'
+  197                  | WPOSX '=' NUMERO
+  198                  | WPOSY '=' NUMERO
+  199                  | WLONX '=' NUMERO
+  200                  | WLONY '=' NUMERO
+  201                  | POSTCHANGE '=' definidor_triger
+  202                  | CONTEXTUAL '=' definidor_triger
+  203                  | PREFIELD '=' definidor_triger
+  204                  | POSTFIELD '=' definidor_triger
+  205                  | PREPINTA '=' definidor_triger
+  206                  | POSTPINTA '=' definidor_triger
+  207                  | CONVIERTE '=' definidor_triger ';' definidor_triger
+  208                  | ONPINTA '=' definidor_triger
+  209                  | ONCLICK '=' definidor_triger
+  210                  | ONRIGHTCLICK '=' definidor_triger
+  211                  | ONCENTERCLICK '=' definidor_triger
+  212                  | ONMOUSEOVER '=' definidor_triger
+  213                  | ONMOUSEOUT '=' definidor_triger
+  214                  | ONDBCLICK '=' definidor_triger
+  215                  | ONMOUSEMOVE '=' definidor_triger
+  216                  | CHECKBOX '(' cadena_parser ',' cadena_parser ')'
+  217                  | COMBOX '(' opciones_combox ')'
+  218                  | COMBOXMULTIPLE '(' opciones_combox ')'
+  219                  | COMBOXREADONLY
+  220                  | COMBOXINDEX '=' NUMERO
+  221                  | COMBOXREGPAG '=' NUMERO
+  222                  | TECLA '=' nombre_tecla ',' definidor_triger
+  223                  | REGPAG '=' NUMERO
+  224                  | FICHERO
+  225                  | FICHERO '(' cadena_parser ')'
+
+  226 modificador_oracle: nombre_modificador_oracle texto_sql
+
+  227 nombre_modificador_oracle: WHERE '='
+  228                          | ORDERBY '='
+  229                          | GROUPBY '='
+  230                          | HAVING '='
+  231                          | SELECT '='
+
+  232 modificador_online: nombre_modificador_online TEXTO_ONLINE
+
+  233 nombre_modificador_online: ONLINE '='
+
+  234 palabra_protegida: NOINSERT
+  235                  | NOENTER
+  236                  | NODELETE
+  237                  | NOUPDATE
+  238                  | NOORAINS
+  239                  | NOORADEL
+  240                  | NOCOMMIT
+  241                  | NOLOCK
+  242                  | NOQUERY
+  243                  | UPDATE
+  244                  | INSERT
+  245                  | PDELETE
+  246                  | SICOMMIT
+
+  247 proteccion_bloque: palabra_protegida
+  248                  | palabra_protegida ',' condicion_proteccion
+  249                  | condicion_proteccion
+
+  250 nombre_titulo: TITULO '='
+  251              | AYUDA '='
+
+  252 definidor_titulo: nombre_titulo TEXTO_TITULO
+
+  253 definidor_cursor: nombre_cursor texto_sql
+
+  254 nombre_cursor: CURSOR '=' IDENTIFICADOR
+
+  255 menu: lista_opciones
+
+  256 lista_opciones: opcion_menu lista_opciones
+  257               | opcion_menu
+
+  258 nombre_triger: cadena_parser
+
+  259 triger_cadenas: nombre_triger
+  260               | nombre_triger ',' lista_parametros
+
+  261 opcion_menu: OPMENU ',' triger_cadenas
+  262            | OPMENU ',' definidor_triger
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+'!' (33) 144
+'$' (36) 140
+'%' (37) 141
+'&' (38) 145
+'(' (40) 44 65 118 121 137 160 165 169 176 177 182 184 186 191 193
+    196 216 217 218 225
+')' (41) 44 65 118 121 137 160 165 169 176 177 182 184 186 191 193
+    196 216 217 218 225
+'+' (43) 143
+',' (44) 44 65 72 73 74 75 113 116 118 121 126 128 131 132 133 148
+    152 155 158 163 216 222 248 260 261 262
+'-' (45) 139
+';' (59) 207
+'=' (61) 8 9 10 11 13 14 15 16 17 18 28 32 33 34 41 42 43 46 47 48
+    49 50 51 52 58 59 60 61 62 63 64 66 71 72 73 74 75 85 86 87 88
+    89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107
+    108 109 110 111 112 113 115 116 117 122 123 124 125 128 129 161
+    166 167 178 187 197 198 199 200 201 202 203 204 205 206 207 208
+    209 210 211 212 213 214 215 220 221 222 223 227 228 229 230 231
+    233 250 251 254
+'@' (64) 142
+error (256)
+PINTADO_PANTALLA (258) 35
+OPMENU (259) 261 262
+TEXTO_SQL (260) 22
+TEXTO_TITULO (261) 252
+TEXTO_ONLINE (262) 232
+PREINSERT (263) 85
+POSTINSERT (264) 87
+PREUPDATE (265) 88
+POSTUPDATE (266) 89
+PREDELETE (267) 90
+POSTDELETE (268) 91
+PREQUERY (269) 95
+POSTQUERY (270) 96
+FINQUERY (271) 92
+PREREGISTRO (272) 97
+POSTREGISTRO (273) 98
+PREBLOQUE (274) 93
+POSTBLOQUE (275) 94
+PREFORM (276) 13
+POSTFORM (277) 14
+PRECOMMIT (278) 15 99
+POSTCOMMIT (279) 16 100
+PREROLLBACK (280) 17 101
+POSTROLLBACK (281) 18 102
+BEGINBLOQUE (282) 34
+BEGINBLOQUEFRM (283) 32
+BEGINBLOQUEPAN (284) 33
+ENDBLOQUE (285) 29 30 31
+PADRE (286) 41
+TABLA (287) 26 42 43
+EXTRAPARSER (288) 44
+AYUDA (289) 251
+ONLINE (290) 233
+POSX (291) 46
+POSY (292) 47
+LEXCOLOR (293) 66
+TITULO (294) 196 250
+REGPAG (295) 71 223
+CAMPO (296) 25 28
+TECLA (297) 75 222
+CONTEXTUAL (298) 86 202
+FTRIGER (299)
+WHERE (300) 161 227
+ORDERBY (301) 228
+GROUPBY (302) 229
+HAVING (303) 230
+SELECT (304) 231
+CURSOR (305) 254
+NOINSERT (306) 234
+NOORAINS (307) 238
+NOORADEL (308) 239
+NOUPDATE (309) 181 182 237
+NODELETE (310) 236
+NOCOMMIT (311) 240
+UPDATE (312) 183 184 243
+INSERT (313) 244
+PDELETE (314) 245
+SICOMMIT (315) 246
+NOQUERY (316) 242
+NOLOCK (317) 241
+AQUERY (318) 78
+PQUERY (319) 79
+TQUERY (320) 80
+SOLOQUERY (321) 81
+TIMEOUT (322) 72
+NOENTER (323) 164 165 235
+NOINPUT (324) 168 169
+AUTOENTER (325) 171
+UPPER (326) 67 172
+LOWER (327) 68 173
+MIXED (328) 69 174
+AUXILIAR (329) 180
+VIRTUAL (330) 192 193
+OCULTO (331) 194
+LISTA (332)
+NOPREF (333) 179
+PREFIJO (334) 187
+SCAN (335) 185 186
+AUTOTRANSMIT (336) 188
+POSTCHANGE (337) 201
+PREFIELD (338) 203
+POSTFIELD (339) 204
+PROTECT (340) 159 160
+DISPLAY (341) 190 191
+PREPINTA (342) 103 205
+POSTPINTA (343) 104 206
+ONPINTA (344) 105 208
+TRADUCIBLE (345) 175 176
+TOOLTIP (346) 177
+FUNTOOLTIP (347) 178
+BOTON (348) 128 129
+BOTONERA (349) 115 116
+NOROWID (350) 45
+TNULL (351) 138
+IDENTIFICADOR (352) 24 32 33 34 39 41 42 43 66 113 115 116 117 118
+    121 128 129 131 132 133 135 187 254
+LEXCADENA (353) 19 20
+NUMERO (354) 40 46 47 58 59 60 61 62 63 64 65 71 72 113 116 118 121
+    124 125 131 132 186 197 198 199 200 220 221 223
+LEXEOF (355)
+CHECKBOX (356) 216
+ONCLICK (357) 106 209
+ONRIGHTCLICK (358) 107 210
+ONCENTERCLICK (359) 108 211
+ONMOUSEOVER (360) 109 212
+ONMOUSEOUT (361) 110 213
+ONDBCLICK (362) 111 214
+ONMOUSEMOVE (363) 112 215
+TITULOCAMPO (364)
+COMBOX (365) 217
+COMBOXINDEX (366) 220
+COMBOXREGPAG (367) 221
+CONVIERTE (368) 207
+WPOSX (369) 58 197
+WPOSY (370) 59 198
+WLONX (371) 60 199
+WLONY (372) 61 200
+WREGPAG (373) 62
+WPIXELX (374) 63
+WPIXELY (375) 64
+INCLUDECSS (376) 8 49 122 166
+INCLUDEHTML (377) 10 51
+ESTILOCSS (378) 123 167
+COMBOXMULTIPLE (379) 218
+WFRAME (380) 65
+COMBOXREADONLY (381) 219
+WPLEGADO (382) 56
+WDESPLEGADO (383) 57
+WGRAFICA (384) 113
+INCLUDEFICHEROCSS (385) 9 50
+INCLUDETDCSS (386) 48
+WMARCOFRAME (387) 53
+WMARCOPESTANNA (388) 54
+WSINMARCO (389) 55
+BOTONOCULTO (390) 124
+BOTONDISABLED (391) 125
+INCLUDEFICHEROHTML (392) 11 52
+PRETECLA (393) 73
+POSTTECLA (394) 74
+AJAX (395) 118
+SIDEBAROCULTO (396) 119
+SIDEBARVISIBLE (397) 120
+COMPONENTE (398) 121
+FICHERO (399) 27 224 225
+INCLUDE (400) 117
+
+
+No terminales con las reglas donde aparecen
+
+$accept (158)
+    en la izquierda: 0
+modulo (159)
+    en la izquierda: 1 2 3, en la derecha: 0
+lista_frm (160)
+    en la izquierda: 4 5, en la derecha: 1 4
+definidor_frm (161)
+    en la izquierda: 6 7 8 9 10 11 12, en la derecha: 4
+triger_form (162)
+    en la izquierda: 13 14 15 16 17 18, en la derecha: 7
+unacadena_parser (163)
+    en la izquierda: 19 20, en la derecha: 21
+cadena_parser (164)
+    en la izquierda: 21, en la derecha: 8 9 10 11 20 44 48 49 50 51
+    52 65 118 121 122 123 131 132 153 157 158 162 163 166 167 176 177
+    193 195 196 216 225 258
+texto_sql (165)
+    en la izquierda: 22, en la derecha: 170 226 253
+definidor_campo (166)
+    en la izquierda: 23, en la derecha: 6 83
+nombrecampo (167)
+    en la izquierda: 24 25 26 27, en la derecha: 28
+nombre_campo (168)
+    en la izquierda: 28, en la derecha: 23
+definidor_bloque (169)
+    en la izquierda: 29 30 31, en la derecha: 12
+nombre_bloqueinter (170)
+    en la izquierda: 32, en la derecha: 30
+nombre_bloquepan (171)
+    en la izquierda: 33, en la derecha: 31
+nombre_bloque (172)
+    en la izquierda: 34, en la derecha: 29
+pintado_pantalla (173)
+    en la izquierda: 35, en la derecha: 36
+cuerpo_bloque (174)
+    en la izquierda: 36, en la derecha: 3 29 31
+modificadores_bloque (175)
+    en la izquierda: 37 38, en la derecha: 30 36 37
+nombre_tecla (176)
+    en la izquierda: 39 40, en la derecha: 73 74 75 131 132 222
+modificador_bloque (177)
+    en la izquierda: 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56
+    57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77
+    78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98
+    99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114
+    115 116 117 118 119 120 121, en la derecha: 37
+modificador_boton (178)
+    en la izquierda: 122 123 124 125, en la derecha: 126
+modificadores_boton (179)
+    en la izquierda: 126 127, en la derecha: 126 131 132
+nombre_boton (180)
+    en la izquierda: 128, en la derecha: 131 132
+nombre_boton_dupl (181)
+    en la izquierda: 129, en la derecha: 130
+definidor_boton (182)
+    en la izquierda: 130 131 132, en la derecha: 114
+lista_botones (183)
+    en la izquierda: 133 134, en la derecha: 116 133
+identificador_triger (184)
+    en la izquierda: 135, en la derecha: 136 137
+definicion_triger (185)
+    en la izquierda: 136 137 138, en la derecha: 148 149 154
+modificador_triger (186)
+    en la izquierda: 139 140 141 142 143 144 145, en la derecha: 146
+lista_mod_triger (187)
+    en la izquierda: 146 147, en la derecha: 136 137 146
+triger_protegido (188)
+    en la izquierda: 148 149, en la derecha: 150
+definidor_triger (189)
+    en la izquierda: 150, en la derecha: 13 14 15 16 17 18 72 73 74
+    75 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103
+    104 105 106 107 108 109 110 111 112 178 201 202 203 204 205 206
+    207 208 209 210 211 212 213 214 215 222 262
+lista_parametros (190)
+    en la izquierda: 151 152, en la derecha: 137 152 260
+parametro (191)
+    en la izquierda: 153 154, en la derecha: 151 152
+modificadores_campo (192)
+    en la izquierda: 155 156, en la derecha: 23 155
+lista_privilegios (193)
+    en la izquierda: 157 158, en la derecha: 158 160 165 169 182 184
+    191
+condicion_proteccion (194)
+    en la izquierda: 159 160, en la derecha: 148 189 248 249
+modificador_where (195)
+    en la izquierda: 161, en la derecha: 170
+opciones_combox (196)
+    en la izquierda: 162 163, en la derecha: 163 217 218
+modificador_campo (197)
+    en la izquierda: 164 165 166 167 168 169 170 171 172 173 174 175
+    176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191
+    192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207
+    208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223
+    224 225, en la derecha: 155
+modificador_oracle (198)
+    en la izquierda: 226, en la derecha: 77
+nombre_modificador_oracle (199)
+    en la izquierda: 227 228 229 230 231, en la derecha: 226
+modificador_online (200)
+    en la izquierda: 232, en la derecha: 82
+nombre_modificador_online (201)
+    en la izquierda: 233, en la derecha: 232
+palabra_protegida (202)
+    en la izquierda: 234 235 236 237 238 239 240 241 242 243 244 245
+    246, en la derecha: 247 248
+proteccion_bloque (203)
+    en la izquierda: 247 248 249, en la derecha: 76
+nombre_titulo (204)
+    en la izquierda: 250 251, en la derecha: 252
+definidor_titulo (205)
+    en la izquierda: 252, en la derecha: 70
+definidor_cursor (206)
+    en la izquierda: 253, en la derecha: 84
+nombre_cursor (207)
+    en la izquierda: 254, en la derecha: 253
+menu (208)
+    en la izquierda: 255, en la derecha: 2
+lista_opciones (209)
+    en la izquierda: 256 257, en la derecha: 255 256
+nombre_triger (210)
+    en la izquierda: 258, en la derecha: 259 260
+triger_cadenas (211)
+    en la izquierda: 259 260, en la derecha: 261
+opcion_menu (212)
+    en la izquierda: 261 262, en la derecha: 256 257
+
+
+estado 0
+
+    0 $accept: . modulo $end
+
+    PINTADO_PANTALLA    desplazar e ir al estado 1
+    OPMENU              desplazar e ir al estado 2
+    PREFORM             desplazar e ir al estado 3
+    POSTFORM            desplazar e ir al estado 4
+    PRECOMMIT           desplazar e ir al estado 5
+    POSTCOMMIT          desplazar e ir al estado 6
+    PREROLLBACK         desplazar e ir al estado 7
+    POSTROLLBACK        desplazar e ir al estado 8
+    BEGINBLOQUE         desplazar e ir al estado 9
+    BEGINBLOQUEFRM      desplazar e ir al estado 10
+    BEGINBLOQUEPAN      desplazar e ir al estado 11
+    CAMPO               desplazar e ir al estado 12
+    INCLUDECSS          desplazar e ir al estado 13
+    INCLUDEHTML         desplazar e ir al estado 14
+    INCLUDEFICHEROCSS   desplazar e ir al estado 15
+    INCLUDEFICHEROHTML  desplazar e ir al estado 16
+
+    $default  reduce usando la regla 5 (lista_frm)
+
+    modulo              ir al estado 17
+    lista_frm           ir al estado 18
+    definidor_frm       ir al estado 19
+    triger_form         ir al estado 20
+    definidor_campo     ir al estado 21
+    nombre_campo        ir al estado 22
+    definidor_bloque    ir al estado 23
+    nombre_bloqueinter  ir al estado 24
+    nombre_bloquepan    ir al estado 25
+    nombre_bloque       ir al estado 26
+    pintado_pantalla    ir al estado 27
+    cuerpo_bloque       ir al estado 28
+    menu                ir al estado 29
+    lista_opciones      ir al estado 30
+    opcion_menu         ir al estado 31
+
+
+estado 1
+
+   35 pintado_pantalla: PINTADO_PANTALLA .
+
+    $default  reduce usando la regla 35 (pintado_pantalla)
+
+
+estado 2
+
+  261 opcion_menu: OPMENU . ',' triger_cadenas
+  262            | OPMENU . ',' definidor_triger
+
+    ','  desplazar e ir al estado 32
+
+
+estado 3
+
+   13 triger_form: PREFORM . '=' definidor_triger
+
+    '='  desplazar e ir al estado 33
+
+
+estado 4
+
+   14 triger_form: POSTFORM . '=' definidor_triger
+
+    '='  desplazar e ir al estado 34
+
+
+estado 5
+
+   15 triger_form: PRECOMMIT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 35
+
+
+estado 6
+
+   16 triger_form: POSTCOMMIT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 36
+
+
+estado 7
+
+   17 triger_form: PREROLLBACK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 37
+
+
+estado 8
+
+   18 triger_form: POSTROLLBACK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 38
+
+
+estado 9
+
+   34 nombre_bloque: BEGINBLOQUE . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 39
+
+
+estado 10
+
+   32 nombre_bloqueinter: BEGINBLOQUEFRM . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 40
+
+
+estado 11
+
+   33 nombre_bloquepan: BEGINBLOQUEPAN . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 41
+
+
+estado 12
+
+   28 nombre_campo: CAMPO . '=' nombrecampo
+
+    '='  desplazar e ir al estado 42
+
+
+estado 13
+
+    8 definidor_frm: INCLUDECSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 43
+
+
+estado 14
+
+   10 definidor_frm: INCLUDEHTML . '=' cadena_parser
+
+    '='  desplazar e ir al estado 44
+
+
+estado 15
+
+    9 definidor_frm: INCLUDEFICHEROCSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 45
+
+
+estado 16
+
+   11 definidor_frm: INCLUDEFICHEROHTML . '=' cadena_parser
+
+    '='  desplazar e ir al estado 46
+
+
+estado 17
+
+    0 $accept: modulo . $end
+
+    $end  desplazar e ir al estado 47
+
+
+estado 18
+
+    1 modulo: lista_frm .
+
+    $default  reduce usando la regla 1 (modulo)
+
+
+estado 19
+
+    4 lista_frm: definidor_frm . lista_frm
+
+    PREFORM             desplazar e ir al estado 3
+    POSTFORM            desplazar e ir al estado 4
+    PRECOMMIT           desplazar e ir al estado 5
+    POSTCOMMIT          desplazar e ir al estado 6
+    PREROLLBACK         desplazar e ir al estado 7
+    POSTROLLBACK        desplazar e ir al estado 8
+    BEGINBLOQUE         desplazar e ir al estado 9
+    BEGINBLOQUEFRM      desplazar e ir al estado 10
+    BEGINBLOQUEPAN      desplazar e ir al estado 11
+    CAMPO               desplazar e ir al estado 12
+    INCLUDECSS          desplazar e ir al estado 13
+    INCLUDEHTML         desplazar e ir al estado 14
+    INCLUDEFICHEROCSS   desplazar e ir al estado 15
+    INCLUDEFICHEROHTML  desplazar e ir al estado 16
+
+    $default  reduce usando la regla 5 (lista_frm)
+
+    lista_frm           ir al estado 48
+    definidor_frm       ir al estado 19
+    triger_form         ir al estado 20
+    definidor_campo     ir al estado 21
+    nombre_campo        ir al estado 22
+    definidor_bloque    ir al estado 23
+    nombre_bloqueinter  ir al estado 24
+    nombre_bloquepan    ir al estado 25
+    nombre_bloque       ir al estado 26
+
+
+estado 20
+
+    7 definidor_frm: triger_form .
+
+    $default  reduce usando la regla 7 (definidor_frm)
+
+
+estado 21
+
+    6 definidor_frm: definidor_campo .
+
+    $default  reduce usando la regla 6 (definidor_frm)
+
+
+estado 22
+
+   23 definidor_campo: nombre_campo . modificadores_campo
+
+    ','  desplazar e ir al estado 49
+
+    $default  reduce usando la regla 156 (modificadores_campo)
+
+    modificadores_campo  ir al estado 50
+
+
+estado 23
+
+   12 definidor_frm: definidor_bloque .
+
+    $default  reduce usando la regla 12 (definidor_frm)
+
+
+estado 24
+
+   30 definidor_bloque: nombre_bloqueinter . modificadores_bloque ENDBLOQUE
+
+    $default  reduce usando la regla 38 (modificadores_bloque)
+
+    modificadores_bloque  ir al estado 51
+
+
+estado 25
+
+   31 definidor_bloque: nombre_bloquepan . cuerpo_bloque ENDBLOQUE
+
+    PINTADO_PANTALLA  desplazar e ir al estado 1
+
+    pintado_pantalla  ir al estado 27
+    cuerpo_bloque     ir al estado 52
+
+
+estado 26
+
+   29 definidor_bloque: nombre_bloque . cuerpo_bloque ENDBLOQUE
+
+    PINTADO_PANTALLA  desplazar e ir al estado 1
+
+    pintado_pantalla  ir al estado 27
+    cuerpo_bloque     ir al estado 53
+
+
+estado 27
+
+   36 cuerpo_bloque: pintado_pantalla . modificadores_bloque
+
+    $default  reduce usando la regla 38 (modificadores_bloque)
+
+    modificadores_bloque  ir al estado 54
+
+
+estado 28
+
+    3 modulo: cuerpo_bloque .
+
+    $default  reduce usando la regla 3 (modulo)
+
+
+estado 29
+
+    2 modulo: menu .
+
+    $default  reduce usando la regla 2 (modulo)
+
+
+estado 30
+
+  255 menu: lista_opciones .
+
+    $default  reduce usando la regla 255 (menu)
+
+
+estado 31
+
+  256 lista_opciones: opcion_menu . lista_opciones
+  257               | opcion_menu .
+
+    OPMENU  desplazar e ir al estado 2
+
+    $default  reduce usando la regla 257 (lista_opciones)
+
+    lista_opciones  ir al estado 55
+    opcion_menu     ir al estado 31
+
+
+estado 32
+
+  261 opcion_menu: OPMENU ',' . triger_cadenas
+  262            | OPMENU ',' . definidor_triger
+
+    PROTECT    desplazar e ir al estado 56
+    TNULL      desplazar e ir al estado 57
+    LEXCADENA  desplazar e ir al estado 58
+    '-'        desplazar e ir al estado 59
+    '$'        desplazar e ir al estado 60
+    '%'        desplazar e ir al estado 61
+    '@'        desplazar e ir al estado 62
+    '+'        desplazar e ir al estado 63
+    '!'        desplazar e ir al estado 64
+    '&'        desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    unacadena_parser      ir al estado 66
+    cadena_parser         ir al estado 67
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 72
+    condicion_proteccion  ir al estado 73
+    nombre_triger         ir al estado 74
+    triger_cadenas        ir al estado 75
+
+
+estado 33
+
+   13 triger_form: PREFORM '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 76
+    condicion_proteccion  ir al estado 73
+
+
+estado 34
+
+   14 triger_form: POSTFORM '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 77
+    condicion_proteccion  ir al estado 73
+
+
+estado 35
+
+   15 triger_form: PRECOMMIT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 78
+    condicion_proteccion  ir al estado 73
+
+
+estado 36
+
+   16 triger_form: POSTCOMMIT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 79
+    condicion_proteccion  ir al estado 73
+
+
+estado 37
+
+   17 triger_form: PREROLLBACK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 80
+    condicion_proteccion  ir al estado 73
+
+
+estado 38
+
+   18 triger_form: POSTROLLBACK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 81
+    condicion_proteccion  ir al estado 73
+
+
+estado 39
+
+   34 nombre_bloque: BEGINBLOQUE '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 82
+
+
+estado 40
+
+   32 nombre_bloqueinter: BEGINBLOQUEFRM '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 83
+
+
+estado 41
+
+   33 nombre_bloquepan: BEGINBLOQUEPAN '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 84
+
+
+estado 42
+
+   28 nombre_campo: CAMPO '=' . nombrecampo
+
+    TABLA          desplazar e ir al estado 85
+    CAMPO          desplazar e ir al estado 86
+    IDENTIFICADOR  desplazar e ir al estado 87
+    FICHERO        desplazar e ir al estado 88
+
+    nombrecampo  ir al estado 89
+
+
+estado 43
+
+    8 definidor_frm: INCLUDECSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 90
+
+
+estado 44
+
+   10 definidor_frm: INCLUDEHTML '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 91
+
+
+estado 45
+
+    9 definidor_frm: INCLUDEFICHEROCSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 92
+
+
+estado 46
+
+   11 definidor_frm: INCLUDEFICHEROHTML '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 93
+
+
+estado 47
+
+    0 $accept: modulo $end .
+
+    $default  aceptar
+
+
+estado 48
+
+    4 lista_frm: definidor_frm lista_frm .
+
+    $default  reduce usando la regla 4 (lista_frm)
+
+
+estado 49
+
+  155 modificadores_campo: ',' . modificador_campo modificadores_campo
+
+    TITULO          desplazar e ir al estado 94
+    REGPAG          desplazar e ir al estado 95
+    TECLA           desplazar e ir al estado 96
+    CONTEXTUAL      desplazar e ir al estado 97
+    WHERE           desplazar e ir al estado 98
+    NOUPDATE        desplazar e ir al estado 99
+    UPDATE          desplazar e ir al estado 100
+    NOENTER         desplazar e ir al estado 101
+    NOINPUT         desplazar e ir al estado 102
+    AUTOENTER       desplazar e ir al estado 103
+    UPPER           desplazar e ir al estado 104
+    LOWER           desplazar e ir al estado 105
+    MIXED           desplazar e ir al estado 106
+    AUXILIAR        desplazar e ir al estado 107
+    VIRTUAL         desplazar e ir al estado 108
+    OCULTO          desplazar e ir al estado 109
+    NOPREF          desplazar e ir al estado 110
+    PREFIJO         desplazar e ir al estado 111
+    SCAN            desplazar e ir al estado 112
+    AUTOTRANSMIT    desplazar e ir al estado 113
+    POSTCHANGE      desplazar e ir al estado 114
+    PREFIELD        desplazar e ir al estado 115
+    POSTFIELD       desplazar e ir al estado 116
+    PROTECT         desplazar e ir al estado 56
+    DISPLAY         desplazar e ir al estado 117
+    PREPINTA        desplazar e ir al estado 118
+    POSTPINTA       desplazar e ir al estado 119
+    ONPINTA         desplazar e ir al estado 120
+    TRADUCIBLE      desplazar e ir al estado 121
+    TOOLTIP         desplazar e ir al estado 122
+    FUNTOOLTIP      desplazar e ir al estado 123
+    LEXCADENA       desplazar e ir al estado 58
+    CHECKBOX        desplazar e ir al estado 124
+    ONCLICK         desplazar e ir al estado 125
+    ONRIGHTCLICK    desplazar e ir al estado 126
+    ONCENTERCLICK   desplazar e ir al estado 127
+    ONMOUSEOVER     desplazar e ir al estado 128
+    ONMOUSEOUT      desplazar e ir al estado 129
+    ONDBCLICK       desplazar e ir al estado 130
+    ONMOUSEMOVE     desplazar e ir al estado 131
+    COMBOX          desplazar e ir al estado 132
+    COMBOXINDEX     desplazar e ir al estado 133
+    COMBOXREGPAG    desplazar e ir al estado 134
+    CONVIERTE       desplazar e ir al estado 135
+    WPOSX           desplazar e ir al estado 136
+    WPOSY           desplazar e ir al estado 137
+    WLONX           desplazar e ir al estado 138
+    WLONY           desplazar e ir al estado 139
+    INCLUDECSS      desplazar e ir al estado 140
+    ESTILOCSS       desplazar e ir al estado 141
+    COMBOXMULTIPLE  desplazar e ir al estado 142
+    COMBOXREADONLY  desplazar e ir al estado 143
+    FICHERO         desplazar e ir al estado 144
+
+    unacadena_parser      ir al estado 66
+    cadena_parser         ir al estado 145
+    condicion_proteccion  ir al estado 146
+    modificador_where     ir al estado 147
+    modificador_campo     ir al estado 148
+
+
+estado 50
+
+   23 definidor_campo: nombre_campo modificadores_campo .
+
+    $default  reduce usando la regla 23 (definidor_campo)
+
+
+estado 51
+
+   30 definidor_bloque: nombre_bloqueinter modificadores_bloque . ENDBLOQUE
+   37 modificadores_bloque: modificadores_bloque . modificador_bloque
+
+    PREINSERT           desplazar e ir al estado 149
+    POSTINSERT          desplazar e ir al estado 150
+    PREUPDATE           desplazar e ir al estado 151
+    POSTUPDATE          desplazar e ir al estado 152
+    PREDELETE           desplazar e ir al estado 153
+    POSTDELETE          desplazar e ir al estado 154
+    PREQUERY            desplazar e ir al estado 155
+    POSTQUERY           desplazar e ir al estado 156
+    FINQUERY            desplazar e ir al estado 157
+    PREREGISTRO         desplazar e ir al estado 158
+    POSTREGISTRO        desplazar e ir al estado 159
+    PREBLOQUE           desplazar e ir al estado 160
+    POSTBLOQUE          desplazar e ir al estado 161
+    PRECOMMIT           desplazar e ir al estado 162
+    POSTCOMMIT          desplazar e ir al estado 163
+    PREROLLBACK         desplazar e ir al estado 164
+    POSTROLLBACK        desplazar e ir al estado 165
+    ENDBLOQUE           desplazar e ir al estado 166
+    PADRE               desplazar e ir al estado 167
+    TABLA               desplazar e ir al estado 168
+    EXTRAPARSER         desplazar e ir al estado 169
+    AYUDA               desplazar e ir al estado 170
+    ONLINE              desplazar e ir al estado 171
+    POSX                desplazar e ir al estado 172
+    POSY                desplazar e ir al estado 173
+    LEXCOLOR            desplazar e ir al estado 174
+    TITULO              desplazar e ir al estado 175
+    REGPAG              desplazar e ir al estado 176
+    CAMPO               desplazar e ir al estado 12
+    TECLA               desplazar e ir al estado 177
+    CONTEXTUAL          desplazar e ir al estado 178
+    WHERE               desplazar e ir al estado 179
+    ORDERBY             desplazar e ir al estado 180
+    GROUPBY             desplazar e ir al estado 181
+    HAVING              desplazar e ir al estado 182
+    SELECT              desplazar e ir al estado 183
+    CURSOR              desplazar e ir al estado 184
+    NOINSERT            desplazar e ir al estado 185
+    NOORAINS            desplazar e ir al estado 186
+    NOORADEL            desplazar e ir al estado 187
+    NOUPDATE            desplazar e ir al estado 188
+    NODELETE            desplazar e ir al estado 189
+    NOCOMMIT            desplazar e ir al estado 190
+    UPDATE              desplazar e ir al estado 191
+    INSERT              desplazar e ir al estado 192
+    PDELETE             desplazar e ir al estado 193
+    SICOMMIT            desplazar e ir al estado 194
+    NOQUERY             desplazar e ir al estado 195
+    NOLOCK              desplazar e ir al estado 196
+    AQUERY              desplazar e ir al estado 197
+    PQUERY              desplazar e ir al estado 198
+    TQUERY              desplazar e ir al estado 199
+    SOLOQUERY           desplazar e ir al estado 200
+    TIMEOUT             desplazar e ir al estado 201
+    NOENTER             desplazar e ir al estado 202
+    UPPER               desplazar e ir al estado 203
+    LOWER               desplazar e ir al estado 204
+    MIXED               desplazar e ir al estado 205
+    PROTECT             desplazar e ir al estado 56
+    PREPINTA            desplazar e ir al estado 206
+    POSTPINTA           desplazar e ir al estado 207
+    ONPINTA             desplazar e ir al estado 208
+    BOTON               desplazar e ir al estado 209
+    BOTONERA            desplazar e ir al estado 210
+    NOROWID             desplazar e ir al estado 211
+    ONCLICK             desplazar e ir al estado 212
+    ONRIGHTCLICK        desplazar e ir al estado 213
+    ONCENTERCLICK       desplazar e ir al estado 214
+    ONMOUSEOVER         desplazar e ir al estado 215
+    ONMOUSEOUT          desplazar e ir al estado 216
+    ONDBCLICK           desplazar e ir al estado 217
+    ONMOUSEMOVE         desplazar e ir al estado 218
+    WPOSX               desplazar e ir al estado 219
+    WPOSY               desplazar e ir al estado 220
+    WLONX               desplazar e ir al estado 221
+    WLONY               desplazar e ir al estado 222
+    WREGPAG             desplazar e ir al estado 223
+    WPIXELX             desplazar e ir al estado 224
+    WPIXELY             desplazar e ir al estado 225
+    INCLUDECSS          desplazar e ir al estado 226
+    INCLUDEHTML         desplazar e ir al estado 227
+    WFRAME              desplazar e ir al estado 228
+    WPLEGADO            desplazar e ir al estado 229
+    WDESPLEGADO         desplazar e ir al estado 230
+    WGRAFICA            desplazar e ir al estado 231
+    INCLUDEFICHEROCSS   desplazar e ir al estado 232
+    INCLUDETDCSS        desplazar e ir al estado 233
+    WMARCOFRAME         desplazar e ir al estado 234
+    WMARCOPESTANNA      desplazar e ir al estado 235
+    WSINMARCO           desplazar e ir al estado 236
+    INCLUDEFICHEROHTML  desplazar e ir al estado 237
+    PRETECLA            desplazar e ir al estado 238
+    POSTTECLA           desplazar e ir al estado 239
+    AJAX                desplazar e ir al estado 240
+    SIDEBAROCULTO       desplazar e ir al estado 241
+    SIDEBARVISIBLE      desplazar e ir al estado 242
+    COMPONENTE          desplazar e ir al estado 243
+    INCLUDE             desplazar e ir al estado 244
+
+    definidor_campo            ir al estado 245
+    nombre_campo               ir al estado 22
+    modificador_bloque         ir al estado 246
+    nombre_boton               ir al estado 247
+    nombre_boton_dupl          ir al estado 248
+    definidor_boton            ir al estado 249
+    condicion_proteccion       ir al estado 250
+    modificador_oracle         ir al estado 251
+    nombre_modificador_oracle  ir al estado 252
+    modificador_online         ir al estado 253
+    nombre_modificador_online  ir al estado 254
+    palabra_protegida          ir al estado 255
+    proteccion_bloque          ir al estado 256
+    nombre_titulo              ir al estado 257
+    definidor_titulo           ir al estado 258
+    definidor_cursor           ir al estado 259
+    nombre_cursor              ir al estado 260
+
+
+estado 52
+
+   31 definidor_bloque: nombre_bloquepan cuerpo_bloque . ENDBLOQUE
+
+    ENDBLOQUE  desplazar e ir al estado 261
+
+
+estado 53
+
+   29 definidor_bloque: nombre_bloque cuerpo_bloque . ENDBLOQUE
+
+    ENDBLOQUE  desplazar e ir al estado 262
+
+
+estado 54
+
+   36 cuerpo_bloque: pintado_pantalla modificadores_bloque .
+   37 modificadores_bloque: modificadores_bloque . modificador_bloque
+
+    PREINSERT           desplazar e ir al estado 149
+    POSTINSERT          desplazar e ir al estado 150
+    PREUPDATE           desplazar e ir al estado 151
+    POSTUPDATE          desplazar e ir al estado 152
+    PREDELETE           desplazar e ir al estado 153
+    POSTDELETE          desplazar e ir al estado 154
+    PREQUERY            desplazar e ir al estado 155
+    POSTQUERY           desplazar e ir al estado 156
+    FINQUERY            desplazar e ir al estado 157
+    PREREGISTRO         desplazar e ir al estado 158
+    POSTREGISTRO        desplazar e ir al estado 159
+    PREBLOQUE           desplazar e ir al estado 160
+    POSTBLOQUE          desplazar e ir al estado 161
+    PRECOMMIT           desplazar e ir al estado 162
+    POSTCOMMIT          desplazar e ir al estado 163
+    PREROLLBACK         desplazar e ir al estado 164
+    POSTROLLBACK        desplazar e ir al estado 165
+    PADRE               desplazar e ir al estado 167
+    TABLA               desplazar e ir al estado 168
+    EXTRAPARSER         desplazar e ir al estado 169
+    AYUDA               desplazar e ir al estado 170
+    ONLINE              desplazar e ir al estado 171
+    POSX                desplazar e ir al estado 172
+    POSY                desplazar e ir al estado 173
+    LEXCOLOR            desplazar e ir al estado 174
+    TITULO              desplazar e ir al estado 175
+    REGPAG              desplazar e ir al estado 176
+    CAMPO               desplazar e ir al estado 12
+    TECLA               desplazar e ir al estado 177
+    CONTEXTUAL          desplazar e ir al estado 178
+    WHERE               desplazar e ir al estado 179
+    ORDERBY             desplazar e ir al estado 180
+    GROUPBY             desplazar e ir al estado 181
+    HAVING              desplazar e ir al estado 182
+    SELECT              desplazar e ir al estado 183
+    CURSOR              desplazar e ir al estado 184
+    NOINSERT            desplazar e ir al estado 185
+    NOORAINS            desplazar e ir al estado 186
+    NOORADEL            desplazar e ir al estado 187
+    NOUPDATE            desplazar e ir al estado 188
+    NODELETE            desplazar e ir al estado 189
+    NOCOMMIT            desplazar e ir al estado 190
+    UPDATE              desplazar e ir al estado 191
+    INSERT              desplazar e ir al estado 192
+    PDELETE             desplazar e ir al estado 193
+    SICOMMIT            desplazar e ir al estado 194
+    NOQUERY             desplazar e ir al estado 195
+    NOLOCK              desplazar e ir al estado 196
+    AQUERY              desplazar e ir al estado 197
+    PQUERY              desplazar e ir al estado 198
+    TQUERY              desplazar e ir al estado 199
+    SOLOQUERY           desplazar e ir al estado 200
+    TIMEOUT             desplazar e ir al estado 201
+    NOENTER             desplazar e ir al estado 202
+    UPPER               desplazar e ir al estado 203
+    LOWER               desplazar e ir al estado 204
+    MIXED               desplazar e ir al estado 205
+    PROTECT             desplazar e ir al estado 56
+    PREPINTA            desplazar e ir al estado 206
+    POSTPINTA           desplazar e ir al estado 207
+    ONPINTA             desplazar e ir al estado 208
+    BOTON               desplazar e ir al estado 209
+    BOTONERA            desplazar e ir al estado 210
+    NOROWID             desplazar e ir al estado 211
+    ONCLICK             desplazar e ir al estado 212
+    ONRIGHTCLICK        desplazar e ir al estado 213
+    ONCENTERCLICK       desplazar e ir al estado 214
+    ONMOUSEOVER         desplazar e ir al estado 215
+    ONMOUSEOUT          desplazar e ir al estado 216
+    ONDBCLICK           desplazar e ir al estado 217
+    ONMOUSEMOVE         desplazar e ir al estado 218
+    WPOSX               desplazar e ir al estado 219
+    WPOSY               desplazar e ir al estado 220
+    WLONX               desplazar e ir al estado 221
+    WLONY               desplazar e ir al estado 222
+    WREGPAG             desplazar e ir al estado 223
+    WPIXELX             desplazar e ir al estado 224
+    WPIXELY             desplazar e ir al estado 225
+    INCLUDECSS          desplazar e ir al estado 226
+    INCLUDEHTML         desplazar e ir al estado 227
+    WFRAME              desplazar e ir al estado 228
+    WPLEGADO            desplazar e ir al estado 229
+    WDESPLEGADO         desplazar e ir al estado 230
+    WGRAFICA            desplazar e ir al estado 231
+    INCLUDEFICHEROCSS   desplazar e ir al estado 232
+    INCLUDETDCSS        desplazar e ir al estado 233
+    WMARCOFRAME         desplazar e ir al estado 234
+    WMARCOPESTANNA      desplazar e ir al estado 235
+    WSINMARCO           desplazar e ir al estado 236
+    INCLUDEFICHEROHTML  desplazar e ir al estado 237
+    PRETECLA            desplazar e ir al estado 238
+    POSTTECLA           desplazar e ir al estado 239
+    AJAX                desplazar e ir al estado 240
+    SIDEBAROCULTO       desplazar e ir al estado 241
+    SIDEBARVISIBLE      desplazar e ir al estado 242
+    COMPONENTE          desplazar e ir al estado 243
+    INCLUDE             desplazar e ir al estado 244
+
+    $default  reduce usando la regla 36 (cuerpo_bloque)
+
+    definidor_campo            ir al estado 245
+    nombre_campo               ir al estado 22
+    modificador_bloque         ir al estado 246
+    nombre_boton               ir al estado 247
+    nombre_boton_dupl          ir al estado 248
+    definidor_boton            ir al estado 249
+    condicion_proteccion       ir al estado 250
+    modificador_oracle         ir al estado 251
+    nombre_modificador_oracle  ir al estado 252
+    modificador_online         ir al estado 253
+    nombre_modificador_online  ir al estado 254
+    palabra_protegida          ir al estado 255
+    proteccion_bloque          ir al estado 256
+    nombre_titulo              ir al estado 257
+    definidor_titulo           ir al estado 258
+    definidor_cursor           ir al estado 259
+    nombre_cursor              ir al estado 260
+
+
+estado 55
+
+  256 lista_opciones: opcion_menu lista_opciones .
+
+    $default  reduce usando la regla 256 (lista_opciones)
+
+
+estado 56
+
+  159 condicion_proteccion: PROTECT .
+  160                     | PROTECT . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 263
+
+    $default  reduce usando la regla 159 (condicion_proteccion)
+
+
+estado 57
+
+  138 definicion_triger: TNULL .
+
+    $default  reduce usando la regla 138 (definicion_triger)
+
+
+estado 58
+
+   19 unacadena_parser: LEXCADENA .
+   20                 | LEXCADENA . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    $default  reduce usando la regla 19 (unacadena_parser)
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 264
+
+
+estado 59
+
+  139 modificador_triger: '-' .
+
+    $default  reduce usando la regla 139 (modificador_triger)
+
+
+estado 60
+
+  140 modificador_triger: '$' .
+
+    $default  reduce usando la regla 140 (modificador_triger)
+
+
+estado 61
+
+  141 modificador_triger: '%' .
+
+    $default  reduce usando la regla 141 (modificador_triger)
+
+
+estado 62
+
+  142 modificador_triger: '@' .
+
+    $default  reduce usando la regla 142 (modificador_triger)
+
+
+estado 63
+
+  143 modificador_triger: '+' .
+
+    $default  reduce usando la regla 143 (modificador_triger)
+
+
+estado 64
+
+  144 modificador_triger: '!' .
+
+    $default  reduce usando la regla 144 (modificador_triger)
+
+
+estado 65
+
+  145 modificador_triger: '&' .
+
+    $default  reduce usando la regla 145 (modificador_triger)
+
+
+estado 66
+
+   21 cadena_parser: unacadena_parser .
+
+    $default  reduce usando la regla 21 (cadena_parser)
+
+
+estado 67
+
+  258 nombre_triger: cadena_parser .
+
+    $default  reduce usando la regla 258 (nombre_triger)
+
+
+estado 68
+
+  149 triger_protegido: definicion_triger .
+
+    $default  reduce usando la regla 149 (triger_protegido)
+
+
+estado 69
+
+  146 lista_mod_triger: modificador_triger . lista_mod_triger
+
+    '-'  desplazar e ir al estado 59
+    '$'  desplazar e ir al estado 60
+    '%'  desplazar e ir al estado 61
+    '@'  desplazar e ir al estado 62
+    '+'  desplazar e ir al estado 63
+    '!'  desplazar e ir al estado 64
+    '&'  desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    modificador_triger  ir al estado 69
+    lista_mod_triger    ir al estado 265
+
+
+estado 70
+
+  136 definicion_triger: lista_mod_triger . identificador_triger
+  137                  | lista_mod_triger . identificador_triger '(' lista_parametros ')'
+
+    IDENTIFICADOR  desplazar e ir al estado 266
+
+    identificador_triger  ir al estado 267
+
+
+estado 71
+
+  150 definidor_triger: triger_protegido .
+
+    $default  reduce usando la regla 150 (definidor_triger)
+
+
+estado 72
+
+  262 opcion_menu: OPMENU ',' definidor_triger .
+
+    $default  reduce usando la regla 262 (opcion_menu)
+
+
+estado 73
+
+  148 triger_protegido: condicion_proteccion . ',' definicion_triger
+
+    ','  desplazar e ir al estado 268
+
+
+estado 74
+
+  259 triger_cadenas: nombre_triger .
+  260               | nombre_triger . ',' lista_parametros
+
+    ','  desplazar e ir al estado 269
+
+    $default  reduce usando la regla 259 (triger_cadenas)
+
+
+estado 75
+
+  261 opcion_menu: OPMENU ',' triger_cadenas .
+
+    $default  reduce usando la regla 261 (opcion_menu)
+
+
+estado 76
+
+   13 triger_form: PREFORM '=' definidor_triger .
+
+    $default  reduce usando la regla 13 (triger_form)
+
+
+estado 77
+
+   14 triger_form: POSTFORM '=' definidor_triger .
+
+    $default  reduce usando la regla 14 (triger_form)
+
+
+estado 78
+
+   15 triger_form: PRECOMMIT '=' definidor_triger .
+
+    $default  reduce usando la regla 15 (triger_form)
+
+
+estado 79
+
+   16 triger_form: POSTCOMMIT '=' definidor_triger .
+
+    $default  reduce usando la regla 16 (triger_form)
+
+
+estado 80
+
+   17 triger_form: PREROLLBACK '=' definidor_triger .
+
+    $default  reduce usando la regla 17 (triger_form)
+
+
+estado 81
+
+   18 triger_form: POSTROLLBACK '=' definidor_triger .
+
+    $default  reduce usando la regla 18 (triger_form)
+
+
+estado 82
+
+   34 nombre_bloque: BEGINBLOQUE '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 34 (nombre_bloque)
+
+
+estado 83
+
+   32 nombre_bloqueinter: BEGINBLOQUEFRM '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 32 (nombre_bloqueinter)
+
+
+estado 84
+
+   33 nombre_bloquepan: BEGINBLOQUEPAN '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 33 (nombre_bloquepan)
+
+
+estado 85
+
+   26 nombrecampo: TABLA .
+
+    $default  reduce usando la regla 26 (nombrecampo)
+
+
+estado 86
+
+   25 nombrecampo: CAMPO .
+
+    $default  reduce usando la regla 25 (nombrecampo)
+
+
+estado 87
+
+   24 nombrecampo: IDENTIFICADOR .
+
+    $default  reduce usando la regla 24 (nombrecampo)
+
+
+estado 88
+
+   27 nombrecampo: FICHERO .
+
+    $default  reduce usando la regla 27 (nombrecampo)
+
+
+estado 89
+
+   28 nombre_campo: CAMPO '=' nombrecampo .
+
+    $default  reduce usando la regla 28 (nombre_campo)
+
+
+estado 90
+
+    8 definidor_frm: INCLUDECSS '=' cadena_parser .
+
+    $default  reduce usando la regla 8 (definidor_frm)
+
+
+estado 91
+
+   10 definidor_frm: INCLUDEHTML '=' cadena_parser .
+
+    $default  reduce usando la regla 10 (definidor_frm)
+
+
+estado 92
+
+    9 definidor_frm: INCLUDEFICHEROCSS '=' cadena_parser .
+
+    $default  reduce usando la regla 9 (definidor_frm)
+
+
+estado 93
+
+   11 definidor_frm: INCLUDEFICHEROHTML '=' cadena_parser .
+
+    $default  reduce usando la regla 11 (definidor_frm)
+
+
+estado 94
+
+  196 modificador_campo: TITULO . '(' cadena_parser ')'
+
+    '('  desplazar e ir al estado 270
+
+
+estado 95
+
+  223 modificador_campo: REGPAG . '=' NUMERO
+
+    '='  desplazar e ir al estado 271
+
+
+estado 96
+
+  222 modificador_campo: TECLA . '=' nombre_tecla ',' definidor_triger
+
+    '='  desplazar e ir al estado 272
+
+
+estado 97
+
+  202 modificador_campo: CONTEXTUAL . '=' definidor_triger
+
+    '='  desplazar e ir al estado 273
+
+
+estado 98
+
+  161 modificador_where: WHERE . '='
+
+    '='  desplazar e ir al estado 274
+
+
+estado 99
+
+  181 modificador_campo: NOUPDATE .
+  182                  | NOUPDATE . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 275
+
+    $default  reduce usando la regla 181 (modificador_campo)
+
+
+estado 100
+
+  183 modificador_campo: UPDATE .
+  184                  | UPDATE . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 276
+
+    $default  reduce usando la regla 183 (modificador_campo)
+
+
+estado 101
+
+  164 modificador_campo: NOENTER .
+  165                  | NOENTER . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 277
+
+    $default  reduce usando la regla 164 (modificador_campo)
+
+
+estado 102
+
+  168 modificador_campo: NOINPUT .
+  169                  | NOINPUT . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 278
+
+    $default  reduce usando la regla 168 (modificador_campo)
+
+
+estado 103
+
+  171 modificador_campo: AUTOENTER .
+
+    $default  reduce usando la regla 171 (modificador_campo)
+
+
+estado 104
+
+  172 modificador_campo: UPPER .
+
+    $default  reduce usando la regla 172 (modificador_campo)
+
+
+estado 105
+
+  173 modificador_campo: LOWER .
+
+    $default  reduce usando la regla 173 (modificador_campo)
+
+
+estado 106
+
+  174 modificador_campo: MIXED .
+
+    $default  reduce usando la regla 174 (modificador_campo)
+
+
+estado 107
+
+  180 modificador_campo: AUXILIAR .
+
+    $default  reduce usando la regla 180 (modificador_campo)
+
+
+estado 108
+
+  192 modificador_campo: VIRTUAL .
+  193                  | VIRTUAL . '(' cadena_parser ')'
+
+    '('  desplazar e ir al estado 279
+
+    $default  reduce usando la regla 192 (modificador_campo)
+
+
+estado 109
+
+  194 modificador_campo: OCULTO .
+
+    $default  reduce usando la regla 194 (modificador_campo)
+
+
+estado 110
+
+  179 modificador_campo: NOPREF .
+
+    $default  reduce usando la regla 179 (modificador_campo)
+
+
+estado 111
+
+  187 modificador_campo: PREFIJO . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 280
+
+
+estado 112
+
+  185 modificador_campo: SCAN .
+  186                  | SCAN . '(' NUMERO ')'
+
+    '('  desplazar e ir al estado 281
+
+    $default  reduce usando la regla 185 (modificador_campo)
+
+
+estado 113
+
+  188 modificador_campo: AUTOTRANSMIT .
+
+    $default  reduce usando la regla 188 (modificador_campo)
+
+
+estado 114
+
+  201 modificador_campo: POSTCHANGE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 282
+
+
+estado 115
+
+  203 modificador_campo: PREFIELD . '=' definidor_triger
+
+    '='  desplazar e ir al estado 283
+
+
+estado 116
+
+  204 modificador_campo: POSTFIELD . '=' definidor_triger
+
+    '='  desplazar e ir al estado 284
+
+
+estado 117
+
+  190 modificador_campo: DISPLAY .
+  191                  | DISPLAY . '(' lista_privilegios ')'
+
+    '('  desplazar e ir al estado 285
+
+    $default  reduce usando la regla 190 (modificador_campo)
+
+
+estado 118
+
+  205 modificador_campo: PREPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 286
+
+
+estado 119
+
+  206 modificador_campo: POSTPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 287
+
+
+estado 120
+
+  208 modificador_campo: ONPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 288
+
+
+estado 121
+
+  175 modificador_campo: TRADUCIBLE .
+  176                  | TRADUCIBLE . '(' cadena_parser ')'
+
+    '('  desplazar e ir al estado 289
+
+    $default  reduce usando la regla 175 (modificador_campo)
+
+
+estado 122
+
+  177 modificador_campo: TOOLTIP . '(' cadena_parser ')'
+
+    '('  desplazar e ir al estado 290
+
+
+estado 123
+
+  178 modificador_campo: FUNTOOLTIP . '=' definidor_triger
+
+    '='  desplazar e ir al estado 291
+
+
+estado 124
+
+  216 modificador_campo: CHECKBOX . '(' cadena_parser ',' cadena_parser ')'
+
+    '('  desplazar e ir al estado 292
+
+
+estado 125
+
+  209 modificador_campo: ONCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 293
+
+
+estado 126
+
+  210 modificador_campo: ONRIGHTCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 294
+
+
+estado 127
+
+  211 modificador_campo: ONCENTERCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 295
+
+
+estado 128
+
+  212 modificador_campo: ONMOUSEOVER . '=' definidor_triger
+
+    '='  desplazar e ir al estado 296
+
+
+estado 129
+
+  213 modificador_campo: ONMOUSEOUT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 297
+
+
+estado 130
+
+  214 modificador_campo: ONDBCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 298
+
+
+estado 131
+
+  215 modificador_campo: ONMOUSEMOVE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 299
+
+
+estado 132
+
+  217 modificador_campo: COMBOX . '(' opciones_combox ')'
+
+    '('  desplazar e ir al estado 300
+
+
+estado 133
+
+  220 modificador_campo: COMBOXINDEX . '=' NUMERO
+
+    '='  desplazar e ir al estado 301
+
+
+estado 134
+
+  221 modificador_campo: COMBOXREGPAG . '=' NUMERO
+
+    '='  desplazar e ir al estado 302
+
+
+estado 135
+
+  207 modificador_campo: CONVIERTE . '=' definidor_triger ';' definidor_triger
+
+    '='  desplazar e ir al estado 303
+
+
+estado 136
+
+  197 modificador_campo: WPOSX . '=' NUMERO
+
+    '='  desplazar e ir al estado 304
+
+
+estado 137
+
+  198 modificador_campo: WPOSY . '=' NUMERO
+
+    '='  desplazar e ir al estado 305
+
+
+estado 138
+
+  199 modificador_campo: WLONX . '=' NUMERO
+
+    '='  desplazar e ir al estado 306
+
+
+estado 139
+
+  200 modificador_campo: WLONY . '=' NUMERO
+
+    '='  desplazar e ir al estado 307
+
+
+estado 140
+
+  166 modificador_campo: INCLUDECSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 308
+
+
+estado 141
+
+  167 modificador_campo: ESTILOCSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 309
+
+
+estado 142
+
+  218 modificador_campo: COMBOXMULTIPLE . '(' opciones_combox ')'
+
+    '('  desplazar e ir al estado 310
+
+
+estado 143
+
+  219 modificador_campo: COMBOXREADONLY .
+
+    $default  reduce usando la regla 219 (modificador_campo)
+
+
+estado 144
+
+  224 modificador_campo: FICHERO .
+  225                  | FICHERO . '(' cadena_parser ')'
+
+    '('  desplazar e ir al estado 311
+
+    $default  reduce usando la regla 224 (modificador_campo)
+
+
+estado 145
+
+  195 modificador_campo: cadena_parser .
+
+    $default  reduce usando la regla 195 (modificador_campo)
+
+
+estado 146
+
+  189 modificador_campo: condicion_proteccion .
+
+    $default  reduce usando la regla 189 (modificador_campo)
+
+
+estado 147
+
+  170 modificador_campo: modificador_where . texto_sql
+
+    TEXTO_SQL  desplazar e ir al estado 312
+
+    texto_sql  ir al estado 313
+
+
+estado 148
+
+  155 modificadores_campo: ',' modificador_campo . modificadores_campo
+
+    ','  desplazar e ir al estado 49
+
+    $default  reduce usando la regla 156 (modificadores_campo)
+
+    modificadores_campo  ir al estado 314
+
+
+estado 149
+
+   85 modificador_bloque: PREINSERT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 315
+
+
+estado 150
+
+   87 modificador_bloque: POSTINSERT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 316
+
+
+estado 151
+
+   88 modificador_bloque: PREUPDATE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 317
+
+
+estado 152
+
+   89 modificador_bloque: POSTUPDATE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 318
+
+
+estado 153
+
+   90 modificador_bloque: PREDELETE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 319
+
+
+estado 154
+
+   91 modificador_bloque: POSTDELETE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 320
+
+
+estado 155
+
+   95 modificador_bloque: PREQUERY . '=' definidor_triger
+
+    '='  desplazar e ir al estado 321
+
+
+estado 156
+
+   96 modificador_bloque: POSTQUERY . '=' definidor_triger
+
+    '='  desplazar e ir al estado 322
+
+
+estado 157
+
+   92 modificador_bloque: FINQUERY . '=' definidor_triger
+
+    '='  desplazar e ir al estado 323
+
+
+estado 158
+
+   97 modificador_bloque: PREREGISTRO . '=' definidor_triger
+
+    '='  desplazar e ir al estado 324
+
+
+estado 159
+
+   98 modificador_bloque: POSTREGISTRO . '=' definidor_triger
+
+    '='  desplazar e ir al estado 325
+
+
+estado 160
+
+   93 modificador_bloque: PREBLOQUE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 326
+
+
+estado 161
+
+   94 modificador_bloque: POSTBLOQUE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 327
+
+
+estado 162
+
+   99 modificador_bloque: PRECOMMIT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 328
+
+
+estado 163
+
+  100 modificador_bloque: POSTCOMMIT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 329
+
+
+estado 164
+
+  101 modificador_bloque: PREROLLBACK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 330
+
+
+estado 165
+
+  102 modificador_bloque: POSTROLLBACK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 331
+
+
+estado 166
+
+   30 definidor_bloque: nombre_bloqueinter modificadores_bloque ENDBLOQUE .
+
+    $default  reduce usando la regla 30 (definidor_bloque)
+
+
+estado 167
+
+   41 modificador_bloque: PADRE . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 332
+
+
+estado 168
+
+   42 modificador_bloque: TABLA . '=' IDENTIFICADOR
+   43                   | TABLA . '=' IDENTIFICADOR IDENTIFICADOR
+
+    '='  desplazar e ir al estado 333
+
+
+estado 169
+
+   44 modificador_bloque: EXTRAPARSER . '(' cadena_parser ',' cadena_parser ')'
+
+    '('  desplazar e ir al estado 334
+
+
+estado 170
+
+  251 nombre_titulo: AYUDA . '='
+
+    '='  desplazar e ir al estado 335
+
+
+estado 171
+
+  233 nombre_modificador_online: ONLINE . '='
+
+    '='  desplazar e ir al estado 336
+
+
+estado 172
+
+   46 modificador_bloque: POSX . '=' NUMERO
+
+    '='  desplazar e ir al estado 337
+
+
+estado 173
+
+   47 modificador_bloque: POSY . '=' NUMERO
+
+    '='  desplazar e ir al estado 338
+
+
+estado 174
+
+   66 modificador_bloque: LEXCOLOR . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 339
+
+
+estado 175
+
+  250 nombre_titulo: TITULO . '='
+
+    '='  desplazar e ir al estado 340
+
+
+estado 176
+
+   71 modificador_bloque: REGPAG . '=' NUMERO
+
+    '='  desplazar e ir al estado 341
+
+
+estado 177
+
+   75 modificador_bloque: TECLA . '=' nombre_tecla ',' definidor_triger
+
+    '='  desplazar e ir al estado 342
+
+
+estado 178
+
+   86 modificador_bloque: CONTEXTUAL . '=' definidor_triger
+
+    '='  desplazar e ir al estado 343
+
+
+estado 179
+
+  227 nombre_modificador_oracle: WHERE . '='
+
+    '='  desplazar e ir al estado 344
+
+
+estado 180
+
+  228 nombre_modificador_oracle: ORDERBY . '='
+
+    '='  desplazar e ir al estado 345
+
+
+estado 181
+
+  229 nombre_modificador_oracle: GROUPBY . '='
+
+    '='  desplazar e ir al estado 346
+
+
+estado 182
+
+  230 nombre_modificador_oracle: HAVING . '='
+
+    '='  desplazar e ir al estado 347
+
+
+estado 183
+
+  231 nombre_modificador_oracle: SELECT . '='
+
+    '='  desplazar e ir al estado 348
+
+
+estado 184
+
+  254 nombre_cursor: CURSOR . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 349
+
+
+estado 185
+
+  234 palabra_protegida: NOINSERT .
+
+    $default  reduce usando la regla 234 (palabra_protegida)
+
+
+estado 186
+
+  238 palabra_protegida: NOORAINS .
+
+    $default  reduce usando la regla 238 (palabra_protegida)
+
+
+estado 187
+
+  239 palabra_protegida: NOORADEL .
+
+    $default  reduce usando la regla 239 (palabra_protegida)
+
+
+estado 188
+
+  237 palabra_protegida: NOUPDATE .
+
+    $default  reduce usando la regla 237 (palabra_protegida)
+
+
+estado 189
+
+  236 palabra_protegida: NODELETE .
+
+    $default  reduce usando la regla 236 (palabra_protegida)
+
+
+estado 190
+
+  240 palabra_protegida: NOCOMMIT .
+
+    $default  reduce usando la regla 240 (palabra_protegida)
+
+
+estado 191
+
+  243 palabra_protegida: UPDATE .
+
+    $default  reduce usando la regla 243 (palabra_protegida)
+
+
+estado 192
+
+  244 palabra_protegida: INSERT .
+
+    $default  reduce usando la regla 244 (palabra_protegida)
+
+
+estado 193
+
+  245 palabra_protegida: PDELETE .
+
+    $default  reduce usando la regla 245 (palabra_protegida)
+
+
+estado 194
+
+  246 palabra_protegida: SICOMMIT .
+
+    $default  reduce usando la regla 246 (palabra_protegida)
+
+
+estado 195
+
+  242 palabra_protegida: NOQUERY .
+
+    $default  reduce usando la regla 242 (palabra_protegida)
+
+
+estado 196
+
+  241 palabra_protegida: NOLOCK .
+
+    $default  reduce usando la regla 241 (palabra_protegida)
+
+
+estado 197
+
+   78 modificador_bloque: AQUERY .
+
+    $default  reduce usando la regla 78 (modificador_bloque)
+
+
+estado 198
+
+   79 modificador_bloque: PQUERY .
+
+    $default  reduce usando la regla 79 (modificador_bloque)
+
+
+estado 199
+
+   80 modificador_bloque: TQUERY .
+
+    $default  reduce usando la regla 80 (modificador_bloque)
+
+
+estado 200
+
+   81 modificador_bloque: SOLOQUERY .
+
+    $default  reduce usando la regla 81 (modificador_bloque)
+
+
+estado 201
+
+   72 modificador_bloque: TIMEOUT . '=' definidor_triger ',' NUMERO
+
+    '='  desplazar e ir al estado 350
+
+
+estado 202
+
+  235 palabra_protegida: NOENTER .
+
+    $default  reduce usando la regla 235 (palabra_protegida)
+
+
+estado 203
+
+   67 modificador_bloque: UPPER .
+
+    $default  reduce usando la regla 67 (modificador_bloque)
+
+
+estado 204
+
+   68 modificador_bloque: LOWER .
+
+    $default  reduce usando la regla 68 (modificador_bloque)
+
+
+estado 205
+
+   69 modificador_bloque: MIXED .
+
+    $default  reduce usando la regla 69 (modificador_bloque)
+
+
+estado 206
+
+  103 modificador_bloque: PREPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 351
+
+
+estado 207
+
+  104 modificador_bloque: POSTPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 352
+
+
+estado 208
+
+  105 modificador_bloque: ONPINTA . '=' definidor_triger
+
+    '='  desplazar e ir al estado 353
+
+
+estado 209
+
+  128 nombre_boton: BOTON . '=' IDENTIFICADOR ','
+  129 nombre_boton_dupl: BOTON . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 354
+
+
+estado 210
+
+  115 modificador_bloque: BOTONERA . '=' IDENTIFICADOR
+  116                   | BOTONERA . '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    '='  desplazar e ir al estado 355
+
+
+estado 211
+
+   45 modificador_bloque: NOROWID .
+
+    $default  reduce usando la regla 45 (modificador_bloque)
+
+
+estado 212
+
+  106 modificador_bloque: ONCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 356
+
+
+estado 213
+
+  107 modificador_bloque: ONRIGHTCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 357
+
+
+estado 214
+
+  108 modificador_bloque: ONCENTERCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 358
+
+
+estado 215
+
+  109 modificador_bloque: ONMOUSEOVER . '=' definidor_triger
+
+    '='  desplazar e ir al estado 359
+
+
+estado 216
+
+  110 modificador_bloque: ONMOUSEOUT . '=' definidor_triger
+
+    '='  desplazar e ir al estado 360
+
+
+estado 217
+
+  111 modificador_bloque: ONDBCLICK . '=' definidor_triger
+
+    '='  desplazar e ir al estado 361
+
+
+estado 218
+
+  112 modificador_bloque: ONMOUSEMOVE . '=' definidor_triger
+
+    '='  desplazar e ir al estado 362
+
+
+estado 219
+
+   58 modificador_bloque: WPOSX . '=' NUMERO
+
+    '='  desplazar e ir al estado 363
+
+
+estado 220
+
+   59 modificador_bloque: WPOSY . '=' NUMERO
+
+    '='  desplazar e ir al estado 364
+
+
+estado 221
+
+   60 modificador_bloque: WLONX . '=' NUMERO
+
+    '='  desplazar e ir al estado 365
+
+
+estado 222
+
+   61 modificador_bloque: WLONY . '=' NUMERO
+
+    '='  desplazar e ir al estado 366
+
+
+estado 223
+
+   62 modificador_bloque: WREGPAG . '=' NUMERO
+
+    '='  desplazar e ir al estado 367
+
+
+estado 224
+
+   63 modificador_bloque: WPIXELX . '=' NUMERO
+
+    '='  desplazar e ir al estado 368
+
+
+estado 225
+
+   64 modificador_bloque: WPIXELY . '=' NUMERO
+
+    '='  desplazar e ir al estado 369
+
+
+estado 226
+
+   49 modificador_bloque: INCLUDECSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 370
+
+
+estado 227
+
+   51 modificador_bloque: INCLUDEHTML . '=' cadena_parser
+
+    '='  desplazar e ir al estado 371
+
+
+estado 228
+
+   65 modificador_bloque: WFRAME . '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    '('  desplazar e ir al estado 372
+
+
+estado 229
+
+   56 modificador_bloque: WPLEGADO .
+
+    $default  reduce usando la regla 56 (modificador_bloque)
+
+
+estado 230
+
+   57 modificador_bloque: WDESPLEGADO .
+
+    $default  reduce usando la regla 57 (modificador_bloque)
+
+
+estado 231
+
+  113 modificador_bloque: WGRAFICA . '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    '='  desplazar e ir al estado 373
+
+
+estado 232
+
+   50 modificador_bloque: INCLUDEFICHEROCSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 374
+
+
+estado 233
+
+   48 modificador_bloque: INCLUDETDCSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 375
+
+
+estado 234
+
+   53 modificador_bloque: WMARCOFRAME .
+
+    $default  reduce usando la regla 53 (modificador_bloque)
+
+
+estado 235
+
+   54 modificador_bloque: WMARCOPESTANNA .
+
+    $default  reduce usando la regla 54 (modificador_bloque)
+
+
+estado 236
+
+   55 modificador_bloque: WSINMARCO .
+
+    $default  reduce usando la regla 55 (modificador_bloque)
+
+
+estado 237
+
+   52 modificador_bloque: INCLUDEFICHEROHTML . '=' cadena_parser
+
+    '='  desplazar e ir al estado 376
+
+
+estado 238
+
+   73 modificador_bloque: PRETECLA . '=' nombre_tecla ',' definidor_triger
+
+    '='  desplazar e ir al estado 377
+
+
+estado 239
+
+   74 modificador_bloque: POSTTECLA . '=' nombre_tecla ',' definidor_triger
+
+    '='  desplazar e ir al estado 378
+
+
+estado 240
+
+  118 modificador_bloque: AJAX . '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    '('  desplazar e ir al estado 379
+
+
+estado 241
+
+  119 modificador_bloque: SIDEBAROCULTO .
+
+    $default  reduce usando la regla 119 (modificador_bloque)
+
+
+estado 242
+
+  120 modificador_bloque: SIDEBARVISIBLE .
+
+    $default  reduce usando la regla 120 (modificador_bloque)
+
+
+estado 243
+
+  121 modificador_bloque: COMPONENTE . '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    '('  desplazar e ir al estado 380
+
+
+estado 244
+
+  117 modificador_bloque: INCLUDE . '=' IDENTIFICADOR
+
+    '='  desplazar e ir al estado 381
+
+
+estado 245
+
+   83 modificador_bloque: definidor_campo .
+
+    $default  reduce usando la regla 83 (modificador_bloque)
+
+
+estado 246
+
+   37 modificadores_bloque: modificadores_bloque modificador_bloque .
+
+    $default  reduce usando la regla 37 (modificadores_bloque)
+
+
+estado 247
+
+  131 definidor_boton: nombre_boton . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    NUMERO  desplazar e ir al estado 382
+
+
+estado 248
+
+  130 definidor_boton: nombre_boton_dupl .
+
+    $default  reduce usando la regla 130 (definidor_boton)
+
+
+estado 249
+
+  114 modificador_bloque: definidor_boton .
+
+    $default  reduce usando la regla 114 (modificador_bloque)
+
+
+estado 250
+
+  249 proteccion_bloque: condicion_proteccion .
+
+    $default  reduce usando la regla 249 (proteccion_bloque)
+
+
+estado 251
+
+   77 modificador_bloque: modificador_oracle .
+
+    $default  reduce usando la regla 77 (modificador_bloque)
+
+
+estado 252
+
+  226 modificador_oracle: nombre_modificador_oracle . texto_sql
+
+    TEXTO_SQL  desplazar e ir al estado 312
+
+    texto_sql  ir al estado 383
+
+
+estado 253
+
+   82 modificador_bloque: modificador_online .
+
+    $default  reduce usando la regla 82 (modificador_bloque)
+
+
+estado 254
+
+  232 modificador_online: nombre_modificador_online . TEXTO_ONLINE
+
+    TEXTO_ONLINE  desplazar e ir al estado 384
+
+
+estado 255
+
+  247 proteccion_bloque: palabra_protegida .
+  248                  | palabra_protegida . ',' condicion_proteccion
+
+    ','  desplazar e ir al estado 385
+
+    $default  reduce usando la regla 247 (proteccion_bloque)
+
+
+estado 256
+
+   76 modificador_bloque: proteccion_bloque .
+
+    $default  reduce usando la regla 76 (modificador_bloque)
+
+
+estado 257
+
+  252 definidor_titulo: nombre_titulo . TEXTO_TITULO
+
+    TEXTO_TITULO  desplazar e ir al estado 386
+
+
+estado 258
+
+   70 modificador_bloque: definidor_titulo .
+
+    $default  reduce usando la regla 70 (modificador_bloque)
+
+
+estado 259
+
+   84 modificador_bloque: definidor_cursor .
+
+    $default  reduce usando la regla 84 (modificador_bloque)
+
+
+estado 260
+
+  253 definidor_cursor: nombre_cursor . texto_sql
+
+    TEXTO_SQL  desplazar e ir al estado 312
+
+    texto_sql  ir al estado 387
+
+
+estado 261
+
+   31 definidor_bloque: nombre_bloquepan cuerpo_bloque ENDBLOQUE .
+
+    $default  reduce usando la regla 31 (definidor_bloque)
+
+
+estado 262
+
+   29 definidor_bloque: nombre_bloque cuerpo_bloque ENDBLOQUE .
+
+    $default  reduce usando la regla 29 (definidor_bloque)
+
+
+estado 263
+
+  160 condicion_proteccion: PROTECT '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 389
+
+
+estado 264
+
+   20 unacadena_parser: LEXCADENA cadena_parser .
+
+    $default  reduce usando la regla 20 (unacadena_parser)
+
+
+estado 265
+
+  146 lista_mod_triger: modificador_triger lista_mod_triger .
+
+    $default  reduce usando la regla 146 (lista_mod_triger)
+
+
+estado 266
+
+  135 identificador_triger: IDENTIFICADOR .
+
+    $default  reduce usando la regla 135 (identificador_triger)
+
+
+estado 267
+
+  136 definicion_triger: lista_mod_triger identificador_triger .
+  137                  | lista_mod_triger identificador_triger . '(' lista_parametros ')'
+
+    '('  desplazar e ir al estado 390
+
+    $default  reduce usando la regla 136 (definicion_triger)
+
+
+estado 268
+
+  148 triger_protegido: condicion_proteccion ',' . definicion_triger
+
+    TNULL  desplazar e ir al estado 57
+    '-'    desplazar e ir al estado 59
+    '$'    desplazar e ir al estado 60
+    '%'    desplazar e ir al estado 61
+    '@'    desplazar e ir al estado 62
+    '+'    desplazar e ir al estado 63
+    '!'    desplazar e ir al estado 64
+    '&'    desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger   ir al estado 391
+    modificador_triger  ir al estado 69
+    lista_mod_triger    ir al estado 70
+
+
+estado 269
+
+  260 triger_cadenas: nombre_triger ',' . lista_parametros
+
+    TNULL      desplazar e ir al estado 57
+    LEXCADENA  desplazar e ir al estado 58
+    '-'        desplazar e ir al estado 59
+    '$'        desplazar e ir al estado 60
+    '%'        desplazar e ir al estado 61
+    '@'        desplazar e ir al estado 62
+    '+'        desplazar e ir al estado 63
+    '!'        desplazar e ir al estado 64
+    '&'        desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    unacadena_parser    ir al estado 66
+    cadena_parser       ir al estado 392
+    definicion_triger   ir al estado 393
+    modificador_triger  ir al estado 69
+    lista_mod_triger    ir al estado 70
+    lista_parametros    ir al estado 394
+    parametro           ir al estado 395
+
+
+estado 270
+
+  196 modificador_campo: TITULO '(' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 396
+
+
+estado 271
+
+  223 modificador_campo: REGPAG '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 397
+
+
+estado 272
+
+  222 modificador_campo: TECLA '=' . nombre_tecla ',' definidor_triger
+
+    IDENTIFICADOR  desplazar e ir al estado 398
+    NUMERO         desplazar e ir al estado 399
+
+    nombre_tecla  ir al estado 400
+
+
+estado 273
+
+  202 modificador_campo: CONTEXTUAL '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 401
+    condicion_proteccion  ir al estado 73
+
+
+estado 274
+
+  161 modificador_where: WHERE '=' .
+
+    $default  reduce usando la regla 161 (modificador_where)
+
+
+estado 275
+
+  182 modificador_campo: NOUPDATE '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 402
+
+
+estado 276
+
+  184 modificador_campo: UPDATE '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 403
+
+
+estado 277
+
+  165 modificador_campo: NOENTER '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 404
+
+
+estado 278
+
+  169 modificador_campo: NOINPUT '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 405
+
+
+estado 279
+
+  193 modificador_campo: VIRTUAL '(' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 406
+
+
+estado 280
+
+  187 modificador_campo: PREFIJO '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 407
+
+
+estado 281
+
+  186 modificador_campo: SCAN '(' . NUMERO ')'
+
+    NUMERO  desplazar e ir al estado 408
+
+
+estado 282
+
+  201 modificador_campo: POSTCHANGE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 409
+    condicion_proteccion  ir al estado 73
+
+
+estado 283
+
+  203 modificador_campo: PREFIELD '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 410
+    condicion_proteccion  ir al estado 73
+
+
+estado 284
+
+  204 modificador_campo: POSTFIELD '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 411
+    condicion_proteccion  ir al estado 73
+
+
+estado 285
+
+  191 modificador_campo: DISPLAY '(' . lista_privilegios ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 412
+
+
+estado 286
+
+  205 modificador_campo: PREPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 413
+    condicion_proteccion  ir al estado 73
+
+
+estado 287
+
+  206 modificador_campo: POSTPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 414
+    condicion_proteccion  ir al estado 73
+
+
+estado 288
+
+  208 modificador_campo: ONPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 415
+    condicion_proteccion  ir al estado 73
+
+
+estado 289
+
+  176 modificador_campo: TRADUCIBLE '(' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 416
+
+
+estado 290
+
+  177 modificador_campo: TOOLTIP '(' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 417
+
+
+estado 291
+
+  178 modificador_campo: FUNTOOLTIP '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 418
+    condicion_proteccion  ir al estado 73
+
+
+estado 292
+
+  216 modificador_campo: CHECKBOX '(' . cadena_parser ',' cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 419
+
+
+estado 293
+
+  209 modificador_campo: ONCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 420
+    condicion_proteccion  ir al estado 73
+
+
+estado 294
+
+  210 modificador_campo: ONRIGHTCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 421
+    condicion_proteccion  ir al estado 73
+
+
+estado 295
+
+  211 modificador_campo: ONCENTERCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 422
+    condicion_proteccion  ir al estado 73
+
+
+estado 296
+
+  212 modificador_campo: ONMOUSEOVER '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 423
+    condicion_proteccion  ir al estado 73
+
+
+estado 297
+
+  213 modificador_campo: ONMOUSEOUT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 424
+    condicion_proteccion  ir al estado 73
+
+
+estado 298
+
+  214 modificador_campo: ONDBCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 425
+    condicion_proteccion  ir al estado 73
+
+
+estado 299
+
+  215 modificador_campo: ONMOUSEMOVE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 426
+    condicion_proteccion  ir al estado 73
+
+
+estado 300
+
+  217 modificador_campo: COMBOX '(' . opciones_combox ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 427
+    opciones_combox   ir al estado 428
+
+
+estado 301
+
+  220 modificador_campo: COMBOXINDEX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 429
+
+
+estado 302
+
+  221 modificador_campo: COMBOXREGPAG '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 430
+
+
+estado 303
+
+  207 modificador_campo: CONVIERTE '=' . definidor_triger ';' definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 431
+    condicion_proteccion  ir al estado 73
+
+
+estado 304
+
+  197 modificador_campo: WPOSX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 432
+
+
+estado 305
+
+  198 modificador_campo: WPOSY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 433
+
+
+estado 306
+
+  199 modificador_campo: WLONX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 434
+
+
+estado 307
+
+  200 modificador_campo: WLONY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 435
+
+
+estado 308
+
+  166 modificador_campo: INCLUDECSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 436
+
+
+estado 309
+
+  167 modificador_campo: ESTILOCSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 437
+
+
+estado 310
+
+  218 modificador_campo: COMBOXMULTIPLE '(' . opciones_combox ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 427
+    opciones_combox   ir al estado 438
+
+
+estado 311
+
+  225 modificador_campo: FICHERO '(' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 439
+
+
+estado 312
+
+   22 texto_sql: TEXTO_SQL .
+
+    $default  reduce usando la regla 22 (texto_sql)
+
+
+estado 313
+
+  170 modificador_campo: modificador_where texto_sql .
+
+    $default  reduce usando la regla 170 (modificador_campo)
+
+
+estado 314
+
+  155 modificadores_campo: ',' modificador_campo modificadores_campo .
+
+    $default  reduce usando la regla 155 (modificadores_campo)
+
+
+estado 315
+
+   85 modificador_bloque: PREINSERT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 440
+    condicion_proteccion  ir al estado 73
+
+
+estado 316
+
+   87 modificador_bloque: POSTINSERT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 441
+    condicion_proteccion  ir al estado 73
+
+
+estado 317
+
+   88 modificador_bloque: PREUPDATE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 442
+    condicion_proteccion  ir al estado 73
+
+
+estado 318
+
+   89 modificador_bloque: POSTUPDATE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 443
+    condicion_proteccion  ir al estado 73
+
+
+estado 319
+
+   90 modificador_bloque: PREDELETE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 444
+    condicion_proteccion  ir al estado 73
+
+
+estado 320
+
+   91 modificador_bloque: POSTDELETE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 445
+    condicion_proteccion  ir al estado 73
+
+
+estado 321
+
+   95 modificador_bloque: PREQUERY '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 446
+    condicion_proteccion  ir al estado 73
+
+
+estado 322
+
+   96 modificador_bloque: POSTQUERY '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 447
+    condicion_proteccion  ir al estado 73
+
+
+estado 323
+
+   92 modificador_bloque: FINQUERY '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 448
+    condicion_proteccion  ir al estado 73
+
+
+estado 324
+
+   97 modificador_bloque: PREREGISTRO '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 449
+    condicion_proteccion  ir al estado 73
+
+
+estado 325
+
+   98 modificador_bloque: POSTREGISTRO '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 450
+    condicion_proteccion  ir al estado 73
+
+
+estado 326
+
+   93 modificador_bloque: PREBLOQUE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 451
+    condicion_proteccion  ir al estado 73
+
+
+estado 327
+
+   94 modificador_bloque: POSTBLOQUE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 452
+    condicion_proteccion  ir al estado 73
+
+
+estado 328
+
+   99 modificador_bloque: PRECOMMIT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 453
+    condicion_proteccion  ir al estado 73
+
+
+estado 329
+
+  100 modificador_bloque: POSTCOMMIT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 454
+    condicion_proteccion  ir al estado 73
+
+
+estado 330
+
+  101 modificador_bloque: PREROLLBACK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 455
+    condicion_proteccion  ir al estado 73
+
+
+estado 331
+
+  102 modificador_bloque: POSTROLLBACK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 456
+    condicion_proteccion  ir al estado 73
+
+
+estado 332
+
+   41 modificador_bloque: PADRE '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 457
+
+
+estado 333
+
+   42 modificador_bloque: TABLA '=' . IDENTIFICADOR
+   43                   | TABLA '=' . IDENTIFICADOR IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 458
+
+
+estado 334
+
+   44 modificador_bloque: EXTRAPARSER '(' . cadena_parser ',' cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 459
+
+
+estado 335
+
+  251 nombre_titulo: AYUDA '=' .
+
+    $default  reduce usando la regla 251 (nombre_titulo)
+
+
+estado 336
+
+  233 nombre_modificador_online: ONLINE '=' .
+
+    $default  reduce usando la regla 233 (nombre_modificador_online)
+
+
+estado 337
+
+   46 modificador_bloque: POSX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 460
+
+
+estado 338
+
+   47 modificador_bloque: POSY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 461
+
+
+estado 339
+
+   66 modificador_bloque: LEXCOLOR '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 462
+
+
+estado 340
+
+  250 nombre_titulo: TITULO '=' .
+
+    $default  reduce usando la regla 250 (nombre_titulo)
+
+
+estado 341
+
+   71 modificador_bloque: REGPAG '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 463
+
+
+estado 342
+
+   75 modificador_bloque: TECLA '=' . nombre_tecla ',' definidor_triger
+
+    IDENTIFICADOR  desplazar e ir al estado 398
+    NUMERO         desplazar e ir al estado 399
+
+    nombre_tecla  ir al estado 464
+
+
+estado 343
+
+   86 modificador_bloque: CONTEXTUAL '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 465
+    condicion_proteccion  ir al estado 73
+
+
+estado 344
+
+  227 nombre_modificador_oracle: WHERE '=' .
+
+    $default  reduce usando la regla 227 (nombre_modificador_oracle)
+
+
+estado 345
+
+  228 nombre_modificador_oracle: ORDERBY '=' .
+
+    $default  reduce usando la regla 228 (nombre_modificador_oracle)
+
+
+estado 346
+
+  229 nombre_modificador_oracle: GROUPBY '=' .
+
+    $default  reduce usando la regla 229 (nombre_modificador_oracle)
+
+
+estado 347
+
+  230 nombre_modificador_oracle: HAVING '=' .
+
+    $default  reduce usando la regla 230 (nombre_modificador_oracle)
+
+
+estado 348
+
+  231 nombre_modificador_oracle: SELECT '=' .
+
+    $default  reduce usando la regla 231 (nombre_modificador_oracle)
+
+
+estado 349
+
+  254 nombre_cursor: CURSOR '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 466
+
+
+estado 350
+
+   72 modificador_bloque: TIMEOUT '=' . definidor_triger ',' NUMERO
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 467
+    condicion_proteccion  ir al estado 73
+
+
+estado 351
+
+  103 modificador_bloque: PREPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 468
+    condicion_proteccion  ir al estado 73
+
+
+estado 352
+
+  104 modificador_bloque: POSTPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 469
+    condicion_proteccion  ir al estado 73
+
+
+estado 353
+
+  105 modificador_bloque: ONPINTA '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 470
+    condicion_proteccion  ir al estado 73
+
+
+estado 354
+
+  128 nombre_boton: BOTON '=' . IDENTIFICADOR ','
+  129 nombre_boton_dupl: BOTON '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 471
+
+
+estado 355
+
+  115 modificador_bloque: BOTONERA '=' . IDENTIFICADOR
+  116                   | BOTONERA '=' . IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    IDENTIFICADOR  desplazar e ir al estado 472
+
+
+estado 356
+
+  106 modificador_bloque: ONCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 473
+    condicion_proteccion  ir al estado 73
+
+
+estado 357
+
+  107 modificador_bloque: ONRIGHTCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 474
+    condicion_proteccion  ir al estado 73
+
+
+estado 358
+
+  108 modificador_bloque: ONCENTERCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 475
+    condicion_proteccion  ir al estado 73
+
+
+estado 359
+
+  109 modificador_bloque: ONMOUSEOVER '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 476
+    condicion_proteccion  ir al estado 73
+
+
+estado 360
+
+  110 modificador_bloque: ONMOUSEOUT '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 477
+    condicion_proteccion  ir al estado 73
+
+
+estado 361
+
+  111 modificador_bloque: ONDBCLICK '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 478
+    condicion_proteccion  ir al estado 73
+
+
+estado 362
+
+  112 modificador_bloque: ONMOUSEMOVE '=' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 479
+    condicion_proteccion  ir al estado 73
+
+
+estado 363
+
+   58 modificador_bloque: WPOSX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 480
+
+
+estado 364
+
+   59 modificador_bloque: WPOSY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 481
+
+
+estado 365
+
+   60 modificador_bloque: WLONX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 482
+
+
+estado 366
+
+   61 modificador_bloque: WLONY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 483
+
+
+estado 367
+
+   62 modificador_bloque: WREGPAG '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 484
+
+
+estado 368
+
+   63 modificador_bloque: WPIXELX '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 485
+
+
+estado 369
+
+   64 modificador_bloque: WPIXELY '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 486
+
+
+estado 370
+
+   49 modificador_bloque: INCLUDECSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 487
+
+
+estado 371
+
+   51 modificador_bloque: INCLUDEHTML '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 488
+
+
+estado 372
+
+   65 modificador_bloque: WFRAME '(' . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    NUMERO  desplazar e ir al estado 489
+
+
+estado 373
+
+  113 modificador_bloque: WGRAFICA '=' . IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    IDENTIFICADOR  desplazar e ir al estado 490
+
+
+estado 374
+
+   50 modificador_bloque: INCLUDEFICHEROCSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 491
+
+
+estado 375
+
+   48 modificador_bloque: INCLUDETDCSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 492
+
+
+estado 376
+
+   52 modificador_bloque: INCLUDEFICHEROHTML '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 493
+
+
+estado 377
+
+   73 modificador_bloque: PRETECLA '=' . nombre_tecla ',' definidor_triger
+
+    IDENTIFICADOR  desplazar e ir al estado 398
+    NUMERO         desplazar e ir al estado 399
+
+    nombre_tecla  ir al estado 494
+
+
+estado 378
+
+   74 modificador_bloque: POSTTECLA '=' . nombre_tecla ',' definidor_triger
+
+    IDENTIFICADOR  desplazar e ir al estado 398
+    NUMERO         desplazar e ir al estado 399
+
+    nombre_tecla  ir al estado 495
+
+
+estado 379
+
+  118 modificador_bloque: AJAX '(' . IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    IDENTIFICADOR  desplazar e ir al estado 496
+
+
+estado 380
+
+  121 modificador_bloque: COMPONENTE '(' . IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    IDENTIFICADOR  desplazar e ir al estado 497
+
+
+estado 381
+
+  117 modificador_bloque: INCLUDE '=' . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 498
+
+
+estado 382
+
+  131 definidor_boton: nombre_boton NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 499
+
+
+estado 383
+
+  226 modificador_oracle: nombre_modificador_oracle texto_sql .
+
+    $default  reduce usando la regla 226 (modificador_oracle)
+
+
+estado 384
+
+  232 modificador_online: nombre_modificador_online TEXTO_ONLINE .
+
+    $default  reduce usando la regla 232 (modificador_online)
+
+
+estado 385
+
+  248 proteccion_bloque: palabra_protegida ',' . condicion_proteccion
+
+    PROTECT  desplazar e ir al estado 56
+
+    condicion_proteccion  ir al estado 500
+
+
+estado 386
+
+  252 definidor_titulo: nombre_titulo TEXTO_TITULO .
+
+    $default  reduce usando la regla 252 (definidor_titulo)
+
+
+estado 387
+
+  253 definidor_cursor: nombre_cursor texto_sql .
+
+    $default  reduce usando la regla 253 (definidor_cursor)
+
+
+estado 388
+
+  157 lista_privilegios: cadena_parser .
+  158                  | cadena_parser . ',' lista_privilegios
+
+    ','  desplazar e ir al estado 501
+
+    $default  reduce usando la regla 157 (lista_privilegios)
+
+
+estado 389
+
+  160 condicion_proteccion: PROTECT '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 502
+
+
+estado 390
+
+  137 definicion_triger: lista_mod_triger identificador_triger '(' . lista_parametros ')'
+
+    TNULL      desplazar e ir al estado 57
+    LEXCADENA  desplazar e ir al estado 58
+    '-'        desplazar e ir al estado 59
+    '$'        desplazar e ir al estado 60
+    '%'        desplazar e ir al estado 61
+    '@'        desplazar e ir al estado 62
+    '+'        desplazar e ir al estado 63
+    '!'        desplazar e ir al estado 64
+    '&'        desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    unacadena_parser    ir al estado 66
+    cadena_parser       ir al estado 392
+    definicion_triger   ir al estado 393
+    modificador_triger  ir al estado 69
+    lista_mod_triger    ir al estado 70
+    lista_parametros    ir al estado 503
+    parametro           ir al estado 395
+
+
+estado 391
+
+  148 triger_protegido: condicion_proteccion ',' definicion_triger .
+
+    $default  reduce usando la regla 148 (triger_protegido)
+
+
+estado 392
+
+  153 parametro: cadena_parser .
+
+    $default  reduce usando la regla 153 (parametro)
+
+
+estado 393
+
+  154 parametro: definicion_triger .
+
+    $default  reduce usando la regla 154 (parametro)
+
+
+estado 394
+
+  152 lista_parametros: lista_parametros . ',' parametro
+  260 triger_cadenas: nombre_triger ',' lista_parametros .
+
+    ','  desplazar e ir al estado 504
+
+    $default  reduce usando la regla 260 (triger_cadenas)
+
+
+estado 395
+
+  151 lista_parametros: parametro .
+
+    $default  reduce usando la regla 151 (lista_parametros)
+
+
+estado 396
+
+  196 modificador_campo: TITULO '(' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 505
+
+
+estado 397
+
+  223 modificador_campo: REGPAG '=' NUMERO .
+
+    $default  reduce usando la regla 223 (modificador_campo)
+
+
+estado 398
+
+   39 nombre_tecla: IDENTIFICADOR .
+
+    $default  reduce usando la regla 39 (nombre_tecla)
+
+
+estado 399
+
+   40 nombre_tecla: NUMERO .
+
+    $default  reduce usando la regla 40 (nombre_tecla)
+
+
+estado 400
+
+  222 modificador_campo: TECLA '=' nombre_tecla . ',' definidor_triger
+
+    ','  desplazar e ir al estado 506
+
+
+estado 401
+
+  202 modificador_campo: CONTEXTUAL '=' definidor_triger .
+
+    $default  reduce usando la regla 202 (modificador_campo)
+
+
+estado 402
+
+  182 modificador_campo: NOUPDATE '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 507
+
+
+estado 403
+
+  184 modificador_campo: UPDATE '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 508
+
+
+estado 404
+
+  165 modificador_campo: NOENTER '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 509
+
+
+estado 405
+
+  169 modificador_campo: NOINPUT '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 510
+
+
+estado 406
+
+  193 modificador_campo: VIRTUAL '(' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 511
+
+
+estado 407
+
+  187 modificador_campo: PREFIJO '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 187 (modificador_campo)
+
+
+estado 408
+
+  186 modificador_campo: SCAN '(' NUMERO . ')'
+
+    ')'  desplazar e ir al estado 512
+
+
+estado 409
+
+  201 modificador_campo: POSTCHANGE '=' definidor_triger .
+
+    $default  reduce usando la regla 201 (modificador_campo)
+
+
+estado 410
+
+  203 modificador_campo: PREFIELD '=' definidor_triger .
+
+    $default  reduce usando la regla 203 (modificador_campo)
+
+
+estado 411
+
+  204 modificador_campo: POSTFIELD '=' definidor_triger .
+
+    $default  reduce usando la regla 204 (modificador_campo)
+
+
+estado 412
+
+  191 modificador_campo: DISPLAY '(' lista_privilegios . ')'
+
+    ')'  desplazar e ir al estado 513
+
+
+estado 413
+
+  205 modificador_campo: PREPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 205 (modificador_campo)
+
+
+estado 414
+
+  206 modificador_campo: POSTPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 206 (modificador_campo)
+
+
+estado 415
+
+  208 modificador_campo: ONPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 208 (modificador_campo)
+
+
+estado 416
+
+  176 modificador_campo: TRADUCIBLE '(' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 514
+
+
+estado 417
+
+  177 modificador_campo: TOOLTIP '(' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 515
+
+
+estado 418
+
+  178 modificador_campo: FUNTOOLTIP '=' definidor_triger .
+
+    $default  reduce usando la regla 178 (modificador_campo)
+
+
+estado 419
+
+  216 modificador_campo: CHECKBOX '(' cadena_parser . ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 516
+
+
+estado 420
+
+  209 modificador_campo: ONCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 209 (modificador_campo)
+
+
+estado 421
+
+  210 modificador_campo: ONRIGHTCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 210 (modificador_campo)
+
+
+estado 422
+
+  211 modificador_campo: ONCENTERCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 211 (modificador_campo)
+
+
+estado 423
+
+  212 modificador_campo: ONMOUSEOVER '=' definidor_triger .
+
+    $default  reduce usando la regla 212 (modificador_campo)
+
+
+estado 424
+
+  213 modificador_campo: ONMOUSEOUT '=' definidor_triger .
+
+    $default  reduce usando la regla 213 (modificador_campo)
+
+
+estado 425
+
+  214 modificador_campo: ONDBCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 214 (modificador_campo)
+
+
+estado 426
+
+  215 modificador_campo: ONMOUSEMOVE '=' definidor_triger .
+
+    $default  reduce usando la regla 215 (modificador_campo)
+
+
+estado 427
+
+  162 opciones_combox: cadena_parser .
+  163                | cadena_parser . ',' opciones_combox
+
+    ','  desplazar e ir al estado 517
+
+    $default  reduce usando la regla 162 (opciones_combox)
+
+
+estado 428
+
+  217 modificador_campo: COMBOX '(' opciones_combox . ')'
+
+    ')'  desplazar e ir al estado 518
+
+
+estado 429
+
+  220 modificador_campo: COMBOXINDEX '=' NUMERO .
+
+    $default  reduce usando la regla 220 (modificador_campo)
+
+
+estado 430
+
+  221 modificador_campo: COMBOXREGPAG '=' NUMERO .
+
+    $default  reduce usando la regla 221 (modificador_campo)
+
+
+estado 431
+
+  207 modificador_campo: CONVIERTE '=' definidor_triger . ';' definidor_triger
+
+    ';'  desplazar e ir al estado 519
+
+
+estado 432
+
+  197 modificador_campo: WPOSX '=' NUMERO .
+
+    $default  reduce usando la regla 197 (modificador_campo)
+
+
+estado 433
+
+  198 modificador_campo: WPOSY '=' NUMERO .
+
+    $default  reduce usando la regla 198 (modificador_campo)
+
+
+estado 434
+
+  199 modificador_campo: WLONX '=' NUMERO .
+
+    $default  reduce usando la regla 199 (modificador_campo)
+
+
+estado 435
+
+  200 modificador_campo: WLONY '=' NUMERO .
+
+    $default  reduce usando la regla 200 (modificador_campo)
+
+
+estado 436
+
+  166 modificador_campo: INCLUDECSS '=' cadena_parser .
+
+    $default  reduce usando la regla 166 (modificador_campo)
+
+
+estado 437
+
+  167 modificador_campo: ESTILOCSS '=' cadena_parser .
+
+    $default  reduce usando la regla 167 (modificador_campo)
+
+
+estado 438
+
+  218 modificador_campo: COMBOXMULTIPLE '(' opciones_combox . ')'
+
+    ')'  desplazar e ir al estado 520
+
+
+estado 439
+
+  225 modificador_campo: FICHERO '(' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 521
+
+
+estado 440
+
+   85 modificador_bloque: PREINSERT '=' definidor_triger .
+
+    $default  reduce usando la regla 85 (modificador_bloque)
+
+
+estado 441
+
+   87 modificador_bloque: POSTINSERT '=' definidor_triger .
+
+    $default  reduce usando la regla 87 (modificador_bloque)
+
+
+estado 442
+
+   88 modificador_bloque: PREUPDATE '=' definidor_triger .
+
+    $default  reduce usando la regla 88 (modificador_bloque)
+
+
+estado 443
+
+   89 modificador_bloque: POSTUPDATE '=' definidor_triger .
+
+    $default  reduce usando la regla 89 (modificador_bloque)
+
+
+estado 444
+
+   90 modificador_bloque: PREDELETE '=' definidor_triger .
+
+    $default  reduce usando la regla 90 (modificador_bloque)
+
+
+estado 445
+
+   91 modificador_bloque: POSTDELETE '=' definidor_triger .
+
+    $default  reduce usando la regla 91 (modificador_bloque)
+
+
+estado 446
+
+   95 modificador_bloque: PREQUERY '=' definidor_triger .
+
+    $default  reduce usando la regla 95 (modificador_bloque)
+
+
+estado 447
+
+   96 modificador_bloque: POSTQUERY '=' definidor_triger .
+
+    $default  reduce usando la regla 96 (modificador_bloque)
+
+
+estado 448
+
+   92 modificador_bloque: FINQUERY '=' definidor_triger .
+
+    $default  reduce usando la regla 92 (modificador_bloque)
+
+
+estado 449
+
+   97 modificador_bloque: PREREGISTRO '=' definidor_triger .
+
+    $default  reduce usando la regla 97 (modificador_bloque)
+
+
+estado 450
+
+   98 modificador_bloque: POSTREGISTRO '=' definidor_triger .
+
+    $default  reduce usando la regla 98 (modificador_bloque)
+
+
+estado 451
+
+   93 modificador_bloque: PREBLOQUE '=' definidor_triger .
+
+    $default  reduce usando la regla 93 (modificador_bloque)
+
+
+estado 452
+
+   94 modificador_bloque: POSTBLOQUE '=' definidor_triger .
+
+    $default  reduce usando la regla 94 (modificador_bloque)
+
+
+estado 453
+
+   99 modificador_bloque: PRECOMMIT '=' definidor_triger .
+
+    $default  reduce usando la regla 99 (modificador_bloque)
+
+
+estado 454
+
+  100 modificador_bloque: POSTCOMMIT '=' definidor_triger .
+
+    $default  reduce usando la regla 100 (modificador_bloque)
+
+
+estado 455
+
+  101 modificador_bloque: PREROLLBACK '=' definidor_triger .
+
+    $default  reduce usando la regla 101 (modificador_bloque)
+
+
+estado 456
+
+  102 modificador_bloque: POSTROLLBACK '=' definidor_triger .
+
+    $default  reduce usando la regla 102 (modificador_bloque)
+
+
+estado 457
+
+   41 modificador_bloque: PADRE '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 41 (modificador_bloque)
+
+
+estado 458
+
+   42 modificador_bloque: TABLA '=' IDENTIFICADOR .
+   43                   | TABLA '=' IDENTIFICADOR . IDENTIFICADOR
+
+    IDENTIFICADOR  desplazar e ir al estado 522
+
+    $default  reduce usando la regla 42 (modificador_bloque)
+
+
+estado 459
+
+   44 modificador_bloque: EXTRAPARSER '(' cadena_parser . ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 523
+
+
+estado 460
+
+   46 modificador_bloque: POSX '=' NUMERO .
+
+    $default  reduce usando la regla 46 (modificador_bloque)
+
+
+estado 461
+
+   47 modificador_bloque: POSY '=' NUMERO .
+
+    $default  reduce usando la regla 47 (modificador_bloque)
+
+
+estado 462
+
+   66 modificador_bloque: LEXCOLOR '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 66 (modificador_bloque)
+
+
+estado 463
+
+   71 modificador_bloque: REGPAG '=' NUMERO .
+
+    $default  reduce usando la regla 71 (modificador_bloque)
+
+
+estado 464
+
+   75 modificador_bloque: TECLA '=' nombre_tecla . ',' definidor_triger
+
+    ','  desplazar e ir al estado 524
+
+
+estado 465
+
+   86 modificador_bloque: CONTEXTUAL '=' definidor_triger .
+
+    $default  reduce usando la regla 86 (modificador_bloque)
+
+
+estado 466
+
+  254 nombre_cursor: CURSOR '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 254 (nombre_cursor)
+
+
+estado 467
+
+   72 modificador_bloque: TIMEOUT '=' definidor_triger . ',' NUMERO
+
+    ','  desplazar e ir al estado 525
+
+
+estado 468
+
+  103 modificador_bloque: PREPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 103 (modificador_bloque)
+
+
+estado 469
+
+  104 modificador_bloque: POSTPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 104 (modificador_bloque)
+
+
+estado 470
+
+  105 modificador_bloque: ONPINTA '=' definidor_triger .
+
+    $default  reduce usando la regla 105 (modificador_bloque)
+
+
+estado 471
+
+  128 nombre_boton: BOTON '=' IDENTIFICADOR . ','
+  129 nombre_boton_dupl: BOTON '=' IDENTIFICADOR .
+
+    ','  desplazar e ir al estado 526
+
+    $default  reduce usando la regla 129 (nombre_boton_dupl)
+
+
+estado 472
+
+  115 modificador_bloque: BOTONERA '=' IDENTIFICADOR .
+  116                   | BOTONERA '=' IDENTIFICADOR . ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    ','  desplazar e ir al estado 527
+
+    $default  reduce usando la regla 115 (modificador_bloque)
+
+
+estado 473
+
+  106 modificador_bloque: ONCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 106 (modificador_bloque)
+
+
+estado 474
+
+  107 modificador_bloque: ONRIGHTCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 107 (modificador_bloque)
+
+
+estado 475
+
+  108 modificador_bloque: ONCENTERCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 108 (modificador_bloque)
+
+
+estado 476
+
+  109 modificador_bloque: ONMOUSEOVER '=' definidor_triger .
+
+    $default  reduce usando la regla 109 (modificador_bloque)
+
+
+estado 477
+
+  110 modificador_bloque: ONMOUSEOUT '=' definidor_triger .
+
+    $default  reduce usando la regla 110 (modificador_bloque)
+
+
+estado 478
+
+  111 modificador_bloque: ONDBCLICK '=' definidor_triger .
+
+    $default  reduce usando la regla 111 (modificador_bloque)
+
+
+estado 479
+
+  112 modificador_bloque: ONMOUSEMOVE '=' definidor_triger .
+
+    $default  reduce usando la regla 112 (modificador_bloque)
+
+
+estado 480
+
+   58 modificador_bloque: WPOSX '=' NUMERO .
+
+    $default  reduce usando la regla 58 (modificador_bloque)
+
+
+estado 481
+
+   59 modificador_bloque: WPOSY '=' NUMERO .
+
+    $default  reduce usando la regla 59 (modificador_bloque)
+
+
+estado 482
+
+   60 modificador_bloque: WLONX '=' NUMERO .
+
+    $default  reduce usando la regla 60 (modificador_bloque)
+
+
+estado 483
+
+   61 modificador_bloque: WLONY '=' NUMERO .
+
+    $default  reduce usando la regla 61 (modificador_bloque)
+
+
+estado 484
+
+   62 modificador_bloque: WREGPAG '=' NUMERO .
+
+    $default  reduce usando la regla 62 (modificador_bloque)
+
+
+estado 485
+
+   63 modificador_bloque: WPIXELX '=' NUMERO .
+
+    $default  reduce usando la regla 63 (modificador_bloque)
+
+
+estado 486
+
+   64 modificador_bloque: WPIXELY '=' NUMERO .
+
+    $default  reduce usando la regla 64 (modificador_bloque)
+
+
+estado 487
+
+   49 modificador_bloque: INCLUDECSS '=' cadena_parser .
+
+    $default  reduce usando la regla 49 (modificador_bloque)
+
+
+estado 488
+
+   51 modificador_bloque: INCLUDEHTML '=' cadena_parser .
+
+    $default  reduce usando la regla 51 (modificador_bloque)
+
+
+estado 489
+
+   65 modificador_bloque: WFRAME '(' NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 528
+
+
+estado 490
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR . ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    ','  desplazar e ir al estado 529
+
+
+estado 491
+
+   50 modificador_bloque: INCLUDEFICHEROCSS '=' cadena_parser .
+
+    $default  reduce usando la regla 50 (modificador_bloque)
+
+
+estado 492
+
+   48 modificador_bloque: INCLUDETDCSS '=' cadena_parser .
+
+    $default  reduce usando la regla 48 (modificador_bloque)
+
+
+estado 493
+
+   52 modificador_bloque: INCLUDEFICHEROHTML '=' cadena_parser .
+
+    $default  reduce usando la regla 52 (modificador_bloque)
+
+
+estado 494
+
+   73 modificador_bloque: PRETECLA '=' nombre_tecla . ',' definidor_triger
+
+    ','  desplazar e ir al estado 530
+
+
+estado 495
+
+   74 modificador_bloque: POSTTECLA '=' nombre_tecla . ',' definidor_triger
+
+    ','  desplazar e ir al estado 531
+
+
+estado 496
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR . ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 532
+
+
+estado 497
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR . ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 533
+
+
+estado 498
+
+  117 modificador_bloque: INCLUDE '=' IDENTIFICADOR .
+
+    $default  reduce usando la regla 117 (modificador_bloque)
+
+
+estado 499
+
+  131 definidor_boton: nombre_boton NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    NUMERO  desplazar e ir al estado 534
+
+
+estado 500
+
+  248 proteccion_bloque: palabra_protegida ',' condicion_proteccion .
+
+    $default  reduce usando la regla 248 (proteccion_bloque)
+
+
+estado 501
+
+  158 lista_privilegios: cadena_parser ',' . lista_privilegios
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 388
+    lista_privilegios  ir al estado 535
+
+
+estado 502
+
+  160 condicion_proteccion: PROTECT '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 160 (condicion_proteccion)
+
+
+estado 503
+
+  137 definicion_triger: lista_mod_triger identificador_triger '(' lista_parametros . ')'
+  152 lista_parametros: lista_parametros . ',' parametro
+
+    ','  desplazar e ir al estado 504
+    ')'  desplazar e ir al estado 536
+
+
+estado 504
+
+  152 lista_parametros: lista_parametros ',' . parametro
+
+    TNULL      desplazar e ir al estado 57
+    LEXCADENA  desplazar e ir al estado 58
+    '-'        desplazar e ir al estado 59
+    '$'        desplazar e ir al estado 60
+    '%'        desplazar e ir al estado 61
+    '@'        desplazar e ir al estado 62
+    '+'        desplazar e ir al estado 63
+    '!'        desplazar e ir al estado 64
+    '&'        desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    unacadena_parser    ir al estado 66
+    cadena_parser       ir al estado 392
+    definicion_triger   ir al estado 393
+    modificador_triger  ir al estado 69
+    lista_mod_triger    ir al estado 70
+    parametro           ir al estado 537
+
+
+estado 505
+
+  196 modificador_campo: TITULO '(' cadena_parser ')' .
+
+    $default  reduce usando la regla 196 (modificador_campo)
+
+
+estado 506
+
+  222 modificador_campo: TECLA '=' nombre_tecla ',' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 538
+    condicion_proteccion  ir al estado 73
+
+
+estado 507
+
+  182 modificador_campo: NOUPDATE '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 182 (modificador_campo)
+
+
+estado 508
+
+  184 modificador_campo: UPDATE '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 184 (modificador_campo)
+
+
+estado 509
+
+  165 modificador_campo: NOENTER '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 165 (modificador_campo)
+
+
+estado 510
+
+  169 modificador_campo: NOINPUT '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 169 (modificador_campo)
+
+
+estado 511
+
+  193 modificador_campo: VIRTUAL '(' cadena_parser ')' .
+
+    $default  reduce usando la regla 193 (modificador_campo)
+
+
+estado 512
+
+  186 modificador_campo: SCAN '(' NUMERO ')' .
+
+    $default  reduce usando la regla 186 (modificador_campo)
+
+
+estado 513
+
+  191 modificador_campo: DISPLAY '(' lista_privilegios ')' .
+
+    $default  reduce usando la regla 191 (modificador_campo)
+
+
+estado 514
+
+  176 modificador_campo: TRADUCIBLE '(' cadena_parser ')' .
+
+    $default  reduce usando la regla 176 (modificador_campo)
+
+
+estado 515
+
+  177 modificador_campo: TOOLTIP '(' cadena_parser ')' .
+
+    $default  reduce usando la regla 177 (modificador_campo)
+
+
+estado 516
+
+  216 modificador_campo: CHECKBOX '(' cadena_parser ',' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 539
+
+
+estado 517
+
+  163 opciones_combox: cadena_parser ',' . opciones_combox
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 427
+    opciones_combox   ir al estado 540
+
+
+estado 518
+
+  217 modificador_campo: COMBOX '(' opciones_combox ')' .
+
+    $default  reduce usando la regla 217 (modificador_campo)
+
+
+estado 519
+
+  207 modificador_campo: CONVIERTE '=' definidor_triger ';' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 541
+    condicion_proteccion  ir al estado 73
+
+
+estado 520
+
+  218 modificador_campo: COMBOXMULTIPLE '(' opciones_combox ')' .
+
+    $default  reduce usando la regla 218 (modificador_campo)
+
+
+estado 521
+
+  225 modificador_campo: FICHERO '(' cadena_parser ')' .
+
+    $default  reduce usando la regla 225 (modificador_campo)
+
+
+estado 522
+
+   43 modificador_bloque: TABLA '=' IDENTIFICADOR IDENTIFICADOR .
+
+    $default  reduce usando la regla 43 (modificador_bloque)
+
+
+estado 523
+
+   44 modificador_bloque: EXTRAPARSER '(' cadena_parser ',' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 542
+
+
+estado 524
+
+   75 modificador_bloque: TECLA '=' nombre_tecla ',' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 543
+    condicion_proteccion  ir al estado 73
+
+
+estado 525
+
+   72 modificador_bloque: TIMEOUT '=' definidor_triger ',' . NUMERO
+
+    NUMERO  desplazar e ir al estado 544
+
+
+estado 526
+
+  128 nombre_boton: BOTON '=' IDENTIFICADOR ',' .
+
+    $default  reduce usando la regla 128 (nombre_boton)
+
+
+estado 527
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    NUMERO  desplazar e ir al estado 545
+
+
+estado 528
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    NUMERO  desplazar e ir al estado 546
+
+
+estado 529
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    NUMERO  desplazar e ir al estado 547
+
+
+estado 530
+
+   73 modificador_bloque: PRETECLA '=' nombre_tecla ',' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 548
+    condicion_proteccion  ir al estado 73
+
+
+estado 531
+
+   74 modificador_bloque: POSTTECLA '=' nombre_tecla ',' . definidor_triger
+
+    PROTECT  desplazar e ir al estado 56
+    TNULL    desplazar e ir al estado 57
+    '-'      desplazar e ir al estado 59
+    '$'      desplazar e ir al estado 60
+    '%'      desplazar e ir al estado 61
+    '@'      desplazar e ir al estado 62
+    '+'      desplazar e ir al estado 63
+    '!'      desplazar e ir al estado 64
+    '&'      desplazar e ir al estado 65
+
+    $default  reduce usando la regla 147 (lista_mod_triger)
+
+    definicion_triger     ir al estado 68
+    modificador_triger    ir al estado 69
+    lista_mod_triger      ir al estado 70
+    triger_protegido      ir al estado 71
+    definidor_triger      ir al estado 549
+    condicion_proteccion  ir al estado 73
+
+
+estado 532
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' . cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 550
+
+
+estado 533
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' . cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 551
+
+
+estado 534
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 552
+
+
+estado 535
+
+  158 lista_privilegios: cadena_parser ',' lista_privilegios .
+
+    $default  reduce usando la regla 158 (lista_privilegios)
+
+
+estado 536
+
+  137 definicion_triger: lista_mod_triger identificador_triger '(' lista_parametros ')' .
+
+    $default  reduce usando la regla 137 (definicion_triger)
+
+
+estado 537
+
+  152 lista_parametros: lista_parametros ',' parametro .
+
+    $default  reduce usando la regla 152 (lista_parametros)
+
+
+estado 538
+
+  222 modificador_campo: TECLA '=' nombre_tecla ',' definidor_triger .
+
+    $default  reduce usando la regla 222 (modificador_campo)
+
+
+estado 539
+
+  216 modificador_campo: CHECKBOX '(' cadena_parser ',' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 553
+
+
+estado 540
+
+  163 opciones_combox: cadena_parser ',' opciones_combox .
+
+    $default  reduce usando la regla 163 (opciones_combox)
+
+
+estado 541
+
+  207 modificador_campo: CONVIERTE '=' definidor_triger ';' definidor_triger .
+
+    $default  reduce usando la regla 207 (modificador_campo)
+
+
+estado 542
+
+   44 modificador_bloque: EXTRAPARSER '(' cadena_parser ',' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 554
+
+
+estado 543
+
+   75 modificador_bloque: TECLA '=' nombre_tecla ',' definidor_triger .
+
+    $default  reduce usando la regla 75 (modificador_bloque)
+
+
+estado 544
+
+   72 modificador_bloque: TIMEOUT '=' definidor_triger ',' NUMERO .
+
+    $default  reduce usando la regla 72 (modificador_bloque)
+
+
+estado 545
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    ','  desplazar e ir al estado 555
+
+
+estado 546
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 556
+
+
+estado 547
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    ','  desplazar e ir al estado 557
+
+
+estado 548
+
+   73 modificador_bloque: PRETECLA '=' nombre_tecla ',' definidor_triger .
+
+    $default  reduce usando la regla 73 (modificador_bloque)
+
+
+estado 549
+
+   74 modificador_bloque: POSTTECLA '=' nombre_tecla ',' definidor_triger .
+
+    $default  reduce usando la regla 74 (modificador_bloque)
+
+
+estado 550
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser . ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 558
+
+
+estado 551
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser . ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 559
+
+
+estado 552
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    NUMERO  desplazar e ir al estado 560
+
+
+estado 553
+
+  216 modificador_campo: CHECKBOX '(' cadena_parser ',' cadena_parser ')' .
+
+    $default  reduce usando la regla 216 (modificador_campo)
+
+
+estado 554
+
+   44 modificador_bloque: EXTRAPARSER '(' cadena_parser ',' cadena_parser ')' .
+
+    $default  reduce usando la regla 44 (modificador_bloque)
+
+
+estado 555
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO lista_botones
+
+    NUMERO  desplazar e ir al estado 561
+
+
+estado 556
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    NUMERO  desplazar e ir al estado 562
+
+
+estado 557
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO ',' NUMERO
+
+    NUMERO  desplazar e ir al estado 563
+
+
+estado 558
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' . cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 564
+
+
+estado 559
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' . cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 565
+
+
+estado 560
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 566
+
+
+estado 561
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO lista_botones
+
+    ','  desplazar e ir al estado 567
+
+
+estado 562
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 568
+
+
+estado 563
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO ',' NUMERO
+
+    ','  desplazar e ir al estado 569
+
+
+estado 564
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser . ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 570
+
+
+estado 565
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser . ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 571
+
+
+estado 566
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    NUMERO  desplazar e ir al estado 572
+
+
+estado 567
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO lista_botones
+
+    NUMERO  desplazar e ir al estado 573
+
+
+estado 568
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO ',' cadena_parser ',' cadena_parser ')'
+
+    NUMERO  desplazar e ir al estado 574
+
+
+estado 569
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO ',' NUMERO
+
+    NUMERO  desplazar e ir al estado 575
+
+
+estado 570
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' . cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 576
+
+
+estado 571
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' . cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 577
+
+
+estado 572
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO . ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO . ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 578
+
+
+estado 573
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO lista_botones
+
+    ','  desplazar e ir al estado 579
+
+
+estado 574
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO . ',' cadena_parser ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 580
+
+
+estado 575
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO ',' NUMERO
+
+    ','  desplazar e ir al estado 581
+
+
+estado 576
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser . ',' cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 582
+
+
+estado 577
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser . ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 583
+
+
+estado 578
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' . cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' . cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 584
+
+
+estado 579
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO lista_botones
+
+    NUMERO  desplazar e ir al estado 585
+
+
+estado 580
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' . cadena_parser ',' cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 586
+
+
+estado 581
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO ',' NUMERO
+
+    NUMERO  desplazar e ir al estado 587
+
+
+estado 582
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' . cadena_parser ',' cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 588
+
+
+estado 583
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' . cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 589
+
+
+estado 584
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser . ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser . ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 590
+
+
+estado 585
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO . lista_botones
+
+    ','  desplazar e ir al estado 591
+
+    $default  reduce usando la regla 134 (lista_botones)
+
+    lista_botones  ir al estado 592
+
+
+estado 586
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser . ',' cadena_parser ')'
+
+    ','  desplazar e ir al estado 593
+
+
+estado 587
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO . ',' NUMERO
+
+    ','  desplazar e ir al estado 594
+
+
+estado 588
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser . ',' cadena_parser ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 595
+
+
+estado 589
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser . ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 596
+
+
+estado 590
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' . IDENTIFICADOR ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' . IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    IDENTIFICADOR  desplazar e ir al estado 597
+
+
+estado 591
+
+  133 lista_botones: ',' . IDENTIFICADOR lista_botones
+
+    IDENTIFICADOR  desplazar e ir al estado 598
+
+
+estado 592
+
+  116 modificador_bloque: BOTONERA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO lista_botones .
+
+    $default  reduce usando la regla 116 (modificador_bloque)
+
+
+estado 593
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' . cadena_parser ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 599
+
+
+estado 594
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' . NUMERO
+
+    NUMERO  desplazar e ir al estado 600
+
+
+estado 595
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' . cadena_parser ',' NUMERO ')'
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 601
+
+
+estado 596
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' . NUMERO ')'
+
+    NUMERO  desplazar e ir al estado 602
+
+
+estado 597
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR . ',' nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR . ',' nombre_tecla ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 603
+
+
+estado 598
+
+  133 lista_botones: ',' IDENTIFICADOR . lista_botones
+
+    ','  desplazar e ir al estado 591
+
+    $default  reduce usando la regla 134 (lista_botones)
+
+    lista_botones  ir al estado 604
+
+
+estado 599
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser . ')'
+
+    ')'  desplazar e ir al estado 605
+
+
+estado 600
+
+  113 modificador_bloque: WGRAFICA '=' IDENTIFICADOR ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO .
+
+    $default  reduce usando la regla 113 (modificador_bloque)
+
+
+estado 601
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser . ',' NUMERO ')'
+
+    ','  desplazar e ir al estado 606
+
+
+estado 602
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO . ')'
+
+    ')'  desplazar e ir al estado 607
+
+
+estado 603
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' . nombre_tecla modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' . nombre_tecla ',' cadena_parser modificadores_boton
+
+    IDENTIFICADOR  desplazar e ir al estado 398
+    NUMERO         desplazar e ir al estado 399
+
+    nombre_tecla  ir al estado 608
+
+
+estado 604
+
+  133 lista_botones: ',' IDENTIFICADOR lista_botones .
+
+    $default  reduce usando la regla 133 (lista_botones)
+
+
+estado 605
+
+   65 modificador_bloque: WFRAME '(' NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' cadena_parser ')' .
+
+    $default  reduce usando la regla 65 (modificador_bloque)
+
+
+estado 606
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' . NUMERO ')'
+
+    NUMERO  desplazar e ir al estado 609
+
+
+estado 607
+
+  121 modificador_bloque: COMPONENTE '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')' .
+
+    $default  reduce usando la regla 121 (modificador_bloque)
+
+
+estado 608
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla . modificadores_boton
+  132                | nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla . ',' cadena_parser modificadores_boton
+
+    ','  desplazar e ir al estado 610
+
+    $default  reduce usando la regla 127 (modificadores_boton)
+
+    modificadores_boton  ir al estado 611
+
+
+estado 609
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO . ')'
+
+    ')'  desplazar e ir al estado 612
+
+
+estado 610
+
+  126 modificadores_boton: ',' . modificador_boton modificadores_boton
+  132 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' . cadena_parser modificadores_boton
+
+    LEXCADENA      desplazar e ir al estado 58
+    INCLUDECSS     desplazar e ir al estado 613
+    ESTILOCSS      desplazar e ir al estado 614
+    BOTONOCULTO    desplazar e ir al estado 615
+    BOTONDISABLED  desplazar e ir al estado 616
+
+    unacadena_parser   ir al estado 66
+    cadena_parser      ir al estado 617
+    modificador_boton  ir al estado 618
+
+
+estado 611
+
+  131 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla modificadores_boton .
+
+    $default  reduce usando la regla 131 (definidor_boton)
+
+
+estado 612
+
+  118 modificador_bloque: AJAX '(' IDENTIFICADOR ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' cadena_parser ',' NUMERO ')' .
+
+    $default  reduce usando la regla 118 (modificador_bloque)
+
+
+estado 613
+
+  122 modificador_boton: INCLUDECSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 619
+
+
+estado 614
+
+  123 modificador_boton: ESTILOCSS . '=' cadena_parser
+
+    '='  desplazar e ir al estado 620
+
+
+estado 615
+
+  124 modificador_boton: BOTONOCULTO . '=' NUMERO
+
+    '='  desplazar e ir al estado 621
+
+
+estado 616
+
+  125 modificador_boton: BOTONDISABLED . '=' NUMERO
+
+    '='  desplazar e ir al estado 622
+
+
+estado 617
+
+  132 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser . modificadores_boton
+
+    ','  desplazar e ir al estado 623
+
+    $default  reduce usando la regla 127 (modificadores_boton)
+
+    modificadores_boton  ir al estado 624
+
+
+estado 618
+
+  126 modificadores_boton: ',' modificador_boton . modificadores_boton
+
+    ','  desplazar e ir al estado 623
+
+    $default  reduce usando la regla 127 (modificadores_boton)
+
+    modificadores_boton  ir al estado 625
+
+
+estado 619
+
+  122 modificador_boton: INCLUDECSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 626
+
+
+estado 620
+
+  123 modificador_boton: ESTILOCSS '=' . cadena_parser
+
+    LEXCADENA  desplazar e ir al estado 58
+
+    unacadena_parser  ir al estado 66
+    cadena_parser     ir al estado 627
+
+
+estado 621
+
+  124 modificador_boton: BOTONOCULTO '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 628
+
+
+estado 622
+
+  125 modificador_boton: BOTONDISABLED '=' . NUMERO
+
+    NUMERO  desplazar e ir al estado 629
+
+
+estado 623
+
+  126 modificadores_boton: ',' . modificador_boton modificadores_boton
+
+    INCLUDECSS     desplazar e ir al estado 613
+    ESTILOCSS      desplazar e ir al estado 614
+    BOTONOCULTO    desplazar e ir al estado 615
+    BOTONDISABLED  desplazar e ir al estado 616
+
+    modificador_boton  ir al estado 618
+
+
+estado 624
+
+  132 definidor_boton: nombre_boton NUMERO ',' NUMERO ',' NUMERO ',' NUMERO ',' cadena_parser ',' IDENTIFICADOR ',' nombre_tecla ',' cadena_parser modificadores_boton .
+
+    $default  reduce usando la regla 132 (definidor_boton)
+
+
+estado 625
+
+  126 modificadores_boton: ',' modificador_boton modificadores_boton .
+
+    $default  reduce usando la regla 126 (modificadores_boton)
+
+
+estado 626
+
+  122 modificador_boton: INCLUDECSS '=' cadena_parser .
+
+    $default  reduce usando la regla 122 (modificador_boton)
+
+
+estado 627
+
+  123 modificador_boton: ESTILOCSS '=' cadena_parser .
+
+    $default  reduce usando la regla 123 (modificador_boton)
+
+
+estado 628
+
+  124 modificador_boton: BOTONOCULTO '=' NUMERO .
+
+    $default  reduce usando la regla 124 (modificador_boton)
+
+
+estado 629
+
+  125 modificador_boton: BOTONDISABLED '=' NUMERO .
+
+    $default  reduce usando la regla 125 (modificador_boton)

@@ -1,0 +1,32 @@
+marion.__db_cache_size=3858759680
+marion.__java_pool_size=16777216
+marion.__large_pool_size=16777216
+marion.__oracle_base='c:\oracle'#ORACLE_BASE set from environment
+marion.__pga_aggregate_target=2399141888
+marion.__sga_target=4479516672
+marion.__shared_io_pool_size=0
+marion.__shared_pool_size=536870912
+marion.__streams_pool_size=0
+*._kgl_large_heap_warning_threshold=8388608
+*.audit_file_dest='c:\oracle\admin\MARION\adump'
+*.audit_trail='db'
+*.compatible='11.2.0.0.0'
+*.control_files='e:\oradata\MARION\control01.ctl'
+*.db_block_size=8192
+*.db_domain=''
+*.db_name='MARION'
+*.db_recovery_file_dest='e:\oradata\recovery_area'
+*.db_recovery_file_dest_size=4102029312
+*.deferred_segment_creation=FALSE
+*.diagnostic_dest='c:\oracle'
+*.dispatchers='(PROTOCOL=TCP) (SERVICE=MARIONXDB)'
+*.global_names=FALSE
+*.log_archive_dest_1='location=E:\oradata\archivelogs'
+*.memory_target=6868172800
+*.open_cursors=5000
+*.optimizer_mode='RULE'
+*.processes=150
+*.remote_login_passwordfile='EXCLUSIVE'
+*.sec_case_sensitive_logon=FALSE
+*.sessions=1000
+*.undo_tablespace='UNDOTBS1'

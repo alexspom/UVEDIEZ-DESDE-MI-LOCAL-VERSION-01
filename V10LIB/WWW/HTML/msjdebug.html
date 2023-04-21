@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Debug Interno</title>
+<link rel="stylesheet" type="text/css" href="colores.css" media="screen"/>
+</head>
+<body class="bodydebug1">	
+<!--V10INCLUDEDATA-->
+<style>.dpar{background-color:white;color:darkblue;}.dimpar{background-color:lightyellow;color:darkblue;}</style>
+<script DEFER>	
+var miselect,miselectbind;
+function meteenclipboard(cadena){
+window.status="A Clipboard cadena: "+cadena;
+
+//fix. 8/10/2019 - detectamos el tipo de navegador ya que cada uno realiza la operación de copiado de formas diferentes.eag.
+                
+    // es un ie
+    if (navigator.userAgent.search("MSIE") >= 0) {
+ 
+                               if(clipboardData && clipboardData.setData ) clipboardData.setData("text", cadena);
+                               else alert("Error al copiar en portapapeles");
+                }
+    //es un chrome
+    else if (navigator.userAgent.search("Chrome") >= 0) {
+		 
+		 var elmnt = w.document.getElementsByTagName(cadena.id)[0];
+		 var cln = elmnt.cloneNode(true);
+		 document.body.appendChild(cln); 
+		 cln.select();
+         document.execCommand("copy");
+		
+    }
+	
+}
+function fonkeyupmsj(mievento,tecla){
+var objventana=window.document.getElementById('msgdebug'); 
+switch(tecla){
+case 68:if (v10lib.alt) {objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','findebug','');}	
+case 121://F10
+if(v10lib.ctrl){objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('',"onkeyup_ctrl",tecla);}
+if (v10lib.alt){objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('',"onkeyup_alt",tecla);}
+break;
+case 122:v10lib.desonkeyefectos(mievento);if(v10lib.ctrl)meteenclipboard(miselect);break;
+case 123:v10lib.desonkeyefectos(mievento);if(v10lib.ctrl)meteenclipboard(miselectbind);	break;
+case 77:case 27:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('',"onkeyup",tecla);break;
+default:v10lib.desonkeyefectos(mievento);}}				
+var oculto=0;
+function oculta(){
+var mitabla=window.event.srcElement.parentNode.parentNode.parentNode;
+if (window.event.srcElement.tagName=="SPAN") return;
+if(oculto==0){mitabla.childNodes[0].childNodes[1].style.visibility='hidden';mitabla.childNodes[0].childNodes[2].style.visibility='hidden';oculto=1;}
+else{mitabla.childNodes[0].childNodes[1].style.visibility='visible';mitabla.childNodes[0].childNodes[2].style.visibility='visible';oculto=0;}}
+</script>	
+<table id="msgdebug"class="tabladebug1"style="height:800px;width:1000px;z-index:1010;"cellpadding="0"cellspacing="0"border="0">
+<tr><td class="v10ventarribaizq"></td><td class="v10ventarribamed" onmousedown="v10lib.BeginDrag('msgdebug')"  style="width:900px;"><span class="v10titulodebu">Debug V10</span></td><td class="v10ventarribaderm"onclick="oculta()"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed" style="height:650px">
+<table width=455 height=80 id="tbdefines" align="left"style="position:relative;left:0px;top:20px;z-index:1010"border="0"cellspacing="0"cellpadding="0">
+<tr><td class="v10ventarribaizq"></td><td class="v10ventarribamed"><span class="v10titulodebuint">Defines</span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td  class="v10ventmediomed"><div class="v10debugdefine"style="position:relative;top:10px;left:0px;width:410px;height:180px"><!--v10defines--></div></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr></table>  
+<table width=455 height=80 id="tbbinds"align="left"style="position:relative;left:15px;top:20px;z-index:1010"border="0"cellspacing="0"cellpadding="0">
+<tr><td class="v10ventarribaizq"></td><td class="v10ventarribamed"><span class="v10titulodebuint">Binds</span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed"><div class="v10debugdefine" style="position:relative;top:10px;left:1px;width:390px;height:180px"><!--v10binds--></div></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr></table>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+<table width=920 height=120 style="position:relative;left:10px;top:40px;z-index:1010;"border="0"cellspacing="0"cellpadding="0">
+<tr><td class="v10ventarribaizq"></td><td class="v10ventarribamed"><span class="v10titulodebuint">Select</span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed" style="width:870px;height:170px;"><div class="v10debugselect" style="position:relative;top:0px;height:140px;"><!--v10select--></div></td><td class="v10ventmedioder"></td></tr></tr>
+<tr width=900 height=30><td class="v10ventmedioizq"></td><td class="v10ventmediomed" style="width:890px;height:30px;">
+<input type="button" class="v10button" value="Ctrl+F10" style="position:relative;left:0px;top:10px;width:60px;height:23px"onclick="{v10lib.ctrl=true;fonkeyupmsj(window.event,121);}"/><span style="position:relative;left:5px;top:5px;width:85px;" class="v10debugtextbutton">Editar Fichero</span>	
+<input type="button" class="v10button" value="Ctrl+F11" style="position:relative;left:0px;top:11px;width:60px;height:23px"onclick="{v10lib.ctrl=true;fonkeyupmsj(window.event,122);}"/><span style="position:relative;left:5px;top:5px;width:85px;" class="v10debugtextbutton">Copiar Select</span>	
+<input type="button" class="v10button" value="Ctrl+F12" style="position:relative;left:0px;top:11px;width:60px;height:23px"onclick="{v10lib.ctrl=true;fonkeyupmsj(window.event,123);}"/><span style="position:relative;left:5px;top:5px;width:125px;" class="v10debugtextbutton">Copiar Select+Binds</span>
+<input type="button" class="v10button" value="M" style="position:relative;left:0px;top:11px;width:23px;height:23px"onclick="fonkeyupmsj(window.event,77);"/><span style="position:relative;left:5px;top:5px;width:65px;" class="v10debugtextbutton">Cursores</span>
+<input type="button" class="v10button" value="Alt+F10" style="position:relative;left:0px;top:11px;width:60px;height:23px"onclick="{v10lib.alt=true;fonkeyupmsj(window.event,121);}"/><span style="position:relative;left:5px;top:5px;width:50px;" class="v10debugtextbutton">Aborta</span>
+<input type="button" class="v10button" value="Esc" style="position:relative;left:0px;top:11px;width:40px;height:23px"onclick="fonkeyupmsj(window.event,27);"/><span style="position:relative;left:5px;top:5px;width:100px;" class="v10debugtextbutton">Atrás</span>
+</td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr></table>
+<br />
+<table width=940 height=120 style="position:relative;top:50px;z-index:1010"border="0"cellspacing="0"cellpadding="0">
+<tr><td class="v10ventarribaizq"></td><td class="v10ventarribamed" ><span class="v10titulodebuint">Error Oracle</span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed"  style="width:890px;height:140px;"><div class="v10debugcursor"><!--v10oraerror--></div></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr> 
+</table>
+<!--v10clipboard-->
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\WinSCP\winscp.exe" /command "open ftp://V10:29BRGuzk@redlab.redur.es" "cd //DESA/out" "lcd D:\V10\V10DATOS\BAJAR" "option batch continue" "option confirm off" "get "*" -delete -nopermissions"  "exit" /log="D:\V10\V10DATOS\LOG\FTP_bajar_%fecha%.log"

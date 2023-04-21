@@ -1,0 +1,26 @@
+# M¢dulo : VDARTIC.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDARTIC
+#                        
+# Autor	 : EAA
+# Revisado por: 
+# Fecha  : 10-10-2007                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=ART
+
+PRIMARIA=CODART
+
+CLAVE=CODART,CODART
+
+RECORRE=CODEAN,CODEAN
+
+UPDATE=PESOCAJC,PESOCAJC
+UPDATE=INTERFASE, CODEAN,DESARTALT
+
+INTERFASE
+UPDATE
+INSERT
+DELETE

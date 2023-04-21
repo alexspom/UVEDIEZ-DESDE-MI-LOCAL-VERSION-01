@@ -1,0 +1,19 @@
+#***
+# VDSTOCK.c - Generación automática del código c para la tabla  VDSTOCK                                                     
+# 
+# Propósito: Funciones de acceso a la tabla VDSTOCK
+#           
+# Autor	 : JMM
+# Revisado por: 
+# Fecha  : 29-050-2008                                              
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=STK
+
+CLAVE=CONTNS, CODMAT, GENCOUNT=NUMEROSERIE;WHERE=TRIM(NUMEROSERIE) IS NOT NULL;
+
+RECORRE=CODMAT,CODMAT
+
+UPDATE=MATRICULA,CODMAT
+#UPDATE=NUMEROSERIE,NUMEROSERIE;

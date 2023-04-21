@@ -1,0 +1,81 @@
+#***
+# RUTAS.DEF - Generación automática del código c SOLOQUERY para enrutador                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 8-11-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=RUTAS;
+
+EXTRA=VDTRAMOS.CODAREAORI;
+EXTRA=CANTIDADTOTAL,V10DOUBLE;
+#EXTRA=RESERVADA,V10DOUBLE;
+EXTRA=TRAMOFINAL,V10CADENA,2;
+
+CURSOR=STKDISPONIBLE, SELECT  NVL(SUM(STK.CANTIDAD),0) CANTIDADTOTAL 
+                        FROM VDMOVIM MOV, 
+                       (SELECT * FROM TABLE (VDFOTOSTK.STKCONTE(:VDCONTE.CODMAT))) STK
+                       WHERE
+                           MOV.CODMOV = :VDMOVIM.CODMOV AND
+                           STK.CODART   = MOV.CODART AND 
+                           STK.UNIEMB   = MOV.UNIEMB AND                          
+                           (STK.CODLOT||'' = MOV.CODLOT OR MOV.CODLOT IS NULL) AND
+                           (STK.BLOQUEOS||'' = MOV.BLOQUEOSORI OR MOV.BLOQUEOSORI IS NULL) AND
+                           (STK.NUMEROSERIE||'' = MOV.NUMEROSERIE OR MOV.NUMEROSERIE IS NULL) AND
+                           NVL(STK.MARCASTK,'-') = NVL(MOV.MARCASTK,'-');
+                           
+CURSOR=CONTESFLUJOS, SELECT CNT.CODMAT , CNT.CODUBI                         
+                        FROM  VDSTOCK STK, VDFLUJOPARAM FLP, VDCONTE CNT, VDUBICA UBI, VDMOVIM MOV
+                        WHERE UBI.BLOQUEOSS='N' AND 
+                          MOV.CODMOV   = :VDMOVIM.CODMOV    AND 
+                          FLP.CODFLUJO = :VDFLUJOPARAM.CODFLUJO  AND 
+                          UBI.CODAREA || ''  = :VDUBICA.CODAREA   AND
+                          CNT.CODUBI   = UBI.CODUBI AND
+                          STK.CODMAT   = CNT.CODMAT AND
+                          STK.CODART   = MOV.CODART AND 
+                          STK.UNIEMB   = MOV.UNIEMB AND                          
+                          (STK.CODLOT = MOV.CODLOT OR MOV.CODLOT IS NULL) AND
+                          VDSTK.ESTADOCOMPATIBLE(STK.BLOQUEOS, FLP.PATRONESTADO)=0 AND
+                          CNT.TIPOCONTE <> 'TMP' AND   
+                          UBI.TIPOUBI <> 'V' AND                       
+                          VDSTK.CNTDISPONIBLE(CNT.CODMAT, 'U',MOV.CODART, MOV.CODLOT,MOV.UNIEMB,MOV.BLOQUEOSORI, MOV.TIPOEMBA, MOV.CODRECEP, MOV.PRECIOUNI, MOV.MARCASTK, MOV.BULTO, MOV.NUMEROSERIE ) > 0
+	              GROUP BY CNT.CODMAT, CNT.CODUBI;
+
+CURSOR=STKAREAPICKING,SELECT UBI.CODUBI, CNT.CODMAT, STK.CODART, STK.CODLOT, STK.UNIEMB, STK.BLOQUEOS, SUM(CANTIDAD) CANTIDADTOTAL                         
+                        FROM  VDSTOCK STK, VDFLUJOPARAM FLP, VDCONTE CNT, VDUBICA UBI 
+                        WHERE 
+                          UBI.CODAREA = :VDUBICA.CODAREA   AND 
+                          UBI.CODUBI  = CNT.CODUBI AND
+                          CNT.CODMAT  = STK.CODMAT AND
+                          STK.CODART  = :VDSTOCK.CODART AND 
+                          STK.UNIEMB  = :VDSTOCK.UNIEMB AND
+                          FLP.CODFLUJO = :VDFLUJOPARAM.CODFLUJO AND 
+                          (STK.CODLOT = :VDSTOCK.CODLOT OR :VDSTOCK.CODLOT IS NULL) AND
+                          VDSTK.ESTADOCOMPATIBLE(STK.BLOQUEOS, FLP.PATRONESTADO)=0
+                        GROUP BY UBI.CODUBI, CNT.CODMAT, STK.CODART, STK.CODLOT, STK.UNIEMB, STK.BLOQUEOS;
+                        
+
+
+CURSOR=SGTETRAMO,SELECT * FROM TABLE(VDFLP.DAMETRAMOSMOV(:VDMOVIM.CODMOV)) WHERE VALIDEZ='VALIDO';
+
+
+CURSOR=AREASPICKING,SELECT CODAREAORI FROM 
+                      (SELECT TRM.CODAREAORI,TRM.CODAREADEST FROM VDTRAMOS TRM WHERE CODCAMINO=:VDTRAMOS.CODCAMINO AND BLOQUEADO='N') 
+	              CONNECT BY PRIOR CODAREADEST=CODAREAORI 
+	              START WITH CODAREAORI=:VDTRAMOS.CODAREAORI; 
+
+
+
+PROCEDURE=ASIGNAFLUJO,BEGIN
+                       VDFLP.ASIGNAFLUJO(:VDMOVIM.CODMOV,:VDMOVIM.STATUS);
+                      END;@    
+
+CURSOR=UBICAPACIDAD,SELECT VDUBI.UBICAPACIDAD(:VDUBICA.CODUBI,:VDUBICA.UNICAPAC) CANTIDAD FROM DUAL; 
+
+
+ 
+

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="TRIGGERS">
+      <UniqueIdentifier>{20da4368-4bbc-4008-9dbf-b504fcadfc29}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigbul.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigped.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdactstockbultos.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdbultos.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vddisp.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedidos.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedidosage.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedidosorig.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedidosproc.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedidosvol.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedpickinv.c" />
+    <ClCompile Include="..\FUENTES\RUTAS\vdrutapickingmov.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdseries.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdtrackingagencia.c" />
+  </ItemGroup>
+</Project>

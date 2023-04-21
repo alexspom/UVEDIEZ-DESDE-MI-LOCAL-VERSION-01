@@ -1,0 +1,34 @@
+MANTENIMIENTO DE BASCULAS
+Nº  Designación                      A IP               Port         232 Vit.  Status                       Data                       Solicita                      Lee
+@L@ _40_____________________________ _ _64_____________ _32_________ @L@ @L@@@ @L@@@ _40___________________ _100______________________ _32______ ¿D-MM-Y.YY ________ _32______ ¿D-MM-Y.YY _______
+|
+
+TABLA=VDBASCULAS
+REGPAG=30
+WLONX=1300
+
+CAMPO=NUMBASC,TITULO("Nº")
+CAMPO=DESBASCULA,TITULO("Designación")
+CAMPO=ACTIVA,TITULO("A")
+CAMPO=DIRIP,TITULO("IP")
+CAMPO=PUERTOTCP,TITULO("Puerto")
+CAMPO=PUERTO232,TITULO("232")
+CAMPO=VELOCIDAD,TITULO("Vel.")
+CAMPO=STATUS,POSTCHANGE=FDESIGNACION("CSELSTATUS","No existe estado"),TITULO("Estado")
+CAMPO=DESSTATUS,AUXILIAR,NOENTER,TITULO("")
+CAMPO=DATOS,TITULO("Datos"),NOUPDATE
+CAMPO=CODOPESOL,TITULO("Solicitud")
+CAMPO=FECSOL,TITULO("")
+CAMPO=HORASOL,TITULO("")
+CAMPO=CODOPELEE,TITULO("Lectura")
+CAMPO=FECLEE,TITULO("")
+CAMPO=HORALEE,TITULO("")
+
+CURSOR=CSELSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE TIPOSTATUS='BAS' AND STATUS=:STATUS;
+
+CURSOR=CSOLICITAPESO SELECT VDBASCULA.PIDEPESOBASC(:NUMBASC) DATOS FROM DUAL;
+
+TECLA=3000,FEJECUTA("CSOLICITAPESO","",FRELOADREG,"")
+
+
+BOTON=B1,1330,60,50,50,"P",restart.png,3000,"Solicitar peso",INCLUDECSS="background-color: transparent;border-width:0px"

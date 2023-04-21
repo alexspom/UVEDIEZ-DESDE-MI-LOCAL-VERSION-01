@@ -1,0 +1,344 @@
+00 09:39:45:226 Fichero de log abierto PID 15300
+
+02 09:39:45:227 Intentando abrir fichero v10.ini
+02 09:39:45:230 Intentando abrir fichero v10.ini
+02 09:39:45:233 Cargando driver v10oracle funcion damedriveroracle
+02 09:39:45:237 Cargando driver v10oracle funcion damedriveroracle
+02 09:39:45:437 Conectado a base de datos
+02 09:39:45:440 Asignando RELEECONF a 500
+02 09:39:45:440 Asignando ACCESO a V10LOGIN
+02 09:39:45:440 Asignando NIVELLOG a 2
+02 09:39:45:441 Asignando PROTEGIDO a 500
+02 09:39:45:441 Asignando DEBUGHTTP a 2
+02 09:39:45:441 Asignando VISIBLEEXE a 0
+02 09:39:45:442 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:39:45:442 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:39:45:442 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:39:45:442 Asignando SERVERPORT a 5000
+02 09:39:45:443 Asignando SERVERPORTFILES a 5001
+02 09:39:45:443 Asignando PUERTOINICIAL a 5002
+02 09:39:45:443 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:39:45:445 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:39:45:445 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:39:45:445 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:39:45:445 Asignando FILEEXPIRED a 3600
+02 09:39:45:445 Asignando TIEMPOESPERA a 240
+02 09:39:45:447 Asignando RUTAZIP a C:/V10/v10lib/ZIP
+02 09:39:45:447 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:39:45:447 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:39:45:448 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:39:45:448 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:39:45:450 Asignando COMPRIMIR a 1
+02 09:39:45:451 Escuchando en puerto 5000 con protocolo HTTP
+02 09:39:45:485 Conectado a base de datos
+02 09:39:45:487 Asignando RELEECONF a 500
+02 09:39:45:487 Asignando ACCESO a V10LOGIN
+02 09:39:45:487 Asignando NIVELLOG a 2
+02 09:39:45:487 Asignando PROTEGIDO a 500
+02 09:39:45:487 Asignando DEBUGHTTP a 2
+02 09:39:45:487 Asignando VISIBLEEXE a 0
+02 09:39:45:487 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:39:45:487 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:39:45:488 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:39:45:488 Asignando SERVERPORT a 5200
+02 09:39:45:488 Asignando SERVERPORTFILES a 5101
+02 09:39:45:490 Asignando PUERTOINICIAL a 5202
+02 09:39:45:490 Asignando SERVERHTML a HTTP://127.0.0.1:5101/html
+02 09:39:45:490 Asignando SERVERIMG a HTTP://127.0.0.1:5101/img
+02 09:39:45:490 Asignando SERVERXLS a HTTP://127.0.0.1:5101/xls
+02 09:39:45:490 Asignando SERVERPDF a HTTP://127.0.0.1:5101/pdf
+02 09:39:45:490 Asignando FILEEXPIRED a 3600
+02 09:39:45:490 Asignando TIEMPOESPERA a 240
+02 09:39:45:492 Asignando RUTAZIP a C:\V10/v10lib/ZIP
+02 09:39:45:492 Asignando RUTAHELP a C:/V10/v10lib/WWW/help/html
+02 09:39:45:492 Asignando RUTAPLANTILLAS a C:/V10/v10lib/WWW/html
+02 09:39:45:492 Asignando RUTAXLS a C:/V10/v10lib/WWW/xls
+02 09:39:45:492 Asignando RUTAPDF a C:/V10/v10lib/WWW/pdf
+02 09:39:45:492 Asignando COMPRIMIR a 1
+02 09:39:45:493 Escuchando en puerto 5200 con protocolo HTTP
+02 09:41:42:747 Sesion 0: Inicio hebra
+02 09:41:42:747 Conexion 00CA6964 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36 Edg/103.0.1264.44
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Purpose: prefetch
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:41:42:747 Tratapeticion: Server cambia de valor de 00000000 a 00CA6964
+02 09:41:42:753 Se captura IP del cliente 127.0.0.1
+02 09:41:42:753 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 09:41:42:753 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-H0RK6HK -FWVISIBLE=0 -FWSESION=iDQTAVPTF66fjP6D11DOP543OHBN2e -FWPUERTO=5002 -FWHOST=DESKTOP-H0RK6HK -FWTECLADO=0 
+02 09:41:43:213 Sesion 1: Inicio hebra
+02 09:41:43:445 Sesion 0: Arrancado Proceso v10form
+02 09:41:43:445 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:41:43:445 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:41:43:447 Encontrado host 127.0.0.1
+02 09:41:43:448 Encontrado servicio 5002
+02 09:41:43:992 Sesión con v10form establecida
+02 09:41:44:255 Sesion 2: Inicio hebra
+02 09:41:44:255 Conexion 00CA6814 recibe petición
+GET /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:41:44:255 Tratapeticion: Server cambia de valor de 00CA6964 a 00CA6814
+02 09:41:44:255 Se captura IP del cliente 127.0.0.1
+02 09:41:44:255 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 09:41:44:255 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-H0RK6HK -FWVISIBLE=0 -FWSESION=4JnE1PHTUPIP6fv5KNzxeW5XJ1o4MR -FWPUERTO=5003 -FWHOST=DESKTOP-H0RK6HK -FWTECLADO=0 
+02 09:41:44:257 Sesion 2: Arrancado Proceso v10form
+02 09:41:44:257 Sesion 2: Intentando conectar con v10form en puerto 5003
+02 09:41:44:257 Conectando con 127.0.0.1 servicio 5003 protocolo tcp
+02 09:41:44:257 Encontrado host 127.0.0.1
+02 09:41:44:257 Encontrado servicio 5003
+02 09:41:44:785 Sesión con v10form establecida
+02 09:41:45:002 Envio un total de 0.00 KB
+02 09:41:45:005 Enviada la respuesta a socket 00CA6964
+02 09:41:45:017 Libera ca6964
+02 09:41:45:017 Sesion 0: Fin hebra
+02 09:41:45:792 Envio un total de 0.00 KB
+02 09:41:45:792 Enviada la respuesta a socket 00CA6814
+02 09:41:45:792 Sesion 2: Sesión rota
+02 09:41:45:792 Libera ca6814
+02 09:41:45:792 Sesion 2: Fin hebra
+02 09:42:43:387 Sesion 1: Sesión rota
+02 09:42:43:387 Libera ca6884
+02 09:42:43:387 Sesion 1: Fin hebra
+02 12:02:11:325 Sesion 0: Inicio hebra
+02 12:02:11:327 Conexion 00C8F8DC recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36 Edg/103.0.1264.44
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 12:02:11:327 Tratapeticion: Server cambia de valor de 00CA6814 a 00C8F8DC
+02 12:02:11:327 Se captura IP del cliente 127.0.0.1
+02 12:02:11:327 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 12:02:11:327 Sesion 0 Solicita Fichero V10.HTML 
+02 12:02:11:327 Sesion 0 Enviara Fichero V10.HTML
+02 12:02:11:327 Tiempo en abrir 0.000308 seg.
+02 12:02:11:327 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 12:02:11:327 Tiempo en carga de fichero 0.000613 seg.
+02 12:02:11:327 Compresion fin
+02 12:02:11:327 Envio un total de 0.64 KB
+02 12:02:11:327 Fichero v10.html enviado
+02 12:02:11:340 Sesion 0: Sesión rota
+02 12:02:11:340 Libera c8f8dc
+02 12:02:11:340 Sesion 0: Fin hebra
+02 12:02:11:340 Sesion 1: Inicio hebra
+02 12:02:11:417 Conexion 00C8F2BC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36 Edg/103.0.1264.44
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5000/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 12:02:11:419 Tratapeticion: Server cambia de valor de 00C8F8DC a 00C8F2BC
+02 12:02:11:419 Se captura IP del cliente 127.0.0.1
+02 12:02:11:419 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 12:02:11:419 Sesion 1 Solicita Fichero V10LIBRERIAJS.HTML 
+02 12:02:11:419 Sesion 1 Enviara Fichero V10LIBRERIAJS.HTML
+02 12:02:11:420 Tiempo en abrir 0.000266 seg.
+02 12:02:11:420 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 12:02:11:422 Tiempo en carga de fichero 0.001781 seg.
+02 12:02:11:429 Compresion fin
+02 12:02:11:429 Envio un total de 15.81 KB
+02 12:02:11:429 Fichero v10libreriajs.html enviado
+02 12:02:11:434 Sesion 1: Sesión rota
+02 12:02:11:434 Libera c8f2bc
+02 12:02:11:434 Sesion 1: Fin hebra
+02 12:02:11:480 Sesion 0: Inicio hebra
+02 12:02:11:480 Conexion 00C8F63C recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36 Edg/103.0.1264.44
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5000/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 12:02:11:480 Tratapeticion: Server cambia de valor de 00C8F2BC a 00C8F63C
+02 12:02:11:480 Se captura IP del cliente 127.0.0.1
+02 12:02:11:480 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 12:02:11:480 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-H0RK6HK -FWVISIBLE=0 -FWSESION=G1JG0EN4JSO378y80795BHID3BiEAb -FWPUERTO=5003 -FWHOST=DESKTOP-H0RK6HK -FWTECLADO=0 
+02 12:02:11:482 Sesion 0: Arrancado Proceso v10form
+02 12:02:11:482 Sesion 0: Intentando conectar con v10form en puerto 5003
+02 12:02:11:482 Conectando con 127.0.0.1 servicio 5003 protocolo tcp
+02 12:02:11:482 Encontrado host 127.0.0.1
+02 12:02:11:482 Encontrado servicio 5003
+02 12:02:12:022 Sesión con v10form establecida
+02 12:02:13:034 Envio un total de 0.00 KB
+02 12:02:13:035 Enviada la respuesta a socket 00C8F63C
+02 12:02:13:049 Libera c8f63c
+02 12:02:13:049 Sesion 0: Fin hebra
+02 16:02:53:282 Sesion 0: Inicio hebra
+02 16:02:53:282 Conexion 00C8F6E4 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.66 Safari/537.36 Edg/103.0.1264.44
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Purpose: prefetch
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 16:02:53:282 Tratapeticion: Server cambia de valor de 00C8F63C a 00C8F6E4
+02 16:02:53:282 Se captura IP del cliente 127.0.0.1
+02 16:02:53:282 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 16:02:53:282 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-H0RK6HK -FWVISIBLE=0 -FWSESION=T7LR1636fX86RXQLG698NC6AMKmT5Q -FWPUERTO=5004 -FWHOST=DESKTOP-H0RK6HK -FWTECLADO=0 
+02 16:02:53:285 Sesion 0: Arrancado Proceso v10form
+02 16:02:53:285 Sesion 0: Intentando conectar con v10form en puerto 5004
+02 16:02:53:285 Conectando con 127.0.0.1 servicio 5004 protocolo tcp
+02 16:02:53:285 Encontrado host 127.0.0.1
+02 16:02:53:285 Encontrado servicio 5004
+02 16:02:53:797 Sesion 1: Inicio hebra
+02 16:02:53:827 Sesión con v10form establecida
+02 16:02:53:905 Sesion 2: Inicio hebra
+02 16:02:53:905 Conexion 00CA6504 recibe petición
+GET /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 16:02:53:905 Tratapeticion: Server cambia de valor de 00C8F6E4 a 00CA6504
+02 16:02:53:907 Se captura IP del cliente 127.0.0.1
+02 16:02:53:907 Se captura H_NAME del cliente DESKTOP-H0RK6HK
+02 16:02:53:907 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-H0RK6HK -FWVISIBLE=0 -FWSESION=T7LR1636fX86RXQLG698NC6AMKmT5Q -FWPUERTO=5005 -FWHOST=DESKTOP-H0RK6HK -FWTECLADO=0 
+02 16:02:53:910 Sesion 2: Arrancado Proceso v10form
+02 16:02:53:910 Sesion 2: Intentando conectar con v10form en puerto 5005
+02 16:02:53:910 Conectando con 127.0.0.1 servicio 5005 protocolo tcp
+02 16:02:53:910 Encontrado host 127.0.0.1
+02 16:02:53:910 Encontrado servicio 5005
+02 16:02:54:447 Sesión con v10form establecida
+02 16:02:54:839 Envio un total de 0.00 KB
+02 16:02:54:839 Enviada la respuesta a socket 00C8F6E4
+02 16:02:54:854 Libera c8f6e4
+02 16:02:54:854 Sesion 0: Fin hebra
+02 16:02:55:457 Envio un total de 0.00 KB
+02 16:02:55:457 Enviada la respuesta a socket 00CA6504
+02 16:02:55:457 Sesion 2: Sesión rota
+02 16:02:55:457 Libera ca6504
+02 16:02:55:459 Sesion 2: Fin hebra
+02 16:03:57:455 Sesion 1: Sesión rota
+02 16:03:57:455 Libera c8f1a4
+02 16:03:57:455 Sesion 1: Fin hebra
+00 17:10:10:280 Fichero de log abierto PID 15860
+
+02 17:10:10:280 Intentando abrir fichero v10.ini
+02 17:10:10:285 Cargando driver v10oracle funcion damedriveroracle
+02 17:10:10:475 Conectado a base de datos
+02 17:10:10:475 Asignando RELEECONF a 500
+02 17:10:10:475 Asignando ACCESO a V10LOGIN
+02 17:10:10:475 Asignando NIVELLOG a 2
+02 17:10:10:475 Asignando PROTEGIDO a 500
+02 17:10:10:477 Asignando DEBUGHTTP a 2
+02 17:10:10:477 Asignando VISIBLEEXE a 0
+02 17:10:10:477 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 17:10:10:477 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 17:10:10:477 Asignando SERVIDOR a HTTP://127.0.0.1
+02 17:10:10:477 Asignando SERVERPORT a 5000
+02 17:10:10:477 Asignando SERVERPORTFILES a 5001
+02 17:10:10:477 Asignando PUERTOINICIAL a 5002
+02 17:10:10:477 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 17:10:10:477 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 17:10:10:477 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 17:10:10:477 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 17:10:10:477 Asignando FILEEXPIRED a 3600
+02 17:10:10:477 Asignando TIEMPOESPERA a 240
+02 17:10:10:479 Asignando RUTAZIP a C:/V10/v10lib/ZIP
+02 17:10:10:480 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 17:10:10:480 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 17:10:10:480 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 17:10:10:480 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 17:10:10:480 Asignando COMPRIMIR a 1
+
+00 17:10:10:480 Fichero de log cerrado.
+
+02 17:10:10:482 Escuchando en puerto 5000 con protocolo HTTP
+00 17:10:15:147 Fichero de log abierto PID 18464
+
+02 17:10:15:147 Intentando abrir fichero v10.ini
+02 17:10:15:150 Cargando driver v10oracle funcion damedriveroracle
+02 17:10:15:305 Conectado a base de datos
+02 17:10:15:307 Asignando RELEECONF a 500
+02 17:10:15:307 Asignando ACCESO a V10LOGIN
+02 17:10:15:307 Asignando NIVELLOG a 2
+02 17:10:15:307 Asignando PROTEGIDO a 500
+02 17:10:15:307 Asignando DEBUGHTTP a 2
+02 17:10:15:307 Asignando VISIBLEEXE a 0
+02 17:10:15:307 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 17:10:15:307 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 17:10:15:309 Asignando SERVIDOR a HTTP://127.0.0.1
+02 17:10:15:310 Asignando SERVERPORT a 5200
+02 17:10:15:310 Asignando SERVERPORTFILES a 5101
+02 17:10:15:310 Asignando PUERTOINICIAL a 5202
+02 17:10:15:310 Asignando SERVERHTML a HTTP://127.0.0.1:5101/html
+02 17:10:15:310 Asignando SERVERIMG a HTTP://127.0.0.1:5101/img
+02 17:10:15:310 Asignando SERVERXLS a HTTP://127.0.0.1:5101/xls
+02 17:10:15:310 Asignando SERVERPDF a HTTP://127.0.0.1:5101/pdf
+02 17:10:15:310 Asignando FILEEXPIRED a 3600
+02 17:10:15:310 Asignando TIEMPOESPERA a 240
+02 17:10:15:314 Asignando RUTAZIP a C:\V10/v10lib/ZIP
+02 17:10:15:314 Asignando RUTAHELP a C:/V10/v10lib/WWW/help/html
+02 17:10:15:314 Asignando RUTAPLANTILLAS a C:/V10/v10lib/WWW/html
+02 17:10:15:314 Asignando RUTAXLS a C:/V10/v10lib/WWW/xls
+02 17:10:15:314 Asignando RUTAPDF a C:/V10/v10lib/WWW/pdf
+02 17:10:15:314 Asignando COMPRIMIR a 1
+
+00 17:10:15:315 Fichero de log cerrado.
+
+02 17:10:15:315 Escuchando en puerto 5200 con protocolo HTTP

@@ -1,0 +1,17 @@
+# M¢dulo : VDTIPORDRECLIN.DEF                                                     
+# Función: Generación automatica de rutinas C tabla VDTIPORDRECLIN
+#                        
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 17-06-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=LTO
+EXTRA=CODART,V10CADENA,20
+
+CLAVE=ARTICULO, TIPORDREC,WHERE=(CODCLASIF,CODCLASE) IN (SELECT CODCLASIF,CODCLASE
+                                                           FROM VDCLASEARTIC
+                                                          WHERE CODART = :CODART);

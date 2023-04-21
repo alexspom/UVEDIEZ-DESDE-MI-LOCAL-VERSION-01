@@ -1,0 +1,61 @@
+# Módulo: VDRUSER.PAN
+# Función: Petición de usuario de radios
+#
+#
+# Creado el 17-10-2001 por Eduardo Alsina
+#
+# Histórico de cambios
+#
+# 
+PETICION DE USUARIO
+_____________
+
+   
+
+      IDENTIFICACION
+
+    USUARIO:  __________
+    PASSWORD: _P________
+
+
+
+|
+
+POSTUPDATE=FEJECUTA("+CSELUSU","",
+                    FVERIFICAPASS(":USUARIO",":PASSWORD","MENSAJE"),"\n\n\n:MENSAJE",
+                    "CVERPRIVILEGIO","\n\n\nNO TIENE PRIVILEGIO PARA\nCONECTARSE A ESTE TERMINAL",
+                    "CLOGINRADIO","\n\n\n:MENSAJE",
+                    "CVERERROR","\n\n\n:MENSAJE",
+                    FCARGATERMINAL("USUARIO"),"",
+                    FCOMMIT,"")
+
+CAMPO=CODRECURSO,NOENTER
+CAMPO=USUARIO,TOOLTIP("INTRODUZCA EL USUARIO"),SCAN
+CAMPO=PASSWORD
+CAMPO=MENSAJE,OCULTO,"_200_"
+
+CURSOR=CLOGINRADIO BEGIN
+                    :MENSAJE:=VDRADIO.LOGIN(:CODRECURSO,:USUARIO);
+                   END;@
+                   
+CURSOR=CVERERROR SELECT :MENSAJE FROM DUAL WHERE :MENSAJE IS NULL;                   
+
+CURSOR=CVERPRIVILEGIO SELECT :CODRECURSO 
+                       FROM VDRECURSO 
+                       WHERE CODRECURSO=:CODRECURSO AND VDUSER.TIENEPRIVILEGIO(:USUARIO,PRIVILEGIOSLOGIN)=1;
+
+CURSOR=CSELUSU SELECT TRIM(:USUARIO) USUARIO FROM DUAL;
+ 
+
+ONLINE=LOGIN EN APLICACION DE RADIOS;
+
+
+
+
+
+
+
+
+
+
+

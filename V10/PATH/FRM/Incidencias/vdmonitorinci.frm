@@ -1,0 +1,28 @@
+# Módulo   : VDMONITORINCI.FRM
+# Función  : MONITOR DE INCIDENCIAS
+#
+# Creación : 10-09-2009
+# Autor    : JCSR
+###########################################
+# Histórico de cambios:
+BEGINBLOQUE = VDAGRUINCISTATUS.PAN
+	PREQUERY = QUERYHIJO
+	PREREGISTRO = PRESEHIJO
+  REGPAG=5
+ENDBLOQUE
+BEGINBLOQUE = VDINCIPORSTATUS.PAN
+    POSY = 11
+	WLONX = 1400
+	REGPAG=15
+	BOTON = BUSCAR,870,55,70,70,"Ampliar Datos",buscar.png,SF10,"Ampliar Datos",INCLUDECSS="background-color: transparent;border-width:0px"
+	PADRE = VDAGRUINCISTATUS.PAN
+	PREQUERY = QUERYHIJO
+	PREREGISTRO = PRESEHIJO
+ENDBLOQUE
+BEGINBLOQUE = VDLINEASINCI.PAN
+	PADRE = VDINCIPORSTATUS.PAN
+	WLONX = 900
+	POSY = 30
+	REGPAG=5
+	BOTON = AÑADIR,930,400,70,70,"AÑADIR LINEA",editpaste.png,AF7,"Añadir línea de incidencia",INCLUDECSS="background-color: transparent;border-width:0px"
+ENDBLOQUE

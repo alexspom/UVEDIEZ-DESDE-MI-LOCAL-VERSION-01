@@ -1,0 +1,139 @@
+00 09:42:16:717 Fichero de log abierto PID 1660
+
+02 09:42:16:717 Intentando abrir fichero v10.ini
+02 09:42:16:721 Cargando driver v10oracle funcion damedriveroracle
+02 09:42:16:841 Conectado a base de datos
+02 09:42:16:842 Asignando RELEECONF a 500
+02 09:42:16:842 Asignando ACCESO a V10LOGIN
+02 09:42:16:842 Asignando NIVELLOG a 2
+02 09:42:16:843 Asignando PROTEGIDO a 500
+02 09:42:16:843 Asignando DEBUGHTTP a 2
+02 09:42:16:843 Asignando VISIBLEEXE a 0
+02 09:42:16:843 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:42:16:845 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:42:16:845 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:42:16:846 Asignando SERVERPORT a 5000
+02 09:42:16:846 Asignando SERVERPORTFILES a 5001
+02 09:42:16:846 Asignando PUERTOINICIAL a 5002
+02 09:42:16:846 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:42:16:847 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:42:16:847 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:42:16:847 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:42:16:847 Asignando FILEEXPIRED a 3600
+02 09:42:16:847 Asignando TIEMPOESPERA a 240
+02 09:42:16:850 Asignando RUTAZIP a C:/V10/v10lib/ZIP
+02 09:42:16:850 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:42:16:850 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:42:16:850 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:42:16:851 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:42:16:851 Asignando COMPRIMIR a 1
+02 09:42:16:860 Escuchando en el puerto 5002
+02 09:42:17:213 Conectado Listener en el puerto 5002
+02 09:42:17:230 Abriendo conexion HTTP en el puerto 5002
+02 09:42:17:230 Abierta conexion HTTP en el puerto 5002
+02 09:42:18:240 Conexión de cliente establecida
+02 09:42:18:240 v10formserver vale 0
+02 09:42:18:240 Conexion 05920984 recibe petición
+GET /v10.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:42:18:240 La conexion 0 recibe peticion en socket 05920984
+02 09:42:18:240 Tratapeticion: Server cambia de valor de 00000000 a 05920984
+02 09:42:18:240 Sesion 0 Solicita Fichero V10.HTML 
+02 09:42:18:240 Sesion 0 Enviara Fichero V10.HTML
+02 09:42:18:241 Timeout es 99999.000000
+02 09:42:18:251 Tiempo en abrir 0.010706 seg.
+02 09:42:18:251 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:42:18:251 Tiempo en carga de fichero 0.010999 seg.
+02 09:42:18:251 Compresion fin
+02 09:42:18:251 Envio un total de 0.64 KB
+02 09:42:18:251 Fichero v10.html enviado
+02 09:42:18:255 Sesion 0 socket 05920984 Finalizada por rotura de conexion 5
+02 09:42:18:255 Libera 5920984
+02 09:42:18:302 Sesion 0 Conectada socket 05917F2C
+02 09:42:18:302 Conexion 05917F2C recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:42:18:302 La conexion 0 recibe peticion en socket 05917F2C
+02 09:42:18:302 Tratapeticion: Server cambia de valor de 05920984 a 05917F2C
+02 09:42:18:302 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:42:18:302 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:42:18:342 Tiempo en abrir 0.041272 seg.
+02 09:42:18:343 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:42:18:343 Tiempo en carga de fichero 0.041605 seg.
+02 09:42:18:347 Compresion fin
+02 09:42:18:347 Envio un total de 15.81 KB
+02 09:42:18:347 Fichero v10libreriajs.html enviado
+02 09:42:18:365 Sesion 1 Conectada socket 05918274
+02 09:42:18:365 Sesion 0 socket 05917F2C Finalizada por rotura de conexion 5
+02 09:42:18:365 Libera 5917f2c
+02 09:42:18:365 Conexion 05918274 recibe petición
+GET /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:42:18:365 La conexion 1 recibe peticion en socket 05918274
+02 09:42:18:365 Tratapeticion: Server cambia de valor de 05917F2C a 05918274
+02 09:42:18:365 Recibida cadena de acceso
+00 09:42:18:371 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:42:18:371 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:42:18:931 Error al abrir fichero VDST.H
+02 09:42:18:958 Empiezo a leer forms vduser.frm
+02 09:42:18:973 Leyendo caracteristicas del bloque 
+02 09:42:18:973 Leidas caracteristicas del bloque 
+02 09:42:18:996 Termino parse forms vduser.frm
+02 09:42:18:997 v10formserver vale 5918274
+02 09:42:18:997 Inicio envío
+02 09:42:19:012 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:42:19:012 Html calculado. Tiempo de envío 0.014772 segundos
+02 09:42:19:012 Compresion fin
+02 09:42:19:012 Envio un total de 4.18 KB
+02 09:42:19:012 Enviada la respuesta a socket 05918274
+02 09:42:19:012 Html enviado. Tiempo de envío 0.015755 segundos
+02 09:42:22:182 Conexion 05918274 recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 121
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:42:22:185 La conexion 1 recibe peticion en socket 05918274
+02 09:42:22:185 Tratapeticion: Server cambia de valor de 05918274 a 05918274
+02 09:42:22:185 AtiendePost: Server cambia de valor de 05918274 a 05918274
+02 09:42:22:200 Detectado evento
+02 09:42:22:201 Evento recibido
+02 09:42:22:201 
+	Objeto: %5Bobject+HTMLInputElement%5D
+	Evento: Salir
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:42:22:201 Fin Evento recibido
+02 09:42:22:201 v10formserver vale 5918274
+02 09:42:22:353 Libera 5918274
+
+00 09:42:22:356 Fichero de log cerrado.
+

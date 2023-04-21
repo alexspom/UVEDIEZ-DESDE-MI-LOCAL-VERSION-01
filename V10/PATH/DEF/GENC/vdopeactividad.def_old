@@ -1,0 +1,15 @@
+#***
+# VDOPEACTIVIDAD.DEF - Generación automática del código c para la tabla de Actividad de operarios en zonas
+#                        
+# Propósito: Funciones de acceso a la tabla VDOPEACTIVIDAD
+#           
+# Autor	 : FGS	
+# Revisado por: 
+# Fecha  : 10-12-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=OACT
+UPDATE=CIERREZONA,FECFINACT,HORAFINACT
+RECORRE=ZONAABIERTA,CODZONA,CODOPE;WHERE=NVL(FECFINACT,0)=0 AND HORAFINACT IS NULL;
+INSERT

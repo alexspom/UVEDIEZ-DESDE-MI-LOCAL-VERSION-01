@@ -1,0 +1,264 @@
+// Modulo generado automaticamente a partir de VDASIGNAGEAUX.DEF
+//#***
+//# VDASIGNAGEAUX.DEF - Generación automática del código c SOLOQUERY para 
+//#                     asignación de agencias
+//# 
+//# Propósito: idem.
+//#           
+//# Autor	 : FPD
+//# Revisado por: 
+//# Fecha  : 26-03-2008                                               
+//#********************************************************************************
+//# Modificaciones
+//#***
+//NOMBRE=ASIAGE;
+//
+//EXTRA=PESOPEDIDO,V10LONG
+//EXTRA=BULTOSPEDIDO,V10LONG
+//EXTRA=VOLPEDIDO,V10DOUBLE
+//EXTRA=CODDIVPED,V10CADENA,5
+//EXTRA=CODDIVART,V10CADENA,5
+//
+//SELECT=DATOSPEDIDO,SELECT VDAGE.DAMEPESOPEDIDO(:VDPEDIDOCAB.CODDIV,:VDPEDIDOCAB.ANOPED,:VDPEDIDOCAB.CODPED,:VDPEDIDOCAB.SEQPED) PESOPEDIDO,
+//                          VDAGE.DAMEBULTOSPEDIDO(:VDPEDIDOCAB.CODDIV,:VDPEDIDOCAB.ANOPED,:VDPEDIDOCAB.CODPED,:VDPEDIDOCAB.SEQPED) BULTOSPEDIDO,
+//                          VDAGE.DAMEVOLUMENPEDIDO(:VDPEDIDOCAB.CODDIV,:VDPEDIDOCAB.ANOPED,:VDPEDIDOCAB.CODPED,:VDPEDIDOCAB.SEQPED) VOLPEDIDO
+//                     FROM DUAL;
+//
+//SELECT=AGEARTIC,SELECT VDAGE.DAMEAGEARTIC(:CODDIVPED,:VDPEDIDOCAB.TIPOPEDIDO,:VDPEDIDOCAB.DP,:VDPEDIDOCAB.CODCLIENTE,:PESOPEDIDO,
+//                                          :BULTOSPEDIDO,:VOLPEDIDO,:VDPEDIDOCAB.URGENCIA,:VDPEDIDOCAB.PRIORIDAD,:VDARTIC.CODART,
+//                                          :CODDIVART,:VDCLASEARTIC.CODCLASE,:VDPEDIDOCAB.CODAGE,:VDPEDIDOCAB.CODPAIS) AGEARTICULO
+//                  FROM DUAL;
+//
+//SELECT=AGEPEDMISC,SELECT VDAGE.DAMEAGEPEDMISC(:CODDIVPED,:VDPEDIDOCAB.TIPOPEDIDO,:VDPEDIDOCAB.DP,:VDPEDIDOCAB.CODCLIENTE,:PESOPEDIDO,
+//                                          :BULTOSPEDIDO,:VOLPEDIDO,:VDPEDIDOCAB.URGENCIA,:VDPEDIDOCAB.PRIORIDAD
+//                                          ,:VDPEDIDOCAB.CODAGE,:VDPEDIDOCAB.CODPAIS) AGEPEDMISC
+//                  FROM DUAL;
+//
+//                  
+
+#include "vdpedidos.h"\
+
+#define SELDATOSPEDIDO "SELECT VDAGE.DAMEPESOPEDIDO(:CODDIV,:ANOPED,:CODPED,:SEQPED) PESOPEDIDO, VDAGE.DAMEBULTOSPEDIDO(:CODDIV,:ANOPED,:CODPED,:SEQPED) BULTOSPEDIDO, VDAGE.DAMEVOLUMENPEDIDO(:CODDIV,:ANOPED,:CODPED,:SEQPED) VOLPEDIDO FROM DUAL"
+static v10cursors *vdseldatospedido;
+#define SELAGEARTIC "SELECT VDAGE.DAMEAGEARTIC(:CODDIVPED,:TIPOPEDIDO,:DP,:CODCLIENTE,:PESOPEDIDO, :BULTOSPEDIDO,:VOLPEDIDO,:URGENCIA,:PRIORIDAD,:CODART, :CODDIVART,:CODCLASE,:CODAGE,:CODPAIS) AGEARTICULO FROM DUAL"
+static v10cursors *vdselageartic;
+#define SELAGEPEDMISC "SELECT VDAGE.DAMEAGEPEDMISC(:CODDIVPED,:TIPOPEDIDO,:DP,:CODCLIENTE,:PESOPEDIDO, :BULTOSPEDIDO,:VOLPEDIDO,:URGENCIA,:PRIORIDAD ,:CODAGE,:CODPAIS) AGEPEDMISC FROM DUAL"
+static v10cursors *vdselagepedmisc;
+
+static vdasiages svdasiage;
+
+static diccols colvdasiage[]={ 
+    {"PESOPEDIDO",V10LONG,(int)&svdasiage.pesopedido,sizeof(svdasiage.pesopedido)},
+    {"BULTOSPEDIDO",V10LONG,(int)&svdasiage.bultospedido,sizeof(svdasiage.bultospedido)},
+    {"VOLPEDIDO",V10DOUBLE,(int)&svdasiage.volpedido,sizeof(svdasiage.volpedido)},
+    {"CODDIVPED",V10CADENA,(int)&svdasiage.coddivped,sizeof(svdasiage.coddivped)},
+    {"CODDIVART",V10CADENA,(int)&svdasiage.coddivart,sizeof(svdasiage.coddivart)},
+    {"CODDIV",V10CADENA,(int)&svdasiage.coddiv,sizeof(svdasiage.coddiv)},
+    {"ANOPED",V10LONG,(int)&svdasiage.anoped,sizeof(svdasiage.anoped)},
+    {"CODPED",V10CADENA,(int)&svdasiage.codped,sizeof(svdasiage.codped)},
+    {"SEQPED",V10LONG,(int)&svdasiage.seqped,sizeof(svdasiage.seqped)},
+    {"AGEARTICULO",V10CADENA,(int)&svdasiage.agearticulo,sizeof(svdasiage.agearticulo)},
+    {"TIPOPEDIDO",V10CADENA,(int)&svdasiage.tipopedido,sizeof(svdasiage.tipopedido)},
+    {"DP",V10CADENA,(int)&svdasiage.dp,sizeof(svdasiage.dp)},
+    {"CODCLIENTE",V10CADENA,(int)&svdasiage.codcliente,sizeof(svdasiage.codcliente)},
+    {"URGENCIA",V10LONG,(int)&svdasiage.urgencia,sizeof(svdasiage.urgencia)},
+    {"PRIORIDAD",V10LONG,(int)&svdasiage.prioridad,sizeof(svdasiage.prioridad)},
+    {"CODART",V10CADENA,(int)&svdasiage.codart,sizeof(svdasiage.codart)},
+    {"CODCLASE",V10CADENA,(int)&svdasiage.codclase,sizeof(svdasiage.codclase)},
+    {"CODAGE",V10CADENA,(int)&svdasiage.codage,sizeof(svdasiage.codage)},
+    {"CODPAIS",V10CADENA,(int)&svdasiage.codpais,sizeof(svdasiage.codpais)},
+    {"AGEPEDMISC",V10CADENA,(int)&svdasiage.agepedmisc,sizeof(svdasiage.agepedmisc)}
+    };
+
+static diccionarios dvdasiage[]={
+    {colvdasiage,20}
+    };
+
+diccionario dasiage={dvdasiage,1};
+
+static char msgdebugasiage[LCADENABIG];
+
+static int init=0;
+
+
+static void fin_vd_ASIAGE(void)
+{
+    if(vdseldatospedido){
+        liberacursor(vdseldatospedido);
+        vdseldatospedido=NULL;
+    }
+    if(vdselageartic){
+        liberacursor(vdselageartic);
+        vdselageartic=NULL;
+    }
+    if(vdselagepedmisc){
+        liberacursor(vdselagepedmisc);
+        vdselagepedmisc=NULL;
+    }
+}
+
+
+static void init_seldatospedido(void)
+{
+    int nc;
+
+    for(nc=0;nc<dvdasiage[0].numcol;nc++) dvdasiage[0].c[nc].offset-=(int)&svdasiage;
+
+    vdseldatospedido=abrecursor(SELDATOSPEDIDO);
+    definetodo(vdseldatospedido,&svdasiage.pesopedido,sizeof(svdasiage.pesopedido),V10LONG,
+               &svdasiage.bultospedido,sizeof(svdasiage.bultospedido),V10LONG,
+               &svdasiage.volpedido,sizeof(svdasiage.volpedido),V10DOUBLE,
+               NULL);
+    bindtodo(vdseldatospedido,"CODDIV",svdasiage.coddiv,sizeof(svdasiage.coddiv),V10CADENA,
+             "ANOPED",&svdasiage.anoped,sizeof(svdasiage.anoped),V10LONG,
+             "CODPED",svdasiage.codped,sizeof(svdasiage.codped),V10CADENA,
+             "SEQPED",&svdasiage.seqped,sizeof(svdasiage.seqped),V10LONG,
+             NULL);
+
+    if (init == 0) {
+        atexit(fin_vd_ASIAGE);
+        init = 1;
+    }
+}
+
+static void init_selageartic(void)
+{
+    int nc;
+
+    for(nc=0;nc<dvdasiage[0].numcol;nc++) dvdasiage[0].c[nc].offset-=(int)&svdasiage;
+
+    vdselageartic=abrecursor(SELAGEARTIC);
+    definetodo(vdselageartic,svdasiage.agearticulo,sizeof(svdasiage.agearticulo),V10CADENA,
+               NULL);
+    bindtodo(vdselageartic,"CODDIVPED",svdasiage.coddivped,sizeof(svdasiage.coddivped),V10CADENA,
+             "TIPOPEDIDO",svdasiage.tipopedido,sizeof(svdasiage.tipopedido),V10CADENA,
+             "DP",svdasiage.dp,sizeof(svdasiage.dp),V10CADENA,
+             "CODCLIENTE",svdasiage.codcliente,sizeof(svdasiage.codcliente),V10CADENA,
+             "PESOPEDIDO",&svdasiage.pesopedido,sizeof(svdasiage.pesopedido),V10LONG,
+             "BULTOSPEDIDO",&svdasiage.bultospedido,sizeof(svdasiage.bultospedido),V10LONG,
+             "VOLPEDIDO",&svdasiage.volpedido,sizeof(svdasiage.volpedido),V10DOUBLE,
+             "URGENCIA",&svdasiage.urgencia,sizeof(svdasiage.urgencia),V10LONG,
+             "PRIORIDAD",&svdasiage.prioridad,sizeof(svdasiage.prioridad),V10LONG,
+             "CODART",svdasiage.codart,sizeof(svdasiage.codart),V10CADENA,
+             "CODDIVART",svdasiage.coddivart,sizeof(svdasiage.coddivart),V10CADENA,
+             "CODCLASE",svdasiage.codclase,sizeof(svdasiage.codclase),V10CADENA,
+             "CODAGE",svdasiage.codage,sizeof(svdasiage.codage),V10CADENA,
+             "CODPAIS",svdasiage.codpais,sizeof(svdasiage.codpais),V10CADENA,
+             NULL);
+
+    if (init == 0) {
+        atexit(fin_vd_ASIAGE);
+        init = 1;
+    }
+}
+
+static void init_selagepedmisc(void)
+{
+    int nc;
+
+    for(nc=0;nc<dvdasiage[0].numcol;nc++) dvdasiage[0].c[nc].offset-=(int)&svdasiage;
+
+    vdselagepedmisc=abrecursor(SELAGEPEDMISC);
+    definetodo(vdselagepedmisc,svdasiage.agepedmisc,sizeof(svdasiage.agepedmisc),V10CADENA,
+               NULL);
+    bindtodo(vdselagepedmisc,"CODDIVPED",svdasiage.coddivped,sizeof(svdasiage.coddivped),V10CADENA,
+             "TIPOPEDIDO",svdasiage.tipopedido,sizeof(svdasiage.tipopedido),V10CADENA,
+             "DP",svdasiage.dp,sizeof(svdasiage.dp),V10CADENA,
+             "CODCLIENTE",svdasiage.codcliente,sizeof(svdasiage.codcliente),V10CADENA,
+             "PESOPEDIDO",&svdasiage.pesopedido,sizeof(svdasiage.pesopedido),V10LONG,
+             "BULTOSPEDIDO",&svdasiage.bultospedido,sizeof(svdasiage.bultospedido),V10LONG,
+             "VOLPEDIDO",&svdasiage.volpedido,sizeof(svdasiage.volpedido),V10DOUBLE,
+             "URGENCIA",&svdasiage.urgencia,sizeof(svdasiage.urgencia),V10LONG,
+             "PRIORIDAD",&svdasiage.prioridad,sizeof(svdasiage.prioridad),V10LONG,
+             "CODAGE",svdasiage.codage,sizeof(svdasiage.codage),V10CADENA,
+             "CODPAIS",svdasiage.codpais,sizeof(svdasiage.codpais),V10CADENA,
+             NULL);
+
+    if (init == 0) {
+        atexit(fin_vd_ASIAGE);
+        init = 1;
+    }
+}
+
+diccionario *ASIAGEdamediccionario(void)
+{
+    return(&dasiage);
+}
+
+int ASIAGEseldatospedido(char *coddiv,long anoped,char *codped,long seqped,vdasiages *asiage)
+{
+    int vdret;
+    if (vdseldatospedido==NULL) init_seldatospedido();
+    memset(&svdasiage,0,sizeof(svdasiage));
+    strcpy(svdasiage.coddiv,coddiv);
+    svdasiage.anoped=anoped;
+    strcpy(svdasiage.codped,codped);
+    svdasiage.seqped=seqped;
+    vdret=ejefetchcursor(vdseldatospedido);
+    if(vdret) {
+        v10log(LOGDEBUG,"Ejefetch ASIAGEbuscadatospedido vdret %d. \n", vdret);
+        return(VD_EERRORACLE);
+    }
+    *asiage=svdasiage;
+    return(vdret);
+}
+
+int ASIAGEselageartic(char *coddivped,char *tipopedido,char *dp,char *codcliente,long pesopedido,long bultospedido,double volpedido,long urgencia,long prioridad,char *codart,char *coddivart,char *codclase,char *codage,char *codpais,vdasiages *asiage)
+{
+    int vdret;
+    if (vdselageartic==NULL) init_selageartic();
+    memset(&svdasiage,0,sizeof(svdasiage));
+    strcpy(svdasiage.coddivped,coddivped);
+    strcpy(svdasiage.tipopedido,tipopedido);
+    strcpy(svdasiage.dp,dp);
+    strcpy(svdasiage.codcliente,codcliente);
+    svdasiage.pesopedido=pesopedido;
+    svdasiage.bultospedido=bultospedido;
+    svdasiage.volpedido=volpedido;
+    svdasiage.urgencia=urgencia;
+    svdasiage.prioridad=prioridad;
+    strcpy(svdasiage.codart,codart);
+    strcpy(svdasiage.coddivart,coddivart);
+    strcpy(svdasiage.codclase,codclase);
+    strcpy(svdasiage.codage,codage);
+    strcpy(svdasiage.codpais,codpais);
+    vdret=ejefetchcursor(vdselageartic);
+    if(vdret) {
+        v10log(LOGDEBUG,"Ejefetch ASIAGEbuscaageartic vdret %d. \n", vdret);
+        return(VD_EERRORACLE);
+    }
+    *asiage=svdasiage;
+    return(vdret);
+}
+
+int ASIAGEselagepedmisc(char *coddivped,char *tipopedido,char *dp,char *codcliente,long pesopedido,long bultospedido,double volpedido,long urgencia,long prioridad,char *codage,char *codpais,vdasiages *asiage)
+{
+    int vdret;
+    if (vdselagepedmisc==NULL) init_selagepedmisc();
+    memset(&svdasiage,0,sizeof(svdasiage));
+    strcpy(svdasiage.coddivped,coddivped);
+    strcpy(svdasiage.tipopedido,tipopedido);
+    strcpy(svdasiage.dp,dp);
+    strcpy(svdasiage.codcliente,codcliente);
+    svdasiage.pesopedido=pesopedido;
+    svdasiage.bultospedido=bultospedido;
+    svdasiage.volpedido=volpedido;
+    svdasiage.urgencia=urgencia;
+    svdasiage.prioridad=prioridad;
+    strcpy(svdasiage.codage,codage);
+    strcpy(svdasiage.codpais,codpais);
+    vdret=ejefetchcursor(vdselagepedmisc);
+    if(vdret) {
+        v10log(LOGDEBUG,"Ejefetch ASIAGEbuscaagepedmisc vdret %d. \n", vdret);
+        return(VD_EERRORACLE);
+    }
+    *asiage=svdasiage;
+    return(vdret);
+}
+
+char * ASIAGEdebug(vdasiages *asiage)
+{
+    debugestruct(&dasiage,asiage,msgdebugasiage);
+    return(msgdebugasiage);
+}
+

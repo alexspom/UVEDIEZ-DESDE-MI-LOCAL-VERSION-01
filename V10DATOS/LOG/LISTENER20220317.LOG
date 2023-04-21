@@ -1,0 +1,265 @@
+00 09:51:03:897 Fichero de log abierto PID 8628
+
+02 09:51:03:897 Intentando abrir fichero v10.ini
+02 09:51:03:902 Cargando driver v10oracle funcion damedriveroracle
+00 09:51:03:917 Fichero de log abierto PID 8360
+
+02 09:51:03:917 Intentando abrir fichero v10.ini
+02 09:51:03:922 Cargando driver v10oracle funcion damedriveroracle
+02 09:51:04:386 Conectado a base de datos
+02 09:51:04:387 Asignando RELEECONF a 500
+02 09:51:04:387 Asignando ACCESO a V10LOGIN
+02 09:51:04:387 Asignando NIVELLOG a 2
+02 09:51:04:387 Asignando PROTEGIDO a 500
+02 09:51:04:387 Asignando DEBUGHTTP a 2
+02 09:51:04:387 Asignando VISIBLEEXE a 0
+02 09:51:04:387 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:51:04:387 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:51:04:388 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:51:04:388 Asignando SERVERPORT a 5200
+02 09:51:04:388 Asignando SERVERPORTFILES a 5101
+02 09:51:04:390 Asignando PUERTOINICIAL a 5202
+02 09:51:04:390 Asignando SERVERHTML a HTTP://127.0.0.1:5101/html
+02 09:51:04:390 Asignando SERVERIMG a HTTP://127.0.0.1:5101/img
+02 09:51:04:390 Asignando SERVERXLS a HTTP://127.0.0.1:5101/xls
+02 09:51:04:391 Asignando SERVERPDF a HTTP://127.0.0.1:5101/pdf
+02 09:51:04:391 Asignando FILEEXPIRED a 3600
+02 09:51:04:391 Asignando TIEMPOESPERA a 240
+02 09:51:04:392 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:51:04:393 Asignando RUTAHELP a D:/V10/v10lib/WWW/help/html
+02 09:51:04:393 Asignando RUTAPLANTILLAS a D:/V10/v10lib/WWW/html
+02 09:51:04:393 Asignando RUTAXLS a D:/V10/v10lib/WWW/xls
+02 09:51:04:395 Asignando RUTAPDF a D:/V10/v10lib/WWW/pdf
+02 09:51:04:395 Asignando COMPRIMIR a 1
+02 09:51:04:397 Escuchando en puerto 5200 con protocolo HTTP
+02 09:51:04:732 Conectado a base de datos
+02 09:51:04:733 Asignando RELEECONF a 500
+02 09:51:04:733 Asignando ACCESO a V10LOGIN
+02 09:51:04:735 Asignando NIVELLOG a 2
+02 09:51:04:735 Asignando PROTEGIDO a 500
+02 09:51:04:736 Asignando DEBUGHTTP a 2
+02 09:51:04:736 Asignando VISIBLEEXE a 0
+02 09:51:04:736 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:51:04:736 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:51:04:737 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:51:04:737 Asignando SERVERPORT a 5000
+02 09:51:04:737 Asignando SERVERPORTFILES a 5001
+02 09:51:04:737 Asignando PUERTOINICIAL a 5002
+02 09:51:04:737 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:51:04:737 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:51:04:737 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:51:04:738 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:51:04:738 Asignando FILEEXPIRED a 3600
+02 09:51:04:740 Asignando TIEMPOESPERA a 240
+02 09:51:04:742 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:51:04:742 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:51:04:742 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:51:04:742 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:51:04:742 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:51:04:742 Asignando COMPRIMIR a 1
+02 09:51:04:745 Escuchando en puerto 5000 con protocolo HTTP
+02 09:51:34:665 Sesion 0: Inicio hebra
+02 09:51:34:665 Conexion 0DB22E3C recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5200
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:34:665 Tratapeticion: Server cambia de valor de 00000000 a 0DB22E3C
+02 09:51:34:671 Se captura IP del cliente 127.0.0.1
+02 09:51:34:671 Se captura H_NAME del cliente DAVIDVEGA
+02 09:51:34:671 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=LISTEXT -FWVISIBLE=0 -FWSESION=2R3SHdlEC5PUA4O6QFDmSF64bwQ82N -FWPUERTO=5202 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 09:51:34:678 Sesion 0: Arrancado Proceso v10form
+02 09:51:34:678 Sesion 0: Intentando conectar con v10form en puerto 5202
+02 09:51:34:678 Conectando con 127.0.0.1 servicio 5202 protocolo tcp
+02 09:51:34:680 Sesion 1: Inicio hebra
+02 09:51:34:681 Encontrado host 127.0.0.1
+02 09:51:34:681 Encontrado servicio 5202
+02 09:51:35:222 Sesión con v10form establecida
+02 09:51:36:228 Envio un total de 0.00 KB
+02 09:51:36:228 Enviada la respuesta a socket 0DB22E3C
+02 09:51:36:243 Libera db22e3c
+02 09:51:36:245 Sesion 0: Fin hebra
+02 09:51:49:726 Sesion 0: Inicio hebra
+02 09:51:49:726 Conexion 0F57BC24 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Purpose: prefetch
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:49:726 Tratapeticion: Server cambia de valor de 00000000 a 0F57BC24
+02 09:51:49:727 Se captura IP del cliente 127.0.0.1
+02 09:51:49:727 Se captura H_NAME del cliente DAVIDVEGA
+02 09:51:49:727 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDAVIDVEGA -FWVISIBLE=0 -FWSESION=JLSIF4eN0A2L6Xw50BwI4zb3VF71T9 -FWPUERTO=5003 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 09:51:49:736 Sesion 0: Arrancado Proceso v10form
+02 09:51:49:736 Sesion 0: Intentando conectar con v10form en puerto 5003
+02 09:51:49:736 Conectando con 127.0.0.1 servicio 5003 protocolo tcp
+02 09:51:49:737 Encontrado host 127.0.0.1
+02 09:51:49:737 Encontrado servicio 5003
+02 09:51:50:220 Sesion 1: Inicio hebra
+02 09:51:50:265 Sesión con v10form establecida
+02 09:51:51:273 Envio un total de 0.00 KB
+02 09:51:51:273 Enviada la respuesta a socket 0F57BC24
+02 09:51:51:290 Conexion 00CF46DC recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:51:290 Tratapeticion: Server cambia de valor de 0F57BC24 a 00CF46DC
+02 09:51:51:290 Libera f57bc24
+02 09:51:51:290 Sesion 0: Fin hebra
+02 09:51:51:291 Se captura IP del cliente 127.0.0.1
+02 09:51:51:291 Se captura H_NAME del cliente DAVIDVEGA
+02 09:51:51:291 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDAVIDVEGA -FWVISIBLE=0 -FWSESION=jF5yMDWh3E7yN7jj5eFW35q54sJ0kJ -FWPUERTO=5004 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 09:51:51:295 Sesion 1: Arrancado Proceso v10form
+02 09:51:51:295 Sesion 1: Intentando conectar con v10form en puerto 5004
+02 09:51:51:295 Conectando con 127.0.0.1 servicio 5004 protocolo tcp
+02 09:51:51:295 Encontrado host 127.0.0.1
+02 09:51:51:295 Encontrado servicio 5004
+02 09:51:51:802 Sesión con v10form establecida
+02 09:51:52:805 Envio un total de 0.00 KB
+02 09:51:52:805 Enviada la respuesta a socket 00CF46DC
+02 09:51:52:821 Libera cf46dc
+02 09:51:52:821 Sesion 1: Fin hebra
+02 09:51:59:275 Sesion 0: Inicio hebra
+02 09:51:59:290 Sesion 1: Inicio hebra
+02 09:52:01:368 Conexion 00CF44E4 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:01:370 Tratapeticion: Server cambia de valor de 00CF46DC a 00CF44E4
+02 09:52:01:370 Se captura IP del cliente 127.0.0.1
+02 09:52:01:370 Se captura H_NAME del cliente DAVIDVEGA
+02 09:52:01:370 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDAVIDVEGA -FWVISIBLE=0 -FWSESION=i9jBB9Uig0WC2XN2MBX5PNr8GFLQ73 -FWPUERTO=5005 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 09:52:01:372 Sesion 0: Arrancado Proceso v10form
+02 09:52:01:372 Sesion 0: Intentando conectar con v10form en puerto 5005
+02 09:52:01:372 Conectando con 127.0.0.1 servicio 5005 protocolo tcp
+02 09:52:01:372 Encontrado host 127.0.0.1
+02 09:52:01:372 Encontrado servicio 5005
+02 09:52:01:896 Sesión con v10form establecida
+02 09:52:02:910 Envio un total de 0.00 KB
+02 09:52:02:911 Enviada la respuesta a socket 00CF44E4
+02 09:52:02:926 Libera cf44e4
+02 09:52:02:926 Sesion 0: Fin hebra
+02 09:52:10:081 Conexion 00CF4404 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:10:082 Tratapeticion: Server cambia de valor de 00CF44E4 a 00CF4404
+02 09:52:10:082 Sesion 0: Inicio hebra
+02 09:52:10:082 Se captura IP del cliente 127.0.0.1
+02 09:52:10:082 Se captura H_NAME del cliente DAVIDVEGA
+02 09:52:10:082 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDAVIDVEGA -FWVISIBLE=0 -FWSESION=o1kN4icToTyS94BWKPRUq45M0S14S5 -FWPUERTO=5004 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 09:52:10:086 Sesion 1: Arrancado Proceso v10form
+02 09:52:10:086 Sesion 1: Intentando conectar con v10form en puerto 5004
+02 09:52:10:086 Conectando con 127.0.0.1 servicio 5004 protocolo tcp
+02 09:52:10:086 Encontrado host 127.0.0.1
+02 09:52:10:086 Encontrado servicio 5004
+02 09:52:10:612 Sesión con v10form establecida
+02 09:52:11:626 Envio un total de 0.00 KB
+02 09:52:11:626 Enviada la respuesta a socket 00CF4404
+02 09:52:11:641 Libera cf4404
+02 09:52:11:641 Sesion 1: Fin hebra
+02 09:53:14:690 Sesion 1: Fin por Timeout en recepcion de datos
+02 09:53:14:706 Libera db22f1c
+02 09:53:14:706 Sesion 1: Fin hebra
+02 09:53:50:092 Sesion 0: Fin por Timeout en recepcion de datos
+02 09:53:50:108 Libera cf420c
+02 09:53:50:108 Sesion 0: Fin hebra
+02 11:30:42:725 Sesion 0: Inicio hebra
+02 11:30:42:725 Conexion 00CF47F4 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5000
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:42:726 Tratapeticion: Server cambia de valor de 00CF4404 a 00CF47F4
+02 11:30:42:726 Se captura IP del cliente 127.0.0.1
+02 11:30:42:726 Se captura H_NAME del cliente DAVIDVEGA
+02 11:30:42:726 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDAVIDVEGA -FWVISIBLE=0 -FWSESION=pCIP1B3RIIDpSb6QV116G69O3LHUI5 -FWPUERTO=5004 -FWHOST=DAVIDVEGA -FWTECLADO=0 
+02 11:30:42:728 Sesion 0: Arrancado Proceso v10form
+02 11:30:42:728 Sesion 0: Intentando conectar con v10form en puerto 5004
+02 11:30:42:728 Conectando con 127.0.0.1 servicio 5004 protocolo tcp
+02 11:30:42:728 Encontrado host 127.0.0.1
+02 11:30:42:728 Encontrado servicio 5004
+02 11:30:42:740 Sesion 1: Inicio hebra
+02 11:30:43:252 Sesión con v10form establecida
+02 11:30:44:257 Envio un total de 0.00 KB
+02 11:30:44:257 Enviada la respuesta a socket 00CF47F4
+02 11:30:44:272 Libera cf47f4
+02 11:30:44:273 Sesion 0: Fin hebra
+02 11:32:22:752 Sesion 1: Fin por Timeout en recepcion de datos
+02 11:32:22:768 Libera cf4394
+02 11:32:22:770 Sesion 1: Fin hebra

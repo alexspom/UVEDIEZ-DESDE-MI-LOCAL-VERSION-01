@@ -1,0 +1,63 @@
+COPIA PORTAPAPELES
+ _4096__________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_4096__________________________________________________________________________
+                       |
+
+
+PREINSERT=FEJECUTA("CANADE","NO PUEDO AÑADIR","BORRAFINAL","NO PUEDO BORRAR")
+POSTCOMMIT=FPULSATECLAS("F10")
+
+NOORAINS
+TABLA=DUAL
+
+CAMPO=VALOR,REGPAG=46
+CAMPO=TOTAL,VIRTUAL,AUXILIAR,NOUPDATE
+
+CURSOR=CANADE SELECT REPLACE(:VALOR,CHR(13),',') VALOR FROM DUAL;
+
+CURSOR=BORRAFINAL SELECT (CASE WHEN SUBSTR(:VALOR,LENGTH(:VALOR))=',' THEN SUBSTR(:VALOR,1,LENGTH(:VALOR)-1) ELSE :VALOR END) TOTAL FROM DUAL;

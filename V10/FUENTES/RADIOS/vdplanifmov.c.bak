@@ -1,0 +1,38 @@
+#include "../execproc/vdexec.h"
+
+#define CPLANIFICA "DECLARE RET NUMBER;BEGIN RET:=VDPLANMOV.ASIGNAMOV(:CODRECURSO); END;"
+static v10cursors *v10planifica;
+static vdrecursos rec;
+
+static finplanifmov(void)
+{
+    liberacursor(v10planifica);
+}
+
+static initplanifmov(void)
+{
+    v10planifica=abrecursor(CPLANIFICA);
+    bindtodo(v10planifica,"CODRECURSO",rec.codrecurso,sizeof(rec.codrecurso),V10CADENA,NULL);
+    atexit(finplanifmov);
+}
+
+VDEXPORT void planifmov(procesos *proceso)
+{
+    int ret;
+
+    if (v10planifica==NULL) initplanifmov();
+    ret=RECbuscastatus(STRECBUSCANDO,&rec);
+    if (ret) return;
+    do {
+        v10log(LOGNORMAL,"Planificando recurso %s\n",rec.codrecurso);
+        ret=ejecutacursor(v10planifica);
+        if (ret==0) {
+            commit();
+        } else {
+            char buffer[MAXCADENA];
+            rollback();
+            getcurerror(v10planifica,buffer);
+            v10log(LOGERROR,"Error al planificar recurso %s %s\n",rec.codrecurso,buffer);
+        }
+    } while ((ret=RECnextstatus(&rec))==0);
+}

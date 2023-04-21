@@ -1,0 +1,77 @@
+# MOdulo   : VDERVICIOSDET.PAN
+# Función  : Mantenimiento detallado de servicios
+#
+# Creación : 25-07-2008
+# Autor    : FGS
+###########################################
+# HistOrico de cambios:
+MANTENIMIENTO DETALLADO DE SERVICIOS
+Servicio                   Designación                     A Estado                  
+_32_______________________ _32____________________________ _ @L@@@ _40_____________________ 
+ ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ‘   ÏÄÄÄÄÄÄÄ Horario (Modo A) ÄÄÄÄÄÄÄ‘  ÏÄÄÄÄÄÄÄ Planificado (Modo P) ÄÄÄÄÄÄÄ‘
+ ³  PID:      @L@@@@@@@  ³   ³ PatrOn: _256__________________ ³  ³ Interv:     @L@@@                  ³ 
+ ³  SID:      @L@@@@@@@  ³   ³ Hora inicio: _8________        ³  ³ Ejec. al Arranque: _  al Cierre: _ ³ 
+ ³  SERIAL:   @L@@@@@@@  ³   ³ Hora límite: _8________        ³  ³ Ejecutar Ahora :   _               ³
+ ³  VISUALIZADO: _       ³   ³ Fecha Arrancado: ¿D-MM-Y.YY    ³  ³ Ult.Ejec:   ¿D-MM-Y.YY _8________  ³
+ ³                       ³   ³                                ³  ³ Prox. Ejec: ¿D-MM-Y.YY _8________  ³
+ ¬ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ’   ¬ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ’  ¬ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ’
+
+Ejecutable: _512______________________________________________________________________________________________ 
+Entorno:    _512______________________________________________________________________________________________ 
+Path V10:   _512______________________________________________________________________________________________ 
+Path:       _512______________________________________________________________________________________________ 
+Parámetros: _512______________________________________________________________________________________________ 
+Ultima modificación: _32_________ ¿D-MM-Y.YY _8________
+|
+
+#WPLEGADO
+
+TABLA=VDSERVICIOS
+
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR INSERTANDO ULTIMA MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR ACTUALIZANDO ULTIMA MODIFICACION")
+
+CAMPO=CODGRUPOSERV,VIRTUAL,NOUPDATE,OCULTO
+CAMPO=CODSERVICIO,VIRTUAL,NOENTER,TOOLTIP("Código del servicio")
+CAMPO=DESSERVICIO,TOOLTIP("Designación del servicio"),POSTCHANGE=FVALNOCERO("Debe introducir la designación del servicio")
+CAMPO=ACTIVO,TOOLTIP("Indica si el servicio se puede ejecutar"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)")
+CAMPO=STATUS,NOENTER,TOOLTIP("Estado del servicio"),POSTCHANGE=FDESIGNACION("CSELSTATUS","No existe el estado")
+CAMPO=DESSTATUS,AUXILIAR,NOENTER,TOOLTIP("Designación del estado del servicio")
+CAMPO=PID,NOENTER,TOOLTIP("El PID del programa")
+CAMPO=PATRONPLANIF,COMBOXMULTIPLE("CLISTADIAS"),COMBOXREGPAG=6
+CAMPO=INTERVALO
+CAMPO=SID,NOENTER,TOOLTIP("SID de la conexion ORACLE")
+CAMPO=HORAINICIO
+CAMPO=ARRANQUE
+CAMPO=CIERRE
+CAMPO=SERIAL,NOENTER,TOOLTIP("SERIAL de la conexiOn ORACLE")
+CAMPO=HORALIMITE
+CAMPO=EJECUTAR
+CAMPO=VISUALIZADO,TOOLTIP("Si se puede visualizar el servicio desde el cliente de visualización")
+CAMPO=FECARRANQUE
+#,NOENTER
+CAMPO=FECULTEJEC
+CAMPO=HORAULTEJEC
+CAMPO=FECEJEC
+CAMPO=HORAEJEC
+CAMPO=EJECUTABLE,TOOLTIP("Ejecutable que implementa el servicio")
+CAMPO=ENVSERVICIO,MIXED,TOOLTIP("Variables de entorno del servicio separadas por \n")
+CAMPO=PATHV10SERVICIO,TOOLTIP("Path V10 particular del servicio, se añade al path genérico del grupo")
+CAMPO=PATHSERVICIO,TOOLTIP("Path particular del servicio, se añade al path genérico del grupo")
+CAMPO=PARAMSERVICIO,TOOLTIP("Parámetros particulares del servicio, se añade a los parámetros genéricos del grupo")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizO la última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CLISTADIAS SELECT DECODE(ROWNUM,1,'L',2,'M',3,'X',4,'J',5,'V',6,'S',7,'D',8,'L-D') LDIA,
+                         DECODE(ROWNUM,1,'LUNES',2,'MARTES',3,'MIERCOLES',4,'JUEVES',5,'VIERNES',6,'SABADO',7,'DOMINGO',8,'TODOS LOS DIAS') NOMDIA 
+                     FROM VDSERVICIOS WHERE ROWNUM<9;
+ 
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CSELSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE TIPOSTATUS='SER' AND STATUS=:STATUS;
+
+
+
+

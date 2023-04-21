@@ -1,0 +1,41 @@
+###################################################################
+#Módulo: VDBULTOSMA.PAN
+#Funcionalidad : Mantenimiento de bultos
+#Autor: RFD      
+#Fecha: 08-04-2008
+###################################################################
+# Histórico de cambios:
+BEGINBLOQUE=VDBULCAB.PAN
+PREREGISTRO=PRESEHIJO
+#PREBLOQUE=FEJECUTA(FLIMPIALECTURAS,"ERROR EN TRIGER FLIMPIALECTURAS",
+#                   FCOMMIT,"ERROR HACIENDO COMMIT")
+
+#TIMEOUT=FEJECUTATIME(@FLECTURAS("CODBULTO","00","CODBULTO"),"ERROR EN TRIGER FLECTURAS",
+#                   FCOMMIT,"",
+#                   FPULSATECLAS("F2"),"ERROR EN FPULSATECLAS"),10
+  TECLA=F3,FEJECUTA("@CSELSCAN","",
+                    "CDELSCAN","",FCOMMIT,"",
+                    FPULSATECLAS("F2"),"")
+                    
+  TIMEOUT=QUERYAUTOM,30
+  CAMPO=MIROWIDSCAN,AUXILIAR,OCULTO,"_40"
+  
+  CURSOR=CSELSCAN SELECT TEXTO CODBULTO,ROWID MIROWIDSCAN FROM VDSCANLECT 
+                     WHERE (REDSCAN, SCANNER) IN
+                (SELECT ORD.IDINFOLECTURA, ORD.SCANNER
+                   FROM VDORDENADORES ORD, SYS.V_$SESSION S
+                  WHERE AUDSID = USERENV ('SESSIONID')
+                        AND ORD.ORDENADOR = S.TERMINAL);
+                        
+  CURSOR=CDELSCAN DELETE VDSCANLECT WHERE ROWID=:MIROWIDSCAN;                        
+
+  POSX=1
+  POSY=7
+ENDBLOQUE
+BEGINBLOQUE=VDBULLIN.PAN
+  PADRE=VDBULCAB.PAN
+  PREQUERY=QUERYHIJO
+  POSX=1
+  POSY=31
+  REGPAG=15
+ENDBLOQUE

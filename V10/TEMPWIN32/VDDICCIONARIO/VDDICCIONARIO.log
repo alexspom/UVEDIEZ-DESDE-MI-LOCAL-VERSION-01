@@ -1,0 +1,18 @@
+﻿Build started 25/05/2020 11:19:04.
+     1>Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\VDDICCIONARIO.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\FUENTES /Zi /nologo /W3 /WX /MP /Od /Oy- /D _RTLDLL /D STRICT /D _WINDOWS /D WIN32S /D DEBUG_DINAMICA /D _CRT_SECURE_NO_WARNINGS /D _CRT_NONSTDC_NO_DEPRECATE /D _WINDLL /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\TEMPWin32\VDDICCIONARIO\\" /Fd"..\TEMPWin32\VDDICCIONARIO\vc120.pdb" /FR"..\TEMPWin32\VDDICCIONARIO\\" /Gd /TC /analyze- /errorReport:prompt /D /D /J ..\FUENTES\DICCIONARIO\vddiccionarioc.c ..\FUENTES\DICCIONARIO\vdgencaux.c
+         vddiccionarioc.c
+         vdgencaux.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\BINWin32\\VDDICCIONARIO.dll" /INCREMENTAL:NO /NOLOGO V10WIN.LIB V10ORA.LIB WSOCK32.LIB VERSION.LIB kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\BINWin32\\VDDICCIONARIO.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"..\BINWin32\VDDICCIONARIO.lib" /MACHINE:X86 /SAFESEH /DLL ..\TEMPWin32\VDDICCIONARIO\vddiccionarioc.obj
+         ..\TEMPWin32\VDDICCIONARIO\vdgencaux.obj
+            Creating library ..\BINWin32\VDDICCIONARIO.lib and object ..\BINWin32\VDDICCIONARIO.exp
+         VDDICCIONARIO.vcxproj -> E:\V10\productos\REDUR20200430\V10\PROYECTOS\..\BINWin32\VDDICCIONARIO.dll
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"..\BINWin32\VDDICCIONARIO.bsc" ..\TEMPWin32\VDDICCIONARIO\vddiccionarioc.sbr ..\TEMPWin32\VDDICCIONARIO\vdgencaux.sbr
+     1>Done Building Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\VDDICCIONARIO.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.87

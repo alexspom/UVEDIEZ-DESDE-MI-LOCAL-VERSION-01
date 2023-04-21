@@ -1,0 +1,64 @@
+# Módulo   : XVDUPLOAD.PAN
+# Función  : 
+#
+# Creación : 09-09-2014
+# Autor    : Eduardo L. Arana
+# Pantalla personalizada que utiliza PHP y Apache para la subida de ficheros.
+###########################################
+# Explicación de funciones:
+# function obtienecomentario: Obtiene el valor del id bl0f1c1 y lo pinta en la variable codcomen.
+# function pulsaescape: Tras el mensaje de comprobación, pulsa automágicamente la tecla escape para volver a la pantalla original.
+# function validasubida: Si el valor del comentario está vacio, muestra un error, sino, sube el fichero y muestra el mensaje de subida ok.
+ADJUNTAR FICHEROS   
+
+   Comentario #L#########
+   
+|
+
+TABLA=DUAL
+WLONY=150
+WLONX=700
+CAMPO=CODCOMEN,VIRTUAL,NOUPDATE,AUXILIAR,POSTCHANGE=FEJECUTA("CSELCAMPOHTL","")
+CAMPO=CODTABLA,VIRTUAL,NOUPDATE,OCULTO,AUXILIAR 
+CAMPO=PATHFICHERO,VIRTUAL,OCULTO,AUXILIAR
+CAMPO=V10HTML,AUXILIAR,OCULTO,"_2048_"
+
+
+CURSOR=CSELCAMPOHTL BEGIN
+                         SELECT '<table id="tablaSubida" width="400" style="position:absolute;top:155px;left:10px;z-index:10;" cellpadding="0" cellspacing="5">
+									<tr height="10">
+									<th>
+										<form name="form1" action="../html/upload.php" method="post" enctype="multipart/form-data" target="upload_target2"  onsubmit="" >
+											<label1>
+												<input type="hidden" value="'||:CODCOMEN||'" id="inputcomentario" name="insertcomentario">
+												<input type="hidden" value="'||:PATHFICHERO||'" id="path" name="pathfichero">
+											    <input style="width:650px;height=22px;margin-left:21px;background-color:white;font-color:Black;font-size:12px" type="file" name="DESDIV" id="fichero">
+											</label1>
+											<label1>											   
+											    <input type="submit" name="submitBtn" class="sbtn" value="Adjuntar" id="miid"
+         										 	   style="width:150px;height=22px;margin-left:260px;background-color:white;font-color:Black;font-size:12px"/>
+											</label1>  
+																
+										    <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>	
+										</form>
+										 
+									</th>
+									</tr>									
+								</table>
+								
+								<script type="text/javascript">					 								   
+								   function pulsaescape(){ v10lib.mandaevento("","onkeyup",27); }
+								   function validasubida() {
+										 if (document.getElementById("inputcomentario").value === "0") {
+										     alert("Existe un problema con la subida del fichero, el fallo puede ser debido a: \n\nEl código de pedido o recepción está vacio en la pantalla anterior.\nEl formato del fichero es inválido o mayor a 10MB!");
+										     return false;
+										     }
+										   else {
+										     startUpload();										     
+										    }
+										 }
+								 </script>'
+							 INTO :V10HTML FROM DUAL;
+                    END;@	
+
+

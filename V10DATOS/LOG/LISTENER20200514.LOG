@@ -1,0 +1,227 @@
+00 09:34:05:728 Fichero de log abierto PID 9484
+
+02 09:34:05:728 Intentando abrir fichero v10.ini
+02 09:34:05:731 Cargando driver v10oracle funcion damedriveroracle
+02 09:34:08:982 Conectado a base de datos
+02 09:34:08:995 Asignando ACCESO a V10LOGIN
+02 09:34:08:995 Asignando NIVELLOG a 2
+02 09:34:08:997 Asignando PROTEGIDO a 500
+02 09:34:08:997 Asignando DEBUGHTTP a 1
+02 09:34:08:997 Asignando VISIBLEEXE a 1
+02 09:34:08:997 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:34:09:000 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:34:09:000 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:34:09:002 Asignando SERVERPORTFILES a 1235
+02 09:34:09:003 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 09:34:09:005 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 09:34:09:006 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 09:34:09:007 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 09:34:09:007 Asignando FILEEXPIRED a 3600
+02 09:34:09:007 Asignando TIEMPOESPERA a 240
+02 09:34:09:015 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 09:34:09:017 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 09:34:09:017 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 09:34:09:017 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 09:34:09:017 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 09:34:09:018 Asignando COMPRIMIR a 1
+02 09:34:09:023 Escuchando en puerto 1234 con protocolo HTTP
+02 09:34:13:677 Sesion 0: Inicio hebra
+02 09:34:13:678 Conexion 010A526C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 09:34:13:680 Tratapeticion: Server cambia de valor de 00000000 a 010A526C
+02 09:34:13:680 Se captura HOST en URL del cliente NINO 
+02 09:34:13:702 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=sQ0FeK0M2ODC6JUMB4MQC5OD923WV3 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 09:34:13:766 Sesion 0: Arrancado Proceso v10form
+02 09:34:13:767 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 09:34:13:767 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 09:34:13:777 Encontrado host 127.0.0.1
+02 09:34:13:777 Encontrado servicio 20000
+02 09:34:14:848 Sesión con v10form establecida
+02 09:34:15:856 Envio un total de 0.00 KB
+02 09:34:15:857 Enviada la respuesta a socket 010A526C
+02 09:34:15:857 Sesion 0: Sesión rota
+02 09:34:15:857 Libera 10a526c
+02 09:34:15:857 Sesion 0: Fin hebra
+02 09:35:09:042 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+
+00 09:37:00:743 Fichero de log cerrado.
+
+00 11:55:44:205 Fichero de log abierto PID 7224
+
+02 11:55:44:205 Intentando abrir fichero v10.ini
+02 11:55:44:205 Cargando driver v10oracle funcion damedriveroracle
+02 11:55:44:685 Conectado a base de datos
+02 11:55:44:685 Asignando ACCESO a V10LOGIN
+02 11:55:44:685 Asignando NIVELLOG a 2
+02 11:55:44:685 Asignando PROTEGIDO a 500
+02 11:55:44:685 Asignando DEBUGHTTP a 1
+02 11:55:44:685 Asignando VISIBLEEXE a 1
+02 11:55:44:700 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 11:55:44:700 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 11:55:44:700 Asignando SERVIDOR a HTTP://127.0.0.1
+02 11:55:44:700 Asignando SERVERPORTFILES a 1235
+02 11:55:44:700 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 11:55:44:700 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 11:55:44:700 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 11:55:44:700 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 11:55:44:700 Asignando FILEEXPIRED a 3600
+02 11:55:44:700 Asignando TIEMPOESPERA a 240
+02 11:55:44:700 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 11:55:44:700 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 11:55:44:700 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 11:55:44:700 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 11:55:44:700 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 11:55:44:700 Asignando COMPRIMIR a 1
+02 11:55:44:700 Escuchando en puerto 1234 con protocolo HTTP
+02 11:55:48:180 Sesion 0: Inicio hebra
+02 11:55:48:182 Sesion 1: Inicio hebra
+02 11:55:48:182 Conexion 00FE546C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 11:55:48:185 Tratapeticion: Server cambia de valor de 00000000 a 00FE546C
+02 11:55:48:185 Se captura HOST en URL del cliente NINO 
+02 11:55:48:187 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=Xk12LOi7GHVvF5x0s3MFPUUX96jLCI -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 11:55:48:220 Sesion 1: Arrancado Proceso v10form
+02 11:55:48:220 Sesion 1: Intentando conectar con v10form en puerto 20000
+02 11:55:48:220 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 11:55:48:252 Encontrado host 127.0.0.1
+02 11:55:48:252 Encontrado servicio 20000
+02 11:55:48:812 Sesión con v10form establecida
+02 11:55:49:815 Envio un total de 0.00 KB
+02 11:55:49:815 Enviada la respuesta a socket 00FE546C
+02 11:55:49:815 Sesion 1: Sesión rota
+02 11:55:49:815 Libera fe546c
+02 11:55:49:815 Sesion 1: Fin hebra
+02 11:56:44:724 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 11:56:52:420 Sesion 0: Sesión rota
+02 11:56:52:420 Libera fe52ac
+02 11:56:52:420 Sesion 0: Fin hebra
+
+00 11:57:09:100 Fichero de log cerrado.
+
+00 13:13:01:305 Fichero de log abierto PID 4908
+
+02 13:13:01:305 Intentando abrir fichero v10.ini
+02 13:13:01:305 Cargando driver v10oracle funcion damedriveroracle
+02 13:13:01:545 Conectado a base de datos
+02 13:13:01:557 Asignando ACCESO a V10LOGIN
+02 13:13:01:557 Asignando NIVELLOG a 2
+02 13:13:01:557 Asignando PROTEGIDO a 500
+02 13:13:01:559 Asignando DEBUGHTTP a 1
+02 13:13:01:559 Asignando VISIBLEEXE a 1
+02 13:13:01:559 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 13:13:01:559 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 13:13:01:560 Asignando SERVIDOR a HTTP://127.0.0.1
+02 13:13:01:560 Asignando SERVERPORTFILES a 1235
+02 13:13:01:560 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:13:01:562 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 13:13:01:562 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 13:13:01:562 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 13:13:01:562 Asignando FILEEXPIRED a 3600
+02 13:13:01:562 Asignando TIEMPOESPERA a 240
+02 13:13:01:567 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 13:13:01:567 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 13:13:01:567 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 13:13:01:567 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 13:13:01:567 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 13:13:01:567 Asignando COMPRIMIR a 1
+02 13:13:01:570 Escuchando en puerto 1234 con protocolo HTTP
+02 13:13:04:917 Sesion 0: Inicio hebra
+02 13:13:04:917 Conexion 011758EC recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:13:04:917 Tratapeticion: Server cambia de valor de 00000000 a 011758EC
+02 13:13:04:917 Se captura HOST en URL del cliente NINO 
+02 13:13:04:917 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=TKocaXUcmLK6Xo9D47VEHUzS7UfW0S -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:13:04:957 Sesion 0: Arrancado Proceso v10form
+02 13:13:04:957 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:13:04:957 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:13:04:957 Encontrado host 127.0.0.1
+02 13:13:04:967 Encontrado servicio 20000
+02 13:13:05:492 Sesión con v10form establecida
+02 13:13:06:494 Envio un total de 0.00 KB
+02 13:13:06:494 Enviada la respuesta a socket 011758EC
+02 13:13:06:494 Sesion 0: Sesión rota
+02 13:13:06:494 Libera 11758ec
+02 13:13:06:494 Sesion 0: Fin hebra
+
+00 13:13:46:287 Fichero de log cerrado.
+
+00 17:48:30:245 Fichero de log abierto PID 7156
+
+02 17:48:30:245 Intentando abrir fichero v10.ini
+02 17:48:30:249 Cargando driver v10oracle funcion damedriveroracle
+02 17:48:30:905 Conectado a base de datos
+02 17:48:30:907 Asignando ACCESO a V10LOGIN
+02 17:48:30:907 Asignando NIVELLOG a 2
+02 17:48:30:907 Asignando PROTEGIDO a 500
+02 17:48:30:907 Asignando DEBUGHTTP a 1
+02 17:48:30:909 Asignando VISIBLEEXE a 1
+02 17:48:30:909 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 17:48:30:909 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 17:48:30:910 Asignando SERVIDOR a HTTP://127.0.0.1
+02 17:48:30:910 Asignando SERVERPORTFILES a 1235
+02 17:48:30:910 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 17:48:30:910 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 17:48:30:912 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 17:48:30:912 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 17:48:30:912 Asignando FILEEXPIRED a 3600
+02 17:48:30:912 Asignando TIEMPOESPERA a 240
+02 17:48:30:915 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 17:48:30:915 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 17:48:30:917 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 17:48:30:917 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 17:48:30:917 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 17:48:30:917 Asignando COMPRIMIR a 1
+02 17:48:30:920 Escuchando en puerto 1234 con protocolo HTTP
+02 17:48:34:372 Sesion 0: Inicio hebra
+02 17:48:34:372 Conexion 008058AC recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 17:48:34:372 Tratapeticion: Server cambia de valor de 00000000 a 008058AC
+02 17:48:34:372 Se captura HOST en URL del cliente NINO 
+02 17:48:34:372 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=JKCnI4MUHXIDrDNX6GNOHXBWPMnMDI -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 17:48:34:439 Sesion 0: Arrancado Proceso v10form
+02 17:48:34:439 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 17:48:34:439 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 17:48:34:445 Encontrado host 127.0.0.1
+02 17:48:34:445 Encontrado servicio 20000
+02 17:48:34:952 Sesión con v10form establecida
+02 17:48:35:952 Envio un total de 0.00 KB
+02 17:48:35:954 Enviada la respuesta a socket 008058AC
+02 17:48:35:954 Sesion 0: Sesión rota
+02 17:48:35:955 Libera 8058ac
+02 17:48:35:955 Sesion 0: Fin hebra
+02 17:49:30:930 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+
+00 18:25:15:227 Fichero de log cerrado.
+

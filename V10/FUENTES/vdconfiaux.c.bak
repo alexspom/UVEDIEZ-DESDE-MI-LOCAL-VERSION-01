@@ -1,0 +1,87 @@
+/*******************************************************************************
+* Módulo : VDCONFIAUX.C                                                        *
+* Función: Gestion de la configuracion de V10                                  *
+*                                                                              *
+*                                                                              *
+* Autor	 : Eduardo Alsina                                                      *
+* Revisado por:                                                                *
+* Fecha  : 12-02-2008                                                          *
+********************************************************************************
+
+*******************************************************************************/
+
+#include "vd.h"
+
+#define CDAMEPROP "SELECT VD.GETPROP(:PROPIEDAD,:INSTANCIA,:HEREDA,:DEFECTO) FROM DUAL"
+ 
+typedef struct {
+    char propiedad[LPROPIEDAD];
+    char instancia[LPROPIEDAD];
+    char valor[LVALOR];
+    long hereda;
+    char defecto[LVALOR];
+} confis;
+static confis cfg;
+static v10cursors *v10dameprop;
+
+static void initconfiaux(void)
+{
+    v10dameprop = abrecursor(CDAMEPROP);
+    definetodo(v10dameprop, cfg.valor, sizeof(cfg.valor), V10CADENA, NULL);
+    bindtodo(v10dameprop, "PROPIEDAD", cfg.propiedad, sizeof(cfg.propiedad), V10CADENA,
+             "INSTANCIA", cfg.instancia, sizeof(cfg.instancia), V10CADENA,
+             "HEREDA", &cfg.hereda, sizeof(cfg.hereda), V10LONG,
+             "DEFECTO", cfg.defecto, sizeof(cfg.defecto), V10CADENA, NULL);
+}
+
+char *getprop(char *propiedad,char *instancia,int hereda,char *defecto)
+{
+    int ret;   
+    memset(&cfg,0,sizeof(cfg));   
+    if (v10dameprop == NULL) initconfiaux();
+    strcpy(cfg.propiedad, propiedad);
+    strcpy(cfg.instancia, instancia);
+    if (es_blanco(cfg.instancia)) strcpy(cfg.instancia, "GLOBAL");
+    strcpy(cfg.defecto, defecto);
+    cfg.hereda = hereda;
+    ret=ejefetchcursor(v10dameprop);
+    return(cfg.valor);
+}
+
+ 
+int damepropentero(char *propiedad)
+{
+    char *valor;
+    valor = getprop(propiedad, "",1,"");
+    return(atol(valor));
+}
+
+double damepropdoble(char *propiedad)
+{
+    char *valor;
+    valor = getprop(propiedad, "", 1, "");
+    return(atof(valor));
+}
+                    
+v10dates damepropfecha(char *propiedad)
+{
+    char *valor;
+    valor = getprop(propiedad, "", 1, "");
+    return(a2jul(1,valor));
+}
+                   
+char *damepropcadena(char *propiedad)
+{
+    char *valor;
+    valor = getprop(propiedad, "", 1, "");
+    return(valor);
+}
+
+v10horas dameprophoras(char *propiedad)
+{
+    char *valor;
+    valor = getprop(propiedad, "", 1, "");
+    return(atof(valor));
+}
+
+

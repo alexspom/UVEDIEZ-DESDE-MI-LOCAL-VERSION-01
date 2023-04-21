@@ -1,0 +1,24 @@
+#***
+# VDINTERFCARGACAB.c - Generación automática del código c para la tabla de los ficheros 
+#                     de las interfases                                                 
+# 
+# Propósito: Funciones de acceso a la tabla VDINTERFCARGACAB
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 25-04-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=ICC
+
+SECUENCIA=VDSECINTERF,CODINTERFASE
+
+CLAVE=CODINTERFASE,TIPOINTERFASE,FORMATO,FICHERO;
+
+CLAVE=FMTOFICH, FORMATO,FICHERO
+
+UPDATE=STATUS,STATUS
+
+INSERT 
+DELETE

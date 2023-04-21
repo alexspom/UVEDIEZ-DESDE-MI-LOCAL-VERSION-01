@@ -1,0 +1,25 @@
+# MOdulo   : VDREUBICAPAR.FRM
+# Función  : Formulario de cambio de ubicación parcial de stock
+#
+# Creación : 08-05-2008
+# Autor    : JMM
+###########################################
+# HistOrico de cambios:
+# 
+CAMPO=CODOPE,OCULTO,"__________"
+CAMPO=CODRECURSO,OCULTO,"__________"
+
+PREFORM=FEJECUTA(FPOSICIONABLOQUE("VDREUBICAPAR.PAN"),"")
+
+#0
+BEGINBLOQUE=VDREUBICAPAR.PAN
+ENDBLOQUE
+#1
+BEGINBLOQUE=VDREUBICAPAR2.PAN
+ PADRE=VDREUBICAPAR.PAN
+ENDBLOQUE
+#2
+BEGINBLOQUE=VDREUBICAPAROK.PAN
+ PADRE=VDREUBICAPAR2.PAN
+ENDBLOQUE
+

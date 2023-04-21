@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\WinSCP\winscp.exe" /command "open sftp://opc:Melamina2019;fingerprint=ssh-ed25519-25k3SopvkEP5848%2FytxbvwYF73%2F10xTvHeteEdYCAkQ=@130.61.244.40/ "cd //interfaz/interin/" "lcd D:\V10\V10DATOS\BAJAR" "option batch continue" "option confirm off" "put "*" -delete -nopermissions"  "exit" /log="D:\V10\V10DATOS\LOG\FTP_BAJAR_ORACLE_%fecha%.log"

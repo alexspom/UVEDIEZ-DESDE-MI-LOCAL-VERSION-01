@@ -1,0 +1,27 @@
+#***
+# VDSERVICIO.DEF - Generación automática del código c SOLOQUERY para Servicios                                                       
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 03-02-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=SERVICIOSAUX;
+
+EXTRA=RET,V10LONG
+
+CURSOR=EJECUTABLESERVICIO,SELECT VDPLANIF.EJECUTABLESERVICIO(:VDSERVICIOS.CODGRUPOSERV, :VDSERVICIOS.CODSERVICIO) RET FROM DUAL;
+      
+CURSOR=EJECSERVPLANIF,SELECT VDPLANIF.EJECUTABLESERVPLANIFICADO(:VDSERVICIOS.CODGRUPOSERV, :VDSERVICIOS.CODSERVICIO, :VDSERVICIOS.ARRANQUE, :VDSERVICIOS.CIERRE) RET FROM DUAL;
+                                  
+PROCEDURE=PLANIFICAGRUPOSERV,BEGIN
+                                VDPLANIF.PLANIFICAGRUPOSERV(:VDSERVICIOS.CODGRUPOSERV);
+                             END;@
+
+PROCEDURE=PLANIFICASERVICIO,BEGIN
+                                VDPLANIF.PLANIFICASERVICIO(:VDSERVICIOS.CODGRUPOSERV,:VDSERVICIOS.CODSERVICIO,:RET);
+                             END;@
+                                                                                                                    	

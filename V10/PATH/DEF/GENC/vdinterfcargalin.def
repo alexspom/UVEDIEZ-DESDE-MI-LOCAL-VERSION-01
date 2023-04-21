@@ -1,0 +1,29 @@
+#***
+# VDINTERFCARGALIN.c - Generación automática del código c para la tabla de los registros 
+#                     de las interfases                                                 
+# 
+# Propósito: Funciones de acceso a la tabla VDINTERFCARGALIN
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 25-04-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=ICL
+
+EXTRA=STATUSCAB,V10LONG
+
+RECORRE=BUSCAREG, TIPOINTERFASE, FORMATO, STATUS,TABLE=VDINTERFCARGACAB;WHERE=VDINTERFCARGALIN.CODINTERFASE = VDINTERFCARGACAB.CODINTERFASE AND VDINTERFCARGACAB.STATUS = :STATUSCAB 
+                                                   AND VDINTERFCARGACAB.TIPOINTERFASE NOT IN (SELECT TIPOINTERFASE FROM VDINTERFCARGACAB
+                                                  WHERE STATUS = (-1)*:STATUSCAB);ORDERBY=VDINTERFCARGALIN.CODINTERFASE,VDINTERFCARGALIN.NUMREG;
+
+RECORRE=CODINTERFASE,CODINTERFASE;ORDERBY=NUMREG;
+
+CLAVE=NUMLINEAS,CODINTERFASE,GENCOUNT=NUMREG;
+
+UPDATE=STMSG,STATUS,MENSAJE
+
+INSERT 
+DELETE
+

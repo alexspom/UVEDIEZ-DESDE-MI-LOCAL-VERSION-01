@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sistema de Ayuda de V10</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body class="bodyayuda">
+
+<div class="ayuda-nav">
+<ul>
+	<li><a href="#"><img src="../img/ayuda/izq.png" border="0"><br>
+	Atrás</a></li>
+	<li><a href="#"><img src="../img/ayuda/der.png" border="0"><br>Siguiente</a></li>
+	<li><a href="#"><img src="../img/ayuda/buscar.png" border="0"><br>Buscar</a></li>
+	<li><a href="#"><img src="../img/ayuda/indice.png" border="0"><br>Índice</a></li>
+	<li><a href="#"><img src="../img/ayuda/configuracion.png" border="0"><br>Opciones</a></li>
+	<li><a href="#"><img src="../img/ayuda/salir.png" border="0"><br>Salir</a></li>
+</ul>
+</div>
+<div class="oculta-scroll-texto"></div>
+<div class="framesetayuda">
+		<div class="frame-1-1-ayuda">
+		<div class="bd">
+        <!--inicio del contenido central-->
+		<h3 class="tituloayudalinea">2.2.	Ficheros de entrada</h3>
+        
+Los ficheros de entrada se depositan en la carpeta V10DATOS\INTERFASES\BAJAR.
+
+<h3 class="tituloayudalinea">2.3.	Ficheros de salida</h3>
+
+Los ficheros de salida se depositan en la carpeta V10DATOS\INTERFASES\SUBIR
+<h3 class="tituloayudalinea">2.4.	Grabación de pedidos</h3>
+
+Los pedidos recibidos mediante interfaces de ficheros de texto se graban en las tablas de pedidos recibidos por interface. En este punto, si se recibe un pedido que ya está grabado en el sistema, siempre que este no se esté preparando, ni esté insertado en ninguna serie de preparación se actualizará con la información recibida. En caso de que el pedido ya se esté preparando no se actualizará ningún dato.
+Los pedidos se graban en las tablas VDPEDIDORIGCAB y VDPEDIDORIGLIN,  y estarán en estado 100 RECIBIDO.
+
+<img src="../img/ayuda/prueba.png" width="641" height="468" /><br /><br />
+
+<h3 class="tituloayudalinea">2.5.	Validación de pedidos</h3><br />
+
+Una vez recibidos los pedidos y grabados correctamente en la base de datos, se procede a la validación de los datos incluidos en los mismos. 
+Comprobaremos la consistencia de los datos recibidos tanto en la cabecera como en las líneas de los pedidos.<br /><br />
+
+Se comprobará la existencia de la agencia de transporte, en el caso de venir informada, se comprobará la validez de los valores de la política de backorder así como los diferentes switches que modificarían el comportamiento del pedido:<br /><br />
+
+a.	SWTANULAR (anulación de cupones de la seguridad social).<br />
+b.	 SWTVALORADO (albarán valorado).<br />
+c.	SWTTOTALES(albarán valorado con impuestos y totales)<br />
+d.	SWTPROFORMA(imprimir una factura proforma que acompañe al pedido)<br />
+e.	SWTAGRUPAR(pedido puede ser agrupado con otros pedidos del mismo cliente, agencia y destino)<br />
+f.	SWTCOMUNICAR (indicador para comunicar pedido o no al HOST).<br /><br />
+
+En el caso de las líneas se comprobará la existencia del código del artículo que nos pasa,  la existencia de propiedades logísticas de los artículos del pedido (medidas, precios,  indicadores de preparación, etc.), el tipo de volumetría  de los diferentes artículos y que las cantidades pedidas sean positivas.<br /><br />
+
+Una vez validadas estas comprobaciones estándar de V10, se comprueba que la localidad del pedido esté dada de alta en el sistema para la provincia y el país.
+
+<!--fin contenido central-->
+	</div>	</div>	</div>
+
+<div class="footerayuda">
+	
+</div>
+</body>
+</html>

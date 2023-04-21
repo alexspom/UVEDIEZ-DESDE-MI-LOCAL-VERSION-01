@@ -1,0 +1,52 @@
+###################################################################
+#Módulo: VDSERIEEXP2.PAN
+#Funcionalidad : Mantenimiento de series de expedición
+#Autor: FGS      
+#Fecha: 03-09-2008
+###################################################################
+# Histórico de cambios:
+DETALLES DE LA SERIE
+
+Pedidos: @L@@@@@    Bultos: @L@@@@ 
+
+Lanzamiento: _32_____ ¿D-MM-Y.YY ________
+
+Terminación:          ¿D-MM-Y.YY ________ 
+
+Expedición:           ¿D-MM-Y.YY ________
+
+Ult. Modif: _32_____ ¿D-MM-Y.YY ________ 
+
+|
+
+TABLA=VDSERIEEXP
+
+POSTQUERY=FEJECUTA("CCUENTABUL","ERROR OBTENIENDO NUMERO DE BULTOS","CCUENTAPED","")
+
+
+CAMPO=CODSERIEEXP,VIRTUAL,OCULTO
+CAMPO=NUMPED,AUXILIAR,NOENTER
+CAMPO=BULTOS,AUXILIAR,NOENTER,TOOLTIP("Número total de bultos que componen la serie")
+CAMPO=CODOPELANZA,NOENTER,TOOLTIP("Operario que lanza la serie")
+CAMPO=FECLANZA,NOENTER,TOOLTIP("Fecha de lanzamiento de la serie")
+CAMPO=HORALANZA,NOENTER,TOOLTIP("Hora de lanzamiento de la serie")
+CAMPO=FECTERMIN,NOENTER,TOOLTIP("Fecha de terminación de la serie")
+CAMPO=HORATERMIN,NOENTER,TOOLTIP("Hora de terminación de la serie")
+CAMPO=FECEXPIDE,NOENTER,TOOLTIP("Fecha de expedición de la serie")
+CAMPO=HORAEXPIDE,NOENTER,TOOLTIP("Hora de expedición de la serie")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizó la última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Es la fecha  en que se efectuó alguna modificación a los datos del registro.")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Es la hora  en que se efectuó alguna modificación a los datos del registro.")
+
+CURSOR=CCUENTABUL SELECT COUNT(*) BULTOS
+                    FROM VDBULTOCAB BUC,VDPEDIDOCAB PEC
+                   WHERE PEC.CODDIV=BUC.CODDIV AND PEC.ANOPED=BUC.ANOPED AND
+                         PEC.CODPED=BUC.CODPED AND PEC.SEQPED=BUC.SEQPED AND
+                         PEC.CODSERIEEXP=:CODSERIEEXP;
+
+CURSOR=CCUENTAPED SELECT COUNT(*) NUMPED
+                    FROM VDPEDIDOCAB PEC
+                   WHERE PEC.CODSERIEEXP=:CODSERIEEXP;
+
+
+

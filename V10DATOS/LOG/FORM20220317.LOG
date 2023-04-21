@@ -1,0 +1,1077 @@
+00 09:51:34:732 Fichero de log abierto PID 3812
+
+02 09:51:34:732 Intentando abrir fichero v10.ini
+02 09:51:34:735 Cargando driver v10oracle funcion damedriveroracle
+02 09:51:34:850 Conectado a base de datos
+02 09:51:34:851 Asignando RELEECONF a 500
+02 09:51:34:851 Asignando ACCESO a V10LOGIN
+02 09:51:34:851 Asignando NIVELLOG a 2
+02 09:51:34:852 Asignando PROTEGIDO a 500
+02 09:51:34:852 Asignando DEBUGHTTP a 2
+02 09:51:34:852 Asignando VISIBLEEXE a 0
+02 09:51:34:852 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:51:34:852 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:51:34:852 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:51:34:852 Asignando SERVERPORT a 5200
+02 09:51:34:852 Asignando SERVERPORTFILES a 5101
+02 09:51:34:852 Asignando PUERTOINICIAL a 5202
+02 09:51:34:853 Asignando SERVERHTML a HTTP://127.0.0.1:5101/html
+02 09:51:34:853 Asignando SERVERIMG a HTTP://127.0.0.1:5101/img
+02 09:51:34:853 Asignando SERVERXLS a HTTP://127.0.0.1:5101/xls
+02 09:51:34:853 Asignando SERVERPDF a HTTP://127.0.0.1:5101/pdf
+02 09:51:34:853 Asignando FILEEXPIRED a 3600
+02 09:51:34:853 Asignando TIEMPOESPERA a 240
+02 09:51:34:856 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:51:34:856 Asignando RUTAHELP a D:/V10/v10lib/WWW/help/html
+02 09:51:34:856 Asignando RUTAPLANTILLAS a D:/V10/v10lib/WWW/html
+02 09:51:34:856 Asignando RUTAXLS a D:/V10/v10lib/WWW/xls
+02 09:51:34:856 Asignando RUTAPDF a D:/V10/v10lib/WWW/pdf
+02 09:51:34:856 Asignando COMPRIMIR a 1
+02 09:51:34:867 Escuchando en el puerto 5202
+02 09:51:35:222 Conectado Listener en el puerto 5202
+02 09:51:35:237 Abriendo conexion HTTP en el puerto 5202
+02 09:51:35:237 Abierta conexion HTTP en el puerto 5202
+02 09:51:36:243 Conexión de cliente establecida
+02 09:51:36:243 v10formserver vale 0
+02 09:51:36:245 Conexion 060FF804 recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5202
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:36:245 La conexion 0 recibe peticion en socket 060FF804
+02 09:51:36:245 Tratapeticion: Server cambia de valor de 00000000 a 060FF804
+02 09:51:36:245 Sesion 0 Solicita Fichero V10.HTML 
+02 09:51:36:246 Timeout es 99999.000000
+02 09:51:36:252 Sesion 0 Enviara Fichero V10.HTML
+02 09:51:36:252 Tiempo en abrir 0.000523 seg.
+02 09:51:36:253 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:51:36:253 Tiempo en carga de fichero 0.001011 seg.
+02 09:51:36:253 Compresion fin
+02 09:51:36:253 Envio un total de 0.64 KB
+02 09:51:36:253 Fichero v10.html enviado
+02 09:51:36:260 Sesion 0 socket 060FF804 Finalizada por rotura de conexion 5
+02 09:51:36:260 Libera 60ff804
+02 09:51:36:276 Sesion 0 Conectada socket 060F2E14
+02 09:51:36:276 Conexion 060F2E14 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5202
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5202/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:36:276 La conexion 0 recibe peticion en socket 060F2E14
+02 09:51:36:276 Tratapeticion: Server cambia de valor de 060FF804 a 060F2E14
+02 09:51:36:276 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:51:36:276 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:51:36:277 Tiempo en abrir 0.000280 seg.
+02 09:51:36:277 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:51:36:277 Tiempo en carga de fichero 0.000955 seg.
+02 09:51:36:280 Compresion fin
+02 09:51:36:281 Envio un total de 15.81 KB
+02 09:51:36:281 Fichero v10libreriajs.html enviado
+02 09:51:36:291 Sesion 0 socket 060F2E14 Finalizada por rotura de conexion 5
+02 09:51:36:292 Libera 60f2e14
+02 09:51:36:292 Sesion 0 Conectada socket 060F3204
+02 09:51:36:307 Conexion 060F3204 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5202
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5202/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:36:307 La conexion 0 recibe peticion en socket 060F3204
+02 09:51:36:307 Tratapeticion: Server cambia de valor de 060F2E14 a 060F3204
+02 09:51:36:307 Recibida cadena de acceso
+00 09:51:36:313 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:51:36:313 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:51:36:315 Error al abrir fichero VDST.H
+02 09:51:36:316 Empiezo a leer forms vduser.frm
+02 09:51:36:317 Leyendo caracteristicas del bloque 
+02 09:51:36:317 Leidas caracteristicas del bloque 
+02 09:51:36:320 Termino parse forms vduser.frm
+02 09:51:36:321 v10formserver vale 60f3204
+02 09:51:36:321 Inicio envío
+02 09:51:36:322 Html calculado. Tiempo de envío 0.000826 segundos
+02 09:51:36:322 Compresion fin
+02 09:51:36:322 Envio un total de 0.02 KB
+02 09:51:36:322 Enviada la respuesta a socket 060F3204
+02 09:51:36:322 Html enviado. Tiempo de envío 0.001426 segundos
+00 09:51:49:785 Fichero de log abierto PID 13512
+
+02 09:51:49:785 Intentando abrir fichero v10.ini
+02 09:51:49:787 Cargando driver v10oracle funcion damedriveroracle
+02 09:51:49:902 Conectado a base de datos
+02 09:51:49:903 Asignando RELEECONF a 500
+02 09:51:49:903 Asignando ACCESO a V10LOGIN
+02 09:51:49:903 Asignando NIVELLOG a 2
+02 09:51:49:905 Asignando PROTEGIDO a 500
+02 09:51:49:905 Asignando DEBUGHTTP a 2
+02 09:51:49:905 Asignando VISIBLEEXE a 0
+02 09:51:49:905 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:51:49:905 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:51:49:905 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:51:49:905 Asignando SERVERPORT a 5000
+02 09:51:49:905 Asignando SERVERPORTFILES a 5001
+02 09:51:49:905 Asignando PUERTOINICIAL a 5002
+02 09:51:49:906 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:51:49:906 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:51:49:906 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:51:49:906 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:51:49:906 Asignando FILEEXPIRED a 3600
+02 09:51:49:906 Asignando TIEMPOESPERA a 240
+02 09:51:49:907 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:51:49:907 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:51:49:907 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:51:49:907 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:51:49:907 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:51:49:907 Asignando COMPRIMIR a 1
+02 09:51:49:918 Escuchando en el puerto 5003
+02 09:51:50:281 Conectado Listener en el puerto 5003
+02 09:51:50:297 Abriendo conexion HTTP en el puerto 5003
+02 09:51:50:297 Abierta conexion HTTP en el puerto 5003
+02 09:51:51:290 Conexión de cliente establecida
+02 09:51:51:290 v10formserver vale 0
+02 09:51:51:290 Conexion 05B5F7DC recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5003
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Purpose: prefetch
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:51:291 La conexion 0 recibe peticion en socket 05B5F7DC
+02 09:51:51:291 Tratapeticion: Server cambia de valor de 00000000 a 05B5F7DC
+02 09:51:51:291 Sesion 0 Solicita Fichero V10.HTML 
+02 09:51:51:291 Sesion 0 Enviara Fichero V10.HTML
+02 09:51:51:291 Tiempo en abrir 0.000200 seg.
+02 09:51:51:292 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:51:51:292 Tiempo en carga de fichero 0.000404 seg.
+02 09:51:51:292 Timeout es 99999.000000
+02 09:51:51:292 Compresion fin
+02 09:51:51:292 Envio un total de 0.64 KB
+02 09:51:51:292 Fichero v10.html enviado
+02 09:51:51:305 Sesion 0 socket 05B5F7DC Finalizada por rotura de conexion 5
+02 09:51:51:305 Libera 5b5f7dc
+00 09:51:51:342 Fichero de log abierto PID 5504
+
+02 09:51:51:342 Intentando abrir fichero v10.ini
+02 09:51:51:346 Cargando driver v10oracle funcion damedriveroracle
+02 09:51:51:463 Conectado a base de datos
+02 09:51:51:465 Asignando RELEECONF a 500
+02 09:51:51:465 Asignando ACCESO a V10LOGIN
+02 09:51:51:465 Asignando NIVELLOG a 2
+02 09:51:51:465 Asignando PROTEGIDO a 500
+02 09:51:51:466 Asignando DEBUGHTTP a 2
+02 09:51:51:466 Asignando VISIBLEEXE a 0
+02 09:51:51:466 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:51:51:467 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:51:51:467 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:51:51:467 Asignando SERVERPORT a 5000
+02 09:51:51:467 Asignando SERVERPORTFILES a 5001
+02 09:51:51:467 Asignando PUERTOINICIAL a 5002
+02 09:51:51:467 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:51:51:468 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:51:51:468 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:51:51:468 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:51:51:470 Asignando FILEEXPIRED a 3600
+02 09:51:51:470 Asignando TIEMPOESPERA a 240
+02 09:51:51:472 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:51:51:472 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:51:51:472 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:51:51:472 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:51:51:472 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:51:51:472 Asignando COMPRIMIR a 1
+02 09:51:51:482 Escuchando en el puerto 5004
+02 09:51:51:832 Conectado Listener en el puerto 5004
+02 09:51:51:847 Abriendo conexion HTTP en el puerto 5004
+02 09:51:51:847 Abierta conexion HTTP en el puerto 5004
+02 09:51:52:820 Conexión de cliente establecida
+02 09:51:52:821 v10formserver vale 0
+02 09:51:52:821 Conexion 05DFA00C recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:52:821 La conexion 0 recibe peticion en socket 05DFA00C
+02 09:51:52:821 Tratapeticion: Server cambia de valor de 00000000 a 05DFA00C
+02 09:51:52:821 Sesion 0 Solicita Fichero V10.HTML 
+02 09:51:52:821 Sesion 0 Enviara Fichero V10.HTML
+02 09:51:52:822 Tiempo en abrir 0.000199 seg.
+02 09:51:52:822 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:51:52:822 Tiempo en carga de fichero 0.000387 seg.
+02 09:51:52:822 Timeout es 99999.000000
+02 09:51:52:822 Compresion fin
+02 09:51:52:822 Envio un total de 0.64 KB
+02 09:51:52:822 Fichero v10.html enviado
+02 09:51:52:836 Sesion 0 socket 05DFA00C Finalizada por rotura de conexion 5
+02 09:51:52:836 Libera 5dfa00c
+02 09:51:52:851 Sesion 0 Conectada socket 05DFA194
+02 09:51:52:851 Conexion 05DFA194 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:52:852 La conexion 0 recibe peticion en socket 05DFA194
+02 09:51:52:852 Tratapeticion: Server cambia de valor de 05DFA00C a 05DFA194
+02 09:51:52:852 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:51:52:852 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:51:52:852 Tiempo en abrir 0.000212 seg.
+02 09:51:52:852 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:51:52:852 Tiempo en carga de fichero 0.000425 seg.
+02 09:51:52:855 Compresion fin
+02 09:51:52:855 Envio un total de 15.81 KB
+02 09:51:52:855 Fichero v10libreriajs.html enviado
+02 09:51:52:866 Sesion 1 Conectada socket 05DFA044
+02 09:51:52:866 Sesion 0 socket 05DFA194 Finalizada por rotura de conexion 5
+02 09:51:52:866 Libera 5dfa194
+02 09:51:52:866 Conexion 05DFA044 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:51:52:866 La conexion 1 recibe peticion en socket 05DFA044
+02 09:51:52:866 Tratapeticion: Server cambia de valor de 05DFA194 a 05DFA044
+02 09:51:52:867 Recibida cadena de acceso
+00 09:51:52:872 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:51:52:872 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:51:52:872 Error al abrir fichero VDST.H
+02 09:51:52:872 Empiezo a leer forms vduser.frm
+02 09:51:52:877 Leyendo caracteristicas del bloque 
+02 09:51:52:877 Leidas caracteristicas del bloque 
+02 09:51:52:882 Termino parse forms vduser.frm
+02 09:51:52:882 v10formserver vale 5dfa044
+02 09:51:52:882 Inicio envío
+02 09:51:52:897 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:51:52:897 Html calculado. Tiempo de envío 0.015168 segundos
+02 09:51:52:900 Compresion fin
+02 09:51:52:900 Envio un total de 4.18 KB
+02 09:51:52:900 Enviada la respuesta a socket 05DFA044
+02 09:51:52:900 Html enviado. Tiempo de envío 0.016801 segundos
+02 09:52:01:368 Conexion 05DFA044 recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 121
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:01:370 La conexion 1 recibe peticion en socket 05DFA044
+02 09:52:01:370 Tratapeticion: Server cambia de valor de 05DFA044 a 05DFA044
+02 09:52:01:370 AtiendePost: Server cambia de valor de 05DFA044 a 05DFA044
+02 09:52:01:388 Detectado evento
+02 09:52:01:390 Evento recibido
+02 09:52:01:390 
+	Objeto: %5Bobject+HTMLInputElement%5D
+	Evento: Salir
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:52:01:390 Fin Evento recibido
+02 09:52:01:390 v10formserver vale 5dfa044
+00 09:52:01:421 Fichero de log abierto PID 11780
+
+02 09:52:01:421 Intentando abrir fichero v10.ini
+02 09:52:01:423 Cargando driver v10oracle funcion damedriveroracle
+02 09:52:01:540 Libera 5dfa044
+
+00 09:52:01:540 Fichero de log cerrado.
+
+02 09:52:01:547 Conectado a base de datos
+02 09:52:01:548 Asignando RELEECONF a 500
+02 09:52:01:548 Asignando ACCESO a V10LOGIN
+02 09:52:01:550 Asignando NIVELLOG a 2
+02 09:52:01:550 Asignando PROTEGIDO a 500
+02 09:52:01:550 Asignando DEBUGHTTP a 2
+02 09:52:01:551 Asignando VISIBLEEXE a 0
+02 09:52:01:551 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:52:01:551 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:52:01:551 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:52:01:551 Asignando SERVERPORT a 5000
+02 09:52:01:551 Asignando SERVERPORTFILES a 5001
+02 09:52:01:552 Asignando PUERTOINICIAL a 5002
+02 09:52:01:552 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:52:01:552 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:52:01:552 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:52:01:552 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:52:01:552 Asignando FILEEXPIRED a 3600
+02 09:52:01:552 Asignando TIEMPOESPERA a 240
+02 09:52:01:556 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:52:01:556 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:52:01:557 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:52:01:557 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:52:01:557 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:52:01:557 Asignando COMPRIMIR a 1
+02 09:52:01:570 Escuchando en el puerto 5005
+02 09:52:01:912 Conectado Listener en el puerto 5005
+02 09:52:01:927 Abriendo conexion HTTP en el puerto 5005
+02 09:52:01:927 Abierta conexion HTTP en el puerto 5005
+02 09:52:02:926 Conexión de cliente establecida
+02 09:52:02:926 v10formserver vale 0
+02 09:52:02:926 Conexion 05716D5C recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5005
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:02:926 La conexion 0 recibe peticion en socket 05716D5C
+02 09:52:02:926 Tratapeticion: Server cambia de valor de 00000000 a 05716D5C
+02 09:52:02:926 Sesion 0 Solicita Fichero V10.HTML 
+02 09:52:02:926 Sesion 0 Enviara Fichero V10.HTML
+02 09:52:02:926 Tiempo en abrir 0.000185 seg.
+02 09:52:02:926 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:52:02:926 Tiempo en carga de fichero 0.000398 seg.
+02 09:52:02:927 Timeout es 99999.000000
+02 09:52:02:927 Compresion fin
+02 09:52:02:927 Envio un total de 0.64 KB
+02 09:52:02:927 Fichero v10.html enviado
+02 09:52:02:941 Sesion 0 socket 05716D5C Finalizada por rotura de conexion 5
+02 09:52:02:941 Libera 5716d5c
+02 09:52:02:956 Sesion 0 Conectada socket 0570EC94
+02 09:52:02:956 Conexion 0570EC94 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5005
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5005/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:02:956 La conexion 0 recibe peticion en socket 0570EC94
+02 09:52:02:956 Tratapeticion: Server cambia de valor de 05716D5C a 0570EC94
+02 09:52:02:956 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:52:02:956 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:52:02:956 Tiempo en abrir 0.000269 seg.
+02 09:52:02:956 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:52:02:956 Tiempo en carga de fichero 0.000521 seg.
+02 09:52:02:958 Compresion fin
+02 09:52:02:958 Envio un total de 15.81 KB
+02 09:52:02:960 Fichero v10libreriajs.html enviado
+02 09:52:02:971 Sesion 0 socket 0570EC94 Finalizada por rotura de conexion 5
+02 09:52:02:972 Libera 570ec94
+02 09:52:02:987 Sesion 0 Conectada socket 0570EC24
+02 09:52:02:987 Conexion 0570EC24 recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5005
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5005/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:02:987 La conexion 0 recibe peticion en socket 0570EC24
+02 09:52:02:987 Tratapeticion: Server cambia de valor de 0570EC94 a 0570EC24
+02 09:52:02:987 Recibida cadena de acceso
+00 09:52:02:992 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:52:02:992 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:52:02:992 Error al abrir fichero VDST.H
+02 09:52:02:993 Empiezo a leer forms vduser.frm
+02 09:52:02:997 Leyendo caracteristicas del bloque 
+02 09:52:02:997 Leidas caracteristicas del bloque 
+02 09:52:03:002 Termino parse forms vduser.frm
+02 09:52:03:003 v10formserver vale 570ec24
+02 09:52:03:003 Inicio envío
+02 09:52:03:003 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:52:03:005 Html calculado. Tiempo de envío 0.000783 segundos
+02 09:52:03:006 Compresion fin
+02 09:52:03:006 Envio un total de 4.18 KB
+02 09:52:03:006 Enviada la respuesta a socket 0570EC24
+02 09:52:03:006 Html enviado. Tiempo de envío 0.001821 segundos
+02 09:52:05:210 Conexion 0570EC24 recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5005
+Connection: keep-alive
+Content-Length: 103
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5005
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5005/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:05:210 La conexion 0 recibe peticion en socket 0570EC24
+02 09:52:05:210 Tratapeticion: Server cambia de valor de 0570EC24 a 0570EC24
+02 09:52:05:211 AtiendePost: Server cambia de valor de 0570EC24 a 0570EC24
+02 09:52:05:228 Detectado evento
+02 09:52:05:228 Evento recibido
+02 09:52:05:228 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: X
+02 09:52:05:230 Fin Evento recibido
+02 09:52:05:230 v10formserver vale 570ec24
+02 09:52:05:232 v10formserver vale 570ec24
+02 09:52:05:232 Inicio envío
+02 09:52:05:232 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:52:05:232 Html calculado. Tiempo de envío 0.000983 segundos
+02 09:52:05:233 Compresion fin
+02 09:52:05:233 Envio un total de 4.19 KB
+02 09:52:05:233 Enviada la respuesta a socket 0570EC24
+02 09:52:05:233 Html enviado. Tiempo de envío 0.001998 segundos
+02 09:52:10:081 Conexion 0570EC24 recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5005
+Connection: keep-alive
+Content-Length: 122
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5005
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5005/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:10:082 La conexion 0 recibe peticion en socket 0570EC24
+02 09:52:10:082 Tratapeticion: Server cambia de valor de 0570EC24 a 0570EC24
+02 09:52:10:082 AtiendePost: Server cambia de valor de 0570EC24 a 0570EC24
+02 09:52:10:102 Detectado evento
+02 09:52:10:102 Evento recibido
+02 09:52:10:102 
+	Objeto: %5Bobject+HTMLInputElement%5D
+	Evento: Salir
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: X
+02 09:52:10:103 Fin Evento recibido
+02 09:52:10:103 v10formserver vale 570ec24
+00 09:52:10:137 Fichero de log abierto PID 6048
+
+02 09:52:10:137 Intentando abrir fichero v10.ini
+02 09:52:10:141 Cargando driver v10oracle funcion damedriveroracle
+02 09:52:10:252 Libera 570ec24
+
+00 09:52:10:252 Fichero de log cerrado.
+
+02 09:52:10:258 Conectado a base de datos
+02 09:52:10:260 Asignando RELEECONF a 500
+02 09:52:10:260 Asignando ACCESO a V10LOGIN
+02 09:52:10:260 Asignando NIVELLOG a 2
+02 09:52:10:261 Asignando PROTEGIDO a 500
+02 09:52:10:261 Asignando DEBUGHTTP a 2
+02 09:52:10:261 Asignando VISIBLEEXE a 0
+02 09:52:10:261 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:52:10:262 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:52:10:262 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:52:10:262 Asignando SERVERPORT a 5000
+02 09:52:10:262 Asignando SERVERPORTFILES a 5001
+02 09:52:10:262 Asignando PUERTOINICIAL a 5002
+02 09:52:10:262 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:52:10:263 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:52:10:263 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:52:10:265 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:52:10:265 Asignando FILEEXPIRED a 3600
+02 09:52:10:265 Asignando TIEMPOESPERA a 240
+02 09:52:10:267 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:52:10:267 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:52:10:267 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:52:10:267 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:52:10:267 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:52:10:267 Asignando COMPRIMIR a 1
+02 09:52:10:281 Escuchando en el puerto 5004
+02 09:52:10:628 Conectado Listener en el puerto 5004
+02 09:52:10:643 Abriendo conexion HTTP en el puerto 5004
+02 09:52:10:645 Abierta conexion HTTP en el puerto 5004
+02 09:52:11:641 Conexión de cliente establecida
+02 09:52:11:641 v10formserver vale 0
+02 09:52:11:642 Timeout es 99999.000000
+02 09:52:11:642 Conexion 05BA68C4 recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:11:642 La conexion 0 recibe peticion en socket 05BA68C4
+02 09:52:11:642 Tratapeticion: Server cambia de valor de 00000000 a 05BA68C4
+02 09:52:11:642 Sesion 0 Solicita Fichero V10.HTML 
+02 09:52:11:642 Sesion 0 Enviara Fichero V10.HTML
+02 09:52:11:642 Tiempo en abrir 0.000184 seg.
+02 09:52:11:642 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:52:11:642 Tiempo en carga de fichero 0.000380 seg.
+02 09:52:11:643 Compresion fin
+02 09:52:11:643 Envio un total de 0.64 KB
+02 09:52:11:645 Fichero v10.html enviado
+02 09:52:11:657 Sesion 0 socket 05BA68C4 Finalizada por rotura de conexion 5
+02 09:52:11:657 Libera 5ba68c4
+02 09:52:11:672 Sesion 0 Conectada socket 05BA019C
+02 09:52:11:687 Conexion 05BA019C recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:11:687 La conexion 0 recibe peticion en socket 05BA019C
+02 09:52:11:687 Tratapeticion: Server cambia de valor de 05BA68C4 a 05BA019C
+02 09:52:11:687 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:52:11:687 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:52:11:687 Tiempo en abrir 0.000238 seg.
+02 09:52:11:687 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:52:11:687 Tiempo en carga de fichero 0.000468 seg.
+02 09:52:11:692 Compresion fin
+02 09:52:11:692 Envio un total de 15.81 KB
+02 09:52:11:692 Fichero v10libreriajs.html enviado
+02 09:52:11:703 Sesion 1 Conectada socket 05BA020C
+02 09:52:11:703 Sesion 0 socket 05BA019C Finalizada por rotura de conexion 5
+02 09:52:11:703 Libera 5ba019c
+02 09:52:11:703 Conexion 05BA020C recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:11:703 La conexion 1 recibe peticion en socket 05BA020C
+02 09:52:11:703 Tratapeticion: Server cambia de valor de 05BA019C a 05BA020C
+02 09:52:11:703 Recibida cadena de acceso
+00 09:52:11:708 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:52:11:708 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:52:11:711 Error al abrir fichero VDST.H
+02 09:52:11:711 Empiezo a leer forms vduser.frm
+02 09:52:11:715 Leyendo caracteristicas del bloque 
+02 09:52:11:715 Leidas caracteristicas del bloque 
+02 09:52:11:718 Termino parse forms vduser.frm
+02 09:52:11:720 v10formserver vale 5ba020c
+02 09:52:11:720 Inicio envío
+02 09:52:11:720 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:52:11:721 Html calculado. Tiempo de envío 0.000880 segundos
+02 09:52:11:722 Compresion fin
+02 09:52:11:722 Envio un total de 4.18 KB
+02 09:52:11:722 Enviada la respuesta a socket 05BA020C
+02 09:52:11:722 Html enviado. Tiempo de envío 0.001995 segundos
+02 09:52:14:252 Conexion 05BA020C recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 102
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:14:261 La conexion 1 recibe peticion en socket 05BA020C
+02 09:52:14:261 Tratapeticion: Server cambia de valor de 05BA020C a 05BA020C
+02 09:52:14:261 AtiendePost: Server cambia de valor de 05BA020C a 05BA020C
+02 09:52:14:271 Detectado evento
+02 09:52:14:271 Evento recibido
+02 09:52:14:271 
+	Objeto: bl0f1c2
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: X
+02 09:52:14:271 Fin Evento recibido
+02 09:52:14:271 v10formserver vale 5ba020c
+02 09:52:14:271 v10formserver vale 5ba020c
+02 09:52:14:271 Inicio envío
+02 09:52:14:271 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:52:14:271 Html calculado. Tiempo de envío 0.000398 segundos
+02 09:52:14:272 Compresion fin
+02 09:52:14:272 Envio un total de 4.19 KB
+02 09:52:14:272 Enviada la respuesta a socket 05BA020C
+02 09:52:14:272 Html enviado. Tiempo de envío 0.001238 segundos
+02 09:52:14:792 Conexion 05BA020C recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 105
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 09:52:14:792 La conexion 1 recibe peticion en socket 05BA020C
+02 09:52:14:792 Tratapeticion: Server cambia de valor de 05BA020C a 05BA020C
+02 09:52:14:792 AtiendePost: Server cambia de valor de 05BA020C a 05BA020C
+02 09:52:14:810 Detectado evento
+02 09:52:14:810 Evento recibido
+02 09:52:14:810 
+	Objeto: prueba1
+	Evento: onkeyup
+	Dato: 115
+	Antid: bl0f1c2
+	Antvalor: X
+02 09:52:14:811 Fin Evento recibido
+02 09:52:14:811 v10formserver vale 5ba020c
+02 09:52:14:833 v10formserver vale 5ba020c
+02 09:52:14:856 Compresion fin
+02 09:52:14:856 Envio un total de 7.69 KB
+02 09:52:14:856 Enviada la respuesta a socket 05BA020C
+02 09:54:20:947 Libera 5ba020c
+
+00 09:54:20:948 Fichero de log cerrado.
+
+02 09:56:36:958 Sesion 0 socket 060F3204 Finalizada por rotura de conexion 5
+02 09:56:36:958 Libera 60f3204
+00 11:30:42:785 Fichero de log abierto PID 15952
+
+02 11:30:42:786 Intentando abrir fichero v10.ini
+02 11:30:42:788 Cargando driver v10oracle funcion damedriveroracle
+02 11:30:42:930 Conectado a base de datos
+02 11:30:42:930 Asignando RELEECONF a 500
+02 11:30:42:931 Asignando ACCESO a V10LOGIN
+02 11:30:42:931 Asignando NIVELLOG a 2
+02 11:30:42:931 Asignando PROTEGIDO a 500
+02 11:30:42:931 Asignando DEBUGHTTP a 2
+02 11:30:42:931 Asignando VISIBLEEXE a 0
+02 11:30:42:931 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 11:30:42:931 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 11:30:42:932 Asignando SERVIDOR a HTTP://127.0.0.1
+02 11:30:42:932 Asignando SERVERPORT a 5000
+02 11:30:42:932 Asignando SERVERPORTFILES a 5001
+02 11:30:42:932 Asignando PUERTOINICIAL a 5002
+02 11:30:42:932 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 11:30:42:932 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 11:30:42:932 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 11:30:42:932 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 11:30:42:932 Asignando FILEEXPIRED a 3600
+02 11:30:42:932 Asignando TIEMPOESPERA a 240
+02 11:30:42:933 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 11:30:42:933 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 11:30:42:933 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 11:30:42:935 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 11:30:42:935 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 11:30:42:935 Asignando COMPRIMIR a 1
+02 11:30:42:945 Escuchando en el puerto 5004
+02 11:30:43:267 Conectado Listener en el puerto 5004
+02 11:30:43:282 Abriendo conexion HTTP en el puerto 5004
+02 11:30:43:282 Abierta conexion HTTP en el puerto 5004
+02 11:30:44:272 Conexión de cliente establecida
+02 11:30:44:272 v10formserver vale 0
+02 11:30:44:273 Conexion 0565D7D4 recibe petición
+GET /v10.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:44:273 La conexion 0 recibe peticion en socket 0565D7D4
+02 11:30:44:273 Tratapeticion: Server cambia de valor de 00000000 a 0565D7D4
+02 11:30:44:273 Sesion 0 Solicita Fichero V10.HTML 
+02 11:30:44:273 Sesion 0 Enviara Fichero V10.HTML
+02 11:30:44:275 Timeout es 99999.000000
+02 11:30:44:288 Tiempo en abrir 0.014094 seg.
+02 11:30:44:288 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 11:30:44:296 Tiempo en carga de fichero 0.022069 seg.
+02 11:30:44:296 Compresion fin
+02 11:30:44:296 Envio un total de 0.64 KB
+02 11:30:44:297 Fichero v10.html enviado
+02 11:30:44:303 Sesion 0 socket 0565D7D4 Finalizada por rotura de conexion 5
+02 11:30:44:303 Libera 565d7d4
+02 11:30:44:320 Sesion 0 Conectada socket 05655C8C
+02 11:30:44:335 Conexion 05655C8C recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:44:335 La conexion 0 recibe peticion en socket 05655C8C
+02 11:30:44:335 Tratapeticion: Server cambia de valor de 0565D7D4 a 05655C8C
+02 11:30:44:335 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 11:30:44:335 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 11:30:44:382 Tiempo en abrir 0.047858 seg.
+02 11:30:44:382 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 11:30:44:382 Tiempo en carga de fichero 0.048216 seg.
+02 11:30:44:386 Compresion fin
+02 11:30:44:386 Envio un total de 15.81 KB
+02 11:30:44:386 Fichero v10libreriajs.html enviado
+02 11:30:44:396 Sesion 0 socket 05655C8C Finalizada por rotura de conexion 5
+02 11:30:44:396 Libera 5655c8c
+02 11:30:44:411 Sesion 0 Conectada socket 056561CC
+02 11:30:44:411 Conexion 056561CC recibe petición
+GET /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10.html
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:44:412 La conexion 0 recibe peticion en socket 056561CC
+02 11:30:44:412 Tratapeticion: Server cambia de valor de 05655C8C a 056561CC
+02 11:30:44:412 Recibida cadena de acceso
+00 11:30:44:417 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 11:30:44:417 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 11:30:44:418 Error al abrir fichero VDST.H
+02 11:30:44:418 Empiezo a leer forms vduser.frm
+02 11:30:44:422 Leyendo caracteristicas del bloque 
+02 11:30:44:422 Leidas caracteristicas del bloque 
+02 11:30:44:426 Termino parse forms vduser.frm
+02 11:30:44:427 v10formserver vale 56561cc
+02 11:30:44:427 Inicio envío
+02 11:30:44:442 Cargada plantilla plantilla.VDUSER.frm.html
+02 11:30:44:443 Html calculado. Tiempo de envío 0.016460 segundos
+02 11:30:44:445 Compresion fin
+02 11:30:44:445 Envio un total de 4.18 KB
+02 11:30:44:445 Enviada la respuesta a socket 056561CC
+02 11:30:44:445 Html enviado. Tiempo de envío 0.017499 segundos
+02 11:30:46:671 Conexion 056561CC recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 104
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:46:671 La conexion 0 recibe peticion en socket 056561CC
+02 11:30:46:671 Tratapeticion: Server cambia de valor de 056561CC a 056561CC
+02 11:30:46:671 AtiendePost: Server cambia de valor de 056561CC a 056561CC
+02 11:30:46:687 Detectado evento
+02 11:30:46:687 Evento recibido
+02 11:30:46:688 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c1
+	Antvalor: x
+02 11:30:46:688 Fin Evento recibido
+02 11:30:46:688 v10formserver vale 56561cc
+02 11:30:46:691 v10formserver vale 56561cc
+02 11:30:46:691 Inicio envío
+02 11:30:46:691 Cargada plantilla plantilla.VDUSER.frm.html
+02 11:30:46:691 Html calculado. Tiempo de envío 0.000425 segundos
+02 11:30:46:692 Compresion fin
+02 11:30:46:692 Envio un total de 4.19 KB
+02 11:30:46:692 Enviada la respuesta a socket 056561CC
+02 11:30:46:692 Html enviado. Tiempo de envío 0.001819 segundos
+02 11:30:47:492 Conexion 056561CC recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 104
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:47:492 La conexion 0 recibe peticion en socket 056561CC
+02 11:30:47:492 Tratapeticion: Server cambia de valor de 056561CC a 056561CC
+02 11:30:47:492 AtiendePost: Server cambia de valor de 056561CC a 056561CC
+02 11:30:47:510 Detectado evento
+02 11:30:47:510 Evento recibido
+02 11:30:47:510 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 11:30:47:511 Fin Evento recibido
+02 11:30:47:511 v10formserver vale 56561cc
+02 11:30:47:511 v10formserver vale 56561cc
+02 11:30:47:523 v10formserver vale 56561cc
+02 11:30:47:601 Compresion fin
+02 11:30:47:602 Envio un total de 7.69 KB
+02 11:30:47:602 Enviada la respuesta a socket 056561CC
+02 11:30:53:547 Conexion 056561CC recibe petición
+POST /v10login HTTP/1.1
+Host: 127.0.0.1:5004
+Connection: keep-alive
+Content-Length: 89
+Cache-Control: max-age=0
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Microsoft Edge";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+Origin: http://127.0.0.1:5004
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: frame
+Referer: http://127.0.0.1:5004/v10login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+
+02 11:30:53:550 La conexion 0 recibe peticion en socket 056561CC
+02 11:30:53:550 Tratapeticion: Server cambia de valor de 056561CC a 056561CC
+02 11:30:53:550 AtiendePost: Server cambia de valor de 056561CC a 056561CC
+02 11:30:53:567 Detectado evento
+02 11:30:53:567 Evento recibido
+02 11:30:53:567 
+	Objeto: 
+	Evento: selmenu
+	Dato: 76
+	Antid: 
+	Antvalor: 
+02 11:30:53:568 Fin Evento recibido
+02 11:30:53:570 Empiezo a leer forms vdmntoclasif.frm
+02 11:30:53:577 Leyendo caracteristicas del bloque 
+02 11:30:53:577 Leidas caracteristicas del bloque 
+02 11:30:53:587 Leyendo caracteristicas del bloque 
+02 11:30:53:587 Leidas caracteristicas del bloque 
+02 11:30:53:596 Leyendo caracteristicas del bloque 
+02 11:30:53:596 Leidas caracteristicas del bloque 
+02 11:30:53:597 Leyendo caracteristicas del campo CODART
+02 11:30:53:597 Leidas caracteristicas del campo CODART
+02 11:30:53:606 Leyendo caracteristicas del bloque 
+02 11:30:53:606 Leidas caracteristicas del bloque 
+02 11:30:53:608 Termino parse forms vdmntoclasif.frm
+02 11:30:53:620 v10formserver vale 56561cc
+02 11:30:53:620 Inicio envío
+02 11:30:53:653 Html calculado. Tiempo de envío 0.033241 segundos
+02 11:30:53:656 Compresion fin
+02 11:30:53:656 Envio un total de 6.52 KB
+02 11:30:53:656 Enviada la respuesta a socket 056561CC
+02 11:30:53:656 Html enviado. Tiempo de envío 0.035405 segundos
+02 11:59:36:765 Sesion 0 socket 056561CC Finalizada por rotura de conexion 5
+02 11:59:36:765 Libera 56561cc
+02 13:51:33:527 Sobrepasado tiempo de espera, se sale de la sesión
+
+00 13:51:33:530 Fichero de log cerrado.
+
+02 15:30:53:662 Sobrepasado tiempo de espera, se sale de la sesión
+
+00 15:30:53:665 Fichero de log cerrado.
+
+
+00 17:57:27:890 Fichero de log cerrado.
+

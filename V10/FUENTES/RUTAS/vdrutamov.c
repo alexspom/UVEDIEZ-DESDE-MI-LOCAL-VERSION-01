@@ -1,0 +1,667 @@
+/****
+* VDMOVIMRUTAS.C
+*                                                    
+* Propósito: Asignación de rutas a movimientos                                   
+*                                                                              
+*                                                                              
+* Autor  : FGS e ICC                                                           
+* Fecha  : 2-11-2007                                                          
+******
+*  Modificaciones:
+****/
+
+#include "execproc/vdexec.h"
+
+#define MAXTRAMOS 10
+
+char damemuevepalet(vdmovims *mov) {    
+    if (!strcmp(mov->codmatori,mov->codmatdest)) return('S');
+    else return('N');
+}
+
+// Reengancha la ubicación origen del movto a la ubicacion donde se encuentra el contenedor actualmente,
+// y extrae información sobre ubicaciones origen y destino del movto
+// PARAM1: (mov) informa del movimiento tratándose
+// PARAM2: (ubiori) recoge los datos de la ubicación origen
+// PARAM3: (ubidest) recoge los datos de la ubicación destino
+static int verifcodubi(vdmovims *mov,vdubicas *ubiori, vdubicas *ubidest) {
+    int ret;
+    vdcontes cnt;
+    
+    if ((ret=CNTselvdconte( mov->codmatori, &cnt ))) { 
+        v10logcomen(LOGERROR, mov->comen, "verifcodubiori - Movimiento %ld, matricula origen %lf no existe\n", mov->codmov, mov->codmatori);
+        return(VD_EERR);
+    }
+    
+    // si el contenedor ha cambiado de ubicación, reengancho el movto a esta    
+    if (strcmp(mov->codubiori,cnt.codubi)) {
+        v10log(LOGNORMAL, "verifcodubiori: Movimiento %d cambia de ubicación origen %s a %s\n",mov->codmov,mov->codubiori,cnt.codubi);
+        strcpy(mov->codubiori,cnt.codubi);
+        if ((ret=MOVactualizaorigen(mov,NOVERIFICA))) {
+            v10logcomen(LOGERROR,mov->comen,"verifcodubiori: Error al modificar el origen del movimiento %ld.\n",mov->codmov);
+            return(VD_EERR);
+        }       
+    }
+    
+    // obtengo áreas origen y destino
+    if ((ret=UBIselvdubica(mov->codubiori,ubiori))) {
+        v10logcomen(LOGERROR,mov->comen,"verifcodubiori: No encuento área para ubicación %s\n",mov->codubiori);
+        return(VD_EERR);
+    }
+    
+    if ((ret=UBIselvdubica(mov->codubidest,ubidest))) {
+        v10logcomen(LOGERROR,mov->comen,"verifcodubiori: No encuento área para ubicación %s\n",mov->codubidest);
+        return(VD_EERR);
+    }  
+    
+    return(0);
+}
+
+#define CSELPDTERECARGA "SELECT VDRECARGA.POSIBLERECARGA(:CODUBI,:TIPORECARGA,:FORZADA) FROM DUAL"
+static v10cursors *v10pdterecarga;
+static int pendienterecarga(char *codubi,char *tiporecarga,char *forzada)
+{
+	long ret;
+	ret=-1;
+	if (v10pdterecarga==NULL) {
+		v10pdterecarga=abrecursor(CSELPDTERECARGA);
+	}
+	definetodo(v10pdterecarga,&ret,sizeof(ret),V10LONG,NULL);
+	bindtodo(v10pdterecarga,"CODUBI",codubi,LCODUBI,V10CADENA,
+		                "TIPORECARGA",tiporecarga,LFUERZAPALET,V10CADENA,
+						"FORZADA",forzada,LFUERZAPALET,V10CADENA,
+						NULL);
+    ejefetchcursor(v10pdterecarga);
+	return ret;
+}
+
+#define CSELDISPTAREA "SELECT VDRECARGA.DAMEDISPFLUJOCNT(:CODMAT,:CODART,:TAREA,:CODUBIDEST) FROM DUAL"
+static v10cursors *v10seldisptarea;
+static int damestkdisponibletarea(char *codmat,char *codart,char *tarea,char *codubidest,double cantidad,vdstkauxs *disp)
+{
+	if (v10seldisptarea==NULL) {
+		v10seldisptarea=abrecursor(CSELDISPTAREA);
+	}
+	definetodo(v10seldisptarea,&disp->cantidad,sizeof(disp->cantidad),V10DOUBLE,NULL);
+	bindtodo(v10seldisptarea,"CODMAT",codmat,LCODMAT,V10CADENA,
+		                     "CODART",codart,LCODART,V10CADENA,
+							 "TAREA",tarea,LTAREA,V10CADENA,
+							 "CODUBIDEST",codubidest,LCODUBI,V10CADENA,
+							  NULL);
+	if (ejefetchcursor(v10seldisptarea)==0) {
+	   disp->cantidad-=cantidad;
+	}
+	return(0);
+}
+
+
+
+int llvddamemovimtramo(vdmovims *mov,char *codareadest, char *fuerzapalet,  char *uniagrupa, vdubicas *ubiinter, char *codmatdest, double *cantamover) 
+{
+    int ret;
+    vdubicars ubicar;
+    vdrutass capacidad;
+    vdstkauxs disponible;
+    char codart[LCODART]="";
+    char codlot[LCODLOT]="";
+    double cantidad=0.0,cantenemba=0.0,uniemb=0.0;
+    vdubicars conteubi;  
+    vdcontes cnt;
+    int salir;
+	double pico=0;
+    
+    if (*uniagrupa!='C') {  // si es movto parcial por uniagrupa destino, preasigna articulo, lote y cantidad a mover
+        strcopia(codart,mov->codart,strlen(mov->codart));
+        strcopia(codlot,mov->codlot,strlen(mov->codlot));
+        cantidad=mov->cantidad;
+        uniemb=mov->uniemb;
+    }
+    
+    // busca ubicacion en área forzada con uiagrupa, y ubiinter.pasillo, que quepa la cantidad del movto, si busca parcial !!
+    // obtiene ubicacion intermedia, sacar los datos !!
+    // ya nos hemos asegurado que coge, por lo que no hay problemas de cantidad
+    // si es de tipo 'E' fuerzapalet redondear a cajas, pero si en la matricula origen no hay mas stock para redondear a cajas ??
+    // de tipo U la deja exacta
+    
+    savepoint("llvddamemovimtramo");
+    
+    ret=UBIdameubiarealibre(mov->codmatori,codareadest,codart,codlot,uniemb,"",cantidad,ubiinter->pasilloaux,uniagrupa,&ubicar);
+    if (ret) {
+        rollbacksavepoint("llvddamemovimtramo");
+        v10log(LOGERROR,"llvddamemovimtramo: No se encuentran ubicaciones en el área %s con uniagrupa %s para el movto %ld\n",
+            codareadest,uniagrupa,mov->codmov);
+        return(ret);
+    }
+    
+    ret=salir=0;
+    do {
+        
+        v10log(LOGNORMAL,"llvddamemovimtramo: Encontrada ubicación candidata %s\n",ubicar.codubi);
+        // en ubicar.codubi tengo la ubicacion 
+        UBIselvdubica(ubicar.codubi,ubiinter);
+        
+        *cantamover=mov->cantidad;
+        
+        if (*uniagrupa=='U' || *uniagrupa=='E') {
+            if (UBICARbuscaconteparcial(ubicar.codubi,&conteubi)) {
+                v10log(LOGERROR,"llvddamemovimtramo: Descartada ubicacion %s por no tener contenedores no movibles disponibles\n",ubicar.codubi);
+                continue;
+            }
+            strcpy(codmatdest,conteubi.codmat);
+            v10log(LOGNORMAL,"llvddamemovimtramo: Encontrada matricula NO MOVIBLE %s en ubicación %s\n",
+                conteubi.codmat,ubicar.codubi);
+        } else
+            strcpy(codmatdest,mov->codmatori);
+        
+        
+        switch (*uniagrupa) {
+        case 'C': // cantamover no se toca;
+        case 'U':    
+            salir=1;
+            break;
+            
+        case 'E':
+            
+            // obtengo la capacidad de la ubicación en unidades de agrupación (embalajes)
+			RUTASbuscaubicapacidad(ubiinter->codubi,ubiinter->unicapac,&capacidad);
+//			RUTASbuscaubicapacidad(ubiinter->codubi,"U",&capacidad);
+            // ahora obtengo cuando hay en la matricula origen, disponible del articulo y lote
+            // aparte de lo que tengo ya reservado  en el movimiento mov
+            
+            savepoint("llvddamemovimtramo2");
+            
+            CNTselvdconte(mov->codmatori,&cnt);
+            
+            if (CNTlock(&cnt,NOWAIT,VALIDA,NULL))  {
+                v10log(LOGERROR,"llvddamemovimtramo: Error bloqueando contenedor %s para obtener cantidad disponible\n",mov->codmatori); 
+                rollbacksavepoint("llvddamemovimtramo2");
+                continue;
+            }
+            
+            STKAUXbuscadisponibleencodmat(mov->codmatori,"U",mov->codart,mov->codlot,0,"",&disponible);
+			damestkdisponibletarea(mov->codmatori,mov->codart,mov->tarea,mov->codubidest,mov->cantidad,&disponible);
+//            STKAUXbuscadisponibleencntflujo(mov->codmatori,"U",mov->codart,mov->codlot,0,"","","",0,"","","",mov->codflujo,&disponible);
+            cantenemba=ceil(mov->cantidad/mov->uniemb) * mov->uniemb; // cantidad que queremos mover, redondeando
+            if (cantenemba <= mov->cantidad +  disponible.cantidad) {
+                *cantamover=cantenemba;
+				if (*fuerzapalet=='A') { // llena a saturación  
+					if (pendienterecarga(ubiinter->codubi,"U","N")!=0) {
+                        v10log(LOGERROR,"llvddamemovimtramo: Ubicacion %s no esta en urgente reposicion\n",ubiinter->codubi); 
+                        rollbacksavepoint("llvddamemovimtramo2");
+                        continue;
+					}
+                    *cantamover = min( floor((mov->cantidad +  disponible.cantidad)/mov->uniemb), capacidad.cantidad) * mov->uniemb ; 
+					if (*cantamover<=0) continue;
+                    pico=fmod(mov->cantidad + disponible.cantidad,mov->uniemb);
+					if (pico>0){
+						*cantamover=*cantamover+pico;
+						if (capacidad.cantidad*mov->uniemb<*cantamover) 
+							*cantamover=*cantamover-mov->uniemb;
+					}
+				}
+            } else {//RIK añado para evitar errores en ubicaciones que solamente les queda un pico
+				if (pendienterecarga(ubiinter->codubi,"U","N")!=0) {
+                    v10log(LOGERROR,"llvddamemovimtramo: Ubicacion %s no esta en urgente reposicion\n",ubiinter->codubi); 
+                    rollbacksavepoint("llvddamemovimtramo2");
+                    continue;
+				}
+				*cantamover = mov->cantidad +  disponible.cantidad;
+			}
+            
+            rollbacksavepoint("llvddamemovimtramo2");
+            
+            // cantamover redondearlo a caja, pero ver si hay suficiente en el origen, si no ?
+            // tb depende de fuerzapalet si es 'A', intenta mover todo lo que quepa en el destino desde la ubicacion origen
+            // dudas: si redondeo a embalaje, va a parecer que solo tengo reservado 2,5 y tengo 3, porque está como muevepalet a 'S' el primer movto
+            // cuidadín !!   
+            salir=1;
+        }          
+    } while (!salir && !UBICARnextubilibre(&ubicar)); 
+    
+    rollbacksavepoint("llvddamemovimtramo");
+    if (salir==1) return(ret);    
+    else return(-1);
+}
+
+
+
+// Mos devuelve si se puede generar movto en dicho tramo, en función del fuerzapalet y fuerzamismopasillo
+// nos indica respecto al movto a generar: la ubicacion del área intermedia, si el movto es mueve palet o no, y la cantidad del movto a generar
+// PARAM1: (mov) informa del movimiento tratándose
+// PARAM2: (codareadest) informa del área de destino a donde generar el movto
+// PARAM3: (fuerzapalet) informa del valor de Fuerzapalet para el tramo
+// PARAM4: (ubiinter) recoge los datos de ubicación encontrada en el área destino (PARAM2)
+// PARAM5: (muevepalet) recoge si el movto a generar es muevepalet o no
+// PARAM6: (codmatdest) recoge la matrícula destino del movto 
+// PARAM8: (cantamover) recoge la cantidad a mover en unidades v10
+static int vddamemovimtramo(vdmovims *mov,char *codareadest, char *fuerzapalet, vdubicas *ubiinter, char *muevepalet, char *codmatdest, double *cantamover) 
+{    
+    int ret=0;
+    char nuevofuerzapalet[2]="";
+    
+    // si el movto es de palet completo, buscará solo ubic. de tipo contenedor
+    // independientemente del FUERZAPALET
+    nuevofuerzapalet[0]=*fuerzapalet;
+    if (damemuevepalet(mov)=='S') {
+        v10log(LOGNORMAL,"vddamemovimtramo: Movto %ld Cambiado Fuerzapalet de \'%s\' a \'C\' por ser movto de palet completo\n",
+            mov->codmov, fuerzapalet);
+        nuevofuerzapalet[0]='C';
+    }
+    
+    if (*nuevofuerzapalet==0) *nuevofuerzapalet='C';
+    
+    
+    // ubiinter.pasilloaux tiene el pasillo forzado;
+    
+    switch (*nuevofuerzapalet) {
+    case 'C': 
+    case ' ': 
+        ret=llvddamemovimtramo(mov ,codareadest,nuevofuerzapalet, "C",ubiinter, codmatdest, cantamover); 
+        if (ret==0) *muevepalet='S';
+        return(ret);      
+        
+    case 'E':
+    case 'U':
+        ret=llvddamemovimtramo(mov ,codareadest,nuevofuerzapalet,fuerzapalet,ubiinter, codmatdest, cantamover); 
+        if (ret==0) *muevepalet='N';							
+        return(ret);  
+        
+        
+    case 'A': 
+        ret=llvddamemovimtramo(mov ,codareadest,nuevofuerzapalet, "C",ubiinter, codmatdest, cantamover); 
+        if (ret==0) {
+            *muevepalet='S';
+            return(ret);
+        }
+                  
+        ret=llvddamemovimtramo(mov ,codareadest,nuevofuerzapalet, "E",ubiinter, codmatdest, cantamover); 
+        if (ret==0) *muevepalet='N';
+        return(ret); 
+                  
+    default:
+        return(VD_EERR);
+    }
+}
+
+
+
+// Carga en una estructura los tramos para enrutar el movto desde el área que se encuentra su origen;
+// contempla hasta 10 tramos alternativos posibles
+// PARAM1: (mov) informa del movimiento tratándose
+// PARAM2: (tramos) array de estructuras donde se recogen los posibles tramos
+static int vdcargatramos(vdmovims *mov,vdrutass *tramos) {
+    int i=0,ret;
+    
+    v10log(LOGNORMAL,"vdcargatramos: Cargando opciones para el siguiente tramo del movto %ld\n",mov->codmov);
+    ret=RUTASbuscasgtetramo(mov->codmov,tramos);
+    if (ret) return(ret);
+    while (ret==0) {
+        if (i==MAXTRAMOS) {
+            v10logcomen(LOGERROR,mov->comen,"vdcargatramos: No puedo cargar mas de 10 opciones para un tramo\n");
+            return(VD_EERR);
+        } 
+        v10log(LOGNORMAL,"vdcargatramos: Cargado tramo i=%ld de %s a %s con prioridad %ld y muevepalet %s, mueveparcial %s, fuerzapalet %s, tramofinal = %s\n",
+            i,tramos[i].codareaori,tramos[i].codareadest,tramos[i].priotramo, tramos[i].trmmuevepalet, tramos[i].trmmueveparcial, tramos[i].fuerzapalet, tramos[i].tramofinal);
+        i++;
+        ret=RUTASnextsgtetramo(tramos+i);    
+    }  
+    v10log(LOGNORMAL,"vdcargatramos: Fin de carga opciones para el siguiente tramo del movto %ld\n",mov->codmov);
+    return(0);
+}
+
+
+
+// Busca otros movtos que sean muevepalet='S' del contenedor de nuestro movimiento,
+// y avanza o retrasa la descomposición de nuestro movto o los otros, para optimizar el movto del palet
+// PARAM1: (mov) movimiento que se está tratando
+// PARAM2: (stesperaruta) estado al que pasa nuestro movto en caso de esperar a otros
+// PARAM3: (tramofinal) informa si nuestro movto se encuentra en su tramo final
+// PARAM4: (salir) recoge si se debe romper el bucle desde el que se llama a esta programa, 
+//         al haber finalizado con nuestro movto
+static int vdtratamovtosconte(vdmovims *mov,long stesperaruta,char *tramofinal, int *salir ) {
+    int ret,continuar=0;
+    vdmovims movconte,movesp;  
+    
+    *salir=0;
+    if (damemuevepalet(mov)=='S') {
+        ret= MOVbuscamismopalet(mov->codmatori,"S",mov->codmov,0,STMOVDEPOSITADO-1,&movconte);
+        if (ret==0) {
+            v10logcomen(LOGERROR,mov->comen,"vdtratamovtosconte: No puede haber 2 movtos muevepalet a 'S' del mismo palet\nPalet %s, Movto Tratado %ld, Movto Pdte %ld\n",
+                mov->codmatori,mov->codmov,movconte.codmov);
+            *salir=1;
+            return(VD_EERR);
+        }
+        return(0);
+    }   
+    
+    // seguimos si nuestro movto es parcial
+    // existen movtos muevepalet 'S' del mismo palet entre estos 2 estados ?
+    if (MOVbuscamismopalet(mov->codmatori,"S",mov->codmov,STMOVPDTERECOGE,STMOVDEPOSITADO-1,&movconte)) return(0);
+    
+    // si estan asignados a un recurso o mi movto no es tramo final, me espero (a 1300,PDTEMOVIM)
+    if (movconte.status>STMOVPDTERECOGE || *tramofinal=='N') {
+        mov->status=STMOVPDTEMOVIM; 
+        mov->codmovppaso=movconte.codmov; 
+        mov->codmovesp=movconte.codmov;   
+        v10log(LOGNORMAL,"vdtratamovtosconte: Movto %ld para a estado %ld por esperar a movto %ld en curso\n",
+            mov->codmov, STMOVPDTEMOVIM, movconte.codmov);
+        ret=MOVactualizaruta(mov,NOVERIFICA);
+        if (ret) {
+            v10logcomen(LOGERROR,mov->comen,"vdtratamovtosconte: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+            return(VD_EERR);
+        }
+        *salir=1;
+        return(0); 
+    }  
+    
+    // si el movimiento encontrado está en PDTEREGOGE (2000) y el mio es tramo final, retraso el otro movto y avanzo el mio
+    MOVselvdmovim(movconte.codmov, &movconte);
+    if (*movconte.solomueve=='S') { // debo anular el movto movconte resuelto por el ruta , y dejar el original que le espera a 1250 (PDTEMOVIM)
+        ret=MOVbuscacodmovesp(movconte.codmov, &movesp);    
+		if (!ret) continuar=1;
+		movconte.status=STMOVANULADO;
+		v10log(LOGNORMAL,"vdtratamovtosconte: Anulado movimiento %ld (SOLOMUEVE=\'S\') porque movto %ld es de picking y tramo directo\n",
+			movconte.codmov, mov->codmov);   
+		ret=MOVactualizaruta(&movconte,NOVERIFICA);
+		if (ret) {
+			*salir=1;    
+			v10logcomen(LOGERROR,mov->comen,"vdtratamovtosconte: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+			return(VD_EERR);
+		}        
+		if (continuar)	memcpy(&movconte,&movesp,sizeof(movconte));
+		else return(0);
+	}   
+    // dejo al otro movto esperando
+    movconte.codmovppaso=movconte.codmov; 
+    movconte.codmovesp=0;     
+    movconte.status=stesperaruta;
+    v10log(LOGNORMAL,"vdtratamovtosconte: Movto %ld se retrasa (a %ld) por movto de picking directo %ld\n",
+        movconte.codmov,movconte.status,mov->codmov);
+    ret=MOVactualizaruta(&movconte,NOVERIFICA);
+    if (ret) {
+        *salir=1;
+        v10logcomen(LOGERROR,mov->comen,"vdtratamovtosconte: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+        return(VD_EERR);
+    }  
+    return(0); 
+}
+
+
+// Devuelve si en el primer tramo del movto pasado se mueve el palet o no
+// PARAM1: (movpick)movimiento parcial que se va a analizar
+// PARAM3: (muevepaletpick) recoge si este movto en su primer tramo mueve palet o no
+static int vddamemovimpick(vdmovims *movpick, char *comen, char *muevepaletpick,int *salir) {
+    int ret,numtramo=0;
+    char codmatdest[LCODMAT];
+    double cantidad;
+    vdubicas ubiori,ubidest,ubiinterpick;
+    vdrutass tramospick[MAXTRAMOS];
+    
+    if ((ret=verifcodubi(movpick,&ubiori, &ubidest))) {
+        *salir=1;
+        return(ret);
+    }
+    
+    
+    memset(tramospick,0,sizeof(vdrutass)*MAXTRAMOS); 
+    memset(&ubiinterpick,0, sizeof(ubiinterpick));
+    v10log(LOGNORMAL,"vddamemovimpick: Calculando ruta movto de Pick Pendiente para ir desde %s a %s\n",movpick->codubiori,movpick->codubidest);
+    if (!strcmp(ubiori.codarea,ubidest.codarea)) strcpy(tramospick[0].tramofinal,"S");
+    else {
+        if (vdcargatramos(movpick,tramospick)) {
+            v10logcomen(LOGERROR,comen,"vddamemovimpick: No encuentro ruta para movto %ld (muevepalet=%c) que va de área %s a %s\n", 
+                movpick->codmov, damemuevepalet(movpick) , ubiori.codarea, ubidest.codarea);
+            return(VD_EERR);
+        }
+    }
+    
+    do  {   
+        if (*tramospick[numtramo].tramofinal=='S') {    
+            *muevepaletpick=damemuevepalet(movpick);
+            return(0);
+        }
+        
+        // no encuentra ubicación en área intermedia según los criterios seleccionados
+        if (0==vddamemovimtramo(movpick,tramospick[numtramo].codareadest, tramospick[numtramo].fuerzapalet, &ubiinterpick, muevepaletpick, codmatdest, &cantidad)) {
+            return(0);
+        } 
+        numtramo++;   
+    } while (numtramo<MAXTRAMOS && strlen(tramospick[numtramo].codareaori)>0); 
+    
+    return(VD_EERR);
+}
+
+
+// Busca otros movtos que sean muevepalet='N' del contenedor de nuestro movimiento,
+// y avanza o retrasa la descomposición de nuestro movto o los otros; 
+// PARAM1: (mov) movimiento que se está enrutando
+// PARAM2: (stesperaruta) estado al que pasa nuestro movto en caso de esperar a otros
+// PARAM3: (muevepalet) informa si el movto enrutándose es muevepalet en su primer tramo
+// PARAM4: (ubiinter) recoge la ubicación del área intermedia hacia la que debe generarse el movto en caso de seguir adelante
+// PARAM5: (salir) recoge si se debe romper el bucle desde el que se llama a esta programa, 
+//         al haber finalizado con nuestro movto
+static int vdtratamovtospick(vdmovims *mov,long stesperaruta,char *muevepalet, vdubicas *ubiinter,int *salir) {
+    int ret;
+    char muevepaletpick[LMUEVEPALET]="";
+    vdmovims movpick;
+    
+    
+    // solo trato los movimientos parciales (muevepalet a 'N')
+    if (damemuevepalet(mov)=='S') return(0);
+    
+    // solo continua si el movto que 
+    // se está enrutando mueve el palet completo en el primer tramo, para ver si espera a otro,
+    // si no lo mueve completo, retorna éxito
+    if (*muevepalet=='N') return(0);		 
+    
+    
+    // existen movtos muevepalet 'N' del mismo palet entre estos 2 estados ? 
+    if (0==MOVbuscamismopalet(mov->codmatori,"N",mov->codmov,STMOVPDTERECOGE,STMOVRECOGIDO-1,&movpick)) {
+        // si existen me espero
+        mov->status=stesperaruta; 
+        v10log(LOGNORMAL,"vdtratamovtospick: Movto %ld para a estado %d por esperar a movto %ld en curso\n",
+            mov->codmov, stesperaruta, movpick.codmov);
+        ret=MOVactualizastatus(mov,NOVERIFICA);
+        if (ret) {
+            v10logcomen(LOGERROR,mov->comen,"vdtratamovtospick: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+            return(VD_EERR);
+        }
+        *salir=1;
+        return(0); 
+    }
+    
+    
+    // no tengo claro si 1200 (STMOVPDTERUTA) o 1250  (STMOVESPERARUTA)
+    ret=MOVbuscamismopalet(mov->codmatori,"N",mov->codmov,0,STMOVPDTERUTA,&movpick);
+    while (ret==0) {		
+        // resuelve el movto entre 0 y STMOVPDTERUTA y obtiene si se muevepalet en el primer tramo del mismo
+        *salir=0;
+        v10log(LOGNORMAL,"\nvdtratamovtospick: Simulando resolución para movto de picking %ld pdte del mismo palet\n",movpick.codmov);
+        ret=vddamemovimpick(&movpick, mov->comen, muevepaletpick,salir);
+        v10log(LOGNORMAL,"vdtratamovtospick: Fin de Simulación de resolución para movto de picking %ld pdte del mismo palet\n\n",movpick.codmov);
+        
+        if (ret==0)  {
+            // si no mueve el palet al completo, me espero
+            // si se mueve todo el palet, avanzo
+            if (*muevepaletpick=='N') {
+                mov->status=stesperaruta; 
+                v10log(LOGNORMAL,"vdtratamovtospick: Movto %ld para a estado %d por esperar a movto %ld por enrutar, previsto muevepalet a 'N'\n",
+                    mov->codmov, stesperaruta, movpick.codmov);
+                *salir=1;             
+                ret=MOVactualizaruta(mov,NOVERIFICA);
+                if (ret) {
+                    v10logcomen(LOGERROR,mov->comen,"vdtratamovtospick: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+                    return(VD_EERR);
+                }
+                return(0); 
+            }
+        } 
+        if (ret && *salir) return(ret);
+        ret=MOVnextmismopalet(&movpick);
+    }	
+    
+    return(0);
+}
+
+
+// Enruta el movto pasado generando un nuevo movto a un área intermedia o 
+// dejándolo esperando a otros movtos del mismo palet
+// PARAM1: (mov) movimiento que se está enrutando
+// PARAM2: (stesperaruta) estado al que pasa nuestro movto en caso de esperar a otros
+// PARAM3: (stfinal) estado final en el que se deja al movto si no se retrasa su descomposición, y se enruta con éxito
+// PARAM4: (fuerzamismopasillo) indica si a la hora de generar el movto al área intermedia discrimina la ubicación
+//         a buscar por el pasillo en el que se encuentra  
+
+int llvdenrutamov(vdmovims *mov, long stesperaruta, long stfinal, char *fuerzamismopasillo) {
+    int ret,salir,numtramo;  
+    char muevepalet[LMUEVEPALET]="";
+    char codmatdest[LCODMAT]="";
+    double cantidad=0;  
+    vdubicas ubiori, ubidest, ubiinter ;
+    vdmovims movinter;  
+    vdrutass movtramos[MAXTRAMOS];
+    vdmovims movconte,movorigen;
+    
+	if (mov->codmovesp>0) {
+		MOVselvdmovim(mov->codmovesp,&movorigen);
+		if (movorigen.status<STMOVACTUALIZA) {
+			mov->status=STMOVPDTEMOVIM;		
+			MOVactualizastatus(mov,0);
+			return(0);
+		}
+	}
+/*
+	if (strcmp(mov->tarea,"RECARGAR")) { // si la tarea del movto no es RECARGAR
+		// buscar nmovtos de tarea RECARGAR, en estado < ACTUALIZA, de esta matrícula origen
+		ret=MOVbuscamovtostarea(mov->codmatori,mov->codmov,STMOVACTUALIZA,"RECARGAR",&movrec);
+		if (ret==0) { // si los hay, espera a que se lleve a cabo la recarga
+			v10log(LOGNORMAL,"Movto %ld pasa a estado %d al tener el contenedor %s recarga en curso\n",
+				     mov->codmov, stesperaruta, mov->codmatori);
+			mov->status=stesperaruta;		
+			MOVactualizastatus(mov,0);
+			return(0);	
+		}		
+	}
+*/
+    // si el contenedor origen del movto está entre STMOVENUBIINTER y STMOVACTUALIZA-1, esto es, en ubic. intermedia, lo están moviendo;
+    // entonces espero a que se deposite en destino para enrutar mi movto pdte
+    if (MOVbuscamismopalet(mov->codmatori,"S",mov->codmov,STMOVENUBIINTER,STMOVACTUALIZA-1,&movconte)==0) {
+        v10log(LOGNORMAL,"llvdenrutamov: movto %ld espera a enrutarse al estar contenedor origen %s en movto\n", mov->codmov,mov->codmatori);
+		mov->status=stesperaruta;
+		return(MOVactualizastatus(mov,0));
+    }  
+    
+    if ((ret=verifcodubi(mov, &ubiori, &ubidest))) return(ret);
+    
+    // el el movto mueve el palet completo  y va a la ubicación donde se encuentra ya, se autoejecuta
+    if (damemuevepalet(mov)=='S' && !strcmp(ubiori.codubi,ubidest.codubi)) {
+        mov->status=STMOVDEPOSITADO;
+        ret=MOVactualizastatus(mov,NOVERIFICA);
+        if (ret) {
+            v10log(LOGERROR,"llvdenrutamov: error actualizando estado de movto %ld a %ld\n",
+                mov->codmov,mov->status);
+            return(ret);
+        }
+        return(0);
+    }
+    
+    memset(movtramos,0,sizeof(vdrutass)*MAXTRAMOS); 
+    v10log(LOGNORMAL,"llvdenrutamov: Movimiento %ld, calculando ruta para ir desde %s a %s\n",mov->codmov,mov->codubiori,mov->codubidest);
+    if (!strcmp(ubiori.codarea,ubidest.codarea)) strcpy(movtramos[0].tramofinal,"S");
+    else {
+        if (vdcargatramos(mov,movtramos)) {
+            v10logcomen(LOGERROR,mov->comen,"llvdenrutamov: No encuentro ruta para movto %ld (muevepalet=%c) que va de área %s a %s\n", 
+                mov->codmov, damemuevepalet(mov), ubiori.codarea, ubidest.codarea);
+            return(VD_EERR);
+        }
+    }
+    
+    
+    // revisa si nuestro movto puede continuar o debe esperar a otro movto del palet completo  
+    if ((ret=vdtratamovtosconte(mov, stesperaruta, movtramos[0].tramofinal, &salir))) return(ret);
+    if (salir) return(0);
+    
+    memset(&ubiinter,0,sizeof(vdubicas));
+    memset(&movinter,0,sizeof(vdmovims));
+    if (*fuerzamismopasillo=='D') ubiinter.pasilloaux=ubidest.pasillo;  
+    else if (*fuerzamismopasillo=='O') ubiinter.pasilloaux=ubiori.pasillo; 
+    
+    numtramo=0;
+    do  {   
+        if (*(movtramos[numtramo].tramofinal)=='S') {      
+            v10log(LOGNORMAL,"llvdenrutamov: Encontrada ruta directa para movto %ld para ir de %s a %s.\n",mov->codmov,ubiori.codarea,ubidest.codarea);
+            mov->status=stfinal;
+            if (mov->codmovppaso == 0) mov->codmovppaso = mov->codmov;
+            ret=MOVactualizaruta(mov,NOVERIFICA);
+            if (ret) {
+                v10logcomen(LOGERROR,mov->comen,"llvdenrutamov: Error actualizando estado de movimiento %ld\n",mov->codmov);      
+                return(VD_EERR);
+            }
+            return(ret);
+        }
+        
+        // no encuentra ubicación en área intermedia según los criterios seleccionados
+        if (vddamemovimtramo(mov,movtramos[numtramo].codareadest, movtramos[numtramo].fuerzapalet, &ubiinter, muevepalet, codmatdest, &cantidad)) {
+            // v10log(LOGNORMAL,"llvddamecaminomov: No se encuentra ubicacion libre en area %s para movto %ld, con fuerzapalet %s\n",
+            //     movtramos[numtramo].codareadest, mov->codmov, movtramos[numtramo].fuerzapalet);
+            numtramo++;
+            continue;
+        }
+        if (cantidad<=0) continue;
+        salir=0;  
+        
+        // revisa si nuestro movto NO puede continuar o debe esperar a otro de picking
+        if ((ret=vdtratamovtospick(mov, stesperaruta, muevepalet, &ubiinter, &salir))) return(ret);
+        if (salir) return(0);
+        
+        // parte el movto     
+        movinter=*mov;
+        movinter.codmov=0;
+        strcpy(movinter.codubidest,ubiinter.codubi);
+        strcpy(movinter.solomueve,"S");
+        movinter.status=stfinal;
+		if (stfinal==STMOVPDTEFLUJO) movinter.codflujo=0;
+        movinter.cantidad=cantidad;
+        *movinter.coddemanda=0; // el movto que se queda asociado a la demanda es el original, en estado ESPMOVIM
+        *movinter.tipodemanda=0; // el nuevo movto no está asociado a la demanda
+        movinter.lindemanda=0;
+
+        if (*muevepalet=='S') strcpy(movinter.codmatdest,mov->codmatori);
+        else strcpy(movinter.codmatdest,codmatdest);
+
+        if((ret=MOVinsert(&movinter,NOVERIFICA))){
+            v10logcomen(LOGERROR,mov->comen,"llvdenrutamov: Error insertado de movimiento al partir movto %ld\n",mov->codmov);     
+            return(VD_EERR); 
+        }
+        
+        // mira y actualiza el primer paso del movimiento insertado	
+        if (movinter.codmovppaso == 0) {
+            MOVselvdmovim(movinter.codmov,&movinter);
+            movinter.codmovppaso = movinter.codmov;
+            if (MOVactualizaruta(&movinter,NOVERIFICA)) {
+                v10logcomen(LOGERROR,mov->comen,"Error al modificar el ppaso del movimiento %ld.\n",movinter.codmov);
+                return(VD_EERR);
+            }
+        }  
+        
+        mov->codmovesp=movinter.codmov;
+        mov->status=STMOVPDTEMOVIM;
+        if (mov->codmovppaso == 0) mov->codmovppaso = movinter.codmov;
+        ret=MOVactualizaruta(mov,NOVERIFICA);
+        if (ret) {
+            v10logcomen(LOGERROR,mov->comen,"llvdenrutamov: Error actualizando estado de movimiento %ld\n",mov->codmov);     
+            return(VD_EERR);
+        }          
+        UBIselvdubica(movinter.codubiori,&ubiori);
+        UBIselvdubica(movinter.codubidest,&ubidest);
+        v10log(LOGNORMAL,"llvdenrutamov: Movto %ld enrutado, insertado movto %ld de %s %s a %s %s\n",
+            mov->codmov, movinter.codmov, movinter.codubiori,ubiori.codarea,movinter.codubidest,ubidest.codarea);
+        return(0);
+    } while (numtramo<MAXTRAMOS && strlen(movtramos[numtramo].codareaori)>0); 
+    
+    v10log(LOGNORMAL,"llvdenrutamov: No se encuentra tramo alguno para avanzar movto %ld desde área %s\n",mov->codmov, ubiori.codarea);
+	mov->status=stesperaruta;
+	ret=MOVactualizastatus(mov,0);
+//	terminasimilares(mov);
+	return(ret);
+}

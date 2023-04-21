@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<HTML>
+	<head>
+	<title>Teclado V10</title>
+	<META http-equiv="Content-Type"content="text/html;charset=utf-8">
+  <link rel="stylesheet"type="text/css" href="colores.css" media="screen"/>
+</head>
+<body>
+<IMG STYLE="width:65px;height:65px" SRC="../img/TECLADO.PNG"/ onclick="muestratecladovirt()">
+<input id="objactivo" value="" STYLE="width:645px" maxleng=105  />
+<script>
+ var virtctrl,virtshift,virtalt,virttecla; // datos de la tecla capturada para ser tratada en v10lib
+ var actual="tec1",tecvisible=0,posx=1,posy=1;
+ var modocombctrl=0,modocombalt=0,modocombshift=0,elecombctrl=0,elecombalt=0,elecombshift=0,elebak,teclavirt;
+ function marcamodocomb(miele){miele.style.borderStyle="inset";miele.style.backgroundColor="darkgray";miele.style.fontStyle="italic";}
+ function resetmodocomb(miele){miele.style.borderStyle="solid";miele.style.backgroundColor="f4efe3";miele.style.fontStyle="normal";}
+ function fintecla(){var ele=event.srcElement;try{clearTimeout(teclavirt);}catch(E){};if(ele.tagName!="A")return;ele.style.borderStyle="solid";}
+ var v10lib=self;
+
+ function muestratecladovirt() {
+  var ele;
+ 	if (tecvisible==0) {
+ 		tecvisible=1;
+ 		ele=document.getElementById(actual)
+ 		if (ele) ele.style.visibility="visible";
+ 		else { 	    
+ 			ele.style.visibility="visible"; 			
+ 		}
+	} else {
+		tecvisible=0;
+		document.getElementById(actual).style.visibility="hidden";
+	}
+ }
+ 
+ 
+ function pontecla(repet,mibutton) {
+	var nuevo,ele;		
+		if (repet>0) ele = elebak;	else {	ele = event.srcElement;	elebak = ele;	}
+		if (mibutton!=1) return;
+		if (ele.tagName!="A")	return; // solo tabla click en A
+		ele.style.borderStyle="inset";		
+		if (ele.vtipotec) {			// switch entre tipos de teclado		
+			document.getElementById("tec1").style.visibility="hidden";
+			document.getElementById("tec2").style.visibility="hidden";
+			document.getElementById("tec3").style.visibility="hidden";				
+			if (ele.vtipotec>0) nuevo="tec" + ele.vtipotec;				
+			document.getElementById(nuevo).style.top= parseInt(document.getElementById(actual).style.top);
+			document.getElementById(nuevo).style.left=parseInt(document.getElementById(actual).style.left);
+			document.getElementById(nuevo).style.visibility="visible";
+			actual=nuevo;			
+			if (modocombctrl+modocombalt+modocombshift>0) {	
+				if (modocombctrl==1) resetmodocomb(elecombctrl); 
+				if (modocombalt==1) resetmodocomb(elecombalt); 
+				if (modocombshift==1) resetmodocomb(elecombshift); 
+				modocombctrl=modocombalt=modocombshift=0;		
+			}
+			return;
+		} 
+		
+		virtshift = virtctrl = virtalt = false;		
+		if (ele.virtv || modocombctrl+modocombalt+modocombshift>0 ) {  // tecla virtual	o en combinacion de teclas				
+				if (ele.virtcomb) { // teclas combinadas: SFX, CFX,AFX ....
+					if (ele.virtcomb==1) virtctrl=true;
+					if (ele.virtcomb==2) virtalt=true;
+					if (ele.virtcomb==3) virtshift=true;
+					virttecla=ele.virtv;
+					return;
+				} 
+				// combinacion de 2 o mas teclas
+				if (ele.virtv==17 || ele.virtv==18 || ele.virtv==20)  {					
+					if (ele.virtv==17)  { 
+						if (modocombctrl==0) {elecombctrl=ele;marcamodocomb(ele);modocombctrl=1;}	else {resetmodocomb(elecombctrl);modocombctrl=0;}							
+					}
+					if (ele.virtv==18)  { 
+						if (modocombalt==0) {elecombalt=ele;marcamodocomb(ele);modocombalt=1;} else {resetmodocomb(elecombalt);modocombalt=0;}							
+					}
+					if (ele.virtv==20)  { 
+						if (modocombshift==0) {elecombshift=ele;marcamodocomb(ele);modocombshift=1;}
+						else {resetmodocomb(elecombshift);modocombshift=0;}							
+					}										
+					return;
+				}								
+									
+				virttecla=ele.virtv;
+				if (modocombctrl+modocombalt+modocombshift>0) { // no muestra en pantalla, solo genera combinacion de las 2 teclas
+					if (modocombctrl==1) { virtctrl=true; resetmodocomb(elecombctrl); }
+					if (modocombalt==1)  { virtalt=true; resetmodocomb(elecombalt); }
+					if (modocombshift==1){ virtshift=true; resetmodocomb(elecombshift); }
+					modocombctrl=modocombalt=modocombshift=0;							
+				} else { // aqui hace acciones correspondientes a teclas raras
+					  teclavirt=setTimeout("pontecla(1,1)",200);
+						if (virttecla==9) v10lib.fonblur(v10lib.idactivo);
+						else if (virttecla==8) {if (objactivo.value.length >0) objactivo.value = objactivo.value.substr(0,objactivo.value.length-1);} 
+						else if (virttecla==32) { objactivo.value = objactivo.value + " ";  } 
+						else if (virttecla==38  || virttecla==60 || virttecla==62 ||  virttecla==241 || virttecla==209 || virttecla==191) {
+								objactivo.value = objactivo.value + String.fromCharCode(virttecla);												
+						}
+				}			
+			} else {
+				  teclavirt=setTimeout("pontecla(1,1)",200);
+					objactivo.value = objactivo.value + ele.innerHTML;								
+			}
+			objactivo.focus();					
+				
+}
+
+</script>
+
+<!--V10INCLUDEDATA-->
+<div id="tec1" class="vtec" style="left:10px;top:70px;width:766px"  onmouseout="v10lib.fintecla()" onmouseup="v10lib.fintecla()" onmousedown="v10lib.pontecla(0,event.button)">
+ <div class="vcab" onmousedown="v10lib.BeginDrag('tec1')">&nbspTeclado v10. Min&#250sculas
+ <img src="../img/finteclado.png" style="position:relative;border-width:0px;width:2.0em;left:460px" onclick="v10lib.muestratecladovirt()"></div>
+ <div style="clear:both;">
+  	<a  href="#" virtv=27>ESC</a>
+    <div class="separatecla"> 
+    <a class="vblanco"></a>
+ 	<a  href="#" virtv=112>F1</a>
+ 	<a  href="#" virtv=113>F2</a>
+ 	<a  href="#" virtv=114>F3</a>
+ 	<a  href="#" virtv=115>F4</a>
+ 	<a class="vblanco"></a>
+ 	<a  href="#" virtv=116>F5</a>
+ 	<a  href="#" virtv=117>F6</a>
+ 	<a  href="#" virtv=118>F7</a>
+ 	<a  href="#" virtv=119>F8</a>
+ 	<a class="vblanco"></a>
+ 	<a  href="#" virtv=120>F9</a>
+ 	<a  href="#" virtv=121>F10</a>
+ 	<a  href="#" virtv=122>F11</a>
+ 	<a  href="#" virtv=123>F12</a>
+	</div>
+ </div>
+ <div style="clear:both;">
+ 	<a  href="#">\</a>
+ 	<a  href="#">1</a>
+ 	<a  href="#">2</a>
+ 	<a  href="#">3</a>
+ 	<a  href="#">4</a>
+ 	<a  href="#">5</a>
+ 	<a  href="#">6</a>
+ 	<a  href="#">7</a>
+ 	<a  href="#">8</a>
+ 	<a  href="#">9</a>
+ 	<a  href="#">0</a>
+ 	<a  href="#">'</a>
+ 	<a  href="#">"</a>
+ 	<a  href="#">%</a>
+ 	<a  href="#" virtv=38>&</a>
+ 	<a  href="#" virtv=8 style="width:96px;margin-left:4px;">&larr;</a>
+ </div>
+ <div style="clear:both">
+ 	<a  href="#" virtv=9 style="width:3.5em">TAB</a>
+ 	<a  href="#">q</a>
+ 	<a  href="#">w</a>
+ 	<a  href="#">e</a>
+ 	<a  href="#">r</a>
+ 	<a  href="#">t</a>
+ 	<a  href="#">y</a>
+ 	<a  href="#">u</a>
+ 	<a  href="#">i</a>
+ 	<a  href="#">o</a>
+ 	<a  href="#">p</a>
+ 	<a  href="#">[</a>
+ 	<a  href="#">]</a>
+ 	<a  href="#">-</a>
+ 	<a  href="#">_</a> 	
+ </div>
+ <div style="clear:both">
+ 	<a  href="#" vtipotec=3 style="width:5em">Especiales</a>
+ 	<a  href="#">a</a>
+ 	<a  href="#">s</a>
+ 	<a  href="#">d</a>
+ 	<a  href="#">f</a>
+ 	<a  href="#">g</a>
+ 	<a  href="#">h</a>
+ 	<a  href="#">j</a>
+ 	<a  href="#">k</a>
+ 	<a  href="#">l</a>
+ 	<a  href="#" virtv=241>&#241</a>
+ 	<a  href="#">.</a>
+ 	<a  href="#">:</a> 	
+ 	<a  href="#" virtv=13 class="vintro">INTRO<span class="spvtec"></span></a>
+ </div>
+ <div style="clear:both">
+  <a  href="#" vtipotec=2 class="vshift" style="width:6em">May&#250sculas</a>
+  <a  href="#" virtv=60><</a>
+  <a  href="#">z</a>
+  <a  href="#">x</a>
+  <a  href="#">c</a>
+  <a  href="#">v</a>
+  <a  href="#">b</a>
+  <a  href="#">n</a>
+  <a  href="#">m</a>
+  <a  href="#" virtv=62>></a>
+  <a  href="#">,</a>
+  <a  href="#">;</a>
+  <a  href="#" virtv=20 class="vshift" style="width:90px">SHIFT</a>
+  <a  href="#" virtv=1024 style="width:48px;margin-left:4px;">&uarr;</a>
+ </div>
+ <div id="vlinea" style="clear:both">
+ 	<a  href="#" virtv=17>CTRL</a><a href="#" virtv=18>ALT</a>
+ 	<a  href="#" virtv=32 style="width:20.5em">ESPACIO</a> 	
+ 	<a  href="#" virtv=18>ALT</a>
+ 	<a  href="#" virtv=17">CTRL</a>
+ </div>
+ <a  href="#" virtv=1025 style="width:48px;margin-left:4px;">&darr;</a>
+ </div>
+ 
+<div id="tec2" class="vtec" style="left:10px;top:70px;width:766px" onmouseout="v10lib.fintecla()" onmouseup="v10lib.fintecla()" onmousedown="v10lib.pontecla(0,event.button)">
+ <div class="vcab" onmousedown="v10lib.BeginDrag('tec2')">&nbspTeclado v10. May&#250sculas 
+ <img src="../img/finteclado.png" style="position:relative;border-width:0px;width:2.0em;left:460px" onclick="v10lib.muestratecladovirt()"></div>
+ <div style="clear:both">
+	<a href="#" virtv=27>ESC</a>
+	<a class="vblanco"></a><div class="separatecla">
+	<a href="#" virtv=112>F1</a></div>
+	<a href="#" virtv=113>F2</a>
+	<a href="#" virtv=114>F3</a>
+	<a href="#" virtv=115>F4</a>
+	<a class="vblanco"></a>
+	<a href="#" virtv=116>F5</a>
+	<a href="#" virtv=117>F6</a>
+	<a href="#" virtv=118>F7</a>
+	<a href="#" virtv=119>F8</a>
+	<a class="vblanco"></a>
+	<a href="#" virtv=120>F9</a>
+	<a href="#" virtv=121>F10</a>
+	<a href="#" virtv=122>F11</a>
+	<a href="#" virtv=123>F12</a>
+ </div>
+ <div style="clear:both">
+	<a href="#">\</a>
+	<a href="#">1</a>
+	<a href="#">2</a>
+	<a href="#">3</a>
+	<a href="#">4</a>
+	<a href="#">5</a>
+	<a href="#">6</a>
+	<a href="#">7</a>
+	<a href="#">8</a>
+	<a href="#">9</a>
+	<a href="#">0</a>
+	<a href="#">'</a>
+	<a href="#">"</a>
+	<a href="#">%</a>
+	<a  href="#" virtv=38>&</a>
+	<a href="#" virtv=8  style="width:96px;margin-left:4px;">&larr;</a>
+ </div>
+ <div style="clear:both">
+	<a href="#" virtv=9 style="width:3.5em">TAB</a>
+	<a href="#">Q</a>
+	<a href="#">W</a>
+	<a href="#">E</a>
+	<a href="#">R</a>
+	<a href="#">T</a>
+	<a href="#">Y</a>
+	<a href="#">U</a>
+	<a href="#">I</a>
+	<a href="#">O</a>
+	<a href="#">P</a>
+	<a href="#">{</a>
+	<a href="#">}</a>
+	<a href="#">-</a>
+	<a href="#">_</a>	
+ </div>
+ <div style="clear:both">
+	<a href="#" vtipotec=3 style="width:5em">Especiales</a>
+	<a href="#">A</a>
+	<a href="#">S</a>
+	<a href="#">D</a>
+	<a href="#">F</a>
+	<a href="#">G</a>
+	<a href="#">H</a>
+	<a href="#">J</a>
+	<a href="#">K</a>
+	<a href="#">L</a>
+	<a href="#" virtv=209>&Ntilde;</a>  
+	<a href="#">.</a>
+	<a href="#">:</a>	
+	<a href="#" virtv=13 class="vintro">INTRO<span class="spvtec"></span></a>
+ </div style="clear:both">
+ <div style="clear:both">
+	<a href="#" vtipotec=1 class="vshift" style="width:6em">Min&#250sculas</a>
+	<a href="#" virtv=60><</a>  
+	<a href="#">Z</a>
+	<a href="#">X</a>
+	<a href="#">C</a>
+	<a href="#">V</a>
+	<a href="#">B</a>
+	<a href="#">N</a>
+	<a href="#">M</a>
+	<a href="#" virtv=62>></a>	
+	<a href="#">,</a>
+	<a href="#">;</a>
+	<a href="#" virtv=20 class="vshift" style="width:94px">SHIFT</a>
+	<a  href="#" virtv=1024 style="width:48px;margin-left:4px;">&uarr;</a>
+ </div>
+ <div id="vlinea" style="clear:both">
+	<a href="#" virtv=17>CTRL</a>
+	 <a href="#" virtv=18>ALT</a>
+	<a href="#" virtv=32 style="width:20.5em">ESPACIO</a>
+	<a href="#" virtv=18>ALT</a>		
+	<a href="#" virtv=17>CTRL</a>	
+ </div> 
+ <a  href="#" virtv=1025 style="width:48px;margin-left:4px;">&darr;</a>
+</div>
+	
+<div id="tec3" class="vtec" style="left:10px;top:70px;width:852px" onmouseout="v10lib.fintecla()" onmouseup="v10lib.fintecla()" onmousedown="v10lib.pontecla(0,event.button)">
+ <div class="vcab" onmousedown="v10lib.BeginDrag('tec3')" style="width:816px">&nbsp;Teclado v10. Especiales
+ 	<img src="../img/finteclado.png" style="position:relative;border-width:0px;width:2.0em;left:535px" onclick="v10lib.muestratecladovirt()">
+ </div>
+ <div style="clear:both">
+	<a href="#" virtv=27>ESC</a>   
+	<a class="vblanco"></a><a href="#" class="nada"></a>        
+	<a href="#" virtv=112>F1</a>   
+	<a href="#" virtv=113>F2</a>   
+	<a href="#" virtv=114>F3</a>   
+	<a href="#" virtv=115>F4</a>   
+	<a class="vblanco"></a>        
+	<a href="#" virtv=116>F5</a>   
+	<a href="#" virtv=117>F6</a>   
+	<a href="#" virtv=118>F7</a>   
+	<a href="#" virtv=119>F8</a>   
+	<a class="vblanco"></a>        
+	<a href="#" virtv=120>F9</a>   
+	<a href="#" virtv=121>F10</a>  
+	<a href="#" virtv=122>F11</a>  
+	<a href="#" virtv=123>F12</a>  
+ </div>
+ <div style="clear:both">
+	<a href="#">\</a>
+	<a href="#">|</a>
+	<a href="#">"</a>
+	<a href="#">$</a>
+	<a href="#">%</a>
+	<a href="#" virtv=38>&amp;</a>   
+	<a href="#">/</a>
+	<a href="#">(</a>
+	<a href="#">)</a>
+	<a href="#">=</a>
+	<a href="#">?</a>
+	<a href="#" virtv=191>&iquest;</a> 
+	<a href="#">@</a>
+	<a href="#" virtv=1027>&#8240;</a>
+	<a href="#" virtv=1026>&euro;</a>
+	<a href="#" virtv=8 style="width:96px;margin-left:4px;">&larr;</a>
+	<a href="#" virtv=13 class="vintro" style="width=76px;margin-left:4px;margin-top:0px;">INTRO<span class="spvtec"></span></a>
+ </div>
+ <div style="clear:both">
+	<a href="#" virtv=9 style="width:4.5em">TAB</a> 
+	<a class="vblanco"  style="width:26px"></a> 
+	<a href="#" virtcomb=1 virtv=112>CF1</a>
+	<a href="#" virtcomb=1 virtv=113>CF2</a>
+	<a href="#" virtcomb=1 virtv=114>CF3</a>
+	<a href="#" virtcomb=1 virtv=115>CF4</a>
+	<a href="#" virtcomb=1 virtv=116>CF5</a>
+	<a href="#" virtcomb=1 virtv=117>CF6</a>
+	<a href="#" virtcomb=1 virtv=118>CF7</a>
+	<a href="#" virtcomb=1 virtv=119>CF8</a>
+	<a href="#" virtcomb=1 virtv=120>CF9</a>
+	<a href="#" virtcomb=1 virtv=121 style="width:36px">CF10</a>
+	<a href="#" virtcomb=1 virtv=122 style="width:36px">CF11</a>
+	<a href="#" virtcomb=1 virtv=123 style="width:41px">CF12</a>
+	
+ </div>
+ <div style="clear:both">
+ 	<a href="#" vtipotec=2 style="width=6em">May&#250sculas.</a> 
+	<a href="#" virtcomb=3 virtv=112>SF1</a>
+	<a href="#" virtcomb=3 virtv=113>SF2</a>
+	<a href="#" virtcomb=3 virtv=114>SF3</a>
+	<a href="#" virtcomb=3 virtv=115>SF4</a>
+	<a href="#" virtcomb=3 virtv=116>SF5</a>
+	<a href="#" virtcomb=3 virtv=117>SF6</a>
+	<a href="#" virtcomb=3 virtv=118>SF7</a>
+	<a href="#" virtcomb=3 virtv=119>SF8</a>
+	<a href="#" virtcomb=3 virtv=120>SF9</a>
+	<a href="#" virtcomb=3 virtv=121 style="width:36px">SF10</a>
+	<a href="#" virtcomb=3 virtv=122 style="width:36px">SF11</a>
+	<a href="#" virtcomb=3 virtv=123 style="width:41px">SF12</a>
+	
+ </div>
+ <div style="clear:both">
+	<a href="#" vtipotec=1 style="width=6em">Min&#250sculas</a> 
+	 
+	<a href="#" virtcomb=2 virtv=112 style="margin-left:12px;">AF1</a>
+	<a href="#" virtcomb=2 virtv=113>AF2</a>
+	<a href="#" virtcomb=2 virtv=114>AF3</a>
+	<a href="#" virtcomb=2 virtv=115>AF4</a>
+	<a href="#" virtcomb=2 virtv=116>AF5</a>
+	<a href="#" virtcomb=2 virtv=117>AF6</a>
+	<a href="#" virtcomb=2 virtv=118>AF7</a>
+	<a href="#" virtcomb=2 virtv=119>AF8</a>
+	<a href="#" virtcomb=2 virtv=120>AF9</a>
+	<a href="#" virtcomb=2 virtv=121 style="width:36px">AF10</a>
+	<a href="#" virtcomb=2 virtv=122 style="width:36px">AF11</a>
+	<a href="#" virtcomb=2 virtv=123 style="width:41px">AF12</a>
+	
+ </div>
+ <div id="vlinea" style="clear:both">
+ 	<a href="#"></a>
+	<a href="#"></a>
+	<a href="#" virtv=32 style="width:19.3em">ESPACIO</a>
+	<a href="#"></a>
+	<a href="#" ></a>
+<a  href="#" virtv=1024>&uarr;</a><a  href="#" virtv=1025>&darr;</a>	
+	
+ </div>
+</div>   
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

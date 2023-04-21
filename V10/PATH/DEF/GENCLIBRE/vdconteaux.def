@@ -1,0 +1,45 @@
+#***
+# VDCONTEAUX.DEF - Generación automática del código c SOLOQUERY sobre la tabla VDCONTE
+# 
+# Propósito: idem.
+#           
+# Autor	 : JMM
+# Revisado por: 
+# Fecha  : 21-05-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=CNTAUX;
+
+EXTRA=RET,V10LONG
+EXTRA=VERIFICAUBI,V10CADENA,1
+EXTRA=CONCEPTOENT,V10CADENA,10
+EXTRA=CONCEPTOSAL,V10CADENA,10
+EXTRA=FUENTE,V10CADENA,12
+EXTRA=SUMIDERO,V10CADENA,12
+EXTRA=PATRONBLOQUEOSORI,V10CADENA,20
+EXTRA=OBSERV,V10CADENA,4096
+EXTRA=VDCONTE.CODMAT
+
+PROCEDURE=DAMETEMPORAL, BEGIN
+                         :RET :=VDCNT.DAMETEMPORAL(:VDUBICA.CODUBI,:VDCONTE.CODMAT);
+                      END;@
+                      
+PROCEDURE=REENGANCHACONTE, BEGIN
+                         VDCNT.REENGANCHACONTE(:VDMOVIM.CODMOV,:VDCONTE.CODMAT, :VERIFICAUBI, :VDCOMEN.COMENTARIO, :RET);
+                      END;@                      
+
+PROCEDURE=BLOQUEOSSTKCONTE, BEGIN
+                              VDCNT.BLOQUEOSSTKCONTE(:VDCONTE.CODMAT,:VDSTOCK.CODART,:VDSTOCK.CODLOT,:CONCEPTOENT,:FUENTE,:CONCEPTOSAL,:SUMIDERO,:PATRONBLOQUEOSORI,:VDSTOCK.BLOQUEOS,:OBSERV,:VDSTOCK.CANTIDAD,:VDCOMEN.COMENTARIO,:RET);
+                            END;@
+                      
+PROCEDURE=USACONTE, BEGIN
+                         VDCNT.USACONTE(:VDCONTE.CODMAT,:VDCONTE.CODUBI, :VDCONTE.TIPOCONTE, :VDCOMEN.COMENTARIO, :RET);
+                      END;@                     
+                      
+CURSOR=DAMECNTNOMOVIBLE,SELECT CODMAT FROM VDCONTE CNT, VDTIPOCONTE TCNT
+                           WHERE CODUBI=:VDUBICA.CODUBI AND 
+                                 TCNT.TIPOCONTE=CNT.TIPOCONTE AND 
+                                 MOVIBLE='N';
+ 
+                           

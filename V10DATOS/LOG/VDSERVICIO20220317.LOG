@@ -1,0 +1,609 @@
+00 09:03:00:177 Fichero de log abierto PID 6764
+
+02 09:03:00:177 Intentando abrir fichero v10.ini
+03 09:03:00:177 Busco v10.ini en 3823 ficheros
+02 09:03:00:180 Cargando driver v10oracle funcion damedriveroracle
+02 09:03:00:277 Conectado a base de datos
+03 09:03:00:277 Siguiente vdret 0. 
+03 09:03:00:277 Siguiente vdret 0. 
+02 09:03:00:277 El programa se esta ejecutando en modo normal
+02 09:03:00:277 Arrancado servidor de visualizadores, en puerto 5300
+03 09:04:04:846 Conectado cliente 127.000.000.001 pendientes 1 abiertos 0
+03 09:04:04:847 Conectado cliente 127.000.000.001 pendientes 2 abiertos 0
+02 09:04:04:853 Creada conexion de cliente visualiza número 1
+02 09:04:04:978 Creada conexion de cliente visualiza número 2
+02 09:04:17:005 Se cierra conexión de cliente visualiza 1
+02 09:05:58:275 Se cierra conexión de cliente visualiza 2
+
+00 09:48:33:756 Fichero de log cerrado.
+
+00 09:51:02:843 Fichero de log abierto PID 8008
+
+02 09:51:02:843 Intentando abrir fichero v10.ini
+03 09:51:02:843 Busco v10.ini en 3823 ficheros
+02 09:51:02:847 Cargando driver v10oracle funcion damedriveroracle
+02 09:51:02:941 Conectado a base de datos
+03 09:51:02:943 Siguiente vdret 0. 
+03 09:51:02:943 Siguiente vdret 0. 
+02 09:51:02:943 El programa se esta ejecutando en modo normal
+02 09:51:02:953 Cargando grupo AGENCIAS
+02 09:51:02:953 Cargando grupo FMD
+02 09:51:02:953     Cargando servicio INTERFMD
+02 09:51:02:953 Cargando grupo GENERALES
+02 09:51:02:953     Cargando servicio V10CALIFSTOCK
+00 09:51:02:966 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:966  Defines
+00 09:51:02:966  Binds
+02 09:51:02:971     Cargando servicio V10CORREOS
+00 09:51:02:975 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:975  Defines
+00 09:51:02:975  Binds
+02 09:51:02:976     Cargando servicio V10DEMANDAS
+02 09:51:02:976     Cargando servicio V10DEMANDASFIN
+02 09:51:02:976     Cargando servicio V10FUENTESTOCK
+00 09:51:02:978 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:978  Defines
+00 09:51:02:978  Binds
+02 09:51:02:978     Cargando servicio V10REUBICADOR
+00 09:51:02:983 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:983  Defines
+00 09:51:02:983  Binds
+02 09:51:02:983     Cargando servicio V10SPOOL
+02 09:51:02:983     Cargando servicio V10SPOOLETIQ
+02 09:51:02:983     Cargando servicio V10SPOOLJAVA
+02 09:51:02:983 Cargando grupo INTERFACES
+02 09:51:02:983     Cargando servicio BAJADAFTP
+02 09:51:02:983     Cargando servicio CARGA_ARTICULOS
+00 09:51:02:987 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:987  Defines
+00 09:51:02:987  Binds
+02 09:51:02:987     Cargando servicio CARGA_CLIENTES
+00 09:51:02:992 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:992  Defines
+00 09:51:02:992  Binds
+02 09:51:02:992     Cargando servicio CARGA_CODARTALT
+00 09:51:02:996 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:02:996  Defines
+00 09:51:02:996  Binds
+02 09:51:02:996     Cargando servicio CARGA_CP
+00 09:51:03:000 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:000  Defines
+00 09:51:03:000  Binds
+02 09:51:03:000     Cargando servicio CARGA_ORDENRECEP
+02 09:51:03:000     Cargando servicio CARGA_PEDIDOS
+00 09:51:03:003 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:003  Defines
+00 09:51:03:003  Binds
+02 09:51:03:005     Cargando servicio CARGA_PROVEES
+00 09:51:03:007 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:007  Defines
+00 09:51:03:007  Binds
+02 09:51:03:007     Cargando servicio ENVIOMOVIM
+00 09:51:03:011 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:012  Defines
+00 09:51:03:012  Binds
+02 09:51:03:012     Cargando servicio ENVIOPEDIDOS
+00 09:51:03:017 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:017  Defines
+00 09:51:03:017  Binds
+02 09:51:03:017     Cargando servicio ENVIORECEP
+00 09:51:03:021 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:021  Defines
+00 09:51:03:021  Binds
+02 09:51:03:021     Cargando servicio ENVIOREDUR
+00 09:51:03:025 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:025  Defines
+00 09:51:03:025  Binds
+02 09:51:03:025     Cargando servicio ENVIOSTOCK
+02 09:51:03:025     Cargando servicio SUBIDAFTP
+02 09:51:03:025 Cargando grupo MOVIMIENTOS
+02 09:51:03:025     Cargando servicio V10ACTSTOCK
+00 09:51:03:028 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:028  Defines
+00 09:51:03:028  Binds
+02 09:51:03:030     Cargando servicio V10ENRUTADOR
+00 09:51:03:032 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:032  Defines
+00 09:51:03:033  Binds
+02 09:51:03:033     Cargando servicio V10FINMOV
+00 09:51:03:037 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:037  Defines
+00 09:51:03:037  Binds
+02 09:51:03:038     Cargando servicio V10INTERFASAMOV
+00 09:51:03:041 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:041  Defines
+00 09:51:03:041  Binds
+02 09:51:03:041     Cargando servicio V10PERIODICOMOV
+02 09:51:03:042     Cargando servicio V10RECARGAS
+00 09:51:03:045 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:045  Defines
+00 09:51:03:045  Binds
+02 09:51:03:046 Cargando grupo PEDIDOS
+02 09:51:03:046     Cargando servicio V10ASIGNAAGE
+00 09:51:03:050 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:050  Defines
+00 09:51:03:050  Binds
+02 09:51:03:051     Cargando servicio V10CARGAPEDIDO
+00 09:51:03:055 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:055  Defines
+00 09:51:03:055  Binds
+02 09:51:03:055     Cargando servicio V10CREABULTOS
+00 09:51:03:058 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:058  Defines
+00 09:51:03:058  Binds
+02 09:51:03:060     Cargando servicio V10EQUILIBRA
+00 09:51:03:062 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:062  Defines
+00 09:51:03:062  Binds
+02 09:51:03:062     Cargando servicio V10EXPEDICIóN
+02 09:51:03:062     Cargando servicio V10FINPEDIDOS
+00 09:51:03:066 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:066  Defines
+00 09:51:03:066  Binds
+02 09:51:03:067     Cargando servicio V10HORACORTE
+00 09:51:03:071 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:071  Defines
+00 09:51:03:071  Binds
+02 09:51:03:072     Cargando servicio V10MONOPEDIDO
+00 09:51:03:075 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:075  Defines
+00 09:51:03:075  Binds
+02 09:51:03:076     Cargando servicio V10RESERVAPEDIDO
+00 09:51:03:078 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:078  Defines
+00 09:51:03:078  Binds
+02 09:51:03:080     Cargando servicio V10VERSIONES
+02 09:51:03:080 Cargando grupo PERIODICOS
+02 09:51:03:080     Cargando servicio ACTDIURNAS
+00 09:51:03:082 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:082  Defines
+00 09:51:03:082  Binds
+02 09:51:03:083     Cargando servicio ACTNOCTURNAS
+02 09:51:03:083 Cargando grupo PICKING
+02 09:51:03:083     Cargando servicio INFOHARD
+00 09:51:03:087 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:087  Defines
+00 09:51:03:087  Binds
+02 09:51:03:087     Cargando servicio LECTURAS
+00 09:51:03:090 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:090  Defines
+00 09:51:03:090  Binds
+02 09:51:03:090     Cargando servicio PICKINGUNI
+02 09:51:03:091 Cargando grupo PLANIFICADAS
+02 09:51:03:091     Cargando servicio BORRAFICH
+02 09:51:03:091     Cargando servicio COMPRIME
+00 09:51:03:095 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:095  Defines
+00 09:51:03:095  Binds
+02 09:51:03:095     Cargando servicio MATAFORMS
+02 09:51:03:095 Cargando grupo RADIOS
+02 09:51:03:095     Cargando servicio PLANIFRADIO
+00 09:51:03:097 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:097  Defines
+00 09:51:03:097  Binds
+02 09:51:03:098     Cargando servicio RADIOS
+00 09:51:03:102 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesión del usuario no existe.
+00 09:51:03:102  Defines
+00 09:51:03:102  Binds
+02 09:51:03:103 Cargando grupo SGT
+02 09:51:03:103     Cargando servicio SGT
+02 09:51:03:103 Cargando grupo WEB
+02 09:51:03:103     Cargando servicio V10LISTENER
+02 09:51:03:103     Cargando servicio V10LISTENEREXT
+02 09:51:03:103     Cargando servicio V10SERVERFILES
+03 09:51:03:125 Variable de entorno 
+02 09:51:03:126 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:126 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:127 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:127 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:127 Ejecutando VDEXEC -WV"CAMBIOS DE CALIFICACIONES DE STOCK" -TCALIFSTOCK -LNSTOCKCALIF -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5301 -SL5302
+03 09:51:03:152 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:152 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:152 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:152 Ejecucion correcta de servicio V10CALIFSTOCK de grupo GENERALES: pid 12044
+03 09:51:03:156 Variable de entorno 
+02 09:51:03:156 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:156 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:156 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:156 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:157 Ejecutando VDEXEC -WV"ENVIO DE CORREOS" -TSMTP -LNCORREOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5303 -SL5304
+03 09:51:03:158 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:158 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:158 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:158 Ejecucion correcta de servicio V10CORREOS de grupo GENERALES: pid 4276
+03 09:51:03:161 Variable de entorno 
+02 09:51:03:161 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:162 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:162 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:162 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:162 Ejecutando VDEXEC -WV"FUENTE DE STOCK" -TFUENTESTOCK  -LNSTOCKFUENTE -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5305 -SL5306
+03 09:51:03:163 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:163 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:163 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:165 Ejecucion correcta de servicio V10FUENTESTOCK de grupo GENERALES: pid 1376
+03 09:51:03:167 Variable de entorno 
+02 09:51:03:167 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:167 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:167 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:167 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:167 Ejecutando VDEXEC -WV"CARGA DE ARTICULOS" -TCARGA_ARTICULOS -LNCARGAARTICULOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5307 -SL5308
+03 09:51:03:170 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:170 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:170 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:170 Ejecucion correcta de servicio CARGA_ARTICULOS de grupo INTERFACES: pid 14260
+03 09:51:03:172 Variable de entorno 
+02 09:51:03:172 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:172 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:172 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:172 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:172 Ejecutando VDEXEC -WV"CARGA DE CLIENTES" -TCARGA_CLIENTES -LNCARGACLIENTES -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5309 -SL5310
+03 09:51:03:175 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:175 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:175 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:175 Ejecucion correcta de servicio CARGA_CLIENTES de grupo INTERFACES: pid 3388
+03 09:51:03:177 Variable de entorno 
+02 09:51:03:177 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:177 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:177 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:177 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:178 Ejecutando VDEXEC -WV"CARGA DE CODIGOS ALTERNATIVOS" -TCARGA_CODARTALT -LNCARGACODARTALT -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5311 -SL5312
+03 09:51:03:180 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:180 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:180 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:180 Ejecucion correcta de servicio CARGA_CODARTALT de grupo INTERFACES: pid 12688
+03 09:51:03:182 Variable de entorno 
+02 09:51:03:182 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:182 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:182 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:183 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:183 Ejecutando VDEXEC -WV"CARGA DE ARTICULOS" -TCARGA_CP -LNCARGACP -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5313 -SL5314
+03 09:51:03:186 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:186 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:186 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:186 Ejecucion correcta de servicio CARGA_CP de grupo INTERFACES: pid 12992
+03 09:51:03:187 Variable de entorno 
+02 09:51:03:188 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:188 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:188 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:188 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:188 Ejecutando VDEXEC -WV"CARGA DE PEDIDOS" -TCARGA_PEDIDOS -LNCARGAPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5315 -SL5316
+03 09:51:03:191 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:191 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:191 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:191 Ejecucion correcta de servicio CARGA_PEDIDOS de grupo INTERFACES: pid 4472
+03 09:51:03:192 Variable de entorno 
+02 09:51:03:193 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:193 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:193 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:193 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:195 Ejecutando VDEXEC -WV"CARGA DE PROVEEDORES" -TCARGA_PROVEES -LNCARGAPROVES -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5317 -SL5318
+03 09:51:03:197 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:197 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:197 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:197 Ejecucion correcta de servicio CARGA_PROVEES de grupo INTERFACES: pid 10588
+03 09:51:03:197 Variable de entorno 
+02 09:51:03:198 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:198 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:200 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:200 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:200 Ejecutando VDEXEC -WV"ENVIO DE MOVIMIENTOS" -TENVIOMOVIM -LNENVIOMOVIM -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5319 -SL5320
+03 09:51:03:202 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:202 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:202 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:202 Ejecucion correcta de servicio ENVIOMOVIM de grupo INTERFACES: pid 13756
+03 09:51:03:203 Variable de entorno 
+02 09:51:03:203 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:203 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:203 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:203 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:205 Ejecutando VDEXEC -WV"ENVIO DE PEDIDOS A BEL" -TENVIOPEDIDOS -LNENVIOPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5321 -SL5322
+03 09:51:03:207 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:207 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:207 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:207 Ejecucion correcta de servicio ENVIOPEDIDOS de grupo INTERFACES: pid 1096
+03 09:51:03:208 Variable de entorno 
+02 09:51:03:210 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:210 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:211 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:211 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:211 Ejecutando VDEXEC -WV"ENVIO DE RECEP" -TENVIORECEP -LNENVIORECEP -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5323 -SL5324
+03 09:51:03:212 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:212 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:212 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:212 Ejecucion correcta de servicio ENVIORECEP de grupo INTERFACES: pid 2080
+03 09:51:03:215 Variable de entorno 
+02 09:51:03:216 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:216 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:217 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:217 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:217 Ejecutando VDEXEC -WV"ENVIO DE FICHERO A REDUR" -TENVIOREDUR -LNENVIOREDUR -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5325 -SL5326
+03 09:51:03:220 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:220 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:220 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:220 Ejecucion correcta de servicio ENVIOREDUR de grupo INTERFACES: pid 444
+03 09:51:03:222 Variable de entorno 
+02 09:51:03:222 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:222 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:223 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:223 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:225 Ejecutando VDEXEC -WV"ACTUALIZADOR DE STOCK" -TACTSTKORIGEN -TACTSTKDESTINO -TACTSTKORIGEN2 -LNACTSTOCK -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5327 -SL5328
+03 09:51:03:227 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:228 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:228 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:228 Ejecucion correcta de servicio V10ACTSTOCK de grupo MOVIMIENTOS: pid 1280
+03 09:51:03:231 Variable de entorno 
+02 09:51:03:231 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:232 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:232 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:232 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:233 Ejecutando VDEXEC -WV"ASIGNA Y ENRUTA MOVTOS" -TASIGNAFLUJO -TENRUTADOR -TREVISAENRUTADOR -LNENRUTADOR -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5329 -SL5330
+03 09:51:03:237 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:237 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:237 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:237 Ejecucion correcta de servicio V10ENRUTADOR de grupo MOVIMIENTOS: pid 7468
+03 09:51:03:240 Variable de entorno 
+02 09:51:03:240 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:241 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:242 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:242 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:242 Ejecutando VDEXEC -WV"FINALIZACIóN DE MOVTOS" -TFINMOV -TFINMOVANULADOS -LNFINMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5331 -SL5332
+03 09:51:03:245 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:246 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:246 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:246 Ejecucion correcta de servicio V10FINMOV de grupo MOVIMIENTOS: pid 13480
+03 09:51:03:247 Variable de entorno 
+02 09:51:03:248 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:250 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:251 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:251 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:252 Ejecutando VDEXEC -WV"INTERFASADO DE MOVTOS" -TINTERFASAMOV -LNINTERFASAMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5333 -SL5334
+03 09:51:03:255 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:255 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:255 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:255 Ejecucion correcta de servicio V10INTERFASAMOV de grupo MOVIMIENTOS: pid 13764
+03 09:51:03:257 Variable de entorno 
+02 09:51:03:257 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:257 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:258 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:258 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:258 Ejecutando VDEXEC -WV"PERIODICO MOV" -TPERIODICOMOV -TPERIODICOMOV30 -TPERIODICOMOV180 -TFUENTESTOCK -LNPERIODICOMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5335 -SL5336
+03 09:51:03:262 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:262 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:262 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:262 Ejecucion correcta de servicio V10PERIODICOMOV de grupo MOVIMIENTOS: pid 12568
+03 09:51:03:263 Variable de entorno 
+02 09:51:03:263 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:263 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:265 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:265 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:265 Ejecutando VDEXEC -WVRECARGAS -TRECARGAS -TRESERVA  -LNRECARGAS -LM4 -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5337 -SL5338
+03 09:51:03:267 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:267 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:267 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:267 Ejecucion correcta de servicio V10RECARGAS de grupo MOVIMIENTOS: pid 11872
+03 09:51:03:270 Variable de entorno 
+02 09:51:03:270 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:271 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:271 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:271 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:271 Ejecutando VDEXEC -WV"ASIGNACIóN DE AGENCIAS"  -TASIGNAGENCIA -TASIGNATRACKING -LNASIGNAAGENCIA -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5339 -SL5340
+03 09:51:03:292 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:293 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:293 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:293 Ejecucion correcta de servicio V10ASIGNAAGE de grupo PEDIDOS: pid 11668
+03 09:51:03:296 Variable de entorno 
+02 09:51:03:297 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:297 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:297 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:297 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:297 Ejecutando VDEXEC -WV"GRABACIóN Y VALIDACIóN DE PEDIDOS"  -TGRABAPEDIDOS -TVALIDAPEDORIG -LNGRABAPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5341 -SL5342
+03 09:51:03:300 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:300 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:300 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:300 Ejecucion correcta de servicio V10CARGAPEDIDO de grupo PEDIDOS: pid 8160
+03 09:51:03:302 Variable de entorno 
+02 09:51:03:302 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:302 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:303 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:303 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:303 Ejecutando VDEXEC -WV"CREACIóN DE BULTOS Y VOLUMETRíA"  -TCREABULTOS -TVOLUMETRIA -LNCREABULTOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5343 -SL5344
+03 09:51:03:307 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:307 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:307 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:307 Ejecucion correcta de servicio V10CREABULTOS de grupo PEDIDOS: pid 6300
+03 09:51:03:310 Variable de entorno 
+02 09:51:03:310 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:311 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:311 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:311 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:312 Ejecutando VDEXEC -WV"EQUILIBRADO DE BULTO DE PICKING INVERSO" -TEQUILIBRA -LNEQUILIBRA  -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5345 -SL5346
+03 09:51:03:315 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:315 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:315 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:315 Ejecucion correcta de servicio V10EQUILIBRA de grupo PEDIDOS: pid 10604
+03 09:51:03:318 Variable de entorno 
+02 09:51:03:320 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:320 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:320 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:321 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:321 Ejecutando VDEXEC -WV"FINALIZA BULTOS Y PEDIDOS"  -TFINBULTOS -TFINBULTOST1 -TFINBULTOSB2 -TFINPEDIDOS -LNFINPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5347 -SL5348
+03 09:51:03:353 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:355 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:355 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:355 Ejecucion correcta de servicio V10FINPEDIDOS de grupo PEDIDOS: pid 10352
+03 09:51:03:357 Variable de entorno 
+02 09:51:03:357 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:357 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:358 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:358 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:358 Ejecutando VDEXEC -WV"REVISA HORA DE CORTE"  -TREVISAHORACORTE -LNREVISAHORACORTE -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5349 -SL5350
+03 09:51:03:362 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:362 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:362 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:362 Ejecucion correcta de servicio V10HORACORTE de grupo PEDIDOS: pid 12972
+03 09:51:03:363 Variable de entorno 
+02 09:51:03:365 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:365 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:366 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:366 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:367 Ejecutando VDEXEC -WV"DETERMINAR MONOPEDIDO"  -TMONOPEDIDO -LNMONOPEDIDO -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5351 -SL5352
+03 09:51:03:370 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:370 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:371 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:371 Ejecucion correcta de servicio V10MONOPEDIDO de grupo PEDIDOS: pid 10852
+03 09:51:03:372 Variable de entorno 
+02 09:51:03:372 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:373 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:373 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:373 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:375 Ejecutando VDEXEC -WV"RESERVA DE PEDIDOS"  -TPEDIDOS -TRESERVA -LNRESERVAPEDIDO -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5353 -SL5354
+03 09:51:03:377 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:377 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:377 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:377 Ejecucion correcta de servicio V10RESERVAPEDIDO de grupo PEDIDOS: pid 13836
+03 09:51:03:380 Variable de entorno 
+02 09:51:03:380 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:380 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:381 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:381 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:381 Ejecutando VDEXEC -WV"TAREAS PERIODICAS DIARIAS" -TPERIODICODIA -TPERIODICOINVEN -LNPERIODICODIA -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5355 -SL5356
+03 09:51:03:383 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:383 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:383 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:383 Ejecucion correcta de servicio ACTDIURNAS de grupo PERIODICOS: pid 9084
+03 09:51:03:396 Variable de entorno 
+02 09:51:03:396 Poniendo PATH a  PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;%PATH%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:397 Variable de entorno PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:397 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%CLIENTE%\FUENTES;%DISCO%\V10\FUENTES\ST;%DISCO%\V10LIB\WWW;%DISCO%\V10\BIN%PLATFORM%;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:397 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:397 Ejecutando VDEXEC -WV"PLANIFICADOR DE MOVTOS" -TPLANIFRADIO -LNPLANIFMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5357 -SL5358
+03 09:51:03:398 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:400 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:400 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:400 Ejecucion correcta de servicio PLANIFRADIO de grupo RADIOS: pid 4024
+03 09:51:03:401 Variable de entorno 
+02 09:51:03:402 Poniendo PATH a  PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;%PATH%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:402 Variable de entorno PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:402 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%CLIENTE%\FUENTES;%DISCO%\V10\FUENTES\ST;%DISCO%\V10LIB\WWW;%DISCO%\V10\BIN%PLATFORM%;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:402 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:402 Ejecutando VDRADIO -LM4 -WV"RADIOS"  -LF33 -LNRADIOS -RP23000 -RN50 -LM4 -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5359 -SL5360
+03 09:51:03:451 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:471 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:486 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:486 Ejecucion correcta de servicio RADIOS de grupo RADIOS: pid 11248
+03 09:51:03:488 Variable de entorno 
+02 09:51:03:488 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:490 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:490 Poniendo V10PATH a  PATHV10=%DISCO%\V10LIB\WWW;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:490 Variable de entorno PATHV10=C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:491 Ejecutando V10LISTENER.EXE  V10LISTENERDAVIDVEGA  -LNLISTENER -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5361 -SL5362
+03 09:51:03:513 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:513 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:513 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:513 Ejecucion correcta de servicio V10LISTENER de grupo WEB: pid 8360
+03 09:51:03:517 Variable de entorno 
+02 09:51:03:517 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:517 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+02 09:51:03:517 Poniendo V10PATH a  PATHV10=%DISCO%\V10LIB\WWW;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:517 Variable de entorno PATHV10=C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 09:51:03:517 Ejecutando V10LISTENER.EXE  LISTEXT  -LNLISTENER -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5363 -SL5364
+03 09:51:03:521 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Software\oracle\product\19.0.0\client_1\bin;C:\Software\oracledb\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jdk-8.0.312.7-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\DavidVegaGuerra\AppData\Local\Microsoft\WindowsApps;;C:\Users\DavidVegaGuerra\AppData\Local\Programs\Microsoft VS Code\bin
+03 09:51:03:521 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 09:51:03:521 Variable de entorno LD_LIBRARY_PATH=
+02 09:51:03:521 Ejecucion correcta de servicio V10LISTENEREXT de grupo WEB: pid 8628
+02 09:51:03:523 Arrancado servidor de visualizadores, en puerto 5300
+02 12:00:01:012 Deteniendo servicio CARGA_CP de grupo INTERFACES
+02 12:00:01:012 Pendiente revisar que se detenga servicio CARGA_CP de grupo INTERFACES
+02 12:00:01:134 Muerte correcta y ordenada de servicio CARGA_CP de grupo INTERFACES
+02 17:57:23:925 Deteniendo servicio V10CALIFSTOCK de grupo GENERALES
+02 17:57:23:925 Pendiente revisar que se detenga servicio V10CALIFSTOCK de grupo GENERALES
+02 17:57:23:927 Deteniendo servicio V10CORREOS de grupo GENERALES
+02 17:57:23:927 Pendiente revisar que se detenga servicio V10CORREOS de grupo GENERALES
+02 17:57:23:927 Deteniendo servicio V10FUENTESTOCK de grupo GENERALES
+02 17:57:23:927 Pendiente revisar que se detenga servicio V10FUENTESTOCK de grupo GENERALES
+02 17:57:23:929 Deteniendo servicio CARGA_ARTICULOS de grupo INTERFACES
+02 17:57:23:929 Pendiente revisar que se detenga servicio CARGA_ARTICULOS de grupo INTERFACES
+02 17:57:23:929 Deteniendo servicio CARGA_CLIENTES de grupo INTERFACES
+02 17:57:23:929 Pendiente revisar que se detenga servicio CARGA_CLIENTES de grupo INTERFACES
+02 17:57:23:930 Deteniendo servicio CARGA_CODARTALT de grupo INTERFACES
+02 17:57:23:930 Pendiente revisar que se detenga servicio CARGA_CODARTALT de grupo INTERFACES
+02 17:57:23:930 Deteniendo servicio CARGA_PEDIDOS de grupo INTERFACES
+02 17:57:23:930 Pendiente revisar que se detenga servicio CARGA_PEDIDOS de grupo INTERFACES
+02 17:57:23:930 Deteniendo servicio CARGA_PROVEES de grupo INTERFACES
+02 17:57:23:930 Pendiente revisar que se detenga servicio CARGA_PROVEES de grupo INTERFACES
+02 17:57:23:932 Deteniendo servicio ENVIOMOVIM de grupo INTERFACES
+02 17:57:23:932 Pendiente revisar que se detenga servicio ENVIOMOVIM de grupo INTERFACES
+02 17:57:23:932 Deteniendo servicio ENVIOPEDIDOS de grupo INTERFACES
+02 17:57:23:932 Pendiente revisar que se detenga servicio ENVIOPEDIDOS de grupo INTERFACES
+02 17:57:23:932 Deteniendo servicio ENVIORECEP de grupo INTERFACES
+02 17:57:23:934 Pendiente revisar que se detenga servicio ENVIORECEP de grupo INTERFACES
+02 17:57:23:935 Deteniendo servicio ENVIOREDUR de grupo INTERFACES
+02 17:57:23:935 Pendiente revisar que se detenga servicio ENVIOREDUR de grupo INTERFACES
+02 17:57:23:937 Deteniendo servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 17:57:23:937 Pendiente revisar que se detenga servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 17:57:23:937 Deteniendo servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 17:57:23:937 Pendiente revisar que se detenga servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 17:57:23:939 Deteniendo servicio V10FINMOV de grupo MOVIMIENTOS
+02 17:57:23:939 Pendiente revisar que se detenga servicio V10FINMOV de grupo MOVIMIENTOS
+02 17:57:23:940 Deteniendo servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 17:57:23:940 Pendiente revisar que se detenga servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 17:57:23:940 Deteniendo servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 17:57:23:940 Pendiente revisar que se detenga servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 17:57:23:940 Deteniendo servicio V10RECARGAS de grupo MOVIMIENTOS
+02 17:57:23:940 Pendiente revisar que se detenga servicio V10RECARGAS de grupo MOVIMIENTOS
+02 17:57:23:942 Deteniendo servicio V10ASIGNAAGE de grupo PEDIDOS
+02 17:57:23:942 Pendiente revisar que se detenga servicio V10ASIGNAAGE de grupo PEDIDOS
+02 17:57:23:942 Deteniendo servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 17:57:23:942 Pendiente revisar que se detenga servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 17:57:23:942 Deteniendo servicio V10CREABULTOS de grupo PEDIDOS
+02 17:57:23:942 Pendiente revisar que se detenga servicio V10CREABULTOS de grupo PEDIDOS
+02 17:57:23:942 Deteniendo servicio V10EQUILIBRA de grupo PEDIDOS
+02 17:57:23:942 Pendiente revisar que se detenga servicio V10EQUILIBRA de grupo PEDIDOS
+02 17:57:23:942 Deteniendo servicio V10FINPEDIDOS de grupo PEDIDOS
+02 17:57:23:942 Pendiente revisar que se detenga servicio V10FINPEDIDOS de grupo PEDIDOS
+02 17:57:23:944 Deteniendo servicio V10HORACORTE de grupo PEDIDOS
+02 17:57:23:944 Pendiente revisar que se detenga servicio V10HORACORTE de grupo PEDIDOS
+02 17:57:23:944 Deteniendo servicio V10MONOPEDIDO de grupo PEDIDOS
+02 17:57:23:944 Pendiente revisar que se detenga servicio V10MONOPEDIDO de grupo PEDIDOS
+02 17:57:23:944 Deteniendo servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 17:57:23:944 Pendiente revisar que se detenga servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 17:57:23:944 Deteniendo servicio ACTDIURNAS de grupo PERIODICOS
+02 17:57:23:945 Pendiente revisar que se detenga servicio ACTDIURNAS de grupo PERIODICOS
+02 17:57:23:945 Deteniendo servicio PLANIFRADIO de grupo RADIOS
+02 17:57:23:945 Pendiente revisar que se detenga servicio PLANIFRADIO de grupo RADIOS
+02 17:57:23:945 Deteniendo servicio RADIOS de grupo RADIOS
+02 17:57:23:945 Pendiente revisar que se detenga servicio RADIOS de grupo RADIOS
+02 17:57:23:945 Deteniendo servicio V10LISTENER de grupo WEB
+02 17:57:23:945 Deteniendo servicio V10LISTENEREXT de grupo WEB
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10CALIFSTOCK de grupo GENERALES
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10CORREOS de grupo GENERALES
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10FUENTESTOCK de grupo GENERALES
+02 17:57:24:955 Muerte correcta y ordenada de servicio CARGA_ARTICULOS de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio CARGA_CLIENTES de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio CARGA_CODARTALT de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio CARGA_PEDIDOS de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio CARGA_PROVEES de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio ENVIOMOVIM de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio ENVIOPEDIDOS de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio ENVIORECEP de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio ENVIOREDUR de grupo INTERFACES
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10FINMOV de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10RECARGAS de grupo MOVIMIENTOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10ASIGNAAGE de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10CREABULTOS de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10EQUILIBRA de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10FINPEDIDOS de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10HORACORTE de grupo PEDIDOS
+02 17:57:24:955 Muerte correcta y ordenada de servicio V10MONOPEDIDO de grupo PEDIDOS
+02 17:57:24:957 Muerte correcta y ordenada de servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 17:57:24:957 Muerte correcta y ordenada de servicio ACTDIURNAS de grupo PERIODICOS
+02 17:57:24:957 Muerte correcta y ordenada de servicio PLANIFRADIO de grupo RADIOS
+02 17:57:24:957 Muerte correcta y ordenada de servicio RADIOS de grupo RADIOS
+
+00 17:57:24:960 Fichero de log cerrado.
+

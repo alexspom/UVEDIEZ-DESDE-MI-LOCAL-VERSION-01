@@ -1,0 +1,113 @@
+/****
+* VDGENCAUX - Módulo donde estan implementadas las funciones de diccionario
+* 
+* Propósito: Funciones necesarias para depurar las funciones generadas automáticamente
+*            por el VDGENC
+*           
+* Autor	   : MGM
+* Fecha    : 24-10-2007
+****
+* Modificaciones:
+***/
+
+#include "vd.h"
+
+typedef unsigned long fechas; /* Define el tipo fechas. */
+
+// Verifica si coincide el valor de un campo de dos estructuras similares
+// a través del diccionario de campos de dichas estructuras.
+static int verificauncampo(void *d1,void *d2,diccionarios *dic,int nc)
+{
+    diccols *c=dic->c+nc;
+    void *b1,*b2;
+    int ret;
+    v10log(LOGDEBUG,"Verificando campo %s\n",c->nombre);
+    b1=((char *)d1)+c->offset;
+    b2=((char *)d2)+c->offset;
+    switch (c->tipo) {
+       case V10CADENA:ret=strcmp(b1,b2);
+           return(ret==0?ret:VD_EREGMODIF);
+       case V10LONG:if (*(long *)b1!=*(long *)b2) return(VD_EREGMODIF);
+           break;
+       case V10FECHA :if (*(fechas *)b1!=*(fechas *)b2) return(VD_EREGMODIF);
+           break;
+       case V10FLOAT:if (*(float *)b1!=*(float *)b2) return(VD_EREGMODIF);
+           break;
+       case V10DOUBLE:if (*(double *)b1!=*(double *)b2) return(VD_EREGMODIF);
+           break;
+       case V10INT   :if (*(int *)b1!=*(int *)b2) return(VD_EREGMODIF);
+           break;
+    }
+    return(0);
+}
+
+// Verifica si coinciden el valor de los campos pasados como argumentos de dos estructuras similares 
+// a través del diccionario de dichas estructuras.
+// Si no se le pasa ningún campo validará el valor de todos los campos.
+int vverificacampos(void *d1,void *d2,diccionarios *dic,va_list arg)
+{
+    char *campo;
+    int nc;
+    int ret;
+    campo=va_arg(arg,char *);
+    if (campo==NULL) {
+        for (nc=0;nc<dic->numcol;nc++) {
+            diccols *c=dic->c+nc;
+            ret=verificauncampo(d1,d2,dic,nc);
+            if (ret) return(ret);
+        }
+    } else {
+        do {
+            for (nc=0;nc<dic->numcol;nc++) {
+                if (strcmp(dic->c[nc].nombre,campo)==0) break;
+            }
+            if (nc>=dic->numcol) return(-1);
+            ret=verificauncampo(d1,d2,dic,nc);
+            if (ret) return(ret);
+        } while ((campo=va_arg(arg,char *))!=NULL);
+    }
+    return(0);
+}
+
+// Función que devuelve un mensaje con el nombre del campo y valor de cada uno
+// de los campos de una estructura a través del diccionario de dicha estructura.
+void debugestruct(diccionario *dic,void *estruc, char *mensaje)
+{
+    int i,j,numdic;
+
+    DICdameoffset(dic, estruc);
+    numdic = dic->numdic;
+
+    for(i=0;i<=numdic-1;i++){
+        for (j=0;j<dic->d[i].numcol;j++) {
+            diccols *d=dic->d[i].c+j;
+            char buffer[LCADENABIG];
+            sprintf (buffer,"%s: ",d->nombre);
+            switch (d->tipo) {
+                case V10CADENA:strcat(buffer,((char *)estruc)+d->offset);
+                    break;
+                case V10LONG:if (strncmp(d->nombre,"FEC",3)==0) {
+					char fecha[20];
+					jul2a(*(long*)(((char*)estruc) + d->offset), "¨D-MM-Y.YY", fecha);
+                    sprintf(buffer+strlen(buffer),"%s",fecha);
+                             } else {
+                                 sprintf(buffer+strlen(buffer),"%ld",*(long *)(((char *)estruc)+d->offset));
+                             }
+                             break;
+				case V10FECHA: {
+					char fecha[20];
+					jul2a(*(long*)(((char*)estruc) + d->offset), "¨D-MM-Y.YY", fecha);
+					sprintf(buffer + strlen(buffer), "%s", fecha);
+				}
+                    break;
+                case V10INT:sprintf(buffer+strlen(buffer),"%d",*(int *)(((char *)estruc)+d->offset));
+                    break;
+                case V10FLOAT:sprintf(buffer+strlen(buffer),"%f",*(float *)(((char *)estruc)+d->offset));
+                    break;
+                case V10DOUBLE:sprintf(buffer+strlen(buffer),"%lf",*(double *)(((char *)estruc)+d->offset));
+                    break;
+            }
+            sprintf(mensaje,"%s%s; ", mensaje, buffer);
+        }
+    }
+}

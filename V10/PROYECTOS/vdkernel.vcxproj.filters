@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="COMEN">
+      <UniqueIdentifier>{bd3a5c86-e04d-4a5e-a6b7-3b7554153cfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EANs">
+      <UniqueIdentifier>{512d43d9-4d0c-4f00-8b8a-60856eeedcc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IMPRESION">
+      <UniqueIdentifier>{cfc83428-6f99-4e04-a502-13e53302e941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIBs">
+      <UniqueIdentifier>{fc1a0ea1-186c-4804-847d-732424691277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LOTES">
+      <UniqueIdentifier>{21435600-da78-4086-90d2-f7f8abf4235a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PLANIFRADIO">
+      <UniqueIdentifier>{77cd30fc-bced-43cd-97d1-f39ed8e55c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RECARGAS">
+      <UniqueIdentifier>{267e1d8a-e3e2-4a24-9ccf-f628968e3cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RESERVA">
+      <UniqueIdentifier>{794eeb8c-8109-46b9-b646-a674d2c3d8cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TRIGGERS">
+      <UniqueIdentifier>{ddb04463-d0a0-4ffb-ba6a-523e785be027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VDEXEC">
+      <UniqueIdentifier>{00dfe68c-1953-4fc3-b824-290a3a8d34cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\fuentes\COMENTARIOS\vdcomenaux.c">
+      <Filter>COMEN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuentes\COMENTARIOS\vdcomentrig.c">
+      <Filter>COMEN</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuentes\UTIL\VDEAN128.C">
+      <Filter>EANs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\IMPRESION\vdimpresion.c">
+      <Filter>IMPRESION</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\IMPRESION\vdspoolimpre.c">
+      <Filter>IMPRESION</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\LOTES\vdlots.c">
+      <Filter>LOTES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\LOTES\vdtratalotebloq.c">
+      <Filter>LOTES</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\RADIOS\vdplanifmov.c">
+      <Filter>PLANIFRADIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\RESERVA\vdrecargas.c">
+      <Filter>RECARGAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\RESERVA\vddemandas.c">
+      <Filter>RESERVA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\RESERVA\vdreservademandas.c">
+      <Filter>RESERVA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigart.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigcnt.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigcorreo.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigdem.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\IMPRESION\vdfortrigimpre.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigmov.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigproc.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigstk.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORTRIG\vdfortrigubi.c">
+      <Filter>TRIGGERS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuentes\EXECPROC\vdejecutaalgoritmos.c">
+      <Filter>VDEXEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuentes\EXECPROC\vdexecinfoora.c">
+      <Filter>VDEXEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\fuentes\EXECPROC\vdgeslib.c">
+      <Filter>VDEXEC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\v10host.c" />
+    <ClCompile Include="..\FUENTES\vdcargadefbloque.c" />
+    <ClCompile Include="..\fuentes\vdconfiaux.c" />
+    <ClCompile Include="..\fuentes\vdconversionesaux.c" />
+    <ClCompile Include="..\FUENTES\vdcorreos.c" />
+    <ClCompile Include="..\fuentes\vdlog.c" />
+    <ClCompile Include="..\FUENTES\vdmovtos.c" />
+    <ClCompile Include="..\FUENTES\vdoraerraux.c" />
+    <ClCompile Include="..\FUENTES\vdperiodico.c" />
+    <ClCompile Include="..\fuentes\UBICAR\vdreubi.c" />
+    <ClCompile Include="..\fuentes\RUTAS\vdrutamov.c" />
+    <ClCompile Include="..\FUENTES\vdsid.c" />
+    <ClCompile Include="..\FUENTES\vdstatusparam.c" />
+    <ClCompile Include="..\FUENTES\vdstocks.c" />
+    <ClCompile Include="..\FUENTES\vdtraduce.c" />
+    <ClCompile Include="..\FUENTES\PEDIDOS\vdpedimprime.c">
+      <Filter>IMPRESION</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\UPDAEXCEL\vdupdaexcel.c" />
+  </ItemGroup>
+</Project>

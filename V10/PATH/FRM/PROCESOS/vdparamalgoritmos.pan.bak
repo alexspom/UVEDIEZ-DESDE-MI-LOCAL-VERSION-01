@@ -1,0 +1,56 @@
+######
+# VDDISCALGORITMOS.PAN - Sistema de ventanas de configuración de algoritmos.
+# 
+# Propósito: Ventana para dar modificar parámetros del discriminante de los algoritmos.
+#               
+#           
+# Autor	   : José Carlos Santos
+# Fecha    : 20-12-2007
+####
+# Modificaciones:
+####
+VALORES DE PARÁMETROS DEL ALGORITMO
+ Parámetro      Valor                                             Descripción
+ _20___________ _255______________________________________________ _256________________
+|
+
+
+SOLOQUERY
+TABLA=ALG
+NOCOMMIT
+
+SELECT= SELECT PAR.NOMBREPARAM,PAR.DESCRIPCION,VD.PIECE(:PARAMALG,'#',PAR.POSICION) VALOR,
+               PAR.POSICION POSICION,PAR.INFORMAR,:PROCESO PROCESO, 'F' TIPOPROC
+        FROM  VDPARAMALGPROC PAR
+        WHERE PAR.FUNCION = :FUNCIONALG AND 
+	            PAR.TIPOPROC='F';
+ORDERBY=PAR.POSICION; 
+
+TECLA=F4,FPULSATECLAS("CF6","CF6","SF4")
+
+CAMPO=PROCESO,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=NOMBREALG,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=FUNCIONALG,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=PARAMALG,VIRTUAL,AUXILIAR,OCULTO
+
+CAMPO=NOMBREPARAM,UPPER,NOUPDATE,TOOLTIP(":DESCRIPCION"),TITULO("Parámetro")
+CAMPO=VALOR,MIXED, AUXILIAR,TOOLTIP("Valor del parámetro"),POSTCHANGE=FEJECUTA(+FRECALCPADRE("+CACTPARAM","ERROR EN CACTPARAM"),"","@CSELINFORMAR","","CSELVALORNULO","Obligatorio informar el parametro :NOMBREPARAM"),TITULO("Valor")
+CAMPO=DESCRIPCION,NOUPDATE,TOOLTIP("Descripción del valor"),TITULO("Descripción")
+CAMPO=POSICION, OCULTO, "@@@"
+CAMPO=TIPOPROC, OCULTO, "_"
+CAMPO=INFORMAR,OCULTO,"_"
+
+
+CURSOR=CSELINFORMAR SELECT :INFORMAR 
+                      FROM DUAL 
+                     WHERE :INFORMAR='S';
+                     
+CURSOR=CSELVALORNULO SELECT :VALOR
+                       FROM DUAL
+                      WHERE :VALOR IS NOT NULL;                     
+
+
+CURSOR=CACTPARAM SELECT VD.SUSTPIECE(:PARAMALG,:POSICION,:VALOR) PARAMALG FROM DUAL;
+
+
+

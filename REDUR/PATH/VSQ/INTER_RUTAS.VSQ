@@ -1,0 +1,17 @@
+CURSOR=CCARGARUTAS DECLARE
+                   RESULT NUMBER;
+                 BEGIN 
+				 IF(DAME_FICHERO('V10INTERIN_RDRT','teres891_eurodis_redur.txt') IS NOT NULL) THEN  
+                       VDLOG.LOG(1,'INICIANDO CARGA DE RUTAS EN  V10INTERIN_RDRT');
+				       DELETE FROM XVDRUTAS;
+                       RESULT := VDINTERFAZ.VDCARGAFICHERO('RUTAS', 'V10INTERIN_RDRT');
+                       IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE RUTAS' );
+                       ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE RUTAS FINALIZADA CORRECTAMENTE.' );
+                       END IF;
+				  END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO RUTAS' );
+                 END;@

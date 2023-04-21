@@ -1,0 +1,35 @@
+
+D:\SMCL\SM\CMD\SERVICIOS>REM ************************************************************************************ 
+
+D:\SMCL\SM\CMD\SERVICIOS>REM * Script de copia de archivos en caliente con RMAN - Autor: E-A (el pibe) 
+
+D:\SMCL\SM\CMD\SERVICIOS>REM ************************************************************************************ 
+
+Lanzando RMAN para iniciar la copia de archivos en caliente...
+
+Argumento    Valor          Descripción
+-----------------------------------------------------------------------------
+target       cadena entrecomillada  cadena de conexión para la base de datos destino
+catalog      cadena entrecomillada  cadena de conexión para el catálogo de recuperación
+destino       cadena entrecomillada  cadena de conexión para la base de datos auxiliar
+nocatalog    ninguno           si se especifica, no hay catálogo de recuperación
+cmdfile      cadena entrecomillada  nombre del archivo de comandos de entrada
+log          cadena entrecomillada  nombre del archivo log de mensajes de salida
+trace        cadena entrecomillada  nombre del archivo log de mensajes de depuración de salida
+append       ninguno           si se especifica, el log se abre en modo de agregación
+debug        argumentos opcionales  activar depuración
+msgno        ninguno           mostrar el prefijo RMAN-nnnn para todos los mensajes
+send         cadena entrecomillada  enviar un comando a Media Manager
+pipe         cadena         creación del bloque de nombres de canal
+script       cadena         nombre del script de catálogo que se ejecutará
+uso        lista de argumentos   argumentos para variables rman
+timeout      entero        número de segundos de espera de entrada de canal
+checksyntax  none           comprobar los errores de sintaxis en el archivo de comandos
+-----------------------------------------------------------------------------
+Para las cadenas entrecomilladas se aceptan comillas dobles y simples (' o ").
+Las comillas no son necesarias salvo que la cadena contenga espacios en blanco.
+
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-00556: no se ha podido abrir CMDFILE "D:\SMMX\Scripts\backuporacle.rman"

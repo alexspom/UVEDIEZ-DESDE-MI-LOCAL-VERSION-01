@@ -1,0 +1,31 @@
+# Módulo   : VDASIPRIUSU.PAN
+# Función  : Asignación de un privilegio a usuarios
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# Histórico de cambios:
+ASIGNACION DE PRIVILEGIO A USUARIOS
+Usuario    Ultima modificación
+__________ _32__________ ¿D-MM-Y.YY _8________
+|
+
+TABLA=VDPRIVOPE
+
+
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR INSERTANDO ULTIMA MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR ACTUALIZANDO ULTIMA MODIFICACION")
+
+CAMPO=PRIVILEGIO,VIRTUAL,OCULTO
+CAMPO=CODOPE,POSTCHANGE=FDESIGNACION("CSELOPE","No existe usuario"),TOOLTIP("Usuario con el privilegio"),
+              COMBOX("CLISTAUSU"),TITULO("Usuario")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizó la última modificación"),TITULO("Ulima Modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+CURSOR=CSELOPE SELECT :CODOPE FROM VDUSUARIO WHERE CODOPE=:CODOPE;
+
+CURSOR=CLISTAUSU SELECT CODOPE,NOMBRE||' ' ||APELLIDO1||' '||APELLIDO2 FROM VDUSUARIO ORDER BY CODOPE;
+

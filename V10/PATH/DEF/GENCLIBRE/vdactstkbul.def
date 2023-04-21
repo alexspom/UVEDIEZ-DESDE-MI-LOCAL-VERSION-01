@@ -1,0 +1,18 @@
+#***
+# VDACTSTKBUL.DEF - Generación automática del código c para actualizado de stock y bultos de pedido
+# 
+# Propósito: idem.
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 06-05-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=STKBUL;
+EXTRA=RET,V10LONG
+
+
+PROCEDURE=ACTSTKBUL,BEGIN 
+                        VDACTSTKBUL.ACTSTOCKBULTOS(:VDMOVIM.CODMOV,:VDBULTOCAB.STATUS,:RET) ;
+                    END;@

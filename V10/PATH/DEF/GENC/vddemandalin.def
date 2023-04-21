@@ -1,0 +1,25 @@
+#***
+# VDDEMANDACAB.c - Generación automática del código c para la tabla de Líneas de Demandas                                                      
+# 
+# Propósito: Funciones de acceso a la tabla VDDEMANDALIN
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 7-03-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=DEML
+EXTRA=COMENDEML,V10CADENA,1024
+EXTRA=RESERVADO,V10DOUBLE
+
+RECORRE=DEMANDASTATUS,TIPODEMANDA,CODDEMANDA,STATUS;
+RECORRE=STATUS,STATUS;
+
+RECORRE=LINEASPENDIENTES;WHERE= CODDEMANDA=:CODDEMANDA AND TIPODEMANDA=:TIPODEMANDA AND STATUS< "CSTDELRESERVADA";
+
+UPDATE=STATUS,STATUS;
+UPDATE=FECHAINICIO,FECINI,HORAINI;
+UPDATE=FECHAFINAL,FECFIN,HORAFIN;
+
+LOCK

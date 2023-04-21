@@ -1,0 +1,23 @@
+# Modulo : VDINFOHARDDISP.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFOHARDDISP
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 14-01-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# 03-01-2019 - Añadido campo externo RANGOLINEAS y consulta asociada al mismo
+# =================================================================================
+#
+TABLE=IHD
+EXTRA=RANGOLINEAS,V10CADENA,255
+RECORRE=STATUS,IDINFOPICK,STATUS
+RECORRE=RANGO,IDINFOPICK,STATUS,WHERE VD.CONTIENENUM(:RANGOLINEAS,MOD(FLOOR(NUMDISP/1000),100))>0;
+RECORRE=DISPMIRROR,IDINFOPICKM,NUMDISPM
+RECORRE=TECLAS,IDINFOGEST,WHERE=TECLAS>CHR(1);
+UPDATE=STATUS,STATUS
+UPDATE=STYTEXTO,STATUS,TEXTO,LUCES
+UPDATE=TECLAS,TECLAS
+#INSERT
+LOCK

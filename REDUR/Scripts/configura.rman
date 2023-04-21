@@ -1,0 +1,8 @@
+configure retention policy to recovery window of 0 days;
+configure default device type to disk;
+configure controlfile autobackup on;
+configure channel device type disk format 'E:\backup\rman\Backup%d_DB_%u_%s_%p';
+configure device type disk backup type to compressed backupset;
+CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO 'E:\backup\rman\%F';
+CONFIGURE SNAPSHOT CONTROLFILE NAME TO 'E:\backup\rman\SNCFORCL.ORA';
+CROSSCHECK ARCHIVELOG ALL;

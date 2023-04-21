@@ -1,0 +1,39 @@
+#*****************************************************************
+#Módulo: VDRECLIN.PAN
+#Funcionalidad : Consulta de las líneas de recepción
+#Autor: ICC      
+#Fecha: 12-02-2008
+#*****************************************************************
+#* Histórico de cambios
+#* ====================
+LÍNEAS DE RECEPCIÓN
+
+Línea   División Artículo         Lote            CADUCI   Bloq. stock Cant. recep.    Cant. repasada  Muestreado Clave externa       Última modificación              
+########  _4__   _20_____________ _20____________ _8______ _10_______  ############### ###############   _        _50________________ _32_________ ¿D-MM-Y.YY ________
+Observaciones
+ _60_________________________________________________________ _60_________________________________________________________
+|
+TABLA=VDRECEPLIN
+
+#CAMPO=CODRECEP,VIRTUAL,OCULTO,TOOLTIP("Número de recepción dentro de la misma orden de recepción")
+CAMPO=SECLINREC,TOOLTIP("Secuencia de línea de recepción dentro de la propia recepción "),TITULO("Línea")
+#CAMPO=SECLINORD,TOOLTIP("Secuencia de registro de línea de orden de recepción a que referencia")
+CAMPO=CODDIV,TOOLTIP("Código de la división"),TITULO("División"),WLONX=26
+CAMPO=CODART,TOOLTIP("Código de artículo"),TITULO("Artículo")
+CAMPO=CODLOT,TOOLTIP("Lote "),TITULO("Lote"),WLONX=-10
+CAMPO=CADUCI,TOOLTIP("Caducidad en formato AAAAMMDD"),TITULO("Caduci"),WLONX=15
+CAMPO=BLOQSTOCK,TOOLTIP("Bloqueos con los que entra el stock"),TITULO("Bloq.stock"),WLONX=20
+CAMPO=CANTIDADR,TOOLTIP("Cantidad recibida en esta recepción en registro burocratico por pantalla de PC"),TITULO("Cant. recep.")
+CAMPO=CANTIDADT,TOOLTIP("Cantidad recibida en esta recepción por medio de los terminales de radiofrecuencia"),TITULO("Cant. repasada")
+CAMPO=CODCOMEN,OCULTO,"#########",TOOLTIP("")
+CAMPO=VDEXTRA,OCULTO,"_255_",TOOLTIP("Información adicional suministrada por el cliente")
+CAMPO=MUESTREADO,TOOLTIP("Indica si se ha muestreado ese lote"),TITULO("Muestreado"),WLONX=70
+CAMPO=CLAVEEXT,TOOLTIP(""),TITULO("Clave externa")
+CAMPO=CODOPEMODIF,TOOLTIP("Usuario que ha realizado la ultima modificación.Es utilizado para depuración y control de los registros en las tablas"),TITULO("Última modificación")
+CAMPO=FECMODIF,TOOLTIP("Es la fecha  en que se efectuó alguna modificación. Es utilizado para depuración y control de los registros en las tablas")
+CAMPO=HORAMODIF,TOOLTIP("Es la hora  en que se efectuó alguna modificación. Es utilizado para depuración y control de los registros en las tablas")
+CAMPO=OBSERVACION1,TOOLTIP("Observaciones a la línea de recepción"),TITULO("Observaciones")
+CAMPO=OBSERVACION2,TOOLTIP("Más observaciones a la línea de recepción")
+
+
+

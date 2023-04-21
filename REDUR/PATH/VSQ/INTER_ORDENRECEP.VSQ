@@ -1,0 +1,14 @@
+CURSOR=CCARGAORDENRECEP DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE ORDENRECEP EN  V10INTERIN_RDRT');
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('ORDENRECEP', 'V10INTERIN_RDRT');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE ORDENRECEP' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE ORDENRECEP FINALIZADA CORRECTAMENTE.' );
+                       END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO ORDENRECEP' );
+                 END;@

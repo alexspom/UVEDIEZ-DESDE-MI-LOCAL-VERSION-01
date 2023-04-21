@@ -1,0 +1,62 @@
+# Módulo   : VDPICKUNIDINAMICA3.PAN
+# Función  : Formulario de recogida de bultos de unidades.
+#            Pantalla de regularización negativa.
+#
+# Creación : 30-05-2008
+# Autor    : FPD
+###########################################
+# Histórico de cambios:
+#
+PICKING DINAMICA
+_10_______ _10_______  
+
+REGULARIZACION NEGATIVA
+
+UBICACION: ____________
+
+ARTICULO: _40_____________
+  _20_________________
+  _20_________________ 
+
+  CANTIDAD A
+  REGULARIZAR: @L@@@@@
+  ACEPTAR(S/N): _
+|
+
+POSTQUERY=FEJECUTA(FIF("-CSELOPCION",+FPOSICIONABLOQUE("VDPICKUNIDINAMICA2.PAN")),"\n\n\nERROR EN FIF1",
+                   "@CSELAJUSTE","",
+                   FREGULARIZASTK(":CODMAT", ":ORDENSTK", "REG-","SUMEXPED",":AJUSTE",":OBSERVACIONES","CODMOVOUT"), "", 
+                   +FCOMMIT,"",
+                   FPOSICIONABLOQUE("VDPICKUNIDINAMICA2.PAN"))
+
+
+#DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL
+CAMPO=CODUBI,NOENTER,VIRTUAL
+CAMPO=CODART,NOENTER,VIRTUAL
+CAMPO=DESART1,NOENTER,VIRTUAL
+CAMPO=DESART2,NOENTER,VIRTUAL
+CAMPO=AJUSTE,NOENTER,VIRTUAL
+CAMPO=OPCION
+CAMPO=CANTIDAD,VIRTUAL,OCULTO
+CAMPO=SKORIG,VIRTUAL,OCULTO
+CAMPO=CODMAT,VIRTUAL,OCULTO
+CAMPO=ORDENSTK,VIRTUAL,OCULTO
+CAMPO=CODMOVOUT,OCULTO,"@L@@@@@@@@"
+CAMPO=OBSERVACIONES, OCULTO, "________________________________________________________________________________________________________________________________________________________"
+
+
+#DEFINICION DE CURSORES
+CURSOR=CSELOPCION SELECT :AJUSTE*(-1) AJUSTE, :OPCION OPCION, 'REGULARIZACION REALIZADA POR RADIO EN PICKING DE UNIDADES POR EL OPERARIO '||:CODOPE||' CON EL RECURSO '||:CODRECURSO OBSERVACIONES
+                    FROM DUAL
+                   WHERE :OPCION='S';
+
+CURSOR=CSELAJUSTE SELECT :AJUSTE AJUSTE
+                    FROM DUAL
+                   WHERE :CANTIDAD<=:SKORIG;
+
+CURSOR=CMAYOR SELECT :AJUSTE AJUSTE
+                FROM DUAL
+               WHERE :AJUSTE>=:SKORIG;
+                         

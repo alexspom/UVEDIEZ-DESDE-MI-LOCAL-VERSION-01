@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.0.final using JasperReports Library version 6.12.1-ac0eebdb29e4c0985457bab279a6db744d661530  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vdetiubihr" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0455affd-6682-4eac-b5fc-d583a19e7466">
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="RDRP"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="SID" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[508]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SERIAL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[26303]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT DATO,VDCLIPKG.PINTAUBICA(DATO) PINTADO
+  FROM VDCRETIQUETAS
+  WHERE SID= $P{SID} AND SERIAL= $P{SERIAL}]]>
+	</queryString>
+	<field name="DATO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DATO"/>
+	</field>
+	<field name="PINTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PINTADO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="400" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="240" width="530" height="150" uuid="14466e6f-5210-426e-a9a6-d1a417234e26"/>
+				<textElement textAlignment="Center" rotation="None">
+					<font fontName="Arial" size="70" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PINTADO}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="20" y="0" width="450" height="240" uuid="17b59416-d731-4616-a95f-345983d57376">
+					<property name="com.jaspersoft.studio.unit.barHeight" value="px"/>
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="10" barHeight="500" rotation="None">
+					<jr:codeExpression><![CDATA[$F{DATO}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

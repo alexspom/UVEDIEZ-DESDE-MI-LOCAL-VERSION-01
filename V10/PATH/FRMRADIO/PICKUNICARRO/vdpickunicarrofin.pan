@@ -1,0 +1,35 @@
+# Módulo   : VDPICKUNICARROFIN.PAN
+# Función  : Formulario de recogida de bultos de unidades con carro.
+#            Pantalla para finalización de bulto.
+#
+# Creación : 12-05-2008
+# Autor    : JMM
+###########################################
+# Histórico de cambios:
+#
+PICKING DE CARRO POR TERMINAL
+_10_______ _10_______  
+
+BULTO ACABADO
+
+DEPOSITE EL BULTO 
+_18_______________
+DEL PEDIDO
+_20_______________ 
+  
+EN EXPEDICIONES
+
+PULSE ENTER _
+|
+
+POSTQUERY=FEJECUTA(FLIMPIABLOQUE("0"),"ERROR\n LIMPIANDO BLOQUE 0",
+                   FLIMPIABLOQUE("1"),"ERROR\n LIMPIANDO BLOQUE 1",
+                   FLIMPIABLOQUE("2"),"ERROR\n LIMPIANDO BLOQUE 2",
+                   FPOSICIONABLOQUE("VDPICKUNICARROART.PAN"),"ERROR\n CARGANDO BLOQUE\n VDPICKUNICARROART.PAN")
+
+# DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL
+CAMPO=CODBULTO,NOENTER,VIRTUAL
+CAMPO=CODPED,NOENTER,VIRTUAL
+CAMPO=DUMMY

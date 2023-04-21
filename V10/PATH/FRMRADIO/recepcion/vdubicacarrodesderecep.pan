@@ -1,0 +1,154 @@
+######
+# VDUBICACARRODESDERECEP.PAN 
+# 
+# Propósito: UBICACION DE ARTÍCULOS DE CARRO
+#               
+#           
+# Autor	   : FPD
+# Fecha    : 31-07-2015
+####
+# Modificaciones:
+####
+# 
+  UBICACIÓN DE ARTÍCULO.
+  ________ ________________ 
+  
+ MATRÍCULA _18_______________
+ 
+ ART:  _40___________________
+       _40_____________________________
+ LOTE: _20___________________
+ 
+ LEA ARTÍCULO Y LOTE
+ ART:  _255____________________________________________________________________________________________________________
+ LOTE: _255____________________________________________________________________________________________________________
+  
+ UBI: _12__________ 
+      _12__________
+
+  X: VOLVER ATRAS
+  M: UBICACIÓN MANUAL
+|
+
+PREQUERY=FEJECUTA("CLIMPIAR","ERROR LIMPIANDO DATOS",
+                  FIF("CSELCREAMOV",FEJECUTA("CCREAMOVIM","ERROR CREANDO MOVIMIENTOS",
+                                             FCOMMIT,"",
+                                             FIF("CCOMPRUEBAMOV",FFAILURE),"ERROR COMPROBANDO MOVIMIENTOS\n:MENSAJE",
+                                             "CACTUALIZACONTE","ERROR ACTUALIZANDO CONTENEDOR",
+                                             FCOMMIT,"",
+                                             "CCOMPRUEBAMOV2","ERROR COMPROBANDO\nCREACION DE MOVIMIENTOS",
+                                             FIF("CCOMPRUEBAMOV",FFAILURE),"TIMEOUT\nCOMPROBANDO MOVIMIENTOS")),"",
+                  FIF("CSELCODUBIDEST",FSUCCESS,FFAILURE),"NO SE ENCUENTRAN\nBULTOS QUE UBICAR.","CSELCODUBIDEST","\nNO SE ENCUENTRAN\nARTÍCULOS QUE UBICAR",
+                  FPOSICIONACAMPO(FSUCCESS,"CODART"),"")
+
+
+POSTQUERY=FEJECUTA(FIF("CSALIR",FPOSICIONABLOQUE("VDRECMATRICULA.PAN")),"ERROR SALIENDO DE PANTALLA",
+                   "CSELNOTNULLART","ERROR, INFORME ARTÍCULO\n\nPARA VOLVER ATRAS PULSE 'X'",
+                   "CSELNOTNULLLOT","ERROR, INFORME LOTE\n\nPARA VOLVER ATRAS PULSE 'X'",
+                   "CSELNOTNULLUBI","ERROR, INFORME UBICACIÓN\n\nPARA VOLVER ATRAS PULSE 'X'",
+                   "CVERIFART","ERROR\n ARTÍCULO INCORRECTO",
+                   "CVERIFLOT","ERROR\n LOTE INCORRECTO",
+                   FIF("CMANUAL",FPOSICIONABLOQUE("VDREUBIMANUCARROENT.PAN")),"ERROR CARGANDO BLOQUE VDREUBIMANUCARROENT",
+                   "CVERIFUBI","ERROR\nUBICACIÓN INCORRECTA",
+				   "CUPDMOV","\nERROR ACTUALIZANDO MOVIMIENTO",
+                   FCOMMIT,"",
+                   "CLIMPIAR","ERROR LIMPIANDO DATOS",
+                   FPOSICIONACAMPO(FSUCCESS,"CODART"),"",
+                   FIF("CSELCODUBIDEST",FSUCCESS,
+                                        FEJECUTA("CACTCARRO","\nERROR ACTUALIZANDO\nSTATUS DE CONTENEDOR",
+                                                 FCOMMIT,"",
+                                                 %FFAILURE,"\nNO SE ENCUENTRAN MÁS\nARTÍCULOS QUE UBICAR",
+                                                 FPOSICIONABLOQUE("VDRECMATRICULA.PAN"),"")),"")
+  
+
+
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL 
+CAMPO=CODMAT,VIRTUAL,NOENTER
+CAMPO=CODARTDEST,NOENTER
+CAMPO=DESARTDEST,NOENTER,AUXILIAR
+CAMPO=CODLOTDEST,NOENTER
+#CAMPO=CODART,SCAN,AUTOENTER,POSTCHANGE=FEJECUTA(FFUERZASCAN("ART"),"DEBE SCANEAR ARTICULO")
+CAMPO=CODBARRAS1,SCAN,POSTCHANGE=FDESIGNACION(+FLEEARTICULO("CODBARRAS1", "CODART",""),"ERROR :V10ERROR",
+                                              +FANALIZAEANRAD("CODBARRAS1", "37","UNIEMB","17", "CADUCI","10","CODLOT"),"\nERROR,\nEN LECTURA DEL\nCODIGO DE BARRAS") 
+CAMPO=CODBARRAS2,SCAN,POSTCHANGE=FDESIGNACION(+FLEEARTICULO("CODBARRAS2", "CODART",""),"ERROR :V10ERROR",
+                                              +FANALIZAEANRAD("CODBARRAS2", "37","UNIEMB","17", "CADUCI","10","CODLOT"),"\nERROR,\nEN LECTURA DEL\nCODIGO DE BARRAS") 
+
+CAMPO=CODART,AUXILIAR,OCULTO,"_40_"
+CAMPO=CODLOT,AUXILIAR,OCULTO,"_20_"
+CAMPO=CADUCI,AUXILIAR,OCULTO,"_8_"
+CAMPO=UNIEMB,AUXILIAR,OCULTO,"#L############"
+CAMPO=CODUBIDEST,NOENTER
+CAMPO=CODUBI,SCAN,AUTOENTER
+#,POSTCHANGE=FEJECUTA(FFUERZASCAN("UBI"),"DEBE SCANEAR UBICACION")
+CAMPO=CODMOV,AUXILIAR,OCULTO,"@L@@@@@@@@"
+CAMPO=MENSAJE,OCULTO,"_255_"
+CAMPO=DUMMY,OCULTO,"_"
+CAMPO=SALIDA,OCULTO,"@"
+
+
+CURSOR=CLIMPIAR SELECT '' CODBARRAS1, '' CODBARRAS2, '' CODUBI, '' CODUBIDEST, '' CODARTDEST, '' DESARTDEST, '' CODLOTDEST FROM DUAL;
+
+CURSOR=CSELCODUBIDEST SELECT M.CODUBIDEST, M.CODART CODARTDEST, M.CODMOV, M.CODLOT CODLOTDEST, A.DESART DESARTDEST
+                      FROM VDMOVIM M, VDUBICA B, VDARTIC A
+                      WHERE M.CODART = A.CODART
+                      AND M.CODUBIDEST = B.CODUBI
+                      AND CODMATORI = :CODMAT
+                      AND STATUS = 2000
+                      AND CODCONCE = 'RECEP'
+                      AND CODRECURSO = :CODRECURSO
+                      ORDER BY B.ORDENENTRADA;
+
+CURSOR=CSALIR SELECT 'X' DUMMY FROM DUAL WHERE :CODBARRAS1='X' OR :CODBARRAS2='X' OR :CODUBI='X';
+CURSOR=CMANUAL SELECT 'X' DUMMY FROM DUAL WHERE :CODUBI='M';
+
+CURSOR=CSELNOTNULLART SELECT 'X' DUMMY FROM DUAL WHERE :CODBARRAS1 IS NOT NULL;
+CURSOR=CSELNOTNULLLOT SELECT 'X' DUMMY FROM DUAL WHERE :CODBARRAS2 IS NOT NULL;
+CURSOR=CSELNOTNULLUBI SELECT 'X' DUMMY FROM DUAL WHERE :CODUBI IS NOT NULL;
+
+CURSOR=CVERIFART SELECT 'X' DUMMY FROM DUAL WHERE :CODART = :CODARTDEST;
+CURSOR=CVERIFLOT SELECT 'X' DUMMY FROM DUAL WHERE :CODLOT = :CODLOTDEST;
+CURSOR=CVERIFUBI SELECT 'X' DUMMY FROM DUAL WHERE :CODUBI = :CODUBIDEST;
+
+CURSOR=CACTCARRO UPDATE VDCONTE SET STATUS = 0 WHERE CODMAT=:CODMAT;
+
+CURSOR=CSELCREAMOV SELECT 'X' DUMMY FROM VDCONTE WHERE CODMAT=:CODMAT AND NVL(STATUS,0) = 0;
+
+
+CURSOR=CCREAMOVIM BEGIN
+                     :SALIDA := DPUBICA.REUBICACONTE(:CODMAT,:CODRECURSO,:MENSAJE);
+                  END;@
+                  
+CURSOR=CCOMPRUEBAMOV SELECT 1 SALIDA FROM DUAL WHERE :SALIDA <> 0;
+
+CURSOR=CACTUALIZACONTE UPDATE VDCONTE SET STATUS = 200 WHERE CODMAT=:CODMAT;
+
+#Se buscan los movimientos hasta que el enrutador los trate
+CURSOR=CCOMPRUEBAMOV2 DECLARE
+                          I NUMBER := 1;
+                      BEGIN
+                          :SALIDA := 1;
+                          LOOP
+                              DBMS_LOCK.SLEEP(1);
+                              
+                              BEGIN
+                                  SELECT 0
+                                  INTO :SALIDA
+                                  FROM VDMOVIM
+                                  WHERE CODMATORI = :CODMAT
+                                  AND STATUS = 2000
+                                  AND CODCONCE = 'RECEP'
+                                  AND CODRECURSO = :CODRECURSO
+                                  AND ROWNUM = 1;
+                              EXCEPTION
+                                  WHEN NO_DATA_FOUND THEN
+                                      NULL;
+                              END;
+                              
+                              EXIT WHEN I = 10 OR :SALIDA = 0;
+                              I := I + 1;
+                          END LOOP;
+                      END;@
+
+CURSOR=CUPDMOV UPDATE VDMOVIM SET STATUS=2300 WHERE CODMOV=:CODMOV;
+					  

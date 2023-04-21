@@ -1,0 +1,286 @@
+/*#############################################################
+Nombre: V10
+Descripcion: Hoja de estilo de colores de las pantallas de V10.
+Author: E.Arana
+#############################################################*/
+
+/*#############################################################
+Color e imagenes de la ayuda del programa.
+#############################################################*/
+
+.popupbusca
+{
+   background: #f4f4f4;
+   border: 1px solid #989898;
+   text-align:left;
+   font-size:11px;
+   white-space:nowrap;
+   /*padding:3px 5px 3px 3px;*/
+   /*width:300px;*/
+   color:#000000;
+   margin-top: -15px;
+   margin-left: 165px;
+}
+
+.tituloindice {
+	z-index:100;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color: #FFFFFF;
+	font-weight: bold;
+  text-decoration: underline;
+
+}
+
+.textoindice {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+
+.tituloayudalinea {
+	z-index:100;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color: #ff8a00;
+	font-weight: bold;
+  text-decoration: underline;
+	white-space: nowrap
+}	
+
+.bodyayuda {
+	min-width: 400px;
+	height: 400px;
+  padding: 0;
+	margin: 0;
+	overflow: hidden;
+	font-family: Arial;
+	width: 100%;
+	height: 100%;
+}
+
+.ayuda-nav {
+	height: 78px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 201;
+	width: 1000px;
+	background: #FFFFFF url(../img/ayuda/background.png) no-repeat;
+	border-bottom:solid 2px #ff0000;
+	overflow: hidden;
+	}
+	
+.oculta-scroll-texto {
+  margin-top:65px;
+  position: absolute;
+  z-index: 200;
+	height: 105px;
+	width: 98%;
+	overflow:hidden;
+}
+.ayuda-nav ul {
+	margin: 0 0 0 600px;
+	height: 78px;
+	width: 50em;
+}
+.ayuda-nav ul: after {
+	content: '';
+	clear: both;
+	width: 100%;
+	display: block;
+}
+.ayuda-nav li {
+	float: left;
+	width: 65px;
+	overflow: hidden;
+	margin: 0 1px;
+	font-size: 12px;
+}
+
+.textodelaayuda {
+	width: 800px;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	}
+	
+.ayuda-nav a {
+	position: relative;
+	top: 0px;
+	display: block;
+	zoom: 1;
+	height: 78px;
+	text-align: center;
+	padding-top: 5px;
+	font: 1em Arial bold;
+	text-decoration: none;
+	color: black;
+	-moz-border-radius:12px;
+	background:#ebebeb repeat-x;
+}
+.ayuda-nav a:hover,#main-nav a.on {
+	background: white;
+	color: black;
+	top: 0px;
+	padding-top: 5px;
+}
+
+.footerayuda address {
+	float: right;
+		font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color:#FFF;
+	padding: 2em 2em 0 0;
+}
+.framesetayuda,#drag-bar-1-ayuda {
+	font-family: verdana;
+	position: absolute;
+	z-index: 1;
+	top: 80px;
+	bottom: 80px;
+	overflow: hidden background: white;
+	width: 100%;
+	right: 0;
+	*border-top: solid 80px black;
+	*top: 0;
+	*left: 0;
+	*bottom: 0;
+}
+.drag-bar-1-ayuda {
+	width: 10px;
+	background:#454545;
+	z-index: 100;
+	overflow: auto;
+	position: absolute;
+	left: 30%;
+	top: 0;
+	border-right: solid 1px #222222;
+	border-left: solid 1px #222222;
+	cursor: pointer;
+	cursor: col-resize;
+}
+.frame-1-ayuda {
+	height: 100%;
+	width: 30%;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #979797 repeat-x left top;
+}
+.frame-2-ayuda {
+	height: 100%;
+	width: 70%;
+	overflow: auto;
+	position: absolute;
+	left: 30%;
+	top: 0;
+	background: white;
+}
+.frame-1-1-ayuda {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	overflow: auto;
+	z-index: 1;
+	color: white;
+	bottom: 10px;
+	*bottom: 0;
+	*height: 100%;
+}
+.bd {
+	padding: 20px;
+	line-height: 1.5;
+	font-size:0.78em;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color:#000;
+	padding-right:40px;
+	padding-bottom: 50px;
+	background: #FFFFFF url(../img/ayuda/config_bg.gif) repeat-x;
+}
+
+.bd1 {
+	padding-top: 1px;
+	line-height: 1.5;
+	font-size:0.78em;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	color:#000;
+	padding-right:40px;
+	padding-bottom: 50px;
+	padding-left: 15px;
+	background: #FFFFFF;
+}
+
+/*#############################################################
+Colores e imagenes para el fondo del menu de la pantalla principal.
+#############################################################*/
+
+.v10indiceubicafondo {
+  margin-left: 510px;
+}
+.v10indicearribaizq {
+	background-image: url(../img/imgmenufon/1.png);
+	background-repeat: no-repeat;
+	width:18px;
+	height:22px;
+}
+.v10indicearribamed {
+	background-image: url(../img/imgmenufon/3.png);
+	background-repeat: repeat;
+	width:10px;
+	height:22px;
+}
+.v10indicearribader {
+	background-image: url(../img/imgmenufon/2.png);
+	background-repeat: no-repeat;
+	width:25px;
+	height:22px;
+}
+
+.v10indicemedioizq {
+	background-image: url(../img/imgmenufon/4.png);
+	background-repeat: repeat;
+	width:18px;
+	height:6px;
+}
+.v10indicemediomed {
+	background-image: url(../img/imgmenufon/6.png);
+	background-repeat: repeat;
+
+}
+.v10indicemedioder {
+	background-image: url(../img/imgmenufon/5.png);
+	background-repeat: repeat;
+	width:25px;
+	height:22px;
+}
+.v10indiceabajoizq {
+	background-image: url(../img/imgmenufon/7.png);
+	background-repeat: no-repeat;
+	width:18px;
+	height:22px;
+}
+.v10indiceabajomed {
+	background-image: url(../img/imgmenufon/8.png);
+	width:18px;
+	height:22px;
+}
+.v10indiceabajoder {
+	background-image: url(../img/imgmenufon/9.png);
+	background-repeat: no-repeat;
+	width:25px;
+	height:22px;
+}
+.v10tituloindice {
+	
+	z-index:1001;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #424242;
+	font-weight: bold;
+	white-space: nowrap
+}

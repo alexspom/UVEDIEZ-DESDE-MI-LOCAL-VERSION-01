@@ -1,0 +1,760 @@
+00 08:41:37:002 Fichero de log abierto PID 564
+
+02 08:41:37:002 Intentando abrir fichero v10.ini
+02 08:41:37:005 Cargando driver v10oracle funcion damedriveroracle
+02 08:41:37:073 Conectado a base de datos
+02 08:41:37:077 Asignando ACCESO a V10LOGIN
+02 08:41:37:077 Asignando NIVELLOG a 2
+02 08:41:37:077 Asignando PROTEGIDO a 500
+02 08:41:37:078 Asignando DEBUGHTTP a 1
+02 08:41:37:078 Asignando VISIBLEEXE a 1
+02 08:41:37:080 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 08:41:37:081 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 08:41:37:081 Asignando SERVIDOR a HTTP://127.0.0.1
+02 08:41:37:082 Asignando SERVERPORTFILES a 1235
+02 08:41:37:083 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 08:41:37:085 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 08:41:37:092 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 08:41:37:092 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 08:41:37:092 Asignando FILEEXPIRED a 3600
+02 08:41:37:093 Asignando TIEMPOESPERA a 240
+02 08:41:37:101 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 08:41:37:102 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 08:41:37:102 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 08:41:37:102 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 08:41:37:103 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 08:41:37:103 Asignando COMPRIMIR a 1
+02 08:41:37:782 Escuchando en el puerto 20000
+02 08:41:37:885 Conectado Listener en el puerto 20000
+02 08:41:37:887 Abriendo conexion HTTP en el puerto 20000
+02 08:41:37:887 Abierta conexion HTTP en el puerto 20000
+02 08:41:38:888 Conexión de cliente establecida
+02 08:41:38:888 v10formserver vale 0
+02 08:41:38:888 Conexion 056132F4 recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Connection: Keep-Alive
+Host: 127.0.0.1:20000
+
+02 08:41:38:888 La conexion 0 recibe peticion en socket 056132F4
+02 08:41:38:888 Tratapeticion: Server cambia de valor de 00000000 a 056132F4
+02 08:41:38:890 Sesion 0 Solicita Fichero V10.HTML 
+02 08:41:38:890 Sesion 0 Enviara Fichero V10.HTML
+02 08:41:38:892 Tiempo en abrir 0.002031 seg.
+02 08:41:38:892 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10.html
+02 08:41:38:892 Tiempo en carga de fichero 0.002747 seg.
+02 08:41:38:893 Compresion fin
+02 08:41:38:893 Envio un total de 0.64 KB
+02 08:41:38:896 Fichero v10.html enviado
+02 08:41:38:897 Sesion 0 socket 056132F4 Finalizada por rotura de conexion 5
+02 08:41:38:897 Libera 56132f4
+02 08:41:38:897 Timeout es 99999.000000
+02 08:41:38:997 Sesion 0 Conectada socket 056131DC
+02 08:41:38:998 Conexion 056131DC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Connection: Keep-Alive
+
+02 08:41:38:998 La conexion 0 recibe peticion en socket 056131DC
+02 08:41:38:998 Tratapeticion: Server cambia de valor de 056132F4 a 056131DC
+02 08:41:38:998 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 08:41:38:998 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 08:41:39:050 Tiempo en abrir 0.051711 seg.
+02 08:41:39:062 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10libreriajs.html
+02 08:41:39:062 Tiempo en carga de fichero 0.063024 seg.
+02 08:41:39:067 Compresion fin
+02 08:41:39:067 Envio un total de 15.81 KB
+02 08:41:39:082 Fichero v10libreriajs.html enviado
+02 08:41:39:096 Sesion 0 socket 056131DC Finalizada por rotura de conexion 5
+02 08:41:39:096 Libera 56131dc
+02 08:41:39:157 Sesion 0 Conectada socket 0561355C
+02 08:41:39:158 Conexion 0561355C recibe petición
+GET /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Connection: Keep-Alive
+
+02 08:41:39:158 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:39:158 Tratapeticion: Server cambia de valor de 056131DC a 0561355C
+02 08:41:39:158 Recibida cadena de acceso
+00 08:41:39:450 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 08:41:39:450 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 08:41:39:527 Error al abrir fichero VDST.H
+02 08:41:39:605 Empiezo a leer forms vduser.frm
+02 08:41:39:736 Leyendo caracteristicas del bloque 
+02 08:41:39:736 Leidas caracteristicas del bloque 
+02 08:41:39:756 Termino parse forms vduser.frm
+02 08:41:39:761 v10formserver vale 561355c
+02 08:41:39:761 Inicio envío
+02 08:41:39:810 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:41:39:812 Html calculado. Tiempo de envío 0.050476 segundos
+02 08:41:39:815 Compresion fin
+02 08:41:39:815 Envio un total de 4.18 KB
+02 08:41:39:833 Enviada la respuesta a socket 0561355C
+02 08:41:39:833 Html enviado. Tiempo de envío 0.073516 segundos
+02 08:41:53:636 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:41:53:637 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:53:637 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:41:53:638 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:41:53:642 Detectado evento
+02 08:41:53:642 Evento recibido
+02 08:41:53:642 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c1
+	Antvalor: X
+02 08:41:53:642 Fin Evento recibido
+02 08:41:53:642 v10formserver vale 561355c
+02 08:41:53:710 v10formserver vale 561355c
+02 08:41:53:710 Inicio envío
+02 08:41:53:710 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:41:53:711 Html calculado. Tiempo de envío 0.001559 segundos
+02 08:41:53:715 Compresion fin
+02 08:41:53:715 Envio un total de 4.19 KB
+02 08:41:53:728 Enviada la respuesta a socket 0561355C
+02 08:41:53:730 Html enviado. Tiempo de envío 0.020117 segundos
+02 08:41:54:393 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:41:54:393 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:54:393 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:41:54:393 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:41:54:397 Detectado evento
+02 08:41:54:397 Evento recibido
+02 08:41:54:397 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: 
+02 08:41:54:397 Fin Evento recibido
+02 08:41:54:397 v10formserver vale 561355c
+02 08:41:54:397 v10formserver vale 561355c
+02 08:41:54:983 Inicio envío
+02 08:41:54:983 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:41:55:042 Html calculado. Tiempo de envío 0.057278 segundos
+02 08:41:55:045 Compresion fin
+02 08:41:55:045 Envio un total de 4.63 KB
+02 08:41:55:062 Enviada la respuesta a socket 0561355C
+02 08:41:55:062 Html enviado. Tiempo de envío 0.079300 segundos
+02 08:41:56:008 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 86
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:41:56:008 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:56:008 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:41:56:008 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:41:56:012 Detectado evento
+02 08:41:56:012 Evento recibido
+02 08:41:56:012 
+	Objeto: 
+	Evento: finmsg
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:41:56:012 Fin Evento recibido
+02 08:41:56:012 v10formserver vale 561355c
+02 08:41:56:012 Inicio envío
+02 08:41:56:012 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:41:56:013 Html calculado. Tiempo de envío 0.000787 segundos
+02 08:41:56:016 Compresion fin
+02 08:41:56:016 Envio un total de 4.19 KB
+02 08:41:56:023 Enviada la respuesta a socket 0561355C
+02 08:41:56:023 Html enviado. Tiempo de envío 0.011849 segundos
+02 08:41:56:730 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:41:56:730 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:56:730 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:41:56:730 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:41:56:732 Detectado evento
+02 08:41:56:733 Evento recibido
+02 08:41:56:733 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c1
+	Antvalor: X
+02 08:41:56:733 Fin Evento recibido
+02 08:41:56:733 v10formserver vale 561355c
+02 08:41:56:733 v10formserver vale 561355c
+02 08:41:56:733 Inicio envío
+02 08:41:56:735 Cargada plantilla plantilla.VDUSER.frm.html
+02 08:41:56:735 Html calculado. Tiempo de envío 0.000792 segundos
+02 08:41:56:737 Compresion fin
+02 08:41:56:737 Envio un total de 4.19 KB
+02 08:41:56:740 Enviada la respuesta a socket 0561355C
+02 08:41:56:740 Html enviado. Tiempo de envío 0.005304 segundos
+02 08:41:57:522 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:41:57:522 La conexion 0 recibe peticion en socket 0561355C
+02 08:41:57:522 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:41:57:522 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:41:57:526 Detectado evento
+02 08:41:57:526 Evento recibido
+02 08:41:57:527 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: X
+02 08:41:57:527 Fin Evento recibido
+02 08:41:57:527 v10formserver vale 561355c
+02 08:41:57:527 v10formserver vale 561355c
+02 08:41:58:682 v10formserver vale 561355c
+02 08:41:59:052 Compresion fin
+02 08:41:59:052 Envio un total de 7.74 KB
+02 08:41:59:067 Enviada la respuesta a socket 0561355C
+02 08:42:03:828 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:03:828 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:03:828 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:03:828 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:03:833 Detectado evento
+02 08:42:03:833 Evento recibido
+02 08:42:03:833 
+	Objeto: 
+	Evento: selmenu
+	Dato: 115
+	Antid: 
+	Antvalor: 
+02 08:42:03:835 Fin Evento recibido
+02 08:42:03:868 Empiezo a leer forms vdordenesrecep.frm
+02 08:42:03:953 Leyendo caracteristicas del bloque 
+02 08:42:03:955 Leidas caracteristicas del bloque 
+02 08:42:04:271 Leyendo caracteristicas del bloque 
+02 08:42:04:272 Leidas caracteristicas del bloque 
+02 08:42:04:317 Leyendo caracteristicas del campo CODART
+02 08:42:04:318 Leidas caracteristicas del campo CODART
+02 08:42:04:322 Leyendo caracteristicas del campo CADUCI
+02 08:42:04:322 Leidas caracteristicas del campo CADUCI
+02 08:42:04:412 Leyendo caracteristicas del bloque 
+02 08:42:04:412 Leidas caracteristicas del bloque 
+02 08:42:04:413 Leyendo caracteristicas del campo CODART
+02 08:42:04:413 Leidas caracteristicas del campo CODART
+02 08:42:04:415 Leyendo caracteristicas del campo CADUCI
+02 08:42:04:415 Leidas caracteristicas del campo CADUCI
+02 08:42:04:777 Leyendo caracteristicas del bloque 
+02 08:42:04:777 Leidas caracteristicas del bloque 
+02 08:42:04:778 Leyendo caracteristicas del campo CODART
+02 08:42:04:778 Leidas caracteristicas del campo CODART
+02 08:42:04:782 Termino parse forms vdordenesrecep.frm
+02 08:42:07:832 v10formserver vale 561355c
+02 08:42:07:832 Inicio envío
+02 08:42:07:955 Html calculado. Tiempo de envío 0.122031 segundos
+02 08:42:07:966 Compresion fin
+02 08:42:07:966 Envio un total de 10.38 KB
+02 08:42:07:983 Enviada la respuesta a socket 0561355C
+02 08:42:07:983 Html enviado. Tiempo de envío 0.150688 segundos
+02 08:42:11:541 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 105
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:11:541 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:11:541 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:11:541 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:11:547 Detectado evento
+02 08:42:11:547 Evento recibido
+02 08:42:11:548 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 114
+	Antid: bl0f1c1
+	Antvalor: 6
+02 08:42:11:548 Fin Evento recibido
+02 08:42:11:550 v10formserver vale 561355c
+02 08:42:11:555 v10formserver vale 561355c
+02 08:42:11:556 Inicio envío
+02 08:42:11:562 Html calculado. Tiempo de envío 0.006799 segundos
+02 08:42:11:567 Compresion fin
+02 08:42:11:567 Envio un total de 7.06 KB
+02 08:42:11:580 Enviada la respuesta a socket 0561355C
+02 08:42:11:580 Html enviado. Tiempo de envío 0.025022 segundos
+02 08:42:16:145 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 113
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:16:145 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:16:146 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:16:146 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:16:151 Detectado evento
+02 08:42:16:151 Evento recibido
+02 08:42:16:152 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: BEL397652
+02 08:42:16:152 Fin Evento recibido
+02 08:42:16:152 v10formserver vale 561355c
+02 08:42:16:303 v10formserver vale 561355c
+02 08:42:16:303 Inicio envío
+02 08:42:16:320 Html calculado. Tiempo de envío 0.016184 segundos
+02 08:42:16:330 Compresion fin
+02 08:42:16:330 Envio un total de 9.03 KB
+02 08:42:16:340 Enviada la respuesta a socket 0561355C
+02 08:42:16:340 Html enviado. Tiempo de envío 0.035360 segundos
+02 08:42:20:622 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 105
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:20:622 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:20:622 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:20:622 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:20:628 Detectado evento
+02 08:42:20:628 Evento recibido
+02 08:42:20:628 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f1c1
+	Antvalor: BEL397652
+02 08:42:20:630 Fin Evento recibido
+02 08:42:20:630 v10formserver vale 561355c
+02 08:42:20:693 Compresion fin
+02 08:42:20:693 Envio un total de 7.74 KB
+02 08:42:20:697 Enviada la respuesta a socket 0561355C
+02 08:42:23:052 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:23:052 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:23:052 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:23:052 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:23:057 Detectado evento
+02 08:42:23:058 Evento recibido
+02 08:42:23:058 
+	Objeto: 
+	Evento: selmenu
+	Dato: 59
+	Antid: 
+	Antvalor: 
+02 08:42:23:058 Fin Evento recibido
+02 08:42:23:061 Empiezo a leer forms vdartic.frm
+02 08:42:23:098 Leyendo caracteristicas del bloque 
+02 08:42:23:098 Leidas caracteristicas del bloque 
+02 08:42:23:101 Leyendo caracteristicas del campo CODART
+02 08:42:23:101 Leidas caracteristicas del campo CODART
+02 08:42:23:205 Leyendo caracteristicas del bloque 
+02 08:42:23:205 Leidas caracteristicas del bloque 
+02 08:42:23:270 Leyendo caracteristicas del bloque 
+02 08:42:23:270 Leidas caracteristicas del bloque 
+02 08:42:23:301 Leyendo caracteristicas del bloque 
+02 08:42:23:308 Leidas caracteristicas del bloque 
+02 08:42:23:310 Leyendo caracteristicas del campo BLOQUEOS
+02 08:42:23:310 Leidas caracteristicas del campo BLOQUEOS
+02 08:42:23:352 Leyendo caracteristicas del bloque 
+02 08:42:23:353 Leidas caracteristicas del bloque 
+02 08:42:23:355 Leyendo caracteristicas del campo CODART
+02 08:42:23:355 Leidas caracteristicas del campo CODART
+02 08:42:23:362 Termino parse forms vdartic.frm
+02 08:42:24:198 v10formserver vale 561355c
+02 08:42:24:198 Inicio envío
+02 08:42:24:297 Html calculado. Tiempo de envío 0.097543 segundos
+02 08:42:24:311 Compresion fin
+02 08:42:24:311 Envio un total de 9.93 KB
+02 08:42:24:322 Enviada la respuesta a socket 0561355C
+02 08:42:24:322 Html enviado. Tiempo de envío 0.124034 segundos
+02 08:42:28:296 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 111
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:28:296 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:28:296 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:28:296 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:28:313 Detectado evento
+02 08:42:28:313 Evento recibido
+02 08:42:28:313 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: BEL5526
+02 08:42:28:313 Fin Evento recibido
+02 08:42:28:313 v10formserver vale 561355c
+02 08:42:29:872 v10formserver vale 561355c
+02 08:42:29:873 Inicio envío
+02 08:42:29:970 Html calculado. Tiempo de envío 0.096176 segundos
+02 08:42:29:980 Compresion fin
+02 08:42:29:981 Envio un total de 10.89 KB
+02 08:42:29:987 Enviada la respuesta a socket 0561355C
+02 08:42:29:987 Html enviado. Tiempo de envío 0.113997 segundos
+02 08:42:32:932 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 121
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:32:932 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:32:932 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:32:932 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:32:937 Detectado evento
+02 08:42:32:937 Evento recibido
+02 08:42:32:937 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 114
+	Antid: bl0f1c2
+	Antvalor: PALA+CAMPING+5526
+02 08:42:32:938 Fin Evento recibido
+02 08:42:32:938 v10formserver vale 561355c
+02 08:42:32:957 v10formserver vale 561355c
+02 08:42:32:957 Inicio envío
+02 08:42:32:975 Html calculado. Tiempo de envío 0.017198 segundos
+02 08:42:32:986 Compresion fin
+02 08:42:32:986 Envio un total de 9.93 KB
+02 08:42:32:993 Enviada la respuesta a socket 0561355C
+02 08:42:32:993 Html enviado. Tiempo de envío 0.036738 segundos
+02 08:42:40:442 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 115
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:40:442 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:40:442 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:40:442 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:40:447 Detectado evento
+02 08:42:40:447 Evento recibido
+02 08:42:40:447 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: BEL50101180
+02 08:42:40:447 Fin Evento recibido
+02 08:42:40:447 v10formserver vale 561355c
+02 08:42:40:677 v10formserver vale 561355c
+02 08:42:40:677 Inicio envío
+02 08:42:40:697 Html calculado. Tiempo de envío 0.019883 segundos
+02 08:42:40:713 Compresion fin
+02 08:42:40:713 Envio un total de 10.64 KB
+02 08:42:40:727 Enviada la respuesta a socket 0561355C
+02 08:42:40:727 Html enviado. Tiempo de envío 0.049868 segundos
+02 08:42:45:353 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 125
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:45:353 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:45:353 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:45:353 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:45:358 Detectado evento
+02 08:42:45:358 Evento recibido
+02 08:42:45:358 
+	Objeto: tdbl3f1c1
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: NIVEL-PERFIL+50101-180
+02 08:42:45:360 Fin Evento recibido
+02 08:42:45:360 v10formserver vale 561355c
+02 08:42:45:361 Inicio envío
+02 08:42:45:373 Html calculado. Tiempo de envío 0.014170 segundos
+02 08:42:45:385 Compresion fin
+02 08:42:45:385 Envio un total de 10.55 KB
+02 08:42:45:397 Enviada la respuesta a socket 0561355C
+02 08:42:45:397 Html enviado. Tiempo de envío 0.037302 segundos
+02 08:42:46:485 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 124
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:46:485 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:46:486 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:46:486 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:46:495 Detectado evento
+02 08:42:46:495 Evento recibido
+02 08:42:46:495 
+	Objeto: tdbl3f1c1
+	Evento: onkeyup_shift
+	Dato: 121
+	Antid: tdbl3f1c1
+	Antvalor: N006003003
+02 08:42:46:496 Fin Evento recibido
+02 08:42:46:522 Empiezo a leer forms vdubicaart.frm
+02 08:42:46:560 Leyendo caracteristicas del bloque 
+02 08:42:46:560 Leidas caracteristicas del bloque 
+02 08:42:46:562 Leyendo caracteristicas del campo CODART
+02 08:42:46:562 Leidas caracteristicas del campo CODART
+02 08:42:46:621 Leyendo caracteristicas del bloque 
+02 08:42:46:621 Leidas caracteristicas del bloque 
+02 08:42:46:637 Leyendo caracteristicas del bloque 
+02 08:42:46:637 Leidas caracteristicas del bloque 
+02 08:42:46:717 Leyendo caracteristicas del bloque 
+02 08:42:46:717 Leidas caracteristicas del bloque 
+02 08:42:46:721 Leyendo caracteristicas del campo CODART
+02 08:42:46:721 Leidas caracteristicas del campo CODART
+02 08:42:46:722 Leyendo caracteristicas del campo CADUCI
+02 08:42:46:722 Leidas caracteristicas del campo CADUCI
+02 08:42:46:761 Leyendo caracteristicas del campo BLOQUEOS
+02 08:42:46:761 Leidas caracteristicas del campo BLOQUEOS
+02 08:42:46:782 Termino parse forms vdubicaart.frm
+02 08:42:47:562 v10formserver vale 561355c
+02 08:42:47:562 Inicio envío
+02 08:42:47:570 Html calculado. Tiempo de envío 0.007135 segundos
+02 08:42:47:575 Compresion fin
+02 08:42:47:575 Envio un total de 8.21 KB
+02 08:42:47:581 Enviada la respuesta a socket 0561355C
+02 08:42:47:581 Html enviado. Tiempo de envío 0.018762 segundos
+02 08:42:49:515 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 101
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:49:516 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:49:516 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:49:516 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:49:521 Detectado evento
+02 08:42:49:522 Evento recibido
+02 08:42:49:522 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl0f1c2
+	Antvalor: HRN14
+02 08:42:49:522 Fin Evento recibido
+02 08:42:49:522 v10formserver vale 561355c
+02 08:42:49:572 Inicio envío
+02 08:42:49:587 Html calculado. Tiempo de envío 0.016053 segundos
+02 08:42:49:602 Compresion fin
+02 08:42:49:602 Envio un total de 10.55 KB
+02 08:42:49:617 Enviada la respuesta a socket 0561355C
+02 08:42:49:617 Html enviado. Tiempo de envío 0.045604 segundos
+02 08:42:50:513 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 108
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:50:513 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:50:513 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:50:515 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:50:518 Detectado evento
+02 08:42:50:518 Evento recibido
+02 08:42:50:518 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: tdbl3f1c1
+	Antvalor: N006003003
+02 08:42:50:520 Fin Evento recibido
+02 08:42:50:577 Compresion fin
+02 08:42:50:578 Envio un total de 7.74 KB
+02 08:42:50:580 Enviada la respuesta a socket 0561355C
+02 08:42:53:162 Conexion 0561355C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 08:42:53:163 La conexion 0 recibe peticion en socket 0561355C
+02 08:42:53:163 Tratapeticion: Server cambia de valor de 0561355C a 0561355C
+02 08:42:53:163 AtiendePost: Server cambia de valor de 0561355C a 0561355C
+02 08:42:53:172 Detectado evento
+02 08:42:53:172 Evento recibido
+02 08:42:53:172 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 08:42:53:172 Fin Evento recibido
+02 08:42:53:197 Libera 561355c
+
+00 08:42:53:197 Fichero de log cerrado.
+

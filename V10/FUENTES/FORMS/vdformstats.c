@@ -1,0 +1,314 @@
+#include "vdform.h"
+
+#define MAXEJES		2
+#define MAXSERIES	10
+
+#define SERBARRAS	1
+#define	SERLINEA	2
+#define SERAREAS	3
+#define SERPASTEL	4
+
+static int cargagrafseries(char *nombre,vdgraficaseries *ser,int *nserie,int *pastel,int *afterdraw) {
+	int ret=0;
+	ret=GRASbuscanombregraf(nombre,ser+(*nserie));
+	if (ret) return(ret); 
+	while (ret==0) {
+		if (!strcmp((ser+(*nserie))->tiposerie,"PASTEL")) {
+			if (*(ser+(*nserie))->verlabelpie=='S') *afterdraw=1;	
+			*pastel=1;
+		}
+		(*nserie)++;
+		ret=GRASnextnombregraf(ser+(*nserie));		
+	}
+	return(0);
+}
+
+static int poncomillas(fcampos *c) {
+	switch(c->tipo) {
+		case V10CHAR:
+		case V10BYTE:
+		case V10CADENA:
+		case V10FECHA :
+		case V10HORA  : 
+			return(1);
+		default: 
+			return(0);
+	}
+	return(0);
+}
+
+static void trataseparadores(fcampos *c, char *cad) {
+	char *ptr,*ini,valor[MAXCADENA]="";
+	if (c->tipo==V10FLOAT || c->tipo==V10DOUBLE || c->tipo==V10INT || c->tipo==V10UINT || c->tipo==V10SHORT || c->tipo==V10USHORT || c->tipo==V10LONG || c->tipo==V10ULONG) { 
+		ini=cad;
+		ptr=strchr(cad,'.');
+		while (ptr) {			
+			strncat(valor,ini,(ptr-ini));
+			ini=ptr+1;
+			ptr=strchr(ini,'.');
+		}
+		strcat(valor,ini);
+		strcopia(cad,valor,strlen(valor));
+	}
+	
+}
+
+static int capturavalores(bloques *b,char *campox, char *campoy, char *cad) {
+	int ncampox,ncampoy,i;
+	char valor[MAXCADENA]="";
+	fcampos *fcx,*fcy;
+	
+	ncampox=damecampo(b,campox);
+	if (ncampox<0) {
+		mensajeform(b,"No existe campo %s en el bloque %s",campox,b->fichero);
+		return(-1);
+	}	
+	ncampoy=damecampo(b,campoy);	
+	if (ncampoy<0) {
+		mensajeform(b,"No existe campo %s en el bloque %s",campoy,b->fichero);
+		return(-1);
+	}
+	fcx=b->c+ncampox;
+	fcy=b->c+ncampoy;
+	for (i=0;i<b->s->ulin;i++) {
+		leeregistroi(b,i);			
+		//if (es_blanco(b->buffer)) break;
+		*valor=0;
+		v10tipo2a(fcx->b->buffer+fcx->off,fcx->tipo,fcx->lvar,fcx->format,fcx->dec,valor,1);
+		if (i>0) strcat(cad,",");
+		trataseparadores(fcx,valor);
+		if (poncomillas(fcx)) sprintf(cad+strlen(cad),"[\"%s\",",trim(valor));
+		else sprintf(cad+strlen(cad),"[%s,",trim(valor));
+		*valor=0;
+		v10tipo2a(fcy->v->dato,fcy->tipo,fcy->lvar,fcy->format,fcy->dec,valor,1);
+		trataseparadores(fcy,valor);
+		if (poncomillas(fcy)) sprintf(cad+strlen(cad),"\"%s\"] ",trim(valor));
+		else sprintf(cad+strlen(cad),"%s]",trim(valor));
+	}
+	leeregistroi(b,b->s->clin);	
+	return(0);
+}
+
+
+
+static int dametiposerie(vdgraficaseries	*miserie) {
+	if (!strcmp(miserie->tiposerie,"BARRAS")) return(SERBARRAS);
+	if (!strcmp(miserie->tiposerie,"LINEA")) return(SERLINEA);
+	if (!strcmp(miserie->tiposerie,"AREAS")) return(SERAREAS);
+	if (!strcmp(miserie->tiposerie,"PASTEL")) return(SERPASTEL);
+	return(0);
+}
+
+static void cargacolorespie(char *nombre, char *colorespie,int *ncolores) {
+	int ret;
+	vdgraficapies grap;
+	
+	*ncolores=0;
+	*colorespie=0;
+	ret=GRAPbuscanombregraf(nombre,&grap);
+	while (ret==0) {
+		if (*ncolores>0) strcat(colorespie,",");
+		 sprintf(colorespie+strlen(colorespie),"\'%s\'",grap.colorpie);
+		(*ncolores)++;
+		ret=GRAPnextnombregraf(&grap);
+	}
+}
+
+
+static int seriegraf(int nstat, bloques *b,vdgraficas *migra,vdgraficaseries	*miserie,char *cad) {
+	char nomserie[MAXPATH]="";
+	char arrayvalores[MAXCADENA]="",colorespie[MAXCADENA]="";	
+	int nvalores=0,ret=0,tiposerie,ncolores; 
+	sprintf(nomserie,"chart%dser%d",nstat,miserie->numserie);
+
+	tiposerie=dametiposerie(miserie);	
+
+	if (tiposerie==SERPASTEL) {
+		cargacolorespie(migra->nombregraf, colorespie,&ncolores);
+		if (ncolores>0) {		
+			strcat(cad,"EJSC.DefaultPieColors = [");
+			strcat(cad, colorespie);
+			sprintf(cad+strlen(cad),"];NumberPieColors=%d;",ncolores);			
+		}
+	}
+
+	switch (tiposerie) {
+		case SERBARRAS:
+			sprintf(cad+strlen(cad),"var %s=new EJSC.BarSeries( new EJSC.ArrayDataHandler([  ",nomserie);
+			break;
+		case SERLINEA:
+			sprintf(cad+strlen(cad),"var %s=new EJSC.LineSeries( new EJSC.ArrayDataHandler([  ",nomserie);
+			break;
+		case SERAREAS:
+			sprintf(cad+strlen(cad),"var %s=new EJSC.AreaSeries( new EJSC.ArrayDataHandler([  ",nomserie);
+			break;
+		case SERPASTEL: 
+			sprintf(cad+strlen(cad),"var %s=new EJSC.PieSeries( new EJSC.ArrayDataHandler([  ",nomserie);
+			break;
+	}
+
+	if (tiposerie==SERPASTEL) ret=capturavalores(b,miserie->camposerie,migra->campox,arrayvalores);
+	else ret=capturavalores(b,migra->campox,miserie->camposerie,arrayvalores);
+	if (ret) return(ret);
+	strcat(cad,arrayvalores);	
+	strcat(cad," ]), { \n");
+	sprintf(cad+strlen(cad),"title: \"%s\" ",(*miserie->tituloserie)?miserie->tituloserie:nomserie);
+	
+	if (tiposerie!=SERPASTEL) {		
+		if (*miserie->colorvalorserie) sprintf(cad+strlen(cad), ", color: \"%s\" ",miserie->colorvalorserie);
+		if (tiposerie==SERBARRAS && miserie->anchovalorserie>0) sprintf(cad+strlen(cad),", intervalOffset: 0.%d ",miserie->anchovalorserie);
+		if (miserie->anchobordeserie>0) sprintf(cad+strlen(cad),", lineWidth: %d ",miserie->anchobordeserie);
+		sprintf(cad+strlen(cad),", padding: {x_axis_min: %d,x_axis_max: 0,y_axis_min: %d,y_axis_max: 0}\n, max_zoom_message: \n'No More Zooming\' ",
+			miserie->paddingx, miserie->paddingy);  
+		if (*miserie->leyendaserie=='S') {
+			strcat(cad," , legendIsVisible: true, coloredLegend: true");		
+			if (*miserie->leyendaarbol=='S') strcat(cad,",treelegend: true");
+			else  strcat(cad,",treelegend: false");
+		} else strcat(cad," , legendIsVisible: false, treelegend: false");	
+		
+		if (tiposerie==SERBARRAS) {
+			if (*miserie->agruparbarras=='S') strcat(cad,", groupedBars: true");	
+			else  strcat(cad,", groupedBars: false");
+			if (*miserie->orientacion=='H') strcat(cad,", orientation: \"horizontal\"");
+		} else { // gráficos de líneas y áreas
+			if (miserie->tamanopunto>0) 
+				sprintf(cad+strlen(cad),", drawPoints: true, pointSize: %d",miserie->tamanopunto);
+				if (*miserie->colorpunto) sprintf(cad+strlen(cad),", pointColor:  \"%s\"",miserie->colorpunto);
+				if (miserie->anchobordepunto>0) sprintf(cad+strlen(cad),", pointBorderSize: %d",miserie->anchobordepunto);
+				if (*miserie->colorbordepunto) sprintf(cad+strlen(cad),",pointBorderColor: \"%s\"\n",miserie->colorbordepunto);
+			else  strcat(cad,", drawPoints: false\n");
+		}
+	} else { // serie de pastel
+		if (*miserie->leyendaserie=='S') {
+			strcat(cad," , legendIsVisible: true, coloredLegend: true");		
+			if (*miserie->leyendaarbol=='S') strcat(cad,",treelegend: true");
+			else  strcat(cad,",treelegend: false");
+		} else strcat(cad," , legendIsVisible: false, treelegend: false");	
+	
+		sprintf(cad+strlen(cad),", linewidth: 1, height: \"%d%%\" ,\n width: \"%d%%\" \n",
+			(miserie->altopie==0)?100:miserie->altopie,(miserie->anchopie==0)?100:miserie->anchopie);
+		sprintf(cad+strlen(cad),", position: \"%s\" \n",(*miserie->posicionpie)?miserie->posicionpie:"center");		
+	}	
+	strcat(cad,"});");
+	sprintf(cad+strlen(cad), "chart%d.addSeries(%s);",nstat,nomserie);
+	if (miserie->opacidadvalorserie>0) sprintf(cad+strlen(cad),"%s.setOpacity(%d);",nomserie,miserie->opacidadvalorserie);
+	if (tiposerie!=SERPASTEL && miserie->opacidadborderserie>0) sprintf(cad+strlen(cad),"%s.setLineOpacity(%d);",nomserie,miserie->opacidadborderserie);
+	if (tiposerie==SERPASTEL && *miserie->verlabelpie=='S')  sprintf(cad+strlen(cad),"mySeries=%s;",nomserie);
+	return(0);
+}
+
+
+int vdcargadatos(int nstat, bloques *b,char *nombre, char *cad) {
+	vdgraficas gra;
+	vdgraficaejes graeje[MAXEJES],*mieje;
+	vdgraficaseries	graserie[MAXSERIES],*miserie;
+	int nserie=0,neje=0,ejex=0,ejey=0,pastel=0,ret,i,afterdraw=0,poncoma;
+
+	if (GRAselvdgrafica(&gra)) {
+ 		mensajeform(b,"No se encuentra gráfica con nombre %s\n",nombre);
+		return(-1);
+	}
+	
+	ret=cargagrafseries(nombre,graserie,&nserie,&pastel,&afterdraw);
+	if (ret) {
+		mensajeform(b,"No se han definido series para la gráfica con nombre %s\n", nombre);
+		return(-1);
+	}
+
+	sprintf(cad,"var chart%d = new EJSC.Chart(\"stat%d\", \n "\
+	                       "{ title: \"%s\",\n "\
+                           "  show_titlebar: %s, \n "\
+						//   "  show_hints: true, \n"
+						   "  drawing_message: \"Cargando gráfico ...\", \n ",
+						   nstat,nstat,gra.titulograf,(*gra.titulograf==0)?"false":"true");
+	
+	if (gra.leyendaestado==0) strcat(cad," show_legend: false ,\n");
+	else {
+		sprintf(cad+strlen(cad)," legend_state: \"%s\" ,\n", (gra.leyendaestado==1)?"minimized":"normal");
+		if (*gra.leyendagraf) sprintf(cad+strlen(cad),"  legend_title: \"%s\", \n ",gra.leyendagraf);
+	}
+	if (afterdraw) {
+		sprintf(cad+strlen(cad),"  show_hints: false, onAfterDraw: doAfterDraw \n ");
+		if (nserie>1) strcat(cad,",");
+	} else if (pastel>0 && nserie==1) strcat(cad," show_hints: true");
+	
+	// recorre los ejes de la gráfica
+	memset(&graeje,0,sizeof(vdgraficaejes)*MAXEJES);
+	ret=GRAEbuscanombregraf(nombre,graeje+neje);	
+	while (ret==0) {
+		poncoma=0;
+		mieje = graeje + neje;
+		// es una gráfica de tipo pastel
+		if (pastel>0 && nserie==1) { ejex=ejey=1; break; }
+		
+		if (*mieje->eje =='X') { sprintf(cad+strlen(cad),"  axis_bottom: { "); ejex=1; }
+		else { sprintf(cad+strlen(cad),"  axis_left: {  "); ejey=1; }
+		if (!strcmp(mieje->cssvalores,"invisible")) strcat(cad," visible: false, ");
+		else strcat(cad," visible: true, ");		
+		sprintf(cad+strlen(cad),"label_class: \"%s\",caption_class:\"%s\" ",
+								(*mieje->cssvalores)?mieje->cssvalores:"ejevalor", 
+								(*mieje->csstitulo)?mieje->csstitulo:"ejetitulo");		
+		if (*mieje->tituloeje) sprintf(cad+strlen(cad),", caption: \"%s\" ", mieje->tituloeje);
+		if (mieje->minvalor<mieje->maxvalor) sprintf(cad+strlen(cad),", min_extreme:%d,max_extreme:%d", mieje->minvalor, mieje->maxvalor);
+		if (*mieje->cursortexto) {
+			sprintf(cad+strlen(cad),", cursor_position: {show: true,caption: \"%s\",color: \"%s\",textColor: \"%s\", className: \"%s\"}\n",
+				mieje->cursortexto, (*mieje->cursorcolor)?mieje->cursorcolor:"#F5D0A9",(*mieje->cursortextcolor)?mieje->cursortextcolor:"#FFFFFF",(*mieje->cursorcss)?mieje->cursorcss:"ejecursor");
+		}
+		if (mieje->gridgrosor>0) {
+			sprintf(cad+strlen(cad),", grid: {thickness: %d,color: \"%s\",opacity: %d, show: true}\n",
+				mieje->gridgrosor, (*mieje->gridcolor)?mieje->gridcolor:"#F2F2F2",(mieje->gridopacidad>0)?mieje->gridopacidad:100);
+		}
+		// formato de los valores del eje
+		strcat(cad,", formatter: new EJSC.NumberFormatter({ \n ");			
+		if (*mieje->valoresmoneda)	{ sprintf(cad+strlen(cad),"currency_symbol: \"%s\"", mieje->valoresmoneda);	poncoma=1;}
+		
+		if (mieje->valoresmindec>=0) {
+			sprintf(cad+strlen(cad),"%c forced_decimals: %d",(poncoma==1)?',':' ',mieje->valoresmindec);
+			poncoma=1;
+		}
+		if (mieje->valoresmaxdec>0) {
+			sprintf(cad+strlen(cad),"%c variable_decimals: %d",(poncoma==1)?',':' ',mieje->valoresmaxdec);
+			poncoma=1;	
+		}
+		if (*mieje->valoressepdec)	{
+			sprintf(cad+strlen(cad),"%c decimal_separator: \"%s\"",(poncoma==1)?',':' ',mieje->valoressepdec);
+			poncoma=1;	
+		}
+		if (*mieje->valoressepmil)	{
+			sprintf(cad+strlen(cad),"%c thousand_separator: \"%s\"",(poncoma==1)?',':' ',mieje->valoressepmil);
+			poncoma=1;	
+		}
+		if (*mieje->valorespos)	{
+			sprintf(cad+strlen(cad),"%c currency_position: \"%s\"", (poncoma==1)?',':' ',mieje->valorespos); 
+			poncoma=1;	
+		}
+		strcat(cad,"})");
+		// fin formatos
+		strcat(cad,"},");
+		neje++;
+		if (neje==MAXEJES) break;
+		ret=GRAEnextnombregraf(graeje+neje);
+	}
+
+	if (ejex==0) {
+		mensajeform(b,"No se ha definido el eje X para la gráfica con nombre %s\n",nombre);
+		return(-1);
+	}
+	if (ejey==0) {
+		mensajeform(b,"No se ha definido el eje Y para la gráfica con nombre %s\n",nombre);
+		return(-1);
+	}
+	
+	if (pastel>0 && nserie==1)strcat(cad,"}); \n ");
+	else strcat(cad,"  axis_top: {visible: false},   axis_right: {visible: false}}); \n ");
+	/* fin de definición de la gráfica y sus ejes */
+
+	// genera el código de las series 
+	for (i=0;i<nserie;i++) {
+		miserie=graserie+i;
+		ret=seriegraf(nstat,b,&gra,miserie,cad);
+		if (ret) return(ret);
+	}	
+			
+	return(0);
+}

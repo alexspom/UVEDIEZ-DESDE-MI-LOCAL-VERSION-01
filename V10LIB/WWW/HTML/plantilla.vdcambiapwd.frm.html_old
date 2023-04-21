@@ -1,0 +1,448 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<html lang="es" class="fixchrome"> <!--<![endif]-->
+
+<head>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Acceso a usuarios</title>
+	
+	<script type="text/javascript" src="../html/menu/jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen" />
+<style>
+@import url(../html/menu/reset.css);
+
+.flat-form {
+  background: #e8e8e8;
+  margin-top: 15px;
+  margin-left: 10px;
+  width: 390px;
+  height: 400px;
+  position: relative;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight:normal;
+  border: 1px solid #000000;
+}
+
+.flat-form h1{
+  font-size:25px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight:normal;
+}
+
+.flat-form h2{
+  font-size:25px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight:normal;
+}
+
+.tabs {
+  background: #cccccc;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+.tabs li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+.tabs a {
+  background: #b0b0b0;
+  display: block;
+  float: left;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+.tabs li:last-child a {
+  border-right: none;
+  width: 174px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+.tabs a.active {
+  background: #03737b;
+  border-right: none;
+  -webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+}
+.form-action {
+  padding: 0 20px;
+  position: relative;
+}
+
+.form-action h1 {
+  font-size: 42px;
+  padding-bottom: 10px;
+}
+.form-action h2 {
+  font-size: 32px;
+  padding-bottom: 10px;
+}
+
+.form-action p {
+  font-size: 12px;
+  padding-bottom: 10px;
+  line-height: 25px;
+}
+form {
+  padding-right: 20px !important;
+}
+form input[type=text],
+form input[type=password],
+form input[type=submit] {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+.inputform {
+  width: 100%;
+  height:30px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  background: #fff;
+  border: none;
+  color: #e74c3c;
+  outline: none;
+  font-size:20px;
+}
+
+.inputformRESET {
+  width: 100%;
+  height:20px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  background: #fff;
+  border: none;
+  color: #e74c3c;
+  outline: none;
+  font-size:15px;
+}
+
+.dark-box {
+  background: #5e0400;
+  box-shadow: 1px 3px 3px #3d0100 inset;
+  height: 40px;
+  width: 50px;
+}
+.form-action .dark-box.bottom {
+  position: absolute;
+  right: 0;
+  bottom: -24px;
+}
+.tabs + .dark-box.top {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+.button {
+            border: none;
+            display: block;
+            background: #00535f;
+            height: 40px;
+            width: 80px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 5px;
+            /*box-shadow: 0px 3px 1px #2075aa;*/
+            -webkit-transition: all 0.15s linear;
+            -moz-transition: all 0.15s linear;
+            transition: all 0.15s linear;
+            margin-top: 10px;
+        }
+        
+        .button:hover {
+            background: #078a9e;
+            /*box-shadow: 0 3px 1px #237bb2;*/
+        }
+        
+        .button:active {
+            background: #00535f;
+            /*box-shadow: 0 3px 1px #0f608c;*/
+        }
+
+::-webkit-input-placeholder {
+  color: #e74c3c;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #e74c3c;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e74c3c;
+}
+:-ms-input-placeholder {
+  color: #e74c3c;
+}
+
+
+#Date { font-family:'verdana';font-size:13px; font-weight:bold;text-align:center; text-shadow:0 0 5px #cccccc; margin-top:-100px;margin-right:30px;white-space: nowrap;}
+#point { position:relative; -moz-animation:mymove 1s ease infinite; -webkit-animation:mymove 1s ease infinite; padding-left:10px; padding-right:10px; }
+
+@-webkit-keyframes mymove 
+{
+0% {opacity:1.0; text-shadow:0 0 20px #cccccc;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #cccccc; }	
+}
+
+
+@-moz-keyframes mymove 
+{
+0% {opacity:1.0; text-shadow:0 0 20px #cccccc;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #cccccc; }	
+}
+
+.textologinuser{text-decoration: none;
+  font: 15px Helvetica, Arial, Sans-Serif;
+  letter-spacing: 0px;
+  text-align: left;
+  color: #2f323b;
+  font-weight:bold
+  }
+  
+  #clock {
+            position: absolute;
+            top: 155px;
+            margin: -100px 0 0 -200px;
+            width: 400px;
+            height: 135px;
+            text-align: center;
+            font-size: 40px;
+            border: 0px;
+            padding: 65px 0 0 0;
+            font-family: Verdana, Geneva;
+            color: #363535;
+        }
+</style>
+
+</head>
+
+
+<!--Código organizado, corregido y actualizado el 20/04/2015 por Eduardo L. Arana-->
+
+
+<body  onkeyup="return fonkeyup()" oncontextmenu="return foncontextmenu()" onkeydown="return fonkeydown()" onload="fonload()"  onclick="fonclick()" onmousedown="fonmousedown()" onhelp="fonhelp()"  onunload="fonunload()">
+<table id="msginfo" class="titusecunsup" style="visibility:hidden" width="752" height="30" border="0" ><tr><td><span class="texsecunsup"><!--v10mensajeinfo--></span></td></tr></table>
+<img id="imgdebug" class="imgdebuglogin" src="../img/gears1.gif"/>
+<img id="imgrelojar" class="imgrelojarlogin" src="../img/spinner.gif"/>
+
+
+   <div id="container1">
+
+        <div id="header1">
+            <div class="wrapperpibe">
+                <div class="leftpibe">
+                    <div class="contenido">
+                        <div class="cabecera">
+                            <div class="logov10soluciones"><img src="../img/logov10.png" alt="" width="100" height="90" style="padding-left:10px;vertical-align: middle;" />
+                                <span class="textoempresa">SOLUCIONES</span>
+                                <div style="height:10px;"></div>
+                                <div class="barrita" >&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightpibe" style="margin-top:-210px;margin-right:-20px;">
+                        <div id="clock">
+                            <div id="time"></div>
+                            <div id="date" style="margin-top:5px;font-size:15px;"></div>
+                        </div>
+                        <!--<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="155" height="270" ID="Captivate1" style="margin-left:10px;">
+		<param name="movie" value="../img/relojflipo.swf">
+		<param name="quality" value="high">
+		<param name="loop" value="0">
+		<param name="play" value="false">
+		<param name="WMODE" value="transparent" /> 
+		<embed src="../img/relojflipo.swf" wmode="transparent" width="155" height="270" loop="0" quality="high" type="application/x-shockwave-flash" play="false" flashvars="autoplay=false&play=false" menu="false"></embed>
+				</object>
+                        <div id="Date"></div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="fixie10m">
+                <!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+
+                <div id="body1">
+
+                    <div class="wrapperpibe2">
+                        <div class="leftpibe2">
+                            <div class="flat-form" style="z-index:1000;">
+                                <ul class="tabs">
+                                    <li>
+                                        <input name="ESC"id ="bl0ESC"tecla="27"teclaespecial="onkeyup" NOTAB type="button" value="Acceso" onclick="v10lib.mandaevento('','onkeyup',27);" style="border-style: solid;border-color:#b0b0b0;
+    border-width: 5px;width:100px;height: 40px;color: black;font-size: 16px;background-color: #b0b0b0;outline:0;"/></a>
+                                    </li>
+                                    <li>
+                                      <input name="CAMBIARPASS" id ="bl0CAMBIARPASS" type="button" disabled value="Cambiar Contrase&ntilde;a" style="border-style: solid;border-color:#03737b;
+    border-width: 5px;height: 40px;color: black;font-size: 16px;background-color: #03737b;outline:0;"/></a>
+                                    </li>
+                                </ul>
+                                <div id="login" class="form-action hide">
+                                </div>
+                                <!--/#register.form-action-->
+								<div id="reset" class="form-action show">
+                                    <h2>Cambiar contrase&ntilde;a</h2>
+                                     <form >
+                                        <ul><br />
+                                            <li>
+											<div class="textologinuser">Usuario <input id="bl0f1c1" value="&bl0_01_CODOPE&" tipo="alfa" class="inputformRESET" type="text"title="C&#243;digo del usuario al que se ha de crear un password" maxlength=10 onblur="fonblur('bl0f1c1')"/></div>
+                                            </li>
+                                            <li>
+                                            <div class="textologinuser">Contrase&ntilde;a Actual <input id="bl0f1c2" value="&bl0_01_PASSWORD&" tipo="alfa" class="inputformRESET" type="password" title="Password del usuario" maxlength=40 onblur="fonblur('bl0f1c2')"/></div>
+                                            </li>
+											<li>
+                                            <div class="textologinuser">Nueva Contrase&ntilde;a <input id="bl0f1c3" value="&bl0_01_NUEPASS&" tipo="alfa" class="inputformRESET" type="password" title="Nuevo password para el usuario" maxlength=40 onblur="fonblur('bl0f1c3')"/></div>
+                                            </li>
+											<li>											
+                                            <div class="textologinuser">Repetir Contrase&ntilde;a <input id="bl0f1c4" value="&bl0_01_REPITE&" tipo="alfa" class="inputformRESET" type="password" title="Repita el password por seguridad" maxlength=40 onblur="fonblur('bl0f1c4')"/></div>
+                                            </li>
+                                            <li>
+											<input name="F4"id ="bl0F4"tecla="115"teclaespecial="onkeyup" title="Actualizar" NOTAB type="button" value="Actualizar" class="button"/>
+                                            </li>
+											<br /><br />
+                                        </ul>
+                                    </form>
+                                </div>
+                                <!--/#register.form-action-->
+                            </div>
+							<!--V10FORMJAVASCRIPT-->
+                        </div>
+                        <!-- rpzdt -->
+                        
+                        <span id="timeenvio" class="timeenvio"></span>
+<!--V10MENSAJE-->
+<!--V10HELP-->
+<!--CARGA DEL FRM-->
+<!--V10FRMDATA-->	
+<!--V10CALENDARIO-->
+<!--V10BOTONES-->
+<!--V10TECLADOVIRTUAL-->
+<!--V10SIDEBAR-->
+<!--V10COMPONENTES-->
+<!--V10INCLUDEHTML-->
+<!--CAMPOV10HTML-->						
+						
+                        <script>
+  var v10lib=parent.frames[0];
+  v10lib.loadinit(window);
+  v10lib.generavars(window,'<!--IDSESION-->');
+  var v10libcargada =true;
+  /* SCRIPTS */
+  /* AJAX */
+  function fonkeydown(){return v10lib.fonkeydown();}
+  function fonkeyup(){return v10lib.fonkeyup();}
+  function fonclick(){v10lib.fonclick();}
+  function fonmousedown(){v10lib.fonmousedown();}
+  function fonmouseover(){v10lib.fonmouseover();}
+  function fonmouseout(){v10lib.fonmouseout();}
+  function fonhelp(){v10lib.fonhelp();}
+  function fonunload(){v10lib.fonunload();}
+  function foncontextmenu(){v10lib.foncontextmenu();}
+  function fonclickbotonera(){v10lib.fonclickbotonrea();}
+  function fmuestrabotonera(){v10lib.fmuestrabotonera();}
+  function fbotoneraover(){v10lib.fbotoneraover();}
+  function fbotoneraout(){v10lib.fbotoneraout();}
+  function fonblur(id){v10lib.fonblur(id);}
+  function fdummy() {v10lib.fdummy();}
+  function fonload() {
+  while(v10libcargada===false);
+  /* ONLOAD */
+  /* ONLINE */
+  //if (window.document.getElementById('sideBarfrm')) {extendInicial(); window.document.getElementById('poxit').innerHTML=v10lib.v10clipboard;}
+  //v10lib.ayudaonline();
+  //v10lib.showtime();
+  }
+</script>
+<script type="text/javascript">
+                            $(document).ready(function() {
+
+                                setInterval(function() {
+                                    time();
+                                }, 1000);
+
+                                var months = new Array(12);
+                                months[0] = "Enero";
+                                months[1] = "Febrero";
+                                months[2] = "Marzo";
+                                months[3] = "Abril";
+                                months[4] = "Mayo";
+                                months[5] = "Junio";
+                                months[6] = "Julio";
+                                months[7] = "Agosto";
+                                months[8] = "Septiembre";
+                                months[9] = "Octubre";
+                                months[10] = "Noviembre";
+                                months[11] = "Diciembre";
+
+                                var day = new Array(7);
+                                day[0] = "Domingo";
+                                day[1] = "Lunes";
+                                day[2] = "Martes";
+                                day[3] = "Miercoles";
+                                day[4] = "Jueves";
+                                day[5] = "Viernes";
+                                day[6] = "Sabado";
+
+                                var date = new Date();
+                                var month_value = date.getMonth();
+                                var day_value = date.getDay();
+                                var daydate = date.getDate();
+                                var año = date.getFullYear();
+
+                                if (daydate < 10) daydate = "0" + daydate;
+
+                                $('#date').html(day[day_value] + "&nbsp;" + daydate + "&nbsp;" + "de" + "&nbsp;" + months[month_value] + "&nbsp;" + "del" + "&nbsp;" + año);
+
+                                function time() {
+                                    var time = new Date();
+                                    var hours = time.getHours();
+                                    var minutes = time.getMinutes();
+                                    var seconds = time.getSeconds();
+
+                                    if (hours < 10) hours = "0" + hours;
+                                    if (minutes < 10) minutes = "0" + minutes;
+                                    if (seconds < 10) seconds = "0" + seconds;
+
+                                    $('#time').html(hours + ":" + minutes + ":" + seconds);
+                                }
+
+                            });
+                        </script>
+         
+                        <div style="height:800px;">&nbsp;</div>
+
+
+                    </div>
+                </div>
+
+                <div class="leftpibe1" style="margin-left:10px;margin-top:-70px;position: absolute;"></div>
+                <!--<div class="footer"><div class="barrita">&nbsp;</div>&nbsp;&nbsp;&copy; 2015 UveDiez Supply Chain, S.L.</div>-->
+                <div class="rightpibe1" style="position: absolute;margin-top:10px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+#*****************************************************************
+#Módulo: VDORDRECLIN.PAN
+#Funcionalidad : 
+#Autor: ICC      
+#Fecha: 13-02-2008
+#*****************************************************************
+#* Histórico de cambios
+#* ====================
+#* ====================
+MANTENIMIENTO DE LAS LINEAS DE LA ORDEN DE RECEPCION
+
+Línea Artículo                                  Lote        Cad.     Serie             Cantidad    Etiq. %Rec F.Pr.recep  Estado Ultima modificación             
+##### _20_________ _100________________________ _20________ _8______ _20______________ ########### ##### ###  ¿D-MM-Y.YYY #####  _32_______ ¿D-MM-Y.YYY _8______
+|
+TABLA=VDORDRECLIN
+WLONX=1120
+
+
+POSTQUERY=FEJECUTA("%CPORCENTAJERECEP", "ERROR AL CALCULAR EL PORCENTAJE RECEPCIONADO",
+                   "%CNETIQUETAS", "ERROR CALCULANDO EL NUMERO DE ETIQUETAS A IMPRIMIR")
+
+PREINSERT=FEJECUTA("-CCADUCNULL","NO SE DEBE INFORMAR LA CADUCIDAD SI NO SE INFORMA EL LOTE",
+                   "CSELMODIF","ERROR AL OBTENER LA FECHA DE MODIFICACION",
+                   "CSELINSERT","ERROR AL OBTENER LOS DATOS DE INSERCION")
+
+PREUPDATE=FEJECUTA("-CCADUCNULL","NO SE DEBE INFORMAR LA CADUCIDAD SI NO SE INFORMA EL LOTE",
+                   "CVALCANTIDAD","ERROR, LA CANTIDAD NO PUEDE SER INFERIOR A LA CANTIDAD YA RECEPCIONADA",
+                   "CSELMODIF","ERROR AL OBTENER LA FECHA DE MODIFICACION")
+
+CAMPO=MARCASTK,AUXILIAR,VIRTUAL,OCULTO,NOUPDATE
+CAMPO=CODPROVE,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=CODORDREC,VIRTUAL,OCULTO,TOOLTIP("Código de la orden de recepción")
+CAMPO=CODDIV,VIRTUAL,OCULTO,TOOLTIP("Código de la división/compañía.Para permitir duplicidad de Ordenes en distintas divisiones = interfases")
+CAMPO=SECLINORD,NOENTER,TOOLTIP("Secuencia de registro. Pueden no ser consecutivos"),TITULO("Línea"),WLONX=15
+CAMPO=CODART,POSTCHANGE=FDESIGNACION("CDESART","ERROR, NO EXISTE EL ARTICULO :CODART"),TOOLTIP("Código de artículo"),TITULO("Artículo"),
+             CONTEXTUAL=FDESIGNACION(FEJECUTAFORM("VDSELART","N","CODART=NVL(:CODART, CODART)","","CODART=:CODART","","S")),COMBOX("CLISTAART") 
+CAMPO=DESART,NOENTER,AUXILIAR,TOOLTIP("Designacion"),TITULO("")
+CAMPO=CODLOT,TOOLTIP("Lote previsto. Si esta informado la mercancía en recepción debe ser de dicho lote"),TITULO("Lote"),
+             CONTEXTUAL=FDESIGNACION(FEJECUTAFORM("VDLOTES","N","CODART=:CODART","","CODLOT=:CODLOT","","S")),
+             POSTCHANGE=FEJECUTA("@COBTCADUCI","")
+CAMPO=CADUCI,TOOLTIP("Caducidad prevista. Si esta informada la mercancía en recepción debe ser de dicha caducidad"),TITULO("Caducidad"),
+             POSTCHANGE=FEJECUTA("+CVALCADUCI", "",
+                                 "+CVERERROR",":MSGERROR",
+                                 "CVALCADUCI1", "ERROR, FORMATO INCORRECTO\nFORMATO CORRECTO AAAAMMDD")
+CAMPO=NUMEROSERIE,TOOLTIP("Numero unico del producto"),TITULO("Serie")
+CAMPO=CANTIDAD,TOOLTIP("Cantidad prevista a recibir"),TITULO("Cantidad"),POSTCHANGE=FDESIGNACION("CVALCANTIDAD","Cantidad erronea")
+CAMPO=NETIQUETAS,AUXILIAR,TOOLTIP("Nº Etiquetas a imprimir"),TITULO("Etiq.")
+CAMPO=PORCENTAJERECEP,AUXILIAR,TOOLTIP("Porcentaje ya recepcionado, sin tener en cuenta el exceso"),TITULO("Rec%"),NOENTER
+CAMPO=FECRECPRE,TOOLTIP("Fecha de recepcion prevista de la línea"),TITULO("F.Pr.Recep")
+CAMPO=STATUS,PROTECT("IMPLANTADOR"),TOOLTIP("Status de la linea"),TITULO("Estado"),WLONX=20
+CAMPO=CODCOMEN,OCULTO,"#########",TOOLTIP("Código de comentario")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Usuario que ha realizado la Ultima modificación.Es utilizado para depuración y control de los registros en las tablas"),TITULO("Ultima modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Es la fecha  en que se efectuó alguna modificación. Es utilizado para depuración y control de los registros en las tablas")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Es la hora  en que se efectuó alguna modificación. Es utilizado para depuración y control de los registros en las tablas")
+CAMPO=MSGERROR,AUXILIAR,OCULTO,"_100______"
+CAMPO=DUMMY,AUXILIAR,OCULTO,"#"
+CAMPO=UNIEMB,AUXILIAR,OCULTO,"###############"
+
+CURSOR=CPORCENTAJERECEP SELECT (:CANTIDAD-VDRECEP.CANTPDTE(:CODORDREC, :CODART, :CODDIV, :CODLOT,:NUMEROSERIE, :SECLINORD, 'N'))*100/:CANTIDAD PORCENTAJERECEP
+                          FROM DUAL;
+
+CURSOR=CNETIQUETAS SELECT CEIL(:CANTIDAD/DECODE(UNIEMB,0,1,UNIEMB)) NETIQUETAS, UNIEMB
+                     FROM VDARTIC
+                    WHERE CODART=:CODART;
+                    
+CURSOR=CDESART SELECT DESART 
+                FROM VDARTIC 
+                WHERE CODART=:CODART AND
+                      EXISTS (SELECT CODART FROM ALCENSAYOART ENA,VDORDRECCAB ORC WHERE ORC.CODORDREC=:CODORDREC AND CODENSAYO=ORC.MARCASTK AND ENA.CODART=:CODART AND ENA.ADMITEREC='S');
+
+CURSOR=CLISTAART SELECT ART.CODART,ART.DESART
+                   FROM VDARTIC ART,ALCENSAYOART ENA,VDORDRECCAB ORC
+                   WHERE ORC.CODORDREC=:CODORDREC AND ORC.CODDIV=:CODDIV AND ORC.MARCASTK=ENA.CODENSAYO AND ENA.CODART=ART.CODART AND ENA.ADMITEREC='S' AND
+                         VD.CONTIENE(ENA.CODPROVE,:CODPROVE)>0
+                   ORDER BY CODART;
+
+CURSOR=CCADUCNULL SELECT 1 DUMMY
+                    FROM DUAL
+                   WHERE TRIM(:CODLOT) IS NULL
+                     AND :CADUCI IS NOT NULL;
+
+CURSOR=COBTCADUCI SELECT DECODE(:CADUCI,NULL,CADUCI, :CADUCI) CADUCI
+                    FROM VDLOTES
+                   WHERE (CODART = :CODART
+                      AND CODLOT = :CODLOT)
+                      OR :CADUCI IS NOT NULL;
+
+CURSOR=CVALCADUCI SELECT DECODE(CADUCI, :CADUCI,'','ERROR,\nLA CADUCIDAD NO PUEDE SER DISTINTA A LA DEL LOTE YA CREADO') MSGERROR
+                    FROM VDLOTES
+                   WHERE CODLOT = :CODLOT
+                     AND CODART = :CODART
+                     AND :CADUCI IS NOT NULL;
+
+CURSOR=CVERERROR SELECT 1 DUMMY FROM DUAL WHERE TRIM(:MSGERROR) IS NULL;                       
+
+CURSOR=CVALCADUCI1 SELECT 1 DUMMY
+                     FROM DUAL
+                    WHERE VD.FECHAOK(:CADUCI, 'YYYYMMDD') = 0;
+
+CURSOR=CSELINSERT SELECT NVL(MAX(SECLINORD),0)+1 SECLINORD, #STORLACTIVA STATUS 
+                    FROM VDORDRECLIN
+                   WHERE CODORDREC = :CODORDREC
+                     AND CODDIV    = :CODDIV;
+
+CURSOR=CVALCANTIDAD SELECT :CANTIDAD FROM DUAL WHERE :CANTIDAD>0;
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF, VD.HORASYS HORAMODIF,DECODE(:FECRECPRE,0,VD.FECHASYS,:FECRECPRE) FECRECPRE  FROM DUAL;
+
+CURSOR=CCHECKUNIEMB SELECT  UNIEMB FROM VDARTIC WHERE CODART=:CODART AND UNIEMB > 0;
+
+CONTEXTUAL=FEJECUTAFORM("VDARTIC","S","CODART=:CODART")
+
+#Imprimir etiquetas
+TECLA=SF1,FEJECUTA("CCHECKUNIEMB","EL NUMERO DE UNIDADES POR EMBALAJE\n DEBE SER MAYOR QUE CERO",
+                   FIMPRIME("ETIQ","VDPRODUCTO.GEN;VDETIART.VSQ;CSELNUEART","CODART=:CODART;CODLOT=:CODLOT;CADUCI=:CADUCI;UNIEMB=:UNIEMB;CODENSAYO=:MARCASTK;CODORDREC=:CODORDREC","","1"),":V10ERROR",
+                   FCOMMIT,"")
+
+BOTON=B3,1160,190,50,50,"P",fileprint.png,SF1,"Imprime una etiqueta de producto",INCLUDECSS="background-color: transparent;border-width:0px"                   
+                   
+

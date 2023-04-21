@@ -1,0 +1,12 @@
+
+# Selecciona pedidos en 400 y si tienen agencia los pasa a pendientes de determinar monopedido
+# Comentada para utilizar función C de asignación de agencia con el tratamiento de todos los campos de la tabla VDASIGNAAGE
+#CURSOR=CASIGNAAGE BEGIN
+#                    VDASIGNAAGE.TRATAAGENINI(VDST.FPECPDTEAGEN,VDST.FPECPDTMONO);
+#                  END;@
+                  
+# Selecciona pedidos en 2700 y le asigna el tracking de la agencia, asimismo libera los movimientos				  
+CURSOR=CASIGNATRACK BEGIN
+                    VDASIGNAAGE.ASIGNATRACKING;
+                  END;@
+                                    

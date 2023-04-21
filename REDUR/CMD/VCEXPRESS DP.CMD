@@ -1,0 +1,3 @@
+CALL PONPATH
+REM START VCEXPRESS.EXE "%DISCO%\REDURCLIENTE%\PROYECTOS\DP.SLN"
+start "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" "%CLIENTE%\PROYECTOS\DP.SLN"

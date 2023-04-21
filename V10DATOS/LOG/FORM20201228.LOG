@@ -1,0 +1,494 @@
+00 09:26:41:467 Fichero de log abierto PID 17488
+
+02 09:26:41:467 Intentando abrir fichero v10.ini
+02 09:26:41:470 Cargando driver v10oracle funcion damedriveroracle
+02 09:26:41:535 Conectado a base de datos
+02 09:26:41:537 Asignando ACCESO a V10LOGIN
+02 09:26:41:537 Asignando NIVELLOG a 2
+02 09:26:41:537 Asignando PROTEGIDO a 500
+02 09:26:41:537 Asignando DEBUGHTTP a 1
+02 09:26:41:538 Asignando VISIBLEEXE a 1
+02 09:26:41:538 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:26:41:540 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:26:41:540 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:26:41:541 Asignando SERVERPORTFILES a 1235
+02 09:26:41:542 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 09:26:41:542 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 09:26:41:542 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 09:26:41:543 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 09:26:41:543 Asignando FILEEXPIRED a 3600
+02 09:26:41:543 Asignando TIEMPOESPERA a 240
+02 09:26:41:548 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 09:26:41:548 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 09:26:41:548 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 09:26:41:548 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 09:26:41:550 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 09:26:41:550 Asignando COMPRIMIR a 1
+02 09:26:41:697 Escuchando en el puerto 20000
+02 09:26:42:046 Conectado Listener en el puerto 20000
+02 09:26:42:047 Abriendo conexion HTTP en el puerto 20000
+02 09:26:42:048 Abierta conexion HTTP en el puerto 20000
+02 09:26:43:052 Conexión de cliente establecida
+02 09:26:43:052 v10formserver vale 0
+02 09:26:43:052 Conexion 00B84DAC recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Connection: Keep-Alive
+Host: 127.0.0.1:20000
+
+02 09:26:43:053 La conexion 0 recibe peticion en socket 00B84DAC
+02 09:26:43:053 Tratapeticion: Server cambia de valor de 00000000 a 00B84DAC
+02 09:26:43:053 Sesion 0 Solicita Fichero V10.HTML 
+02 09:26:43:053 Sesion 0 Enviara Fichero V10.HTML
+02 09:26:43:061 Tiempo en abrir 0.006222 seg.
+02 09:26:43:062 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10.html
+02 09:26:43:062 Tiempo en carga de fichero 0.008313 seg.
+02 09:26:43:065 Compresion fin
+02 09:26:43:065 Envio un total de 0.64 KB
+02 09:26:43:068 Fichero v10.html enviado
+02 09:26:43:071 Sesion 0 socket 00B84DAC Finalizada por rotura de conexion 5
+02 09:26:43:071 Libera b84dac
+02 09:26:43:075 Timeout es 99999.000000
+02 09:26:43:192 Sesion 0 Conectada socket 00B84CCC
+02 09:26:43:192 Conexion 00B84CCC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Connection: Keep-Alive
+
+02 09:26:43:192 La conexion 0 recibe peticion en socket 00B84CCC
+02 09:26:43:192 Tratapeticion: Server cambia de valor de 00B84DAC a 00B84CCC
+02 09:26:43:192 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:26:43:192 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:26:43:252 Tiempo en abrir 0.059397 seg.
+02 09:26:43:252 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10libreriajs.html
+02 09:26:43:252 Tiempo en carga de fichero 0.059959 seg.
+02 09:26:43:257 Compresion fin
+02 09:26:43:257 Envio un total de 15.81 KB
+02 09:26:43:268 Fichero v10libreriajs.html enviado
+02 09:26:43:278 Sesion 0 socket 00B84CCC Finalizada por rotura de conexion 5
+02 09:26:43:278 Libera b84ccc
+02 09:26:43:331 Sesion 0 Conectada socket 00B84EFC
+02 09:26:43:331 Conexion 00B84EFC recibe petición
+GET /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Connection: Keep-Alive
+
+02 09:26:43:331 La conexion 0 recibe peticion en socket 00B84EFC
+02 09:26:43:331 Tratapeticion: Server cambia de valor de 00B84CCC a 00B84EFC
+02 09:26:43:331 Recibida cadena de acceso
+00 09:26:43:502 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:26:43:502 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:26:43:563 Error al abrir fichero VDST.H
+02 09:26:43:613 Empiezo a leer forms vduser.frm
+02 09:26:43:786 Leyendo caracteristicas del bloque 
+02 09:26:43:786 Leidas caracteristicas del bloque 
+02 09:26:43:818 Termino parse forms vduser.frm
+02 09:26:43:822 v10formserver vale b84efc
+02 09:26:43:822 Inicio envío
+02 09:26:43:906 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:26:43:907 Html calculado. Tiempo de envío 0.084006 segundos
+02 09:26:43:910 Compresion fin
+02 09:26:43:910 Envio un total de 4.18 KB
+02 09:26:43:955 Enviada la respuesta a socket 00B84EFC
+02 09:26:43:955 Html enviado. Tiempo de envío 0.132059 segundos
+02 09:27:57:722 Sesion 0 socket 00B84EFC Finalizada por rotura de conexion 5
+02 09:27:57:722 Libera b84efc
+02 09:27:57:722 Sesion 0 Conectada socket 13DEDB64
+02 09:27:57:723 Conexion 13DEDB64 recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 106
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:27:57:741 La conexion 0 recibe peticion en socket 13DEDB64
+02 09:27:57:741 Tratapeticion: Server cambia de valor de 00B84EFC a 13DEDB64
+02 09:27:57:741 AtiendePost: Server cambia de valor de 13DEDB64 a 13DEDB64
+02 09:27:57:742 Detectado evento
+02 09:27:57:742 Evento recibido
+02 09:27:57:742 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c1
+	Antvalor: v10
+02 09:27:57:742 Fin Evento recibido
+02 09:27:57:742 v10formserver vale 13dedb64
+02 09:27:57:831 v10formserver vale 13dedb64
+02 09:27:57:831 Inicio envío
+02 09:27:57:831 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:27:57:832 Html calculado. Tiempo de envío 0.001998 segundos
+02 09:27:57:837 Compresion fin
+02 09:27:57:838 Envio un total de 4.19 KB
+02 09:27:57:852 Enviada la respuesta a socket 13DEDB64
+02 09:27:57:853 Html enviado. Tiempo de envío 0.023091 segundos
+02 09:27:59:350 Conexion 13DEDB64 recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 107
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:27:59:357 La conexion 0 recibe peticion en socket 13DEDB64
+02 09:27:59:357 Tratapeticion: Server cambia de valor de 13DEDB64 a 13DEDB64
+02 09:27:59:357 AtiendePost: Server cambia de valor de 13DEDB64 a 13DEDB64
+02 09:27:59:360 Detectado evento
+02 09:27:59:360 Evento recibido
+02 09:27:59:360 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: 1235
+02 09:27:59:361 Fin Evento recibido
+02 09:27:59:361 v10formserver vale 13dedb64
+02 09:27:59:361 v10formserver vale 13dedb64
+02 09:28:00:122 v10formserver vale 13dedb64
+02 09:28:00:697 Compresion fin
+02 09:28:00:697 Envio un total de 7.58 KB
+02 09:28:00:705 Enviada la respuesta a socket 13DEDB64
+02 09:28:10:967 Conexion 13DEDB64 recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20000
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:10:967 La conexion 0 recibe peticion en socket 13DEDB64
+02 09:28:10:967 Tratapeticion: Server cambia de valor de 13DEDB64 a 13DEDB64
+02 09:28:10:967 AtiendePost: Server cambia de valor de 13DEDB64 a 13DEDB64
+02 09:28:10:973 Detectado evento
+02 09:28:10:973 Evento recibido
+02 09:28:10:973 
+	Objeto: 
+	Evento: selmenu
+	Dato: 234
+	Antid: 
+	Antvalor: 
+02 09:28:10:973 Fin Evento recibido
+02 09:28:11:476 Compresion fin
+02 09:28:11:476 Envio un total de 0.02 KB
+02 09:28:11:487 Enviada la respuesta a socket 13DEDB64
+00 09:28:11:652 Fichero de log abierto PID 3596
+
+02 09:28:11:652 Intentando abrir fichero v10.ini
+02 09:28:11:658 Cargando driver v10oracle funcion damedriveroracle
+02 09:28:11:736 Conectado a base de datos
+02 09:28:11:738 Asignando ACCESO a V10LOGIN
+02 09:28:11:738 Asignando NIVELLOG a 2
+02 09:28:11:738 Asignando PROTEGIDO a 500
+02 09:28:11:738 Asignando DEBUGHTTP a 1
+02 09:28:11:740 Asignando VISIBLEEXE a 1
+02 09:28:11:740 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:28:11:740 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:28:11:741 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:28:11:742 Asignando SERVERPORTFILES a 1235
+02 09:28:11:742 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 09:28:11:742 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 09:28:11:743 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 09:28:11:745 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 09:28:11:745 Asignando FILEEXPIRED a 3600
+02 09:28:11:746 Asignando TIEMPOESPERA a 240
+02 09:28:11:752 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 09:28:11:752 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 09:28:11:753 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 09:28:11:753 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 09:28:11:753 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 09:28:11:755 Asignando COMPRIMIR a 1
+02 09:28:11:792 Escuchando en el puerto 20001
+02 09:28:12:010 Conectado Listener en el puerto 20001
+02 09:28:12:012 Abriendo conexion HTTP en el puerto 20001
+02 09:28:12:012 Libera 13dedb64
+02 09:28:12:012 Abierta conexion HTTP en el puerto 20001
+
+00 09:28:12:012 Fichero de log cerrado.
+
+02 09:28:13:017 Conexión de cliente establecida
+02 09:28:13:017 v10formserver vale 0
+02 09:28:13:018 Conexion 00E63CE4 recibe petición
+GET /v10.html HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Connection: Keep-Alive
+Cache-Control: no-cache
+Host: 127.0.0.1:20001
+
+02 09:28:13:018 La conexion 0 recibe peticion en socket 00E63CE4
+02 09:28:13:018 Tratapeticion: Server cambia de valor de 00000000 a 00E63CE4
+02 09:28:13:018 Sesion 0 Solicita Fichero V10.HTML 
+02 09:28:13:018 Sesion 0 Enviara Fichero V10.HTML
+02 09:28:13:022 Tiempo en abrir 0.000918 seg.
+02 09:28:13:022 Timeout es 99999.000000
+02 09:28:13:022 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10.html
+02 09:28:13:022 Tiempo en carga de fichero 0.002215 seg.
+02 09:28:13:025 Compresion fin
+02 09:28:13:025 Envio un total de 0.64 KB
+02 09:28:13:028 Fichero v10.html enviado
+02 09:28:13:031 Sesion 0 socket 00E63CE4 Finalizada por rotura de conexion 5
+02 09:28:13:031 Libera e63ce4
+02 09:28:13:072 Sesion 0 Conectada socket 00E640D4
+02 09:28:13:072 Conexion 00E640D4 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Connection: Keep-Alive
+
+02 09:28:13:072 La conexion 0 recibe peticion en socket 00E640D4
+02 09:28:13:072 Tratapeticion: Server cambia de valor de 00E63CE4 a 00E640D4
+02 09:28:13:072 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:28:13:072 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:28:13:073 Tiempo en abrir 0.000618 seg.
+02 09:28:13:075 Fichero a enviar e:\v10\productos\redur20200430\v10lib\www\v10libreriajs.html
+02 09:28:13:075 Tiempo en carga de fichero 0.001695 seg.
+02 09:28:13:082 Compresion fin
+02 09:28:13:082 Envio un total de 15.81 KB
+02 09:28:13:092 Fichero v10libreriajs.html enviado
+02 09:28:13:111 Sesion 0 socket 00E640D4 Finalizada por rotura de conexion 5
+02 09:28:13:111 Libera e640d4
+02 09:28:13:167 Sesion 0 Conectada socket 00E6410C
+02 09:28:13:170 Conexion 00E6410C recibe petición
+GET /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10.html
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Connection: Keep-Alive
+
+02 09:28:13:170 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:13:170 Tratapeticion: Server cambia de valor de 00E640D4 a 00E6410C
+02 09:28:13:170 Recibida cadena de acceso
+00 09:28:13:177 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:28:13:177 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:28:13:180 Error al abrir fichero VDST.H
+02 09:28:13:181 Empiezo a leer forms vduser.frm
+02 09:28:13:185 Leyendo caracteristicas del bloque 
+02 09:28:13:185 Leidas caracteristicas del bloque 
+02 09:28:13:192 Termino parse forms vduser.frm
+02 09:28:13:192 v10formserver vale e6410c
+02 09:28:13:192 Inicio envío
+02 09:28:13:192 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:28:13:193 Html calculado. Tiempo de envío 0.001233 segundos
+02 09:28:13:196 Compresion fin
+02 09:28:13:196 Envio un total de 4.18 KB
+02 09:28:13:202 Enviada la respuesta a socket 00E6410C
+02 09:28:13:202 Html enviado. Tiempo de envío 0.009467 segundos
+02 09:28:16:458 Conexion 00E6410C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:16:458 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:16:458 Tratapeticion: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:16:458 AtiendePost: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:16:462 Detectado evento
+02 09:28:16:462 Evento recibido
+02 09:28:16:462 
+	Objeto: clock
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:28:16:463 Fin Evento recibido
+02 09:28:16:463 v10formserver vale e6410c
+02 09:28:16:463 v10formserver vale e6410c
+02 09:28:16:463 Inicio envío
+02 09:28:16:463 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:28:16:465 Html calculado. Tiempo de envío 0.000899 segundos
+02 09:28:16:467 Compresion fin
+02 09:28:16:467 Envio un total de 4.18 KB
+02 09:28:16:468 Enviada la respuesta a socket 00E6410C
+02 09:28:16:468 Html enviado. Tiempo de envío 0.004953 segundos
+02 09:28:16:617 Conexion 00E6410C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Content-Length: 99
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:16:617 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:16:617 Tratapeticion: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:16:617 AtiendePost: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:16:622 Detectado evento
+02 09:28:16:622 Evento recibido
+02 09:28:16:622 
+	Objeto: clock
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:28:16:623 Fin Evento recibido
+02 09:28:16:623 v10formserver vale e6410c
+02 09:28:16:623 v10formserver vale e6410c
+02 09:28:16:623 Inicio envío
+02 09:28:16:623 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:28:16:625 Html calculado. Tiempo de envío 0.000763 segundos
+02 09:28:16:626 Compresion fin
+02 09:28:16:626 Envio un total de 4.18 KB
+02 09:28:16:627 Enviada la respuesta a socket 00E6410C
+02 09:28:16:628 Html enviado. Tiempo de envío 0.004687 segundos
+02 09:28:17:011 Conexion 00E6410C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Content-Length: 98
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:17:040 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:17:041 Tratapeticion: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:17:042 AtiendePost: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:17:047 Detectado evento
+02 09:28:17:047 Evento recibido
+02 09:28:17:047 
+	Objeto: date
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:28:17:047 Fin Evento recibido
+02 09:28:17:047 v10formserver vale e6410c
+02 09:28:17:047 v10formserver vale e6410c
+02 09:28:17:047 Inicio envío
+02 09:28:17:047 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:28:17:048 Html calculado. Tiempo de envío 0.000726 segundos
+02 09:28:17:050 Compresion fin
+02 09:28:17:050 Envio un total de 4.18 KB
+02 09:28:17:052 Enviada la respuesta a socket 00E6410C
+02 09:28:17:052 Html enviado. Tiempo de envío 0.004315 segundos
+02 09:28:17:227 Conexion 00E6410C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Content-Length: 98
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:17:260 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:17:260 Tratapeticion: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:17:260 AtiendePost: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:17:276 Detectado evento
+02 09:28:17:276 Evento recibido
+02 09:28:17:276 
+	Objeto: date
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:28:17:276 Fin Evento recibido
+02 09:28:17:277 v10formserver vale e6410c
+02 09:28:17:277 v10formserver vale e6410c
+02 09:28:17:277 Inicio envío
+02 09:28:17:277 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:28:17:277 Html calculado. Tiempo de envío 0.000598 segundos
+02 09:28:17:278 Compresion fin
+02 09:28:17:278 Envio un total de 4.18 KB
+02 09:28:17:281 Enviada la respuesta a socket 00E6410C
+02 09:28:17:281 Html enviado. Tiempo de envío 0.004479 segundos
+02 09:28:31:027 Conexion 00E6410C recibe petición
+POST /v10login HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20001/v10login
+Accept-Language: es-ES
+Content-Type: application/x-www-form-urlencoded
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:20001
+Content-Length: 121
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:28:31:027 La conexion 0 recibe peticion en socket 00E6410C
+02 09:28:31:027 Tratapeticion: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:31:027 AtiendePost: Server cambia de valor de 00E6410C a 00E6410C
+02 09:28:31:037 Detectado evento
+02 09:28:31:037 Evento recibido
+02 09:28:31:037 
+	Objeto: %5Bobject+HTMLInputElement%5D
+	Evento: Salir
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 09:28:31:040 Fin Evento recibido
+02 09:28:31:040 v10formserver vale e6410c
+02 09:28:31:062 Libera e6410c
+
+00 09:28:31:062 Fichero de log cerrado.
+

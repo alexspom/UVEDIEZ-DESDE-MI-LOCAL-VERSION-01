@@ -1,0 +1,251 @@
+#include "vdpedidos.h"
+
+typedef struct versionpedidoage {
+  char agencia[LCODAGE];
+  int  versionpedido;
+} VERSIONPEDIDOAGE;
+
+static VERSIONPEDIDOAGE versionpedage[MAXAGE];
+static int numagepedido;
+
+static int buscaversionpedidoage(char *codage) {
+	int nage;
+
+	for (nage=0;nage<numagepedido;nage++) {
+		if (strcmp(versionpedage[nage].agencia,codage)==0) 
+			return(versionpedage[nage].versionpedido);
+	}
+	
+	return(NOFOUND);
+}
+
+//la agencia, y conservarage="N" si no encontramos una agencia valida, nos quedamos con la que trae el pedido y no dejamos
+//el pedido en error
+static int asignagepedmisc(vdpedidocabs *pec,char *conservaragehost) {
+	
+	int ret;
+	vdasiages pedido;
+    char codageori[LCODAGE];
+
+	if (!es_blanco(pec->codage) && !strcmp(conservaragehost,"S")) {
+		v10log(LOGNORMAL,"asignagepedmisc: Se conserva la agencia existente en el pedido. %s \n",PEClog(pec));
+		return SUCCESS;
+	}
+	ret=ASIAGEseldatospedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pedido);
+	if (ret) {
+		v10log(LOGERROR,"asignagepedmisc: No se pueden determinar los datos del pedido. %s \n",PEClog(pec));
+		return(ret);
+	}
+	strcpy(codageori,pec->codage);
+    ret=ASIAGEselagepedmisc(pec->coddiv,pec->tipopedido,pec->dp,pec->codcliente,pedido.pesopedido,
+			                  pedido.bultospedido,pedido.volpedido,pec->urgencia,pec->prioridad,
+							  codageori,pec->codpais,&pedido);
+	if (ret || es_blanco(pedido.agepedmisc)) {
+		v10log(LOGERROR,"asignagepedmisc: No se encuentra agencia asociada para pedido. \n",PEClog(pec));
+		return(FAILURE);
+	}
+	strcpy(pec->codage,pedido.agearticulo);
+	ret=PECactualizacodage(pec,NOVERIFICA);
+	if (ret) {
+		v10log(LOGERROR,"asignagepedmisc: Error %ld actualizando pedido. %s \n",ret,PEClog(pec));
+		return(ret);
+	}
+	v10log(LOGNORMAL,"asignagepedmisc: Encontrada la agencia %s para pedido. %s \n",pedido.agepedmisc,PEClog(pec));
+	return(0);
+}
+
+
+static int asignagencia(vdpedidocabs *pec,char* creaversion,char *conservaragehost,int maxagepedido,long status) {
+	int numversion,
+		ret;
+	char clasifartic[LCODCLASIF]="";
+//	, clasifasigna[LCODCLASIF]="";
+	vdasiages pedido;
+	vdpedidolins pel;
+	vdartics art;
+	vdclaseartics cla;
+	vdpedidocabs pecnv;
+	vdpedidos ped;
+    char codageori[LCODAGE];
+
+	if (!es_blanco(pec->codage) && !strcmp(conservaragehost,"S")) {
+		v10log(LOGNORMAL,"asignagencia: Se conserva la agencia existente en el pedido. %s \n",PEClog(pec));
+		return SUCCESS;
+	}
+	// se obtiene número máximo de agencias que se pueden asociar a un pedido,
+	// lo que conlleva diferentes versiones de pedido
+	// máximo valor permitido - 100
+	if (maxagepedido==0) maxagepedido=MAXAGE-1;
+	numagepedido=0;
+//	ret=ASIAGEseldatospedido(pec->dp,pec->codpais,pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pedido);
+	ret=ASIAGEseldatospedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pedido);
+	if (ret) {
+		v10log(LOGERROR,"asignagencia: No se pueden determinar los datos del pedido. %s \n",PEClog(pec));
+		return(ret);
+	}
+	strcpy(codageori,pec->codage);
+	// se obtiene primera línea del pedido a tratar
+	memset(&pel,0,sizeof(pel));
+	ret=PELbuscapedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pel);
+	if (ret) {
+		v10log(LOGERROR,"asignagencia: No se pueden obtener líneas del pedido. %s \n",PEClog(pec));
+		return(ret);
+	}
+
+	do {
+		// se obtiene artículo para la línea actual del pedido
+        memset(&art,0,sizeof(art));
+		ret=ARTselcodart(pel.codart,&art);
+		if (ret) {
+			v10log(LOGERROR,"asignagencia: No se puede obtener artículo de línea %ld del pedido. %s \n",pel.seqlinea,PEClog(pec));
+			return(ret);
+		}
+		v10log(LOGNORMAL,"asignagencia: Tratando artículo %s de pedido. %s \n",pel.codart,PEClog(pec));
+		// se obtiene clasificación utilizada para asignar agencias (opcional)
+		if (damepropcadena("CLASIFASIGNAGE"))
+			strcpy(clasifartic,damepropcadena("CLASIFASIGNAGE"));
+		if (es_blanco(clasifartic)) 
+			strcpy(clasifartic,"ASIGNAGE");
+		memset(&cla,0,sizeof(cla));
+		ret=CLAselcodartclasif(art.codart,clasifartic,&cla);
+        if (ret) {
+			v10log(LOGDEBUG,"asignagencia: Articulo %s no tiene clasificacion. \n",pel.codart);
+		}
+	    ret=ASIAGEselageartic(pec->coddiv,pec->tipopedido,pec->dp,pec->codcliente,pedido.pesopedido,
+			                  pedido.bultospedido,pedido.volpedido,pec->urgencia,pec->prioridad,art.codart,art.coddiv,
+							  cla.codclase,codageori/*pec->codage*/,pec->codpais,&pedido);
+		if (ret || es_blanco(pedido.agearticulo)) {
+			v10log(LOGERROR,"asignagencia: Articulo %s no tiene asociada agencia para pedido. \n",pel.codart,PEClog(pec));
+			return(FAILURE);
+		}
+        // se comprueba si la agencia ha sido tratada con anterioridad
+        // obteniendo en ese caso la versión del pedido asociada
+        numversion = buscaversionpedidoage(pedido.agearticulo);
+        if (numversion==NOFOUND) {
+            if (numagepedido == maxagepedido) {
+				v10log(LOGERROR,"asignagencia: No se admiten mas versiones de pedido por agencia para pedido. \n",PEClog(pec));
+				return(FAILURE);
+            }
+            strcpy(versionpedage[numagepedido].agencia,pedido.agearticulo);
+            if (numagepedido) {
+				if (strcmp(creaversion,"S")) {
+                      v10log(LOGERROR,"asignagencia: La configuracion no permite crear versión por agencias para el pedido. %s \n",PEClog(pec));
+                      return(FAILURE);
+				}
+				ret=PECselvdpedidocab(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&pecnv);
+				if (ret) {
+					v10log(LOGERROR,"asignagencia: No se puede obtener pedido. %s \n",PEClog(pec));
+					return(ret);
+				} else {
+					// insertar nueva versión del pedido
+					ret = PEDIDOselnuevaversion(pecnv.coddiv,pecnv.anoped,pecnv.codped,&ped);
+					if (ret) {
+						v10log(LOGERROR,"asignagencia: Error %ld obteniendo nuevo número de versión del pedido. %s \n",ret,PEClog(pec));
+						return(ret);
+					}
+					pecnv.seqped=ped.nuevaversion;
+					pecnv.status=status;
+					strcpy(pecnv.codage,pedido.agearticulo);
+					ret = PECinsert(&pecnv,NOVERIFICA);
+					if (ret) {
+						v10log(LOGERROR,"asignagencia: Error %ld insertando pedido. %s \n",ret,PEClog(pec));
+						return(ret);
+					}
+					v10log(LOGNORMAL,"asignagencia: Encontrada la agencia %s para pedido. %s \n",pedido.agearticulo,PEClog(pec));
+					versionpedage[numagepedido].versionpedido=pecnv.seqped;
+                }
+			} else {
+				// modificar agencia en versión actual del pedido
+				strcpy(pec->codage,pedido.agearticulo);
+				ret=PECactualizacodage(pec,NOVERIFICA);
+				if (ret) {
+					v10log(LOGERROR,"asignagencia: Error %ld actualizando pedido. %s \n",ret,PEClog(pec));
+					return(ret);
+				}
+				v10log(LOGNORMAL,"asignagencia: Encontrada la agencia %s para pedido. %s \n",pedido.agearticulo,PEClog(pec));
+				versionpedage[numagepedido].versionpedido=pec->seqped;
+            }
+			numversion=versionpedage[numagepedido].versionpedido;
+			numagepedido++;
+        }
+        if (pel.seqped != numversion) {
+			// asociar la línea del pedido con su versión
+			pel.seqped=numversion;
+			ret=PELactualizaseqped(&pel,NOVERIFICA);
+			if (ret) {
+				v10log(LOGERROR,"asignagencia: Error %ld actualizando línea %ld del pedido. %s \n",ret,pel.seqlinea,PEClog(pec));
+				return(ret);
+			}
+			v10log(LOGNORMAL,"asignagencia: Actualizada línea %ld a versión %ld de pedido. %s \n",pel.seqlinea,pel.seqped,PEClog(pec));
+       }
+	} while (PELnextpedido(&pel)==SUCCESS);
+
+	return(0);
+}
+
+// Asigna agencia de transporte a un pedido
+// PARAM1: (ptr) puntero al pedido
+// PARAM2: Estado en el que dejar el pedido si todo ha ido correctamente
+// PARAM3: Estado en el que dejar las nuevas versiones de pedido creadas 
+VDEXPORT int vdasignagencia(void *ptr,char *param) {
+	int ret,maxagepedido;
+	char agenciahost[LCODAGE]="",
+		 creaversion[LSWITCH],
+		 conservaragehost[LSWITCH],
+		 maxage[LCADENASMALL];
+    vdstatuss stasa,stversion;
+    vdpedidocabs *pec=ptr;
+
+	ret=numpieces(param,"#");
+    if (ret < 5) {
+        v10log(LOGERROR,"vdasignagencia: Número de parámetros incorrecto, recibe %d necesita 5\n", ret);
+		return(0);
+	}
+    if ((ret=damestabreviada("vdasignagencia",param, 1, "#", pec, "PEC", &stasa, STPECPDTESERIE))) return(ret);
+    if ((ret=damestabreviada("vdasignagencia",param, 2, "#", pec, "PEC", &stversion, STPECPDTESERIE))) return(ret);
+    piece(param,creaversion,"#",3);
+    piece(param,conservaragehost,"#",4);
+    piece(param,maxage,"#",5);
+	maxagepedido=atoi(maxage);
+
+	if (!es_blanco(pec->codage)) strcpy(agenciahost,pec->codage);
+	ret=asignagencia(pec,creaversion,conservaragehost,maxagepedido,stversion.status);
+	if (ret==SUCCESS)
+		pec->status=stasa.status;
+    else {	
+		if (!es_blanco(agenciahost)) strcpy(pec->codage,agenciahost);
+	}
+
+	return(ret);
+}
+
+// Asigna agencia de transporte a un pedido miscelaneo
+// PARAM1: (ptr) puntero al pedido
+// PARAM2: Estado en el que dejar el pedido si todo ha ido correctamente
+VDEXPORT int vdasignagepedmisc(void *ptr,char *param) {
+	
+	int ret;
+	char agenciahost[LCODAGE]="",
+		 conservaragehost[LSWITCH];
+    vdstatuss stasa;
+    vdpedidocabs *pec=ptr;
+
+	ret=numpieces(param,"#");
+    if (ret < 2) {
+        v10log(LOGERROR,"vdasignagepedmisc: Número de parámetros incorrecto, recibe %d necesita 2\n", ret);
+		return(0);
+	}
+    if ((ret=damestabreviada("vdasignagepedmisc",param, 1, "#", pec, "PEC", &stasa, STPECPDTESERIE))) return(ret);
+    piece(param,conservaragehost,"#",2);
+
+	if (!es_blanco(pec->codage))
+		strcpy(agenciahost,pec->codage);
+	ret=asignagepedmisc(pec,conservaragehost);
+	if (ret==SUCCESS)
+		pec->status=stasa.status;
+    else {	
+		if (!es_blanco(agenciahost))
+			strcpy(pec->codage,agenciahost);
+	}
+	return(ret);
+}

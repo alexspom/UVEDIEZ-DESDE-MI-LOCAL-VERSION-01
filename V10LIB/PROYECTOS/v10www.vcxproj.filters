@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="AJAX">
+      <UniqueIdentifier>{2eb8ae81-17c7-4778-9234-16f8e99a60ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="v10ev">
+      <UniqueIdentifier>{a6a632e4-f6f9-4ad7-936d-949fe58078ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="v10html">
+      <UniqueIdentifier>{4e9c9775-e66d-43e3-836c-73d8bc0bc5f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="v10http">
+      <UniqueIdentifier>{933d3903-d4d1-4175-89c4-8a8655792c73}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\WWW\v10serverAJAX.c">
+      <Filter>AJAX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwAJAX.c">
+      <Filter>AJAX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10ev.c">
+      <Filter>v10ev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10evdefhandlers.c">
+      <Filter>v10ev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10evqueue.c">
+      <Filter>v10ev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10evrunhandlers.c">
+      <Filter>v10ev</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10htmlmenu.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10htmlmenucontext.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10htmlplantillas.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwayuda.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwbloque.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwbotones.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwcalendario.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwcheckbox.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwcombox.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\V10wwwcssdetalles.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwform.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwframes.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwinput.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwjsonload.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwliterales.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwmensaje.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwonline.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwora2html.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwreposiciona.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwsidebar.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwstats.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwtabla.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwtecladovirt.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwteclas.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\WWW\v10wwwwhere.c">
+      <Filter>v10html</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httpconfig.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httpeticiones.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httpget.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httpListener.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httppost.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httprespuestas.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10httpservidor.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\v10wwwwindow.c">
+      <Filter>v10http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\www\V10wwwaborta.C" />
+    <ClCompile Include="..\FUENTES\WWW\v10wwwdebug.c" />
+    <ClCompile Include="..\FUENTES\www\v10wwwforaux.c" />
+    <ClCompile Include="..\FUENTES\www\v10wwwforcon.c" />
+    <ClCompile Include="..\FUENTES\WWW\v10wwwformsg.c" />
+    <ClCompile Include="..\FUENTES\www\V10wwwKey.c" />
+    <ClCompile Include="..\FUENTES\www\V10wwwMisc.c" />
+    <ClCompile Include="..\FUENTES\www\v10wwwpunteros.c" />
+    <ClCompile Include="..\FUENTES\WWW\v10wwwquery2HTML.c" />
+    <ClCompile Include="..\FUENTES\www\v10wwwvirtsel.c" />
+    <ClCompile Include="..\FUENTES\www\V10wwwzip.c" />
+  </ItemGroup>
+</Project>

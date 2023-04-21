@@ -1,0 +1,24 @@
+# Módulo   : PICKTOURD.FRM
+# Función  : Recarga de unidades destino
+#
+# Creación : 24-09-2014
+# Autor    : FPD
+###########################################
+# Histórico de cambios:
+# 
+CAMPO=CODOPE,OCULTO,"__________"
+CAMPO=CODRECURSO,OCULTO,"__________"
+CAMPO=CODMAT,OCULTO,"_20"
+
+
+BEGINBLOQUE=PICKTOURD1.PAN
+ENDBLOQUE
+
+BEGINBLOQUE=PICKTOURD2.PAN
+ PADRE=PICKTOURD1.PAN 
+ENDBLOQUE
+
+BEGINBLOQUE=VDMOVPARCIALERRCONGELA.PAN
+ PADRE=PICKTOURD2.PAN
+ENDBLOQUE
+

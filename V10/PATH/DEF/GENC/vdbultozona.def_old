@@ -1,0 +1,25 @@
+#***
+# VDBULTOZONA.DEF - Generación automática del código c para la tabla de INFOBULTOZONAS                                                       
+# 
+# Propósito: Funciones de acceso a la tabla INFOBULTOZONA
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 27-05-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=BZO
+
+CLAVE=BULTO,CODBULTO
+CLAVE=DAMEOPEBULTO,CODZONA,CODBULTO
+CLAVE=ZONAPEND,CODZONA,WHERE=STATUS=VDST.FBZOPDTECONF;
+SECUENCIA=VDSECBULTOZONA,SEQBULTO
+RECORRE=CODBULTO,CODBULTO
+
+RECORRE=CODZONA,CODZONA
+UPDATE=STATUS,STATUS
+
+
+INSERT 
+DELETE

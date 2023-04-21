@@ -1,0 +1,234 @@
+// Modulo generado automaticamente a partir de VDGRAFICAEJE.DEF
+//# M¢dulo : VDGRAFICAEJE.DEF                                                        
+//# Función: Definición de ejes de gráficas Web
+//#                        
+//# Autor	 : FGS
+//# Revisado por: 
+//# Fecha  : 18-01-2010                                              
+//#********************************************************************************
+//# Histórico de cambios
+//# ====================
+//# =================================================================================
+//#
+//TABLE=GRAE;
+//RECORRE=NOMBREGRAF,NOMBREGRAF;
+//
+
+#include "VD.H"
+#define SELGRAENOMBREGRAF "SELECT VDGRAFICAEJE.ROWID,VDGRAFICAEJE.NOMBREGRAF,VDGRAFICAEJE.EJE, "\
+                    " VDGRAFICAEJE.TITULOEJE,VDGRAFICAEJE.MAXVALOR,VDGRAFICAEJE.MINVALOR, "\
+                    " VDGRAFICAEJE.CSSVALORES,VDGRAFICAEJE.CSSTITULO,VDGRAFICAEJE.CURSORTEXTO, "\
+                    " VDGRAFICAEJE.CURSORCOLOR,VDGRAFICAEJE.CURSORTEXTCOLOR,VDGRAFICAEJE.CURSORCSS, "\
+                    " VDGRAFICAEJE.GRIDGROSOR,VDGRAFICAEJE.GRIDCOLOR,VDGRAFICAEJE.GRIDOPACIDAD, "\
+                    " VDGRAFICAEJE.VALORESMONEDA,VDGRAFICAEJE.VALORESMINDEC,VDGRAFICAEJE.VALORESMAXDEC, "\
+                    " VDGRAFICAEJE.VALORESPOS,VDGRAFICAEJE.VALORESSEPDEC,VDGRAFICAEJE.VALORESSEPMIL, "\
+                    " VDGRAFICAEJE.VDEXTRA,VDGRAFICAEJE.CODCOMEN,VDGRAFICAEJE.CODOPEMODIF, "\
+                    " VDGRAFICAEJE.FECMODIF,VDGRAFICAEJE.HORAMODIF "\
+        " FROM VDGRAFICAEJE"\
+        " WHERE "\
+               " VDGRAFICAEJE.NOMBREGRAF=:NOMBREGRAF "
+static v10cursors *vdselgraenombregraf;
+
+#define SELGRAEVDGRAFICAEJE "SELECT VDGRAFICAEJE.ROWID,VDGRAFICAEJE.NOMBREGRAF,VDGRAFICAEJE.EJE, "\
+                    " VDGRAFICAEJE.TITULOEJE,VDGRAFICAEJE.MAXVALOR,VDGRAFICAEJE.MINVALOR, "\
+                    " VDGRAFICAEJE.CSSVALORES,VDGRAFICAEJE.CSSTITULO,VDGRAFICAEJE.CURSORTEXTO, "\
+                    " VDGRAFICAEJE.CURSORCOLOR,VDGRAFICAEJE.CURSORTEXTCOLOR,VDGRAFICAEJE.CURSORCSS, "\
+                    " VDGRAFICAEJE.GRIDGROSOR,VDGRAFICAEJE.GRIDCOLOR,VDGRAFICAEJE.GRIDOPACIDAD, "\
+                    " VDGRAFICAEJE.VALORESMONEDA,VDGRAFICAEJE.VALORESMINDEC,VDGRAFICAEJE.VALORESMAXDEC, "\
+                    " VDGRAFICAEJE.VALORESPOS,VDGRAFICAEJE.VALORESSEPDEC,VDGRAFICAEJE.VALORESSEPMIL, "\
+                    " VDGRAFICAEJE.VDEXTRA,VDGRAFICAEJE.CODCOMEN,VDGRAFICAEJE.CODOPEMODIF, "\
+                    " VDGRAFICAEJE.FECMODIF,VDGRAFICAEJE.HORAMODIF "\
+        " FROM VDGRAFICAEJE"
+static v10cursors *vdselgraevdgraficaeje;
+
+static vdgraficaejes svdgraficaeje;
+
+static diccols colvdgraficaeje[]={
+	{"ROWID",V10CADENA,(size_t)&svdgraficaeje.rowid,sizeof(svdgraficaeje.rowid)},
+	{"NOMBREGRAF",V10CADENA,(size_t)&svdgraficaeje.nombregraf,sizeof(svdgraficaeje.nombregraf)},
+	{"EJE",V10CADENA,(size_t)&svdgraficaeje.eje,sizeof(svdgraficaeje.eje)},
+	{"TITULOEJE",V10CADENA,(size_t)&svdgraficaeje.tituloeje,sizeof(svdgraficaeje.tituloeje)},
+	{"MAXVALOR",V10LONG,(size_t)&svdgraficaeje.maxvalor,sizeof(svdgraficaeje.maxvalor)},
+	{"MINVALOR",V10LONG,(size_t)&svdgraficaeje.minvalor,sizeof(svdgraficaeje.minvalor)},
+	{"CSSVALORES",V10CADENA,(size_t)&svdgraficaeje.cssvalores,sizeof(svdgraficaeje.cssvalores)},
+	{"CSSTITULO",V10CADENA,(size_t)&svdgraficaeje.csstitulo,sizeof(svdgraficaeje.csstitulo)},
+	{"CURSORTEXTO",V10CADENA,(size_t)&svdgraficaeje.cursortexto,sizeof(svdgraficaeje.cursortexto)},
+	{"CURSORCOLOR",V10CADENA,(size_t)&svdgraficaeje.cursorcolor,sizeof(svdgraficaeje.cursorcolor)},
+	{"CURSORTEXTCOLOR",V10CADENA,(size_t)&svdgraficaeje.cursortextcolor,sizeof(svdgraficaeje.cursortextcolor)},
+	{"CURSORCSS",V10CADENA,(size_t)&svdgraficaeje.cursorcss,sizeof(svdgraficaeje.cursorcss)},
+	{"GRIDGROSOR",V10LONG,(size_t)&svdgraficaeje.gridgrosor,sizeof(svdgraficaeje.gridgrosor)},
+	{"GRIDCOLOR",V10CADENA,(size_t)&svdgraficaeje.gridcolor,sizeof(svdgraficaeje.gridcolor)},
+	{"GRIDOPACIDAD",V10LONG,(size_t)&svdgraficaeje.gridopacidad,sizeof(svdgraficaeje.gridopacidad)},
+	{"VALORESMONEDA",V10CADENA,(size_t)&svdgraficaeje.valoresmoneda,sizeof(svdgraficaeje.valoresmoneda)},
+	{"VALORESMINDEC",V10LONG,(size_t)&svdgraficaeje.valoresmindec,sizeof(svdgraficaeje.valoresmindec)},
+	{"VALORESMAXDEC",V10LONG,(size_t)&svdgraficaeje.valoresmaxdec,sizeof(svdgraficaeje.valoresmaxdec)},
+	{"VALORESPOS",V10CADENA,(size_t)&svdgraficaeje.valorespos,sizeof(svdgraficaeje.valorespos)},
+	{"VALORESSEPDEC",V10CADENA,(size_t)&svdgraficaeje.valoressepdec,sizeof(svdgraficaeje.valoressepdec)},
+	{"VALORESSEPMIL",V10CADENA,(size_t)&svdgraficaeje.valoressepmil,sizeof(svdgraficaeje.valoressepmil)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdgraficaeje.vdextra,sizeof(svdgraficaeje.vdextra)},
+	{"CODCOMEN",V10LONG,(size_t)&svdgraficaeje.codcomen,sizeof(svdgraficaeje.codcomen)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdgraficaeje.codopemodif,sizeof(svdgraficaeje.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdgraficaeje.fecmodif,sizeof(svdgraficaeje.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdgraficaeje.horamodif,sizeof(svdgraficaeje.horamodif)}
+	};
+static diccionarios dvdgraficaeje[]={
+    {colvdgraficaeje,26}
+};
+diccionario dgrae={dvdgraficaeje,1};
+
+static char msglogGRAE[LCADENA];
+static char msgdebugGRAE[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_grae(void)
+{
+if (vdselgraenombregraf) {
+    liberacursor(vdselgraenombregraf);
+    vdselgraenombregraf = NULL;
+}
+if (vdselgraevdgraficaeje) {
+    liberacursor(vdselgraevdgraficaeje);
+    vdselgraevdgraficaeje = NULL;
+}
+}
+static void init_selgraenombregraf(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdgraficaeje[0].numcol;nc++) dvdgraficaeje[0].c[nc].offset-=(size_t)&svdgraficaeje;
+    vdselgraenombregraf=abrecursordebug(SELGRAENOMBREGRAF,1280);
+    definetodo(vdselgraenombregraf,svdgraficaeje.rowid,sizeof(svdgraficaeje.rowid),V10CADENA,
+                          svdgraficaeje.nombregraf,sizeof(svdgraficaeje.nombregraf),V10CADENA,
+                          svdgraficaeje.eje,sizeof(svdgraficaeje.eje),V10CADENA,
+                          svdgraficaeje.tituloeje,sizeof(svdgraficaeje.tituloeje),V10CADENA,
+                          &svdgraficaeje.maxvalor,sizeof(svdgraficaeje.maxvalor),V10LONG,
+                          &svdgraficaeje.minvalor,sizeof(svdgraficaeje.minvalor),V10LONG,
+                          svdgraficaeje.cssvalores,sizeof(svdgraficaeje.cssvalores),V10CADENA,
+                          svdgraficaeje.csstitulo,sizeof(svdgraficaeje.csstitulo),V10CADENA,
+                          svdgraficaeje.cursortexto,sizeof(svdgraficaeje.cursortexto),V10CADENA,
+                          svdgraficaeje.cursorcolor,sizeof(svdgraficaeje.cursorcolor),V10CADENA,
+                          svdgraficaeje.cursortextcolor,sizeof(svdgraficaeje.cursortextcolor),V10CADENA,
+                          svdgraficaeje.cursorcss,sizeof(svdgraficaeje.cursorcss),V10CADENA,
+                          &svdgraficaeje.gridgrosor,sizeof(svdgraficaeje.gridgrosor),V10LONG,
+                          svdgraficaeje.gridcolor,sizeof(svdgraficaeje.gridcolor),V10CADENA,
+                          &svdgraficaeje.gridopacidad,sizeof(svdgraficaeje.gridopacidad),V10LONG,
+                          svdgraficaeje.valoresmoneda,sizeof(svdgraficaeje.valoresmoneda),V10CADENA,
+                          &svdgraficaeje.valoresmindec,sizeof(svdgraficaeje.valoresmindec),V10LONG,
+                          &svdgraficaeje.valoresmaxdec,sizeof(svdgraficaeje.valoresmaxdec),V10LONG,
+                          svdgraficaeje.valorespos,sizeof(svdgraficaeje.valorespos),V10CADENA,
+                          svdgraficaeje.valoressepdec,sizeof(svdgraficaeje.valoressepdec),V10CADENA,
+                          svdgraficaeje.valoressepmil,sizeof(svdgraficaeje.valoressepmil),V10CADENA,
+                          svdgraficaeje.vdextra,sizeof(svdgraficaeje.vdextra),V10CADENA,
+                          &svdgraficaeje.codcomen,sizeof(svdgraficaeje.codcomen),V10LONG,
+                          svdgraficaeje.codopemodif,sizeof(svdgraficaeje.codopemodif),V10CADENA,
+                          &svdgraficaeje.fecmodif,sizeof(svdgraficaeje.fecmodif),V10LONG,
+                          svdgraficaeje.horamodif,sizeof(svdgraficaeje.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdselgraenombregraf,"NOMBREGRAF",svdgraficaeje.nombregraf,sizeof(svdgraficaeje.nombregraf),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_grae);
+        init = 1;
+    }
+}
+
+static void init_selgraevdgraficaeje(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdgraficaeje[0].numcol;nc++) dvdgraficaeje[0].c[nc].offset-=(size_t)&svdgraficaeje;
+    vdselgraevdgraficaeje=abrecursordebug(SELGRAEVDGRAFICAEJE,1280);
+    definetodo(vdselgraevdgraficaeje,svdgraficaeje.rowid,sizeof(svdgraficaeje.rowid),V10CADENA,
+                          svdgraficaeje.nombregraf,sizeof(svdgraficaeje.nombregraf),V10CADENA,
+                          svdgraficaeje.eje,sizeof(svdgraficaeje.eje),V10CADENA,
+                          svdgraficaeje.tituloeje,sizeof(svdgraficaeje.tituloeje),V10CADENA,
+                          &svdgraficaeje.maxvalor,sizeof(svdgraficaeje.maxvalor),V10LONG,
+                          &svdgraficaeje.minvalor,sizeof(svdgraficaeje.minvalor),V10LONG,
+                          svdgraficaeje.cssvalores,sizeof(svdgraficaeje.cssvalores),V10CADENA,
+                          svdgraficaeje.csstitulo,sizeof(svdgraficaeje.csstitulo),V10CADENA,
+                          svdgraficaeje.cursortexto,sizeof(svdgraficaeje.cursortexto),V10CADENA,
+                          svdgraficaeje.cursorcolor,sizeof(svdgraficaeje.cursorcolor),V10CADENA,
+                          svdgraficaeje.cursortextcolor,sizeof(svdgraficaeje.cursortextcolor),V10CADENA,
+                          svdgraficaeje.cursorcss,sizeof(svdgraficaeje.cursorcss),V10CADENA,
+                          &svdgraficaeje.gridgrosor,sizeof(svdgraficaeje.gridgrosor),V10LONG,
+                          svdgraficaeje.gridcolor,sizeof(svdgraficaeje.gridcolor),V10CADENA,
+                          &svdgraficaeje.gridopacidad,sizeof(svdgraficaeje.gridopacidad),V10LONG,
+                          svdgraficaeje.valoresmoneda,sizeof(svdgraficaeje.valoresmoneda),V10CADENA,
+                          &svdgraficaeje.valoresmindec,sizeof(svdgraficaeje.valoresmindec),V10LONG,
+                          &svdgraficaeje.valoresmaxdec,sizeof(svdgraficaeje.valoresmaxdec),V10LONG,
+                          svdgraficaeje.valorespos,sizeof(svdgraficaeje.valorespos),V10CADENA,
+                          svdgraficaeje.valoressepdec,sizeof(svdgraficaeje.valoressepdec),V10CADENA,
+                          svdgraficaeje.valoressepmil,sizeof(svdgraficaeje.valoressepmil),V10CADENA,
+                          svdgraficaeje.vdextra,sizeof(svdgraficaeje.vdextra),V10CADENA,
+                          &svdgraficaeje.codcomen,sizeof(svdgraficaeje.codcomen),V10LONG,
+                          svdgraficaeje.codopemodif,sizeof(svdgraficaeje.codopemodif),V10CADENA,
+                          &svdgraficaeje.fecmodif,sizeof(svdgraficaeje.fecmodif),V10LONG,
+                          svdgraficaeje.horamodif,sizeof(svdgraficaeje.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdselgraevdgraficaeje,NULL);
+    if (init == 0) {
+        atexit(fin_vd_grae);
+        init = 1;
+    }
+}
+
+diccionario *GRAEdamediccionario(void)
+{
+     return(&dgrae);
+}
+
+int GRAEbuscanombregraf(char *nombregraf,vdgraficaejes *grae)
+{
+  int vdret;
+  memset(&svdgraficaeje,0,sizeof(svdgraficaeje));
+  strcpy(svdgraficaeje.nombregraf,nombregraf);
+  if (vdselgraenombregraf==NULL) init_selgraenombregraf();
+  vdret=ejefetchcursor(vdselgraenombregraf);
+  if (vdret==0) {
+     *grae=svdgraficaeje;
+    v10log(LOGDEBUGAPI,"Encontrado primero %s vdselgraenombregraf. vdret %d. \n",GRAElog(&svdgraficaeje),vdret);
+     return(0);
+   }
+  return(VD_EERRORACLE);
+}
+
+int GRAEnextnombregraf(vdgraficaejes *grae)
+{
+  int vdret;
+  vdret=fetchcursor(vdselgraenombregraf);
+  if (vdret==0) {
+     *grae=svdgraficaeje;
+    v10log(LOGDEBUGAPI,"Siguiente %s vdselgraenombregraf. vdret %d. \n",GRAElog(&svdgraficaeje),vdret);
+     return(0);
+   }
+  if (vdret!=NOFOUND) cursordebug(vdselgraenombregraf);
+  return(VD_EERRORACLE);
+}
+
+int GRAEselvdgraficaeje(vdgraficaejes *grae)
+{
+  int vdret;
+  if (vdselgraevdgraficaeje==NULL) init_selgraevdgraficaeje();
+  memset(&svdgraficaeje,0,sizeof(svdgraficaeje));
+  vdret=ejefetchcursor(vdselgraevdgraficaeje);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselgraevdgraficaeje. vdret %d. \n",GRAElog(&svdgraficaeje),vdret);
+    return(VD_EERRORACLE);
+   }
+  *grae=svdgraficaeje;
+  return(vdret);
+}
+
+char * GRAElog(vdgraficaejes *grae)
+{
+    sprintf(msglogGRAE, "VDGRAFICAEJE: ");
+    return(msglogGRAE);
+}
+
+char * GRAEdebug(vdgraficaejes *grae)
+{
+    debugestruct(&dgrae,grae,msgdebugGRAE);
+    return(msgdebugGRAE);
+}
+

@@ -1,0 +1,41 @@
+#***
+# VDIMPRESION.DEF - Generación automática del código c SOLOQUERY para querys sobre tablas de impresión V10
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 23-05-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=IMPRE;
+EXTRA=RET,V10LONG
+EXTRA=NUMASIG,V10LONG
+
+CURSOR=CCUENTAASIGUSER SELECT COUNT(*) NUMASIG FROM VDIMPREASIG WHERE CODOPEASIG=VDUSER.GETUSER 
+                                                                AND (ORDENADOR=UPPER(:VDIMPRESPOOL.ORDENADOR) OR ORDENADOR='DEFECTO')
+                                                                AND TIPOIMPRE=:VDIMPRESPOOL.TIPOIMPRE AND 
+                                                                (DOCUMENTO=UPPER(:VDIMPRESPOOL.DOCUMENTO) OR DOCUMENTO='DEFECTO') 
+                                                                AND ACTIVO='S';
+                                                                
+CURSOR=CCUENTAASIG SELECT COUNT(*) NUMASIG FROM VDIMPREASIG WHERE CODOPEASIG='DEFECTO'
+                                                                AND (ORDENADOR=UPPER(:VDIMPRESPOOL.ORDENADOR) OR ORDENADOR='DEFECTO')
+                                                                AND TIPOIMPRE=:VDIMPRESPOOL.TIPOIMPRE AND 
+                                                                (DOCUMENTO=UPPER(:VDIMPRESPOOL.DOCUMENTO) OR DOCUMENTO='DEFECTO') 
+                                                                AND ACTIVO='S';
+
+PROCEDURE=SPOOL,BEGIN                       
+                  VDIMPRE.SPOOL(:VDIMPRESPOOL.ORDENADOR,:VDIMPRESPOOL.TIPOIMPRE,:VDIMPRESPOOL.CODIMPRE,:VDIMPRESPOOL.FICHERO,
+                                :VDIMPRESPOOL.DOCUMENTO,:VDIMPRESPOOL.PARAMS,:VDIMPRESPOOL.NUMCOPIAS, :VDIMPRESPOOL.FECPLANIF,
+                                :VDIMPRESPOOL.HORAPLANIF,:RET);
+                   END;@    
+
+PROCEDURE=AUDITA,BEGIN                       
+                  VDIMPRE.AUDITA(:VDIMPRESPOOL.ORDENADOR,:VDIMPRESPOOL.TIPOIMPRE,:VDIMPRESPOOL.CODIMPRE,:VDIMPRESPOOL.FICHERO,
+                                :VDIMPRESPOOL.DOCUMENTO,:VDIMPRESPOOL.PARAMS,:VDIMPRESPOOL.NUMCOPIAS, :VDIMPRESPOOL.FECPLANIF,
+                                :VDIMPRESPOOL.HORAPLANIF,:RET);
+                   END;@    
+
+
+

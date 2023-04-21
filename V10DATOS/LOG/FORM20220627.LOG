@@ -1,0 +1,1055 @@
+00 17:45:46:035 Fichero de log abierto PID 5856
+
+02 17:45:46:035 Intentando abrir fichero v10.ini
+02 17:45:46:037 Cargando driver v10oracle funcion damedriveroracle
+02 17:45:46:177 Conectado a base de datos
+02 17:45:46:177 Asignando RELEECONF a 500
+02 17:45:46:177 Asignando ACCESO a V10LOGIN
+02 17:45:46:177 Asignando NIVELLOG a 2
+02 17:45:46:179 Asignando PROTEGIDO a 500
+02 17:45:46:179 Asignando DEBUGHTTP a 2
+02 17:45:46:179 Asignando VISIBLEEXE a 0
+02 17:45:46:179 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 17:45:46:179 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 17:45:46:179 Asignando SERVIDOR a HTTP://127.0.0.1
+02 17:45:46:180 Asignando SERVERPORT a 5000
+02 17:45:46:180 Asignando SERVERPORTFILES a 5001
+02 17:45:46:180 Asignando PUERTOINICIAL a 5002
+02 17:45:46:180 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 17:45:46:180 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 17:45:46:180 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 17:45:46:180 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 17:45:46:180 Asignando FILEEXPIRED a 3600
+02 17:45:46:180 Asignando TIEMPOESPERA a 240
+02 17:45:46:182 Asignando RUTAZIP a C:/V10/v10lib/ZIP
+02 17:45:46:182 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 17:45:46:182 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 17:45:46:182 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 17:45:46:182 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 17:45:46:182 Asignando COMPRIMIR a 1
+02 17:45:46:192 Escuchando en el puerto 5002
+02 17:45:46:514 Conectado Listener en el puerto 5002
+02 17:45:46:530 Abriendo conexion HTTP en el puerto 5002
+02 17:45:46:530 Abierta conexion HTTP en el puerto 5002
+02 17:45:47:537 Conexión de cliente establecida
+02 17:45:47:537 v10formserver vale 0
+02 17:45:47:537 Conexion 14F4035C recibe petición
+GET /v10.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 17:45:47:537 La conexion 0 recibe peticion en socket 14F4035C
+02 17:45:47:537 Tratapeticion: Server cambia de valor de 00000000 a 14F4035C
+02 17:45:47:539 Sesion 0 Solicita Fichero V10.HTML 
+02 17:45:47:539 Sesion 0 Enviara Fichero V10.HTML
+02 17:45:47:539 Timeout es 99999.000000
+02 17:45:47:555 Tiempo en abrir 0.016865 seg.
+02 17:45:47:555 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 17:45:47:555 Tiempo en carga de fichero 0.017193 seg.
+02 17:45:47:557 Compresion fin
+02 17:45:47:557 Envio un total de 0.64 KB
+02 17:45:47:557 Fichero v10.html enviado
+02 17:45:47:569 Sesion 0 socket 14F4035C Finalizada por rotura de conexion 5
+02 17:45:47:569 Libera 14f4035c
+02 17:45:47:630 Sesion 0 Conectada socket 14F40394
+02 17:45:47:630 Conexion 14F40394 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 17:45:47:630 La conexion 0 recibe peticion en socket 14F40394
+02 17:45:47:630 Tratapeticion: Server cambia de valor de 14F4035C a 14F40394
+02 17:45:47:630 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 17:45:47:630 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 17:45:47:689 Tiempo en abrir 0.058279 seg.
+02 17:45:47:689 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 17:45:47:689 Tiempo en carga de fichero 0.058770 seg.
+02 17:45:47:692 Compresion fin
+02 17:45:47:694 Envio un total de 15.81 KB
+02 17:45:47:694 Fichero v10libreriajs.html enviado
+02 17:45:47:707 Sesion 0 socket 14F40394 Finalizada por rotura de conexion 5
+02 17:45:47:707 Libera 14f40394
+02 17:45:47:722 Sesion 0 Conectada socket 155EEC0C
+02 17:45:47:722 Conexion 155EEC0C recibe petición
+GET /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 17:45:47:722 La conexion 0 recibe peticion en socket 155EEC0C
+02 17:45:47:722 Tratapeticion: Server cambia de valor de 14F40394 a 155EEC0C
+02 17:45:47:722 Recibida cadena de acceso
+00 17:45:47:730 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 17:45:47:730 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 17:45:47:732 Error al abrir fichero VDST.H
+02 17:45:47:732 Empiezo a leer forms vduser.frm
+02 17:45:47:735 Leyendo caracteristicas del bloque 
+02 17:45:47:735 Leidas caracteristicas del bloque 
+02 17:45:47:739 Termino parse forms vduser.frm
+02 17:45:47:740 v10formserver vale 155eec0c
+02 17:45:47:740 Inicio envío
+02 17:45:47:762 Cargada plantilla plantilla.VDUSER.frm.html
+02 17:45:47:762 Html calculado. Tiempo de envío 0.022150 segundos
+02 17:45:47:764 Compresion fin
+02 17:45:47:764 Envio un total de 4.18 KB
+02 17:45:47:764 Enviada la respuesta a socket 155EEC0C
+02 17:45:47:764 Html enviado. Tiempo de envío 0.023365 segundos
+02 17:45:57:945 Conexion 155EEC0C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:45:57:945 La conexion 0 recibe peticion en socket 155EEC0C
+02 17:45:57:945 Tratapeticion: Server cambia de valor de 155EEC0C a 155EEC0C
+02 17:45:57:945 AtiendePost: Server cambia de valor de 155EEC0C a 155EEC0C
+02 17:45:57:962 Detectado evento
+02 17:45:57:962 Evento recibido
+02 17:45:57:962 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 17:45:57:962 Fin Evento recibido
+02 17:45:57:962 v10formserver vale 155eec0c
+02 17:45:57:962 v10formserver vale 155eec0c
+02 17:45:57:962 Inicio envío
+02 17:45:57:962 Cargada plantilla plantilla.VDUSER.frm.html
+02 17:45:57:962 Html calculado. Tiempo de envío 0.000464 segundos
+02 17:45:57:962 Compresion fin
+02 17:45:57:962 Envio un total de 4.19 KB
+02 17:45:57:962 Enviada la respuesta a socket 155EEC0C
+02 17:45:57:962 Html enviado. Tiempo de envío 0.001699 segundos
+02 17:45:59:340 Conexion 155EEC0C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:45:59:340 La conexion 0 recibe peticion en socket 155EEC0C
+02 17:45:59:340 Tratapeticion: Server cambia de valor de 155EEC0C a 155EEC0C
+02 17:45:59:340 AtiendePost: Server cambia de valor de 155EEC0C a 155EEC0C
+02 17:45:59:355 Detectado evento
+02 17:45:59:355 Evento recibido
+02 17:45:59:355 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 17:45:59:355 Fin Evento recibido
+02 17:45:59:355 v10formserver vale 155eec0c
+02 17:45:59:355 v10formserver vale 155eec0c
+02 17:45:59:380 v10formserver vale 155eec0c
+02 17:45:59:440 Compresion fin
+02 17:45:59:440 Envio un total de 7.71 KB
+02 17:45:59:440 Enviada la respuesta a socket 155EEC0C
+02 17:47:35:932 Sesion 0 socket 155EEC0C Finalizada por rotura de conexion 5
+02 17:47:35:932 Libera 155eec0c
+
+00 17:47:47:092 Fichero de log cerrado.
+
+00 17:48:20:049 Fichero de log abierto PID 11144
+
+02 17:48:20:049 Intentando abrir fichero v10.ini
+02 17:48:20:052 Cargando driver v10oracle funcion damedriveroracle
+02 17:48:20:169 Conectado a base de datos
+02 17:48:20:170 Asignando RELEECONF a 500
+02 17:48:20:170 Asignando ACCESO a V10LOGIN
+02 17:48:20:170 Asignando NIVELLOG a 2
+02 17:48:20:170 Asignando PROTEGIDO a 500
+02 17:48:20:170 Asignando DEBUGHTTP a 2
+02 17:48:20:172 Asignando VISIBLEEXE a 0
+02 17:48:20:172 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 17:48:20:172 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 17:48:20:172 Asignando SERVIDOR a HTTP://127.0.0.1
+02 17:48:20:172 Asignando SERVERPORT a 5000
+02 17:48:20:172 Asignando SERVERPORTFILES a 5001
+02 17:48:20:174 Asignando PUERTOINICIAL a 5002
+02 17:48:20:174 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 17:48:20:174 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 17:48:20:174 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 17:48:20:174 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 17:48:20:174 Asignando FILEEXPIRED a 3600
+02 17:48:20:175 Asignando TIEMPOESPERA a 240
+02 17:48:20:175 Asignando RUTAZIP a C:/V10/v10lib/ZIP
+02 17:48:20:175 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 17:48:20:175 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 17:48:20:175 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 17:48:20:175 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 17:48:20:175 Asignando COMPRIMIR a 1
+02 17:48:20:185 Escuchando en el puerto 5002
+02 17:48:20:540 Conectado Listener en el puerto 5002
+02 17:48:20:557 Abriendo conexion HTTP en el puerto 5002
+02 17:48:20:557 Abierta conexion HTTP en el puerto 5002
+02 17:48:21:567 Conexión de cliente establecida
+02 17:48:21:567 v10formserver vale 0
+02 17:48:21:567 Conexion 05088A2C recibe petición
+GET /v10.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 17:48:21:567 La conexion 0 recibe peticion en socket 05088A2C
+02 17:48:21:567 Tratapeticion: Server cambia de valor de 00000000 a 05088A2C
+02 17:48:21:567 Sesion 0 Solicita Fichero V10.HTML 
+02 17:48:21:567 Sesion 0 Enviara Fichero V10.HTML
+02 17:48:21:570 Tiempo en abrir 0.000484 seg.
+02 17:48:21:570 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 17:48:21:570 Tiempo en carga de fichero 0.001028 seg.
+02 17:48:21:570 Timeout es 99999.000000
+02 17:48:21:570 Compresion fin
+02 17:48:21:570 Envio un total de 0.64 KB
+02 17:48:21:572 Fichero v10.html enviado
+02 17:48:21:584 Sesion 0 socket 05088A2C Finalizada por rotura de conexion 5
+02 17:48:21:584 Libera 5088a2c
+02 17:48:21:599 Sesion 0 Conectada socket 05098BEC
+02 17:48:21:600 Conexion 05098BEC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 17:48:21:600 La conexion 0 recibe peticion en socket 05098BEC
+02 17:48:21:600 Tratapeticion: Server cambia de valor de 05088A2C a 05098BEC
+02 17:48:21:600 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 17:48:21:600 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 17:48:21:600 Tiempo en abrir 0.000455 seg.
+02 17:48:21:600 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 17:48:21:600 Tiempo en carga de fichero 0.000798 seg.
+02 17:48:21:604 Compresion fin
+02 17:48:21:604 Envio un total de 15.81 KB
+02 17:48:21:605 Fichero v10libreriajs.html enviado
+02 17:48:21:615 Sesion 1 Conectada socket 05098C5C
+02 17:48:21:615 Sesion 0 socket 05098BEC Finalizada por rotura de conexion 5
+02 17:48:21:615 Libera 5098bec
+02 17:48:21:615 Conexion 05098C5C recibe petición
+GET /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 17:48:21:615 La conexion 1 recibe peticion en socket 05098C5C
+02 17:48:21:615 Tratapeticion: Server cambia de valor de 05098BEC a 05098C5C
+02 17:48:21:615 Recibida cadena de acceso
+00 17:48:21:620 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 17:48:21:620 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 17:48:21:622 Error al abrir fichero VDST.H
+02 17:48:21:624 Empiezo a leer forms vduser.frm
+02 17:48:21:627 Leyendo caracteristicas del bloque 
+02 17:48:21:627 Leidas caracteristicas del bloque 
+02 17:48:21:632 Termino parse forms vduser.frm
+02 17:48:21:639 v10formserver vale 5098c5c
+02 17:48:21:639 Inicio envío
+02 17:48:21:639 Cargada plantilla plantilla.VDUSER.frm.html
+02 17:48:21:639 Html calculado. Tiempo de envío 0.000682 segundos
+02 17:48:21:640 Compresion fin
+02 17:48:21:640 Envio un total de 4.18 KB
+02 17:48:21:640 Enviada la respuesta a socket 05098C5C
+02 17:48:21:640 Html enviado. Tiempo de envío 0.002042 segundos
+02 17:48:23:065 Conexion 05098C5C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 94
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:23:065 La conexion 1 recibe peticion en socket 05098C5C
+02 17:48:23:065 Tratapeticion: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:23:065 AtiendePost: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:23:084 Detectado evento
+02 17:48:23:084 Evento recibido
+02 17:48:23:084 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 
+02 17:48:23:084 Fin Evento recibido
+02 17:48:23:084 v10formserver vale 5098c5c
+02 17:48:23:084 v10formserver vale 5098c5c
+02 17:48:23:084 Inicio envío
+02 17:48:23:084 Cargada plantilla plantilla.VDUSER.frm.html
+02 17:48:23:084 Html calculado. Tiempo de envío 0.000941 segundos
+02 17:48:23:084 Compresion fin
+02 17:48:23:084 Envio un total de 4.18 KB
+02 17:48:23:084 Enviada la respuesta a socket 05098C5C
+02 17:48:23:084 Html enviado. Tiempo de envío 0.003541 segundos
+02 17:48:25:315 Conexion 05098C5C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:25:315 La conexion 1 recibe peticion en socket 05098C5C
+02 17:48:25:315 Tratapeticion: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:25:315 AtiendePost: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:25:347 Detectado evento
+02 17:48:25:347 Evento recibido
+02 17:48:25:347 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 17:48:25:347 Fin Evento recibido
+02 17:48:25:347 v10formserver vale 5098c5c
+02 17:48:25:347 v10formserver vale 5098c5c
+02 17:48:25:347 Inicio envío
+02 17:48:25:347 Cargada plantilla plantilla.VDUSER.frm.html
+02 17:48:25:347 Html calculado. Tiempo de envío 0.001278 segundos
+02 17:48:25:347 Compresion fin
+02 17:48:25:347 Envio un total de 4.19 KB
+02 17:48:25:347 Enviada la respuesta a socket 05098C5C
+02 17:48:25:347 Html enviado. Tiempo de envío 0.004583 segundos
+02 17:48:26:990 Conexion 05098C5C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:26:990 La conexion 1 recibe peticion en socket 05098C5C
+02 17:48:26:990 Tratapeticion: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:26:990 AtiendePost: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:27:005 Detectado evento
+02 17:48:27:005 Evento recibido
+02 17:48:27:005 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 17:48:27:005 Fin Evento recibido
+02 17:48:27:005 v10formserver vale 5098c5c
+02 17:48:27:005 v10formserver vale 5098c5c
+02 17:48:27:032 v10formserver vale 5098c5c
+02 17:48:27:057 Compresion fin
+02 17:48:27:057 Envio un total de 7.71 KB
+02 17:48:27:057 Enviada la respuesta a socket 05098C5C
+02 17:48:28:959 Conexion 05098C5C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:28:960 La conexion 1 recibe peticion en socket 05098C5C
+02 17:48:28:960 Tratapeticion: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:28:960 AtiendePost: Server cambia de valor de 05098C5C a 05098C5C
+02 17:48:28:979 Detectado evento
+02 17:48:28:979 Evento recibido
+02 17:48:28:979 
+	Objeto: 
+	Evento: selmenu
+	Dato: 70
+	Antid: 
+	Antvalor: 
+02 17:48:28:979 Fin Evento recibido
+02 17:48:28:980 Empiezo a leer forms vdcalif.frm
+02 17:48:28:984 Leyendo caracteristicas del bloque 
+02 17:48:28:984 Leidas caracteristicas del bloque 
+02 17:48:28:994 Leyendo caracteristicas del bloque 
+02 17:48:28:994 Leidas caracteristicas del bloque 
+02 17:48:29:005 Leyendo caracteristicas del bloque 
+02 17:48:29:005 Leidas caracteristicas del bloque 
+02 17:48:29:005 Termino parse forms vdcalif.frm
+02 17:48:29:007 v10formserver vale 5098c5c
+02 17:48:29:007 Inicio envío
+02 17:48:29:030 Html calculado. Tiempo de envío 0.024758 segundos
+02 17:48:29:030 Compresion fin
+02 17:48:29:030 Envio un total de 5.07 KB
+02 17:48:29:030 Enviada la respuesta a socket 05098C5C
+02 17:48:29:030 Html enviado. Tiempo de envío 0.027180 segundos
+02 17:48:29:077 Sesion 1 socket 05098C5C Finalizada por rotura de conexion 5
+02 17:48:29:077 Libera 5098c5c
+02 17:48:32:050 Sesion 0 Conectada socket 1576DF2C
+02 17:48:32:050 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:32:050 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:32:050 Tratapeticion: Server cambia de valor de 05098C5C a 1576DF2C
+02 17:48:32:050 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:32:067 Detectado evento
+02 17:48:32:067 Evento recibido
+02 17:48:32:067 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 113
+	Antid: bl0f1c1
+	Antvalor: 
+02 17:48:32:067 Fin Evento recibido
+02 17:48:32:067 v10formserver vale 1576df2c
+02 17:48:32:100 v10formserver vale 1576df2c
+02 17:48:32:100 Inicio envío
+02 17:48:32:100 Html calculado. Tiempo de envío 0.005056 segundos
+02 17:48:32:100 Compresion fin
+02 17:48:32:100 Envio un total de 5.91 KB
+02 17:48:32:100 Enviada la respuesta a socket 1576DF2C
+02 17:48:32:100 Html enviado. Tiempo de envío 0.008570 segundos
+02 17:48:33:369 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 110
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:33:370 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:33:370 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:33:370 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:33:387 Detectado evento
+02 17:48:33:387 Evento recibido
+02 17:48:33:387 
+	Objeto: tdbl0f2c2
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c2
+	Antvalor: MUESTRA
+02 17:48:33:387 Fin Evento recibido
+02 17:48:33:387 v10formserver vale 1576df2c
+02 17:48:33:387 v10formserver vale 1576df2c
+02 17:48:33:387 Inicio envío
+02 17:48:33:387 Html calculado. Tiempo de envío 0.002383 segundos
+02 17:48:33:387 Compresion fin
+02 17:48:33:387 Envio un total de 6.02 KB
+02 17:48:33:387 Enviada la respuesta a socket 1576DF2C
+02 17:48:33:387 Html enviado. Tiempo de envío 0.004079 segundos
+02 17:48:35:590 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 110
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:35:590 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:35:590 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:35:592 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:35:609 Detectado evento
+02 17:48:35:609 Evento recibido
+02 17:48:35:609 
+	Objeto: tdbl1f4c2
+	Evento: onclick
+	Dato: 
+	Antid: bl0f2c2
+	Antvalor: CALIDAD
+02 17:48:35:609 Fin Evento recibido
+02 17:48:35:609 v10formserver vale 1576df2c
+02 17:48:35:609 v10formserver vale 1576df2c
+02 17:48:35:609 v10formserver vale 1576df2c
+02 17:48:35:609 Inicio envío
+02 17:48:35:609 Html calculado. Tiempo de envío 0.002690 segundos
+02 17:48:35:609 Compresion fin
+02 17:48:35:609 Envio un total de 6.01 KB
+02 17:48:35:609 Enviada la respuesta a socket 1576DF2C
+02 17:48:35:609 Html enviado. Tiempo de envío 0.005207 segundos
+02 17:48:36:840 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 119
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:36:840 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:36:840 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:36:840 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:36:860 Detectado evento
+02 17:48:36:860 Evento recibido
+02 17:48:36:860 
+	Objeto: tdbl1f3c2
+	Evento: onclick
+	Dato: 
+	Antid: bl1f4c2
+	Antvalor: BLOQUEO+TEMPORAL
+02 17:48:36:860 Fin Evento recibido
+02 17:48:36:860 v10formserver vale 1576df2c
+02 17:48:36:860 v10formserver vale 1576df2c
+02 17:48:36:860 Inicio envío
+02 17:48:36:860 Html calculado. Tiempo de envío 0.005252 segundos
+02 17:48:36:860 Compresion fin
+02 17:48:36:860 Envio un total de 6.01 KB
+02 17:48:36:860 Enviada la respuesta a socket 1576DF2C
+02 17:48:36:860 Html enviado. Tiempo de envío 0.008898 segundos
+02 17:48:37:844 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 108
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:37:844 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:37:844 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:37:844 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:37:862 Detectado evento
+02 17:48:37:862 Evento recibido
+02 17:48:37:862 
+	Objeto: fsbl2
+	Evento: onclick
+	Dato: 
+	Antid: bl1f3c2
+	Antvalor: RECHAZADO
+02 17:48:37:862 Fin Evento recibido
+02 17:48:37:862 v10formserver vale 1576df2c
+02 17:48:37:862 v10formserver vale 1576df2c
+02 17:48:37:862 Inicio envío
+02 17:48:37:862 Html calculado. Tiempo de envío 0.005983 segundos
+02 17:48:37:862 Compresion fin
+02 17:48:37:862 Envio un total de 6.01 KB
+02 17:48:37:862 Enviada la respuesta a socket 1576DF2C
+02 17:48:37:862 Html enviado. Tiempo de envío 0.008610 segundos
+02 17:48:39:497 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 106
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:39:497 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:39:497 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:39:497 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:39:515 Detectado evento
+02 17:48:39:515 Evento recibido
+02 17:48:39:515 
+	Objeto: bl2
+	Evento: onclick
+	Dato: 
+	Antid: bl1f3c2
+	Antvalor: RECHAZADO
+02 17:48:39:515 Fin Evento recibido
+02 17:48:39:515 v10formserver vale 1576df2c
+02 17:48:39:515 v10formserver vale 1576df2c
+02 17:48:39:515 v10formserver vale 1576df2c
+02 17:48:39:515 Inicio envío
+02 17:48:39:515 Html calculado. Tiempo de envío 0.003441 segundos
+02 17:48:39:515 Compresion fin
+02 17:48:39:515 Envio un total de 6.00 KB
+02 17:48:39:515 Enviada la respuesta a socket 1576DF2C
+02 17:48:39:515 Html enviado. Tiempo de envío 0.006269 segundos
+02 17:48:41:520 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 109
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:41:520 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:41:520 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:41:520 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:41:535 Detectado evento
+02 17:48:41:535 Evento recibido
+02 17:48:41:535 
+	Objeto: bl2f1c1
+	Evento: onkeyup_ctrl
+	Dato: 120
+	Antid: bl2f1c1
+	Antvalor: 
+02 17:48:41:535 Fin Evento recibido
+02 17:48:41:535 v10formserver vale 1576df2c
+02 17:48:41:547 Inicio envío
+02 17:48:41:555 Html calculado. Tiempo de envío 0.019078 segundos
+02 17:48:41:570 Compresion fin
+02 17:48:41:570 Envio un total de 7.33 KB
+02 17:48:41:570 Enviada la respuesta a socket 1576DF2C
+02 17:48:41:570 Html enviado. Tiempo de envío 0.022875 segundos
+02 17:48:44:155 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 95
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:44:155 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:44:155 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:44:155 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:44:177 Detectado evento
+02 17:48:44:177 Evento recibido
+02 17:48:44:177 
+	Objeto: 
+	Evento: onkeyup_ctrl
+	Dato: 121
+	Antid: 
+	Antvalor: 
+02 17:48:44:177 Fin Evento recibido
+02 17:48:44:195 Inicio envío
+02 17:48:44:197 Html calculado. Tiempo de envío 0.002812 segundos
+02 17:48:44:200 Compresion fin
+02 17:48:44:200 Envio un total de 7.33 KB
+02 17:48:44:200 Enviada la respuesta a socket 1576DF2C
+02 17:48:44:200 Html enviado. Tiempo de envío 0.005735 segundos
+02 17:48:51:839 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:48:51:839 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:48:51:839 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:51:839 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:48:51:855 Detectado evento
+02 17:48:51:855 Evento recibido
+02 17:48:51:855 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: 
+	Antvalor: 
+02 17:48:51:855 Fin Evento recibido
+02 17:48:51:855 v10formserver vale 1576df2c
+02 17:48:51:855 Inicio envío
+02 17:48:51:855 Html calculado. Tiempo de envío 0.003094 segundos
+02 17:48:51:855 Compresion fin
+02 17:48:51:855 Envio un total de 6.00 KB
+02 17:48:51:855 Enviada la respuesta a socket 1576DF2C
+02 17:48:51:855 Html enviado. Tiempo de envío 0.004833 segundos
+02 17:49:08:367 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 94
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:08:367 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:08:367 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:08:367 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:08:382 Detectado evento
+02 17:49:08:382 Evento recibido
+02 17:49:08:382 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: bl2f1c1
+	Antvalor: 
+02 17:49:08:382 Fin Evento recibido
+02 17:49:08:382 v10formserver vale 1576df2c
+02 17:49:08:382 v10formserver vale 1576df2c
+02 17:49:08:382 Inicio envío
+02 17:49:08:382 Html calculado. Tiempo de envío 0.004997 segundos
+02 17:49:08:382 Compresion fin
+02 17:49:08:382 Envio un total de 6.00 KB
+02 17:49:08:382 Enviada la respuesta a socket 1576DF2C
+02 17:49:08:382 Html enviado. Tiempo de envío 0.008239 segundos
+02 17:49:09:067 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 96
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:09:067 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:09:067 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:09:067 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:09:084 Detectado evento
+02 17:49:09:084 Evento recibido
+02 17:49:09:084 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: bl2f1c1
+	Antvalor: 
+02 17:49:09:084 Fin Evento recibido
+02 17:49:09:084 v10formserver vale 1576df2c
+02 17:49:09:100 Compresion fin
+02 17:49:09:100 Envio un total de 7.71 KB
+02 17:49:09:100 Enviada la respuesta a socket 1576DF2C
+02 17:49:21:722 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:21:722 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:21:722 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:21:722 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:21:735 Detectado evento
+02 17:49:21:735 Evento recibido
+02 17:49:21:735 
+	Objeto: 
+	Evento: selmenu
+	Dato: 119
+	Antid: 
+	Antvalor: 
+02 17:49:21:735 Fin Evento recibido
+02 17:49:21:735 Empiezo a leer forms vdordenesrecep.frm
+02 17:49:21:752 Leyendo caracteristicas del bloque 
+02 17:49:21:752 Leidas caracteristicas del bloque 
+02 17:49:21:765 Leyendo caracteristicas del bloque 
+02 17:49:21:765 Leidas caracteristicas del bloque 
+02 17:49:21:765 Leyendo caracteristicas del campo CODART
+02 17:49:21:765 Leidas caracteristicas del campo CODART
+02 17:49:21:767 Leyendo caracteristicas del campo CADUCI
+02 17:49:21:767 Leidas caracteristicas del campo CADUCI
+02 17:49:21:780 Leyendo caracteristicas del bloque 
+02 17:49:21:780 Leidas caracteristicas del bloque 
+02 17:49:21:780 Leyendo caracteristicas del campo CODART
+02 17:49:21:780 Leidas caracteristicas del campo CODART
+02 17:49:21:780 Leyendo caracteristicas del campo CADUCI
+02 17:49:21:780 Leidas caracteristicas del campo CADUCI
+02 17:49:21:780 Leyendo caracteristicas del bloque 
+02 17:49:21:780 Leidas caracteristicas del bloque 
+02 17:49:21:780 Leyendo caracteristicas del campo CODART
+02 17:49:21:780 Leidas caracteristicas del campo CODART
+02 17:49:21:780 Termino parse forms vdordenesrecep.frm
+02 17:49:21:905 v10formserver vale 1576df2c
+02 17:49:21:905 Inicio envío
+02 17:49:21:922 Html calculado. Tiempo de envío 0.009263 segundos
+02 17:49:21:924 Compresion fin
+02 17:49:21:924 Envio un total de 10.43 KB
+02 17:49:21:924 Enviada la respuesta a socket 1576DF2C
+02 17:49:21:924 Html enviado. Tiempo de envío 0.013864 segundos
+02 17:49:23:175 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:23:175 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:23:175 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:23:175 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:23:190 Detectado evento
+02 17:49:23:190 Evento recibido
+02 17:49:23:190 
+	Objeto: tdbl3f3c2
+	Evento: onclick
+	Dato: 
+	Antid: bl0f1c1
+	Antvalor: 6
+02 17:49:23:190 Fin Evento recibido
+02 17:49:23:190 v10formserver vale 1576df2c
+02 17:49:23:190 Inicio envío
+02 17:49:23:190 Html calculado. Tiempo de envío 0.007229 segundos
+02 17:49:23:207 Compresion fin
+02 17:49:23:207 Envio un total de 10.31 KB
+02 17:49:23:207 Enviada la respuesta a socket 1576DF2C
+02 17:49:23:207 Html enviado. Tiempo de envío 0.012364 segundos
+02 17:49:28:399 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 125
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:28:399 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:28:399 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:28:399 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:28:417 Detectado evento
+02 17:49:28:417 Evento recibido
+02 17:49:28:417 
+	Objeto: tdbl3f3c1
+	Evento: onkeyup_ctrl
+	Dato: 120
+	Antid: tdbl3f3c1
+	Antvalor: BELVIAT5013M
+02 17:49:28:417 Fin Evento recibido
+02 17:49:28:417 Inicio envío
+02 17:49:28:417 Html calculado. Tiempo de envío 0.009350 segundos
+02 17:49:28:435 Compresion fin
+02 17:49:28:435 Envio un total de 11.62 KB
+02 17:49:28:435 Enviada la respuesta a socket 1576DF2C
+02 17:49:28:435 Html enviado. Tiempo de envío 0.013468 segundos
+02 17:49:29:802 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 95
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:49:29:802 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:49:29:802 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:29:802 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:49:29:832 Detectado evento
+02 17:49:29:832 Evento recibido
+02 17:49:29:832 
+	Objeto: 
+	Evento: onkeyup_ctrl
+	Dato: 121
+	Antid: 
+	Antvalor: 
+02 17:49:29:832 Fin Evento recibido
+02 17:49:29:839 Inicio envío
+02 17:49:29:845 Html calculado. Tiempo de envío 0.010009 segundos
+02 17:49:29:845 Compresion fin
+02 17:49:29:845 Envio un total de 11.62 KB
+02 17:49:29:845 Enviada la respuesta a socket 1576DF2C
+02 17:49:29:845 Html enviado. Tiempo de envío 0.016968 segundos
+02 17:50:05:540 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 89
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:50:05:540 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:50:05:540 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:50:05:540 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:50:05:557 Detectado evento
+02 17:50:05:557 Evento recibido
+02 17:50:05:557 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: 
+	Antvalor: 
+02 17:50:05:557 Fin Evento recibido
+02 17:50:05:557 Inicio envío
+02 17:50:05:557 Html calculado. Tiempo de envío 0.008432 segundos
+02 17:50:05:572 Compresion fin
+02 17:50:05:572 Envio un total de 10.31 KB
+02 17:50:05:572 Enviada la respuesta a socket 1576DF2C
+02 17:50:05:572 Html enviado. Tiempo de envío 0.015883 segundos
+02 17:50:59:005 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 108
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:50:59:005 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:50:59:005 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:50:59:005 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:50:59:005 Detectado evento
+02 17:50:59:005 Evento recibido
+02 17:50:59:005 
+	Objeto: 
+	Evento: onclick
+	Dato: 
+	Antid: tdbl3f3c1
+	Antvalor: BELVIAT5013M
+02 17:50:59:005 Fin Evento recibido
+02 17:50:59:005 Inicio envío
+02 17:50:59:005 Html calculado. Tiempo de envío 0.004510 segundos
+02 17:50:59:017 Compresion fin
+02 17:50:59:017 Envio un total de 10.31 KB
+02 17:50:59:017 Enviada la respuesta a socket 1576DF2C
+02 17:50:59:017 Html enviado. Tiempo de envío 0.007949 segundos
+02 17:51:00:115 Conexion 1576DF2C recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 110
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:51:00:115 La conexion 0 recibe peticion en socket 1576DF2C
+02 17:51:00:115 Tratapeticion: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:51:00:115 AtiendePost: Server cambia de valor de 1576DF2C a 1576DF2C
+02 17:51:00:135 Detectado evento
+02 17:51:00:135 Evento recibido
+02 17:51:00:135 
+	Objeto: 
+	Evento: onkeyup
+	Dato: 27
+	Antid: tdbl3f3c1
+	Antvalor: BELVIAT5013M
+02 17:51:00:135 Fin Evento recibido
+02 17:51:00:152 Compresion fin
+02 17:51:00:152 Envio un total de 7.71 KB
+02 17:51:00:152 Enviada la respuesta a socket 1576DF2C
+02 17:53:05:940 Sesion 0 socket 1576DF2C Finalizada por rotura de conexion 5
+02 17:53:05:940 Libera 1576df2c
+02 17:57:00:840 Sesion 0 Conectada socket 157687AC
+02 17:57:00:840 Conexion 157687AC recibe petición
+POST /v10login HTTP/1.1
+Accept: text/html, application/xhtml+xml, image/jxr, */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-ES
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 17:57:00:840 La conexion 0 recibe peticion en socket 157687AC
+02 17:57:00:840 Tratapeticion: Server cambia de valor de 1576DF2C a 157687AC
+02 17:57:00:840 AtiendePost: Server cambia de valor de 157687AC a 157687AC
+02 17:57:00:845 Detectado evento
+02 17:57:00:845 Evento recibido
+02 17:57:00:845 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 17:57:00:845 Fin Evento recibido
+02 17:57:00:994 Libera 157687ac
+
+00 17:57:00:995 Fichero de log cerrado.
+

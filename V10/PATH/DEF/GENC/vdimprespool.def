@@ -1,0 +1,25 @@
+#***
+# VDIMPRESPOOL.c - Generación automática del código c para la tabla de spool/cola de impresiones                                                 
+# 
+# Propósito: Funciones de acceso a la tabla VDIMPRESPOOL
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 07-06-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=IMSP
+EXTRA=GRUPOIMPRE,V10CADENA,15
+EXTRA=COMENTARIO,V10CADENA,512
+
+SECUENCIA=VDSECIMPRESPOOL,SEQIMPRE
+RECORRE=PENDIENTE;WHERE=STATUS=:STATUS AND CODIMPRE IN (SELECT CODIMPRE FROM VDIMPRESORAS IMPR, VDIMPREGRUPO IMGR WHERE  
+                                                               IMGR.GRUPOIMPRE = IMPR.GRUPOIMPRE AND 
+                                                               IMGR.ACTIVO='S' AND 
+                                                               IMPR.ACTIVO='S' AND 
+                                                               IMGR.GRUPOIMPRE=:GRUPOIMPRE) 
+                                        AND (NVL(FECPLANIF,0)=0 OR (FECPLANIF>=VD.FECHASYS AND HORAPLANIF>=VD.HORASYS));ORDERBY=PRIORIDAD,SEQIMPRE;
+UPDATE=IMPRESO,STATUS,FECIMP,HORAIMP;
+UPDATE=DOCUMENTO,STATUS,DOCUMENTO;
+INSERT

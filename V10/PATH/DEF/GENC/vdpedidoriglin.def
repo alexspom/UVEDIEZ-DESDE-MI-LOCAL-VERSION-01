@@ -1,0 +1,27 @@
+#***
+# VDPEDIDORIGLIN.c - Generación automática del código c para la tabla de Líneas de Pedidos                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDPEDIDOLIN
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 06-03-2008                                              
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=POL
+EXTRA=COMEN,V10CADENA,1025;
+
+CLAVE=LINEA,CODDIV,ANOPED,CODPED,SEQLINEA;
+
+RECORRE=PEDIDO,CODDIV,ANOPED,CODPED,SEQPED;
+RECORRE=STATUS,STATUS;
+RECORRE=LINPEPDTE,CODDIV,ANOPED,CODPED,SEQPED,STATUS
+UPDATE=STATUS,STATUS;
+
+INTERFASE
+UPDATE
+DELETE
+INSERT
+LOCK
+ROWID

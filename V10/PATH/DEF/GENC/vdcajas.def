@@ -1,0 +1,19 @@
+#***
+# VDCAJAS.DEF - Generación automática del código c para la tabla de Cajas                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDCAJAS
+#           
+# Autor	 : FPD
+# Revisado por: 
+# Fecha  : 24-04-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=CAJ
+EXTRA=VOLUMENCAJ,V10DOUBLE
+EXTRA=ALTURA,V10LONG
+
+RECORRE=DEMAYORAMENOR,TIPOVOL;ORDERBY=LARGOCAJA*ANCHOCAJA*ALTOCAJA DESC;
+
+INSERT 
+DELETE

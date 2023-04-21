@@ -1,0 +1,174 @@
+/****
+* VDRECARGAS.C
+*                                                    
+* Propósito: Procesos y algoritmos en C para la recarga de Ubicaciones
+*                                            
+* Autor  : FGS
+* Fecha  : 6-3-2008                                                        
+******
+*  Modificaciones:
+****/
+
+
+#include "execproc/vdexec.h"
+
+
+// recoge parámetros del algoritmo de lanzamiento de las demandas de recargas
+static int paramslanzarecargasstd(char *param,char *tipodemanda,procesos **proceso,vddemandatipos *demt,vdstatuss *stdemc)
+{
+    int ret=0;
+    char procesoreserva[LPROCESO]="";
+    
+    if ((ret=piece(param,procesoreserva,"#",1))<0) {
+        v10log(LOGERROR,"%s","lanzarecargasstd: no se ha informado proceso de reserva de recargas.\n");
+        return(ret);
+    }
+    // busca el proceso de reserva
+    *proceso=buscaproceso(procesoreserva);
+    if (*proceso==NULL || (*proceso)->fnproceso==NULL){
+        v10log(LOGERROR,"paramslanzarecargasstd: NO EXISTE FUNCION O PROCESO %s que realice la reserva de la recarga.\n",procesoreserva);
+        return(ret);
+    }
+    memset(demt,0,sizeof(vddemandatipos));
+    if ((ret=piece(param,demt->tipodemanda,"#",2)) < 0) {
+        v10log(LOGERROR,"%s","lanzarecargasstd: no se ha informado tipo de demanda para reserva de recargas.\n");
+        return(ret);
+    }
+    if ((ret=DEMTselvddemandatipo(demt->tipodemanda, demt))) {
+        v10log(LOGERROR,"paramslanzarecargasstd: No existe tipo de demanda %s\n",demt->tipodemanda);
+        return(ret);
+    }
+    if ((ret=damestabreviada("lanzarecagasstd:",param, 3, "#", NULL, "DEC", stdemc, STDECPDTERESERV))) return(ret);
+    piece(param,tipodemanda,"#",5);
+    return(ret);
+}
+
+
+// mueve los comentarios de las líneas de  demanda a las líneas de pedido, del tipo especificado
+static void muevecomenDEML2UBI(vdubicas *ubi,char *listacodcomen, char *tipocomen) 
+{
+    vdplsqlcomens plsqlcomen;
+    PLSQLCOMENprocmuevecomendeml2ubi(ubi->codubi,listacodcomen,tipocomen,"",&plsqlcomen);
+}
+
+// ALGORITMO. Recoge los parámetros, genera la demanda y lanza el proceso de reserva en memoria
+// PARAM 1: Proceso que realiza la reserva
+// PARAM 2: Tipo de demanda del pedido
+// PARAM 3: Estado con el que se crea la cabecera de Demanda
+// Parámetros para pasarle al proceso que ejecuta en memoria para reservar la demanda al completo
+// PARAM 4: evaluar todas las lineas de la demanda
+// PARAM 5: tipo de comentario
+// PARAM 6: código de clasif. para montar con la clase del artículo el discriminante 
+VDEXPORT int vdlanzarecargasstd(void *ptr,char *param) 
+{
+    int ret,i,numparams;
+    char tipocomendemanda[LTIPOCOMEN]="";
+    char parami[MAXCADENA]="";
+    procesos *proceso;
+    vdrecargas *recarga=ptr;
+    vdstatuss stdemc;    
+    vddemandatipos demt;
+    vddemandacabs demc;       
+    // carga los parámetros del algoritmo
+    if ((ret=paramslanzarecargasstd(param,tipocomendemanda,&proceso,&demt,&stdemc))) return(ret);      
+    savepoint("lanzarecargasstd");
+    memset(&demc,0,sizeof(demc));
+    if ((ret=creademandarecarga(recarga,demt.tipodemanda,stdemc.status,demc.coddemanda))) {
+        rollbacksavepoint("lanzarecargasstd");   
+        v10log(LOGERROR,"lanzarecargasstd: Error al generar la demanda de tipo %s para ubicacion. %s\n",demt.tipodemanda,recarga->codubi);
+        return(ret);
+    }    
+    strcpy(demc.tipodemanda,demt.tipodemanda);          
+    // forma los parámetros a pasarle al proceso de reserva
+   	numparams=numpieces(param,"#");    
+    sprintf(proceso->proc.param,"%s#%s#%c",demc.coddemanda,demc.tipodemanda,'N');
+    // primer parámetro de proceso empieza en la posición 6
+    for (i=4;i<=numparams;i++) {
+        piece(param,parami,"#",i);
+        sprintf(proceso->proc.param+strlen(proceso->proc.param),"#%s",parami);
+    }    
+    // ejecuta la tarea de reserva
+    (proceso->fnproceso)(proceso);       
+    // busca la demanda que se ha intentado reservar
+    if ((ret=DEMCselvddemandacab(demc.tipodemanda,demc.coddemanda,&demc))) {
+        rollbacksavepoint("lanzarecargasstd");      
+        v10log(LOGERROR,"lanzarecargasstd: Demanda %s no existe despues de ejecutar proceso de reserva %s\n",
+            DEMClog(&demc), proceso->proc.proceso);
+        return(ret);
+    }
+
+    if (demc.status!=STDECRESERVADA) {
+        vddems demaux;
+        vdubicas ubi;
+        UBIselvdubica(recarga->codubi,&ubi);
+        // mueve los comentarios de las líneas de demanda a la ubicación     
+        memset(&demaux,0,sizeof(demaux));
+        DEMbuscalistacodcomen(demc.coddemanda,demc.tipodemanda,&demaux);       
+        rollbacksavepoint("lanzarecargasstd");                    
+        muevecomenDEML2UBI(&ubi,demaux.vdextra,tipocomendemanda);     
+        v10log(LOGNORMAL,"lanzarecargasstd: No se ha podido reservar cantidad %ld (UNIAGRUPA=%s) para ubicación %s\n",
+            recarga->cantidad, recarga->uniagrupademl, recarga->codubi); 
+     } else {
+        v10log(LOGNORMAL,"lanzarecargasstd: Reservada cantidad %ld (UNIAGRUPA=%s) para ubicación %s\n",
+            recarga->cantidad, recarga->uniagrupademl, recarga->codubi); 
+    }    
+    return(0);
+}
+
+
+static int ejecutaalgrecarga(procesos *proceso,vdrecargas *recarga, vdubicas *ubi) 
+{
+    
+    int ret;
+    vdareas are;  
+    AREselvdarea(ubi->codarea,&are);    
+    ret=VDEXECejecuta(proceso,recarga,"#","%s#%s#%s#%s#",
+        recarga->codart, recarga->codubi, ubi->codarea, are.codalm);  
+    return(ret);
+}
+
+
+// PROCESO. Busca ubicaciones para recargar, y ejecuta algoritmo de recarga
+// 1: Lista de almacenes, separados por $, si no se le pasa, a NULL
+// 2: Lista de areas,  separados por $, si no se la pasa, a NULL
+VDEXPORT void vdrecargasalm(procesos *proceso) 
+{
+    int ret;
+    char listaareas[MAXCADENA]="",listaalmas[MAXCADENA]="";
+    vdubicas ubi;
+    vdrecargas recarga;     
+    piece(proceso->proc.param,listaalmas,"#",1);
+    piece(proceso->proc.param,listaareas,"#",2);  
+    ret=RECARGAbuscaubis(listaareas,listaalmas,&recarga);
+    while (ret==0) {
+        v10log(LOGNORMAL,"%s","\n");
+        v10log(LOGNORMAL,"vdrecargasalm: Tratando ubicación %s para recarga\n",recarga.codubi);
+
+        // ubicaciones con el campo RECARGAR distinto de NULL
+        UBIselvdubica(recarga.codubi,&ubi);
+        // hay que recargar una cantidad
+        if (recarga.cantidad>0) { 
+            v10log(LOGNORMAL,"Cantidad a Recargar %ld con UNIAGRUPA a %s y TIPOREDONDEO a %s\n",recarga.cantidad, recarga.uniagrupademl,recarga.tiporedondeo);
+            ret=ejecutaalgrecarga(proceso,&recarga,&ubi);
+            if (ret==0) commit();
+            else rollback();
+        }  else {
+            v10log(LOGNORMAL,"%s","\t Cantidad a Recargar es 0\n");
+        }
+        if (ret==0) {
+            *ubi.recargar=0;
+            ret=UBIactualizarecargar(&ubi,NOVERIFICA);
+            if (ret) {
+                v10log(LOGERROR,"vdrecargasalm: Error actualizando campo RECARGAR en ubicación %s\n",ubi.codubi);
+                rollback();            
+            } else {
+                v10log(LOGERROR,"\t Actualizando campo RECARGAR en ubicación %s a NULO\n",ubi.codubi);             
+                commit(); 
+            }
+        } 
+        v10log(LOGNORMAL,"vdrecargasalm: Finalizada tratamiento de ubicación %s para recarga\n\n",recarga.codubi);
+        ret=RECARGAnextubis(&recarga);
+    } 
+}
+
+

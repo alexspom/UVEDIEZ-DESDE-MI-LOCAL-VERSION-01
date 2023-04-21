@@ -1,0 +1,38 @@
+#***
+# VDVERIF.DEF - Generación automática del código c SOLOQUERY para para verificación de bultos
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 4-03-2009                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=VERIF;
+
+EXTRA=RET,V10LONG;
+EXTRA=MSJERROR,V10CADENA,1024
+EXTRA=CONCMENSAJE,V10LONG;
+EXTRA=ANULARPRECINTOS,V10LONG;
+EXTRA=LLEVAALBARAN,V10LONG;
+
+PROCEDURE=PONVERIFICAR, BEGIN
+                         VDVERIF.PONVERIFICAR(:VDBULTOCAB.CODBULTO,:RET,:MSJERROR, :CONCMENSAJE);
+                     END;@
+                     
+PROCEDURE=VERIFICAPESO, BEGIN
+                         VDVERIF.VERIFICAPESO(:VDBULTOCAB.CODBULTO,:RET,:MSJERROR);
+                     END;@                     
+                     
+PROCEDURE=VERIFICATPC, BEGIN
+                         VDVERIF.VERIFICATPC(:VDBULTOCAB.CODBULTO,:RET,:MSJERROR);
+                     END;@     
+                     
+PROCEDURE=VERIFICAESTADO, BEGIN
+                         VDVERIF.VERIFICAESTADO(:VDBULTOCAB.CODBULTO,:RET,:MSJERROR);
+                     END;@                                
+                                    
+CURSOR=CLLEVAALBARAN SELECT VDVERIF.LLEVAALBARAN(:VDBULTOCAB.CODBULTO)  LLEVAALBARAN FROM DUAL;
+   
+CURSOR=CANULARPRECINTOS SELECT VDVERIF.ANULARPRECINTOS(:VDBULTOCAB.CODBULTO)  ANULARPRECINTOS FROM DUAL;                    

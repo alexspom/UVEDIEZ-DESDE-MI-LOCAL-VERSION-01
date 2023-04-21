@@ -1,0 +1,31 @@
+# Módulo   : VDPICKUNIPPFIN.PAN
+# Función  : Formulario de recogida de bultos de monopedido.
+#            Pantalla de finalización de bulto.
+#
+# Creación : 13-05-2008
+# Autor    : JMM
+###########################################
+# Histórico de cambios:
+#
+MONOPEDIDO
+_10_______ _10_______  
+
+BULTO ACABADO
+
+DEPOSITE EL BULTO
+CON MATRICULA 
+____________________
+
+EN MESA DE EMPAQUETADO
+
+PULSE ENTER _
+|
+
+POSTQUERY=FEJECUTA(FPOSICIONABLOQUE("VDPICKUNIPPMAT.PAN"),"\n\n ERROR\n AL CARGAR BLOQUE VDPICKUNIPPMAT.PAN")
+
+# DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,NOENTER,VIRTUAL
+CAMPO=CODOPE,NOENTER,VIRTUAL
+CAMPO=MATCAJA,NOENTER,VIRTUAL
+CAMPO=DUMMY
+CAMPO=CODBULTO,VIRTUAL,OCULTO

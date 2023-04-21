@@ -1,0 +1,48 @@
+<!--V10CHARTDIVS-->
+
+
+<script DEFER> 
+  var  mySeries = undefined;        
+  // colores de las gráficas de tipo pastel, por defecto   
+  EJSC.DefaultPieColors = [ 
+    '#FA5858','#F78181','#FE9A2E','#FAAC58','#F7FE2E','#F4FA58','#74DF00','#9AFE2E',
+    '#00FF00','#CEF6CE','#2EFE9A','#00FFFF','#A9F5F2','#0080FF','#E0ECF8','#0000FF',
+    '#5F04B4','#D0A9F5','#B404AE','#F5A9F2','#848484','#D8D8D8'];   
+  NumberPieColors=22;
+  
+// After drawing is complete, create and/or reposition pie piece captions 
+function doAfterDraw(chart) {  	
+  var sobrepastel=true;    
+  if (mySeries != undefined){
+   var piePoints = mySeries.getPoints(); 
+    for (var i = 0; i < piePoints.length; i++) { 
+  	
+   if (piePoints[i].hintDiv == undefined) { 
+    piePoints[i].hintDiv = document.createElement("DIV"); 
+    piePoints[i].hintDiv.className = "PiePieceLabel"; 
+    //   piePoints[i].hintDiv.style.backgroundColor=EJSC.DefaultPieColors[NumberPieColors-(i+1)];
+    if (sobrepastel)
+     piePoints[i].hintDiv.innerHTML = "<strong>" + piePoints[i].label + "</strong></br>" + piePoints[i].x + " de " + mySeries.getTotalValue() 
+     		+  " (" + Math.round((piePoints[i].x / mySeries.getTotalValue() * 100)) + "%)";            
+    else
+     piePoints[i].hintDiv.innerHTML = "<strong>" + piePoints[i].label + "&nbsp&nbsp&nbsp</strong>" + piePoints[i].x + " de " + mySeries.getTotalValue() 
+     		+  " (" + Math.round((piePoints[i].x / mySeries.getTotalValue() * 100)) + "%)";            
+     
+    } 
+    document.getElementsByTagName("body")[0].appendChild(piePoints[i].hintDiv); 
+    if (sobrepastel) {
+     var pointCoordinates = mySeries.findCenter(piePoints[i]);          
+     piePoints[i].hintDiv.style.left = pointCoordinates.x - Math.floor(piePoints[i].hintDiv.offsetWidth / 2) + "px"; 
+     piePoints[i].hintDiv.style.top = pointCoordinates.y - Math.floor(piePoints[i].hintDiv.offsetHeight / 2) + "px"; 
+ 	  } else {
+ 		 var pointCoordinates = mySeries.findCenter(piePoints[0]);          
+     piePoints[i].hintDiv.style.left = pointCoordinates.x + 100 + "px"; 
+     piePoints[i].hintDiv.style.top = pointCoordinates.y + (i*25); 
+    }
+   } 
+  }
+ };     
+ /*V10EJSCCHARTS*/  
+</script>
+
+

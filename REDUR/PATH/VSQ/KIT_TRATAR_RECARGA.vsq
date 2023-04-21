@@ -1,0 +1,6 @@
+
+CURSOR=TRATAR_RECARGA_KITS BEGIN
+                               VDLOG.PONMENSAJE('TRATAR_RECARGA_KITS', 'INICIO DEL TRATAMIENTO DE RECARGA DE KITS. ENTRADA: SATURA/KITTING.');
+                               VDRECAREA.RECARGARTODOS('SATURA','KITTING');
+                           END;@   
+          

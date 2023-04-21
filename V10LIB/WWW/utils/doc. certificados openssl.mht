@@ -1,0 +1,471 @@
+From: <Guardado por Microsoft Internet Explorer 7>
+Subject: 9 OpenSSL
+Date: Wed, 22 Apr 2009 16:55:36 +0200
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C9C36B.2850F100"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3350
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://heronforge.net/redhat/node10.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--Converted with jLaTeX2HTML 2002-2-1 (1.70) JA patch-2.0=0A=
+patched version by:  Kenshi Muto, Debian Project.=0A=
+* modified by:  Shige TAKENO=0A=
+LaTeX2HTML 2002-2-1 (1.70),=0A=
+original version by:  Nikos Drakos, CBLU, University of Leeds=0A=
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan=0A=
+* with significant contributions from:=0A=
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others =
+--><HTML><HEAD><TITLE>9 OpenSSL</TITLE>
+<META content=3D"9 OpenSSL" name=3Ddescription>
+<META content=3Drh-faq name=3Dkeywords>
+<META content=3Ddocument name=3Dresource-type>
+<META content=3Dglobal name=3Ddistribution>
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8">
+<META content=3D"MSHTML 6.00.6000.16825" name=3DGENERATOR>
+<META http-equiv=3DContent-Style-Type content=3Dtext/css><LINK=20
+href=3D"http://heronforge.net/redhat/rh-faq.css" rel=3DSTYLESHEET><LINK=20
+href=3D"node11.html" rel=3Dnext><LINK href=3D"node9.html" =
+rel=3Dprevious><LINK=20
+href=3D"rh-faq.html" rel=3Dup><LINK href=3D"node11.html" =
+rel=3Dnext></HEAD>
+<BODY bgColor=3D#ffffff><!--Navigation Panel--><A=20
+href=3D"http://heronforge.net/redhat/node11.html" =
+name=3Dtex2html395><IMG height=3D24=20
+alt=3Dnext src=3D"http://heronforge.net/icons/next.png" width=3D37 =
+align=3Dbottom=20
+border=3D0></A> <A href=3D"http://heronforge.net/redhat/rh-faq.html"=20
+name=3Dtex2html391><IMG height=3D24 alt=3Dup =
+src=3D"http://heronforge.net/icons/up.png"=20
+width=3D26 align=3Dbottom border=3D0></A> <A=20
+href=3D"http://heronforge.net/redhat/node9.html" name=3Dtex2html385><IMG =
+height=3D24=20
+alt=3Dprevious src=3D"http://heronforge.net/icons/prev.png" width=3D63 =
+align=3Dbottom=20
+border=3D0></A> <A href=3D"http://heronforge.net/redhat/node1.html"=20
+name=3Dtex2html393><IMG height=3D24 alt=3Dcontents=20
+src=3D"http://heronforge.net/icons/contents.png" width=3D65 =
+align=3Dbottom=20
+border=3D0></A> <BR><B>Next:</B> <A=20
+href=3D"http://heronforge.net/redhat/node11.html" name=3Dtex2html396>10 =
+Port=20
+Forwarding</A> <B>Up:</B> <A =
+href=3D"http://heronforge.net/redhat/rh-faq.html"=20
+name=3Dtex2html392>Redhat FAQ</A> <B>Previous:</B> <A=20
+href=3D"http://heronforge.net/redhat/node9.html" name=3Dtex2html386>8 =
+Networking</A>=20
+&nbsp; <B><A href=3D"http://heronforge.net/redhat/node1.html"=20
+name=3Dtex2html394>Contents</A></B> <BR><BR><!--End of Navigation =
+Panel--><!--Table of Child-Links--><A=20
+name=3DCHILD_LINKS><STRONG>Subsections</STRONG></A>=20
+<UL>
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010100000000000=
+0000"=20
+  name=3Dtex2html397>9.1 Conventions</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010200000000000=
+0000"=20
+  name=3Dtex2html398>9.2 Create a Certificate Signing request</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010300000000000=
+0000"=20
+  name=3Dtex2html399>9.3 Signing a Certificate</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010400000000000=
+0000"=20
+  name=3Dtex2html400>9.4 Decrypting a Server Key</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010500000000000=
+0000"=20
+  name=3Dtex2html401>9.5 Encrypting a Server Key</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010600000000000=
+0000"=20
+  name=3Dtex2html402>9.6 Show the fields in a certificate</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010700000000000=
+0000"=20
+  name=3Dtex2html403>9.7 Convert OpenSSL Key to IIS Key</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010800000000000=
+0000"=20
+  name=3Dtex2html404>9.8 Self Signed Certificate</A>=20
+  <LI><A=20
+  =
+href=3D"http://heronforge.net/redhat/node10.html#SECTION00010900000000000=
+0000"=20
+  name=3Dtex2html405>9.9 Create a Private CA</A> </LI></UL><!--End of =
+Table of Child-Links-->
+<HR>
+
+<H1><A name=3DSECTION000100000000000000000></A><A =
+name=3Dsec:OpenSSL></A><BR>9=20
+OpenSSL </H1>
+<P>
+<H2><A name=3DSECTION000101000000000000000>9.1 Conventions</A> </H2>
+<P>
+<UL>
+  <LI>req =3D certificate signing request=20
+  <LI>key =3D unencrypted private key=20
+  <LI>pem =3D encrypted private key=20
+  <LI>crt =3D signed certificate </LI></UL>
+<P>
+<H2><A name=3DSECTION000102000000000000000></A><A=20
+name=3Dsub:openssl-Create-a-Certificate></A><BR>9.2 Create a Certificate =
+Signing=20
+request </H2>
+<P>
+<OL>
+  <LI>Create an RSA key and a signing request <BR><TT>$ openssl req -new =
+-days=20
+  3650 -config &lt;config file&gt; -out certreq.req -keyout =
+server.pem</TT>=20
+  <LI>The -config is optional.=20
+  <LI>The PEM passphrase requested is the passphrase for encrypting=20
+  <I>server.pem.</I> Some applications may require an unencrypted key =
+(eg=20
+  stunnel) but it is good practice to encrypt the key and create a =
+decrypted=20
+  copy if necessary.=20
+  <LI>Use reasonable values for the remaining questions <BR><TT>Country =
+Name (2=20
+  letter code) [GB]:US</TT>&nbsp; <BR><TT>State or Province Name (full =
+name)=20
+  [Berkshire]:California</TT>&nbsp; <BR><TT>Locality Name (eg, city)=20
+  [Newbury]:Los Angeles</TT>&nbsp; <BR><TT>Organization Name (eg, =
+company) [My=20
+  Company Ltd]:DPSI</TT>&nbsp; <BR><TT>Organizational Unit Name (eg, =
+section)=20
+  []:Systems</TT>&nbsp; <BR><TT>Common Name (eg, your name or your =
+server's=20
+  hostname) []:ssl.dpsi-corp.com </TT>&nbsp; <BR><TT>Email Address =
+[]:</TT>=20
+</LI></OL>
+<P>
+<H2><A name=3DSECTION000103000000000000000></A><A=20
+name=3Dsub:openssl-Signing-a-Certificate></A><BR>9.3 Signing a =
+Certificate </H2>
+<P>If you are not going to have your keys signed by a Certificate =
+Authority then=20
+you can sign the key yourself. See Section <A=20
+href=3D"http://heronforge.net/redhat/node10.html#sub:Create-a-Private">9.=
+9</A> for=20
+setting up a private CA.=20
+<P>
+<OL>
+  <LI>If necessary, mount the cdrom the key file(s) are stored on =
+<BR><TT>$=20
+  mount /mnt/cdrom</TT>=20
+  <LI>Sign the Certificate <BR><TT>$ openssl ca -config stunnel.cnf =
+-days 365=20
+  -keyfile /mnt/cdrom/DPSIkey.pem -cert /mnt/cdrom/DPSIcert.pem -in =
+certreq.req=20
+  -out test.crt</TT>&nbsp; <BR>&nbsp; <BR><TT>Using configuration from=20
+  stunnel.cnf</TT>&nbsp; <BR><TT>Enter PEM pass phrase:</TT>&nbsp; =
+<BR><TT>Check=20
+  that the request matches the signature</TT>&nbsp; <BR><TT>Signature=20
+  ok</TT>&nbsp; <BR><TT>The Subjects Distinguished Name is as follows=20
+  </TT>&nbsp;=20
+  =
+<BR><TT>countryName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;:PRINTABLE:'US'</TT>&nbsp;=20
+  =
+<BR><TT>stateOrProvinceName&nbsp;&nbsp;&nbsp;:PRINTABLE:'California'</TT>=
+&nbsp;=20
+  =
+<BR><TT>localityName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;:PRINTABLE:'Los=20
+  Angeles'</TT>&nbsp;=20
+  =
+<BR><TT>organizationName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:PRINTABLE:'D=
+PSI'</TT>&nbsp;=20
+  <BR><TT>organizationalUnitName:PRINTABLE:'Systems'</TT>&nbsp;=20
+  =
+<BR><TT>commonName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;:PRINTABLE:'ssl.dpsi-corp.com'</TT>&nbsp;=20
+  <BR><TT>Certificate is to be certified until Dec 27 00:02:23 2003 GMT =
+(365=20
+  days)</TT>&nbsp; <BR><TT>Sign the certificate? [y/n]:y</TT>&nbsp; =
+<BR>&nbsp;=20
+  <BR><TT>1 out of 1 certificate requests certified, commit? [y/n]y =
+</TT>&nbsp;=20
+  <BR><TT>Write out database with 1 new entries</TT>&nbsp; <BR><TT>Data =
+Base=20
+  Updated</TT>=20
+  <LI>The passphrase requested is for the key to be used for signing.=20
+  <LI>When finished, unmount and eject the CD. <BR><TT>$ umount=20
+  /mnt/cdrom</TT>&nbsp; <BR><TT>$ eject</TT> </LI></OL>
+<P>
+<H2><A name=3DSECTION000104000000000000000>9.4 Decrypting a Server =
+Key</A> </H2>
+<P>Some applications need the server key to be in clear text. The =
+private key=20
+can be decrypted with=20
+<P><TT>$ openssl rsa -in server.pem -out server.key</TT>=20
+<P>
+<H2><A name=3DSECTION000105000000000000000>9.5 Encrypting a Server =
+Key</A> </H2>
+<P>If a key needs to be encrypted after decrypting=20
+<P><TT>$ openssl rsa -des3 -in plaintext.key -out encrypted.key.pem</TT> =
+
+<P>You will be promptd for a passphrase.=20
+<P>
+<H2><A name=3DSECTION000106000000000000000>9.6 Show the fields in a=20
+certificate</A> </H2>
+<P>
+<OL>
+  <LI>Signing Request <BR><TT>$ openssl req -in cert.req -text</TT>=20
+  <LI>Signed Certificate&nbsp; <BR><TT>$ openssl x509 -in cert.crt =
+-text</TT>=20
+  <LI>Encrypted Private Key <BR><TT>$ openssl rsa -in =
+www.closetheloan.pem=20
+  -text</TT>=20
+  <LI>Unencrypted Private Key <BR><TT>$ openssl rsa -in =
+www.closetheloan.key=20
+  -text</TT> </LI></OL>
+<P>
+<H2><A name=3DSECTION000107000000000000000>9.7 Convert OpenSSL Key to =
+IIS Key</A>=20
+</H2>
+<P>
+<OL>
+  <LI>Decrypt the server key&nbsp; <BR><TT>$ openssl rsa -in server.pem =
+-out=20
+  server_.key </TT>
+  <LI>Combine the server key and the signed certificate&nbsp; <BR><TT>$ =
+openssl=20
+  pkcs12 -export -in server.crt -inkey server.key -out server.p12</TT> =
+</LI></OL>
+<P>
+<H2><A name=3DSECTION000108000000000000000>9.8 Self Signed =
+Certificate</A> </H2>
+<P>
+<OL>
+  <LI>Generate a key: <BR><TT>$ openssl genrsa -des3 1024 =
+&gt;server.pem</TT>=20
+  <LI>Generate the self signed certificate <BR><TT>$ openssl req -new =
+-key=20
+  server.pem -x509 -days 3650 -out server.crt</TT> </LI></OL>
+<P>
+<H2><A name=3DSECTION000109000000000000000></A><A=20
+name=3Dsub:Create-a-Private></A><BR>9.9 Create a Private CA </H2>
+<P>
+<OL>
+  <LI>Change to working directory <BR><TT>$ cd ~/certs</TT>=20
+  <LI>Create a directory structure for openssl to store some stuff in. =
+This may=20
+  require updating the configuration in =
+<I>/usr/share/ssl/openssl.cnf</I>.=20
+  <BR><TT>$ mkdir -p DPSI-CA/certs</TT>&nbsp; <BR><TT>$ mkdir -p=20
+  DPSI-CA/crl</TT>&nbsp; <BR><TT>$ mkdir -p DPSI-CA/newcerts</TT>&nbsp;=20
+  <BR><TT>$ mkdir -p DPSI-CA/private</TT>&nbsp; <BR><TT>$ touch=20
+  DPSI-CA/index.txt</TT>&nbsp; <BR><TT>$ touch =
+DPSI-CA/private/.rand</TT>&nbsp;=20
+  <BR><TT>$ echo 01 &gt;DPSI-CA/serial</TT>=20
+  <LI>Create the self-signed key and cert <BR><TT>$ openssl req -new =
+-x509=20
+  -keyout DPSIkey.pem -out DPSIcert.pem -days 3650</TT>=20
+  <LI>Use a good passphrase when prompted for one.=20
+  <LI>Use reasonable values for the remaining questions <BR><TT>Country =
+Name (2=20
+  letter code) [GB]:US</TT>&nbsp; <BR><TT>State or Province Name (full =
+name)=20
+  [Berkshire]:California</TT>&nbsp; <BR><TT>Locality Name (eg, city)=20
+  [Newbury]:Los Angeles</TT>&nbsp; <BR><TT>Organization Name (eg, =
+company) [My=20
+  Company Ltd]:DPSI</TT>&nbsp; <BR><TT>Organizational Unit Name (eg, =
+section)=20
+  []:Systems</TT>&nbsp; <BR><TT>Common Name (eg, your name or your =
+server's=20
+  hostname) []:dpsi-corp.com </TT>&nbsp; <BR><TT>Email Address []:</TT>=20
+  <LI>The new CA private key will be in <I>DPSIkey.pem</I>. The public =
+key is in=20
+  <I>DPSIcert.pem</I> </LI></OL>If this CA is being generated for =
+``real'' it is a=20
+good idea to copy the public and private keys to safe place and delete =
+the=20
+originals. It might be a really good idea to burn them onto a CD that is =
+only=20
+mounted when a certificate need to be signed.=20
+<P><IMG height=3D1265 =
+alt=3D"\begin{figure}\vbox{\include{oracle}&#10;}\end{figure}"=20
+src=3D"http://heronforge.net/redhat/img1.png" width=3D978 border=3D0>=20
+<P>
+<P>
+<HR>
+<!--Navigation Panel--><A =
+href=3D"http://heronforge.net/redhat/node11.html"=20
+name=3Dtex2html395><IMG height=3D24 alt=3Dnext=20
+src=3D"http://heronforge.net/icons/next.png" width=3D37 align=3Dbottom =
+border=3D0></A>=20
+<A href=3D"http://heronforge.net/redhat/rh-faq.html" =
+name=3Dtex2html391><IMG=20
+height=3D24 alt=3Dup src=3D"http://heronforge.net/icons/up.png" =
+width=3D26 align=3Dbottom=20
+border=3D0></A> <A href=3D"http://heronforge.net/redhat/node9.html"=20
+name=3Dtex2html385><IMG height=3D24 alt=3Dprevious=20
+src=3D"http://heronforge.net/icons/prev.png" width=3D63 align=3Dbottom =
+border=3D0></A>=20
+<A href=3D"http://heronforge.net/redhat/node1.html" =
+name=3Dtex2html393><IMG=20
+height=3D24 alt=3Dcontents =
+src=3D"http://heronforge.net/icons/contents.png" width=3D65=20
+align=3Dbottom border=3D0></A> <BR><B>Next:</B> <A=20
+href=3D"http://heronforge.net/redhat/node11.html" name=3Dtex2html396>10 =
+Port=20
+Forwarding</A> <B>Up:</B> <A =
+href=3D"http://heronforge.net/redhat/rh-faq.html"=20
+name=3Dtex2html392>Redhat FAQ</A> <B>Previous:</B> <A=20
+href=3D"http://heronforge.net/redhat/node9.html" name=3Dtex2html386>8 =
+Networking</A>=20
+&nbsp; <B><A href=3D"http://heronforge.net/redhat/node1.html"=20
+name=3Dtex2html394>Contents</A></B> <!--End of Navigation Panel-->
+<ADDRESS>2005-03-20 </ADDRESS></BODY></HTML>
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://heronforge.net/icons/next.png
+
+iVBORw0KGgoAAAANSUhEUgAAACUAAAAYAgMAAAF3E+x1AAAADFBMVEW/v79vb2/n5+dbAADNBuO5
+AAAAAXRSTlMAQObYZgAAAJdJREFUeJxtjjEKwzAMRX9RRg0+isFroD5Ch/o+hqyFTtkz+xQGrz2M
+oWuhleTQEqiQvp8/smSUjAxNAR81MxyWl7OziGtBUk3qOa7qTshs+uAgOkPV/DWldJW3pWzmuF1v
+pvfBRKqt1y/7HtyhX+dcbI5FxDa243TEGVWIFQPqm+ms6HtDY3M9y9/7QKp1d/8P+6Gut4gfgXo8
+bHN/6O4AAAAASUVORK5CYII=
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://heronforge.net/icons/up.png
+
+iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAABlBMVEXM//8AAADXLKZ9AAAAAWJL
+R0QB/wIt3gAAADBJREFUeNpjYMAFEoD4AwMD4w8GBuY/DAzs/xgY+P8zMMj/b2Cw/3+Aof7/AwY8
+AADWmAtWTtgazgAAAFZ0RVh0Q29tbWVudABUaGlzIGFydCBpcyBpbiB0aGUgcHVibGljIGRvbWFp
+bi4gS2V2aW4gSHVnaGVzLCBrZXZpbmhAZWl0LmNvbSwgU2VwdGVtYmVyIDE5OTVM6PTEAAAAAElF
+TkSuQmCC
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://heronforge.net/icons/prev.png
+
+iVBORw0KGgoAAAANSUhEUgAAAD8AAAAYAgMAAAFHn/1UAAAADFBMVEW/v79vb2/n5+dbAADNBuO5
+AAAAAXRSTlMAQObYZgAAALlJREFUeJyFkD0KwzAMhV9wRoGXHkTgNeBLpPcJdA106t6hQ/EpBOno
+w6R0LbSqFdMfAn0G8fxZ0gMjJQzAEKHGNJTSgc2lZC+NFcf5quV2tetgMw12M3TiRQIkoFPj4Jn5
+o+ewNZWdqnN9at9mL4sZuZrAARkXjIiBiJRoElEhntzk25U9S1Zfs6pOOOJLmxXA/hc4kgch+5kp
+ioJ4J4fJEeuR0gEFyAW42QBEmIi5E15L+Qvqfy3qn/5zTki8ISWzAAAAAElFTkSuQmCC
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://heronforge.net/icons/contents.png
+
+iVBORw0KGgoAAAANSUhEUgAAAEEAAAAYAgMAAAGvH0h/AAAADFBMVEW/v79vb2/n5+dbAADNBuO5
+AAAAAXRSTlMAQObYZgAAALhJREFUeJyNkD0KwzAMhV/QashVVLwW4kv0PoasWbN39hk6qHgN9CqF
+roVW/ksayNA3SM+fZAkbIXh4ONweDiGAATIKoMjb8+KqDypkcU0MI2zKwZeU7jxXB1mwRHWjMdon
+cD9986WoTM7Ta7HbzCgbIV3ZYYIlZj5hIqKBrZbUZDLKi3q294M5bdm6q8nhip26Q9JTci0kop/w
+oaGXFOK7EEJEzMFgR1Ia6pzcIKmHjnf9QdpzmtwXpZhWDXT2zkcAAAAASUVORK5CYII=
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://heronforge.net/redhat/img1.png
+
+iVBORw0KGgoAAAANSUhEUgAAA9IAAATxAQMAAAGexQkdAAAABlBMVEUAAACzs7P//+bLAAACUklE
+QVR4nO3NMQ4AEBBFQUd3NEdxBKWOmkZBgmS23J+XCW28HDw8PDw8PDw8PDyuPZKHh4eHh4eHh4fH
+vcd01W632+12u91ut9vtdrvdbrc/uxe73W632+12u91ut9vtdrvdbrfb7Xa73W632+12u91ut9vt
+x/fFRblcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6X
+y+VyuVwul8vlcrlcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL
+5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6Xy+VyuVwul8vl
+crlcLpfL5XK5XC6Xy+VyuVwul8vlcrlcLpfL5XK5XC6Xy+U/51uX2Gw2m81ms9lsNpvNZrPZbDab
+zWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvN
+ZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81m
+s9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz
+2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZ
+bDabzWaz2Ww2m81ms9lsNpvNZp+xO6J03/fKqSSUAAAAAElFTkSuQmCC
+
+------=_NextPart_000_0000_01C9C36B.2850F100
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+Content-Location: http://heronforge.net/redhat/rh-faq.css
+
+.MATH {
+	FONT-FAMILY: "Century Schoolbook", serif
+}
+.MATH I {
+	FONT-STYLE: italic; FONT-FAMILY: "Century Schoolbook", serif
+}
+.BOLDMATH {
+	FONT-WEIGHT: bold; FONT-FAMILY: "Century Schoolbook", serif
+}
+SMALL.XTINY {
+	FONT-SIZE: xx-small
+}
+SMALL.TINY {
+	FONT-SIZE: x-small
+}
+SMALL.SCRIPTSIZE {
+	FONT-SIZE: smaller
+}
+SMALL.FOOTNOTESIZE {
+	FONT-SIZE: small
+}
+SMALL.SMALL {
+	
+}
+BIG.LARGE {
+	
+}
+BIG.XLARGE {
+	FONT-SIZE: large
+}
+BIG.XXLARGE {
+	FONT-SIZE: x-large
+}
+BIG.HUGE {
+	FONT-SIZE: larger
+}
+BIG.XHUGE {
+	FONT-SIZE: xx-large
+}
+H1 {
+	
+}
+H2 {
+	
+}
+H3 {
+	
+}
+H4 {
+	
+}
+H5 {
+	
+}
+DIV.displaymath {
+	
+}
+TD.eqno {
+	
+}
+
+------=_NextPart_000_0000_01C9C36B.2850F100--

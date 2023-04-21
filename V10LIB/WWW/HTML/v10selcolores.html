@@ -1,0 +1,424 @@
+<html>
+<head>
+<title>CODIGOS DE COLORES HEXADECIMALES HTML</title>
+<META NAME="description" CONTENT="P঩na con codigos de colores hexadecimales">
+<META NAME="keywords" content="CODIGOS, COLORES, HEXADECIMALES, HTML, TABLA">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script DEFER language="javascript">
+	function Barva(koda){
+		 try {
+		 	window.document.getElementById('pickerhexval').value=koda.toUpperCase();
+		 	window.document.getElementById('startcolor').value=koda.toUpperCase();
+		  checkcolor();		 	
+		 } catch (E) {}
+	}
+	
+	function tomav10() {
+			
+		window.returnValue =window.document.getElementById('pickerhexval').value;
+		window.close();
+	}
+	
+	function annadirv10() {
+			
+		if (window.dialogArguments.length==7 && window.dialogArguments.substr(0, 1)=='#') {
+			window.returnValue =window.dialogArguments + ';' + window.document.getElementById('pickerhexval').value;
+		} else window.returnValue =window.document.getElementById('pickerhexval').value;
+		window.close();
+	}
+	
+	function alcargar() {
+		if (window.dialogArguments.length==7 && window.dialogArguments.substr(0, 1)=='#') 	setTimeout('Barva(window.dialogArguments)',200); 
+		else Barva("#FFFFFF");
+	}
+	
+</script>
+<style>
+#pickerPanel {position: absolute;top: 25px; left: 375px;width: 360px; height: 315px; font: normal 11px verdana, sans-serif; color: #333; line-height: 19px; margin: 0; }
+/* slider */
+.dragPanel {margin: 4px;width: 260px;height: 280px;}
+.dragPanel h4 {background-color: #bbbbbb;height: 10px;margin: 0px;cursor: move;}
+input { font-size: .85em }
+.thumb {cursor:default;width:18px;height:18px;z-index: 9;position:absolute;}
+.bg {position:absolute;left:10px;height:18px;width:146px;border: 0px solid #aaaaaa;}
+.bg span, .bg p {cursor:default;position: relative;font-size: 2px;overflow: hidden;color: #aaaaaa;top: 4px;height: 10px;width: 4px;display: block; float:left;}
+.bg span {border-top:1px solid #cccccc;border-bottom:1px solid #cccccc;}
+.bg .lb {border-left:1px solid #cccccc;}
+.bg .rb {border-right:1px solid #cccccc;}
+#valdiv { position:absolute; top: 100px; left:10px; } 
+#rBG {top:30px}
+#gBG {top:50px}
+#bBG {top:70px}
+#rgbSwatch {position:absolute;left:160px;top:34px;height:50px;width:50px;border:1px solid #aaaaaa;}
+#rgbPanel {width: 360px;height: 240px;}
+/* picker */
+#hueThumb {cursor:default;width:18px;height:18px;z-index: 9;position:absolute;left:0px;}
+#hueBg {position:absolute; left:216px; height:198px;width:18px; background:url(../img/hue.png) no-repeat;top:18px;}
+#pickerDiv {position:absolute;left:10px;height:187px;width:188px;top:20px;}
+#pickerbg {position:absolute;z-index: 1;top:0px;left:0px;}
+#selector {cursor:default; width:11px; height:11px;  z-index: 9;  position:absolute;  top:0px;left:0px;}
+#pickerSwatch {position:absolute;left:260px;top:60px;height:60px;width:60px;border:2px solid #aaaaaa;}
+#pickervaldiv { text-align:right; position:absolute; top: 10px; left:246px; }
+#startcolor {z-index: 100;}
+.colorbox{width: 25px;height: 14px;border: 1px solid black;border-bottom-width: 0;}
+</style>
+<script type="text/javascript" src="../html/color.js" ></script>
+<script type="text/javascript">
+
+	var hue;
+	var picker;
+	var dd1, dd2;
+	var r, g, b;
+
+	function init() {
+		if (typeof(ygLogger) != "undefined")
+			ygLogger.init(document.getElementById("logDiv"));
+		pickerInit();
+		//ddcolorposter.fillcolorbox("colorfield1", "colorbox1") //PREFILL "colorbox1" with hex value from "colorfield1"
+		//ddcolorposter.fillcolorbox("colorfield2", "colorbox2") //PREFILL "colorbox1" with hex value from "colorfield1"
+    }
+
+    // Picker ---------------------------------------------------------
+
+    function pickerInit() {
+		hue = YAHOO.widget.Slider.getVertSlider("hueBg", "hueThumb", 0, 180);
+		hue.onChange = function(newVal) { hueUpdate(newVal); };
+
+		picker = YAHOO.widget.Slider.getSliderRegion("pickerDiv", "selector", 0, 180, 0, 180);
+		picker.onChange = function(newX, newY) { pickerUpdate(newX, newY); };
+
+		hueUpdate();
+
+		dd1 = new YAHOO.util.DD("pickerPanel");
+		dd1.setHandleElId("pickerHandle");
+		dd1.endDrag = function(e) {
+			// picker.thumb.resetConstraints();
+			// hue.thumb.resetConstraints();
+        };
+	}
+
+	executeonload(init);
+
+	function pickerUpdate(newX, newY) {
+		pickerSwatchUpdate();
+	}
+
+
+	function hueUpdate(newVal) {
+
+		var h = (180 - hue.getValue()) / 180;
+		if (h == 1) { h = 0; }
+
+		var a = YAHOO.util.Color.hsv2rgb( h, 1, 1);
+
+		document.getElementById("pickerDiv").style.backgroundColor =
+			"rgb(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
+
+		pickerSwatchUpdate();
+	}
+
+	function pickerSwatchUpdate() {
+		var h = (180 - hue.getValue());
+		if (h == 180) { h = 0; }
+		//document.getElementById("pickerhval").value = (h*2);
+
+		h = h / 180;
+
+		var s = picker.getXValue() / 180;
+		//document.getElementById("pickersval").value = Math.round(s * 100);
+
+		var v = (180 - picker.getYValue()) / 180;
+		//document.getElementById("pickervval").value = Math.round(v * 100);
+
+		var a = YAHOO.util.Color.hsv2rgb( h, s, v );
+
+		document.getElementById("pickerSwatch").style.backgroundColor =
+			"rgb(" + a[0] + ", " + a[1] + ", " + a[2] + ")";
+
+		document.getElementById("pickerrval").value = a[0];
+		document.getElementById("pickergval").value = a[1];
+		document.getElementById("pickerbval").value = a[2];
+		var hexvalue = document.getElementById("pickerhexval").value ='#'+
+			YAHOO.util.Color.rgb2hex(a[0], a[1], a[2]);
+			ddcolorposter.initialize(a[0], a[1], a[2], hexvalue)
+		if (hexvalue!="#FFFFFF") document.getElementById("pickerhexval").select();
+	}
+
+</script>
+</head>
+
+<body onLoad="alcargar()" style="background-color: #eeeeee;">
+<table border="1" cellspacing="0" cellpadding="0"  style="position:absolute;left:10px:top:10px;cursor:hand;border-collapse:collapse;" bordercolor="#CCCCCC"><tr><td>
+<table width="375" border="0" cellspacing="1" cellpadding="0" align="center">
+	<tr height="24">
+		<td bgColor="#190707" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2a0a0a" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#3b0b0b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#610b0b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8a0808" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#b40404" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#df0101" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#ff0000" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#fe2e2e" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#fa5858" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f78181" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f5a9a9" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f6cece" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f8e0e0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#fbefef" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#191007" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2a1b0a" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#3b240b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#61380b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8a4b08" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#b45f04" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#df7401" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#ff8000" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#fe9a2e" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#faac58" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f7be81" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f5d0a9" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f6e3ce" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f8ece0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#fbf5ef" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#181907" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#292A0A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#393B0B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#5e610b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#868A08" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#AEB404" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#D7DF01" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FFFF00" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F7FE2E" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F4FA58" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F3F781" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F2F5A9" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F5F6CE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F7F8E0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FBFBEF" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#101907" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#1B2A0A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#243b0b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#38610B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#4B8A08" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#5FB404" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#74DF00" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#80FF00" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#9AFE2E" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#ACFA58" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#BEF781" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#D0F5A9" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E3F6CE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#ECF8E0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F5FBEF" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#071907" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0A2A0A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B3B0B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B610B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#088A08" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#04B404" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#01DF01" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#00FF00" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2EFE2E" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#58FA58" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#81F781" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#A9F5A9" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#CEF6CE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E0F8E0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#EFFBEF" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#071910" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0A2A1B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B3B24" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B6138" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#088A4B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#04B45F" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#01DF74" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#00FF80" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2EFE9A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#58FAAC" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#81F7BE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#A9F5D0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#CEF6E3" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E0F8EC" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#EFFBF5" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#071918" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0A2A29" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B3B39" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B615E" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#088A85" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#04B4AE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#01DFD7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#00FFFF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2EFEF7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#58FAF4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#81F7F3" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#A9F5F2" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#CEF6F5" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E0F8F7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#EFFBFB" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#071019" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0A1B2A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B243B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B3861" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#084B8A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#045FB4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0174DF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0080FF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2E9AFE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#58ACFA" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#81BEF7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#A9D0F5" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#CEE3F6" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E0ECF8" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#EFF5FB" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#070719" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0A0A2A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B0B3B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0B0B61" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#08088A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0404B4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0101DF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0000FF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2E2EFE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#5858FA" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8181F7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#A9A9F5" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#CECEF6" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E0E0F8" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#EFEFFB" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#100719" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#1B0A2A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#240B3B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#380B61" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#4B088A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#5F04B4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#7401DF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8000FF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#9A2EFE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#AC58FA" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#BE81F7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#D0A9F5" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#E3CEF6" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#ECE0F8" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F5EFFB" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#190718" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2A0A29" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#3B0B39" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#610B5E" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8A0886" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#B404AE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#DF01D7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FF00FF" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FE2EF7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FA58F4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F781F3" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F5A9F2" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F6CEF5" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F8E0F7" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FBEFFB" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#190710" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2A0A1B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#3B0B24" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#610B38" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#8A084B" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#B4045F" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#DF0174" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FF0080" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FE2E9A" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FA58AC" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F781BE" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F5A9D0" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F6CEE3" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#F8E0EC" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FBEFF5" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	<tr height="10">
+		<td></td>
+	</tr>
+	<tr height="24">
+		<td bgColor="#000000" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#0b0b0b" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#151515" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#1c1c1c" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#2e2e2e" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#424242" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#585858" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#6e6e6e" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#848484" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#a4a4a4" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#bdbdbd" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#d8d8d8" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#e6e6e6" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#f2f2f2" onClick="Barva(this.bgColor)">&nbsp;</td>
+		<td bgColor="#FFFFFF" onClick="Barva(this.bgColor)">&nbsp;</td>
+	</tr>
+	</table>
+	</td></tr>
+</table>
+
+<div id="pickerPanel" class="dragPanel">
+  <div id="pickerDiv" style="margin-left:0px;margin-right:0px;"> <img id="pickerbg" src="../img/pickerbg.png" alt="">
+	   <div id="selector" style="margin-left:0px;margin-right:0px;"><img src="../img/select.gif"></div>
+  </div>
+  <div id="hueBg" style="margin-left:0px;margin-right:0px;">
+    	<div id="hueThumb" style="margin-left:0px;margin-right:0px;"><img src="../img/hline.png"></div>
+  </div>
+  <div id="pickervaldiv"  style="margin-left:0px;margin-right:0px;">
+	<form name="pickerform" onSubmit="return pickerUpdate()">
+	  <b>Insertar codigo:</b>
+	   <input name="startcolor" id="startcolor" type="text" value="#FFFFFF" size="8" maxlength="7" onKeyPress="PritisnjenEnter(event,this.form)" style="font-weight:bold; font-family:Verdana; font-size:12px; margin-left:0px;"/>
+	   <input name="GO" type="button" id="GO" value="GO" onClick="javascript:checkcolor()" style="width:30px" />
+	   &nbsp;&nbsp;
+	   <br /><br /><br /><br />
+	  R
+	  <input name="pickerrval" id="pickerrval" type="text" value="0" size="3" maxlength="3" />
+	  H
+	  <input name="pickerhval" id="pickerhval" type="text" value="0" size="3" maxlength="3" />&nbsp;
+	  <br />
+	  G
+	  <input name="pickergval" id="pickergval" type="text" value="0" size="3" maxlength="3" />
+	  S
+	  <input name="pickersval" id="pickersval" type="text" value="0" size="3" maxlength="3" />&nbsp;
+	  <br />
+	  B
+	  <input name="pickerbval" id="pickerbval" type="text" value="0" size="3" maxlength="3" />
+	  V
+	  <input name="pickervval" id="pickervval" type="text" value="0" size="3" maxlength="3" />&nbsp;
+	  <br /><br />
+	  
+	  <br />
+	  <br />
+	  	  </form>
+  </div>
+  <div id="pickerSwatch" style="margin-left:0px;margin-right:0px;">&nbsp;</div>  
+</div>
+<span style="position:absolute;left:390px;top:250px;"><b>Codigo de color:</b><br />	</span>
+<input name="pickerhexval" id="pickerhexval" type="text" value="0" size="8" maxlength="7" style="position:absolute;left:510px;top:250px;font-family:Verdana;height:22px; width:70px; font-size:13px"/>
+<input name="GET" type="button" id="GET" value="Capturar" onClick="tomav10()" style="position:absolute;left:600px;top:250px;width:90px" />
+<input name="SALIR" type="button" id="SALIR" value="Salir" onClick="{window.returnValue=undefined;window.close()}" style="position:absolute;left:600px;top:280px;width:90px" />
+
+</body>
+</html>
+

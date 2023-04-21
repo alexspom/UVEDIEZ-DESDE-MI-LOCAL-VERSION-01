@@ -1,0 +1,24 @@
+# M¢dulo : VDLOTEBLOQ.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDLOTEBLOQ
+#                        
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 07-09-2009                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=LBLO
+
+CLAVE=SEQBLOQ,SEQBLOQ
+RECORRE=STATUS,STATUS
+
+UPDATE=TRATADO, STATUS;
+
+SECUENCIA=VDSECLOTEBLOQ,SEQBLOQ
+
+INSERT
+LOCK
+INTERFASE
+ROWID

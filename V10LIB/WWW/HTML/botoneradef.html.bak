@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<style>
+.v10botoneradefecto{position:absolute;border-left:1px; border-top:1px; border-right:2px; border-bottom: 2px; border-style:outset; z-index:-1;
+	background-color: #514d4c;padding: 4px;
+	LINE-HEIGHT:18px;font-family:Verdana;font-weight:bold;font-size:11px;color:white;text-align:left;font-style:italic;}
+.salir{background-image:url(../img/p/salir.png);width:30px;height:32px;cursor:hand}
+.blanterior{;background-image:url(../img/p/blanterior.png);width:30px;height:32px;cursor:hand}
+.blsiguiente{background-image:url(../img/p/blsiguiente.png);width:30px;height:32px;cursor:hand}
+.buscar{background-image:url(../img/p/buscar.png);width:30px;height:32px;cursor:hand}
+.refrescar{background-image:url(../img/p/refrescar.png);width:30px;height:32px;cursor:hand}
+.imprimir{background-image:url(../img/p/imprimir.png);width:30px;height:32px;cursor:hand}
+.debug{background-image:url(../img/p/debug.png);width:30px;height:32px;cursor:hand}
+.guardar{background-image:url(../img/p/guardar.png);width:30px;height:32px;cursor:hand}
+.borrar{background-image:url(../img/p/borrar.png);width:30px;height:32px;cursor:hand}
+.insertar{background-image:url(../img/p/insertar.png);width:30px;height:32px;cursor:hand}
+.ayuda{background-image:url(../img/p/ayuda.png);width:30px;height:32px;cursor:hand}
+.excel{background-image:url(../img/p/excel.png);width:30px;height:32px;cursor:hand}
+.limpiar{background-image:url(../img/p/limpiar.png);width:30px;height:32px;cursor:hand}
+.copiar{background-image:url(../img/p/copiar.png);width:30px;height:32px;}
+.colores{background-image:url(../img/p/colores.png) no-resize;width:30px;height:32px;cursor:hand}
+.v10botoneradefecto td {border-width:0px;border-left:1px;border-bottom:1px;border-style:dashed;border-color:#6E6E6E;cursor:hand; text-align: center;}
+</style>
+</head>
+<body onmouseover="mionmouseover()" onmouseout="mionmouseout()" onclick="mionclick()">
+<script>
+	function mionmouseover() {
+		var ev=window.event.srcElement;
+		if (ev.tagName=='TD') {
+			if (ev.getAttribute("colspan")>2) return;
+			ev.parentNode.style.backgroundColor='#858281';
+		}
+	}
+	
+	function mionclick() {
+		var ev=window.event.srcElement;
+		if (ev.tagName=='TD') {
+			if (ev.getAttribute("colspan")>2) return;
+			alert(ev.parentNode.tecla);
+		}
+	}
+	
+	function mionmouseout() {
+		var ev=window.event.srcElement;
+		if (ev.tagName=='TD') {
+			if (ev.getAttribute("colspan")>2) return;
+			ev.parentNode.style.backgroundColor='#514d4c';
+		}
+	}
+	
+</script>
+<table  id="botoneradef"   border=1 cellspacing='0px' cellspadding='0' class='v10botoneradefecto'style="top:100px;left:100px;visibility:visible">
+<!--V10INCLUDEDATA-->
+<tr style="background-color:orange;"><td COLSPAN="3" style="cursor:text;color:#514d4c;border-width:0px;border-style: outset; text-align: center;"> Teclas de Pantalla</td></tr>
+<tr tecla="27"teclaespecial="onkeyup"><td class="salir">      </td><td>Esc</td><td>Salir</td></tr> 
+<tr tecla="A"><td class="ayuda">      </td><td>F(1)</td><td> Ayuda</td></tr> 
+<tr tecla="117"teclaespecial="onkeyup"><td class="blanterior"> </td><td>F(6)</td><td> Bl.Anterior</td></tr>
+<tr tecla="117"teclaespecial="onkeyup_ctrl"><td class="blsiguiente"></td><td>CF(6)</td><td>Bl.Siguiente</td></tr> 
+<tr tecla="116"teclaespecial="onkeyup"><td class="refrescar">  </td><td>F(5)</td><td>Refrescar</td></tr>
+<tr style="background-color:orange;"><td COLSPAN="3" style="cursor:text;color:#514d4c;border-width:0px;border-style: outset; text-align: center;"> Base de datos</td></tr>
+<tr tecla="113"teclaespecial="onkeyup"><td class="buscar">     </td><td>F(2)</td><td>Buscar</td></tr>
+<tr tecla="114"teclaespecial="onkeyup"><td class="limpiar">    </td><td>F(3)</td><td>Limpiar</td></tr> 
+<tr tecla="118"teclaespecial="onkeyup"><td class="insertar">   </td><td>F(7)</td><td>Insertar</td></tr>  
+<tr tecla="120"teclaespecial="onkeyup"><td class="borrar">     </td><td>F(9)</td><td>Borrar</td></tr> 
+<tr tecla="115"teclaespecial="onkeyup"><td class="guardar">    </td><td>F(4)</td><td>Confirmar</td></tr>
+<tr style="background-color:orange;"> <td COLSPAN="3" style="cursor:text;color:#514d4c;border-width:0px;border-style: outset; text-align: center;"> Utilidades</td></tr>
+<tr tecla="68"teclaespecial="onkeyup_alt"><td class="debug">      </td><td>ALT(D)</td><td>Debug</td></tr>
+<tr tecla="I"><td class="imprimir">   </td><td COLSPAN="2"  style="text-align: center;">Imprimir</td></tr>
+<tr tecla="122"teclaespecial="onkeyup"><td class="excel">      </td><td>F(11)</td><td>Excel</td></tr>
+<tr tecla="C"><td class="colores">      </td><td COLSPAN="2">Colores</td></tr>  
+<!--V10ENDINCLUDEDATA-->
+</table>
+</body>
+</html>

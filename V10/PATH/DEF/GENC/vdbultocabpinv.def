@@ -1,0 +1,19 @@
+#***
+# VDBULTOCABPINV.DEF - Generación automática del código c para la tabla de Cabecera de Bulto de picking inverso.                                                      
+# 
+# Propósito: Funciones de acceso a la tabla VDBULTOCABPINV
+#           
+# Autor	 : JCSR
+# Revisado por: 
+# Fecha  : 30-05-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=BPC
+
+CLAVE=CODMAT,CODMAT
+RECORRE=STATUS,STATUS
+RECORRE=CODMATACTIVA,CODMAT,STATUS
+UPDATE=STATUS,STATUS
+
+LOCK

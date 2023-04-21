@@ -1,0 +1,268 @@
+/*******************************************************************************
+* Módulo : vdtratalotebloq.C                                                   *
+* Función: Procesos y algoritmos sobre la liberación                           *
+*          o bloqueo de lote.                                                  *
+* Autor	 : Ricardo Fernández. Revisado por FGS para el Standrad, el 18-2-2010  *
+* Revisado por:                                                                *
+* Fecha  : 23-09-2009                                                          *
+********************************************************************************
+
+*******************************************************************************/
+
+#include "execproc/vdexec.h"
+#include "vd.h"
+
+
+#define POSBLOQLOTE 1
+
+int damebloqueonuevo(vdlotebloqs *lblo, char *bloqold, char *bloqnew) {
+	int ret=0;
+	if (( *lblo->bloqini=='1' && *lblo->bloqfin=='0') ||  // liberar
+		 (*lblo->bloqini=='0' && *lblo->bloqfin=='1') || // pdte calidad 
+	    ((*lblo->bloqini=='0' || *lblo->bloqini=='1')  && *lblo->bloqfin=='2')) { // bloqueo	
+		bloqold[POSBLOQLOTE+1]='=';
+		bloqold[POSBLOQLOTE+2]=*lblo->bloqini;
+		bloqnew[POSBLOQLOTE]=*lblo->bloqfin;
+	} else {
+		v10log(LOGERROR,"damebloqueonuevo:\tERROR Bloqueo inicial %s Bloqueo final %s\n",lblo->bloqini,lblo->bloqfin);
+		ret=-1;
+	}
+	return(ret);
+}
+
+VDEXPORT int vdtratalotestk(void *ptr,char *param)  {
+	int ret;
+	vdlotebloqs *lblo=ptr; 
+	vdstkauxs stkaux;
+	vdlotess lot;
+	char msjerror[LCADENABIG]="",solostock[2]="S",chkcantidad[2]="N";
+    vdstatuss stfinal;
+	char bloqnew[LBLOQLOTE]="__________",bloqold[LPATRONBLOQORI]="____________________";
+	
+
+	v10log(LOGNORMAL,"vdtratalotestk: Tratando liberación por interfase de registro %ld de matricula %s, articulo %s, lote %s, cantidad %lf, bloqueosini %s, bloqueosfin %s\n",
+		lblo->seqbloq, lblo->codmat ,lblo->codart ,lblo->codlot ,lblo->cantidad ,lblo->bloqini ,lblo->bloqfin);
+	
+	if (*lblo->codart==0 || *lblo->codlot==0) {
+		v10log(LOGERROR,"vdtratalotestk: Debe informar articulo y lote(Art %s, Lot %s)\n",
+			lblo->codart,lblo->codlot);
+		return(-1);
+	}
+
+	ejecutaimmediato("BEGIN VDUSER.SETUSER('TRATABLOQ');END;");
+	if ( ret=damestabreviada("vdtratalotestk",param, 1, "#", lblo, "BLO", &stfinal, 0)) return(ret);
+	if (strcmp(lblo->tipobloq,"L")==0) strcpy(solostock,"N");  
+	if (numpieces(param,"#")>1) piece(param,chkcantidad,"#",2);
+
+	ret=LOTselvdlotes(lblo->codart,lblo->codlot,&lot);
+	if (ret) {
+		v10log(LOGERROR,"vdtratalotestk: No existe artículo %s lote %s\n",lblo->codart,lblo->codlot);
+		return(ret);	
+	}
+
+	strcpy(bloqnew,lot.bloqlote); 
+	ret=damebloqueonuevo(lblo, bloqold, bloqnew);
+	if (ret) return(ret);
+	
+	if (*chkcantidad=='S') { // chequear cantidad del interfase y en stock
+		memset(&stkaux,0,sizeof(stkaux));
+		ret=STKAUXbuscastocklote(lblo->codart,lblo->codlot,bloqold,&stkaux);		
+		if (ret) {
+			v10log(LOGERROR,"vdtratalotestk: Error ejecutando PLSQL STKAUXbuscastocklote\n");
+			return(ret);
+		}
+		if (stkaux.cantidad!=lblo->cantidad) {
+			v10log(LOGERROR,"vdtratalotestk: Cantidad en stock %lf del articulo %s,lote %s y patrón bloqueo %s no coincide con la interfasada %lf\n",
+				 stkaux.cantidad,lblo->codart,lblo->codlot,bloqold,lblo->cantidad);
+			return(-1);
+		}	
+	}
+	
+	// realiza el cambio de calificación de lote/stock
+	ret=vdnuevobloqlote(lblo->codart, lblo->codlot, bloqnew ,solostock,msjerror);
+	if (ret) {
+		v10log(LOGERROR,"vdtratalotestk: Error procesando registro %ld, artículo %s lote %s\n",lblo->seqbloq,lblo->codart,lblo->codlot);
+		return (ret);
+	}
+	else { 
+		lblo->status=stfinal.status;	
+		ret=LBLOactualizatratado(lblo,NOVERIFICA);
+		if (ret) {
+			v10log(LOGNORMAL,"vdtratalotestk:Error actualizando registro %ld, artículo %s lote %s a estado %ld\n",lblo->seqbloq,lblo->codart,lblo->codlot,stfinal.status);
+			return(0);
+		}		
+		v10log(LOGNORMAL,"vdtratalotestk: Procesado correctamente registro %ld, artículo %s lote %s\n",lblo->seqbloq,lblo->codart,lblo->codlot);
+	}
+	return(ret);
+}
+
+
+VDEXPORT int vdtratabloqconte(void *ptr,char *param)  {
+
+	int ret;
+	vdlotebloqs *lblo=ptr; 
+	char msjerror[LCADENABIG]="";
+    vdstatuss stfinal;
+	char concepto[LCODCONCE]="",chkcantidad[2]="N";
+	char bloqnew[LBLOQLOTE]="__________",bloqold[LPATRONBLOQORI]="____________________";
+
+	v10log(LOGNORMAL,"vdtratabloqconte: Tratando liberacion por interfase de registro %ld de matricula %s, articulo %s, lote %s, cantidad %lf, bloqueosini %s, bloqueosfin %s\n",
+		lblo->seqbloq, lblo->codmat ,lblo->codart ,lblo->codlot ,lblo->cantidad ,lblo->bloqini ,lblo->bloqfin);
+	
+	if (*lblo->codart==0 || *lblo->codlot==0 || *lblo->codmat==0) {
+		v10log(LOGERROR,"vdtratabloqconte: Debe informar articulo, lote y matricula (Art %s, Lot %s, Mat %s)\n",
+			lblo->codart,lblo->codlot,lblo->codmat);
+		return(-1);
+	}
+	ejecutaimmediato("BEGIN VDUSER.SETUSER('TRATABLOQ');END;");
+	if ( ret=damestabreviada("vdtratabloqconte",param, 1, "#", lblo, "BLO", &stfinal, 0)) return(ret);
+	piece(param,concepto,"#",2);
+	if (numpieces(param,"#")>2) piece(param,chkcantidad,"#",3);
+	
+	ret=damebloqueonuevo(lblo,bloqold,bloqnew);
+	if (ret) return(ret);
+
+	ret=vdbloqueosconte(lblo->codmat, lblo->codart, lblo->codlot,
+						concepto,bloqold , bloqnew,
+						"", msjerror, (*chkcantidad=='S')?lblo->cantidad:0);
+	if (ret) {
+		v10log(LOGERROR,"vdtratabloqconte: Error procesando registro %ld, artículo %s lote %s matrícula %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codmat);
+		return (ret);
+	}
+	else { 
+		lblo->status=stfinal.status;	
+		ret=LBLOactualizatratado(lblo,NOVERIFICA);
+		if (ret) {
+			v10log(LOGNORMAL,"vdtratabloqconte:Error actualizando registro %ld, artículo %s lote %s matrícula %s a estado %ld\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codmat,stfinal.status);
+			return(0);
+		}		
+		v10log(LOGNORMAL,"vdtratabloqconte: Procesado correctamente registro %ld, artículo %s lote %s matrícula %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codmat);
+	}
+	return(ret);
+}
+
+
+VDEXPORT int vdtratabloqrecep(void *ptr,char *param)  {
+
+	int ret;
+	vdlotebloqs *lblo=ptr; 
+	char msjerror[LCADENABIG]="";
+    vdstatuss stfinal;
+	vdstkauxs stkaux;
+	char concepto[LCODCONCE]="",chkcantidad[2]="N";
+	char bloqnew[LBLOQLOTE]="__________",bloqold[LPATRONBLOQORI]="____________________";
+
+	v10log(LOGNORMAL,"vdtratabloqrecep: Tratando liberacion por interfase de registro %ld de recepción %s, articulo %s, lote %s, cantidad %lf, bloqueosini %s, bloqueosfin %s\n",
+		lblo->seqbloq, lblo->codrecep ,lblo->codart ,lblo->codlot ,lblo->cantidad ,lblo->bloqini ,lblo->bloqfin);
+
+	if (*lblo->codart==0 || *lblo->codlot==0 || *lblo->codrecep==0) {
+		v10log(LOGERROR,"vdtratabloqrecep: Debe informar articulo, lote y recepcion (Art %s, Lot %s, Rec %s)\n",
+			lblo->codart,lblo->codlot,lblo->codrecep);
+		return(-1);
+	}
+	ejecutaimmediato("BEGIN VDUSER.SETUSER('TRATABLOQ');END;");
+	if ( ret=damestabreviada("vdtratabloqrecep",param, 1, "#", lblo, "BLO", &stfinal, 0)) return(ret);
+	piece(param,concepto,"#",2);
+	if (numpieces(param,"#")>2) piece(param,chkcantidad,"#",3);
+	
+	ret=damebloqueonuevo(lblo,bloqold,bloqnew);
+	if (ret) return(ret);
+
+	ret=STKAUXprocbloqueosstkrecep(lblo->codrecep,lblo->codart,lblo->codlot,
+								   concepto,"",concepto,"",bloqold,bloqnew,
+								   "",(*chkcantidad=='S')?lblo->cantidad:0,msjerror,0,&stkaux);
+	if (ret || stkaux.ret) {
+		v10log(LOGERROR,"vdtratabloqrecep: Error procesando registro %ld, artículo %s lote %s recepción %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codrecep);
+		return (-1);
+	}
+	else { 
+		lblo->status=stfinal.status;	
+		ret=LBLOactualizatratado(lblo,NOVERIFICA);
+		if (ret) {
+			v10log(LOGNORMAL,"vdtratabloqrecep:Error actualizando registro %ld, artículo %s lote %s recepción %s a estado %ld\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codrecep,stfinal.status);
+			return(0);
+		}		
+		v10log(LOGNORMAL,"vdtratabloqrecep: Procesado correctamente registro %ld, artículo %s lote %s recepción %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->codrecep);
+	}
+	return(ret);
+}
+
+VDEXPORT int vdtratabloqbulto(void *ptr,char *param)  {
+
+	int ret;
+	vdlotebloqs *lblo=ptr; 
+	char msjerror[LCADENABIG]="";
+    vdstatuss stfinal;
+	vdstkauxs stkaux;
+	char concepto[LCODCONCE]="",chkcantidad[2]="N";
+	char bloqnew[LBLOQLOTE]="__________",bloqold[LPATRONBLOQORI]="____________________";
+
+	v10log(LOGNORMAL,"vdtratabloqrecep: Tratando liberacion por interfase de registro %ld de bulto %s, articulo %s, lote %s, cantidad %lf, bloqueosini %s, bloqueosfin %s\n",
+		lblo->seqbloq, lblo->bulto ,lblo->codart ,lblo->codlot ,lblo->cantidad ,lblo->bloqini ,lblo->bloqfin);
+
+	if (*lblo->codart==0 || *lblo->codlot==0 || *lblo->bulto==0) {
+		v10log(LOGERROR,"vdtratabloqrecep: Debe informar articulo, lote y bulto (Art %s, Lot %s, Bulto %s)\n",
+			lblo->codart,lblo->codlot,lblo->bulto);
+		return(-1);
+	}
+	ejecutaimmediato("BEGIN VDUSER.SETUSER('TRATABLOQ');END;");
+	if ( ret=damestabreviada("vdtratabloqbulto",param, 1, "#", lblo, "BLO", &stfinal, 0)) return(ret);
+	piece(param,concepto,"#",2);
+	if (numpieces(param,"#")>2) piece(param,chkcantidad,"#",3);
+	
+	ret=damebloqueonuevo(lblo,bloqold,bloqnew);
+	if (ret) return(ret);
+
+	ret=STKAUXprocbloqueosstkbulto(lblo->bulto,lblo->codart,lblo->codlot,
+								concepto,"",concepto,"",bloqold,bloqnew,
+								"",(*chkcantidad=='S')?lblo->cantidad:0,msjerror,0,&stkaux);
+	if (ret || stkaux.ret) {
+		v10log(LOGERROR,"vdtratabloqbulto: Error procesando registro %ld, artículo %s lote %s bulto %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->bulto);
+		return (-1);
+	}
+	else { 
+		lblo->status=stfinal.status;	
+		ret=LBLOactualizatratado(lblo,NOVERIFICA);
+		if (ret) {
+			v10log(LOGNORMAL,"vdtratabloqbulto:Error actualizando registro %ld, artículo %s lote %s bulto %s a estado %ld\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->bulto,stfinal.status);
+			return(0);
+		}		
+		v10log(LOGNORMAL,"vdtratabloqbulto: Procesado correctamente registro %ld, artículo %s lote %s bulto %s\n",lblo->seqbloq,lblo->codart,lblo->codlot,lblo->bulto);
+	}
+	return(ret);
+}
+
+
+
+
+// Proceso que busca registros de la tabla VDLOTEBLOQ
+// parámetros
+// 1 Estado de vdlotebloq
+VDEXPORT void vdbuscalotebloqst(procesos *proceso)
+{  
+    int ret;  
+    char tipocomen[LTIPOCOMEN]="";
+    vdlotebloqs lblo;
+	vdstatuss sta;
+    
+    if (ret=damestabreviada("vdbuscalotebloqst",proceso->proc.param, 1, "#", NULL, "BLO", &sta, 0)) return;
+	
+    if (LBLObuscastatus(sta.status,&lblo)) return;
+	do {
+		ret=VDEXECejecuta(proceso,&lblo,"#","%s",lblo.tipobloq);
+		if (ret) {
+			rollback();
+			v10log(LOGERROR,"vdbuscalotebloqst: Error al ejecutar algoritmo para registro %d, con articulo %s lote %s en estado %ld\n",lblo.seqbloq,lblo.codart,lblo.codlot,lblo.status);		
+			lblo.status=-lblo.status;
+			ret=LBLOactualizatratado(&lblo,0);
+			if (ret) {
+				rollback();
+				v10log(LOGERROR,"vdbuscalotebloqst:registro %d, con articulo %s lote %s actualizado a estado %ld\n",lblo.seqbloq,lblo.codart,lblo.codlot,lblo.status);
+			}
+			v10log(LOGERROR,"vdbuscalotebloqst: ERROR procesando registro %d con articulo %s lote %s\n",lblo.seqbloq,lblo.codart,lblo.codlot);            
+		}
+
+		commit();
+	} while (!LBLOnextstatus(&lblo));
+	
+}

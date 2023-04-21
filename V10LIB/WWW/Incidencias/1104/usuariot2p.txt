@@ -1,0 +1,46 @@
+-- Create the user 
+create user T2PIP6
+  identified by T2PIP6
+  default tablespace T2PIP6
+  temporary tablespace TEMP
+  profile DEFAULT;
+-- Grant/Revoke object privileges 
+grant read on directory CARPETAINTER_BLU to T2PIP6;
+grant execute on DBMS_LOCK to T2PIP6;
+grant execute, read, write on directory EPCIS_BAJAR to T2PIP6 with grant option;
+grant execute, read, write on directory EPCIS_BAJAR_BAK to T2PIP6 with grant option;
+grant execute, read, write on directory EPCIS_BAJAR_ERR to T2PIP6 with grant option;
+grant execute, debug on GET_DIRECTORY_FILES to T2PIP6 with grant option;
+grant execute on UTL_FILE to T2PIP6;
+grant execute on UTL_INADDR to T2PIP6;
+grant execute on UTL_TCP to T2PIP6;
+grant select on V_$SESSION to T2PIP6;
+-- Grant/Revoke role privileges 
+grant connect to T2PIP6 with admin option;
+grant dba to T2PIP6 with admin option;
+-- Grant/Revoke system privileges 
+grant alter user to T2PIP6;
+grant create any index to T2PIP6;
+grant create any procedure to T2PIP6;
+grant create any sequence to T2PIP6;
+grant create any synonym to T2PIP6;
+grant create any table to T2PIP6;
+grant create any trigger to T2PIP6;
+grant create any type to T2PIP6;
+grant create any view to T2PIP6;
+grant create synonym to T2PIP6;
+grant create table to T2PIP6;
+grant create trigger to T2PIP6;
+grant create user to T2PIP6;
+grant delete any table to T2PIP6;
+grant drop any index to T2PIP6;
+grant drop any synonym to T2PIP6;
+grant drop any table to T2PIP6;
+grant drop any trigger to T2PIP6;
+grant drop any view to T2PIP6;
+grant execute any procedure to T2PIP6 with admin option;
+grant grant any privilege to T2PIP6 with admin option;
+grant insert any table to T2PIP6;
+grant select any table to T2PIP6 with admin option;
+grant unlimited tablespace to T2PIP6 with admin option;
+grant update any table to T2PIP6;

@@ -1,0 +1,504 @@
+00 14:39:10:617 Fichero de log abierto PID 5332
+
+02 14:39:10:617 Intentando abrir fichero v10.ini
+03 14:39:10:617 Busco v10.ini en 3860 ficheros
+02 14:39:10:620 Cargando driver v10oracle funcion damedriveroracle
+02 14:39:11:432 Conectado a base de datos
+03 14:39:11:507 Siguiente vdret 0. 
+03 14:39:11:507 Siguiente vdret 0. 
+02 14:39:11:507 El programa se esta ejecutando en modo normal
+02 14:39:11:554 Cargando grupo AGENCIAS
+02 14:39:11:555 Cargando grupo FMD
+02 14:39:11:555     Cargando servicio INTERFMD
+02 14:39:11:555 Cargando grupo GENERALES
+02 14:39:11:555     Cargando servicio V10CALIFSTOCK
+02 14:39:11:555     Cargando servicio V10CORREOS
+02 14:39:11:555     Cargando servicio V10DEMANDAS
+02 14:39:11:555     Cargando servicio V10DEMANDASFIN
+02 14:39:11:555     Cargando servicio V10FUENTESTOCK
+02 14:39:11:555     Cargando servicio V10REUBICADOR
+00 14:39:11:587 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesiÛn del usuario no existe.
+00 14:39:11:587  Defines
+00 14:39:11:587  Binds
+02 14:39:11:587     Cargando servicio V10SPOOL
+02 14:39:11:587     Cargando servicio V10SPOOLETIQ
+02 14:39:11:587     Cargando servicio V10SPOOLJAVA
+02 14:39:11:587 Cargando grupo INTERFACES
+02 14:39:11:587     Cargando servicio BAJADAFTP
+02 14:39:11:587     Cargando servicio CARGA_ARTICULOS
+02 14:39:11:587     Cargando servicio CARGA_CLIENTES
+02 14:39:11:587     Cargando servicio CARGA_CODARTALT
+02 14:39:11:587     Cargando servicio CARGA_CP
+02 14:39:11:587     Cargando servicio CARGA_ORDENRECEP
+02 14:39:11:587     Cargando servicio CARGA_PEDIDOS
+02 14:39:11:587     Cargando servicio CARGA_PROVEES
+02 14:39:11:587     Cargando servicio ENVIOMOVIM
+02 14:39:11:587     Cargando servicio ENVIOPEDIDOS
+02 14:39:11:587     Cargando servicio ENVIORECEP
+02 14:39:11:587     Cargando servicio ENVIOREDUR
+02 14:39:11:587     Cargando servicio ENVIOSTOCK
+02 14:39:11:587     Cargando servicio SUBIDAFTP
+02 14:39:11:589 Cargando grupo MOVIMIENTOS
+02 14:39:11:589     Cargando servicio V10ACTSTOCK
+02 14:39:11:589     Cargando servicio V10ENRUTADOR
+02 14:39:11:589     Cargando servicio V10FINMOV
+02 14:39:11:589     Cargando servicio V10INTERFASAMOV
+02 14:39:11:589     Cargando servicio V10PERIODICOMOV
+02 14:39:11:589     Cargando servicio V10RECARGAS
+02 14:39:11:589 Cargando grupo PEDIDOS
+02 14:39:11:589     Cargando servicio V10ASIGNAAGE
+02 14:39:11:589     Cargando servicio V10CARGAPEDIDO
+02 14:39:11:589     Cargando servicio V10CREABULTOS
+02 14:39:11:589     Cargando servicio V10EQUILIBRA
+02 14:39:11:589     Cargando servicio V10EXPEDICIÛN
+02 14:39:11:589     Cargando servicio V10FINPEDIDOS
+02 14:39:11:589     Cargando servicio V10HORACORTE
+02 14:39:11:589     Cargando servicio V10MONOPEDIDO
+02 14:39:11:589     Cargando servicio V10RESERVAPEDIDO
+02 14:39:11:589     Cargando servicio V10VERSIONES
+02 14:39:11:589 Cargando grupo PERIODICOS
+02 14:39:11:589     Cargando servicio ACTDIURNAS
+02 14:39:11:590     Cargando servicio ACTNOCTURNAS
+02 14:39:11:590 Cargando grupo PICKING
+02 14:39:11:590     Cargando servicio INFOHARD
+00 14:39:11:595 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesiÛn del usuario no existe.
+00 14:39:11:595  Defines
+00 14:39:11:595  Binds
+02 14:39:11:595     Cargando servicio LECTURAS
+00 14:39:11:599 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesiÛn del usuario no existe.
+00 14:39:11:599  Defines
+00 14:39:11:599  Binds
+02 14:39:11:599     Cargando servicio PICKINGUNI
+02 14:39:11:599 Cargando grupo PLANIFICADAS
+02 14:39:11:599     Cargando servicio BORRAFICH
+02 14:39:11:599     Cargando servicio COMPRIME
+00 14:39:11:602 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesiÛn del usuario no existe.
+00 14:39:11:602  Defines
+00 14:39:11:602  Binds
+02 14:39:11:602     Cargando servicio MATAFORMS
+00 14:39:11:605 Cursor IMMEDIATO error 30 ORA-00030: El identificador de sesiÛn del usuario no existe.
+00 14:39:11:605  Defines
+00 14:39:11:605  Binds
+02 14:39:11:605 Cargando grupo RADIOS
+02 14:39:11:605     Cargando servicio PLANIFRADIO
+02 14:39:11:605     Cargando servicio RADIOS
+02 14:39:11:605 Cargando grupo SGT
+02 14:39:11:605     Cargando servicio SGT
+02 14:39:11:605 Cargando grupo WEB
+02 14:39:11:605     Cargando servicio V10LISTENER
+02 14:39:11:605     Cargando servicio V10LISTENEREXT
+02 14:39:11:605     Cargando servicio V10SERVERFILES
+03 14:39:11:637 Variable de entorno 
+02 14:39:11:637 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:11:639 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:11:639 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:11:639 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:11:639 Ejecutando VDEXEC -WV"CAMBIOS DE CALIFICACIONES DE STOCK" -TCALIFSTOCK -LNSTOCKCALIF -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5301 -SL5302
+03 14:39:12:330 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:330 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:330 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:330 Ejecucion correcta de servicio V10CALIFSTOCK de grupo GENERALES: pid 6832
+03 14:39:12:340 Variable de entorno 
+02 14:39:12:340 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:340 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:340 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:340 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:340 Ejecutando VDEXEC -WV"ENVIO DE CORREOS" -TSMTP -LNCORREOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5303 -SL5304
+03 14:39:12:342 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:342 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:342 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:344 Ejecucion correcta de servicio V10CORREOS de grupo GENERALES: pid 14624
+03 14:39:12:345 Variable de entorno 
+02 14:39:12:345 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:345 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:345 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:345 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:345 Ejecutando VDEXEC -WV"FUENTE DE STOCK" -TFUENTESTOCK  -LNSTOCKFUENTE -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5305 -SL5306
+03 14:39:12:349 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:349 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:349 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:349 Ejecucion correcta de servicio V10FUENTESTOCK de grupo GENERALES: pid 19424
+03 14:39:12:350 Variable de entorno 
+02 14:39:12:350 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:350 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:352 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:352 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:352 Ejecutando VDEXEC -WV"CARGA DE ARTICULOS" -TCARGA_ARTICULOS -LNCARGAARTICULOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5307 -SL5308
+03 14:39:12:354 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:354 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:355 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:355 Ejecucion correcta de servicio CARGA_ARTICULOS de grupo INTERFACES: pid 8540
+03 14:39:12:357 Variable de entorno 
+02 14:39:12:357 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:357 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:357 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:357 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:357 Ejecutando VDEXEC -WV"CARGA DE CLIENTES" -TCARGA_CLIENTES -LNCARGACLIENTES -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5309 -SL5310
+03 14:39:12:360 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:360 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:360 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:360 Ejecucion correcta de servicio CARGA_CLIENTES de grupo INTERFACES: pid 19088
+03 14:39:12:362 Variable de entorno 
+02 14:39:12:362 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:362 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:362 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:362 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:364 Ejecutando VDEXEC -WV"CARGA DE CODIGOS ALTERNATIVOS" -TCARGA_CODARTALT -LNCARGACODARTALT -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5311 -SL5312
+03 14:39:12:365 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:365 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:365 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:365 Ejecucion correcta de servicio CARGA_CODARTALT de grupo INTERFACES: pid 13852
+03 14:39:12:367 Variable de entorno 
+02 14:39:12:369 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:369 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:369 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:369 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:369 Ejecutando VDEXEC -WV"CARGA DE PEDIDOS" -TCARGA_PEDIDOS -LNCARGAPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5313 -SL5314
+03 14:39:12:372 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:372 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:372 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:372 Ejecucion correcta de servicio CARGA_PEDIDOS de grupo INTERFACES: pid 3780
+03 14:39:12:374 Variable de entorno 
+02 14:39:12:375 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:375 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:375 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:375 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:377 Ejecutando VDEXEC -WV"CARGA DE PROVEEDORES" -TCARGA_PROVEES -LNCARGAPROVES -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5315 -SL5316
+03 14:39:12:379 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:379 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:379 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:379 Ejecucion correcta de servicio CARGA_PROVEES de grupo INTERFACES: pid 10512
+03 14:39:12:380 Variable de entorno 
+02 14:39:12:380 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:380 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:382 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:382 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:382 Ejecutando VDEXEC -WV"ENVIO DE MOVIMIENTOS" -TENVIOMOVIM -LNENVIOMOVIM -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5317 -SL5318
+03 14:39:12:385 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:385 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:385 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:385 Ejecucion correcta de servicio ENVIOMOVIM de grupo INTERFACES: pid 13704
+03 14:39:12:387 Variable de entorno 
+02 14:39:12:389 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:389 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:389 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:389 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:390 Ejecutando VDEXEC -WV"ENVIO DE PEDIDOS A BEL" -TENVIOPEDIDOS -LNENVIOPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5319 -SL5320
+03 14:39:12:392 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:392 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:392 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:392 Ejecucion correcta de servicio ENVIOPEDIDOS de grupo INTERFACES: pid 15104
+03 14:39:12:395 Variable de entorno 
+02 14:39:12:395 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:395 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:395 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:395 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:397 Ejecutando VDEXEC -WV"ENVIO DE RECEP" -TENVIORECEP -LNENVIORECEP -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5321 -SL5322
+03 14:39:12:399 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:399 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:399 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:400 Ejecucion correcta de servicio ENVIORECEP de grupo INTERFACES: pid 18664
+03 14:39:12:402 Variable de entorno 
+02 14:39:12:402 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:402 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:402 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:402 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:404 Ejecutando VDEXEC -WV"ENVIO DE FICHERO A REDUR" -TENVIOREDUR -LNENVIOREDUR -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5323 -SL5324
+03 14:39:12:405 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:405 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:405 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:405 Ejecucion correcta de servicio ENVIOREDUR de grupo INTERFACES: pid 17920
+03 14:39:12:407 Variable de entorno 
+02 14:39:12:410 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:410 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:410 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:410 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:410 Ejecutando VDEXEC -WV"ACTUALIZADOR DE STOCK" -TACTSTKORIGEN -TACTSTKDESTINO -TACTSTKORIGEN2 -LNACTSTOCK -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5325 -SL5326
+03 14:39:12:412 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:412 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:412 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:412 Ejecucion correcta de servicio V10ACTSTOCK de grupo MOVIMIENTOS: pid 18780
+03 14:39:12:415 Variable de entorno 
+02 14:39:12:415 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:415 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:415 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:415 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:415 Ejecutando VDEXEC -WV"ASIGNA Y ENRUTA MOVTOS" -TASIGNAFLUJO -TENRUTADOR -TREVISAENRUTADOR -LNENRUTADOR -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5327 -SL5328
+03 14:39:12:419 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:419 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:419 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:419 Ejecucion correcta de servicio V10ENRUTADOR de grupo MOVIMIENTOS: pid 11232
+03 14:39:12:420 Variable de entorno 
+02 14:39:12:420 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:420 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:422 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:422 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:422 Ejecutando VDEXEC -WV"FINALIZACIÛN DE MOVTOS" -TFINMOV -TFINMOVANULADOS -LNFINMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5329 -SL5330
+03 14:39:12:425 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:425 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:425 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:425 Ejecucion correcta de servicio V10FINMOV de grupo MOVIMIENTOS: pid 1332
+03 14:39:12:430 Variable de entorno 
+02 14:39:12:430 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:430 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:432 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:432 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:432 Ejecutando VDEXEC -WV"INTERFASADO DE MOVTOS" -TINTERFASAMOV -LNINTERFASAMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5331 -SL5332
+03 14:39:12:435 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:435 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:435 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:435 Ejecucion correcta de servicio V10INTERFASAMOV de grupo MOVIMIENTOS: pid 19360
+03 14:39:12:439 Variable de entorno 
+02 14:39:12:439 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:440 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:440 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:440 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:442 Ejecutando VDEXEC -WV"PERIODICO MOV" -TPERIODICOMOV -TPERIODICOMOV30 -TPERIODICOMOV180 -TFUENTESTOCK -LNPERIODICOMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5333 -SL5334
+03 14:39:12:444 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:445 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:445 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:445 Ejecucion correcta de servicio V10PERIODICOMOV de grupo MOVIMIENTOS: pid 4920
+03 14:39:12:447 Variable de entorno 
+02 14:39:12:447 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:447 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:447 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:447 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:449 Ejecutando VDEXEC -WVRECARGAS -TRECARGAS -TRESERVA  -LNRECARGAS -LM4 -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5335 -SL5336
+03 14:39:12:450 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:450 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:452 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:452 Ejecucion correcta de servicio V10RECARGAS de grupo MOVIMIENTOS: pid 8368
+03 14:39:12:455 Variable de entorno 
+02 14:39:12:455 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:457 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:457 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:457 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:457 Ejecutando VDEXEC -WV"ASIGNACIÛN DE AGENCIAS"  -TASIGNAGENCIA -TASIGNATRACKING -LNASIGNAAGENCIA -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5337 -SL5338
+03 14:39:12:460 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:460 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:460 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:460 Ejecucion correcta de servicio V10ASIGNAAGE de grupo PEDIDOS: pid 9992
+03 14:39:12:462 Variable de entorno 
+02 14:39:12:462 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:464 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:464 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:464 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:465 Ejecutando VDEXEC -WV"GRABACIÛN Y VALIDACIÛN DE PEDIDOS"  -TGRABAPEDIDOS -TVALIDAPEDORIG -LNGRABAPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5339 -SL5340
+03 14:39:12:467 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:467 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:467 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:467 Ejecucion correcta de servicio V10CARGAPEDIDO de grupo PEDIDOS: pid 10448
+03 14:39:12:470 Variable de entorno 
+02 14:39:12:472 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:472 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:472 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:472 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:472 Ejecutando VDEXEC -WV"CREACIÛN DE BULTOS Y VOLUMETRÌA"  -TCREABULTOS -TVOLUMETRIA -LNCREABULTOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5341 -SL5342
+03 14:39:12:475 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:475 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:475 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:475 Ejecucion correcta de servicio V10CREABULTOS de grupo PEDIDOS: pid 3412
+03 14:39:12:479 Variable de entorno 
+02 14:39:12:479 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:479 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:479 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:480 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:480 Ejecutando VDEXEC -WV"EQUILIBRADO DE BULTO DE PICKING INVERSO" -TEQUILIBRA -LNEQUILIBRA  -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5343 -SL5344
+03 14:39:12:484 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:484 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:484 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:485 Ejecucion correcta de servicio V10EQUILIBRA de grupo PEDIDOS: pid 13304
+03 14:39:12:487 Variable de entorno 
+02 14:39:12:487 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:487 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:487 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:489 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:490 Ejecutando VDEXEC -WV"FINALIZA BULTOS Y PEDIDOS"  -TFINBULTOS -TFINBULTOST1 -TFINBULTOSB2 -TFINPEDIDOS -LNFINPEDIDOS -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5345 -SL5346
+03 14:39:12:535 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:535 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:537 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:537 Ejecucion correcta de servicio V10FINPEDIDOS de grupo PEDIDOS: pid 17944
+03 14:39:12:537 Variable de entorno 
+02 14:39:12:539 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:539 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:539 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:539 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:540 Ejecutando VDEXEC -WV"REVISA HORA DE CORTE"  -TREVISAHORACORTE -LNREVISAHORACORTE -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5347 -SL5348
+03 14:39:12:542 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:542 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:542 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:542 Ejecucion correcta de servicio V10HORACORTE de grupo PEDIDOS: pid 17512
+03 14:39:12:544 Variable de entorno 
+02 14:39:12:545 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:545 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:549 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:549 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:550 Ejecutando VDEXEC -WV"DETERMINAR MONOPEDIDO"  -TMONOPEDIDO -LNMONOPEDIDO -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5349 -SL5350
+03 14:39:12:552 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:552 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:555 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:555 Ejecucion correcta de servicio V10MONOPEDIDO de grupo PEDIDOS: pid 5676
+03 14:39:12:557 Variable de entorno 
+02 14:39:12:557 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:557 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:557 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:557 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:559 Ejecutando VDEXEC -WV"RESERVA DE PEDIDOS"  -TPEDIDOS -TRESERVA -LNRESERVAPEDIDO -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5351 -SL5352
+03 14:39:12:562 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:562 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:562 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:562 Ejecucion correcta de servicio V10RESERVAPEDIDO de grupo PEDIDOS: pid 16220
+03 14:39:12:564 Variable de entorno 
+02 14:39:12:564 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:565 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:565 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:565 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:565 Ejecutando VDEXEC -WV"TAREAS PERIODICAS DIARIAS" -TPERIODICODIA -TPERIODICOINVEN -LNPERIODICODIA -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5353 -SL5354
+03 14:39:12:567 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:569 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:569 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:569 Ejecucion correcta de servicio ACTDIURNAS de grupo PERIODICOS: pid 14980
+03 14:39:12:579 Variable de entorno 
+02 14:39:12:579 Poniendo PATH a  PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;%PATH%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:580 Variable de entorno PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:580 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%CLIENTE%\FUENTES;%DISCO%\V10\FUENTES\ST;%DISCO%\V10LIB\WWW;%DISCO%\V10\BIN%PLATFORM%;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:580 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:582 Ejecutando VDEXEC -WV"PLANIFICADOR DE MOVTOS" -TPLANIFRADIO -LNPLANIFMOV -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5355 -SL5356
+03 14:39:12:584 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:585 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:585 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:12:585 Ejecucion correcta de servicio PLANIFRADIO de grupo RADIOS: pid 12596
+03 14:39:12:587 Variable de entorno 
+02 14:39:12:587 Poniendo PATH a  PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;%PATH%;%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:12:587 Variable de entorno PATH=C:\ORACLE\PRODUCT\12.1.0\DBHOME\BIN;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:12:587 Poniendo V10PATH a  PATHV10=%CLIENTE%\PATH;%DISCO%\V10\PATH;%CLIENTE%\FUENTES;%DISCO%\V10\FUENTES\ST;%DISCO%\V10LIB\WWW;%DISCO%\V10\BIN%PLATFORM%;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:12:587 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:12:587 Ejecutando VDRADIO -LM4 -WV"RADIOS"  -LF33 -LNRADIOS -RP23000 -RN50 -LM4 -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5357 -SL5358
+03 14:39:13:145 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:145 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:145 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:13:145 Ejecucion correcta de servicio RADIOS de grupo RADIOS: pid 16744
+03 14:39:13:147 Variable de entorno 
+02 14:39:13:147 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:147 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:13:149 Poniendo V10PATH a  PATHV10=%DISCO%\V10LIB\WWW;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:149 Variable de entorno PATHV10=C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:13:149 Ejecutando V10LISTENER.EXE  V10LISTENERDESKTOP-H0RK6HK  -LNLISTENER -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5359 -SL5360
+03 14:39:13:847 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:847 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:847 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:13:847 Ejecucion correcta de servicio V10LISTENER de grupo WEB: pid 16892
+03 14:39:13:849 Variable de entorno 
+02 14:39:13:849 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:849 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:13:849 Poniendo V10PATH a  PATHV10=%DISCO%\V10LIB\WWW;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:849 Variable de entorno PATHV10=C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:13:850 Ejecutando V10LISTENER.EXE  LISTEXT  -LNLISTENER -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5361 -SL5362
+03 14:39:13:852 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:852 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:852 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:13:852 Ejecucion correcta de servicio V10LISTENEREXT de grupo WEB: pid 17936
+03 14:39:13:855 Variable de entorno 
+02 14:39:13:855 Poniendo PATH a  PATH=%CLIENTE%\BIN%PLATFORM%;%DISCO%\V10\BIN%PLATFORM%;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:13:855 Variable de entorno PATH=C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+02 14:39:13:855 Poniendo V10PATH a  PATHV10=%DISCO%\V10LIB\WWW;%CLIENTE%\PATH;%DISCO%\V10\PATH;%DISCO%\V10LIB\BIN%PLATFORM%;%CLIENTE%\BIN%PLATFORM%;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:13:855 Variable de entorno PATHV10=C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+02 14:39:13:855 Ejecutando V10SERVERFILES.EXE  V10LISTENERDESKTOP-H0RK6HK  -LNSERVERFILES -WS1 -LM2 -WM  -OUREDUR/REDUR@LOCAL  -OP -SP5363 -SL5364
+03 14:39:14:632 Variable de entorno PATH=C:\V10\REDUR\V10LIB\BINwin32;C:\V10\REDUR\REDUR\BINwin32;C:\V10\REDUR\V10\BINwin32;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\oracle\product\19.0.0\client_1\bin;C:\OracleServer\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Users\JosÈMiguelGranjaBele\AppData\Local\Microsoft\WindowsApps;
+03 14:39:14:634 Variable de entorno PATHV10=C:\V10\REDUR\REDUR\PATH;C:\V10\REDUR\V10\PATH;C:\V10\REDUR\REDUR\FUENTES;C:\V10\REDUR\V10\FUENTES\ST;C:\V10\REDUR\V10LIB\WWW;C:\V10\REDUR\V10\BINwin32
+03 14:39:14:634 Variable de entorno LD_LIBRARY_PATH=
+02 14:39:14:634 Ejecucion correcta de servicio V10SERVERFILES de grupo WEB: pid 1680
+02 14:39:14:635 Arrancado servidor de visualizadores, en puerto 5300
+02 14:44:58:140 Deteniendo servicio V10CALIFSTOCK de grupo GENERALES
+02 14:44:58:140 Pendiente revisar que se detenga servicio V10CALIFSTOCK de grupo GENERALES
+02 14:44:58:142 Deteniendo servicio V10CORREOS de grupo GENERALES
+02 14:44:58:142 Pendiente revisar que se detenga servicio V10CORREOS de grupo GENERALES
+02 14:44:58:142 Deteniendo servicio V10FUENTESTOCK de grupo GENERALES
+02 14:44:58:142 Pendiente revisar que se detenga servicio V10FUENTESTOCK de grupo GENERALES
+02 14:44:58:144 Deteniendo servicio CARGA_ARTICULOS de grupo INTERFACES
+02 14:44:58:144 Pendiente revisar que se detenga servicio CARGA_ARTICULOS de grupo INTERFACES
+02 14:44:58:144 Deteniendo servicio CARGA_CLIENTES de grupo INTERFACES
+02 14:44:58:144 Pendiente revisar que se detenga servicio CARGA_CLIENTES de grupo INTERFACES
+02 14:44:58:144 Deteniendo servicio CARGA_CODARTALT de grupo INTERFACES
+02 14:44:58:144 Pendiente revisar que se detenga servicio CARGA_CODARTALT de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio CARGA_PEDIDOS de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio CARGA_PEDIDOS de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio CARGA_PROVEES de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio CARGA_PROVEES de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio ENVIOMOVIM de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio ENVIOMOVIM de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio ENVIOPEDIDOS de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio ENVIOPEDIDOS de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio ENVIORECEP de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio ENVIORECEP de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio ENVIOREDUR de grupo INTERFACES
+02 14:44:58:145 Pendiente revisar que se detenga servicio ENVIOREDUR de grupo INTERFACES
+02 14:44:58:145 Deteniendo servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10FINMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10FINMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10RECARGAS de grupo MOVIMIENTOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10RECARGAS de grupo MOVIMIENTOS
+02 14:44:58:147 Deteniendo servicio V10ASIGNAAGE de grupo PEDIDOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10ASIGNAAGE de grupo PEDIDOS
+02 14:44:58:147 Deteniendo servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 14:44:58:147 Deteniendo servicio V10CREABULTOS de grupo PEDIDOS
+02 14:44:58:147 Pendiente revisar que se detenga servicio V10CREABULTOS de grupo PEDIDOS
+02 14:44:58:149 Deteniendo servicio V10EQUILIBRA de grupo PEDIDOS
+02 14:44:58:149 Pendiente revisar que se detenga servicio V10EQUILIBRA de grupo PEDIDOS
+02 14:44:58:149 Deteniendo servicio V10FINPEDIDOS de grupo PEDIDOS
+02 14:44:58:149 Pendiente revisar que se detenga servicio V10FINPEDIDOS de grupo PEDIDOS
+02 14:44:58:149 Deteniendo servicio V10HORACORTE de grupo PEDIDOS
+02 14:44:58:149 Pendiente revisar que se detenga servicio V10HORACORTE de grupo PEDIDOS
+02 14:44:58:149 Deteniendo servicio V10MONOPEDIDO de grupo PEDIDOS
+02 14:44:58:149 Pendiente revisar que se detenga servicio V10MONOPEDIDO de grupo PEDIDOS
+02 14:44:58:149 Deteniendo servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 14:44:58:149 Pendiente revisar que se detenga servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 14:44:58:150 Deteniendo servicio ACTDIURNAS de grupo PERIODICOS
+02 14:44:58:150 Pendiente revisar que se detenga servicio ACTDIURNAS de grupo PERIODICOS
+02 14:44:58:150 Deteniendo servicio PLANIFRADIO de grupo RADIOS
+02 14:44:58:150 Pendiente revisar que se detenga servicio PLANIFRADIO de grupo RADIOS
+02 14:44:58:150 Deteniendo servicio RADIOS de grupo RADIOS
+02 14:44:58:150 Pendiente revisar que se detenga servicio RADIOS de grupo RADIOS
+02 14:44:58:150 Deteniendo servicio V10LISTENER de grupo WEB
+02 14:44:58:150 Deteniendo servicio V10LISTENEREXT de grupo WEB
+02 14:44:58:150 Deteniendo servicio V10SERVERFILES de grupo WEB
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10CALIFSTOCK de grupo GENERALES
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10CORREOS de grupo GENERALES
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10FUENTESTOCK de grupo GENERALES
+02 14:44:59:165 Muerte correcta y ordenada de servicio CARGA_ARTICULOS de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio CARGA_CLIENTES de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio CARGA_CODARTALT de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio CARGA_PEDIDOS de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio CARGA_PROVEES de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio ENVIOMOVIM de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio ENVIOPEDIDOS de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio ENVIORECEP de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio ENVIOREDUR de grupo INTERFACES
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10ACTSTOCK de grupo MOVIMIENTOS
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10ENRUTADOR de grupo MOVIMIENTOS
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10FINMOV de grupo MOVIMIENTOS
+02 14:44:59:165 Muerte correcta y ordenada de servicio V10INTERFASAMOV de grupo MOVIMIENTOS
+02 14:44:59:167 Muerte correcta y ordenada de servicio V10PERIODICOMOV de grupo MOVIMIENTOS
+02 14:44:59:167 Muerte correcta y ordenada de servicio V10RECARGAS de grupo MOVIMIENTOS
+02 14:44:59:169 Muerte correcta y ordenada de servicio V10ASIGNAAGE de grupo PEDIDOS
+02 14:44:59:170 Muerte correcta y ordenada de servicio V10CARGAPEDIDO de grupo PEDIDOS
+02 14:44:59:170 Muerte correcta y ordenada de servicio V10CREABULTOS de grupo PEDIDOS
+02 14:44:59:170 Muerte correcta y ordenada de servicio V10EQUILIBRA de grupo PEDIDOS
+02 14:44:59:170 Muerte correcta y ordenada de servicio V10FINPEDIDOS de grupo PEDIDOS
+02 14:44:59:170 Muerte correcta y ordenada de servicio V10HORACORTE de grupo PEDIDOS
+02 14:44:59:172 Muerte correcta y ordenada de servicio V10MONOPEDIDO de grupo PEDIDOS
+02 14:44:59:172 Muerte correcta y ordenada de servicio V10RESERVAPEDIDO de grupo PEDIDOS
+02 14:44:59:172 Muerte correcta y ordenada de servicio ACTDIURNAS de grupo PERIODICOS
+02 14:44:59:172 Muerte correcta y ordenada de servicio PLANIFRADIO de grupo RADIOS
+02 14:44:59:172 Muerte correcta y ordenada de servicio RADIOS de grupo RADIOS
+
+00 14:44:59:175 Fichero de log cerrado.
+

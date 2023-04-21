@@ -1,0 +1,17 @@
+#***
+# VDSERIEEXP.DEF - Generación automática del código c para la tabla de Series de Expedición
+# 
+# Propósito: Funciones de acceso a la tabla VDSERIEEXP
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 24-06-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=SEX
+EXTRA=COMENSEX,V10CADENA,1025
+
+RECORRE=STATUS,STATUS;
+UPDATE=STATUS,STATUS;
+LOCK

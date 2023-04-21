@@ -1,0 +1,14 @@
+CURSOR=CCARGAPROVEES DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE PROVEES EN  V10INTERIN_RDRT');
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('PROVEES', 'V10INTERIN_RDRT');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE PROVEES' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE PROVEES FINALIZADA CORRECTAMENTE.' );
+                       END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO PROVEES' );
+                 END;@

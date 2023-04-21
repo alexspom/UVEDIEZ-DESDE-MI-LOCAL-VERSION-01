@@ -1,0 +1,14 @@
+shutdown;
+startup nOMOUNT PFILE='E:\backup\Scripts\init.ora';
+set DBID=2371400964
+SET CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO 'E:\backup\rman\dia_actual\%F';
+RESTORE CONTROLFILE FROM 'E:\backup\rman\dia_actual\SNCFORCL.ORA';
+startup mount;
+--catalog start with 'E:\backup\rman\dia_actual' NOPROMPT; << solo si hay catalogo, sino no!!!
+CONFIGURE CHANNEL DEVICE TYPE DISK FORMAT 'E:\backup\rman\dia_actual\BACKUPMARION_DB_%u_%s_%p';
+RUN { 
+RESTORE DATABASE;
+}
+recover database;
+alter database open resetlogs;
+exit

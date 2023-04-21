@@ -1,0 +1,112 @@
+// Modulo generado automaticamente a partir de VDORDENADORES.DEF
+//#***
+//# VDORDENADORES.DEF - Generación automática del código c para la tabla de ordenadores                                                       
+//# 
+//# Propósito: Funciones de acceso a la tabla VDORDENADORES
+//#           
+//# Autor	 : JMM
+//# Revisado por: 
+//# Fecha  : 17-09-2008
+//#************************************************************************************
+//# Modificaciones
+//#***
+//TABLE=ORD
+
+#include "VDLECTURAS.H"
+#define SELORDVDORDENADORES "SELECT VDORDENADORES.ROWID,VDORDENADORES.ORDENADOR,VDORDENADORES.IDINFOLECTURA, "\
+                    " VDORDENADORES.SCANNER,VDORDENADORES.VDEXTRA,VDORDENADORES.CODOPEMODIF, "\
+                    " VDORDENADORES.FECMODIF,VDORDENADORES.HORAMODIF,VDORDENADORES.CODCOMEN, "\
+                    " VDORDENADORES.NUMBASC "\
+        " FROM VDORDENADORES"\
+        " WHERE "\
+               " VDORDENADORES.ORDENADOR=:ORDENADOR "
+static v10cursors *vdselordvdordenadores;
+
+static vdordenadoress svdordenadores;
+
+static diccols colvdordenadores[]={
+	{"ROWID",V10CADENA,(size_t)&svdordenadores.rowid,sizeof(svdordenadores.rowid)},
+	{"ORDENADOR",V10CADENA,(size_t)&svdordenadores.ordenador,sizeof(svdordenadores.ordenador)},
+	{"IDINFOLECTURA",V10LONG,(size_t)&svdordenadores.idinfolectura,sizeof(svdordenadores.idinfolectura)},
+	{"SCANNER",V10LONG,(size_t)&svdordenadores.scanner,sizeof(svdordenadores.scanner)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdordenadores.vdextra,sizeof(svdordenadores.vdextra)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdordenadores.codopemodif,sizeof(svdordenadores.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdordenadores.fecmodif,sizeof(svdordenadores.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdordenadores.horamodif,sizeof(svdordenadores.horamodif)},
+	{"CODCOMEN",V10LONG,(size_t)&svdordenadores.codcomen,sizeof(svdordenadores.codcomen)},
+	{"NUMBASC",V10LONG,(size_t)&svdordenadores.numbasc,sizeof(svdordenadores.numbasc)}
+	};
+static diccionarios dvdordenadores[]={
+    {colvdordenadores,10}
+};
+diccionario dord={dvdordenadores,1};
+
+static char msglogORD[LCADENA];
+static char msgdebugORD[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_ord(void)
+{
+if (vdselordvdordenadores) {
+    liberacursor(vdselordvdordenadores);
+    vdselordvdordenadores = NULL;
+}
+}
+static void init_selordvdordenadores(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordenadores[0].numcol;nc++) dvdordenadores[0].c[nc].offset-=(size_t)&svdordenadores;
+    vdselordvdordenadores=abrecursordebug(SELORDVDORDENADORES,1280);
+    definetodo(vdselordvdordenadores,svdordenadores.rowid,sizeof(svdordenadores.rowid),V10CADENA,
+                          svdordenadores.ordenador,sizeof(svdordenadores.ordenador),V10CADENA,
+                          &svdordenadores.idinfolectura,sizeof(svdordenadores.idinfolectura),V10LONG,
+                          &svdordenadores.scanner,sizeof(svdordenadores.scanner),V10LONG,
+                          svdordenadores.vdextra,sizeof(svdordenadores.vdextra),V10CADENA,
+                          svdordenadores.codopemodif,sizeof(svdordenadores.codopemodif),V10CADENA,
+                          &svdordenadores.fecmodif,sizeof(svdordenadores.fecmodif),V10LONG,
+                          svdordenadores.horamodif,sizeof(svdordenadores.horamodif),V10CADENA,
+                          &svdordenadores.codcomen,sizeof(svdordenadores.codcomen),V10LONG,
+                          &svdordenadores.numbasc,sizeof(svdordenadores.numbasc),V10LONG,
+                          NULL);
+    bindtodo(vdselordvdordenadores,"ORDENADOR",svdordenadores.ordenador,sizeof(svdordenadores.ordenador),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_ord);
+        init = 1;
+    }
+}
+
+diccionario *ORDdamediccionario(void)
+{
+     return(&dord);
+}
+
+int ORDselvdordenadores(char *ordenador,vdordenadoress *ord)
+{
+  int vdret;
+  if (vdselordvdordenadores==NULL) init_selordvdordenadores();
+  memset(&svdordenadores,0,sizeof(svdordenadores));
+  strcpy(svdordenadores.ordenador,ordenador);
+  vdret=ejefetchcursor(vdselordvdordenadores);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselordvdordenadores. vdret %d. \n",ORDlog(&svdordenadores),vdret);
+    return(VD_EERRORACLE);
+   }
+  *ord=svdordenadores;
+  return(vdret);
+}
+
+char * ORDlog(vdordenadoress *ord)
+{
+    sprintf(msglogORD, "VDORDENADORES: ordenador %s ",ord->ordenador);
+    return(msglogORD);
+}
+
+char * ORDdebug(vdordenadoress *ord)
+{
+    debugestruct(&dord,ord,msgdebugORD);
+    return(msgdebugORD);
+}
+

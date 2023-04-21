@@ -1,0 +1,22 @@
+# MOdulo   : FINALIZAORDEREC.FRM
+# Función  : Finaliza Ordenes de recepción o líneas de Ordenes de recepción
+#
+# Creación : 13-02-2007
+# Autor    : ICC
+###########################################
+# HistOrico de cambios:
+#
+BEGINBLOQUE=VDINVENERRONEOS.PAN
+  PREREGISTRO=PRESEHIJO
+	REGPAG=20
+  POSX=1
+  POSY=1
+ENDBLOQUE
+BEGINBLOQUE=VDINVENERRONEOSLIN.PAN
+  PADRE=VDINVENERRONEOS.PAN
+	PREQUERY=QUERYHIJO
+	PREREGISTRO=PRESEHIJO
+	REGPAG=20
+  POSX=1
+  POSY=26
+ENDBLOQUE

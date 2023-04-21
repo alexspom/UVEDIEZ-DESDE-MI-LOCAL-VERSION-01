@@ -1,0 +1,202 @@
+<html lang="es"> <!--<![endif]-->
+   <head>
+   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+      <title>V10 Software</title>
+      <meta http-equiv="content-type" content= "text/html; charset=iso-8859-1"/>
+      <meta http-equiv="Cache-control" content="no-cache">
+      <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+<!--	  <script src="../html/jquery-1.11.3.min.js"></script>*/-->
+
+	  <!--V10DELAYCHARTS-->
+      <!--V10REFCHARTS-->
+      <!--V10INCLUDECSS-->
+	  
+<!--[if IE]><script src="../html/excanvas.js"></script><![endif]-->	  
+
+<style>
+	#clock {
+	position: absolute;
+	top: 155px;
+	margin: -100px 0 0 -200px;
+	width: 400px;
+	height: 135px;
+	text-align: center;
+	font-size: 12px;
+	border: 0px;
+	padding: 65px 0 0 0;
+	font-family: Verdana, Geneva;
+	color: #363535;
+	font-weight: bold;
+}
+</style>
+
+<script languaje="javascript">
+  
+function ftratarueda() {
+var e=window.event;
+var tecla=0;
+var objeto;
+  e.cancelBubble=true;e.returnValue=false;
+  if (typeof v10lib === 'undefined') return false;
+  if (typeof v10lib.loaded === 'undefined') return false;
+  if (v10lib.loaded!=true) return false;
+  if (e.ctrlKey) return true;
+  if (e.wheelDelta<0) {
+     if (e.wheelDelta<-120) tecla=4000; else tecla=40;	 
+    } else {
+     tecla=38;	 
+	}
+  objeto=v10lib.objactivo;
+  if (objeto!='') {
+     v10lib.valorobjactivo();
+     v10lib.mandaevento(objeto.id,'onkeyup',tecla);
+   }
+  return true;
+}
+</script>
+	  
+</head>
+
+<!--Código organizado, corregido y actualizado el 14/04/2015 por Eduardo L. Arana-->
+	
+<body onkeyup="return fonkeyup()" oncontextmenu="return foncontextmenu()" onkeydown="return fonkeydown()" onload="fonload()"  onclick="fonclick();" onmousedown="fonmousedown()" onhelp="fonhelp()"  onunload="fonunload()" onmousewheel="return ftratarueda()">  
+<!--V10USER-->
+<script languaje="javascript">top.document.title = "USUARIO: "+userv10+" BD: "+userdb+" HOST: "+host+" PID: "+pidform;</script>
+<!--información de sesión-->
+ <div class="wrapperpibe">
+                <div class="leftpibe">
+                    <div class="contenido">
+                        <div class="cabecera">
+                            <div class="logov10soluciones"><br /><br /><div style="height:10px;"></div><div class="barrita">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="rightpibe" style="margin-top:-180px;margin-right:-80px;">
+                        <div id="clock">
+                            <div id="reloj" style="margin-left:72px;margin-top:10px;"></div>
+                            <div id="date" style="margin-top:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<div class="fixie10"><!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+<!--V10CHARTS-->
+<table id="msginfo" class="titusecunsup" style="visibility:hidden" width="752" height="30" border="0" ><tr><td><span class="texsecunsup"><!--v10mensajeinfo--></span></td></tr></table>
+<div class="online" id="botonera" style="top:0px;left:0px;position:absolute;height:15px;width:120px" title="Botonera de la Aplicacion">Accesos directos:</div>
+<div class="online colorfondoayudaonline" id="ayudaonline" style="cursor:hand;top:0px;left:120px;position:absolute;height:15px;width:1000px" title="Ayuda online"><font color="#FFFFFF"/>Ayuda online</div>
+
+<!--V10IMGTECLADOVIRTUAL-->
+<img id="imgdebug" class="imgdebug" src="../img/gears1.gif"/>
+<img id="imgrelojar" class="imgrelojar" src="../img/spinner.gif"/>
+<!--<div class="popupWrapespera" id="imgrelojar" style="top:20%;left:20%;width:300px;height:300px;">
+    <div class="popupTitle">
+        <span class="v10titulomens">Espere por favor...</span>
+    </div>
+	<p class="v10textomensajehtml" style="position:absolute;top:90px;"><img src="../img/flat-clockf.gif" style="width:290px;"></p>
+</div>-->
+<span id="timeenvio" class="timeenvio"></span>
+<!--V10MENSAJE-->
+<!--V10HELP-->
+<!--CARGA DEL FRM-->
+<!--V10FRMDATA-->	
+<!--V10CALENDARIO-->
+<!--V10BOTONES-->
+<!--<table  id="botoneradef" onmouseover="fbotoneraover()" onmouseout="fbotoneraout()" onclick="fonclickbotonera()" border="1" cellspacing="0px" cellspadding="0" class="v10botoneradefecto" style="top:16px;left:0px;visibility:hidden">
+<!--V10BOTONERADEF-->
+<!--</table>-->
+<!--V10TECLADOVIRTUAL-->
+<!--V10SIDEBAR-->
+<!--V10COMPONENTES-->
+<!--V10INCLUDEHTML-->
+<!--CAMPOV10HTML-->
+<script>
+  var v10lib=parent.frames[0];
+  v10lib.loadinit(window);
+  v10lib.generavars(window,'<!--IDSESION-->');
+  var v10libcargada =true;
+  <!--SCRIPTS-->
+  <!--AJAX-->
+  function fonkeydown(){return v10lib.fonkeydown();}
+  function fonkeyup(){return v10lib.fonkeyup();}
+  function fonclick(){v10lib.fonclick();}
+  function fonmousedown(){v10lib.fonmousedown();}
+  function fonmouseover(){v10lib.fonmouseover();}
+  function fonmouseout(){v10lib.fonmouseout();}
+  function fonhelp(){v10lib.fonhelp();}
+  function fonunload(){
+  <!--ONUNLOAD-->
+  v10lib.fonunload();}
+  function foncontextmenu(){v10lib.foncontextmenu();}
+  function fonclickbotonera(){v10lib.fonclickbotonrea();}
+  function fmuestrabotonera(){v10lib.fmuestrabotonera();}
+  function fbotoneraover(){v10lib.fbotoneraover();}
+  function fbotoneraout(){v10lib.fbotoneraout();}
+  function fonblur(id){v10lib.fonblur(id);}
+  function fdummy() {v10lib.fdummy();}
+
+  function fonload() {
+  while(v10libcargada===false);
+  <!--ONLOAD-->
+  <!--ONLINE-->
+  //if (window.document.getElementById('sideBarfrm')) {extendInicial(); window.document.getElementById('poxit').innerHTML=v10lib.v10clipboard;}
+  v10lib.ayudaonline();
+  //v10lib.showtime();
+  }
+  
+/*  $(document).ready(function() {
+
+                                var months = new Array(12);
+                                months[0] = "Enero";
+                                months[1] = "Febrero";
+                                months[2] = "Marzo";
+                                months[3] = "Abril";
+                                months[4] = "Mayo";
+                                months[5] = "Junio";
+                                months[6] = "Julio";
+                                months[7] = "Agosto";
+                                months[8] = "Septiembre";
+                                months[9] = "Octubre";
+                                months[10] = "Noviembre";
+                                months[11] = "Diciembre";
+
+                                var day = new Array(7);
+                                day[0] = "Domingo";
+                                day[1] = "Lunes";
+                                day[2] = "Martes";
+                                day[3] = "Miercoles";
+                                day[4] = "Jueves";
+                                day[5] = "Viernes";
+                                day[6] = "Sabado";
+
+                                var date = new Date();
+                                var month_value = date.getMonth();
+                                var day_value = date.getDay();
+                                var daydate = date.getDate();
+                                var year = date.getFullYear();
+
+                                if (daydate < 10) daydate = "0" + daydate;
+
+                                $('#date').html(day[day_value] + "&nbsp;" + daydate + "&nbsp;" + "de" + "&nbsp;" + months[month_value] + "&nbsp;" + "del" + "&nbsp;" + year);
+
+                                function startTime() {
+								var today = new Date();
+								var h = today.getHours();
+								var m = today.getMinutes();
+								var s = today.getSeconds();
+								m = checkTime(m);
+								s = checkTime(s);
+								document.getElementById('reloj').innerHTML =
+								h + ":" + m + ":" + s;
+								var t = setTimeout(startTime, 500);
+								}
+								function checkTime(i) {
+								if (i < 10) {i = "0" + i};
+								return i;
+								}
+								startTime();
+                            });*/
+</script>	
+</div>
+</body>
+</html>

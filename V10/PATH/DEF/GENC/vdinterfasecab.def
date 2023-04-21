@@ -1,0 +1,28 @@
+#***
+# VDINTERFASECAB.c - Generación automática del código c para la tabla de interfases                                                  
+# 
+# Propósito: Funciones de acceso a la tabla VDINTERFASECAB
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 14-04-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=INTC
+
+EXTRA=REG,V10CADENA,2048
+
+CLAVE=HIJO,TIPOINTERFASE,FORMATOPADRE
+
+CLAVE=SELFORMATO,TIPOINTERFASE, WHERE=(LONGFORMATO = 0
+                                   OR (LONGFORMATO > 0 AND SUBSTR(:REG,1,LONGFORMATO) = FORMATO));               
+
+RECORRE=TIPOFICHERO,TIPOFICHERO
+
+RECORRE=TIPOINTERFASE, TIPOINTERFASE;ORDERBY=ORDEN;
+
+RECORRE=RAIZ,ORDERBY=ORDEN;
+
+UPDATE=SECUENCIAL,SECUENCIAL
+

@@ -1,0 +1,96 @@
+# Módulo   : XVDUPLOAD.PAN
+# Función  : 
+#
+# Creación : 13-08-204
+# Autor    : Eduardo L. Arana
+# Fichero generado por el Asistente de Generación de Pantallas V10 
+###########################################
+# Histórico de cambios:
+ADJUNTAR FICHEROS   
+
+   Comentario #L#########
+|
+
+TABLA=DUAL
+WLONY=150
+WLONX=700
+CAMPO=CODCOMEN,VIRTUAL,NOUPDATE,AUXILIAR,POSTCHANGE=FDESIGNACION("CSELCAMPOHTL","")
+CAMPO=CODTABLA,VIRTUAL,NOUPDATE,OCULTO,AUXILIAR 
+CAMPO=V10HTML,AUXILIAR,OCULTO,"_2048_"
+
+
+CURSOR=CSELCAMPOHTL BEGIN
+                         SELECT '<table id="tablaSubida" width="400" style="position:absolute;top:92px;left:0px;z-index:9000" cellpadding="0" cellspacing="5">
+                         <tr height="10">
+                         <th>
+                     <form name="form1" action="../html/upload.php" method="post" enctype="multipart/form-data" target="upload_target" onsubmit="" >
+                     <p id="f1_upload_process">Cargando...<br/><img src="loader.gif" /><br/></p>
+                     <p id="f1_upload_form" align="center"><br/>
+					 
+                         <label>
+						      <input type="hidden" value="" id="inputcomentario" name="insertcomentario">
+							  
+                              <input hidefocus="hidefocus" unselectable="on"   
+                                 style=" width:650px;height=22px;margin-left:21px;background-color:white;font-color:Black;font-size:12px" 
+                                 type="file" name="DESDIV" id="fichero">
+								 
+								 
+                         </label>
+                         <label>
+                             <input type="submit" name="submitBtn" class="sbtn" value="Adjuntar" id="miid" onclick="                                         
+                                         pepe();obtienecomentario();startUpload();
+                                         "/>
+                         </label>
+                     </p>
+					 
+					 <script type="text/javascript">
+					 function obtienecomentario(){
+					 var codcomen=document.getElementById("bl0f1c1").value;
+					 document.getElementById("inputcomentario").value = codcomen;
+					 }
+					 function pepe(){
+					 v10lib.mandaevento("","phpescape","");
+					 }
+					 
+					 </script>
+					 
+                     <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
+                      
+                 </form>
+                        </th>
+                        </tr>
+                           </table>
+							 ' INTO :V10HTML FROM DUAL;
+                    END;@	
+
+
+					
+#CURSOR=CSELCAMPOHTL BEGIN
+#                         SELECT '<table id="tablaSubida"  width="400" style="position:absolute;top:92px;left:0px;z-index:9000" cellpadding="0" cellspacing="5">
+#                         <tr height="10">
+#                         <th>
+#                           <form name="form1" method="post" enctype="multipart/form-data" acceptcharset="iso-8859-1">
+#                                <input name="campo" id="campo" type="hidden" tabindex="0" value="FICHERO"/>
+#                                <input name="accion" id="accion" type="hidden" tabindex="0" value="3000"/>
+#                                <input hidefocus="hidefocus" unselectable="on"   
+#                                 style=" width:600px;height=22px;margin-left:21px;background-color:white;font-color:Black;font-size:12px" 
+#                                 type="file" name="DESDIV" id="miid" />                                
+#                                <input type="button" name="Submit" value="Subir Fichero" style="position:absolute;top:30px;left:527px;height:22px;width:98px;"
+#                                id="miid" onclick="window.document.body.onclick='''';
+#                                         v10lib.fuerzocierre=true;
+#                                         document.form1.submit();
+#                                         window.document.body.onclick=''v10lib.fonclick()'';"/>
+#                           </form>
+#                        </th>
+#                        </tr>
+#                           </table>' INTO :V10HTML FROM DUAL;
+#                    END;@					
+			  
+CURSOR=CUPDFICHE  DECLARE 
+                     MILINCOMEN NUMBER; 
+                   BEGIN
+                      SELECT NVL(MAX(LINCOMEN),0)+1 INTO MILINCOMEN FROM VDCOMEN WHERE CODCOMEN=:CODCOMEN AND TIPOCOMEN='FICHEROS';  
+                      VDCOM.CREACOMEN(:CODTABLA,:CODCOMEN,'FICHEROS',MILINCOMEN,:FICHERO);
+                  END;@ 
+
+

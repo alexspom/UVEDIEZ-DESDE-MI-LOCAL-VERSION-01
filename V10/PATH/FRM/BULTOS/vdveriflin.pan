@@ -1,0 +1,61 @@
+###################################################################
+#Módulo: VDVERIFLIN.PAN
+#Funcionalidad : Verificación de bultos, mostrando agrupado por articulo y lote
+#Autor: RFD      
+#Fecha: 08-04-2009
+###################################################################
+# Histórico de cambios:
+MANTENIMIENTO DE LINEAS DE BULTO
+Artículo                           Lote         Caduc.   Peso Unidad Ubicación  A servir   Servida    Operario   Estado                  
+_40_________ _100________________  _40_________ ________ #L,####.#   _20_______ #L#,#####  #L#,##### _12_______ @L@@@  _30______________ 
+|
+TABLA=VDBULTOLIN
+SOLOQUERY
+SELECT=SELECT BUL.CODART,BUL.CODLOT,SUM(BUL.CANTPEDIDA) CANTPEDIDA,SUM(BUL.CANTSERVIDA) CANTSERVIDA,BUL.STATUS,MOV.CODUBIORI CODUBI,
+                     BUL.CODOPEPREPARA
+                     FROM VDBULTOLIN BUL, VDMOVIM MOV WHERE BUL.CODBULTO=:CODBULTO
+                      AND MOV.CODMOV=BUL.CODMOV
+                     GROUP BY BUL.CODART,BUL.CODLOT,BUL.STATUS,MOV.CODUBIORI,BUL.CODOPEPREPARA;
+
+NODELETE,PROTECT("IMPLANTADORJEFE")
+
+ORDERBY=CODART;
+
+
+CAMPO=CODBULTO,VIRTUAL,OCULTO,AUXILIAR
+CAMPO=CODART,NOUPDATE,UPPER,POSTCHANGE=FDESIGNACION("CDESART","Código de artículo no existe."),TOOLTIP("Código del artículo"),TITULO("Cod.Art.")
+CAMPO=DESART,AUXILIAR,UPPER,NOENTER,TOOLTIP("Descripción del artículo"),TITULO("Desc.Artículo")
+CAMPO=CODLOT,NOUPDATE,TOOLTIP("Lote del artículo servido contenido en el bulto"),POSTCHANGE=FEJECUTA("CSELCADUCI",""),TITULO("Lote")
+CAMPO=CADUCI,AUXILIAR,NOENTER,TOOLTIP("Caducidad del lote servido"),TITULO("Caducidad"),WLONX=30
+CAMPO=PESOUNI,AUXILIAR,NOENTER,TITULO("Peso")
+CAMPO=CODUBI,AUXILIAR,NOENTER,TOOLTIP("Ubicación en :CODAREA"),TITULO("Ubicación")
+CAMPO=CODAREA,AUXILIAR,OCULTO,"_10_"
+CAMPO=CANTPEDIDA,AUXILIAR,CONVIERTE=FCONVIERTEARTFROMDB(":CODART");FCONVIERTEART2DB(":CODART"),NOUPDATE,TOOLTIP("Cantidad pedida "),TITULO("Pedida")
+CAMPO=CANTSERVIDA,AUXILIAR,CONVIERTE=FCONVIERTEARTFROMDB(":CODART");FCONVIERTEART2DB(":CODART"),NOUPDATE,TOOLTIP("Cantidad servida"),TITULO("servida")
+CAMPO=CODOPEPREPARA,AUXILIAR,NOENTER,TITULO("Operario")
+CAMPO=STATUS,TOOLTIP("Estado de la línea de bulto.\n :DESSTATUS"),POSTCHANGE=FDESIGNACION("CSELSTATUS","Estado no existe"),TITULO("Estado"),WLONX=30
+CAMPO=DESSTATUS,UPPER,AUXILIAR,NOUPDATE,TOOLTIP("Descripción del estado"),TITULO("Descripción")
+CAMPO=CODMOV,OCULTO,"@L@@@@@@@@@"
+
+
+CURSOR=CSELCADUCI SELECT CADUCI FROM VDLOTES WHERE CODART = :CODART AND CODLOT = :CODLOT
+                   UNION
+                  SELECT NULL CADUCI FROM DUAL WHERE :CODLOT IS NULL;
+
+CURSOR=CDESART SELECT DESART,PESOUNI
+                 FROM VDARTIC
+                WHERE CODART=:CODART;
+
+
+CURSOR=CSELSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE STATUS=:STATUS AND TIPOSTATUS='BUL';
+ 
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+
+TECLA=SF10,FLEEMENU("VDBULLIN.ZOO")
+
+AYUDA=MANTENIMIENTO DE LÍNEAS DE BULTO
+
+ONLINE=     {F1} Ayuda             {F4} Confirmar cambios        {F5} Anula cambios         {F7} Inserta
+  {Ctrl-F7} Copia            {F9} Borra registro       {May-F9} Ficha Lineas de bulto      {Esc} Salir;
+

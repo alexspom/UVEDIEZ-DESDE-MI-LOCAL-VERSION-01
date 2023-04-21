@@ -1,0 +1,8 @@
+# graba en la tabla VDSEGUIMIENTOAGENCIAS la situacino de los pedidos de TIPSA que estan expedidos y NO entregados
+CURSOR=CSITUTIPSA BEGIN
+                    VDTIPSA.DAMESITUACIONENVIO;
+					COMMIT;
+                  END;@
+                  
+
+                                    

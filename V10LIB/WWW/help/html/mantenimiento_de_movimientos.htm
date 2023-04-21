@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+ <META http-equiv="content-type" content="text/html; charset=utf-8">
+ <TITLE>Características por defecto de pantallas</TITLE>
+ <META NAME="generator" CONTENT="Adobe RoboHelp - www.adobe.com">
+ <LINK rel="StyleSheet" href="../ficheroayudav10.css"><SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../ehlpdhtm.js"></SCRIPT>
+</HEAD>
+<BODY>
+ <H1>Características por defecto de pantallas</H1>
+ <P>Desde esta pantalla se definen las características por defecto en los bloques de datos de las pantallas, en cuento a posición, teclas de función, título etc.</P>
+ <P>Para realizar cualquier modificación de tipo alta, baja o modificación, se necesita poseer el privilegio de “IMPLANTADOR”</P>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P>Consta de tres bloques, que acceden directamente a la tabla VDDEFBLOQUE:</P>
+ <P><IMG src="../image/ebx_-1169277293.jpg" border=0 height=145 width=257 alt="image\ebx_-1169277293.jpg"></P>
+ <P>El único campo que muestra es el grupo del bloque, es decir si es referente a Artículos, Bultos, etc.</P>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P>El segundo y tercer bloque contienen los mismos campos, sólo que el tercer bloque los muestra en detalle:</P>
+ <P><IMG src="../image/ebx_693385773.jpg" border=0 height=106 width=1025 alt="image\ebx_693385773.jpg"></P>
+ <P><IMG src="../image/ebx_-1788564317.jpg" border=0 height=260 width=1027 alt="image\ebx_-1788564317.jpg"></P>
+ <P>Acceden a la tabla VDDEFBLOQUE.</P>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P>Los campos son:</P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Pantalla:Es el nombre de la pantalla o bloque.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Grupo: Grupo de pantallas al que pertenece el bloque</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">T: Es el tipo de pantallas a las que se aplicarán los defectos. Sus valores son: (F)orms, (R)adios o (A)mbos.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PosX: Coordenada del eje X en el que comienza la pantalla.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PosY: Coordenada del eje Y en el que comienza la pantalla.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Reg: Número de registros que mostrará la pantalla.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">DefProtects: Son las protecciones por defecto de la pantalla. Son 5 campos, cada uno representa una protección.</P></LI>
+  <UL type=circle>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">Insert: Si está o no protegida para realizar la inserción de registros, cuando muestra uno en blanco .</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">Delete: Si está o no protegida para borrar registros.</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">Update: si está o no protegida para modificar registros.</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">Enter: Si está o no protegida para poder posicionarse en sus campos.</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">Orains: Si está protegida o no para insertar en la tabla sobre la que accede, aunque muestre un registro en blanco.</P></LI>
+  </UL>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Ayuda Online: Es el texto de ayuda que se muestra en la parte inferior de la pantalla. Si se antepone un sigo +, se concatena la ayuda online por defecto.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Título: Es el título del bloque de datos.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Q: Es el modo de query o de consulta de la pantalla, puede ser (A)query, (P)query, (T)query o nulo. </P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Contextual: Es la función que se ejecuta al pulsar {MAY+F10} o la tecla de menú.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Tecla: Muestra las funciones que se ejecutarán, para las teclas especiales</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Cap: Indica si los campos van en mayúsculas o no. Sus valores son (U)pper o mayúsculas, (L)ower o minúsculas y (M)ixed o ambas.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PrivInsert: Muestra el privilegio necesario para insertar registros.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PrivDelete: Muestra el privilegio necesario para borrar registros.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PrivNoenter: Muestra el privilegio necesario para insertar registros.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PrivNoupdate: Muestra el privilegio necesario para modificar registros.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">PrivNoorains: Muestra el privilegio necesario para insertar registros.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">TextoWhere: Muestra las condiciones de consulta de la pantalla. Si se antepone un signo + concatena las nuevas condiciones a las de por defecto.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">TextoOrderby: Muestra los campos por los que ordenarán los datos que mostrará la pantalla. Si se antepone un signo + concatena los nuevos campos a tener en cuenta para ordenar, a los de por defecto.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">FAuxiliar: Propiedades adicionales, para añadir a la pantalla.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-left:6.00pt;">Última Modificación: Consta de tres campos, el primero almacena quién realiza la modificación, bien sea un usuario o un procedimiento, el segundo y el tercero almacenan la fecha y la hora respectivamente, en la que se realizó la última modificación.</P></LI>
+ </UL>
+</BODY>
+</HTML>

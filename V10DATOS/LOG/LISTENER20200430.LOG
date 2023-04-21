@@ -1,0 +1,359 @@
+00 13:23:12:002 Fichero de log abierto PID 24468
+
+02 13:23:12:004 Intentando abrir fichero v10.ini
+02 13:23:12:005 Cargando driver v10oracle funcion damedriveroracle
+02 13:23:12:067 Conectado a base de datos
+02 13:23:12:072 Asignando ACCESO a V10LOGIN
+02 13:23:12:072 Asignando NIVELLOG a 2
+02 13:23:12:072 Asignando PROTEGIDO a 500
+02 13:23:12:072 Asignando DEBUGHTTP a 1
+02 13:23:12:072 Asignando VISIBLEEXE a 0
+02 13:23:12:072 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 13:23:12:072 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 13:23:12:074 Asignando SERVIDOR a HTTP://127.0.0.1
+02 13:23:12:074 Asignando SERVERPORTFILES a 1235
+02 13:23:12:075 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:23:12:075 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 13:23:12:075 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 13:23:12:075 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 13:23:12:075 Asignando FILEEXPIRED a 3600
+02 13:23:12:077 Asignando TIEMPOESPERA a 240
+02 13:23:12:079 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 13:23:12:080 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 13:23:12:080 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 13:23:12:080 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 13:23:12:080 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 13:23:12:080 Asignando COMPRIMIR a 1
+02 13:23:12:082 Escuchando en puerto 1234 con protocolo HTTP
+02 13:25:47:762 Sesion 0: Inicio hebra
+02 13:25:47:762 Conexion 00FE2D7C recibe petición
+GET /v10LOGIN&HOST=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: nino:1234
+Connection: Keep-Alive
+
+02 13:25:47:762 Tratapeticion: Server cambia de valor de 00000000 a 00FE2D7C
+02 13:25:47:762 Se captura HOST en URL del cliente NINO 
+02 13:25:47:764 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=3S84sTE9V3JKMQnbICf8eGF067yJOD -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 
+02 13:25:47:767 Sesion 0: Arrancado Proceso v10form
+02 13:25:47:767 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:25:47:767 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:25:47:775 Encontrado host 127.0.0.1
+02 13:25:47:775 Encontrado servicio 20000
+02 13:25:48:282 Sesión con v10form establecida
+02 13:25:49:282 Envio un total de 0.00 KB
+02 13:25:49:284 Enviada la respuesta a socket 00FE2D7C
+02 13:25:49:284 Sesion 0: Sesión rota
+02 13:25:49:284 Libera fe2d7c
+02 13:25:49:285 Sesion 0: Fin hebra
+02 13:26:12:135 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:26:53:350 Sesion 0: Inicio hebra
+02 13:26:53:350 Conexion 00FE2FE4 recibe petición
+GET /v10LOGIN&HOST=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: nino:1234
+Connection: Keep-Alive
+
+02 13:26:53:350 Tratapeticion: Server cambia de valor de 00FE2D7C a 00FE2FE4
+02 13:26:53:350 Se captura HOST en URL del cliente NINO 
+02 13:26:53:350 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=CKJ2GQLfmPTWOL1UN044A0J47EbA0H -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 
+02 13:26:53:355 Sesion 0: Arrancado Proceso v10form
+02 13:26:53:355 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:26:53:355 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:26:53:355 Encontrado host 127.0.0.1
+02 13:26:53:355 Encontrado servicio 20000
+02 13:26:53:860 Sesión con v10form establecida
+02 13:26:54:860 Envio un total de 0.00 KB
+02 13:26:54:860 Enviada la respuesta a socket 00FE2FE4
+02 13:26:54:860 Sesion 0: Sesión rota
+02 13:26:54:862 Libera fe2fe4
+02 13:26:54:862 Sesion 0: Fin hebra
+02 13:27:12:164 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:27:26:829 Sesion 0: Inicio hebra
+02 13:27:26:829 Conexion 00FE2FAC recibe petición
+GET /v10LOGIN&HOST=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: nino:1234
+Connection: Keep-Alive
+
+02 13:27:26:829 Tratapeticion: Server cambia de valor de 00FE2FE4 a 00FE2FAC
+02 13:27:26:829 Se captura HOST en URL del cliente NINO 
+02 13:27:26:829 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=MM823qWHTxUNmXi0QT5yQ38Hj09PDc -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 
+02 13:27:26:832 Sesion 0: Arrancado Proceso v10form
+02 13:27:26:832 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:27:26:834 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:27:26:834 Encontrado host 127.0.0.1
+02 13:27:26:834 Encontrado servicio 20000
+02 13:27:27:337 Sesión con v10form establecida
+02 13:27:28:337 Envio un total de 0.00 KB
+02 13:27:28:337 Enviada la respuesta a socket 00FE2FAC
+02 13:27:28:339 Sesion 0: Sesión rota
+02 13:27:28:339 Libera fe2fac
+02 13:27:28:339 Sesion 0: Fin hebra
+02 13:28:12:185 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:28:37:032 Sesion 0: Inicio hebra
+02 13:28:37:032 Conexion 00FE301C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:28:37:042 Tratapeticion: Server cambia de valor de 00FE2FAC a 00FE301C
+02 13:28:37:042 Se captura HOST en URL del cliente NINO 
+02 13:28:37:044 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=VLVBo2xQFoF82A49FUUEMOK8UF634U -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:28:37:047 Sesion 0: Arrancado Proceso v10form
+02 13:28:37:047 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:28:37:047 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:28:37:049 Encontrado host 127.0.0.1
+02 13:28:37:049 Encontrado servicio 20000
+02 13:28:37:552 Sesión con v10form establecida
+02 13:28:38:552 Envio un total de 0.00 KB
+02 13:28:38:554 Enviada la respuesta a socket 00FE301C
+02 13:28:38:554 Sesion 0: Sesión rota
+02 13:28:38:554 Libera fe301c
+02 13:28:38:554 Sesion 0: Fin hebra
+02 13:29:12:210 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:30:21:145 Sesion 0: Inicio hebra
+02 13:30:21:145 Conexion 00FE2D0C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:30:21:145 Tratapeticion: Server cambia de valor de 00FE301C a 00FE2D0C
+02 13:30:21:145 Se captura HOST en URL del cliente NINO 
+02 13:30:21:145 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=4E666QiJ3oGHR3AKFwMI1KK5NnSP33 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:30:21:147 Sesion 1: Inicio hebra
+02 13:30:21:155 Sesion 0: Arrancado Proceso v10form
+02 13:30:21:155 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:30:21:155 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:30:21:157 Encontrado host 127.0.0.1
+02 13:30:21:157 Encontrado servicio 20000
+02 13:30:21:662 Sesión con v10form establecida
+02 13:30:22:662 Envio un total de 0.00 KB
+02 13:30:22:664 Enviada la respuesta a socket 00FE2D0C
+02 13:30:22:664 Sesion 0: Sesión rota
+02 13:30:22:664 Libera fe2d0c
+02 13:30:22:664 Sesion 0: Fin hebra
+02 13:30:25:095 Sesion 1: Sesión rota
+02 13:30:25:095 Libera fe2b4c
+02 13:30:25:095 Sesion 1: Fin hebra
+02 13:30:40:814 Sesion 0: Inicio hebra
+02 13:30:40:815 Sesion 1: Inicio hebra
+02 13:30:40:824 Conexion 00FE2C9C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:30:40:829 Tratapeticion: Server cambia de valor de 00FE2D0C a 00FE2C9C
+02 13:30:40:829 Se captura HOST en URL del cliente NINO 
+02 13:30:40:835 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=3V46MX1RB08K1W1U03H3MbVe07uK51 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:30:40:839 Sesion 1: Arrancado Proceso v10form
+02 13:30:40:845 Sesion 1: Intentando conectar con v10form en puerto 20000
+02 13:30:40:850 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:30:40:850 Encontrado host 127.0.0.1
+02 13:30:40:852 Encontrado servicio 20000
+02 13:30:41:355 Sesión con v10form establecida
+02 13:30:42:357 Envio un total de 0.00 KB
+02 13:30:42:365 Enviada la respuesta a socket 00FE2C9C
+02 13:30:42:365 Sesion 1: Sesión rota
+02 13:30:42:365 Libera fe2c9c
+02 13:30:42:365 Sesion 1: Fin hebra
+02 13:30:53:147 Sesion 0: Sesión rota
+02 13:30:53:147 Libera fe2adc
+02 13:30:53:147 Sesion 0: Fin hebra
+02 13:31:12:262 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:34:35:204 Sesion 0: Inicio hebra
+02 13:34:35:205 Sesion 1: Inicio hebra
+02 13:34:35:215 Conexion 010BB37C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:34:35:222 Tratapeticion: Server cambia de valor de 00FE2C9C a 010BB37C
+02 13:34:35:224 Se captura HOST en URL del cliente NINO 
+02 13:34:35:225 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=h43bXT9Tm3Cnf1EVNM8Ki4mCD8W5JH -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:34:35:230 Sesion 1: Arrancado Proceso v10form
+02 13:34:35:242 Sesion 1: Intentando conectar con v10form en puerto 20000
+02 13:34:35:244 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:34:35:245 Encontrado host 127.0.0.1
+02 13:34:35:245 Encontrado servicio 20000
+02 13:34:35:750 Sesión con v10form establecida
+02 13:34:36:752 Envio un total de 0.00 KB
+02 13:34:36:752 Enviada la respuesta a socket 010BB37C
+02 13:34:36:754 Sesion 1: Sesión rota
+02 13:34:36:754 Libera 10bb37c
+02 13:34:36:754 Sesion 1: Fin hebra
+02 13:34:38:907 Sesion 0: Sesión rota
+02 13:34:38:907 Libera 10bb184
+02 13:34:38:907 Sesion 0: Fin hebra
+02 13:35:12:370 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:35:34:799 Sesion 0: Inicio hebra
+02 13:35:34:800 Conexion 010BB1BC recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:35:34:802 Tratapeticion: Server cambia de valor de 010BB37C a 010BB1BC
+02 13:35:34:802 Se captura HOST en URL del cliente NINO 
+02 13:35:34:802 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=C6fXqPK2EFNU5uC029Gze7PT96790y -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:35:34:812 Sesion 0: Arrancado Proceso v10form
+02 13:35:34:812 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:35:34:812 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:35:34:814 Encontrado host 127.0.0.1
+02 13:35:34:814 Encontrado servicio 20000
+02 13:35:35:320 Sesión con v10form establecida
+02 13:35:36:320 Envio un total de 0.00 KB
+02 13:35:36:322 Enviada la respuesta a socket 010BB1BC
+02 13:35:36:322 Sesion 0: Sesión rota
+02 13:35:36:322 Libera 10bb1bc
+02 13:35:36:322 Sesion 0: Fin hebra
+02 13:36:12:389 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 13:37:33:950 Sesion 0: Inicio hebra
+02 13:37:33:952 Conexion 010BAFC4 recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 13:37:33:952 Tratapeticion: Server cambia de valor de 010BB1BC a 010BAFC4
+02 13:37:33:952 Se captura HOST en URL del cliente NINO 
+02 13:37:33:952 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=GDMGLWN6RDJ8gH1lDFFUFcxT150IQ9 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 13:37:33:952 Sesion 1: Inicio hebra
+02 13:37:33:960 Sesion 0: Arrancado Proceso v10form
+02 13:37:33:960 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 13:37:33:960 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 13:37:33:962 Encontrado host 127.0.0.1
+02 13:37:33:962 Encontrado servicio 20000
+02 13:37:34:467 Sesión con v10form establecida
+02 13:37:35:467 Envio un total de 0.00 KB
+02 13:37:35:469 Enviada la respuesta a socket 010BAFC4
+02 13:37:35:469 Sesion 0: Sesión rota
+02 13:37:35:469 Libera 10bafc4
+02 13:37:35:469 Sesion 0: Fin hebra
+02 13:37:46:734 Sesion 1: Sesión rota
+02 13:37:46:734 Libera 10bb22c
+02 13:37:46:734 Sesion 1: Fin hebra
+02 13:38:12:437 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+
+00 13:47:29:470 Fichero de log cerrado.
+
+00 16:57:52:765 Fichero de log abierto PID 21932
+
+02 16:57:52:765 Intentando abrir fichero v10.ini
+02 16:57:52:769 Cargando driver v10oracle funcion damedriveroracle
+02 16:57:52:835 Conectado a base de datos
+02 16:57:52:837 Asignando ACCESO a V10LOGIN
+02 16:57:52:837 Asignando NIVELLOG a 2
+02 16:57:52:837 Asignando PROTEGIDO a 500
+02 16:57:52:837 Asignando DEBUGHTTP a 1
+02 16:57:52:837 Asignando VISIBLEEXE a 0
+02 16:57:52:839 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 16:57:52:839 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 16:57:52:839 Asignando SERVIDOR a HTTP://127.0.0.1
+02 16:57:52:840 Asignando SERVERPORTFILES a 1235
+02 16:57:52:842 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 16:57:52:842 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 16:57:52:842 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 16:57:52:842 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 16:57:52:842 Asignando FILEEXPIRED a 3600
+02 16:57:52:844 Asignando TIEMPOESPERA a 240
+02 16:57:52:847 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 16:57:52:847 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 16:57:52:847 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 16:57:52:849 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 16:57:52:849 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 16:57:52:849 Asignando COMPRIMIR a 1
+02 16:57:52:852 Escuchando en puerto 1234 con protocolo HTTP
+02 16:57:56:105 Sesion 0: Inicio hebra
+02 16:57:56:105 Conexion 00A552E4 recibe petición
+GET /v10LOGIN&HOST=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: nino:1234
+Connection: Keep-Alive
+
+02 16:57:56:105 Tratapeticion: Server cambia de valor de 00000000 a 00A552E4
+02 16:57:56:105 Se captura HOST en URL del cliente NINO 
+02 16:57:56:200 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=I2sR999495vL8TD5a4BUQ278H6zuEr -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 
+02 16:57:56:202 Sesion 0: Arrancado Proceso v10form
+02 16:57:56:202 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 16:57:56:202 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 16:57:56:207 Encontrado host 127.0.0.1
+02 16:57:56:207 Encontrado servicio 20000
+02 16:57:56:712 Sesión con v10form establecida
+02 16:57:57:712 Envio un total de 0.00 KB
+02 16:57:57:714 Enviada la respuesta a socket 00A552E4
+02 16:57:57:714 Sesion 0: Sesión rota
+02 16:57:57:714 Libera a552e4
+02 16:57:57:714 Sesion 0: Fin hebra
+02 16:58:26:894 Sesion 0: Inicio hebra
+02 16:58:26:894 Conexion 00A5538C recibe petición
+GET /v10LOGIN&HOST=NINO& HTTP/1.1
+Host: nino:1234
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: es-ES,es;q=0.9
+
+02 16:58:26:894 Tratapeticion: Server cambia de valor de 00A552E4 a 00A5538C
+02 16:58:26:894 Se captura HOST en URL del cliente NINO 
+02 16:58:26:895 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=0 -FWSESION=Nl75V43gKf60D3W6UAB29EXz9G1Xu8 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 
+02 16:58:26:895 Sesion 1: Inicio hebra
+02 16:58:26:897 Sesion 0: Arrancado Proceso v10form
+02 16:58:26:897 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 16:58:26:897 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 16:58:26:897 Encontrado host 127.0.0.1
+02 16:58:26:897 Encontrado servicio 20000
+02 16:58:27:402 Sesión con v10form establecida
+02 16:58:28:402 Envio un total de 0.00 KB
+02 16:58:28:404 Enviada la respuesta a socket 00A5538C
+02 16:58:28:405 Libera a5538c
+02 16:58:28:405 Sesion 0: Fin hebra
+02 16:58:41:045 Sesion 1: Sesión rota
+02 16:58:41:045 Libera a54fd4
+02 16:58:41:045 Sesion 1: Fin hebra
+02 16:58:52:857 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+
+00 17:24:16:439 Fichero de log cerrado.
+

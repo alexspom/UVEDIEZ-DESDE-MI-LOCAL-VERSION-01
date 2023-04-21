@@ -1,0 +1,2758 @@
+00 09:07:40:508 Fichero de log abierto PID 14624
+
+02 09:07:40:508 Intentando abrir fichero v10.ini
+02 09:07:40:517 Cargando driver v10oracle funcion damedriveroracle
+02 09:07:40:782 Conectado a base de datos
+02 09:07:40:783 Asignando RELEECONF a 500
+02 09:07:40:783 Asignando ACCESO a V10LOGIN
+02 09:07:40:785 Asignando NIVELLOG a 2
+02 09:07:40:785 Asignando PROTEGIDO a 500
+02 09:07:40:786 Asignando DEBUGHTTP a 2
+02 09:07:40:786 Asignando VISIBLEEXE a 0
+02 09:07:40:786 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:07:40:787 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:07:40:787 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:07:40:788 Asignando SERVERPORT a 5000
+02 09:07:40:788 Asignando SERVERPORTFILES a 5001
+02 09:07:40:790 Asignando PUERTOINICIAL a 5002
+02 09:07:40:790 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:07:40:791 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:07:40:791 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:07:40:792 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:07:40:792 Asignando FILEEXPIRED a 3600
+02 09:07:40:792 Asignando TIEMPOESPERA a 240
+02 09:07:40:796 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:07:40:796 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:07:40:797 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:07:40:797 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:07:40:797 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:07:40:797 Asignando COMPRIMIR a 1
+02 09:07:40:820 Escuchando en el puerto 5002
+02 09:07:41:203 Conectado Listener en el puerto 5002
+02 09:07:41:203 Abriendo conexion HTTP en el puerto 5002
+02 09:07:41:203 Abierta conexion HTTP en el puerto 5002
+02 09:07:42:212 Conexión de cliente establecida
+02 09:07:42:212 v10formserver vale 0
+02 09:07:42:212 Conexion 05B311A4 recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:07:42:212 La conexion 0 recibe peticion en socket 05B311A4
+02 09:07:42:212 Tratapeticion: Server cambia de valor de 00000000 a 05B311A4
+02 09:07:42:212 Sesion 0 Solicita Fichero V10.HTML 
+02 09:07:42:212 Sesion 0 Enviara Fichero V10.HTML
+02 09:07:42:213 Tiempo en abrir 0.000583 seg.
+02 09:07:42:215 Timeout es 99999.000000
+02 09:07:42:215 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:07:42:215 Tiempo en carga de fichero 0.001290 seg.
+02 09:07:42:216 Compresion fin
+02 09:07:42:216 Envio un total de 0.64 KB
+02 09:07:42:216 Fichero v10.html enviado
+02 09:07:42:227 Sesion 0 socket 05B311A4 Finalizada por rotura de conexion 5
+02 09:07:42:228 Libera 5b311a4
+02 09:07:42:242 Sesion 0 Conectada socket 05B310C4
+02 09:07:42:257 Conexion 05B310C4 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:07:42:257 La conexion 0 recibe peticion en socket 05B310C4
+02 09:07:42:257 Tratapeticion: Server cambia de valor de 05B311A4 a 05B310C4
+02 09:07:42:257 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:07:42:257 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:07:42:258 Tiempo en abrir 0.000753 seg.
+02 09:07:42:260 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:07:42:260 Tiempo en carga de fichero 0.001655 seg.
+02 09:07:42:266 Compresion fin
+02 09:07:42:267 Envio un total de 15.81 KB
+02 09:07:42:267 Fichero v10libreriajs.html enviado
+02 09:07:42:273 Sesion 0 socket 05B310C4 Finalizada por rotura de conexion 5
+02 09:07:42:273 Libera 5b310c4
+02 09:07:42:303 Sesion 0 Conectada socket 05B311DC
+02 09:07:42:320 Conexion 05B311DC recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:07:42:320 La conexion 0 recibe peticion en socket 05B311DC
+02 09:07:42:320 Tratapeticion: Server cambia de valor de 05B310C4 a 05B311DC
+02 09:07:42:320 Recibida cadena de acceso
+00 09:07:42:383 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:07:42:385 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:07:42:413 Error al abrir fichero VDST.H
+02 09:07:42:417 Empiezo a leer forms vduser.frm
+02 09:07:42:422 Leyendo caracteristicas del bloque 
+02 09:07:42:422 Leidas caracteristicas del bloque 
+02 09:07:42:430 Termino parse forms vduser.frm
+02 09:07:42:433 v10formserver vale 5b311dc
+02 09:07:42:433 Inicio envío
+02 09:07:42:435 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:07:42:436 Html calculado. Tiempo de envío 0.001842 segundos
+02 09:07:42:437 Compresion fin
+02 09:07:42:437 Envio un total de 4.18 KB
+02 09:07:42:437 Enviada la respuesta a socket 05B311DC
+02 09:07:42:437 Html enviado. Tiempo de envío 0.003675 segundos
+02 09:07:42:443 Sesion 0 socket 05B311DC Finalizada por rotura de conexion 5
+02 09:07:42:443 Libera 5b311dc
+02 09:07:44:618 Sesion 0 Conectada socket 1432EFBC
+02 09:07:44:632 Conexion 1432EFBC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:07:44:632 La conexion 0 recibe peticion en socket 1432EFBC
+02 09:07:44:632 Tratapeticion: Server cambia de valor de 05B311DC a 1432EFBC
+02 09:07:44:632 AtiendePost: Server cambia de valor de 1432EFBC a 1432EFBC
+02 09:07:44:637 Detectado evento
+02 09:07:44:637 Evento recibido
+02 09:07:44:637 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:07:44:637 Fin Evento recibido
+02 09:07:44:637 v10formserver vale 1432efbc
+02 09:07:44:642 v10formserver vale 1432efbc
+02 09:07:44:642 Inicio envío
+02 09:07:44:642 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:07:44:643 Html calculado. Tiempo de envío 0.001443 segundos
+02 09:07:44:646 Compresion fin
+02 09:07:44:646 Envio un total de 4.19 KB
+02 09:07:44:646 Enviada la respuesta a socket 1432EFBC
+02 09:07:44:646 Html enviado. Tiempo de envío 0.003965 segundos
+02 09:07:45:172 Conexion 1432EFBC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:07:45:172 La conexion 0 recibe peticion en socket 1432EFBC
+02 09:07:45:172 Tratapeticion: Server cambia de valor de 1432EFBC a 1432EFBC
+02 09:07:45:172 AtiendePost: Server cambia de valor de 1432EFBC a 1432EFBC
+02 09:07:45:192 Detectado evento
+02 09:07:45:192 Evento recibido
+02 09:07:45:192 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:07:45:192 Fin Evento recibido
+02 09:07:45:192 v10formserver vale 1432efbc
+02 09:07:45:192 v10formserver vale 1432efbc
+02 09:07:45:321 v10formserver vale 1432efbc
+02 09:07:45:392 Compresion fin
+02 09:07:45:392 Envio un total de 7.87 KB
+02 09:07:45:392 Enviada la respuesta a socket 1432EFBC
+02 09:07:45:411 Sesion 0 socket 1432EFBC Finalizada por rotura de conexion 5
+02 09:07:45:411 Libera 1432efbc
+02 09:07:59:832 Sesion 0 Conectada socket 142FE164
+02 09:07:59:847 Conexion 142FE164 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:07:59:847 La conexion 0 recibe peticion en socket 142FE164
+02 09:07:59:847 Tratapeticion: Server cambia de valor de 1432EFBC a 142FE164
+02 09:07:59:847 AtiendePost: Server cambia de valor de 142FE164 a 142FE164
+02 09:07:59:857 Detectado evento
+02 09:07:59:857 Evento recibido
+02 09:07:59:857 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:07:59:858 Fin Evento recibido
+02 09:07:59:860 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:07:59:870 Leyendo caracteristicas del bloque 
+02 09:07:59:870 Leidas caracteristicas del bloque 
+02 09:07:59:872 Leyendo caracteristicas del campo CODART
+02 09:07:59:872 Leidas caracteristicas del campo CODART
+02 09:07:59:873 Termino parse forms vdarticulosgridalexquery.frm
+00 09:07:59:895 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:895  Defines
+00 09:07:59:895  Binds
+00 09:07:59:895    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:895    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:895 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:897 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:897  Defines
+00 09:07:59:897  Binds
+00 09:07:59:897    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:897    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:897 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:897 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:897  Defines
+00 09:07:59:898  Binds
+00 09:07:59:898    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:898    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:898 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:898 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:898  Defines
+00 09:07:59:898  Binds
+00 09:07:59:898    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:898    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:898 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:901 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:901  Defines
+00 09:07:59:901  Binds
+00 09:07:59:901    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:901    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:901 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:901 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:901  Defines
+00 09:07:59:901  Binds
+00 09:07:59:902    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:902 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902  Defines
+00 09:07:59:902  Binds
+00 09:07:59:902    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:902 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902  Defines
+00 09:07:59:902  Binds
+00 09:07:59:902    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:902 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:903 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:903  Defines
+00 09:07:59:903  Binds
+00 09:07:59:905    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:905    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:905 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:905 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:905  Defines
+00 09:07:59:905  Binds
+00 09:07:59:905    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:905    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:905 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:906 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:906  Defines
+00 09:07:59:906  Binds
+00 09:07:59:906    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:906    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:906 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:907 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907  Defines
+00 09:07:59:907  Binds
+00 09:07:59:907    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:907 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907  Defines
+00 09:07:59:907  Binds
+00 09:07:59:907    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:907 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:908 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:908  Defines
+00 09:07:59:908  Binds
+00 09:07:59:908    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:910    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:910 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:910 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:910  Defines
+00 09:07:59:910  Binds
+00 09:07:59:910    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:911    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:911 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:911 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:911  Defines
+00 09:07:59:911  Binds
+00 09:07:59:911    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:911    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:911 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:912 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912  Defines
+00 09:07:59:912  Binds
+00 09:07:59:912    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:912 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912  Defines
+00 09:07:59:912  Binds
+00 09:07:59:912    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:912 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:913 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:913  Defines
+00 09:07:59:913  Binds
+00 09:07:59:913    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:913    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:913 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:915 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:915  Defines
+00 09:07:59:915  Binds
+00 09:07:59:915    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:915    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:915 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:07:59:915 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:915  Defines
+00 09:07:59:915  Binds
+00 09:07:59:915    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:916    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:07:59:916 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+02 09:07:59:916 Inicio envío
+02 09:07:59:940 Html calculado. Tiempo de envío 0.024560 segundos
+02 09:07:59:942 Compresion fin
+02 09:07:59:942 Envio un total de 4.57 KB
+02 09:07:59:942 Enviada la respuesta a socket 142FE164
+02 09:07:59:942 Html enviado. Tiempo de envío 0.027395 segundos
+02 09:08:00:021 Sesion 0 socket 142FE164 Finalizada por rotura de conexion 5
+02 09:08:00:021 Libera 142fe164
+02 09:08:49:946 Sesion 0 Conectada socket 1432CD54
+02 09:08:49:946 Conexion 1432CD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 107
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:08:49:946 La conexion 0 recibe peticion en socket 1432CD54
+02 09:08:49:946 Tratapeticion: Server cambia de valor de 142FE164 a 1432CD54
+02 09:08:49:946 AtiendePost: Server cambia de valor de 1432CD54 a 1432CD54
+02 09:08:49:950 Detectado evento
+02 09:08:49:950 Evento recibido
+02 09:08:49:951 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: tdbl0f1c1
+	Antvalor: BEL
+02 09:08:49:951 Fin Evento recibido
+02 09:08:49:958 Compresion fin
+02 09:08:49:958 Envio un total de 7.87 KB
+02 09:08:49:958 Enviada la respuesta a socket 1432CD54
+02 09:08:51:941 Conexion 1432CD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:08:51:941 La conexion 0 recibe peticion en socket 1432CD54
+02 09:08:51:941 Tratapeticion: Server cambia de valor de 1432CD54 a 1432CD54
+02 09:08:51:941 AtiendePost: Server cambia de valor de 1432CD54 a 1432CD54
+02 09:08:51:958 Detectado evento
+02 09:08:51:958 Evento recibido
+02 09:08:51:958 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:08:51:958 Fin Evento recibido
+02 09:08:51:960 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:08:51:972 Leyendo caracteristicas del bloque 
+02 09:08:51:972 Leidas caracteristicas del bloque 
+02 09:08:51:972 Leyendo caracteristicas del campo CODART
+02 09:08:51:972 Leidas caracteristicas del campo CODART
+02 09:08:51:973 Termino parse forms vdarticulosgridalexquery.frm
+02 09:08:51:976 Inicio envío
+02 09:08:52:016 Html calculado. Tiempo de envío 0.040631 segundos
+02 09:08:52:018 Compresion fin
+02 09:08:52:018 Envio un total de 5.95 KB
+02 09:08:52:018 Enviada la respuesta a socket 1432CD54
+02 09:08:52:018 Html enviado. Tiempo de envío 0.043690 segundos
+02 09:09:12:080 Conexion 1432CD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:12:080 La conexion 0 recibe peticion en socket 1432CD54
+02 09:09:12:080 Tratapeticion: Server cambia de valor de 1432CD54 a 1432CD54
+02 09:09:12:080 AtiendePost: Server cambia de valor de 1432CD54 a 1432CD54
+02 09:09:12:097 Detectado evento
+02 09:09:12:098 Evento recibido
+02 09:09:12:098 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:09:12:098 Fin Evento recibido
+02 09:09:12:252 Libera 1432cd54
+
+00 09:09:12:253 Fichero de log cerrado.
+
+00 09:09:17:356 Fichero de log abierto PID 14188
+
+02 09:09:17:356 Intentando abrir fichero v10.ini
+02 09:09:17:362 Cargando driver v10oracle funcion damedriveroracle
+02 09:09:17:702 Conectado a base de datos
+02 09:09:17:703 Asignando RELEECONF a 500
+02 09:09:17:705 Asignando ACCESO a V10LOGIN
+02 09:09:17:705 Asignando NIVELLOG a 2
+02 09:09:17:705 Asignando PROTEGIDO a 500
+02 09:09:17:706 Asignando DEBUGHTTP a 2
+02 09:09:17:706 Asignando VISIBLEEXE a 0
+02 09:09:17:706 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:09:17:707 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:09:17:707 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:09:17:707 Asignando SERVERPORT a 5000
+02 09:09:17:707 Asignando SERVERPORTFILES a 5001
+02 09:09:17:708 Asignando PUERTOINICIAL a 5002
+02 09:09:17:708 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:09:17:708 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:09:17:710 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:09:17:711 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:09:17:711 Asignando FILEEXPIRED a 3600
+02 09:09:17:712 Asignando TIEMPOESPERA a 240
+02 09:09:17:716 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:09:17:716 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:09:17:717 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:09:17:717 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:09:17:717 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:09:17:717 Asignando COMPRIMIR a 1
+02 09:09:17:738 Escuchando en el puerto 5002
+02 09:09:17:790 Conectado Listener en el puerto 5002
+02 09:09:17:805 Abriendo conexion HTTP en el puerto 5002
+02 09:09:17:805 Abierta conexion HTTP en el puerto 5002
+02 09:09:18:798 Conexión de cliente establecida
+02 09:09:18:798 v10formserver vale 0
+02 09:09:18:798 Conexion 05D2BA7C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:09:18:800 La conexion 0 recibe peticion en socket 05D2BA7C
+02 09:09:18:800 Tratapeticion: Server cambia de valor de 00000000 a 05D2BA7C
+02 09:09:18:800 Sesion 0 Solicita Fichero V10.HTML 
+02 09:09:18:800 Sesion 0 Enviara Fichero V10.HTML
+02 09:09:18:801 Tiempo en abrir 0.000589 seg.
+02 09:09:18:802 Timeout es 99999.000000
+02 09:09:18:802 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:09:18:802 Tiempo en carga de fichero 0.001243 seg.
+02 09:09:18:802 Compresion fin
+02 09:09:18:802 Envio un total de 0.64 KB
+02 09:09:18:802 Fichero v10.html enviado
+02 09:09:18:813 Sesion 0 socket 05D2BA7C Finalizada por rotura de conexion 5
+02 09:09:18:813 Libera 5d2ba7c
+02 09:09:18:828 Sesion 0 Conectada socket 05D2BAEC
+02 09:09:18:828 Conexion 05D2BAEC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:09:18:828 La conexion 0 recibe peticion en socket 05D2BAEC
+02 09:09:18:828 Tratapeticion: Server cambia de valor de 05D2BA7C a 05D2BAEC
+02 09:09:18:828 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:09:18:828 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:09:18:830 Tiempo en abrir 0.000536 seg.
+02 09:09:18:830 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:09:18:830 Tiempo en carga de fichero 0.001095 seg.
+02 09:09:18:836 Compresion fin
+02 09:09:18:836 Envio un total de 15.81 KB
+02 09:09:18:836 Fichero v10libreriajs.html enviado
+02 09:09:18:845 Sesion 0 socket 05D2BAEC Finalizada por rotura de conexion 5
+02 09:09:18:845 Libera 5d2baec
+02 09:09:18:861 Sesion 0 Conectada socket 05D2BD54
+02 09:09:18:877 Conexion 05D2BD54 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:09:18:877 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:18:877 Tratapeticion: Server cambia de valor de 05D2BAEC a 05D2BD54
+02 09:09:18:877 Recibida cadena de acceso
+00 09:09:18:887 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:09:18:887 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:09:18:891 Error al abrir fichero VDST.H
+02 09:09:18:892 Empiezo a leer forms vduser.frm
+02 09:09:18:897 Leyendo caracteristicas del bloque 
+02 09:09:18:897 Leidas caracteristicas del bloque 
+02 09:09:18:906 Termino parse forms vduser.frm
+02 09:09:18:910 v10formserver vale 5d2bd54
+02 09:09:18:910 Inicio envío
+02 09:09:18:911 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:09:18:912 Html calculado. Tiempo de envío 0.001563 segundos
+02 09:09:18:912 Compresion fin
+02 09:09:18:912 Envio un total de 4.18 KB
+02 09:09:18:913 Enviada la respuesta a socket 05D2BD54
+02 09:09:18:913 Html enviado. Tiempo de envío 0.003359 segundos
+02 09:09:20:016 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:20:016 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:20:016 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:20:016 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:20:036 Detectado evento
+02 09:09:20:036 Evento recibido
+02 09:09:20:036 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:09:20:036 Fin Evento recibido
+02 09:09:20:037 v10formserver vale 5d2bd54
+02 09:09:20:041 v10formserver vale 5d2bd54
+02 09:09:20:042 Inicio envío
+02 09:09:20:042 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:09:20:042 Html calculado. Tiempo de envío 0.000823 segundos
+02 09:09:20:043 Compresion fin
+02 09:09:20:043 Envio un total de 4.19 KB
+02 09:09:20:045 Enviada la respuesta a socket 05D2BD54
+02 09:09:20:045 Html enviado. Tiempo de envío 0.003145 segundos
+02 09:09:21:205 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 105
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:21:205 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:21:205 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:21:205 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:21:223 Detectado evento
+02 09:09:21:223 Evento recibido
+02 09:09:21:223 
+	Objeto: prueba1
+	Evento: onkeyup
+	Dato: 115
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:09:21:225 Fin Evento recibido
+02 09:09:21:225 v10formserver vale 5d2bd54
+02 09:09:21:251 v10formserver vale 5d2bd54
+02 09:09:21:280 Compresion fin
+02 09:09:21:280 Envio un total de 7.87 KB
+02 09:09:21:280 Enviada la respuesta a socket 05D2BD54
+02 09:09:23:308 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:23:308 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:23:308 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:23:308 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:23:330 Detectado evento
+02 09:09:23:330 Evento recibido
+02 09:09:23:330 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:09:23:330 Fin Evento recibido
+02 09:09:23:331 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:09:23:342 Leyendo caracteristicas del bloque 
+02 09:09:23:342 Leidas caracteristicas del bloque 
+02 09:09:23:343 Leyendo caracteristicas del campo CODART
+02 09:09:23:343 Leidas caracteristicas del campo CODART
+02 09:09:23:346 Termino parse forms vdarticulosgridalexquery.frm
+00 09:09:23:352 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:352  Defines
+00 09:09:23:352  Binds
+00 09:09:23:352    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:352    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:352 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:353 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:353  Defines
+00 09:09:23:353  Binds
+00 09:09:23:353    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:353    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:353 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:355 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:355  Defines
+00 09:09:23:355  Binds
+00 09:09:23:355    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:355    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:355 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:356 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:356  Defines
+00 09:09:23:356  Binds
+00 09:09:23:356    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:356    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:356 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:357 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357  Defines
+00 09:09:23:357  Binds
+00 09:09:23:357    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:357 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357  Defines
+00 09:09:23:357  Binds
+00 09:09:23:357    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:357 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:358 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:358  Defines
+00 09:09:23:358  Binds
+00 09:09:23:358    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:358    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:358 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:360 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:360  Defines
+00 09:09:23:360  Binds
+00 09:09:23:360    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:360    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:360 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:361 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:361  Defines
+00 09:09:23:361  Binds
+00 09:09:23:361    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:361    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:361 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:362 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362  Defines
+00 09:09:23:362  Binds
+00 09:09:23:362    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:362 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362  Defines
+00 09:09:23:362  Binds
+00 09:09:23:362    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:362 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362  Defines
+00 09:09:23:362  Binds
+00 09:09:23:362    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:362 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:363 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:363  Defines
+00 09:09:23:365  Binds
+00 09:09:23:365    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:365    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:365 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:365 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:365  Defines
+00 09:09:23:366  Binds
+00 09:09:23:366    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:366    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:366 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:367 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367  Defines
+00 09:09:23:367  Binds
+00 09:09:23:367    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:367 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367  Defines
+00 09:09:23:367  Binds
+00 09:09:23:367    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:367 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:368 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:368  Defines
+00 09:09:23:368  Binds
+00 09:09:23:368    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:368    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:368 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:370 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:370  Defines
+00 09:09:23:370  Binds
+00 09:09:23:370    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:370    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:370 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:370 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:370  Defines
+00 09:09:23:370  Binds
+00 09:09:23:371    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PANPOSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:371    campo ACTION Valor POSTCHANGE-FDESIGNACION error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:371 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:371 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:371  Defines
+00 09:09:23:371  Binds
+00 09:09:23:371    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:371    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:371 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+00 09:09:23:372 Cursor CSETMODULE error 1480 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:372  Defines
+00 09:09:23:372  Binds
+00 09:09:23:372    campo MODULE Valor ORM: VDARTICULOSGRIDALEXquery/vdarticulosgridAlexConSoloQuery.PAN error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:372    campo ACTION Valor  error 0 ORA-01480: falta el valor nulo final del valor de enlace STR
+00 09:09:23:372 No puedo ejecutar v10setmodule en ..\FUENTES\oracle\v10oramodulo.c línea 60, error 1480
+02 09:09:23:372 Inicio envío
+02 09:09:23:377 Html calculado. Tiempo de envío 0.004543 segundos
+02 09:09:23:378 Compresion fin
+02 09:09:23:378 Envio un total de 4.53 KB
+02 09:09:23:378 Enviada la respuesta a socket 05D2BD54
+02 09:09:23:378 Html enviado. Tiempo de envío 0.006925 segundos
+02 09:09:40:056 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 107
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:40:056 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:40:057 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:40:057 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:40:063 Detectado evento
+02 09:09:40:063 Evento recibido
+02 09:09:40:063 
+	Objeto: bl0ESC
+	Evento: onkeyup
+	Dato: 27
+	Antid: tdbl0f1c1
+	Antvalor: BEL
+02 09:09:40:065 Fin Evento recibido
+02 09:09:40:076 Compresion fin
+02 09:09:40:076 Envio un total de 7.87 KB
+02 09:09:40:077 Enviada la respuesta a socket 05D2BD54
+02 09:09:41:906 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:41:906 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:41:906 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:41:906 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:41:926 Detectado evento
+02 09:09:41:926 Evento recibido
+02 09:09:41:926 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:09:41:927 Fin Evento recibido
+02 09:09:41:928 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:09:41:937 Leyendo caracteristicas del bloque 
+02 09:09:41:937 Leidas caracteristicas del bloque 
+02 09:09:41:937 Leyendo caracteristicas del campo CODART
+02 09:09:41:937 Leidas caracteristicas del campo CODART
+02 09:09:41:938 Termino parse forms vdarticulosgridalexquery.frm
+02 09:09:41:941 Inicio envío
+02 09:09:41:942 Html calculado. Tiempo de envío 0.002632 segundos
+02 09:09:41:946 Compresion fin
+02 09:09:41:946 Envio un total de 5.95 KB
+02 09:09:41:946 Enviada la respuesta a socket 05D2BD54
+02 09:09:41:946 Html enviado. Tiempo de envío 0.005462 segundos
+02 09:09:49:886 Conexion 05D2BD54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:09:49:887 La conexion 0 recibe peticion en socket 05D2BD54
+02 09:09:49:887 Tratapeticion: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:49:887 AtiendePost: Server cambia de valor de 05D2BD54 a 05D2BD54
+02 09:09:49:908 Detectado evento
+02 09:09:49:908 Evento recibido
+02 09:09:49:908 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:09:49:910 Fin Evento recibido
+02 09:09:50:057 Libera 5d2bd54
+
+00 09:09:50:057 Fichero de log cerrado.
+
+00 09:10:55:867 Fichero de log abierto PID 7588
+
+02 09:10:55:867 Intentando abrir fichero v10.ini
+02 09:10:55:875 Cargando driver v10oracle funcion damedriveroracle
+02 09:10:56:147 Conectado a base de datos
+02 09:10:56:148 Asignando RELEECONF a 500
+02 09:10:56:148 Asignando ACCESO a V10LOGIN
+02 09:10:56:150 Asignando NIVELLOG a 2
+02 09:10:56:150 Asignando PROTEGIDO a 500
+02 09:10:56:151 Asignando DEBUGHTTP a 2
+02 09:10:56:151 Asignando VISIBLEEXE a 0
+02 09:10:56:151 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:10:56:152 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:10:56:152 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:10:56:152 Asignando SERVERPORT a 5000
+02 09:10:56:152 Asignando SERVERPORTFILES a 5001
+02 09:10:56:152 Asignando PUERTOINICIAL a 5002
+02 09:10:56:153 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:10:56:153 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:10:56:155 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:10:56:155 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:10:56:156 Asignando FILEEXPIRED a 3600
+02 09:10:56:156 Asignando TIEMPOESPERA a 240
+02 09:10:56:158 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:10:56:160 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:10:56:160 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:10:56:161 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:10:56:161 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:10:56:161 Asignando COMPRIMIR a 1
+02 09:10:56:182 Escuchando en el puerto 5002
+02 09:10:56:323 Conectado Listener en el puerto 5002
+02 09:10:56:338 Abriendo conexion HTTP en el puerto 5002
+02 09:10:56:338 Abierta conexion HTTP en el puerto 5002
+02 09:10:57:347 Conexión de cliente establecida
+02 09:10:57:347 v10formserver vale 0
+02 09:10:57:347 Conexion 00A24D6C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:10:57:347 La conexion 0 recibe peticion en socket 00A24D6C
+02 09:10:57:347 Tratapeticion: Server cambia de valor de 00000000 a 00A24D6C
+02 09:10:57:347 Sesion 0 Solicita Fichero V10.HTML 
+02 09:10:57:347 Sesion 0 Enviara Fichero V10.HTML
+02 09:10:57:350 Timeout es 99999.000000
+02 09:10:57:350 Tiempo en abrir 0.000666 seg.
+02 09:10:57:350 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:10:57:351 Tiempo en carga de fichero 0.001421 seg.
+02 09:10:57:351 Compresion fin
+02 09:10:57:351 Envio un total de 0.64 KB
+02 09:10:57:352 Fichero v10.html enviado
+02 09:10:57:362 Sesion 0 socket 00A24D6C Finalizada por rotura de conexion 5
+02 09:10:57:362 Libera a24d6c
+02 09:10:57:378 Sesion 0 Conectada socket 00A24CFC
+02 09:10:57:395 Conexion 00A24CFC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:10:57:395 La conexion 0 recibe peticion en socket 00A24CFC
+02 09:10:57:395 Tratapeticion: Server cambia de valor de 00A24D6C a 00A24CFC
+02 09:10:57:395 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:10:57:395 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:10:57:396 Tiempo en abrir 0.000657 seg.
+02 09:10:57:397 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:10:57:397 Tiempo en carga de fichero 0.001391 seg.
+02 09:10:57:402 Compresion fin
+02 09:10:57:403 Envio un total de 15.81 KB
+02 09:10:57:403 Fichero v10libreriajs.html enviado
+02 09:10:57:410 Sesion 0 socket 00A24CFC Finalizada por rotura de conexion 5
+02 09:10:57:410 Libera a24cfc
+02 09:10:57:425 Sesion 0 Conectada socket 00A2507C
+02 09:10:57:425 Conexion 00A2507C recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:10:57:425 La conexion 0 recibe peticion en socket 00A2507C
+02 09:10:57:425 Tratapeticion: Server cambia de valor de 00A24CFC a 00A2507C
+02 09:10:57:425 Recibida cadena de acceso
+00 09:10:57:436 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:10:57:437 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:10:57:438 Error al abrir fichero VDST.H
+02 09:10:57:441 Empiezo a leer forms vduser.frm
+02 09:10:57:446 Leyendo caracteristicas del bloque 
+02 09:10:57:446 Leidas caracteristicas del bloque 
+02 09:10:57:452 Termino parse forms vduser.frm
+02 09:10:57:457 v10formserver vale a2507c
+02 09:10:57:457 Inicio envío
+02 09:10:57:457 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:10:57:457 Html calculado. Tiempo de envío 0.001578 segundos
+02 09:10:57:460 Compresion fin
+02 09:10:57:460 Envio un total de 4.18 KB
+02 09:10:57:460 Enviada la respuesta a socket 00A2507C
+02 09:10:57:460 Html enviado. Tiempo de envío 0.003345 segundos
+02 09:10:59:562 Conexion 00A2507C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:10:59:562 La conexion 0 recibe peticion en socket 00A2507C
+02 09:10:59:562 Tratapeticion: Server cambia de valor de 00A2507C a 00A2507C
+02 09:10:59:562 AtiendePost: Server cambia de valor de 00A2507C a 00A2507C
+02 09:10:59:581 Detectado evento
+02 09:10:59:581 Evento recibido
+02 09:10:59:581 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:10:59:582 Fin Evento recibido
+02 09:10:59:582 v10formserver vale a2507c
+02 09:10:59:585 v10formserver vale a2507c
+02 09:10:59:585 Inicio envío
+02 09:10:59:585 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:10:59:586 Html calculado. Tiempo de envío 0.000987 segundos
+02 09:10:59:588 Compresion fin
+02 09:10:59:588 Envio un total de 4.19 KB
+02 09:10:59:588 Enviada la respuesta a socket 00A2507C
+02 09:10:59:588 Html enviado. Tiempo de envío 0.004317 segundos
+02 09:11:00:246 Conexion 00A2507C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:00:246 La conexion 0 recibe peticion en socket 00A2507C
+02 09:11:00:246 Tratapeticion: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:00:246 AtiendePost: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:00:265 Detectado evento
+02 09:11:00:265 Evento recibido
+02 09:11:00:265 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:11:00:265 Fin Evento recibido
+02 09:11:00:265 v10formserver vale a2507c
+02 09:11:00:265 v10formserver vale a2507c
+02 09:11:00:291 v10formserver vale a2507c
+02 09:11:00:326 Compresion fin
+02 09:11:00:326 Envio un total de 7.87 KB
+02 09:11:00:326 Enviada la respuesta a socket 00A2507C
+02 09:11:02:642 Conexion 00A2507C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:02:642 La conexion 0 recibe peticion en socket 00A2507C
+02 09:11:02:642 Tratapeticion: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:02:642 AtiendePost: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:02:663 Detectado evento
+02 09:11:02:663 Evento recibido
+02 09:11:02:663 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:11:02:663 Fin Evento recibido
+02 09:11:02:665 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:11:02:675 Leyendo caracteristicas del bloque 
+02 09:11:02:675 Leidas caracteristicas del bloque 
+02 09:11:02:677 Leyendo caracteristicas del campo CODART
+02 09:11:02:677 Leidas caracteristicas del campo CODART
+02 09:11:02:678 Termino parse forms vdarticulosgridalexquery.frm
+02 09:11:02:680 Inicio envío
+02 09:11:02:683 Html calculado. Tiempo de envío 0.003279 segundos
+02 09:11:02:686 Compresion fin
+02 09:11:02:686 Envio un total de 5.95 KB
+02 09:11:02:686 Enviada la respuesta a socket 00A2507C
+02 09:11:02:686 Html enviado. Tiempo de envío 0.006058 segundos
+02 09:11:17:430 Conexion 00A2507C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:17:432 La conexion 0 recibe peticion en socket 00A2507C
+02 09:11:17:432 Tratapeticion: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:17:432 AtiendePost: Server cambia de valor de 00A2507C a 00A2507C
+02 09:11:17:452 Detectado evento
+02 09:11:17:452 Evento recibido
+02 09:11:17:452 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:11:17:452 Fin Evento recibido
+02 09:11:17:600 Libera a2507c
+
+00 09:11:17:601 Fichero de log cerrado.
+
+00 09:11:21:370 Fichero de log abierto PID 13644
+
+02 09:11:21:370 Intentando abrir fichero v10.ini
+02 09:11:21:377 Cargando driver v10oracle funcion damedriveroracle
+02 09:11:21:686 Conectado a base de datos
+02 09:11:21:687 Asignando RELEECONF a 500
+02 09:11:21:687 Asignando ACCESO a V10LOGIN
+02 09:11:21:688 Asignando NIVELLOG a 2
+02 09:11:21:688 Asignando PROTEGIDO a 500
+02 09:11:21:688 Asignando DEBUGHTTP a 2
+02 09:11:21:690 Asignando VISIBLEEXE a 0
+02 09:11:21:690 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:11:21:690 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:11:21:691 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:11:21:692 Asignando SERVERPORT a 5000
+02 09:11:21:692 Asignando SERVERPORTFILES a 5001
+02 09:11:21:692 Asignando PUERTOINICIAL a 5002
+02 09:11:21:692 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:11:21:692 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:11:21:693 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:11:21:693 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:11:21:693 Asignando FILEEXPIRED a 3600
+02 09:11:21:695 Asignando TIEMPOESPERA a 240
+02 09:11:21:697 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:11:21:697 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:11:21:697 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:11:21:698 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:11:21:698 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:11:21:698 Asignando COMPRIMIR a 1
+02 09:11:21:722 Escuchando en el puerto 5002
+02 09:11:21:801 Conectado Listener en el puerto 5002
+02 09:11:21:816 Abriendo conexion HTTP en el puerto 5002
+02 09:11:21:816 Abierta conexion HTTP en el puerto 5002
+02 09:11:22:825 Conexión de cliente establecida
+02 09:11:22:825 v10formserver vale 0
+02 09:11:22:825 Conexion 05AA2D54 recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:11:22:826 La conexion 0 recibe peticion en socket 05AA2D54
+02 09:11:22:826 Tratapeticion: Server cambia de valor de 00000000 a 05AA2D54
+02 09:11:22:826 Sesion 0 Solicita Fichero V10.HTML 
+02 09:11:22:826 Sesion 0 Enviara Fichero V10.HTML
+02 09:11:22:827 Timeout es 99999.000000
+02 09:11:22:827 Tiempo en abrir 0.001459 seg.
+02 09:11:22:828 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:11:22:828 Tiempo en carga de fichero 0.002144 seg.
+02 09:11:22:828 Compresion fin
+02 09:11:22:830 Envio un total de 0.64 KB
+02 09:11:22:830 Fichero v10.html enviado
+02 09:11:22:841 Sesion 0 socket 05AA2D54 Finalizada por rotura de conexion 5
+02 09:11:22:841 Libera 5aa2d54
+02 09:11:22:856 Sesion 0 Conectada socket 05AA302C
+02 09:11:22:871 Conexion 05AA302C recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:11:22:871 La conexion 0 recibe peticion en socket 05AA302C
+02 09:11:22:871 Tratapeticion: Server cambia de valor de 05AA2D54 a 05AA302C
+02 09:11:22:871 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:11:22:871 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:11:22:872 Tiempo en abrir 0.000676 seg.
+02 09:11:22:872 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:11:22:872 Tiempo en carga de fichero 0.001379 seg.
+02 09:11:22:878 Compresion fin
+02 09:11:22:878 Envio un total de 15.81 KB
+02 09:11:22:880 Fichero v10libreriajs.html enviado
+02 09:11:22:886 Sesion 0 socket 05AA302C Finalizada por rotura de conexion 5
+02 09:11:22:886 Libera 5aa302c
+02 09:11:22:901 Sesion 0 Conectada socket 05AA31B4
+02 09:11:22:917 Conexion 05AA31B4 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:11:22:917 La conexion 0 recibe peticion en socket 05AA31B4
+02 09:11:22:917 Tratapeticion: Server cambia de valor de 05AA302C a 05AA31B4
+02 09:11:22:917 Recibida cadena de acceso
+00 09:11:22:926 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:11:22:926 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:11:22:928 Error al abrir fichero VDST.H
+02 09:11:22:931 Empiezo a leer forms vduser.frm
+02 09:11:22:936 Leyendo caracteristicas del bloque 
+02 09:11:22:936 Leidas caracteristicas del bloque 
+02 09:11:22:942 Termino parse forms vduser.frm
+02 09:11:22:946 v10formserver vale 5aa31b4
+02 09:11:22:946 Inicio envío
+02 09:11:22:946 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:11:22:947 Html calculado. Tiempo de envío 0.002072 segundos
+02 09:11:22:950 Compresion fin
+02 09:11:22:950 Envio un total de 4.18 KB
+02 09:11:22:950 Enviada la respuesta a socket 05AA31B4
+02 09:11:22:950 Html enviado. Tiempo de envío 0.004275 segundos
+02 09:11:23:740 Conexion 05AA31B4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:23:740 La conexion 0 recibe peticion en socket 05AA31B4
+02 09:11:23:740 Tratapeticion: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:23:740 AtiendePost: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:23:758 Detectado evento
+02 09:11:23:758 Evento recibido
+02 09:11:23:758 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:11:23:758 Fin Evento recibido
+02 09:11:23:758 v10formserver vale 5aa31b4
+02 09:11:23:762 v10formserver vale 5aa31b4
+02 09:11:23:762 Inicio envío
+02 09:11:23:762 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:11:23:763 Html calculado. Tiempo de envío 0.001105 segundos
+02 09:11:23:766 Compresion fin
+02 09:11:23:766 Envio un total de 4.19 KB
+02 09:11:23:766 Enviada la respuesta a socket 05AA31B4
+02 09:11:23:766 Html enviado. Tiempo de envío 0.003259 segundos
+02 09:11:24:945 Conexion 05AA31B4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 105
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:24:945 La conexion 0 recibe peticion en socket 05AA31B4
+02 09:11:24:945 Tratapeticion: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:24:945 AtiendePost: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:24:965 Detectado evento
+02 09:11:24:965 Evento recibido
+02 09:11:24:965 
+	Objeto: prueba1
+	Evento: onkeyup
+	Dato: 115
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:11:24:965 Fin Evento recibido
+02 09:11:24:965 v10formserver vale 5aa31b4
+02 09:11:24:990 v10formserver vale 5aa31b4
+02 09:11:25:017 Compresion fin
+02 09:11:25:018 Envio un total de 7.87 KB
+02 09:11:25:018 Enviada la respuesta a socket 05AA31B4
+02 09:11:27:775 Conexion 05AA31B4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:27:775 La conexion 0 recibe peticion en socket 05AA31B4
+02 09:11:27:775 Tratapeticion: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:27:775 AtiendePost: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:27:797 Detectado evento
+02 09:11:27:797 Evento recibido
+02 09:11:27:797 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:11:27:797 Fin Evento recibido
+02 09:11:27:797 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:11:27:808 Leyendo caracteristicas del bloque 
+02 09:11:27:808 Leidas caracteristicas del bloque 
+02 09:11:27:810 Leyendo caracteristicas del campo CODART
+02 09:11:27:810 Leidas caracteristicas del campo CODART
+02 09:11:27:812 Termino parse forms vdarticulosgridalexquery.frm
+02 09:11:27:813 Inicio envío
+02 09:11:27:817 Html calculado. Tiempo de envío 0.003885 segundos
+02 09:11:27:821 Compresion fin
+02 09:11:27:821 Envio un total de 5.95 KB
+02 09:11:27:822 Enviada la respuesta a socket 05AA31B4
+02 09:11:27:822 Html enviado. Tiempo de envío 0.007548 segundos
+02 09:11:54:242 Conexion 05AA31B4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:11:54:243 La conexion 0 recibe peticion en socket 05AA31B4
+02 09:11:54:243 Tratapeticion: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:54:243 AtiendePost: Server cambia de valor de 05AA31B4 a 05AA31B4
+02 09:11:54:263 Detectado evento
+02 09:11:54:263 Evento recibido
+02 09:11:54:263 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:11:54:265 Fin Evento recibido
+02 09:11:54:410 Libera 5aa31b4
+
+00 09:11:54:411 Fichero de log cerrado.
+
+00 09:11:57:756 Fichero de log abierto PID 8400
+
+02 09:11:57:756 Intentando abrir fichero v10.ini
+02 09:11:57:762 Cargando driver v10oracle funcion damedriveroracle
+02 09:11:58:017 Conectado a base de datos
+02 09:11:58:018 Asignando RELEECONF a 500
+02 09:11:58:018 Asignando ACCESO a V10LOGIN
+02 09:11:58:018 Asignando NIVELLOG a 2
+02 09:11:58:020 Asignando PROTEGIDO a 500
+02 09:11:58:020 Asignando DEBUGHTTP a 2
+02 09:11:58:020 Asignando VISIBLEEXE a 0
+02 09:11:58:020 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:11:58:021 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:11:58:021 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:11:58:022 Asignando SERVERPORT a 5000
+02 09:11:58:022 Asignando SERVERPORTFILES a 5001
+02 09:11:58:022 Asignando PUERTOINICIAL a 5002
+02 09:11:58:022 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:11:58:023 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:11:58:023 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:11:58:025 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:11:58:025 Asignando FILEEXPIRED a 3600
+02 09:11:58:025 Asignando TIEMPOESPERA a 240
+02 09:11:58:028 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:11:58:030 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:11:58:031 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:11:58:031 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:11:58:031 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:11:58:032 Asignando COMPRIMIR a 1
+02 09:11:58:055 Escuchando en el puerto 5002
+02 09:11:58:200 Conectado Listener en el puerto 5002
+02 09:11:58:216 Abriendo conexion HTTP en el puerto 5002
+02 09:11:58:216 Abierta conexion HTTP en el puerto 5002
+02 09:11:59:211 Conexión de cliente establecida
+02 09:11:59:211 v10formserver vale 0
+02 09:11:59:212 Conexion 0589220C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:11:59:212 La conexion 0 recibe peticion en socket 0589220C
+02 09:11:59:212 Tratapeticion: Server cambia de valor de 00000000 a 0589220C
+02 09:11:59:212 Sesion 0 Solicita Fichero V10.HTML 
+02 09:11:59:212 Sesion 0 Enviara Fichero V10.HTML
+02 09:11:59:213 Timeout es 99999.000000
+02 09:11:59:213 Tiempo en abrir 0.000659 seg.
+02 09:11:59:215 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:11:59:215 Tiempo en carga de fichero 0.001315 seg.
+02 09:11:59:216 Compresion fin
+02 09:11:59:216 Envio un total de 0.64 KB
+02 09:11:59:216 Fichero v10.html enviado
+02 09:11:59:227 Sesion 0 socket 0589220C Finalizada por rotura de conexion 5
+02 09:11:59:227 Libera 589220c
+02 09:11:59:242 Sesion 0 Conectada socket 05892634
+02 09:11:59:242 Conexion 05892634 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:11:59:242 La conexion 0 recibe peticion en socket 05892634
+02 09:11:59:242 Tratapeticion: Server cambia de valor de 0589220C a 05892634
+02 09:11:59:242 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:11:59:242 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:11:59:242 Tiempo en abrir 0.000681 seg.
+02 09:11:59:242 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:11:59:243 Tiempo en carga de fichero 0.001197 seg.
+02 09:11:59:251 Compresion fin
+02 09:11:59:251 Envio un total de 15.81 KB
+02 09:11:59:251 Fichero v10libreriajs.html enviado
+02 09:11:59:257 Sesion 0 socket 05892634 Finalizada por rotura de conexion 5
+02 09:11:59:257 Libera 5892634
+02 09:11:59:272 Sesion 0 Conectada socket 0589274C
+02 09:11:59:287 Conexion 0589274C recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:11:59:287 La conexion 0 recibe peticion en socket 0589274C
+02 09:11:59:287 Tratapeticion: Server cambia de valor de 05892634 a 0589274C
+02 09:11:59:287 Recibida cadena de acceso
+00 09:11:59:298 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:11:59:298 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:11:59:301 Error al abrir fichero VDST.H
+02 09:11:59:302 Empiezo a leer forms vduser.frm
+02 09:11:59:307 Leyendo caracteristicas del bloque 
+02 09:11:59:307 Leidas caracteristicas del bloque 
+02 09:11:59:313 Termino parse forms vduser.frm
+02 09:11:59:317 v10formserver vale 589274c
+02 09:11:59:317 Inicio envío
+02 09:11:59:318 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:11:59:320 Html calculado. Tiempo de envío 0.001821 segundos
+02 09:11:59:321 Compresion fin
+02 09:11:59:321 Envio un total de 4.18 KB
+02 09:11:59:321 Enviada la respuesta a socket 0589274C
+02 09:11:59:321 Html enviado. Tiempo de envío 0.003581 segundos
+02 09:12:06:425 Conexion 0589274C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:12:06:425 La conexion 0 recibe peticion en socket 0589274C
+02 09:12:06:425 Tratapeticion: Server cambia de valor de 0589274C a 0589274C
+02 09:12:06:425 AtiendePost: Server cambia de valor de 0589274C a 0589274C
+02 09:12:06:443 Detectado evento
+02 09:12:06:445 Evento recibido
+02 09:12:06:445 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:12:06:445 Fin Evento recibido
+02 09:12:06:445 v10formserver vale 589274c
+02 09:12:06:448 v10formserver vale 589274c
+02 09:12:06:448 Inicio envío
+02 09:12:06:448 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:12:06:450 Html calculado. Tiempo de envío 0.000805 segundos
+02 09:12:06:451 Compresion fin
+02 09:12:06:451 Envio un total de 4.19 KB
+02 09:12:06:451 Enviada la respuesta a socket 0589274C
+02 09:12:06:451 Html enviado. Tiempo de envío 0.002536 segundos
+02 09:12:07:211 Conexion 0589274C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:12:07:211 La conexion 0 recibe peticion en socket 0589274C
+02 09:12:07:211 Tratapeticion: Server cambia de valor de 0589274C a 0589274C
+02 09:12:07:211 AtiendePost: Server cambia de valor de 0589274C a 0589274C
+02 09:12:07:230 Detectado evento
+02 09:12:07:230 Evento recibido
+02 09:12:07:230 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:12:07:230 Fin Evento recibido
+02 09:12:07:230 v10formserver vale 589274c
+02 09:12:07:230 v10formserver vale 589274c
+02 09:12:07:255 v10formserver vale 589274c
+02 09:12:07:282 Compresion fin
+02 09:12:07:282 Envio un total de 7.87 KB
+02 09:12:07:282 Enviada la respuesta a socket 0589274C
+02 09:12:09:376 Conexion 0589274C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:12:09:376 La conexion 0 recibe peticion en socket 0589274C
+02 09:12:09:376 Tratapeticion: Server cambia de valor de 0589274C a 0589274C
+02 09:12:09:377 AtiendePost: Server cambia de valor de 0589274C a 0589274C
+02 09:12:09:387 Detectado evento
+02 09:12:09:387 Evento recibido
+02 09:12:09:387 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:12:09:388 Fin Evento recibido
+02 09:12:09:390 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:12:09:402 Leyendo caracteristicas del bloque 
+02 09:12:09:402 Leidas caracteristicas del bloque 
+02 09:12:09:403 Leyendo caracteristicas del campo CODART
+02 09:12:09:403 Leidas caracteristicas del campo CODART
+02 09:12:09:407 Termino parse forms vdarticulosgridalexquery.frm
+02 09:12:09:410 Inicio envío
+02 09:12:09:412 Html calculado. Tiempo de envío 0.003141 segundos
+02 09:12:09:416 Compresion fin
+02 09:12:09:417 Envio un total de 5.95 KB
+02 09:12:09:417 Enviada la respuesta a socket 0589274C
+02 09:12:09:417 Html enviado. Tiempo de envío 0.006773 segundos
+02 09:13:19:316 Sesion 1 Conectada socket 175C443C
+02 09:13:19:320 Sesion 0 socket 0589274C Finalizada por rotura de conexion 5
+02 09:13:19:320 Libera 589274c
+02 09:13:19:320 Conexion 175C443C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:13:19:321 La conexion 1 recibe peticion en socket 175C443C
+02 09:13:19:321 Tratapeticion: Server cambia de valor de 0589274C a 175C443C
+02 09:13:19:321 AtiendePost: Server cambia de valor de 175C443C a 175C443C
+02 09:13:19:336 Detectado evento
+02 09:13:19:336 Evento recibido
+02 09:13:19:336 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:13:19:336 Fin Evento recibido
+02 09:13:19:482 Libera 175c443c
+
+00 09:13:19:483 Fichero de log cerrado.
+
+00 09:13:23:936 Fichero de log abierto PID 12544
+
+02 09:13:23:936 Intentando abrir fichero v10.ini
+02 09:13:23:947 Cargando driver v10oracle funcion damedriveroracle
+02 09:13:24:240 Conectado a base de datos
+02 09:13:24:242 Asignando RELEECONF a 500
+02 09:13:24:242 Asignando ACCESO a V10LOGIN
+02 09:13:24:242 Asignando NIVELLOG a 2
+02 09:13:24:242 Asignando PROTEGIDO a 500
+02 09:13:24:243 Asignando DEBUGHTTP a 2
+02 09:13:24:243 Asignando VISIBLEEXE a 0
+02 09:13:24:243 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:13:24:245 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:13:24:245 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:13:24:245 Asignando SERVERPORT a 5000
+02 09:13:24:246 Asignando SERVERPORTFILES a 5001
+02 09:13:24:246 Asignando PUERTOINICIAL a 5002
+02 09:13:24:247 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:13:24:247 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:13:24:247 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:13:24:248 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:13:24:248 Asignando FILEEXPIRED a 3600
+02 09:13:24:250 Asignando TIEMPOESPERA a 240
+02 09:13:24:252 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:13:24:252 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:13:24:253 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:13:24:253 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:13:24:253 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:13:24:255 Asignando COMPRIMIR a 1
+02 09:13:24:275 Escuchando en el puerto 5002
+02 09:13:24:337 Conectado Listener en el puerto 5002
+02 09:13:24:352 Abriendo conexion HTTP en el puerto 5002
+02 09:13:24:352 Abierta conexion HTTP en el puerto 5002
+02 09:13:25:346 Conexión de cliente establecida
+02 09:13:25:346 v10formserver vale 0
+02 09:13:25:347 Conexion 054278DC recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:13:25:348 La conexion 0 recibe peticion en socket 054278DC
+02 09:13:25:348 Tratapeticion: Server cambia de valor de 00000000 a 054278DC
+02 09:13:25:348 Sesion 0 Solicita Fichero V10.HTML 
+02 09:13:25:348 Sesion 0 Enviara Fichero V10.HTML
+02 09:13:25:350 Timeout es 99999.000000
+02 09:13:25:352 Tiempo en abrir 0.002112 seg.
+02 09:13:25:352 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:13:25:353 Tiempo en carga de fichero 0.003174 seg.
+02 09:13:25:355 Compresion fin
+02 09:13:25:355 Envio un total de 0.64 KB
+02 09:13:25:361 Fichero v10.html enviado
+02 09:13:25:376 Sesion 0 socket 054278DC Finalizada por rotura de conexion 5
+02 09:13:25:376 Libera 54278dc
+02 09:13:25:376 Sesion 0 Conectada socket 05384EBC
+02 09:13:25:392 Conexion 05384EBC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:13:25:392 La conexion 0 recibe peticion en socket 05384EBC
+02 09:13:25:392 Tratapeticion: Server cambia de valor de 054278DC a 05384EBC
+02 09:13:25:392 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:13:25:392 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:13:25:392 Tiempo en abrir 0.000694 seg.
+02 09:13:25:393 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:13:25:393 Tiempo en carga de fichero 0.001416 seg.
+02 09:13:25:401 Compresion fin
+02 09:13:25:401 Envio un total de 15.81 KB
+02 09:13:25:401 Fichero v10libreriajs.html enviado
+02 09:13:25:407 Sesion 0 socket 05384EBC Finalizada por rotura de conexion 5
+02 09:13:25:407 Libera 5384ebc
+02 09:13:25:437 Sesion 0 Conectada socket 05384C54
+02 09:13:25:437 Conexion 05384C54 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:13:25:437 La conexion 0 recibe peticion en socket 05384C54
+02 09:13:25:437 Tratapeticion: Server cambia de valor de 05384EBC a 05384C54
+02 09:13:25:437 Recibida cadena de acceso
+00 09:13:25:450 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:13:25:450 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:13:25:452 Error al abrir fichero VDST.H
+02 09:13:25:455 Empiezo a leer forms vduser.frm
+02 09:13:25:460 Leyendo caracteristicas del bloque 
+02 09:13:25:461 Leidas caracteristicas del bloque 
+02 09:13:25:468 Termino parse forms vduser.frm
+02 09:13:25:472 v10formserver vale 5384c54
+02 09:13:25:472 Inicio envío
+02 09:13:25:472 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:13:25:473 Html calculado. Tiempo de envío 0.002373 segundos
+02 09:13:25:476 Compresion fin
+02 09:13:25:476 Envio un total de 4.18 KB
+02 09:13:25:477 Enviada la respuesta a socket 05384C54
+02 09:13:25:477 Html enviado. Tiempo de envío 0.004628 segundos
+02 09:13:27:262 Conexion 05384C54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:13:27:262 La conexion 0 recibe peticion en socket 05384C54
+02 09:13:27:262 Tratapeticion: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:27:262 AtiendePost: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:27:281 Detectado evento
+02 09:13:27:281 Evento recibido
+02 09:13:27:281 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:13:27:281 Fin Evento recibido
+02 09:13:27:281 v10formserver vale 5384c54
+02 09:13:27:283 v10formserver vale 5384c54
+02 09:13:27:283 Inicio envío
+02 09:13:27:283 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:13:27:285 Html calculado. Tiempo de envío 0.000968 segundos
+02 09:13:27:287 Compresion fin
+02 09:13:27:287 Envio un total de 4.19 KB
+02 09:13:27:287 Enviada la respuesta a socket 05384C54
+02 09:13:27:287 Html enviado. Tiempo de envío 0.004104 segundos
+02 09:13:27:871 Conexion 05384C54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:13:27:871 La conexion 0 recibe peticion en socket 05384C54
+02 09:13:27:871 Tratapeticion: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:27:871 AtiendePost: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:27:890 Detectado evento
+02 09:13:27:890 Evento recibido
+02 09:13:27:890 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:13:27:891 Fin Evento recibido
+02 09:13:27:891 v10formserver vale 5384c54
+02 09:13:27:891 v10formserver vale 5384c54
+02 09:13:27:922 v10formserver vale 5384c54
+02 09:13:27:947 Compresion fin
+02 09:13:27:947 Envio un total de 7.87 KB
+02 09:13:27:947 Enviada la respuesta a socket 05384C54
+02 09:13:29:847 Conexion 05384C54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:13:29:848 La conexion 0 recibe peticion en socket 05384C54
+02 09:13:29:848 Tratapeticion: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:29:848 AtiendePost: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:29:868 Detectado evento
+02 09:13:29:870 Evento recibido
+02 09:13:29:870 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 09:13:29:870 Fin Evento recibido
+02 09:13:29:871 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 09:13:29:882 Leyendo caracteristicas del bloque 
+02 09:13:29:882 Leidas caracteristicas del bloque 
+02 09:13:29:882 Leyendo caracteristicas del campo CODART
+02 09:13:29:882 Leidas caracteristicas del campo CODART
+02 09:13:29:885 Termino parse forms vdarticulosgridalexquery.frm
+02 09:13:29:886 Inicio envío
+02 09:13:29:891 Html calculado. Tiempo de envío 0.004193 segundos
+02 09:13:29:893 Compresion fin
+02 09:13:29:893 Envio un total de 5.95 KB
+02 09:13:29:893 Enviada la respuesta a socket 05384C54
+02 09:13:29:893 Html enviado. Tiempo de envío 0.007603 segundos
+02 09:13:37:418 Conexion 05384C54 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:13:37:418 La conexion 0 recibe peticion en socket 05384C54
+02 09:13:37:418 Tratapeticion: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:37:418 AtiendePost: Server cambia de valor de 05384C54 a 05384C54
+02 09:13:37:440 Detectado evento
+02 09:13:37:441 Evento recibido
+02 09:13:37:441 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 09:13:37:441 Fin Evento recibido
+02 09:13:37:587 Libera 5384c54
+
+00 09:13:37:588 Fichero de log cerrado.
+
+00 09:18:48:262 Fichero de log abierto PID 11368
+
+02 09:18:48:262 Intentando abrir fichero v10.ini
+02 09:18:48:271 Cargando driver v10oracle funcion damedriveroracle
+02 09:18:48:571 Conectado a base de datos
+02 09:18:48:572 Asignando RELEECONF a 500
+02 09:18:48:572 Asignando ACCESO a V10LOGIN
+02 09:18:48:573 Asignando NIVELLOG a 2
+02 09:18:48:573 Asignando PROTEGIDO a 500
+02 09:18:48:573 Asignando DEBUGHTTP a 2
+02 09:18:48:573 Asignando VISIBLEEXE a 0
+02 09:18:48:575 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:18:48:575 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:18:48:575 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:18:48:576 Asignando SERVERPORT a 5000
+02 09:18:48:576 Asignando SERVERPORTFILES a 5001
+02 09:18:48:576 Asignando PUERTOINICIAL a 5002
+02 09:18:48:577 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:18:48:577 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:18:48:577 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:18:48:577 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:18:48:577 Asignando FILEEXPIRED a 3600
+02 09:18:48:578 Asignando TIEMPOESPERA a 240
+02 09:18:48:581 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:18:48:582 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:18:48:582 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:18:48:582 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:18:48:582 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:18:48:582 Asignando COMPRIMIR a 1
+02 09:18:48:605 Escuchando en el puerto 5002
+02 09:18:48:676 Conectado Listener en el puerto 5002
+02 09:18:48:692 Abriendo conexion HTTP en el puerto 5002
+02 09:18:48:692 Abierta conexion HTTP en el puerto 5002
+02 09:18:49:707 Conexión de cliente establecida
+02 09:18:49:707 v10formserver vale 0
+02 09:18:49:710 Conexion 00A879D4 recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 09:18:49:711 La conexion 0 recibe peticion en socket 00A879D4
+02 09:18:49:711 Timeout es 99999.000000
+02 09:18:49:711 Tratapeticion: Server cambia de valor de 00000000 a 00A879D4
+02 09:18:49:711 Sesion 0 Solicita Fichero V10.HTML 
+02 09:18:49:711 Sesion 0 Enviara Fichero V10.HTML
+02 09:18:49:712 Tiempo en abrir 0.000597 seg.
+02 09:18:49:712 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 09:18:49:712 Tiempo en carga de fichero 0.001470 seg.
+02 09:18:49:713 Compresion fin
+02 09:18:49:713 Envio un total de 0.64 KB
+02 09:18:49:713 Fichero v10.html enviado
+02 09:18:49:722 Sesion 0 socket 00A879D4 Finalizada por rotura de conexion 5
+02 09:18:49:722 Libera a879d4
+02 09:18:49:731 Sesion 0 Conectada socket 00A878F4
+02 09:18:49:737 Conexion 00A878F4 recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:18:49:737 La conexion 0 recibe peticion en socket 00A878F4
+02 09:18:49:737 Tratapeticion: Server cambia de valor de 00A879D4 a 00A878F4
+02 09:18:49:737 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 09:18:49:737 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 09:18:49:737 Tiempo en abrir 0.000587 seg.
+02 09:18:49:737 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 09:18:49:737 Tiempo en carga de fichero 0.001260 seg.
+02 09:18:49:745 Compresion fin
+02 09:18:49:745 Envio un total de 15.81 KB
+02 09:18:49:746 Fichero v10libreriajs.html enviado
+02 09:18:49:752 Sesion 0 socket 00A878F4 Finalizada por rotura de conexion 5
+02 09:18:49:752 Libera a878f4
+02 09:18:49:782 Sesion 0 Conectada socket 00A87EA4
+02 09:18:49:798 Conexion 00A87EA4 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 09:18:49:798 La conexion 0 recibe peticion en socket 00A87EA4
+02 09:18:49:798 Tratapeticion: Server cambia de valor de 00A878F4 a 00A87EA4
+02 09:18:49:798 Recibida cadena de acceso
+00 09:18:49:810 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 09:18:49:810 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 09:18:49:812 Error al abrir fichero VDST.H
+02 09:18:49:816 Empiezo a leer forms vduser.frm
+02 09:18:49:821 Leyendo caracteristicas del bloque 
+02 09:18:49:821 Leidas caracteristicas del bloque 
+02 09:18:49:830 Termino parse forms vduser.frm
+02 09:18:49:832 v10formserver vale a87ea4
+02 09:18:49:832 Inicio envío
+02 09:18:49:833 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:18:49:835 Html calculado. Tiempo de envío 0.002119 segundos
+02 09:18:49:837 Compresion fin
+02 09:18:49:837 Envio un total de 4.18 KB
+02 09:18:49:837 Enviada la respuesta a socket 00A87EA4
+02 09:18:49:837 Html enviado. Tiempo de envío 0.004675 segundos
+02 09:18:51:668 Conexion 00A87EA4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:18:51:668 La conexion 0 recibe peticion en socket 00A87EA4
+02 09:18:51:668 Tratapeticion: Server cambia de valor de 00A87EA4 a 00A87EA4
+02 09:18:51:668 AtiendePost: Server cambia de valor de 00A87EA4 a 00A87EA4
+02 09:18:51:688 Detectado evento
+02 09:18:51:688 Evento recibido
+02 09:18:51:688 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 09:18:51:688 Fin Evento recibido
+02 09:18:51:688 v10formserver vale a87ea4
+02 09:18:51:693 v10formserver vale a87ea4
+02 09:18:51:693 Inicio envío
+02 09:18:51:693 Cargada plantilla plantilla.VDUSER.frm.html
+02 09:18:51:695 Html calculado. Tiempo de envío 0.001121 segundos
+02 09:18:51:696 Compresion fin
+02 09:18:51:697 Envio un total de 4.18 KB
+02 09:18:51:697 Enviada la respuesta a socket 00A87EA4
+02 09:18:51:697 Html enviado. Tiempo de envío 0.003202 segundos
+02 09:18:52:637 Conexion 00A87EA4 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 09:18:52:637 La conexion 0 recibe peticion en socket 00A87EA4
+02 09:18:52:637 Tratapeticion: Server cambia de valor de 00A87EA4 a 00A87EA4
+02 09:18:52:637 AtiendePost: Server cambia de valor de 00A87EA4 a 00A87EA4
+02 09:18:52:657 Detectado evento
+02 09:18:52:657 Evento recibido
+02 09:18:52:657 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 09:18:52:657 Fin Evento recibido
+02 09:18:52:657 v10formserver vale a87ea4
+02 09:18:52:657 v10formserver vale a87ea4
+02 09:18:52:687 v10formserver vale a87ea4
+02 09:18:52:717 Compresion fin
+02 09:18:52:717 Envio un total de 7.87 KB
+02 09:18:52:717 Enviada la respuesta a socket 00A87EA4
+02 09:20:38:087 Sesion 0 socket 00A87EA4 Finalizada por rotura de conexion 5
+02 09:20:38:087 Libera a87ea4
+02 10:14:30:282 Sesion 0 Conectada socket 13EE6DCC
+02 10:14:30:282 Conexion 13EE6DCC recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:30:283 La conexion 0 recibe peticion en socket 13EE6DCC
+02 10:14:30:285 Tratapeticion: Server cambia de valor de 00A87EA4 a 13EE6DCC
+02 10:14:30:286 AtiendePost: Server cambia de valor de 13EE6DCC a 13EE6DCC
+02 10:14:30:305 Detectado evento
+02 10:14:30:305 Evento recibido
+02 10:14:30:305 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 10:14:30:306 Fin Evento recibido
+02 10:14:30:455 Libera 13ee6dcc
+
+00 10:14:30:456 Fichero de log cerrado.
+
+00 10:14:33:073 Fichero de log abierto PID 16116
+
+02 10:14:33:073 Intentando abrir fichero v10.ini
+02 10:14:33:082 Cargando driver v10oracle funcion damedriveroracle
+02 10:14:33:348 Conectado a base de datos
+02 10:14:33:351 Asignando RELEECONF a 500
+02 10:14:33:351 Asignando ACCESO a V10LOGIN
+02 10:14:33:351 Asignando NIVELLOG a 2
+02 10:14:33:351 Asignando PROTEGIDO a 500
+02 10:14:33:352 Asignando DEBUGHTTP a 2
+02 10:14:33:352 Asignando VISIBLEEXE a 0
+02 10:14:33:352 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 10:14:33:352 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 10:14:33:352 Asignando SERVIDOR a HTTP://127.0.0.1
+02 10:14:33:352 Asignando SERVERPORT a 5000
+02 10:14:33:352 Asignando SERVERPORTFILES a 5001
+02 10:14:33:352 Asignando PUERTOINICIAL a 5002
+02 10:14:33:353 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 10:14:33:353 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 10:14:33:353 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 10:14:33:355 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 10:14:33:355 Asignando FILEEXPIRED a 3600
+02 10:14:33:355 Asignando TIEMPOESPERA a 240
+02 10:14:33:357 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 10:14:33:357 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 10:14:33:357 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 10:14:33:358 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 10:14:33:358 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 10:14:33:360 Asignando COMPRIMIR a 1
+02 10:14:33:380 Escuchando en el puerto 5002
+02 10:14:33:437 Conectado Listener en el puerto 5002
+02 10:14:33:453 Abriendo conexion HTTP en el puerto 5002
+02 10:14:33:455 Abierta conexion HTTP en el puerto 5002
+02 10:14:34:446 Conexión de cliente establecida
+02 10:14:34:446 v10formserver vale 0
+02 10:14:34:446 Conexion 05D1BD0C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 10:14:34:447 La conexion 0 recibe peticion en socket 05D1BD0C
+02 10:14:34:447 Tratapeticion: Server cambia de valor de 00000000 a 05D1BD0C
+02 10:14:34:447 Sesion 0 Solicita Fichero V10.HTML 
+02 10:14:34:447 Sesion 0 Enviara Fichero V10.HTML
+02 10:14:34:448 Timeout es 99999.000000
+02 10:14:34:448 Tiempo en abrir 0.000936 seg.
+02 10:14:34:450 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 10:14:34:450 Tiempo en carga de fichero 0.001832 seg.
+02 10:14:34:451 Compresion fin
+02 10:14:34:451 Envio un total de 0.64 KB
+02 10:14:34:451 Fichero v10.html enviado
+02 10:14:34:462 Sesion 0 socket 05D1BD0C Finalizada por rotura de conexion 5
+02 10:14:34:462 Libera 5d1bd0c
+02 10:14:34:477 Sesion 0 Conectada socket 05D2686C
+02 10:14:34:493 Conexion 05D2686C recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:14:34:493 La conexion 0 recibe peticion en socket 05D2686C
+02 10:14:34:495 Tratapeticion: Server cambia de valor de 05D1BD0C a 05D2686C
+02 10:14:34:495 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 10:14:34:495 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 10:14:34:496 Tiempo en abrir 0.000793 seg.
+02 10:14:34:496 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 10:14:34:497 Tiempo en carga de fichero 0.001829 seg.
+02 10:14:34:502 Compresion fin
+02 10:14:34:502 Envio un total de 15.81 KB
+02 10:14:34:502 Fichero v10libreriajs.html enviado
+02 10:14:34:510 Sesion 0 socket 05D2686C Finalizada por rotura de conexion 5
+02 10:14:34:510 Libera 5d2686c
+02 10:14:34:526 Sesion 0 Conectada socket 05D2663C
+02 10:14:34:542 Conexion 05D2663C recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:14:34:542 La conexion 0 recibe peticion en socket 05D2663C
+02 10:14:34:542 Tratapeticion: Server cambia de valor de 05D2686C a 05D2663C
+02 10:14:34:542 Recibida cadena de acceso
+00 10:14:34:552 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 10:14:34:552 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 10:14:34:555 Error al abrir fichero VDST.H
+02 10:14:34:557 Empiezo a leer forms vduser.frm
+02 10:14:34:562 Leyendo caracteristicas del bloque 
+02 10:14:34:562 Leidas caracteristicas del bloque 
+02 10:14:34:568 Termino parse forms vduser.frm
+02 10:14:34:572 v10formserver vale 5d2663c
+02 10:14:34:572 Inicio envío
+02 10:14:34:572 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:14:34:573 Html calculado. Tiempo de envío 0.001756 segundos
+02 10:14:34:575 Compresion fin
+02 10:14:34:575 Envio un total de 4.18 KB
+02 10:14:34:575 Enviada la respuesta a socket 05D2663C
+02 10:14:34:575 Html enviado. Tiempo de envío 0.003488 segundos
+02 10:14:37:162 Conexion 05D2663C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:37:162 La conexion 0 recibe peticion en socket 05D2663C
+02 10:14:37:162 Tratapeticion: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:37:162 AtiendePost: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:37:180 Detectado evento
+02 10:14:37:180 Evento recibido
+02 10:14:37:181 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 10:14:37:181 Fin Evento recibido
+02 10:14:37:181 v10formserver vale 5d2663c
+02 10:14:37:186 v10formserver vale 5d2663c
+02 10:14:37:186 Inicio envío
+02 10:14:37:186 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:14:37:187 Html calculado. Tiempo de envío 0.000723 segundos
+02 10:14:37:187 Compresion fin
+02 10:14:37:187 Envio un total de 4.19 KB
+02 10:14:37:187 Enviada la respuesta a socket 05D2663C
+02 10:14:37:187 Html enviado. Tiempo de envío 0.002445 segundos
+02 10:14:37:657 Conexion 05D2663C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:37:657 La conexion 0 recibe peticion en socket 05D2663C
+02 10:14:37:657 Tratapeticion: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:37:657 AtiendePost: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:37:675 Detectado evento
+02 10:14:37:675 Evento recibido
+02 10:14:37:675 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 10:14:37:676 Fin Evento recibido
+02 10:14:37:676 v10formserver vale 5d2663c
+02 10:14:37:676 v10formserver vale 5d2663c
+02 10:14:37:702 v10formserver vale 5d2663c
+02 10:14:37:730 Compresion fin
+02 10:14:37:730 Envio un total de 7.87 KB
+02 10:14:37:730 Enviada la respuesta a socket 05D2663C
+02 10:14:41:780 Conexion 05D2663C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:41:780 La conexion 0 recibe peticion en socket 05D2663C
+02 10:14:41:780 Tratapeticion: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:41:780 AtiendePost: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:41:801 Detectado evento
+02 10:14:41:801 Evento recibido
+02 10:14:41:802 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 10:14:41:802 Fin Evento recibido
+02 10:14:41:802 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 10:14:41:812 Leyendo caracteristicas del bloque 
+02 10:14:41:812 Leidas caracteristicas del bloque 
+02 10:14:41:813 Leyendo caracteristicas del campo CODART
+02 10:14:41:813 Leidas caracteristicas del campo CODART
+02 10:14:41:815 Termino parse forms vdarticulosgridalexquery.frm
+02 10:14:41:817 Inicio envío
+02 10:14:41:822 Html calculado. Tiempo de envío 0.004735 segundos
+02 10:14:41:825 Compresion fin
+02 10:14:41:825 Envio un total de 5.95 KB
+02 10:14:41:825 Enviada la respuesta a socket 05D2663C
+02 10:14:41:826 Html enviado. Tiempo de envío 0.008683 segundos
+02 10:14:53:131 Conexion 05D2663C recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:53:133 La conexion 0 recibe peticion en socket 05D2663C
+02 10:14:53:133 Tratapeticion: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:53:135 AtiendePost: Server cambia de valor de 05D2663C a 05D2663C
+02 10:14:53:152 Detectado evento
+02 10:14:53:152 Evento recibido
+02 10:14:53:152 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 10:14:53:153 Fin Evento recibido
+02 10:14:53:302 Libera 5d2663c
+
+00 10:14:53:303 Fichero de log cerrado.
+
+00 10:14:57:057 Fichero de log abierto PID 4396
+
+02 10:14:57:057 Intentando abrir fichero v10.ini
+02 10:14:57:067 Cargando driver v10oracle funcion damedriveroracle
+02 10:14:57:310 Conectado a base de datos
+02 10:14:57:312 Asignando RELEECONF a 500
+02 10:14:57:312 Asignando ACCESO a V10LOGIN
+02 10:14:57:312 Asignando NIVELLOG a 2
+02 10:14:57:312 Asignando PROTEGIDO a 500
+02 10:14:57:312 Asignando DEBUGHTTP a 2
+02 10:14:57:312 Asignando VISIBLEEXE a 0
+02 10:14:57:313 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 10:14:57:313 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 10:14:57:313 Asignando SERVIDOR a HTTP://127.0.0.1
+02 10:14:57:313 Asignando SERVERPORT a 5000
+02 10:14:57:315 Asignando SERVERPORTFILES a 5001
+02 10:14:57:315 Asignando PUERTOINICIAL a 5002
+02 10:14:57:315 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 10:14:57:316 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 10:14:57:316 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 10:14:57:316 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 10:14:57:317 Asignando FILEEXPIRED a 3600
+02 10:14:57:317 Asignando TIEMPOESPERA a 240
+02 10:14:57:321 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 10:14:57:322 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 10:14:57:322 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 10:14:57:322 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 10:14:57:322 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 10:14:57:322 Asignando COMPRIMIR a 1
+02 10:14:57:342 Escuchando en el puerto 5002
+02 10:14:57:498 Conectado Listener en el puerto 5002
+02 10:14:57:513 Abriendo conexion HTTP en el puerto 5002
+02 10:14:57:515 Abierta conexion HTTP en el puerto 5002
+02 10:14:58:508 Conexión de cliente establecida
+02 10:14:58:508 v10formserver vale 0
+02 10:14:58:510 Conexion 05C47D2C recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 10:14:58:510 La conexion 0 recibe peticion en socket 05C47D2C
+02 10:14:58:510 Tratapeticion: Server cambia de valor de 00000000 a 05C47D2C
+02 10:14:58:510 Sesion 0 Solicita Fichero V10.HTML 
+02 10:14:58:510 Sesion 0 Enviara Fichero V10.HTML
+02 10:14:58:512 Tiempo en abrir 0.000795 seg.
+02 10:14:58:512 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 10:14:58:513 Tiempo en carga de fichero 0.001995 seg.
+02 10:14:58:513 Timeout es 99999.000000
+02 10:14:58:515 Compresion fin
+02 10:14:58:515 Envio un total de 0.64 KB
+02 10:14:58:515 Fichero v10.html enviado
+02 10:14:58:523 Sesion 0 socket 05C47D2C Finalizada por rotura de conexion 5
+02 10:14:58:523 Libera 5c47d2c
+02 10:14:58:541 Sesion 0 Conectada socket 05C47CBC
+02 10:14:58:556 Conexion 05C47CBC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:14:58:556 La conexion 0 recibe peticion en socket 05C47CBC
+02 10:14:58:556 Tratapeticion: Server cambia de valor de 05C47D2C a 05C47CBC
+02 10:14:58:556 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 10:14:58:556 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 10:14:58:557 Tiempo en abrir 0.000455 seg.
+02 10:14:58:557 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 10:14:58:557 Tiempo en carga de fichero 0.000989 seg.
+02 10:14:58:561 Compresion fin
+02 10:14:58:562 Envio un total de 15.81 KB
+02 10:14:58:562 Fichero v10libreriajs.html enviado
+02 10:14:58:571 Sesion 0 socket 05C47CBC Finalizada por rotura de conexion 5
+02 10:14:58:571 Libera 5c47cbc
+02 10:14:58:586 Sesion 0 Conectada socket 05C48004
+02 10:14:58:601 Conexion 05C48004 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:14:58:602 La conexion 0 recibe peticion en socket 05C48004
+02 10:14:58:602 Tratapeticion: Server cambia de valor de 05C47CBC a 05C48004
+02 10:14:58:602 Recibida cadena de acceso
+00 10:14:58:612 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 10:14:58:612 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 10:14:58:613 Error al abrir fichero VDST.H
+02 10:14:58:616 Empiezo a leer forms vduser.frm
+02 10:14:58:621 Leyendo caracteristicas del bloque 
+02 10:14:58:621 Leidas caracteristicas del bloque 
+02 10:14:58:627 Termino parse forms vduser.frm
+02 10:14:58:630 v10formserver vale 5c48004
+02 10:14:58:630 Inicio envío
+02 10:14:58:631 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:14:58:631 Html calculado. Tiempo de envío 0.001485 segundos
+02 10:14:58:632 Compresion fin
+02 10:14:58:632 Envio un total de 4.18 KB
+02 10:14:58:632 Enviada la respuesta a socket 05C48004
+02 10:14:58:633 Html enviado. Tiempo de envío 0.003548 segundos
+02 10:14:59:932 Conexion 05C48004 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:14:59:932 La conexion 0 recibe peticion en socket 05C48004
+02 10:14:59:932 Tratapeticion: Server cambia de valor de 05C48004 a 05C48004
+02 10:14:59:932 AtiendePost: Server cambia de valor de 05C48004 a 05C48004
+02 10:14:59:975 Detectado evento
+02 10:14:59:975 Evento recibido
+02 10:14:59:976 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 10:14:59:977 Fin Evento recibido
+02 10:14:59:977 v10formserver vale 5c48004
+02 10:14:59:986 v10formserver vale 5c48004
+02 10:14:59:987 Inicio envío
+02 10:14:59:987 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:14:59:988 Html calculado. Tiempo de envío 0.002485 segundos
+02 10:14:59:992 Compresion fin
+02 10:14:59:992 Envio un total de 4.19 KB
+02 10:14:59:993 Enviada la respuesta a socket 05C48004
+02 10:14:59:993 Html enviado. Tiempo de envío 0.006755 segundos
+02 10:15:00:445 Conexion 05C48004 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:00:445 La conexion 0 recibe peticion en socket 05C48004
+02 10:15:00:446 Tratapeticion: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:00:446 AtiendePost: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:00:463 Detectado evento
+02 10:15:00:463 Evento recibido
+02 10:15:00:463 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 10:15:00:463 Fin Evento recibido
+02 10:15:00:463 v10formserver vale 5c48004
+02 10:15:00:465 v10formserver vale 5c48004
+02 10:15:00:493 v10formserver vale 5c48004
+02 10:15:00:521 Compresion fin
+02 10:15:00:521 Envio un total de 7.87 KB
+02 10:15:00:521 Enviada la respuesta a socket 05C48004
+02 10:15:02:586 Conexion 05C48004 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:02:586 La conexion 0 recibe peticion en socket 05C48004
+02 10:15:02:586 Tratapeticion: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:02:586 AtiendePost: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:02:608 Detectado evento
+02 10:15:02:610 Evento recibido
+02 10:15:02:610 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 10:15:02:610 Fin Evento recibido
+02 10:15:02:611 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 10:15:02:620 Leyendo caracteristicas del bloque 
+02 10:15:02:620 Leidas caracteristicas del bloque 
+02 10:15:02:621 Leyendo caracteristicas del campo CODART
+02 10:15:02:621 Leidas caracteristicas del campo CODART
+02 10:15:02:622 Termino parse forms vdarticulosgridalexquery.frm
+02 10:15:02:626 Inicio envío
+02 10:15:02:627 Html calculado. Tiempo de envío 0.002448 segundos
+02 10:15:02:631 Compresion fin
+02 10:15:02:631 Envio un total de 5.95 KB
+02 10:15:02:631 Enviada la respuesta a socket 05C48004
+02 10:15:02:631 Html enviado. Tiempo de envío 0.005224 segundos
+02 10:15:05:778 Conexion 05C48004 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:05:778 La conexion 0 recibe peticion en socket 05C48004
+02 10:15:05:778 Tratapeticion: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:05:778 AtiendePost: Server cambia de valor de 05C48004 a 05C48004
+02 10:15:05:802 Detectado evento
+02 10:15:05:802 Evento recibido
+02 10:15:05:802 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 10:15:05:803 Fin Evento recibido
+02 10:15:05:950 Libera 5c48004
+
+00 10:15:05:951 Fichero de log cerrado.
+
+00 10:15:19:481 Fichero de log abierto PID 18600
+
+02 10:15:19:481 Intentando abrir fichero v10.ini
+02 10:15:19:487 Cargando driver v10oracle funcion damedriveroracle
+02 10:15:19:726 Conectado a base de datos
+02 10:15:19:727 Asignando RELEECONF a 500
+02 10:15:19:727 Asignando ACCESO a V10LOGIN
+02 10:15:19:727 Asignando NIVELLOG a 2
+02 10:15:19:727 Asignando PROTEGIDO a 500
+02 10:15:19:728 Asignando DEBUGHTTP a 2
+02 10:15:19:728 Asignando VISIBLEEXE a 0
+02 10:15:19:728 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 10:15:19:728 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 10:15:19:730 Asignando SERVIDOR a HTTP://127.0.0.1
+02 10:15:19:730 Asignando SERVERPORT a 5000
+02 10:15:19:731 Asignando SERVERPORTFILES a 5001
+02 10:15:19:731 Asignando PUERTOINICIAL a 5002
+02 10:15:19:731 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 10:15:19:732 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 10:15:19:732 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 10:15:19:732 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 10:15:19:732 Asignando FILEEXPIRED a 3600
+02 10:15:19:732 Asignando TIEMPOESPERA a 240
+02 10:15:19:736 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 10:15:19:736 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 10:15:19:736 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 10:15:19:736 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 10:15:19:737 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 10:15:19:737 Asignando COMPRIMIR a 1
+02 10:15:19:757 Escuchando en el puerto 5002
+02 10:15:19:910 Conectado Listener en el puerto 5002
+02 10:15:19:926 Abriendo conexion HTTP en el puerto 5002
+02 10:15:19:927 Abierta conexion HTTP en el puerto 5002
+02 10:15:20:933 Conexión de cliente establecida
+02 10:15:20:933 v10formserver vale 0
+02 10:15:20:936 Conexion 0529CBEC recibe petición
+GET /v10.html HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Connection: Keep-Alive
+Host: 127.0.0.1:5002
+
+02 10:15:20:937 La conexion 0 recibe peticion en socket 0529CBEC
+02 10:15:20:937 Tratapeticion: Server cambia de valor de 00000000 a 0529CBEC
+02 10:15:20:937 Sesion 0 Solicita Fichero V10.HTML 
+02 10:15:20:937 Sesion 0 Enviara Fichero V10.HTML
+02 10:15:20:945 Timeout es 99999.000000
+02 10:15:20:948 Tiempo en abrir 0.001990 seg.
+02 10:15:20:951 Fichero a enviar c:\v10\redur\v10lib\www\v10.html
+02 10:15:20:952 Tiempo en carga de fichero 0.004408 seg.
+02 10:15:20:953 Compresion fin
+02 10:15:20:953 Envio un total de 0.64 KB
+02 10:15:20:953 Fichero v10.html enviado
+02 10:15:20:963 Sesion 0 socket 0529CBEC Finalizada por rotura de conexion 5
+02 10:15:20:963 Libera 529cbec
+02 10:15:20:978 Sesion 0 Conectada socket 0529C6AC
+02 10:15:20:995 Conexion 0529C6AC recibe petición
+GET /v10libreriajs.html HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:15:20:995 La conexion 0 recibe peticion en socket 0529C6AC
+02 10:15:20:995 Tratapeticion: Server cambia de valor de 0529CBEC a 0529C6AC
+02 10:15:20:995 Sesion 0 Solicita Fichero V10LIBRERIAJS.HTML 
+02 10:15:20:995 Sesion 0 Enviara Fichero V10LIBRERIAJS.HTML
+02 10:15:20:996 Tiempo en abrir 0.000538 seg.
+02 10:15:20:996 Fichero a enviar c:\v10\redur\v10lib\www\v10libreriajs.html
+02 10:15:20:996 Tiempo en carga de fichero 0.001054 seg.
+02 10:15:21:001 Compresion fin
+02 10:15:21:001 Envio un total de 15.81 KB
+02 10:15:21:001 Fichero v10libreriajs.html enviado
+02 10:15:21:010 Sesion 0 socket 0529C6AC Finalizada por rotura de conexion 5
+02 10:15:21:010 Libera 529c6ac
+02 10:15:21:026 Sesion 0 Conectada socket 0529CC94
+02 10:15:21:041 Conexion 0529CC94 recibe petición
+GET /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10.html
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Connection: Keep-Alive
+
+02 10:15:21:041 La conexion 0 recibe peticion en socket 0529CC94
+02 10:15:21:041 Tratapeticion: Server cambia de valor de 0529C6AC a 0529CC94
+02 10:15:21:041 Recibida cadena de acceso
+00 10:15:21:051 No existe la funcion fsuena en la libreria VDTRIGEXT.DLL
+00 10:15:21:052 La funcion fsuena no existe en la libreria VDTRIGEXT.DLL
+00 10:15:21:053 Error al abrir fichero VDST.H
+02 10:15:21:055 Empiezo a leer forms vduser.frm
+02 10:15:21:061 Leyendo caracteristicas del bloque 
+02 10:15:21:061 Leidas caracteristicas del bloque 
+02 10:15:21:067 Termino parse forms vduser.frm
+02 10:15:21:070 v10formserver vale 529cc94
+02 10:15:21:070 Inicio envío
+02 10:15:21:071 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:15:21:071 Html calculado. Tiempo de envío 0.001479 segundos
+02 10:15:21:072 Compresion fin
+02 10:15:21:072 Envio un total de 4.18 KB
+02 10:15:21:072 Enviada la respuesta a socket 0529CC94
+02 10:15:21:072 Html enviado. Tiempo de envío 0.003333 segundos
+02 10:15:22:308 Conexion 0529CC94 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 103
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:22:308 La conexion 0 recibe peticion en socket 0529CC94
+02 10:15:22:310 Tratapeticion: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:22:310 AtiendePost: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:22:327 Detectado evento
+02 10:15:22:327 Evento recibido
+02 10:15:22:327 
+	Objeto: bl0f1c1
+	Evento: onkeyup
+	Dato: 9
+	Antid: bl0f1c1
+	Antvalor: x
+02 10:15:22:328 Fin Evento recibido
+02 10:15:22:328 v10formserver vale 529cc94
+02 10:15:22:332 v10formserver vale 529cc94
+02 10:15:22:332 Inicio envío
+02 10:15:22:332 Cargada plantilla plantilla.VDUSER.frm.html
+02 10:15:22:332 Html calculado. Tiempo de envío 0.000708 segundos
+02 10:15:22:335 Compresion fin
+02 10:15:22:335 Envio un total de 4.19 KB
+02 10:15:22:335 Enviada la respuesta a socket 0529CC94
+02 10:15:22:335 Html enviado. Tiempo de envío 0.002431 segundos
+02 10:15:22:771 Conexion 0529CC94 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 104
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:22:771 La conexion 0 recibe peticion en socket 0529CC94
+02 10:15:22:771 Tratapeticion: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:22:771 AtiendePost: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:22:791 Detectado evento
+02 10:15:22:791 Evento recibido
+02 10:15:22:791 
+	Objeto: bl0f1c2
+	Evento: onkeyup
+	Dato: 13
+	Antid: bl0f1c2
+	Antvalor: x
+02 10:15:22:791 Fin Evento recibido
+02 10:15:22:792 v10formserver vale 529cc94
+02 10:15:22:792 v10formserver vale 529cc94
+02 10:15:22:821 v10formserver vale 529cc94
+02 10:15:22:847 Compresion fin
+02 10:15:22:847 Envio un total de 7.87 KB
+02 10:15:22:847 Enviada la respuesta a socket 0529CC94
+02 10:15:25:098 Conexion 0529CC94 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 90
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:25:098 La conexion 0 recibe peticion en socket 0529CC94
+02 10:15:25:098 Tratapeticion: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:25:098 AtiendePost: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:25:120 Detectado evento
+02 10:15:25:120 Evento recibido
+02 10:15:25:120 
+	Objeto: 
+	Evento: selmenu
+	Dato: 252
+	Antid: 
+	Antvalor: 
+02 10:15:25:121 Fin Evento recibido
+02 10:15:25:122 Empiezo a leer forms vdarticulosgridalexquery.frm
+02 10:15:25:132 Leyendo caracteristicas del bloque 
+02 10:15:25:132 Leidas caracteristicas del bloque 
+02 10:15:25:132 Leyendo caracteristicas del campo CODART
+02 10:15:25:132 Leidas caracteristicas del campo CODART
+02 10:15:25:135 Termino parse forms vdarticulosgridalexquery.frm
+02 10:15:25:137 Inicio envío
+02 10:15:25:140 Html calculado. Tiempo de envío 0.003443 segundos
+02 10:15:25:143 Compresion fin
+02 10:15:25:143 Envio un total de 5.95 KB
+02 10:15:25:143 Enviada la respuesta a socket 0529CC94
+02 10:15:25:143 Html enviado. Tiempo de envío 0.006991 segundos
+02 10:15:29:440 Conexion 0529CC94 recibe petición
+POST /v10login HTTP/1.1
+Accept: */*
+Referer: http://127.0.0.1:5002/v10login
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5002
+Content-Length: 85
+Connection: Keep-Alive
+Cache-Control: no-cache
+
+02 10:15:29:441 La conexion 0 recibe peticion en socket 0529CC94
+02 10:15:29:441 Tratapeticion: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:29:442 AtiendePost: Server cambia de valor de 0529CC94 a 0529CC94
+02 10:15:29:461 Detectado evento
+02 10:15:29:461 Evento recibido
+02 10:15:29:461 
+	Objeto: 
+	Evento: Salir
+	Dato: 
+	Antid: 
+	Antvalor: 
+02 10:15:29:462 Fin Evento recibido
+02 10:15:29:607 Libera 529cc94
+
+00 10:15:29:608 Fichero de log cerrado.
+

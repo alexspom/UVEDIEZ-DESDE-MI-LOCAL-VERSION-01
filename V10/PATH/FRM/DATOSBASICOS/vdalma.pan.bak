@@ -1,0 +1,73 @@
+# MOdulo   : VDALMA.PAN
+# Función  : Mantenimiento de almacenes
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# HistOrico de cambios:
+MANTENIMIENTO DE ALMACENES
+ Cod. Denominación Almacén
+ ____ _40________________________________
+ Contacto _40_____________________________
+ Dirección                                 Población
+ _40______________________________________ _40______________________________________
+ _40______________________________________
+ _40______________________________________
+ _40______________________________________
+ País
+ _____ _30_______________________________
+ Provincia                        D.P.
+ _5_ _40_________________________ _10________
+ Teléfono1    Fax1         Teléfono2    Fax2
+ _12_________ _12_________ _12_________ _12_________
+ e-mail                                    EDI
+ _40______________________________________ _40______________________________________
+ Ultima modificación
+ _32________ ¿D-MM-Y.YY  ________
+|
+
+TABLA=VDALMA
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+
+
+
+
+CAMPO=CODALM,NOUPDATE,TOOLTIP("Código del almacén")
+CAMPO=DESALM,TOOLTIP("Designación del almacén")
+CAMPO=CONTACTO,TOOLTIP("Persona de contacto en el almacén")
+CAMPO=DIRECCION1,TOOLTIP("Dirección del almacén")
+CAMPO=POBLACION,TOOLTIP("Población del almacén")
+CAMPO=DIRECCION2,TOOLTIP("Dirección del almacén")
+CAMPO=DIRECCION3,TOOLTIP("Dirección del almacén")
+CAMPO=DIRECCION4,TOOLTIP("Dirección del almacén")
+CAMPO=CODPAIS,TOOLTIP("Código del país del almacén\nMay-F10   Ayuda contextual"),POSTCHANGE=FDESIGNACION("CSELDESPAIS","No existe país"),
+                CONTEXTUAL=FEJECUTAFORM("VDPAIS","N","","","CODPAIS=:CODPAIS","Selección de pais","S"),
+                COMBOX("CLISTAPAIS")
+CAMPO=DESPAIS,AUXILIAR,NOENTER,TOOLTIP("Nombre del del almacén")
+CAMPO=CODPROV,TOOLTIP("Código de la provincia del almacén\nMay-F10   Ayuda contextual"),POSTCHANGE=FDESIGNACION("CSELDESPROV","No existe provincia"),
+                CONTEXTUAL=FEJECUTAFORM("VDSELPROVI","N","","CODPAIS=:CODPAIS","CODPROV=:CODPROV","Selección de provincia","S"),
+                COMBOX("CLISTAPROV"),WLONX=8,COMBOXREGPAG=15
+CAMPO=DESPROV,AUXILIAR,NOENTER,TOOLTIP("Nombre de la provincia del almacén")
+CAMPO=DP,TOOLTIP("Distrito postal del almacén")
+CAMPO=TELEFONO1,TOOLTIP("Teléfono del almacén")
+CAMPO=TELEFONO2,TOOLTIP("Teléfono del almacén")
+CAMPO=FAX1,TOOLTIP("Fax del almacén")
+CAMPO=FAX2,TOOLTIP("Fax del almacén")
+CAMPO=EMAIL,TOOLTIP("Dirección de correo electrOnico del almacén")
+CAMPO=EDI,TOOLTIP("Dirección EDI del almacén")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizO la última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CLISTAPAIS SELECT CODPAIS, DESPAIS FROM VDPAIS;
+
+CURSOR=CLISTAPROV SELECT CODPROV, DESPROV,CODPAIS FROM VDPROVI WHERE CODPAIS=:CODPAIS;
+
+CURSOR=CSELDESPROV SELECT DESPROV FROM VDPROVI WHERE CODPAIS=:CODPAIS AND CODPROV=:CODPROV;
+CURSOR=CSELDESPAIS SELECT DESPAIS FROM VDPAIS WHERE CODPAIS=:CODPAIS;
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF,VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+

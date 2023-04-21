@@ -1,0 +1,316 @@
+00 09:01:56:993 Fichero de log abierto PID 7576
+
+02 09:01:56:995 Intentando abrir fichero v10.ini
+02 09:01:57:003 Cargando driver v10oracle funcion damedriveroracle
+02 09:02:01:405 Conectado a base de datos
+02 09:02:01:407 Asignando RELEECONF a 500
+02 09:02:01:407 Asignando ACCESO a V10LOGIN
+02 09:02:01:408 Asignando NIVELLOG a 2
+02 09:02:01:408 Asignando PROTEGIDO a 500
+02 09:02:01:410 Asignando DEBUGHTTP a 2
+02 09:02:01:410 Asignando VISIBLEEXE a 0
+02 09:02:01:410 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:02:01:410 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:02:01:411 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:02:01:411 Asignando SERVERPORT a 5000
+02 09:02:01:411 Asignando SERVERPORTFILES a 5001
+02 09:02:01:412 Asignando PUERTOINICIAL a 5002
+02 09:02:01:412 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 09:02:01:412 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 09:02:01:412 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 09:02:01:412 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 09:02:01:412 Asignando FILEEXPIRED a 3600
+02 09:02:01:413 Asignando TIEMPOESPERA a 240
+02 09:02:01:416 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 09:02:01:416 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 09:02:01:417 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 09:02:01:417 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 09:02:01:417 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 09:02:01:417 Asignando COMPRIMIR a 1
+02 09:02:01:420 Escuchando en puerto 5000 con protocolo HTTP
+02 09:07:40:113 Sesion 0: Inicio hebra
+02 09:07:40:132 Conexion 00DC5AF4 recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:07:40:132 Tratapeticion: Server cambia de valor de 00000000 a 00DC5AF4
+02 09:07:40:135 Se captura IP del cliente 127.0.0.1
+02 09:07:40:135 Se captura H_NAME del cliente ACTIVATION
+02 09:07:40:135 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=48wHE7TMNBHI3K9NQUU8IPQ4D5790W -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:07:40:158 Sesion 0: Arrancado Proceso v10form
+02 09:07:40:158 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:07:40:160 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:07:40:160 Encontrado host 127.0.0.1
+02 09:07:40:160 Encontrado servicio 5002
+02 09:07:41:188 Sesión con v10form establecida
+02 09:07:42:196 Envio un total de 0.00 KB
+02 09:07:42:197 Enviada la respuesta a socket 00DC5AF4
+02 09:07:42:197 Sesion 0: Sesión rota
+02 09:07:42:197 Libera dc5af4
+02 09:07:42:197 Sesion 0: Fin hebra
+02 09:09:17:217 Sesion 0: Inicio hebra
+02 09:09:17:218 Conexion 00DC59DC recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:09:17:218 Tratapeticion: Server cambia de valor de 00DC5AF4 a 00DC59DC
+02 09:09:17:220 Se captura IP del cliente 127.0.0.1
+02 09:09:17:220 Se captura H_NAME del cliente ACTIVATION
+02 09:09:17:220 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=TI63D2JC8AN8gO6PN2MSuwJB1Di44U -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:09:17:235 Sesion 0: Arrancado Proceso v10form
+02 09:09:17:235 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:09:17:236 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:09:17:236 Encontrado host 127.0.0.1
+02 09:09:17:237 Encontrado servicio 5002
+02 09:09:17:773 Sesión con v10form establecida
+02 09:09:18:782 Envio un total de 0.00 KB
+02 09:09:18:783 Enviada la respuesta a socket 00DC59DC
+02 09:09:18:783 Sesion 0: Sesión rota
+02 09:09:18:783 Libera dc59dc
+02 09:09:18:783 Sesion 0: Fin hebra
+02 09:10:55:747 Sesion 0: Inicio hebra
+02 09:10:55:747 Conexion 05CB2ADC recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:10:55:748 Tratapeticion: Server cambia de valor de 00DC59DC a 05CB2ADC
+02 09:10:55:748 Se captura IP del cliente 127.0.0.1
+02 09:10:55:750 Se captura H_NAME del cliente ACTIVATION
+02 09:10:55:751 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=Ln2EhXipT281O3O5CH9y6TBK693OLV -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:10:55:757 Sesion 0: Arrancado Proceso v10form
+02 09:10:55:757 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:10:55:757 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:10:55:758 Encontrado host 127.0.0.1
+02 09:10:55:758 Encontrado servicio 5002
+02 09:10:56:323 Sesión con v10form establecida
+02 09:10:57:331 Envio un total de 0.00 KB
+02 09:10:57:332 Enviada la respuesta a socket 05CB2ADC
+02 09:10:57:332 Sesion 0: Sesión rota
+02 09:10:57:332 Libera 5cb2adc
+02 09:10:57:332 Sesion 0: Fin hebra
+02 09:11:21:228 Sesion 0: Inicio hebra
+02 09:11:21:231 Conexion 05CB291C recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:11:21:237 Tratapeticion: Server cambia de valor de 05CB2ADC a 05CB291C
+02 09:11:21:237 Se captura IP del cliente 127.0.0.1
+02 09:11:21:238 Se captura H_NAME del cliente ACTIVATION
+02 09:11:21:240 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=50V2I9Cjj5F9H4VQ9zq2EA5KqRILxe -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:11:21:247 Sesion 0: Arrancado Proceso v10form
+02 09:11:21:247 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:11:21:247 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:11:21:247 Encontrado host 127.0.0.1
+02 09:11:21:247 Encontrado servicio 5002
+02 09:11:21:801 Sesión con v10form establecida
+02 09:11:22:808 Envio un total de 0.00 KB
+02 09:11:22:810 Enviada la respuesta a socket 05CB291C
+02 09:11:22:810 Sesion 0: Sesión rota
+02 09:11:22:810 Libera 5cb291c
+02 09:11:22:810 Sesion 0: Fin hebra
+02 09:11:57:643 Sesion 0: Inicio hebra
+02 09:11:57:643 Conexion 05CB2A6C recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:11:57:645 Tratapeticion: Server cambia de valor de 05CB291C a 05CB2A6C
+02 09:11:57:646 Se captura IP del cliente 127.0.0.1
+02 09:11:57:646 Se captura H_NAME del cliente ACTIVATION
+02 09:11:57:646 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=EC821SIVJKSPtTHF95VHL6Nn0VjK60 -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:11:57:652 Sesion 0: Arrancado Proceso v10form
+02 09:11:57:652 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:11:57:652 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:11:57:652 Encontrado host 127.0.0.1
+02 09:11:57:652 Encontrado servicio 5002
+02 09:11:58:185 Sesión con v10form establecida
+02 09:11:59:196 Envio un total de 0.00 KB
+02 09:11:59:197 Enviada la respuesta a socket 05CB2A6C
+02 09:11:59:197 Sesion 0: Sesión rota
+02 09:11:59:197 Libera 5cb2a6c
+02 09:11:59:197 Sesion 0: Fin hebra
+02 09:13:23:767 Sesion 0: Inicio hebra
+02 09:13:23:768 Conexion 05CB2B14 recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:13:23:768 Tratapeticion: Server cambia de valor de 05CB2A6C a 05CB2B14
+02 09:13:23:768 Se captura IP del cliente 127.0.0.1
+02 09:13:23:768 Se captura H_NAME del cliente ACTIVATION
+02 09:13:23:770 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=89pDGIT6X02v4KD012SQRAHJJ30BJv -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:13:23:801 Sesion 0: Arrancado Proceso v10form
+02 09:13:23:801 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:13:23:801 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:13:23:801 Encontrado host 127.0.0.1
+02 09:13:23:801 Encontrado servicio 5002
+02 09:13:24:322 Sesión con v10form establecida
+02 09:13:25:330 Envio un total de 0.00 KB
+02 09:13:25:331 Enviada la respuesta a socket 05CB2B14
+02 09:13:25:331 Sesion 0: Sesión rota
+02 09:13:25:331 Libera 5cb2b14
+02 09:13:25:331 Sesion 0: Fin hebra
+02 09:18:48:130 Sesion 0: Inicio hebra
+02 09:18:48:131 Conexion 05CB2B84 recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 09:18:48:131 Tratapeticion: Server cambia de valor de 05CB2B14 a 05CB2B84
+02 09:18:48:131 Se captura IP del cliente 127.0.0.1
+02 09:18:48:132 Se captura H_NAME del cliente ACTIVATION
+02 09:18:48:132 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=8FEaRsL103VTFOAE2Ck93wwDP3120P -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 09:18:48:137 Sesion 0: Arrancado Proceso v10form
+02 09:18:48:137 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 09:18:48:137 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 09:18:48:137 Encontrado host 127.0.0.1
+02 09:18:48:137 Encontrado servicio 5002
+02 09:18:48:676 Sesión con v10form establecida
+02 09:18:49:692 Envio un total de 0.00 KB
+02 09:18:49:692 Enviada la respuesta a socket 05CB2B84
+02 09:18:49:692 Sesion 0: Sesión rota
+02 09:18:49:692 Libera 5cb2b84
+02 09:18:49:692 Sesion 0: Fin hebra
+02 10:14:32:885 Sesion 0: Inicio hebra
+02 10:14:32:885 Conexion 05CB2724 recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 10:14:32:886 Tratapeticion: Server cambia de valor de 05CB2B84 a 05CB2724
+02 10:14:32:886 Se captura IP del cliente 127.0.0.1
+02 10:14:32:886 Se captura H_NAME del cliente ACTIVATION
+02 10:14:32:887 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=3hKW33BFQUMF7LmFDMBUVi5pRN9cCK -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 10:14:32:892 Sesion 0: Arrancado Proceso v10form
+02 10:14:32:892 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 10:14:32:892 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 10:14:32:892 Encontrado host 127.0.0.1
+02 10:14:32:892 Encontrado servicio 5002
+02 10:14:33:422 Sesión con v10form establecida
+02 10:14:34:431 Envio un total de 0.00 KB
+02 10:14:34:432 Enviada la respuesta a socket 05CB2724
+02 10:14:34:432 Sesion 0: Sesión rota
+02 10:14:34:432 Libera 5cb2724
+02 10:14:34:432 Sesion 0: Fin hebra
+02 10:14:56:925 Sesion 0: Inicio hebra
+02 10:14:56:926 Conexion 05CB275C recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 10:14:56:926 Tratapeticion: Server cambia de valor de 05CB2724 a 05CB275C
+02 10:14:56:926 Se captura IP del cliente 127.0.0.1
+02 10:14:56:926 Se captura H_NAME del cliente ACTIVATION
+02 10:14:56:927 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=080SClOg7kG0T4VU2R0S0Qs4eN98Vh -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 10:14:56:932 Sesion 0: Arrancado Proceso v10form
+02 10:14:56:932 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 10:14:56:932 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 10:14:56:932 Encontrado host 127.0.0.1
+02 10:14:56:937 Encontrado servicio 5002
+02 10:14:57:482 Sesión con v10form establecida
+02 10:14:58:495 Envio un total de 0.00 KB
+02 10:14:58:496 Enviada la respuesta a socket 05CB275C
+02 10:14:58:496 Sesion 0: Sesión rota
+02 10:14:58:496 Libera 5cb275c
+02 10:14:58:496 Sesion 0: Fin hebra
+02 10:15:19:362 Sesion 0: Inicio hebra
+02 10:15:19:365 Conexion 05CB2D0C recibe petición
+GET /v10LOGIN HTTP/1.1
+Accept: */*
+Accept-Language: es-VE,es-ES;q=0.7,es;q=0.3
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; Zoom 3.6.0)
+Host: 127.0.0.1:5000
+Connection: Keep-Alive
+
+02 10:15:19:366 Tratapeticion: Server cambia de valor de 05CB275C a 05CB2D0C
+02 10:15:19:367 Se captura IP del cliente 127.0.0.1
+02 10:15:19:367 Se captura H_NAME del cliente ACTIVATION
+02 10:15:19:367 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERDESKTOP-7S694MU -FWVISIBLE=0 -FWSESION=FJ9XdO467GzIBHLVS7FLdW92FVCaI7 -FWPUERTO=5002 -FWHOST=ACTIVATION -FWTECLADO=0 
+02 10:15:19:373 Sesion 0: Arrancado Proceso v10form
+02 10:15:19:373 Sesion 0: Intentando conectar con v10form en puerto 5002
+02 10:15:19:373 Conectando con 127.0.0.1 servicio 5002 protocolo tcp
+02 10:15:19:375 Encontrado host 127.0.0.1
+02 10:15:19:375 Encontrado servicio 5002
+02 10:15:19:910 Sesión con v10form establecida
+02 10:15:20:920 Envio un total de 0.00 KB
+02 10:15:20:922 Enviada la respuesta a socket 05CB2D0C
+02 10:15:20:922 Sesion 0: Sesión rota
+02 10:15:20:923 Libera 5cb2d0c
+02 10:15:20:923 Sesion 0: Fin hebra
+00 15:09:51:347 Fichero de log abierto PID 18360
+
+02 15:09:51:347 Intentando abrir fichero v10.ini
+02 15:09:51:355 Cargando driver v10oracle funcion damedriveroracle
+02 15:09:52:122 Conectado a base de datos
+02 15:09:52:124 Asignando RELEECONF a 500
+02 15:09:52:124 Asignando ACCESO a V10LOGIN
+02 15:09:52:124 Asignando NIVELLOG a 2
+02 15:09:52:125 Asignando PROTEGIDO a 500
+02 15:09:52:125 Asignando DEBUGHTTP a 2
+02 15:09:52:125 Asignando VISIBLEEXE a 0
+02 15:09:52:125 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 15:09:52:125 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 15:09:52:127 Asignando SERVIDOR a HTTP://127.0.0.1
+02 15:09:52:127 Asignando SERVERPORT a 5000
+02 15:09:52:127 Asignando SERVERPORTFILES a 5001
+02 15:09:52:127 Asignando PUERTOINICIAL a 5002
+02 15:09:52:127 Asignando SERVERHTML a HTTP://127.0.0.1:5001/html
+02 15:09:52:127 Asignando SERVERIMG a HTTP://127.0.0.1:5001/img
+02 15:09:52:129 Asignando SERVERXLS a HTTP://127.0.0.1:5001/xls
+02 15:09:52:129 Asignando SERVERPDF a HTTP://127.0.0.1:5001/pdf
+02 15:09:52:130 Asignando FILEEXPIRED a 3600
+02 15:09:52:130 Asignando TIEMPOESPERA a 240
+02 15:09:52:132 Asignando RUTAZIP a D:/V10/v10lib/ZIP
+02 15:09:52:132 Asignando RUTAHELP a C:\V10\REDUR\V10LIB\WWW/help/html
+02 15:09:52:132 Asignando RUTAPLANTILLAS a C:\V10\REDUR\V10LIB\WWW/html
+02 15:09:52:132 Asignando RUTAXLS a C:\V10\REDUR\V10LIB\WWW/xls
+02 15:09:52:134 Asignando RUTAPDF a C:\V10\REDUR\V10LIB\WWW/pdf
+02 15:09:52:134 Asignando COMPRIMIR a 1
+02 15:09:52:135 Escuchando en puerto 5000 con protocolo HTTP
+
+00 15:09:56:247 Fichero de log cerrado.
+
+
+00 18:22:35:484 Fichero de log cerrado.
+

@@ -1,0 +1,100 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+
+<title>Ejemplo de calendario para V10</title>
+
+  <link rel="stylesheet" type="text/css" href="colores.css" media="screen"/>
+  <style type="text/css">
+  
+  </style>
+</head>
+
+<body>
+
+
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr class="v10ventarribaizq">
+       <td width="18"></td>
+    <td width="164" class="v10ventarribamed"><span class="v10titulomens">Calendario de V10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+    <td width="1" class="v10ventarribader"></td>
+  </tr>
+  <tr>
+    <td class="v10ventmedioizq"></td>
+    <td class="v10ventmediomed"><br />
+    <div id="simple_list_collapsed" style="display:block;margin-left:10px;">
+    <span class="textodelcalendario">Seleccionar día:</a>&nbsp;<a href="#" 
+       onClick="setYears(2000, 2050);showCalender('datum1');">
+       <img src="../img/calendario.png" width="13" height="18" border="0" align="absmiddle"></a>
+    </span>
+</div>
+  <form><br />
+      <input type="text" id="datum1" size="10"  style="margin-left:10px;">
+    </form>
+ 
+
+ 
+<!--V10INCLUDEDATA-->    
+   <table id="calenderTable">
+       <tbody id="calenderTableHead">
+         <tr>
+           <td colspan="4" align="center">
+	     <select onChange="v10lib.showCalenderBody(
+                   v10lib.createCalender(document.getElementById('selectYear').value,
+	           this.selectedIndex, false));"
+                   id="selectMonth">
+	              <option value="0">Ene</option>
+	              <option value="1">Feb</option>
+	              <option value="2">Mar</option>
+	              <option value="3">Abr</option>
+	              <option value="4">May</option>
+	              <option value="5">Jun</option>
+	              <option value="6">Jul</option>
+	              <option value="7">Ago</option>
+	              <option value="8">Sep</option>
+	              <option value="9">Oct</option>
+	              <option value="10">Nov</option>
+	              <option value="11">Dic</option>
+	          </select>
+            </td>
+            <td colspan="2" align="center">
+	    <select onChange="v10lib.showCalenderBody(v10lib.createCalender(this.value, 
+	      document.getElementById('selectMonth').selectedIndex, false));"
+              id="selectYear">
+	    </select>
+			</td>
+           <td align="center">
+	    <a href="#" onClick="v10lib.closeCalender();">
+              <font color="#003333" size="+1">X</font>
+            </a>
+	   </td>
+	</tr>
+       </tbody>
+       <tbody id="calenderTableDays">
+         <tr style="text-align:center;">
+           <td class="dias">&nbsp;L&nbsp;</td><td class="dias">&nbsp;M&nbsp;</td><td class="dias">&nbsp;M&nbsp;</td><td class="dias">&nbsp;J&nbsp;</td><td class="dias">&nbsp;V&nbsp;</td><td class="dias">&nbsp;S&nbsp;</td><td class="dias">&nbsp;D&nbsp;</td>
+         </tr>
+       </tbody>
+       <tbody id="calender"></tbody>
+    </table>
+	
+<!--V10TEXTOMENSAJE-->
+<!--V10ENDINCLUDEDATA-->
+    
+    
+    
+    </div>
+
+
+</td>
+    <td class="v10ventmedioder"></td>
+  </tr>
+  <tr>
+    <td class="v10ventabajoizq"></td>
+    <td class="v10ventabajomed"></td>
+    <td class="v10ventabajoder"></td>
+  </tr>
+</table>
+</body>
+</html>

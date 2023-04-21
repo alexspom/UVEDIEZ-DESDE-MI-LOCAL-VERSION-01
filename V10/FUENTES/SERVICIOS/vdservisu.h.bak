@@ -1,0 +1,25 @@
+#include "vd.h"
+#include "process.h"
+
+typedef struct {
+           vdservicioss ser;
+           PROCESS_INFORMATION pi;
+		   int puertopant;
+		   int puertolog;
+		   char tituloventana[MAXPATH];
+           v10horas ultload;
+		   v10horas horamatanza;
+		   int pdtecheckterminate;
+
+} procservicios;
+
+typedef struct {
+         vdgruposervs gr;
+         procservicios *proc;
+         int numservicios;
+         v10horas ultload;
+} grs;
+
+void tratavisualiza(void *);
+void servicios2char(char *cadena);
+void cierraservervisualiza(void);

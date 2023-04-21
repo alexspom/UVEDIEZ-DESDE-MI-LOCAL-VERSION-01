@@ -1,0 +1,26 @@
+# Modulo : VDINFODISPBULTO.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFODISPBULTO
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 05-11-2010                                            
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=IDB
+EXTRA=CODZONA,V10INT;
+
+RECORRE=STATUS,STATUS; 
+RECORRE=DISPSTATUS,IDINFOPICK,NUMDISP,STATUS;ORDERBY=FECMODIF,HORAMODIF; 
+RECORRE=DISPLAY,IDINFOPICK,NUMDISP; 
+RECORRE=CODZONA,TABLE=VDINFODISP;WHERE=VDINFODISP.CODZONA=:CODZONA AND VDINFODISP.IDINFOPICK=VDINFODISPBULTO.IDINFOPICK AND VDINFODISP.NUMDISP=VDINFODISPBULTO.NUMDISP; 
+RECORRE=BULTOZONA,CODBULTO,TABLE=VDZONAS;WHERE=VDZONAS.CODZONA=:CODZONA AND VDZONAS.IDINFOPICK=VDINFODISPBULTO.IDINFOPICK AND VDZONAS.NUMDISP=VDINFODISPBULTO.NUMDISP; 
+
+UPDATE=CODBULTO,CODBULTO
+UPDATE=STATUS,STATUS
+
+INSERT
+DELETE 
+LOCK

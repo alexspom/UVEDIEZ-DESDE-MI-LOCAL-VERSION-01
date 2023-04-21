@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+<html lang="es" class="fixchrome"> <!--<![endif]-->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<META HTTP-EQUIV= "Content-Type"CONTENT="text/html;charset= ISO-8859-1">
+<title>Nuevo V10 Menu</title>
+
+<!--Definición del menu-->
+<!-- jQuery -->
+<script src="../html/jquery-1.11.3.min.js"></script>
+
+<!-- SmartMenus jQuery plugin -->
+<script type="text/javascript" src="../html/menu/jquery.smartmenus.js"></script>
+
+<!-- SmartMenus jQuery Keyboard Addon -->
+<script type="text/javascript" src="../html/menu/jquery.smartmenus.keyboard.js"></script>
+
+<!-- SmartMenus jQuery init -->
+<script type="text/javascript">
+	$(function() {
+$('#main-menu').smartmenus({
+			mainMenuSubOffsetX: 10,
+			mainMenuSubOffsetY: 0,
+			subMenusSubOffsetX: 10,
+			subMenusSubOffsetY: 0
+		});
+		//activamos el control por teclado del menu y hacemos foco en el primer campo.
+		$('#main-menu').smartmenus('keyboardSetHotkey', '123', 'shiftKey');
+		
+		// 10/05/2016 mod que permite recordar la última selección del menú (tal como lo hacía zapatec) E.Arana.
+		
+		// recuerda el último item del menú seleccionado, así luego podemos recuperarlo.
+	if (window.localStorage) {
+		var $menu = $('#main-menu');
+		// guardamos el item seleccionado
+		$menu.bind('select.smapi', function(e, item) {
+			// Puede que el item no tenga id, así que almacenamos el nº de indice.
+			if (location.href != item.href) {
+				localStorage.setItem('lastSelectedMenuItem', JSON.stringify({ url: 
+        location.href, nextUrl: item.href, index: $menu.find('a').index(item) }));
+			}
+		});
+		// recuperamos el id item
+		var lastSelectedMenuItem = localStorage.getItem('lastSelectedMenuItem');
+		if (lastSelectedMenuItem) {
+			lastSelectedMenuItem = JSON.parse(lastSelectedMenuItem);
+			// si regresamos a la página inicial
+			if (lastSelectedMenuItem.url == location.href) {
+				var $item = $menu.find('a').eq(lastSelectedMenuItem.index);
+				// activamos el item previamente almacenado
+				$menu.smartmenus('itemActivate', $item);
+				// le hacemos foco (cuando funciona...)
+				$item[0].focus();
+			}
+			// finalmente eliminamos el item almacenado para que no se machaque en la próxima entrada
+			if (lastSelectedMenuItem.url == location.href || lastSelectedMenuItem.nextUrl != location.href) {
+				localStorage.removeItem('lastSelectedMenuItem');
+			}
+		}
+	}
+	
+	});
+</script>
+
+
+<!-- Respond.js for IE8 support of media queries -->
+<!--[if lt IE 9]>
+  <script src="../html/menu/respond.min.js"></script>
+<![endif]-->
+
+
+<!-- Definimos el tipo de menú que vamos a utilizar si vertical u horizontal -->
+
+<style type="text/css">
+
+/*Menu vertical */
+ 
+@media only screen
+and (min-width : 1224px) {
+#main-menu {z-index: 9999;float: left;} #main-menu ul {width: 12em;} 
+}
+ 
+@media only screen
+and (min-width : 1824px) {
+#main-menu {z-index: 9999;float: left;} #main-menu ul {width: 12em;}
+}
+
+/*Menú Horizontal 
+
+@media only screen
+and (min-width : 1224px) {
+#main-menu {position: relative;	z-index: 9999;width:1240px;} #main-menu ul {width: 12em;} 
+}
+ 
+@media only screen
+and (min-width : 1824px) {
+#main-menu {position: relative;	z-index: 9999;width:auto;} #main-menu ul {width: 12em;}
+}*/
+
+#clock {
+    position: absolute;
+    top: 155px;
+    margin: -100px 0 0 -200px;
+    width: 400px;
+    height: 135px;
+    text-align: center;
+    font-size: 12px;
+    border: 0px;
+    padding: 65px 0 0 0;
+    font-family: Verdana, Geneva;
+    color: #363535;
+	font-weight: bold;
+}
+</style>
+
+<!-- SmartMenus core CSS (required) -->
+<link href="../html/menu/sm-core-css.css" rel="stylesheet" type="text/css">
+
+<link href="../html/menu/sm-simple.css" rel="stylesheet" type="text/css">
+
+<!--Hoja de estilos principal-->
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen" />
+
+</head>
+
+<!--Código organizado, corregido y actualizado el 21/04/2015 por Eduardo L. Arana-->
+
+<!--Evitamos que el usuario pueda arrastrar una opcion del menu hacia el centro de la pantalla.-->
+
+<body onload="fonload();" onbeforeunload="fonunload()" ondragstart="return false;" ondrop="return false;">
+<!--información de sesión-->
+<!--V10USER-->
+<script languaje="javascript">top.document.title = "USUARIO: "+userv10+" BD: "+userdb+" HOST: "+host;</script>
+<!--V10MENSAJE-->
+<!--V10HELP-->
+<img id="imgdebug" class="imgdebug" src="../img/gears1.gif"/>
+<img id="imgrelojar" class="imgrelojarmenu" src="../img/spinner.gif"/>
+<div id="container1">
+
+   <div id="header1">
+	<div class="wrapperpibe">
+                <div class="leftpibe">
+                    <div class="contenido">
+                        <div class="cabecera">
+                            <div class="logov10soluciones"><img src="../img/logov10.png" alt="" width="50" style="padding-left:10px;vertical-align: middle;" />
+                                <span class="textoempresa">SOLUCIONES</span>
+                                <div style="height:10px;"></div>
+                                <div class="barrita">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightpibe" style="margin-top:-180px;margin-right:-80px;">
+                        <div id="clock">
+                            <div id="reloj" style="margin-left:72px;margin-top:2px;"></div>
+                            <div id="date" style="margin-top:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!--evitamos que se puedan arrastrar objetos en el menu-->	
+<div id="nodrag" onmousedown="event.preventDefault ? event.preventDefault() : event.returnValue = false">
+
+<div class="fixie10m"><!-- Fix para el Internet Explorer 10 con Windows 8 - 26/11/2012 E.Arana -->
+   
+<div id="body1">
+   
+<div class="wrapperpibe2"> 
+    <div class="leftpibe2">
+
+
+
+<div class="menuvertical">
+		
+<!-- Inicio del menu -->
+
+<!--V10MENUDATA-->
+
+<!-- fin del menu --> 
+
+</div>
+</div>
+                    
+ <span id="timeenvio" class="timeenvio"></span>
+                    <!--V10SIDEBAR-->
+                   
+                    <script type="text/javascript">
+                        var nodoactual;
+                        var v10lib;
+                        var v10libcargada = false;
+                        var timeoutv10lib;
+											  var inodo;
+												var w;
+												var extendInicial;
+										    var ActiveXObject;
+
+                        function v10ponlibcargada() {
+                            if (parent) v10lib = parent.frames[0];
+                            if (v10lib && v10lib.loaded) {
+                                v10libcargada = true;
+                            } else {
+                                v10libcargada = false;
+                              
+												    /*jslint browser: true, devel: true */
+       											v10libcargada = setTimeout(function() {
+        										"use strict";
+        									v10ponlibcargada();}, 10); }}
+
+                        function v10libnocargada() {
+                            alert("Error cargando libreria v10libreriajs.html");
+                        }
+												
+                        v10ponlibcargada();
+                        while (!v10libcargada) {}
+                        v10lib.loadinit(window);
+                        v10lib.generavars(window, '<!--IDSESION-->');
+
+						
+					    function fdummy() {
+                            v10lib.fdummy();
+                        }
+
+						function enviarevento(obj) {
+						nodoactual = obj;
+						var id = obj.getAttribute("id");
+						//alert(nodoactual.id);
+				        v10lib.mandaevento('', 'selmenu', nodoactual.id);
+						}
+						
+                        function fonload() {
+                            window.status = "";
+                            
+                            while (!v10libcargada) {}
+                            if (window.document.getElementById('sideBarfrm')) {
+                                extendInicial();
+                                //window.document.getElementById('poxit').innerHTML = v10lib.v10clipboard;
+                            }
+                            if (window.status.length === 0) window.status = 'v10libreriajs.html cargada';
+                        }
+
+                        function objAJAX() {
+                                var obj;
+                                if (w.XMLHttpRequest) {
+                                    obj = new XMLHttpRequest();
+                                } else {
+                                    try {
+                                        obj = new ActiveXObject("Microsoft.XMLHTTP");
+                                    } catch (e) {
+                                        w.alert('El navegador utilizado no está soportado');
+                                    }
+                                }
+                                return obj;
+                            }
+                            /* AJAX */
+                        function fonunload() {
+                                if (v10lib) v10lib.fonunload();
+                            }
+                            /* SCRIPTS */
+                        function fonkeyup() {
+                                if (v10libcargada) v10lib.fonkeyup();
+                            }
+                    </script>
+					<script type="text/javascript">
+
+$(document).ready(function() {
+		   
+				var months = new Array(12);
+				months[0] = "Enero";
+				months[1] = "Febrero";
+				months[2] = "Marzo";
+				months[3] = "Abril";
+				months[4] = "Mayo";
+				months[5] = "Junio";
+				months[6] = "Julio";
+				months[7] = "Agosto";
+				months[8] = "Septiembre";
+				months[9] = "Octubre";
+				months[10] = "Noviembre";
+				months[11] = "Diciembre";
+			   
+				var day = new Array(7);
+				day[0] = "Domingo";
+				day[1] = "Lunes";
+				day[2] = "Martes";
+				day[3] = "Miercoles";
+				day[4] = "Jueves";
+				day[5] = "Viernes";
+				day[6] = "Sabado";
+			   
+				var date = new Date();
+				var month_value = date.getMonth();
+				var day_value = date.getDay();
+				var daydate = date.getDate();
+				var year = date.getFullYear();
+			   
+				if (daydate < 10)  daydate = "0" + daydate;
+
+				$('#date').html(day[day_value] + "&nbsp;" + daydate + "&nbsp;" + "de" + "&nbsp;" + months[month_value] + "&nbsp;" + "del" + "&nbsp;" + year);
+			
+			function startTime() {
+								var today = new Date();
+								var h = today.getHours();
+								var m = today.getMinutes();
+								var s = today.getSeconds();
+								m = checkTime(m);
+								s = checkTime(s);
+								document.getElementById('reloj').innerHTML =
+								h + ":" + m + ":" + s;
+								var t = setTimeout(startTime, 500);
+								}
+								function checkTime(i) {
+								if (i < 10) {i = "0" + i};
+								return i;
+								}
+								startTime();
+     
+    });
+    
+    </script>  
+										<div style="height:800px;">&nbsp;</div>
+       
+    
+    </div>
+	
+    </div>
+
+<div class="leftpibe1" style="margin-left:10px;margin-top:-70px;position: absolute;"></div>
+<!--<div class="footer"><div class="barrita">&nbsp;</div>&nbsp;&nbsp;&copy; 2015 UveDiez Supply Chain, S.L.</div>-->
+    <div class="rightpibe1" style="position: absolute;margin-top:-200px;margin-right:220px;">
+	
+<!--<iframe style="z-index:10;width:400px; height:600px;white-space:nowrap;background: transparent;text-align:center;position: absolute;border-style:dashed;border-color:#cccccc;border-width:0px;" allowtransparency="allowtransparency" name="obtenerusuario" src="../html/obtenerusuario.php"></iframe>-->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

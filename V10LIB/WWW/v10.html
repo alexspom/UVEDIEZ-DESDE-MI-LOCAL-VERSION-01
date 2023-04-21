@@ -1,0 +1,36 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="es"> <!--<![endif]-->
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=10" >
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <title>V10 SOFTWARE &copy; 2020 UVEDIEZ SUPPLY CHAIN, S.L.</title>
+<script>
+
+function fabricaframe(frameName) {
+    var nombre = 'APPLICATION';
+    var valor = 'yes';
+    var newFrame = document.createElement('frame');
+	newFrame.setAttribute( nombre, valor );
+    newFrame.id=frameName;
+    if(frameName=="B") {
+    	newFrame.onload=function() {fabricaframe("C")};
+    	newFrame.src = 'v10libreriajs.html';
+    }
+    else {
+    	newFrame.src = '/v10login';
+    }
+    document.getElementById('A').appendChild(newFrame);
+    document.getElementById('A').style.border = "0";
+
+}
+</script>
+ 
+</head>
+<frameset style="border: 0;" frameborder="0" name='A' id='A' rows="0%,100%" onload="fabricaframe('B')" APPLICATION="yes"></frameset>
+</html>

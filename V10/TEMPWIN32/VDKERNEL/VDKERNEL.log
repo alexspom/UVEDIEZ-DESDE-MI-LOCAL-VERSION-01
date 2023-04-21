@@ -1,0 +1,93 @@
+﻿Build started 25/05/2020 11:22:17.
+     1>Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\VDKERNEL.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\FUENTES /Zi /nologo /W3 /WX- /MP /Od /Oy- /D _RTLDLL /D STRICT /D WIN32 /D DEBUG_DINAMICA /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_NONSTDC_NO_DEPRECATE /D _WINDLL /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"..\TEMPWin32\VDKERNEL\\" /Fd"..\TEMPWin32\VDKERNEL\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt  /J ..\fuentes\COMENTARIOS\vdcomenaux.c ..\fuentes\COMENTARIOS\vdcomentrig.c ..\fuentes\EXECPROC\vdejecutaalgoritmos.c ..\fuentes\EXECPROC\vdexecinfoora.c ..\fuentes\EXECPROC\vdgeslib.c ..\FUENTES\FORTRIG\vdfortrigart.c ..\FUENTES\FORTRIG\vdfortrigcnt.c ..\FUENTES\FORTRIG\vdfortrigcorreo.c ..\FUENTES\FORTRIG\vdfortrigdem.c ..\FUENTES\FORTRIG\vdfortrigmov.c ..\FUENTES\FORTRIG\vdfortrigproc.c ..\FUENTES\FORTRIG\vdfortrigstk.c ..\FUENTES\FORTRIG\vdfortrigubi.c ..\FUENTES\IMPRESION\vdfortrigimpre.c ..\FUENTES\IMPRESION\vdimpresion.c ..\FUENTES\IMPRESION\vdspoolimpre.c ..\FUENTES\LOTES\vdlots.c ..\FUENTES\LOTES\vdtratalotebloq.c ..\FUENTES\PEDIDOS\vdpedimprime.c ..\FUENTES\RADIOS\vdplanifmov.c ..\FUENTES\RESERVA\vddemandas.c ..\FUENTES\RESERVA\vdrecargas.c ..\FUENTES\RESERVA\vdreservademandas.c ..\fuentes\RUTAS\vdrutamov.c ..\fuentes\UBICAR\vdreubi.c ..\FUENTES\UPDAEXCEL\vdupdaexcel.c ..\fuentes\UTIL\VDEAN128.C ..\FUENTES\v10host.c ..\FUENTES\vdcargadefbloque.c ..\fuentes\vdconfiaux.c ..\fuentes\vdconversionesaux.c ..\FUENTES\vdcorreos.c ..\fuentes\vdlog.c ..\FUENTES\vdmovtos.c ..\FUENTES\vdoraerraux.c ..\FUENTES\vdperiodico.c ..\FUENTES\vdsid.c ..\FUENTES\vdstatusparam.c ..\FUENTES\vdstocks.c ..\FUENTES\vdtraduce.c
+         vdcomenaux.c
+         vdcomentrig.c
+         vdejecutaalgoritmos.c
+         vdexecinfoora.c
+         vdgeslib.c
+         vdfortrigart.c
+         vdfortrigcnt.c
+         vdfortrigcorreo.c
+         vdfortrigdem.c
+         vdfortrigmov.c
+         vdfortrigproc.c
+         vdfortrigstk.c
+         vdfortrigubi.c
+         vdfortrigimpre.c
+         vdimpresion.c
+         vdspoolimpre.c
+         vdlots.c
+         vdtratalotebloq.c
+         vdpedimprime.c
+         vdplanifmov.c
+         vddemandas.c
+         vdrecargas.c
+         vdreservademandas.c
+         vdrutamov.c
+         vdreubi.c
+         vdupdaexcel.c
+         VDEAN128.C
+         v10host.c
+         vdcargadefbloque.c
+         vdconfiaux.c
+         vdconversionesaux.c
+         vdcorreos.c
+         vdlog.c
+         vdmovtos.c
+         vdoraerraux.c
+         vdperiodico.c
+         vdsid.c
+         vdstatusparam.c
+         vdstocks.c
+         vdtraduce.c
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\BINWin32\VDKERNEL.dll" /INCREMENTAL:NO /NOLOGO V10WIN.LIB V10ORA.LIB VDDICCIONARIO.LIB VDAUTO.LIB kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"..\BINWin32\VDKERNEL.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\BINWin32\VDKERNEL.lib" /MACHINE:X86 /SAFESEH /DLL ..\TEMPWin32\VDKERNEL\vdcomenaux.obj
+         ..\TEMPWin32\VDKERNEL\vdcomentrig.obj
+         ..\TEMPWin32\VDKERNEL\vdejecutaalgoritmos.obj
+         ..\TEMPWin32\VDKERNEL\vdexecinfoora.obj
+         ..\TEMPWin32\VDKERNEL\vdgeslib.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigart.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigcnt.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigcorreo.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigdem.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigmov.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigproc.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigstk.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigubi.obj
+         ..\TEMPWin32\VDKERNEL\vdfortrigimpre.obj
+         ..\TEMPWin32\VDKERNEL\vdimpresion.obj
+         ..\TEMPWin32\VDKERNEL\vdspoolimpre.obj
+         ..\TEMPWin32\VDKERNEL\vdlots.obj
+         ..\TEMPWin32\VDKERNEL\vdtratalotebloq.obj
+         ..\TEMPWin32\VDKERNEL\vdpedimprime.obj
+         ..\TEMPWin32\VDKERNEL\vdplanifmov.obj
+         ..\TEMPWin32\VDKERNEL\vddemandas.obj
+         ..\TEMPWin32\VDKERNEL\vdrecargas.obj
+         ..\TEMPWin32\VDKERNEL\vdreservademandas.obj
+         ..\TEMPWin32\VDKERNEL\vdrutamov.obj
+         ..\TEMPWin32\VDKERNEL\vdreubi.obj
+         ..\TEMPWin32\VDKERNEL\vdupdaexcel.obj
+         ..\TEMPWin32\VDKERNEL\VDEAN128.obj
+         ..\TEMPWin32\VDKERNEL\v10host.obj
+         ..\TEMPWin32\VDKERNEL\vdcargadefbloque.obj
+         ..\TEMPWin32\VDKERNEL\vdconfiaux.obj
+         ..\TEMPWin32\VDKERNEL\vdconversionesaux.obj
+         ..\TEMPWin32\VDKERNEL\vdcorreos.obj
+         ..\TEMPWin32\VDKERNEL\vdlog.obj
+         ..\TEMPWin32\VDKERNEL\vdmovtos.obj
+         ..\TEMPWin32\VDKERNEL\vdoraerraux.obj
+         ..\TEMPWin32\VDKERNEL\vdperiodico.obj
+         ..\TEMPWin32\VDKERNEL\vdsid.obj
+         ..\TEMPWin32\VDKERNEL\vdstatusparam.obj
+         ..\TEMPWin32\VDKERNEL\vdstocks.obj
+         ..\TEMPWin32\VDKERNEL\vdtraduce.obj
+         E:\V10\productos\REDUR20200430\V10\BINWin32\VDAUTO.lib
+            Creating library ..\BINWin32\VDKERNEL.lib and object ..\BINWin32\VDKERNEL.exp
+         VDKERNEL.vcxproj -> E:\V10\productos\REDUR20200430\V10\PROYECTOS\..\BINWin32\VDKERNEL.dll
+     1>Done Building Project "E:\V10\productos\REDUR20200430\V10\PROYECTOS\VDKERNEL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.21

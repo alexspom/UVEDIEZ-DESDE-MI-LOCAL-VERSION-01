@@ -1,0 +1,8 @@
+# informa a TIPSA de las expediciones que están pendientes en VDINTERPENDHOST 
+CURSOR=CGRABATIPSA BEGIN
+                    VDTIPSA.GRABAENVIO10;
+					COMMIT;
+                  END;@
+                  
+
+                                    

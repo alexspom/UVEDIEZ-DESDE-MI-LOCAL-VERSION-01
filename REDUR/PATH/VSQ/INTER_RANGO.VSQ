@@ -1,0 +1,17 @@
+CURSOR=CCARGARANGO DECLARE
+                   RESULT NUMBER;
+                 BEGIN 
+				 IF(DAME_FICHERO('V10INTERIN_RDRD','FEDEX_CONTADOR%TXT') IS NOT NULL) THEN 
+                     VDLOG.LOG(1,'INICIANDO CARGA DE RANGO EN  V10INTERIN_RDRD');
+				     DELETE FROM XVDRANGORIG; 
+                     RESULT := VDINTERFAZ.VDCARGAFICHERO('RANGO', 'V10INTERIN_RDRD'); 
+                     IF RESULT = -1 THEN    
+                            VDLOG.LOG(1,'ERROR EN CARGA DE RANGO' );
+                     ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE RANGO FINALIZADA CORRECTAMENTE.' );
+                     END IF; 
+				  END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO RANGO' );
+                 END;@

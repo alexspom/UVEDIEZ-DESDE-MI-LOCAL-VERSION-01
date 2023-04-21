@@ -1,0 +1,23 @@
+#***
+# VDCONTE.c - Generación automática del código c para la tabla                                                        
+# 
+# Propósito: Funciones de acceso a la tabla VDCONTE
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 8-11-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=CNT
+
+EXTRA=PTRMSG,V10CADENA,1025
+EXTRA=SECCNT,V10LONG
+
+UPDATE=STATUS,STATUS
+
+SECUENCIA=VDSECCNT,SECCNT
+
+INSERT 
+DELETE
+LOCK

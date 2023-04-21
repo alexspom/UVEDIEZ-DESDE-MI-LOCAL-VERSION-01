@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<style>
+td {font-family: Verdana, Geneva, sans-serif;}
+</style>
+<body>
+<!--V10INCLUDEDATA-->
+<script DEFER>
+function teclasselect(){
+tecla=window.event.keyCode;v10lib.desonkeyefectos(window.event);
+if(tecla==13){v10lib.annadetexto(window.event.srcElement.options[window.event.srcElement.selectedIndex].text);}}
+function fonkeyupmsj(mievento,tecla){
+var objventana=window.document.getElementById('msgwhere');
+switch (tecla){
+case 9:v10lib.desonkeyefectos(mievento);if (v10lib.shift) v19lib.setinputwhere(v10lib.iwhere-1);else v10lib.setinputwhere(v10lib.iwhere+1);break;
+case 27:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('','editwhere',tecla);break;
+case 13: break;
+case 40://cuu
+if(v10lib.dameinputwhere(v10lib.iwhere).getAttribute("exp")=="0"){v10lib.desonkeyefectos(mievento);v10lib.setinputwhere(v10lib.iwhere+1);}break;
+case 38://cua
+if(v10lib.dameinputwhere(v10lib.iwhere).getAttribute("exp")=="0"){v10lib.desonkeyefectos(mievento);v10lib.setinputwhere(v10lib.iwhere-1);}break;		
+case 114://F(3)
+v10lib.desonkeyefectos(mievento);var ipact=v10lib.dameinputwhere(v10lib.iwhere);var milista=window.document.getElementById("listacampos");
+if(ipact.getAttribute("exp")=="0"){ipact.style.height="100px";ipact.setAttribute("exp","1");if(milista)milista.style.visibility="visible";}
+else{ipact.style.height="16px";ipact.setAttribute("exp","0");if(milista)milista.style.visibility="hidden";}break;
+case 115://F4
+v10lib.desonkeyefectos(mievento);
+v10lib.valoractivo = "WHERE="+window.document.getElementById('where').innerHTML+"&FIN&ORDER="+window.document.getElementById('order').innerHTML+"&FIN&HAVING=" + window.document.getElementById('having').innerHTML+"&FIN&TITULO="+window.document.getElementById('titulowhere').innerHTML+"&FIN&";
+v10lib.mandaevento('','editwhere',tecla);break;
+default:if((tecla>=112&&tecla<=123)||tecla==93)v10lib.desonkeyefectos(mievento);}}
+</script>
+<table id='msgwhere'border="0"cellspacing="0"cellpadding="0"style="z-index:98;position:absolute;top:50px;left:50px;">
+<tr class="v10ventarribaizq" onmousedown="v10lib.BeginDrag('msgwhere')"><td></td><td class="v10ventarribamed"><span class="v10titulomens">Edición de Consulta</span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed" style="height:20px;"><br/>
+<table class="v10opczoomswhere">
+<tr><td style="color:white;"><b>Where:</b></td><td><textarea id="where"  onclick="v10lib.setinputwhere(1)" exp="0"  rows="10" cols="100" class="v10inputwhere" type="text" style="left:10px"></textarea></td><td>&nbsp&nbsp&nbsp&nbsp</td> 
+<th rowSpan=4><select id="listacampos" onmousedown="" onclick="" onkeyup="teclasselect()" ondblclick="v10lib.annadetexto(window.event.srcElement.options[window.event.srcElement.selectedIndex].text)" size="10" style="width:150px;visibility:hidden"><!--OPCIONESSELECT--></select></th><td>&nbsp</td></tr>
+<tr><td style="color:white;"><b>Order:</b></td><td><textarea id="order" onclick="v10lib.setinputwhere(2)" exp="0"  rows="10" cols="100" class="v10inputwhere" type="text" style="left:10px"></textarea></td></tr>
+<tr><td style="color:white;"><b>Having:</b></td><td><textarea id="having" onclick="v10lib.setinputwhere(3)" exp="0"  rows="10" cols="100" class="v10inputwhere" type="text" style="left:10px"></textarea></td></tr>
+<tr><td style="color:white;"><b>Titulo:</b></td><td><textarea id="titulowhere" onclick="v10lib.setinputwhere(4)" exp="0"  rows="10" cols="100" class="v10inputwhere" type="text" style="left:10px"></textarea></td></tr>
+<tr><td></td><td><label class="v10labelwhere"  style="left:70px"></ br></br >{Esc} Cancelar  {F4} Confirmar {F3} Expande/Contrae campo</label></td></tr>
+</table>
+</td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table>
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

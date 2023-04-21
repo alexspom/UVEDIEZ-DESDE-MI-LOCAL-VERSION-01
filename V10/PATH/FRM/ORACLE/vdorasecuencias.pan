@@ -1,0 +1,39 @@
+Mantenimiento de Secuencias del Usuario conectado
+
+ Usuario                    Secuencia            Código Sec. Incr.     Máximo Valor                 Siguiente Valor
+ @L@@@@ _30________________ _30_________________   @L@@@@    @L@@@@    #L#,###,###,###,###########  #L,#################
+|
+
+SOLOQUERY
+SELECT=SELECT MIUSER.USER#, MIUSER.NAME USERNAME,MIOBJ.NAME OBJNAME, MIOBJ.OBJ#,MISEQ.INCREMENT$,MISEQ.MAXVALUE,MISEQ.HIGHWATER
+            FROM SYS.USER$ MIUSER, SYS.OBJ$ MIOBJ,SYS.SEQ$ MISEQ
+            WHERE MIUSER.NAME=(SELECT USER USUARIO FROM DUAL) 
+                  AND MIOBJ.OWNER#=MIUSER.USER# 
+                  AND MIOBJ.TYPE#=6 
+                  AND MISEQ.OBJ#=MIOBJ.OBJ#;
+ORDERBY= 3;                 
+
+
+PREUPDATE=FEJECUTA("CBORRASEQ","No se puede MODIFICAR LA SECUENCIA... :OBJNAME",
+                    FEJECUTACAMPO("COMANDO"),"No se puede BORRAR LA SECUENCIA... :OBJNAME",
+                    "CCREASEQ","ERROR AL CREAR NUEVA SECUENCIA :OBJNAME",
+                    FEJECUTACAMPO("COMANDO"),"No se puede BORRAR EL SECUENCIADOR... :OBJNAME")
+
+
+
+CAMPO=USER#,AUXILIAR,TITULO("Usuario"),NOUPDATE
+CAMPO=USERNAME,AUXILIAR,NOUPDATE
+CAMPO=OBJNAME,AUXILIAR,TITULO("Secuencia"),NOUPDATE
+CAMPO=OBJ#,AUXILIAR,TITULO("Código Sec."), WLONX=40,NOUPDATE
+CAMPO=INCREMENT$,AUXILIAR,NOUPDATE,TOOLTIP("Incremento del Secuencial"),TITULO("Incr.")
+CAMPO=MAXVALUE,AUXILIAR,TOOLTIP("Máximo Valor del Secuencial"),TITULO("Máximo Valor")
+CAMPO=HIGHWATER,AUXILIAR,TITULO("Siguiente Valor")
+CAMPO=COMANDO,AUXILIAR,OCULTO,"_256_"
+
+CURSOR=CBORRASEQ        SELECT 'DROP SEQUENCE ' || :OBJNAME COMANDO FROM DUAL;
+CURSOR=CCREASEQ         SELECT 'CREATE SEQUENCE ' || :OBJNAME || ' INCREMENT BY 1 START WITH ' || :HIGHWATER || ' MAXVALUE ' || :MAXVALUE || ' CYCLE NOCACHE' COMANDO FROM DUAL;
+ 
+
+
+
+

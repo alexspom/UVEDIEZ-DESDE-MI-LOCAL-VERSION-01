@@ -1,0 +1,142 @@
+# Módulo   : VDCAMBIOUBI2.PAN
+# Función  : Cambios de Ubicación Parciales
+#
+# Creación : 29-02-2008
+# Autor    : FGS
+###########################################
+# Histórico de cambios:
+CAMBIO DE UBICACIÓN PARCIAL
+ ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Línea de Stock  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄË
+ ³                                              ³
+ ³  Orden de Stock: @L@@                        ³
+ ³  Artículo: _20__________________             ³ 
+ ³  _40_____________________________________    ³      Mover #L15#####.### 
+ ³  Lote:     _____________________             ³    
+ ³  Bulto:    _____________________             ³      a Matrícula _18______ _10____  en   _15___________________
+ ³  Cantidad: #L15#####.### _10__               ³                                     Area __________  _40___________________________             
+ ³  Bloqueos: __________                        ³                      
+ ³  U/Emb:    #L15#.##                          ³      
+ ³  E/C:      @L@@@                             ³      Ejecución: _ (P)apel o (T)erminal 
+ ³                                              ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ 
+
+|
+  
+SOLOQUERY
+NOQUERY
+
+
+CAMPO=CODMAT,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=ORDENSTK,VIRTUAL,AUXILIAR,NOENTER
+CAMPO=CODART,VIRTUAL,AUXILIAR,NOENTER,TOOLTIP(":DESART")
+CAMPO=DESART,VIRTUAL,AUXILIAR,NOENTER
+CAMPO=CANTAMOVER,AUXILIAR,TOOLTIP("Cantidad a mover de la línea de stock"),
+                          CONVIERTE=FCONVIERTEARTFROMDB(":CODART");
+                          FCONVIERTEART2DB(":CODART"),AUXILIAR,TOOLTIP("Es la cantidad que se desear cambiar de ubicación")
+CAMPO=CODLOT,VIRTUAL,AUXILIAR,NOENTER
+CAMPO=BULTO,VIRTUAL,AUXILIAR,NOENTER
+CAMPO=CODMATDEST,AUXILIAR,CONTEXTUAL=FEJECUTAFORM,POSTCHANGE=FDESIGNACION("CSELCONTE","No existe matrícula origen",                                             
+                                                                          "-CMOVTOPEDTES","Matrícula Destino está desplazándose en un movimiento no finalizado",
+                                                                          FIF("CCHECKCOMP",
+                                                                            FUBICOMPATIBLE(":CODMAT",":CODUBIDEST",":CODART",":CODLOT",":UNIEMB",":BLOQUEOS","-1"),
+                                                                            FSUCCESS),"NO SE PUEDE EJECUTAR EL MOVIMIENTO\nNO ES COMPATIBLE CON EL PRODUCTO"),
+                          TOOLTIP("Introduzca la matricula destino del movimiento parcial\nMay-F10 Buscar contenedores\nMay-F9  Buscar por stock"),
+                          CONTEXTUAL=FEJECUTAFORM("VDCONTE","N","","","CODMATDEST=:CODMAT","SELECCION DE MATRICULA DESTINO DE MOVTO PARCIAL","S")
+CAMPO=TIPOCONTE,NOENTER 
+CAMPO=CODUBIDEST,AUXILIAR,NOENTER,TOOLTIP("Código de la ubicación destino del movimiento parcial")
+                          
+ 
+CAMPO=CANTIDAD,VIRTUAL,AUXILIAR,NOENTER,TOOLTIP("Cantidad Existente en la Línea de Stock"),CONVIERTE=FCONVIERTEARTFROMDB(":CODART");FCONVIERTEART2DB(":CODART")
+CAMPO=UNIDADESHOST,VIRTUAL,AUXILIAR,NOENTER,TOOLTIP("Unidades en que mide el stock el host")
+CAMPO=CODAREADEST,AUXILIAR,NOENTER,TOOLTIP("Área en la que se que se encuentra la ubicación destino")
+CAMPO=DESAREADEST,AUXILIAR,NOENTER,TOOLTIP("Descripción del área en el que se encuentra la ubicación destino")
+                     
+CAMPO=BLOQUEOS,VIRTUAL,AUXILIAR,NOENTER,TOOLTIP("CALIFICACION DEL STOCK\n :DESBLOQUEOS ")
+         
+CAMPO=DESBLOQUEOS,AUXILIAR,OCULTO,"_400_"
+CAMPO=UNIEMB,VIRTUAL,AUXILIAR,NOENTER,CONVIERTE=FCONVIERTEARTFROMDB(":CODART");FCONVIERTEART2DB(":CODART")
+CAMPO=EMBCONT,VIRTUAL,AUXILIAR,NOENTER
+CAMPO=TIPOEJECUCION,AUXILIAR,POSTCHANGE=FEJECUTA(FVERIFICA(" PT"),"Modo de ejecución incorrecto"),
+                             TOOLTIP(" P. Ejecución Mediante Papel\n T o Blanco. Ejecución mediante Terminal")       
+
+CAMPO=CODCONCE,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=PRIOMOV,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=STATUS,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=CODMOV,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=TAREA,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=CHEQUEAFLUJOS,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=CHEQUEACOMPATIBILIDAD,AUXILIAR,VIRTUAL,OCULTO
+CAMPO=CODRECURSO,AUXILIAR,VIRTUAL,OCULTO
+
+
+#################################### CURSORES ################################
+
+
+CURSOR=CCHEQUEACODFLUJO SELECT :CHEQUEAFLUJOS 
+                              FROM DUAL 
+                              WHERE 
+                                  :CHEQUEAFLUJOS='S' OR
+                                  (:CODCONCE IS NOT NULL AND 
+                                  (NVL(:PRIOMOV,0)>0));
+
+CURSOR=CSELCONTE SELECT UBI.CODUBI CODUBIDEST,ARE.CODAREA CODAREADEST, ARE.DESAREA DESAREADEST,TCO.TIPOCONTE
+                    FROM VDUBICA UBI, VDCONTE CNT, VDAREA ARE, VDTIPOCONTE TCO 
+                    WHERE CNT.CODMAT=:CODMATDEST AND
+                          CNT.CODUBI=UBI.CODUBI AND
+                          CNT.TIPOCONTE=TCO.TIPOCONTE AND
+                          UBI.CODAREA=ARE.CODAREA;
+                          
+CURSOR=CMOVTOPEDTES SELECT :CODMATDEST FROM VDMOVIM WHERE CODMATORI=:CODMATDEST AND STATUS< #STMOVACTUALIZA AND CODMATORI=CODMATDEST;
+
+                          
+CURSOR=CSELCODUBIDEST SELECT ARE.CODAREA CODAREADEST,ARE.DESAREA DESAREADEST  
+                            FROM VDAREA ARE,VDUBICA UBI
+                            WHERE UBI.CODUBI=:CODUBIDEST AND
+                                  ARE.CODAREA=UBI.CODAREA;
+                                  
+CURSOR=CCHECKCOMP SELECT :CHEQUEACOMPATIBILIDAD FROM DUAL WHERE :CHEQUEACOMPATIBILIDAD='S';
+                           
+CURSOR=CCHECKCANTIDAD SELECT :CANTIDAD FROM DUAL WHERE :CANTAMOVER BETWEEN 0 AND :CANTIDAD;
+
+CURSOR=CSELTIPOEJECUCION SELECT NVL(:TIPOEJECUCION,'P') TIPOEJECUCION FROM DUAL WHERE NVL(:TIPOEJECUCION,'P') IN ('T','P');
+
+CURSOR=CSELPAPEL SELECT :TIPOEJECUCION FROM DUAL WHERE :TIPOEJECUCION='P';
+
+CURSOR=CVERIFARTICENPU SELECT CODUBI CODUBIDEST 
+                         FROM VDUBICA UBI 
+                        WHERE UBI.CODUBI=:CODUBIDEST 
+                          AND (UBI.CODAREA<>'PU' 
+                               OR (UBI.CODAREA='PU' AND UBI.CODART=:CODART )  
+                               OR (UBI.CODAREA='PU' AND NVL(UBI.CODART,'-')<>:CODART 
+                                   AND  NVL((SELECT DISTINCT(STK.CODART) 
+                                              FROM VDUBICA UBI2, VDSTOCK STK,VDCONTE CNT 
+                                             WHERE UBI2.CODUBI=:CODUBIDEST AND UBI2.CODUBI=CNT.CODUBI  AND CNT.CODMAT=STK.CODMAT  AND ROWNUM=1),:CODART)=:CODART ) );
+
+
+################################### TECLAS #######################################
+
+CURSOR=CCHECKDP SELECT :CODUBIDEST FROM VDUBICA
+                 WHERE CODUBI=:CODUBIDEST AND CODAREA!='DP' OR MOD(:CANTIDAD,:UNIEMB)=0;
+
+TECLA=F4,FEJECUTA("CSELTIPOEJECUCION","TIPO DE EJECUCIÓN INCORRECTO",
+                  "CVERIFARTICENPU","Verifique que la ubicaci¢n de Area PU no contiene otro art¡culo",
+                  "CCHECKCANTIDAD","CANTIDAD DE DEBE ESTAR ENTRE 0 Y :CANTIDAD",
+                  "CCHECKDP","NO SE PUEDEN MANDAR PICOS A DP",             
+                  FIF("CCHECKCOMP",
+                     FUBICOMPATIBLE(":CODMAT",":CODUBIDEST",":CODART",":CODLOT",":UNIEMB",":BLOQUEOS","-1"),
+                     FSUCCESS),"NO SE PUEDE EJECUTAR EL MOVIMIENTO\nNO ES COMPATIBLE CON EL PRODUCTO",        
+                  "CCHEQUEACODFLUJO","\n SI NO SE CHEQUEA EL FLUJO\n\n EL CONCEPTO ES OBLIGATORIO Y\n\n LA PRIORIDAD DEL MOVTO MAYOR DE 0",
+                  FCAMBIOUBISTK(":CODMAT",":CODUBIDEST",":CODMATDEST",":TAREA",":CODART",":CODLOT",":UNIEMB",":BLOQUEOS",":CANTAMOVER","CODMOV",
+                                  ":CHEQUEAFLUJOS",":CHEQUEACOMPATIBILIDAD",":CODCONCE",":PRIOMOV",":STATUS",":CODRECURSO"),"NO SE PUEDE EJECUTAR EL MOVIMIENTO\nNO ES COMPATIBLE CON EL FLUJO",
+                  FIF("CSELPAPEL",FEJECUTA(FEJECUTAMOVSYNC("ACTSTKORIGEN","ACTSTKDESTINO",":CODMOV",":CODRECURSO"),"",
+                                           FCOMMIT,"",
+                                           FIMPRIME("INFORME","VDMOVIMIENTO.rpt","FORMCODMOV=:CODMOV",""),"ERROR IMPRIMIENDO LISTADO DE MOVIMIENTO :V10ERROR")),"",                                               
+#                  %FFAILURE,"GENERADO MOVTO :CODMOV",
+                  FCOMMIT,"",
+                  +FBORRAFORM,"")
+
+
+
+
+

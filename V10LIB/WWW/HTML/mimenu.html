@@ -1,0 +1,97 @@
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> -->
+<!--  xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en" -->
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <META http-equiv="Pragma" content="no-cache">
+</head>
+<body>
+	<script>
+		var ele=null;
+		function expande() {
+			 var mili=document.getElementById('1');
+			 var miul=mili.parentNode;
+			 var nuevoitem,mioculto;			 
+			 mioculto = document.getElementById(mili.opc);
+			 mioculto.style.visibility='visible';
+			 //miul.appendChild (mioculto);
+			 //miul.insertBefore(mioculto,miul);
+			 mili.replaceNode(mioculto);
+	
+
+			 
+			 
+			 
+		/*	 nuevoitem.id= 'hh1';
+			 alert(mioculto.childNodes.length);
+			 for (i=0;i<mioculto.childNodes.length;i++) {
+			 		
+			 		insertBefore
+			 		nuevoitem.appendChild(mioculto.childNodes[i]);
+			 }
+			 mili.parentNode.appendChild(nuevoitem); */
+			//nuevoitem.style.visibility='visible';
+			 // removeChild
+		}
+		
+		function quita() {
+				if (!ele) ele=window.document.getElementById('la2');
+				window.document.getElementById('la').removeChild(ele);			
+
+		}
+		
+		function oculta() {
+			window.document.getElementById('la').childNodes[3].style.visibility="hidden";
+    }			
+    
+	 function muestra() {
+			window.document.getElementById('la').childNodes[3].style.visibility="visible";
+    }	
+    
+    function enfoca() {
+    	document.getElementById('kk').style.backgroundColor = 'blue';
+    	document.kk.focus();
+    }
+	</script>
+	
+	<style>
+		li {
+			list-style-image: url(../img/tabs_48_1.png)
+		}
+	</style>
+<input style="background-color:white;width:21px;height:21px;cursor:hand;vertical-align:top;pagging-top:0px;" value="0" type="image" src="..\img\folder.gif" 
+ onclick="{
+  if (this.value=='0')
+   {this.src='..\\img\\folder_open.gif';this.value='1';this.style.backgroundColor='gold';this.style.width='25px';this.style.height='25px';}
+  else
+   {this.src='..\\img\\folder.gif';this.value='0';this.style.backgroundColor='white';this.style.width='21px';this.style.height='21px';}}"/>
+<!-- if (this.st=="0") {this.src='..\\img\\folder_open.gif';this.setAttributte(st,"1");} else {this.src='..\\img\\folder.gif'};this.setAttributte(st,"1");}}" /> -->
+<!-- this.style.width="25px";this.style.height="25px";
+this.style.width="13px";this.style.height="13px";-->
+
+<div>
+<ul>
+	<li id="1" opc="bak1"><label id='kk'>1</label></li>
+	<li>2</li>
+	<ul>
+		<li>2.1</li>
+		<li>2.2</li>
+	</ul>
+	<li>3</li>
+	<li>4</li>	
+</ul>
+<ul id="bak1" style='position:absolute;top:300px:left:1px;'>
+	<li>joder1</li>
+	<li>joder2</li>
+	<li>joder3</li>
+	<li>joder4</li>	
+</ul>
+<input id="b1" type="button" value="expande" onclick="expande()"/>
+<input id="b2" type="button" value="quita" onclick="quita()"/>
+<input id="b2" type="button" value="oculta" onclick="oculta()"/>
+<input id="b2" type="button" value="muestra" onclick="muestra()"/>
+<input id="b2" type="button" value="enfoca" onclick="enfoca()"/>
+</div>
+<input style="height:90;text-align:text-bottom;" value="jod111er"/>
+
+
+</body>

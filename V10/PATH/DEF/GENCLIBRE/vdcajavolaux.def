@@ -1,0 +1,28 @@
+#***
+# VDCAJASAUX.DEF - Generación automática del código c SOLOQUERY para Cajas                                                       
+# 
+# Propósito: idem
+#           
+# Autor	 : FPD
+# Revisado por: 
+# Fecha  : 06-05-2008
+#************************************************************************************
+# Modificaciones
+#***
+NOMBRE=CAJAVOL;
+EXTRA=VOLUMENCAJ,V10DOUBLE;
+EXTRA=ALTURA,V10LONG;
+
+CURSOR=DEMAYORAMENOR,SELECT CAJ.TIPOVOL,CAJ.TIPOCAJA, 
+                            CAJ.DESCAJA,CAJ.LARGOCAJA,CAJ.ANCHOCAJA, 
+                            CAJ.ALTOCAJA,CAJ.PESOCAJA,CAJ.PESORELLENO, 
+                            CAJ.MARGENPESO,DECODE(VOL.MAXLLENADO,0,CAJ.MAXLLENADO,VOL.MAXLLENADO) MAXLLENADO,
+                            CAJ.MINLLENADO, 
+                            DECODE(VOL.MAXPICOS,0,CAJ.MAXPICOS,VOL.MAXPICOS) MAXPICOS,
+                            DECODE(VOL.MAXPESO,0,CAJ.MAXPESO,VOL.MAXPESO) MAXPESO,
+                            CAJ.VOLDINAMICA,CAJ.CODCOMEN,
+                            CAJ.CODOPEMODIF,CAJ.FECMODIF,CAJ.HORAMODIF 
+                       FROM VDCAJAS CAJ,VDVOLUMETRIA VOL
+                      WHERE CAJ.TIPOVOL=:VDCAJAS.TIPOVOL AND CAJ.TIPOVOL=VOL.TIPOVOL
+                     ORDER BY LARGOCAJA*ANCHOCAJA*ALTOCAJA DESC;
+

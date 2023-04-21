@@ -1,0 +1,77 @@
+###################################################################
+#MOdulo: VDREPBULTO.PAN
+#Funcionalidad : Pantalla que permite la repetición de etiquetas de bultos pendientes de servir de kits
+#Autor: DGB      
+#Fecha: 19-06-2019
+###################################################################
+# HistOrico de cambios:
+REIMPRIMIR ETIQUETAS KITS
+
+ Orden de preparación     Nº de etiquetas disponibles    Artículo             LOTE             Reetiquetar S/N
+ _60_____________                    @@@@                _20_____________     _15____________        _
+                        
+
+                                                                                                                 |
+PQUERY
+
+SOLOQUERY
+
+WLONX=820
+REGPAG=45
+
+SELECT=SELECT OKC.CODORDKIT CODORDKIT,COUNT(*) NETIQUETAS,OKC.CODART,OKC.CODLOT,'N' SWTETIQUETAR
+       FROM VDPEDIDOCAB PEC,VDBULTOCAB BUC, VDORDKITCAB OKC
+       WHERE OKC.CODORDKIT=PEC.PEDIDOHOST
+       AND   PEC.CODPED=BUC.CODPED
+       AND   PEC.SEQPED=BUC.SEQPED
+       AND   PEC.ANOPED=BUC.ANOPED
+       AND   PEC.CODDIV=BUC.CODDIV
+       AND   PEC.STATUS=VDST.FPECPREPARANDO
+       AND   BUC.STATUS=VDST.FBUCPDTESERVIR
+       AND   BUC.TIPOBULTO='U'
+       AND   PEC.PEDIDOHOST IS NOT NULL
+       AND   PEC.MENHOST IS NOT NULL
+       AND   PEC.VDEXTRA IS NOT NULL
+       GROUP BY OKC.CODORDKIT,OKC.CODART,OKC.CODLOT;
+
+ORDERBY=OKC.CODORDKIT;
+ 
+ 
+PREUPDATE=FEJECUTA("CSWTETIQUETAR","DEBE MARCAR EL CAMPO ETIQUETAR AL VALOR S.",
+                   "CSELORDEN","LA ORDEN DE FABRICACION NO EXISTE.",
+				   "CSELVALMAN","ERROR OBTENIENDO ETIQUETADORA POR DEFECTO.",
+				   "@CSELBULTOS","ERROR OBTENIENDO BULTOS",
+				   FWHILE(FERRORCURSOR("CSELBULTOS"),
+                          FEJECUTA(FIMPRIMEBULTO("ETIQ",":CODBULTO","VDETIQBUKIT.GEN;VDETIQUETAS.VSQ;CSELBULKIT","CODBULTO=:CODBULTO;ESCOPIA=S;NUMETIQ=1;TOTALETIQKIT=1",":CODIMPREETIQ","1"),"ERROR AL IMPRIMIR ETIQUETA\n :V10ERROR",
+						  "CIMPREETIQAMA","NO PUEDO IMPRIMIR ETIQUETA AMAZON",
+					               +FFETCHCURSOR("CSELBULTOS"),"ERROR EN FETCH")),"ERROR EN FWHILE",
+				   FCOMMIT,"",
+				   %FFAILURE,"LANZADA LA REIMPRESION DE LA ORDEN :CODORDKIT CON :NETIQUETAS ETIQUETAS")
+ 
+ 
+ 
+CAMPO=CODORDKIT,NOUPDATE,TOOLTIP("Código de la orden"),TITULO("Orden de preparación"),WLONX=60
+CAMPO=NETIQUETAS,AUXILIAR,NOENTER,TOOLTIP("Numero de etiquetas disponibles para imprimir."),TITULO("Nº de etiquetas disponibles"),WLONX=200
+CAMPO=CODART,NOENTER,TOOLTIP("Código de artículo a fabricar en el kit."),TITULO("Artículo"),WLONX=30
+CAMPO=CODLOT,NOENTER,TOOLTIP("Código de lote asociado al kit."),TITULO("Lote"),WLONX=20
+CAMPO=CODBULTO,AUXILIAR,OCULTO,"_18____________"
+CAMPO=CODIMPREETIQ,AUXILIAR,OCULTO,"_15____________"
+CAMPO=SWTETIQUETAR,AUXILIAR,TOOLTIP("Switch de etiquetado"),TITULO("Etiquetar S/N"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),WLONX=100
+
+CURSOR=CIMPREETIQAMA BEGIN
+					 RDRPKG.IMPRIMEAMZNCCBULTO(:CODBULTO);
+                     COMMIT;
+                   END;@ 
+
+CURSOR=CSWTETIQUETAR SELECT :SWTETIQUETAR FROM DUAL WHERE :SWTETIQUETAR='S';
+
+CURSOR=CSELORDEN SELECT :CODORDKIT FROM VDORDKITCAB WHERE CODORDKIT=:CODORDKIT;
+				   
+CURSOR=CSELBULTOS SELECT BUC.CODBULTO FROM VDBULTOCAB BUC, VDPEDIDOCAB PEC 
+                  WHERE PEC.PEDIDOHOST=:CODORDKIT AND PEC.CODPED=BUC.CODPED AND BUC.STATUS=VDST.FBUCPDTESERVIR;
+				  
+
+CURSOR=CSELVALMAN SELECT VD.GETPROP('IMPETIQMANDEF') CODIMPREETIQ FROM DUAL;
+				   
+				   
+ONLINE=     {F1} Ayuda {F2} Consulta {F5} Borrar pantalla {F4} Guardar {Esc} Salir; 

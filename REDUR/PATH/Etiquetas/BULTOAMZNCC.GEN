@@ -1,0 +1,101 @@
+$C$
+$X3000-1000$
+
+#####Etiqueta sin barcode 1
+
+$F0$
+
+$D270$
+
+######LINAE VERTICAL 1
+$P350-1480$
+$L250-1-3-i$
+
+######LINAE VERTICAL 2
+$P1150-725$
+$L800-1-3-i$
+
+
+####### LINEA 1
+$P350-1065$
+$Li10-900-40-i$
+#
+
+#######################REMITENTE
+$T8-8$
+$P100-1065$
+$IShip From:$
+
+$P150-1065$
+$I%T_DESDIV%$
+
+$P200-1065$
+$I%T_DIVDIR1%$
+
+$P250-1065$
+$I%T_DIVPOBLACION%$
+
+$P300-1065$
+$ISPAIN %T_DIVDP% $
+
+#####CONSIGNATARIO
+$T8-8$
+$P100-1500$
+$IShip to:$
+
+
+$P150-1500$
+$I%T_DESCLIENTE%$
+
+$P200-1500$
+$I%T_DIRECCION%$
+
+$P250-1500$
+$I%T_DIRECCION1%$
+
+$P300-1500$
+$I%T_DESPAIS%, %T_DP%$
+
+$T8-8$
+$P400-1400$
+$IPO#                                    CODE39#$
+
+#####BULTO
+$T8-8$
+$P500-1065$
+$IEAN: $
+$P550-1065$
+$I%T_CODEAN%$
+
+
+#####BULTO
+$P700-1065$
+$IQty: %T_QTY%$
+
+#####BULTO
+$P800-1300$
+$I%T_PEDIDOCLIENTE%$
+
+$P750-1300$
+$B8-40-200-2-%_PEDIDOCLIENTE%$
+
+#####BULTO
+$P900-1065$
+$ICarton: %T_NUMETIQR% of %T_TNUMETIQ%$
+
+##### LINEA 2
+$P1150-1065$
+$Li10-900-40-i$
+
+######CODIGO DE BARRAS 1 
+$T8-8$
+$P1200-1065$
+$IAmazon Container Code (Code 128)%_AMZNCC%$
+
+######CODIGOS 1
+$P1400-1065$
+$B8-40-200-2-%_AMZNCC%$
+
+
+
+$A$

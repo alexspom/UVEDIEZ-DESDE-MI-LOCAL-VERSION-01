@@ -1,0 +1,20 @@
+CURSOR=CAVISOSMANT DECLARE
+                   VRETURN NUMBER;         
+       MSGERROR VARCHAR2(4000);
+    BEGIN
+      IF(TO_NUMBER(TO_CHAR(SYSDATE + 6, 'D')) = 7 AND TO_CHAR(SYSDATE + 6,'MM') IN ('03','10') AND TO_CHAR(SYSDATE + 6 + 7,'MM') IN ('04','11'))  THEN
+         VDCORREOS.CORREO('MATENIMIENTO', NULL, 'Reinicio del servidor de Produccion','Buenos dias. Recordamos que el proximo domingo a las 3:05 de la madrugada el departamento de soporte de V10 procedera al reinicio del servidor de Produccion para llevar a cabo tareas de mantenimiento.',NULL,NULL,NULL,NULL,NULL,NULL,MSGERROR,VRETURN);
+         COMMIT;
+      END IF;
+      
+      IF(TO_NUMBER(TO_CHAR(SYSDATE, 'D')) = 7 AND TO_CHAR(SYSDATE,'MM') IN ('03','10') AND TO_CHAR(SYSDATE + 7,'MM') IN ('04','11'))  THEN
+         VDCORREOS.CORREO('MATENIMIENTO', NULL, 'Reinicio del servidor de Produccion','Buenas noches. El departamento de soporte de V10 va a reiniciar del servidor de Produccion a las 3:05 para llevar a cabo tareas de mantenimiento. Esta operacion puede tardar unos minutos en los que la aplicacion V10 no estara disponible.',NULL,NULL,NULL,NULL,NULL,NULL,MSGERROR,VRETURN);
+         COMMIT;
+      END IF;
+	  
+	        IF(TO_NUMBER(TO_CHAR(SYSDATE + 2, 'D')) = 7 AND TO_CHAR(SYSDATE + 2,'MM') IN ('03','10') AND TO_CHAR(SYSDATE + 6 + 7,'MM') IN ('04','11'))  THEN
+         VDCORREOS.CORREO('MANTV10', NULL, 'Reinicio del servidor de Produccion','Buenos dias Soporte de V10. \nEste es un recordatorio de que el proximo domingo unos minutos después del cambio de hora (sobre las 3:05 de la madrugada) debeis reiniciar el servidor de Produccion de Redur para evitar los problemas derivados por el cambio de horario. \nMuchas gracias.',NULL,NULL,NULL,NULL,NULL,NULL,MSGERROR,VRETURN);
+         COMMIT;
+      END IF;
+      
+    END;@

@@ -1,0 +1,47 @@
+######
+# VDDISCALGORITMOS.PAN - Sistema de ventanas de configuración de algoritmos.
+# 
+# Propósito: Ventana para dar modificar parámetros del discriminante de los algoritmos.
+#               
+#           
+# Autor	   : José Carlos Santos
+# Fecha    : 20-12-2007
+####
+# Modificaciones:
+####
+DISCRIMINANTE DEL ALGORITMO
+ Item           Valor            Descripción
+ _20___________ _255____________ _256____________________
+| 
+
+
+SOLOQUERY
+TABLA=ALG
+NOCOMMIT
+
+SELECT= SELECT PAR.NOMBREPARAM,PAR.DESCRIPCION,VD.PIECE(:DISCRIMINANTE,'#',PAR.POSICION) VALOR,PAR.POSICION POSICION, 'D' TIPOPROC
+        FROM  VDPARAMALGPROC PAR
+         WHERE
+              PAR.FUNCION = :FUNCIONPROC AND 
+	            PAR.TIPOPROC='D';
+ORDERBY=PAR.POSICION; 
+
+TECLA=F4,FPULSATECLAS("CF6","SF4")
+
+CAMPO=PROCESO,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=NOMBREALG,VIRTUAL,AUXILIAR,OCULTO
+CAMPO=FUNCIONPROC, VIRTUAL,AUXILIAR, OCULTO
+CAMPO=DISCRIMINANTE, VIRTUAL,AUXILIAR, OCULTO
+
+CAMPO=NOMBREPARAM,UPPER,NOUPDATE,TOOLTIP(":DESCRIPCION"),TITULO("Item")
+CAMPO=POSICION, OCULTO, "@@@"
+CAMPO=TIPOPROC, OCULTO, "_"
+CAMPO=VALOR,UPPER, AUXILIAR,TOOLTIP("Es el valor del parámetro\nAdmite Rango de Valores tipo A,B,C y A-C"), POSTCHANGE=FRECALCPADRE("+CACTDISC","ERROR EN CACTDISC"),TITULO("Valor")
+CAMPO=DESCRIPCION,NOUPDATE,TOOLTIP("Es la descripción del parámetro"),TITULO("Descripción")
+
+CURSOR=CACTDISC SELECT VD.SUSTPIECE(NVL(:DISCRIMINANTE,'#'),:POSICION,:VALOR) DISCRIMINANTE 
+                      FROM DUAL 
+                      WHERE :DISCRIMINANTE IS NOT NULL;
+
+
+

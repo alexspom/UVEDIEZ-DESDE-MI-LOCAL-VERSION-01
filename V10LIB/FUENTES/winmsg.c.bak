@@ -1,0 +1,934 @@
+/*
+* Módulo : WINMSG.C
+* Objeto:  Tratamiento de mensajes windows
+* 
+* 
+* Autor	 : Eduardo Alsina Alvarez
+* Fecha  : 10-10-2007
+
+* MODIFICACIONES
+* ---------------------------
+*/
+
+#include "v10.h"
+//#include <commdlg.h>
+
+#define CM_FONT            1000
+#define CM_PRINTSCREENVER  1001
+#define CM_PRINTSCREENHOR  1002
+#define DESPPAN 10
+
+int singrafico = 0;
+
+int NUMEROICONO = 101;
+unsigned COLUMNASPANTALLA=140;
+unsigned LINEASPANTALLA=60;
+int MODOSHOW=SW_SHOWMAXIMIZED;
+HINSTANCE v10hinst,v10hprev;
+char TITULOVENTANA[MAXPATH]="V10 SOLUCIONES, S.L.";
+
+COLORREF TINTANOBMP=0x007f0000L;
+COLORREF PAPELNOBMP=0x007f7f7fL;
+
+
+
+static LOGFONT    lfo={-12,-8,0,0,400,0,
+                       0,0,OEM_CHARSET,OUT_CHARACTER_PRECIS,
+                       CLIP_CHARACTER_PRECIS,DEFAULT_QUALITY,
+                       FIXED_PITCH,"Terminal"};
+
+typedef struct {
+        int   numcol;
+        int   numlin;
+        int   altofont;
+        int   anchofont;
+        char  *font;
+      } textparams;
+
+int menucerrar=1;
+colventanas COLORTRANSP={0,0};
+char *V10BMP="DEFECTO.BMP";
+HWND hwnddefecto;
+
+int statuscursor = CURSORNORMAL;
+char charblanco = ' ';
+extern centrar_titulo=1;
+#define MAXTECLAMENU 100
+typedef struct {
+              char *nombre;
+              int  tecla;
+          } teclamenus;
+static teclamenus teclamenu[MAXTECLAMENU];
+static int nteclamenu;
+
+extrawins *dameextrawin(HWND hwnd)
+{
+	extrawins *ret;
+#ifdef _M_AMD64 
+	unsigned long high;
+#endif
+	unsigned long low;
+	low = GetWindowLong(hwnd, 0);
+#ifdef _M_AMD64 
+	high = GetWindowLong(hwnd, 4);
+	ret = (extrawins *)((((size_t) high) << 32) + low);
+#else
+	ret = (extrawins *)low;
+#endif
+	return(ret);
+}
+
+
+
+static void finteclamenu(void)
+{
+  int i;
+  for (i=0;i<nteclamenu;i++) if (teclamenu[i].nombre) free(teclamenu[i].nombre);
+}
+
+void declarateclamenu(char *nombre,int mitecla)
+{
+  int i;
+  if (nteclamenu==0) atexit(finteclamenu);
+  for (i=0;i<nteclamenu;i++) {
+      if (teclamenu[i].tecla==mitecla) {
+         free(teclamenu[i].nombre);
+         teclamenu[i].nombre=strdup(nombre);
+         return;
+       }
+   }
+  teclamenu[i].nombre=strdup(nombre);
+  teclamenu[i].tecla=mitecla;
+  nteclamenu++;
+}
+
+void creamenuclipboard(int x,int y,int copiar,int pegar)
+{
+  HMENU hmenu;
+  extrawins *t=dameextrawin(hwnddefecto);
+  HGLOBAL hmem;
+  // (2) POINT p;
+  POINT p2;       // (2)
+  int i;
+  OpenClipboard(hwnddefecto);
+  hmem=GetClipboardData(CF_OEMTEXT);
+  x*=t->anchofont;
+  y*=t->altofont;
+  hmenu=CreatePopupMenu();
+  AppendMenu(hmenu,(copiar?MF_ENABLED:MF_GRAYED)|MF_STRING,0,"Copiar");
+  AppendMenu(hmenu,((hmem && pegar)?MF_ENABLED:MF_GRAYED)|MF_STRING,1,"Pegar");
+  AppendMenu(hmenu,MF_ENABLED|MF_STRING,2,"Copiar Todo");
+  AppendMenu(hmenu,MF_SEPARATOR,3,NULL);
+  for (i=0;i<nteclamenu;i++) {
+      AppendMenu(hmenu,MF_ENABLED|MF_STRING,i+4,teclamenu[i].nombre);
+   }
+  GetCursorPos(&p2);
+  TrackPopupMenu(hmenu,TPM_LEFTALIGN | TPM_LEFTBUTTON, p2.x, p2.y, 0, hwnddefecto, NULL);
+  DestroyMenu(hmenu);
+  CloseClipboard();
+}
+
+static void getwininfo(HWND hwnd)
+{
+    TEXTMETRIC Metrics;
+    extrawins *t=dameextrawin(hwnd);
+    if (t==NULL) return;
+    t->hfont=CreateFont(t->lfo.lfHeight,t->lfo.lfWidth,t->lfo.lfEscapement,t->lfo.lfOrientation,
+                      t->lfo.lfWeight,t->lfo.lfItalic,t->lfo.lfUnderline,
+                      t->lfo.lfStrikeOut,OEM_CHARSET,t->lfo.lfOutPrecision,
+                      t->lfo.lfClipPrecision,t->lfo.lfQuality,
+                      FIXED_PITCH,t->lfo.lfFaceName);
+    if (t->hfontold==NULL) {
+       t->hfontold=SelectObject(t->hdc,t->hfont);
+     } else {
+       DeleteObject(SelectObject(t->hdc,t->hfont));
+     }
+    GetTextMetrics(t->hdc, &Metrics);
+    t->anchofont = Metrics.tmMaxCharWidth;
+    t->altofont  = Metrics.tmHeight;
+}
+
+static void eligefont(HWND hwnd)
+{
+   RECT r;
+   static CHOOSEFONT cf;
+   extrawins *t=dameextrawin(hwnd);
+   memset(&cf,0,sizeof(CHOOSEFONT));
+   cf.lStructSize=sizeof(CHOOSEFONT);
+   cf.hwndOwner=hwnd;
+   cf.lpLogFont=&t->lfo;
+   cf.Flags=CF_SCREENFONTS|CF_FIXEDPITCHONLY|CF_INITTOLOGFONTSTRUCT;
+   ChooseFont(&cf);
+   getwininfo(hwnd);
+   InvalidateRect(hwnd,NULL,0);
+   GetWindowRect(hwnd,&r);
+   SetWindowPos(hwnd,NULL,0,0,r.right-r.left,r.bottom-r.top,
+                     SWP_NOMOVE|SWP_NOZORDER);
+}
+
+void cambiafontdefecto(char *facename,int alto,int ancho)
+{
+    lfo.lfHeight=alto;
+    lfo.lfWidth=ancho;
+    strcpy(lfo.lfFaceName,facename);
+}
+
+static void minmaxinfo(HWND hwnd,POINT *MinMaxInfo)
+{
+    int X, Y;
+    extrawins *t=dameextrawin(hwnd);
+    DWORD estilo;
+    estilo=GetWindowLong(hwnd,GWL_STYLE);
+    if (t==NULL) return;
+
+    X = min(t->columnas * t->anchofont + GetSystemMetrics(SM_CXVSCROLL),
+            GetSystemMetrics(SM_CXSCREEN)) +
+            (estilo&WS_THICKFRAME ? GetSystemMetrics(SM_CXFRAME) : estilo&(WS_BORDER|WS_THICKFRAME )? GetSystemMetrics(SM_CXBORDER) : 0) * 2;
+    Y = min(t->lineas * t->altofont + GetSystemMetrics(SM_CYHSCROLL) +
+            GetSystemMetrics(SM_CYCAPTION), GetSystemMetrics(SM_CYSCREEN)) +
+            (estilo&WS_THICKFRAME ? GetSystemMetrics(SM_CYFRAME) : estilo&(WS_BORDER | WS_THICKFRAME )? GetSystemMetrics(SM_CYBORDER) : 0) * 2 + DESPPAN;
+    MinMaxInfo[1].x = X;
+    MinMaxInfo[1].y = Y;
+    MinMaxInfo[4].x = X;
+    MinMaxInfo[4].y = Y;
+}
+
+int defaultprinter(char *nombre)
+{
+  DWORD tipo,lon=MAXCADENA;
+  HKEY hkey;
+  int err;
+  char *aux;
+  err=RegOpenKeyEx(HKEY_CURRENT_USER,"SOFTWARE\\microsoft\\windows nt\\CurrentVersion\\windows",0,KEY_QUERY_VALUE,&hkey);
+  if (err!=ERROR_SUCCESS) return(1);
+  err=RegQueryValueEx(hkey,"device",NULL,&tipo,nombre,&lon);
+  RegCloseKey(hkey);
+  if (err!=ERROR_SUCCESS) return(1);
+  aux=strchr(nombre,',');
+  if (aux) *aux=0;
+  return(0);
+}
+
+/****************************************************************************
+ *                                                                          *
+ *  FUNCTION   : DibNumColors(VOID FAR * pv)                                *
+ *                                                                          *
+ *  PURPOSE    : Determines the number of colors in the DIB by looking at   *
+ *               the BitCount filed in the info block.                      *
+ *                                                                          *
+ *  RETURNS    : The number of colors in the DIB.                           *
+ *                                                                          *
+ ****************************************************************************/
+WORD DibNumColors (VOID FAR * pv)
+{
+    int                 bits;
+    LPBITMAPINFOHEADER  lpbi;
+    LPBITMAPCOREHEADER  lpbc;
+
+    lpbi = ((LPBITMAPINFOHEADER)pv);
+    lpbc = ((LPBITMAPCOREHEADER)pv);
+
+    /*  With the BITMAPINFO format headers, the size of the palette
+     *  is in biClrUsed, whereas in the BITMAPCORE - style headers, it
+     *  is dependent on the bits per pixel ( = 2 raised to the power of
+     *  bits/pixel).
+     */
+    if (lpbi->biSize != sizeof(BITMAPCOREHEADER)){
+        if (lpbi->biClrUsed != 0)
+            return (WORD)lpbi->biClrUsed;
+        bits = lpbi->biBitCount;
+    }
+    else
+        bits = lpbc->bcBitCount;
+
+    switch (bits){
+        case 1:
+                return 2;
+        case 4:
+                return 16;
+        case 8:
+                return 256;
+        default:
+                /* A 24 bitcount DIB has no color table */
+                return 0;
+    }
+}
+/****************************************************************************
+ *                                                                          *
+ *  FUNCTION   :  PaletteSize(VOID FAR * pv)                                *
+ *                                                                          *
+ *  PURPOSE    :  Calculates the palette size in bytes. If the info. block  *
+ *                is of the BITMAPCOREHEADER type, the number of colors is  *
+ *                multiplied by 3 to give the palette size, otherwise the   *
+ *                number of colors is multiplied by 4.                                                          *
+ *                                                                          *
+ *  RETURNS    :  Palette size in number of bytes.                          *
+ *                                                                          *
+ ****************************************************************************/
+WORD PaletteSize (VOID FAR * pv)
+{
+    LPBITMAPINFOHEADER lpbi;
+    WORD               NumColors;
+
+    lpbi      = (LPBITMAPINFOHEADER)pv;
+    NumColors = DibNumColors(lpbi);
+
+    if (lpbi->biSize == sizeof(BITMAPCOREHEADER))
+        return (WORD)(NumColors * sizeof(RGBTRIPLE));
+    else
+        return (WORD)(NumColors * sizeof(RGBQUAD));
+}
+/* Macro to determine to round off the given value to the closest byte */
+#define WIDTHBYTES(i)   ((i+31)/32*4)
+/****************************************************************************
+ *                                                                          *
+ *  FUNCTION   : DibFromBitmap()                                            *
+ *                                                                          *
+ *  PURPOSE    : Will create a global memory block in DIB format that       *
+ *               represents the Device-dependent bitmap (DDB) passed in.    *
+ *                                                                          *
+ *  RETURNS    : A handle to the DIB                                        *
+ *                                                                          *
+ ****************************************************************************/
+HANDLE DibFromBitmap (HBITMAP      hbm)
+{
+    BITMAP               bm;
+    BITMAPINFOHEADER     bi;
+    BITMAPINFOHEADER FAR *lpbi;
+    DWORD                dwLen;
+    HANDLE               hdib;
+    HANDLE               h;
+    HDC                  hdc;
+    WORD                 biBits;
+    HPALETTE     hpal;
+
+    if (!hbm)
+        return NULL;
+
+    hpal = GetStockObject(DEFAULT_PALETTE);
+
+    GetObject(hbm,sizeof(bm),(LPSTR)&bm);
+
+    biBits =(WORD)(  bm.bmPlanes * bm.bmBitsPixel);
+
+    bi.biSize               = sizeof(BITMAPINFOHEADER);
+    bi.biWidth              = bm.bmWidth;
+    bi.biHeight             = bm.bmHeight;
+    bi.biPlanes             = 1;
+    bi.biBitCount           = biBits;
+    bi.biCompression        = BI_RGB;
+    bi.biSizeImage          = 0;
+    bi.biXPelsPerMeter      = 0;
+    bi.biYPelsPerMeter      = 0;
+    bi.biClrUsed            = 0;
+    bi.biClrImportant       = 0;
+
+    dwLen  = bi.biSize + PaletteSize(&bi);
+
+    hdc = GetDC(NULL);
+    hpal = SelectPalette(hdc,hpal,FALSE);
+         RealizePalette(hdc);
+
+    hdib = GlobalAlloc(GHND,dwLen);
+
+    if (!hdib){
+        SelectPalette(hdc,hpal,FALSE);
+        ReleaseDC(NULL,hdc);
+        return NULL;
+    }
+
+    lpbi = (VOID FAR *)GlobalLock(hdib);
+
+    *lpbi = bi;
+
+    /*  call GetDIBits with a NULL lpBits param, so it will calculate the
+     *  biSizeImage field for us
+     */
+    GetDIBits(hdc, hbm, 0L, (DWORD)bi.biHeight,
+        (LPBYTE)NULL, (LPBITMAPINFO)lpbi, (DWORD)DIB_RGB_COLORS);
+
+    bi = *lpbi;
+    GlobalUnlock(hdib);
+
+    /* If the driver did not fill in the biSizeImage field, make one up */
+    if (bi.biSizeImage == 0){
+        bi.biSizeImage = WIDTHBYTES((DWORD)bm.bmWidth * biBits) * bm.bmHeight;
+
+    }
+
+    /*  realloc the buffer big enough to hold all the bits */
+    dwLen = bi.biSize + PaletteSize(&bi) + bi.biSizeImage;
+    if ((h = GlobalReAlloc(hdib,dwLen,0))!=0)
+        hdib = h;
+    else{
+        GlobalFree(hdib);
+        hdib = NULL;
+
+        SelectPalette(hdc,hpal,FALSE);
+        ReleaseDC(NULL,hdc);
+        return hdib;
+    }
+
+    /*  call GetDIBits with a NON-NULL lpBits param, and actualy get the
+     *  bits this time
+     */
+    lpbi = (VOID FAR *)GlobalLock(hdib);
+
+    if (GetDIBits( hdc,
+                   hbm,
+                   0L,
+                   (DWORD)bi.biHeight,
+                   (LPBYTE)lpbi + (WORD)lpbi->biSize + PaletteSize(lpbi),
+                   (LPBITMAPINFO)lpbi, (DWORD)DIB_RGB_COLORS) == 0){
+         GlobalUnlock(hdib);
+         SelectPalette(hdc,hpal,FALSE);
+         ReleaseDC(NULL,hdc);
+         return NULL;
+    }
+
+    bi = *lpbi;
+    GlobalUnlock(hdib);
+
+    SelectPalette(hdc,hpal,FALSE);
+    ReleaseDC(NULL,hdc);
+    return hdib;
+}
+
+static void hardcopy(HWND hwnd, int vertical)
+{
+  static HDC hdcpant,hdcprinter,hdcmem;
+  HBITMAP hbm,hold;
+  HANDLE impre;
+  DOCINFO docinfo;
+  DEVMODE *pDevOutput;
+  HANDLE supadre;
+  double ratio;
+  char nombre[MAXCADENA];
+  long sizeDevMode;
+  static int caps;
+  int xori,yori,xdest,ydest;
+
+  memset(&docinfo,0,sizeof(docinfo));
+  docinfo.cbSize=sizeof(docinfo);
+  docinfo.lpszDocName="prueba";
+  if (defaultprinter(nombre)) return;
+  if ( !vertical ) {
+     OpenPrinter(nombre,&impre,NULL);
+     sizeDevMode=DocumentProperties(hwnd,impre,nombre,NULL,NULL,0);
+     pDevOutput=calloc(1,sizeDevMode);
+     sizeDevMode=DocumentProperties(hwnd,impre,nombre,pDevOutput,NULL,DM_OUT_BUFFER);
+     if (sizeDevMode<0) return;
+     pDevOutput->dmOrientation=2;
+     pDevOutput->dmFields|=DM_ORIENTATION;
+     hdcprinter=CreateDC("WINSPOOL",nombre,NULL,pDevOutput);
+  } else hdcprinter=CreateDC("WINSPOOL",nombre,NULL,NULL);
+  if (hdcprinter==NULL) return;
+  StartDoc(hdcprinter,&docinfo);
+  caps=GetDeviceCaps(hdcprinter,RASTERCAPS);
+  hdcpant = CreateDC("DISPLAY", NULL, NULL, NULL);
+  xori=GetDeviceCaps(hdcpant, HORZRES);
+  yori=GetDeviceCaps(hdcpant, VERTRES);
+  hdcmem = CreateCompatibleDC(hdcpant);
+  hbm = CreateCompatibleBitmap(hdcpant,
+                     GetDeviceCaps(hdcpant, HORZRES),
+                     GetDeviceCaps(hdcpant, VERTRES));
+  hold=SelectObject(hdcmem, hbm);
+  BitBlt(hdcmem,
+         0,0,
+         xori,yori,
+         hdcpant,
+         0,0,
+         SRCCOPY);
+  SelectObject(hdcmem,hold);
+  ratio=GetDeviceCaps(hdcprinter,HORZRES)*1.0/GetDeviceCaps(hdcpant,HORZRES);
+  if (GetDeviceCaps(hdcprinter,VERTRES)*1.0/GetDeviceCaps(hdcpant,VERTRES)<ratio)
+     ratio=GetDeviceCaps(hdcprinter,VERTRES)*1.0/GetDeviceCaps(hdcpant,VERTRES);
+  xdest=(int)(ratio*GetDeviceCaps(hdcpant, HORZRES));
+  ydest=(int)(ratio*GetDeviceCaps(hdcpant, VERTRES));
+  supadre=DibFromBitmap(hbm);
+  {
+    LPBITMAPINFOHEADER lpbi;
+    LPSTR        pBuf;
+    lpbi = (VOID FAR *)GlobalLock(supadre);
+    pBuf = (LPSTR)lpbi + (WORD)lpbi->biSize + PaletteSize(lpbi);
+
+    StretchDIBits ( hdcprinter,
+                        0,0,
+                        xdest,ydest,
+                        0, 0,
+                        xori,yori,
+                        pBuf, (LPBITMAPINFO)lpbi,
+                        DIB_RGB_COLORS,
+                        SRCCOPY);
+   }
+  EndDoc(hdcprinter);
+  DeleteDC(hdcprinter);
+  DeleteDC(hdcpant);
+  DeleteObject(hbm);
+  GlobalFree(supadre);
+}
+
+static long fwm_create(HWND hwnd,CREATESTRUCT *create)
+{
+  extrawins *t;
+  long prueba;
+  char nombrebmp[MAXPATH];
+  textparams *param=(textparams *)create->lpCreateParams;
+  t = calloc(1, sizeof(extrawins));
+  prueba = (long)t;
+  SetWindowLong(hwnd, 0, prueba);
+#ifdef _M_AMD64 
+  prueba = ((size_t)t) >> 32;
+  SetWindowLong(hwnd, 4, prueba);
+#endif
+  t->lineas=param->numlin;
+  t->columnas=param->numcol;
+  t->texto=calloc(sizeof(tpixels),t->columnas*t->lineas);
+  t->colordefecto=0x11;
+  t->hdc=GetDC(hwnd);
+  t->lfo=lfo;
+  if (damenombrecompleto(V10BMP,nombrebmp)==0) {
+     t->hbitmap=LoadImage(NULL,nombrebmp,IMAGE_BITMAP,0,0,LR_LOADFROMFILE);
+     if (t->hbitmap) {
+        t->mdc=CreateCompatibleDC(t->hdc);
+        t->hbitmapold=SelectObject(t->mdc,t->hbitmap);
+      }
+   }
+  if (param->altofont) t->lfo.lfHeight=param->altofont;
+  if (param->altofont) t->lfo.lfWidth=param->anchofont;
+  if (param->font) strcpy(t->lfo.lfFaceName,param->font);
+  getwininfo(hwnd);
+  SetScrollRange(hwnd,SB_HORZ,0,0,1);
+  SetScrollRange(hwnd,SB_VERT,0,0,1);
+  creatooltip(hwnd);
+  return(TRUE);
+}
+
+static long fwm_hscroll(HWND hwnd,HWND hold,UINT code,int pos)
+{
+  extrawins *t=dameextrawin(hwnd);
+  int modif=0;
+  switch (code) {
+         case SB_BOTTOM :
+              t->origenx=0;
+              modif=1;
+              break;
+         case SB_TOP   :
+              t->origenx=t->columnas-t->posy;
+              modif=1;
+              break;
+         case SB_LINEUP:
+          	  if (t->origenx) {
+                 t->origenx--;
+                 modif=1;
+               }
+              break;
+         case SB_LINEDOWN:
+              if (t->origenx+t->posx<t->columnas) {
+                 t->origenx++;
+                 modif=1;
+               }
+               break;
+         case SB_THUMBTRACK:
+         case SB_THUMBPOSITION:
+              if (t->origenx!=pos) {
+                 t->origenx=pos;
+                 modif=1;
+               }
+               break;
+     }
+  if (modif) {
+     SetScrollPos(hwnd,SB_HORZ,t->origenx,1);
+     InvalidateRect(hwnd,NULL,0);
+   }
+  return(0);
+}
+
+static long fwm_vscroll(HWND hwnd,HWND hold,UINT code,int pos)
+{
+  extrawins *t=dameextrawin(hwnd);
+  switch (code) {
+         case SB_BOTTOM :
+              t->origeny=0;
+              break;
+         case SB_TOP   :
+              t->origeny=t->lineas-t->posy;
+              break;
+         case SB_LINEUP:
+          	  if (t->origeny) t->origeny--;
+              break;
+         case SB_LINEDOWN:
+              if (t->origeny+t->posy<t->lineas) t->origeny++;
+              break;
+         case SB_THUMBTRACK:
+         case SB_THUMBPOSITION:
+              t->origeny=pos;
+              break;
+    }
+  SetScrollPos(hwnd,SB_VERT,t->origeny,1);
+  InvalidateRect(hwnd,NULL,0);
+  return(0);
+}
+
+static long fwm_size(HWND hwnd, UINT state, int cx, int cy)
+{
+    extrawins *t = dameextrawin(hwnd);
+    int x, y, nx, ny;
+    static int level = 0;
+    DWORD estilo;
+    estilo = GetWindowLong(hwnd, GWL_STYLE);
+    if (level) return(0);
+    level++;
+    ny = y = (cy + t->altofont) / t->altofont + 1;
+    nx = x = (cx + t->anchofont) / t->anchofont + 1;
+    if (t->origenx + x >= t->columnas) {
+        t->origenx = t->columnas - x;
+        if (t->origenx<0) t->origenx = 0;
+    }
+    if (t->origeny + y >= t->lineas) {
+        t->origeny = t->lineas - y;
+        if (t->origeny<0) t->origeny = 0;
+    }
+    if (x >= t->columnas) {
+        SetScrollRange(hwnd, SB_HORZ, 0, 0, 0);
+        nx = t->columnas;
+    } else {
+        SetScrollRange(hwnd, SB_HORZ, 0, t->columnas - x, 0);
+    }
+    if (y >= t->lineas) {
+        SetScrollRange(hwnd, SB_VERT, 0, 0, 0);
+        ny = t->lineas;
+    } else {
+        SetScrollRange(hwnd, SB_VERT, 0, t->lineas - y, 0);
+    }
+    if (nx != x || ny != y) {
+        int mx, my;
+        my = ny*t->altofont + GetSystemMetrics(SM_CYCAPTION) + GetSystemMetrics(SM_CYBORDER) * 2;
+        mx = nx*t->anchofont;
+        if (nx<t->columnas) {
+            my += GetSystemMetrics(SM_CYHSCROLL);
+        }
+        if (ny<t->lineas) {
+            mx += GetSystemMetrics(SM_CXVSCROLL);
+        }
+        mx = min(mx, GetSystemMetrics(SM_CXSCREEN)) +
+            (estilo&WS_THICKFRAME ? GetSystemMetrics(SM_CXFRAME) + GetSystemMetrics(SM_CYBORDER) : estilo&(WS_BORDER | WS_THICKFRAME) ? GetSystemMetrics(SM_CYBORDER) : 0) * 2;
+        my = min(my , GetSystemMetrics(SM_CYSCREEN)) +
+            (estilo&WS_THICKFRAME ? GetSystemMetrics(SM_CYFRAME)+ GetSystemMetrics(SM_CXBORDER) : estilo&(WS_BORDER | WS_THICKFRAME) ? GetSystemMetrics(SM_CXBORDER) : 0) * 2 + DESPPAN;
+        SetWindowPos(hwnd, NULL, 0, 0, mx, my,
+                     SWP_NOMOVE | SWP_NOZORDER);
+    }
+    t->posx = nx;
+    t->posy = ny;
+    SetScrollPos(hwnd, SB_HORZ, t->origenx, 1);
+    SetScrollPos(hwnd, SB_VERT, t->origeny, 1);
+    level--;
+    return(0);
+}
+
+static long fwm_paint(HWND hwnd)
+{
+  int fil,col,pcol;
+  WCHAR buffer[MAXCADENA],*ptrbuff;
+  PAINTSTRUCT ps;
+  colventanas antcol;
+  extrawins *t=dameextrawin(hwnd);
+  BeginPaint(hwnd,&ps);
+  if (hwnd==NULL) {
+     EndPaint(hwnd,&ps);
+     return(0);
+   }
+  for (fil=t->origeny;fil<t->lineas;fil++) {
+      pcol=t->origenx;
+      antcol=t->texto[pcol+fil*t->columnas].c;
+      ptrbuff=buffer;
+      for (col=t->origenx;col<t->columnas;col++) {
+          if (antcol.tinta!=t->texto[col+fil*t->columnas].c.tinta ||antcol.papel!=t->texto[col+fil*t->columnas].c.papel ) {
+             *ptrbuff=0;
+             SetTextColor(t->hdc,antcol.tinta);
+             SetBkColor(t->hdc,antcol.papel);
+             if (memcmp(&antcol,&COLORTRANSP,sizeof(colventanas))==0) {
+                if (t->hbitmap) {
+                   BitBlt(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,(unsigned)(ptrbuff-buffer)*t->anchofont,t->altofont,t->mdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,SRCCOPY);
+                 } else {
+                   SetTextColor(t->hdc,TINTANOBMP);
+                   SetBkColor(t->hdc,PAPELNOBMP);
+                   memset(buffer,'²',(unsigned)(ptrbuff-buffer)*sizeof(*ptrbuff));
+                   TextOutW(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,buffer,(unsigned)(ptrbuff-buffer));
+                 }
+              } else {
+                TextOutW(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,buffer,(unsigned)(ptrbuff-buffer));
+              }
+             antcol=t->texto[col+fil*t->columnas].c;
+             pcol=col;
+             ptrbuff=buffer;
+           }
+          *ptrbuff++=t->texto[col+fil*t->columnas].ch;
+       }
+      SetTextColor(t->hdc,antcol.tinta);
+      SetBkColor(t->hdc,antcol.papel);
+      if (memcmp(&antcol,&COLORTRANSP,sizeof(colventanas))==0) {
+         if (t->hbitmap) {
+            BitBlt(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,
+				   (unsigned)(ptrbuff-buffer)*t->anchofont,t->altofont,t->mdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,SRCCOPY);
+          } else {
+            SetTextColor(t->hdc,TINTANOBMP);
+            SetBkColor(t->hdc,PAPELNOBMP);
+            memset(buffer,'²',(unsigned)(ptrbuff-buffer)*sizeof(*ptrbuff));
+            TextOutW(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,buffer,(unsigned)(ptrbuff-buffer));
+          }
+       } else {
+         TextOutW(t->hdc,(pcol-t->origenx)*t->anchofont,(fil-t->origeny)*t->altofont,buffer,(unsigned)(ptrbuff-buffer));
+       }
+   }
+  EndPaint(hwnd,&ps);
+  presentacursor(hwnd);
+  return(0);
+}
+
+static long fwm_syscommand(HWND hwnd,int cmd,int x,int y)
+{
+  int vertical=0;
+
+  switch (cmd) {
+     case CM_FONT:            eligefont(hwnd);
+                              return(0);
+     case CM_PRINTSCREENVER:  vertical=1;
+                              hardcopy(hwnd,vertical);
+                              return(0);
+     case CM_PRINTSCREENHOR:  hardcopy(hwnd,vertical);
+                              return(0);
+     default: FORWARD_WM_SYSCOMMAND(hwnd,cmd,x,y,DefWindowProc);
+              break;
+   }
+  return(0);
+}
+
+static long fwm_command(HWND hwnd,int id,HWND hctrl,UINT codenotify)
+{
+  if (id==0) STDencolatecla(cinse);
+  if (id==1) STDencolatecla(sinse);
+  if (id==2) STDencolatecla(copiatodo);
+  if (id-4<nteclamenu && id>2) STDencolatecla(teclamenu[id-4].tecla);
+  return(0);
+}
+
+static long fwm_getminmaxinfo(HWND hwnd,MINMAXINFO *mminfo)
+{
+  minmaxinfo(hwnd,(POINT *)mminfo);
+  return(0);
+}
+
+static long fwm_lbuttondown(HWND hwnd,BOOL doble,int x,int y,UINT flags)
+{
+  extrawins *t=dameextrawin(hwnd);
+  STDencolatecla(MOUSEPOS);
+  if (doble) mousepos.action=DOBLECLICK;
+     else    mousepos.action=CLICK;
+  mousepos.posx=x/t->anchofont+t->origenx;
+  mousepos.posy=y/t->altofont+t->origeny;
+  mousepos.hwnd=hwnd;
+  mousepos.boton=BOTONI;
+  return(0);
+}
+
+static long fwm_rbuttondown(HWND hwnd,BOOL doble,int x,int y,UINT flags)
+{
+  extrawins *t=dameextrawin(hwnd);
+  STDencolatecla(MOUSEPOSD);
+  mousepos.boton=BOTOND;
+  if (doble) mousepos.action=DOBLECLICK;
+     else    mousepos.action=CLICK;
+  mousepos.posx=x/t->anchofont+t->origenx;
+  mousepos.posy=y/t->altofont+t->origeny;
+  mousepos.hwnd=hwnd;
+  return(0);
+}
+
+static long fwm_mbuttondown(HWND hwnd,BOOL doble,int x,int y,UINT flags)
+{
+  extrawins *t=dameextrawin(hwnd);
+  STDencolatecla(MOUSEPOSM);
+  mousepos.boton=BOTONM;
+  if (doble) mousepos.action=DOBLECLICK;
+     else    mousepos.action=CLICK;
+  mousepos.posx=x/t->anchofont+t->origenx;
+  mousepos.posy=y/t->altofont+t->origeny;
+  mousepos.hwnd=hwnd;
+  return(0);
+}
+
+static long fwm_mousemove(HWND hwnd,int x,int y,UINT flags)
+{
+	extrawins *t=dameextrawin(hwnd);
+	if ((flags&MK_LBUTTON)==0) {
+        mueveratontooltip(hwnd,x,y);
+		return(0);
+	}
+	STDencolatecla(MUEVERATON);
+	mousepos.boton=BOTONI;
+	mousepos.action=CLICK;
+	mousepos.posx=x/t->anchofont+t->origenx;
+	mousepos.posy=y/t->altofont+t->origeny;
+	mousepos.hwnd=hwnd;
+	return(0);
+}
+
+
+long CALLBACK textproc(HWND hwnd,UINT message,WPARAM wParam,
+							LPARAM lParam)
+{
+  extrawins *t=dameextrawin(hwnd);
+  long ret;
+	switch ( message ) {
+      HANDLE_MSG(hwnd,WM_CREATE,fwm_create);
+      HANDLE_MSG(hwnd,WM_GETMINMAXINFO,fwm_getminmaxinfo);
+      HANDLE_MSG(hwnd,WM_SIZE,fwm_size);
+      HANDLE_MSG(hwnd,WM_PAINT,fwm_paint);
+      HANDLE_MSG(hwnd,WM_VSCROLL,fwm_vscroll);
+      HANDLE_MSG(hwnd,WM_HSCROLL,fwm_hscroll);
+      HANDLE_MSG(hwnd,WM_COMMAND,fwm_command);
+      HANDLE_MSG(hwnd,WM_SYSCOMMAND,fwm_syscommand);
+      HANDLE_MSG(hwnd,WM_MOUSEMOVE,fwm_mousemove);
+      HANDLE_MSG(hwnd,WM_LBUTTONDOWN,fwm_lbuttondown);
+      HANDLE_MSG(hwnd,WM_RBUTTONDOWN,fwm_rbuttondown);
+      HANDLE_MSG(hwnd,WM_MBUTTONDOWN,fwm_mbuttondown);
+      HANDLE_MSG(hwnd,WM_LBUTTONDBLCLK,fwm_lbuttondown);
+      HANDLE_MSG(hwnd,WM_RBUTTONDBLCLK,fwm_rbuttondown);
+      HANDLE_MSG(hwnd, WM_MBUTTONDBLCLK, fwm_mbuttondown);
+      case WM_MOUSEWHEEL:ret = GET_WHEEL_DELTA_WPARAM(wParam);
+          if (ret >= 120) encolatecla(cuu);
+          if (ret <= -120) encolatecla(cua);
+          break;
+      case WM_SETFOCUS:wset_cursor(hwnd,t->modocursor);
+             return(0);
+      case WM_KILLFOCUS:
+             HideCaret(hwnd);
+             DestroyCaret();
+             return(0);
+      case WM_ERASEBKGND:return(0);
+      case WM_NCHITTEST:break;
+		default:
+			v10limpiatooltip(hwnd);
+			break;
+      case WM_QUERYENDSESSION:exit(0);
+      case WM_CLOSE:exit(0);
+      case WM_DESTROY:if (t->hbitmap) DeleteObject(SelectObject(t->mdc,t->hbitmapold));
+                      if (t->mdc) DeleteDC(t->mdc);
+                      DeleteObject(SelectObject(t->hdc,t->hfontold));
+                      free(t->texto);
+                      free(t);
+                      destruyetooltip(hwnd); 
+                      if (hwnd==hwnddefecto) {
+                         hwnddefecto=NULL;
+                         PostQuitMessage(0);
+                       }
+                      return(0);
+	}
+  ret=(long)DefWindowProc(hwnd,message,wParam,lParam) ;
+  return(ret);
+}
+
+static void initapp(HINSTANCE hinst)
+{
+  WNDCLASSEX	wc;
+  wc.cbSize=sizeof(WNDCLASSEX);
+  wc.style           = CS_HREDRAW | CS_VREDRAW | CS_OWNDC | CS_DBLCLKS;
+  wc.lpfnWndProc     = (WNDPROC)textproc;
+  wc.cbClsExtra      = 0;
+  wc.cbWndExtra      = 10*sizeof(void *);
+  wc.hInstance       = hinst;
+  wc.hIcon           = LoadIcon(hinst,MAKEINTRESOURCE(NUMEROICONO));
+  wc.hIconSm        =  LoadIcon(hinst, MAKEINTRESOURCE(NUMEROICONO));
+  wc.hCursor         = LoadCursor(NULL,IDC_ARROW);
+  wc.hbrBackground   = GetStockObject(WHITE_BRUSH);
+  wc.lpszMenuName    =NULL;
+  wc.lpszClassName   ="V10TEXTO";
+  RegisterClassEx(&wc);
+}
+
+
+HWND initprgex(HINSTANCE hinst,int cmdshow,char *titulo,int posx,int posy,
+             int tamx,int tamy,
+             int numcol,int numlin,DWORD estilo,DWORD estiloex,HWND padre,
+             int anchofont,int altofont,char *font)
+{
+  HWND hmain=NULL;
+  HMENU hmenu;
+  textparams t;
+  t.numcol=numcol;
+  t.numlin=numlin;
+  t.altofont=altofont;
+  t.anchofont=anchofont;
+  t.font=font;
+  if (tamx==0) tamx=GetSystemMetrics(SM_CXSCREEN);
+  tamx+=(estilo&WS_THICKFRAME?GetSystemMetrics(SM_CXFRAME):estilo&WS_BORDER?GetSystemMetrics(SM_CXBORDER):0) * 2;
+  if (tamy==0) tamy=GetSystemMetrics(SM_CYSCREEN);
+  tamy+=GetSystemMetrics(SM_CYCAPTION)+
+   (estilo&WS_THICKFRAME?GetSystemMetrics(SM_CYFRAME):estilo&WS_BORDER?GetSystemMetrics(SM_CYBORDER):0) * 2;
+  hmain  = CreateWindowEx(estiloex,"V10TEXTO",
+                        titulo,
+                        estilo,
+                        posx,
+                        posy,
+                        tamx,
+                        tamy,
+                        padre,
+                        NULL,
+                        hinst,
+                        &t );
+  hmenu=GetSystemMenu(hmain,0);
+  AppendMenu(hmenu,MF_STRING,CM_FONT,"F&ont");
+  AppendMenu(hmenu,MF_STRING,CM_PRINTSCREENVER,"&Impr. Pantalla Vertical");
+  AppendMenu(hmenu,MF_STRING,CM_PRINTSCREENHOR,"&Impr. Pantalla Horizontal");
+  if (menucerrar==0) EnableMenuItem(hmenu,SC_CLOSE,MF_BYCOMMAND|MF_GRAYED);
+     else            ModifyMenu(hmenu,SC_CLOSE,MF_BYCOMMAND|MF_STRING,SC_CLOSE,"Cerrar");
+  if ( hmain == NULL )
+     return(FALSE);
+  ShowWindow(hmain,cmdshow);
+  InvalidateRect(hmain,NULL,FALSE);
+  UpdateWindow(hmain);
+  return(hmain);
+}
+
+HWND initprg(HINSTANCE hinst,int cmdshow,char *titulo,int posx,int posy,
+             int tamx,int tamy,
+             int numcol,int numlin,DWORD estilo,HWND padre,
+             int anchofont,int altofont,char *font)
+{
+  return(initprgex(hinst,cmdshow,titulo,posx,posy,tamx,tamy,numcol,numlin,
+                   estilo,0,padre,anchofont,altofont,font));
+}
+
+static void finapptxt(void)
+{
+  if (hwnddefecto) {
+     SendMessage(hwnddefecto,WM_DESTROY,0,0);
+   }
+}
+
+void initapptxt(HINSTANCE hinst, HINSTANCE hprev,int cmdshow,char *titulo,
+                int posx,int posy,int tamx,int tamy,int numcol,int numlin,
+                DWORD estilo,DWORD estiloex,HWND padre,int anchofont,int altofont,
+                char *nombrefont)
+{
+  if (hprev==NULL) {
+      initapp(hinst);
+    }
+  hwnddefecto=initprgex(hinst,cmdshow,titulo,posx,posy,tamx,tamy,numcol,numlin,
+                     estilo,estiloex,padre,anchofont,altofont,nombrefont);
+  atexit(finapptxt);
+}
+
+void initv10lib(HINSTANCE hinst,HINSTANCE hprev)
+{
+    v10hinst=hinst;
+    v10hprev=hprev;
+#undef atexit
+    atexit(ejecutaexit);
+    trataparamstd(__argc,__argv,trataparampremain,NULL);
+    initapptxt(hinst,hprev,MODOSHOW,TITULOVENTANA,CW_USEDEFAULT,CW_USEDEFAULT,
+        0,0,COLUMNASPANTALLA,LINEASPANTALLA,ESTILOV10,0,NULL,0,0,NULL);
+}
+
+

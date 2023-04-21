@@ -1,0 +1,46 @@
+###################################################################
+#MOdulo: VDSERIEPREP2.PAN
+#Funcionalidad : Mantenimiento de series de preparación
+#Autor: FGS
+#Fecha: 03-09-2008
+###################################################################
+# HistOrico de cambios:
+VAGUE
+
+ Gares:
+ _1000_____________________________________
+ Creé:      _32_____ ¿D-MM-Y.YY ________
+ Debut:     _32_____ ¿D-MM-Y.YY ________
+ Clôturé:   _32_____ ¿D-MM-Y.YY ________
+ Finis:              ¿D-MM-Y.YY ________
+
+ Dérniere mod.: _32_____ ¿D-MM-Y.YY ________
+
+|
+
+TABLA=VDSERIEPREP
+
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR EN CSELMODIF")
+
+
+CAMPO=CODSERIEPREP,VIRTUAL,OCULTO
+CAMPO=RANGOZONASPICKINV,TOOLTIP("Rango de Zonas de Pciking Inverso donde se prepara, si es de picking inverso")
+CAMPO=CODOPECREADA,NOENTER,TOOLTIP("Operario que creO la serie")
+CAMPO=FECCREADA,NOENTER,TOOLTIP("Fecha de creación de la serie de preparación")
+CAMPO=HORACREADA,NOENTER,TOOLTIP("Hora de creación de la serie de preparación")
+CAMPO=CODOPELANZA,NOENTER,TOOLTIP("Operario que lanzO la serie")
+CAMPO=FECLANZA,NOENTER,TOOLTIP("Fecha de lanzamiento de la serie de preparación")
+CAMPO=HORALANZA,NOENTER,TOOLTIP("Hora de lanzamiento de la serie de preparación")
+CAMPO=CODOPECIERRE,NOENTER
+CAMPO=FECCIERRE,NOENTER,TOOLTIP("Fecha de lanzamiento de la serie de preparación")
+CAMPO=HORACIERRE,NOENTER,TOOLTIP("Hora de lanzamiento de la serie de preparación")
+CAMPO=FECTERMIN,NOENTER,TOOLTIP("Fecha de finalización de la serie de preparación")
+CAMPO=HORATERMIN,NOENTER,TOOLTIP("Hora de finalización de la serie de preparación")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizO la última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Es la fecha  en que se efectuO alguna modificación a los datos del registro.")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Es la hora  en que se efectuO alguna modificación a los datos del registro.")
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF, VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CDESSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE STATUS=:STATUS AND TIPOSTATUS='SPR';
+

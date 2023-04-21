@@ -1,0 +1,37 @@
+#***
+# VDARTICULO.DEF - Generación automática del código c SOLOQUERY para querys sobre la tabla de artículos
+# 
+# Propósito: idem.
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 15-04-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=ARTICULO;
+
+EXTRA=RETEST,V10CADENA,8;
+EXTRA=SOLOSTOCK,V10CADENA,1;
+EXTRA=MSJERROR,V10CADENA,1024;
+EXTRA=RET,V10LONG;
+EXTRA=COMENMOV,V10CADENA,1
+
+
+
+
+CURSOR=DAMERETEST,SELECT TO_CHAR((CASE WHEN UNIRETEST ='M' THEN 
+                                            ADD_MONTHS(TO_DATE(:VDLOTES.CADUCI, 'YYYYMMDD'), -1*TRETEST) 
+                                       WHEN UNIRETEST = 'D' THEN 
+                                            TO_DATE(:VDLOTES.CADUCI, 'YYYYMMDD') - TRETEST 
+                                  END), 'YYYYMMDD') RETEST 
+                    FROM VDARTIC 
+                   WHERE CODART = :VDARTIC.CODART;
+                   
+PROCEDURE=NUEVOBLOQLOTE,BEGIN
+														VDART.NUEVOBLOQLOTE(:VDLOTES.CODART,:VDLOTES.CODLOT,:VDLOTES.BLOQLOTE,:SOLOSTOCK,:MSJERROR,:RET);
+											 END;@                   
+
+PROCEDURE=TRATALOTESHIST,BEGIN
+						               VDART.TRATALOTESHIST(:VDLOTESHIST.SEQ, :COMENMOV);														
+											  END;@   

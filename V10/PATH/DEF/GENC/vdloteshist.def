@@ -1,0 +1,20 @@
+# M¢dulo : VDLOTESHIST.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDLOTESHIST
+#                        
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 2-07-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=LOH
+
+EXTRA=COMENLOH,V10CADENA,1024
+
+RECORRE=STATUS,STATUS
+
+UPDATE=TRATADO, STATUS,FECFIN,HORAFIN,MODULOFIN,ACCIONFIN;
+
+LOCK

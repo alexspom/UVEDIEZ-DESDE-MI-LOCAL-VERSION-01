@@ -1,0 +1,13 @@
+#***
+# VDSCANMIRROR.DEF - Generación automática del código c para la tabla de Escaners Espejo
+#                        
+# Propósito: Funciones de acceso a la tabla VDSCANMIRROR
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 22-02-2010
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=SCM
+RECORRE=SCMAESTROS,REDSCANM,SCANNERM;WHERE=ACTIVO='S';ORDERBY=ORDEN;

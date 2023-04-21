@@ -1,0 +1,275 @@
+#include "v10wwwform.h"
+
+static int *antenter=NULL;
+
+//extern forms *formglobal;
+
+
+forms *v10dameformactual(void)	
+{
+	return(formglobal);
+}
+
+bloques *v10damebloqueactual(void)	
+{
+	if (!formglobal) return(NULL);
+	return(formglobal->b[formglobal->act]);
+}
+
+int v10damenumbloque(bloques *b)	
+{
+	int i;
+	for (i=0;i<formglobal->nbloques;i++) 
+		if (b==formglobal->b[i]) return(i);
+	return(0);
+}
+
+int v10nbcampoactivo(bloques *b)
+{
+	//  v10inputs *v1;
+	int ret=-1,i=-1;
+	do {
+		i++;
+		if ((b->c+i)->v) ret++;
+	} while (b->vi.act!=(b->c+i)->v);	
+	return(ret);
+}
+
+
+fcampos *v10campoactual(bloques *b) 
+{
+	int nc;
+	for (nc=0;nc<b->ncamp;nc++) 
+		if (b->vi.act==b->c[nc].v)  return(b->c+nc);  
+	return(NULL);
+}
+
+
+static fcampos *v10ponencampo(bloques *b) 
+{
+	int nc;
+	fcampos *c=v10evdamecampo(b,NULL);
+	if ((c!=NULL && c->v->enter) || v10camposnoenter(&b->vi)) 	return(c);
+	if (v10evfilasidem(b,NULL)) return(v10campoactual(b));
+	for (nc=0;nc<b->ncamp;nc++) {
+		if (b->c[nc].v==b->vi.act && b->c[nc].v->enter) return(b->c+nc);
+	}
+	for (nc=0;nc<b->ncamp;nc++) {
+		if (b->c[nc].oculto) continue;
+		if (b->c[nc].v->enter) return (b->c+nc);
+	}	
+	return(NULL);	
+}
+
+
+static int v10wwwreposicionavraton(bloques *b) 
+{ 
+	fcampos *c_ev;
+	c_ev=v10ponencampo(b);	
+	if (c_ev)  b->vi.act=c_ev->v;
+	return(MOUSEPOS);
+}
+
+static int v10wwwreposicionaclinraton(bloques *b) 
+{ 
+	int fila=v10evdamefila(NULL);
+	if (v10evfilasidem(b,NULL))	return(0);
+	else {
+		grabaregistro(b,b->s->clin);
+		b->s->clin=(b->s->plin+fila);
+		if (b->s->clin>0) b->s->clin--;
+		leeregistroi(b,b->s->clin);
+		return(MOUSEPOS);
+	}
+}
+
+int v10wwwreposicionadialograton(v10dialogs *v)
+{ 
+	bloques *b=v10damebloqueactual(),*b_ev;
+	b_ev=v10evdamebloque(NULL);
+	if (b!=b_ev) {
+		if (b->enterquery) return(0);
+		else return(MOUSEPOS);
+	}
+	if (v10evtipo(NULL)==EVBLOQUE)	return(0);
+	return(v10wwwreposicionavraton(b_ev));
+}
+
+int v10wwwreposicionaregraton(v10dialogs *v)
+{ 
+	bloques *b=v10damebloqueactual(),*b_ev;
+	b_ev=v10evdamebloque(NULL);
+	if (b!=b_ev) return(MOUSEPOS);
+	return(v10wwwreposicionaclinraton(b_ev));
+}
+
+int v10wwwreposicionaraton(virtsels *s)
+{ 
+	bloques *b=v10damebloqueactual(),*b_ev;
+	b_ev=v10evdamebloque(NULL);
+	if (b!=b_ev)  return(MOUSEPOS);
+	else return(0);
+}
+
+int semueveelraton(bloques *b)
+{
+	bloques *b_ev = v10evdamebloque(NULL);
+	fcampos *c;
+	if (b_ev != b) return 3;
+	if (v10evfilasidem(b, NULL)==0)	return(2);
+	c = v10evdamecampo(b, NULL);
+	if (c == NULL) return 1;
+	if (c->v != b->vi.act) return 1;
+	return 0;
+}
+
+int v10wwwreposratonform(forms *f) 
+{ 
+	bloques *b_ev; 
+	b_ev=v10evdamebloque(NULL);
+	if (v10evtipo(NULL)!=EVBLOQUE) {	 
+		memset(evactual.evento,0,sizeof(evactual.evento));
+		strcpy(evactual.evento,"reposiciona");
+		v10evencolaevento(&evactual);
+	}
+	leeregistroi(b_ev,b_ev->s->clin); 
+	return(v10damenumbloque(b_ev)); 
+}
+
+
+void v10guardatodosenter(bloques *b) {
+	int i;
+	v10inputs *v;
+	for (v=b->vi.prim;v<b->vi.ult;v++) {
+		fcampos *c=v->trigerdatos;
+		if (!b->enterquery && (c->noupdate || (b->noupdate && c->tabla))) {
+			if (CABECERA(b)->antiguo) v->enter=0;
+			else v->enter=c->enter;
+		}
+	}
+	if (b->enterquery) {  
+		antenter=calloc(b->ncamp,sizeof(int));
+		for (i=0;i<b->ncamp;i++) {
+			if (b->c[i].v) {
+				antenter[i]=b->c[i].v->enter;
+				if (b->c[i].tabla || b->c[i].where) b->c[i].v->enter=1;
+				else  b->c[i].v->enter=0;
+			}
+		}
+	} else antenter=NULL;
+}
+
+
+
+static int v10evprevio(v10dialogs *v)
+{
+	int ret=0;
+	v10inputs *v1=v->act; 
+	if (v1==0L) final(("Input sobre NULL"));
+	if (v10camposnoenter(v)) return(0);
+	while (v1->enter==0 || v1->invisible) {
+		if (v1==v->ult) {v->act=v->prim;return(-1);}
+		else { v->act=v1+1; return(-1); }
+	}
+	if (!(v1->enter==0 || v1->invisible))  v->act=v1;
+	return(ret);
+}
+
+
+int v10evposterior(v10dialogs *v,int ret)
+{
+	v10inputs *v1=v->act;
+	if (v1->modif) v->modificado=0;
+	v->marco=0;
+	v->ultinp=v1;
+	switch(ret) {
+		case cuu: {
+            if ((v1->triger==0L)||(v1->vtriger)) {
+				if (v1!=v->prim) v->act=v1-1;
+				else v->act=v->ult;
+            }
+				break;
+				  }
+
+		case stab: {
+			int inicioreg=0;
+			do {
+				if (v10camposnoenter(v)) return(0);
+				if (v->act>v->prim) v->act=v->act-1;
+				else {
+					if (ret==cuu && v1==v->prim+1) inicioreg=1;
+					else 
+						if (formglobal->b[formglobal->act]->regpag==1) v->act=v->ult;
+						else {
+							v->act=v->ult-1;
+							ret=cuu;
+						}				     
+				}
+				v1=v->act;
+				if (ret==cuu && inicioreg==0) v1=v->act+1;
+			} while (v1->enter==0 || v1->invisible);
+			break;
+				   }
+
+		case cua: {
+            if ((v1->triger==0L)||(v1->vtriger)) {
+				if (v1!=v->ult) v->act=v1+1;
+				else v->act=v->prim;
+            }
+				break;
+				  }
+
+		case tab:
+		case  cr: {
+			int finreg=0;
+            if ((v->act->triger==NULL)||(v->act->vtriger)) {
+				do {
+                    if (v10camposnoenter(v)) {
+						if (ret==cr && eszoom) return(cr);
+						else return(0);
+                    }
+						if (v->act!=v->ult) v->act=v->act+1;
+						else {
+							if (ret==cua && v1==v->ult-1) finreg=1;
+							else {
+								if (formglobal->b[formglobal->act]->regpag==1) 	v->act=v->prim;
+								else {
+									v->act=v->prim+1;
+									ret=cua;
+								}
+							}
+						}
+						v1=v->act;
+						if (ret==cua && finreg==0) v1=v->act-1;
+				} while (v1->enter==0 || v1->invisible);
+            }
+			break;
+				  }
+
+		case esc: {
+			v->salir=1;
+			break;
+				  }
+
+		case MOUSEPOS: {
+			ret=v10wwwreposicionadialograton(v);
+			v->salir=1;
+			break;
+					   }
+	}
+
+	return(ret);
+}
+
+
+
+int v10wwwblinput(v10dialogs *vi) 
+{
+	int ret;
+	bloques *b=v10damebloqueactual();
+	ret=v10evprevio(vi);
+	if (ret) return(ret);
+	actualizabloque(b);
+	ret=v10htmlevento(vi);
+	return(ret);
+}

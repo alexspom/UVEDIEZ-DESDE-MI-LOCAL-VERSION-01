@@ -1,0 +1,6 @@
+
+CURSOR=VALIDAR_ORDEN_PRODUCCION BEGIN
+                                    VDLOG.PONMENSAJE('VALIDAR_ORDEN_PRODUCCION', 'INICIO DE LA VALIDACION DE ORDENES');
+                                    VDKITS.VALIDARORDENES;
+                                END;@   
+          

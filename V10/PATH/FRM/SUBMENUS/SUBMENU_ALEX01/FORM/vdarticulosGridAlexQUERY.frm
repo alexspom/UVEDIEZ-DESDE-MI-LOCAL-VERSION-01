@@ -1,0 +1,5 @@
+BEGINBLOQUE = vdarticulosgridAlexConSoloQuery.PAN
+	POSX=1
+	POSY=1
+	REGPAG=10
+ENDBLOQUE

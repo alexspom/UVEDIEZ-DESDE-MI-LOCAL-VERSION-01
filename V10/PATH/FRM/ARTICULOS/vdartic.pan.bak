@@ -1,0 +1,221 @@
+# MOdulo   : VDARTIC.PAN
+# Función  : Mantenimiento de artículos
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# HistOrico de cambios:
+MANTENIMIENTO DE ARTICULOS
+ Código _20____________________ ________________________________________
+
+ División ____   _40______________________________ Artículo para División ____________________
+ ISBN     _____________ Ean ______________ Descripción alt. _40____________________________
+
+   Unidades __________     Unidades Host  __________      Decimales: @
+   Anulado _   Genérico _  Stock _   Orden salida _   Traza bulto _ Etiqueta _ Agrupa stock _
+ ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ENCAJADO ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄË
+ ³ Uni/caja: #L15#####.###    Cajas/palet: @L5@           Cajas/piso: @L@@      Cajas por Cubeta: @L@  ³
+ ³ Caja defecto __________    Palet defecto __________    Caja completa: Tipo _________ Pesar _        ³
+ ³ Largo @L,@@ mm. Ancho @L,@@ mm. Alto @L,@@ mm. Peso:Llena #L,######.### gr. Vacia #L,######.### gr. ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ VOLUMETRIA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄË
+ ³Tipo Vol __________  Tipo Verif Ciega _    Porc. a verificar @L@ %  Margen peso #L#.# % Tumbable: _ ³
+ ³               Largo @L,@@ mm. Ancho @L,@@ mm. Alto @L,@@ mm. Peso #L,######.### gr. Coeficiente @L@³
+ ³Uni/paq: @L,@@ Largo @L,@@ mm. Ancho @L,@@ mm. Alto @L,@@ mm. Peso #L,######.### gr. Coeficiente @L@³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ PEDIDOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄË
+ ³ Pedir en múltiplos de: @L,@@@  Ajustar _  ³
+ ³ Mínimo pendiente    @L,@@@                ³
+ ³ Máximo en unidades: @L@@@                 ³
+ ³ Mínimo palet:       @L,@@@                ³
+ ³ Picking Inverso: _         NumeroSerie _  ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ Familia _40__________________________________________________________________
+ Linea   _40__________________________________________________________________
+         _40__________________________________________________________________
+         _40__________________________________________________________________
+         _40__________________________________________________________________
+ Tipo    _40__________________________________________________________________
+         Activo _     Comentario @L@@@@@@@    Ultima modificación _32________ ¿D-MM-Y.YY  ________
+|
+
+TABLA=VDARTIC
+INCLUDEHTML="articulos.html"
+
+SELECT=VDCOM.DAMECOMEN(CODCOMEN,'FAMILIA',1) FAMILIA,VDCOM.DAMECOMEN(CODCOMEN,'LINEA',1) LINEA1,VDCOM.DAMECOMEN(CODCOMEN,'LINEA',2) LINEA2,
+       VDCOM.DAMECOMEN(CODCOMEN,'LINEA',3) LINEA3,VDCOM.DAMECOMEN(CODCOMEN,'LINEA',4) LINEA4,
+       VDCOM.DAMECOMEN(CODCOMEN,'TIPOART',1) TIPOART;
+POSTQUERY=FEJECUTA("CPONPESOCAJC","")
+PREINSERT=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+PREUPDATE=FEJECUTA("CDAMEPESOCAJC","",
+                    "CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+
+
+
+CAMPO=IMAGEN,OCULTO,AUXILIAR,"_255_____",NOUPDATE
+CAMPO=IMAGEN2,OCULTO,AUXILIAR,"_255_____",NOUPDATE
+CAMPO=CODART,NOUPDATE,TOOLTIP("Código del artículo")
+CAMPO=DESART,TOOLTIP("Designación del artículo")
+CAMPO=CODDIV,TOOLTIP("DivisiOn a la que pertenece el artículo"),POSTCHANGE=FDESIGNACION("CSELDIVIS","No existe divisiOn"),
+                CONTEXTUAL=FEJECUTAFORM("VDSELDIVIS","N","","","CODDIV=:CODDIV","Selección de divisiOn","S"),
+                COMBOX("CLISTADIV"),WLONX=10
+CAMPO=DESDIV,AUXILIAR,NOENTER,TOOLTIP("Designación de la divisiOn")
+CAMPO=CODARTDIV,TOOLTIP("Código del artículo para la divisiOn")
+CAMPO=CODNAC,TOOLTIP("Código nacional")
+CAMPO=CODEAN,TOOLTIP("Código EAN DUN14")
+#,INCLUDECSS="background-color:darkgreen;color:yellow;height:20px"
+CAMPO=DESARTALT,TOOLTIP("Designación alternativa del artículo")
+CAMPO=UNIDADES,TOOLTIP("Unidades en las que se mide el artículo en V10"),POSTCHANGE=FDESIGNACION("CSELUNIDADES","No existen las unidades V10"),
+               CONTEXTUAL=FEJECUTAFORM("VDUNIDADES","N","","","UNIDADES=:UNIDAD","Selección de unidades","S"),
+               COMBOX("CLISTAUNIDADES")
+CAMPO=UNIDADESHOST,TOOLTIP("Unidades en las que mide el artículo el Host"),POSTCHANGE=FDESIGNACION("CSELUNIDADESHOST","No existen las unidades Host"),
+               CONTEXTUAL=FEJECUTAFORM("VDUNIDADES","N","","","UNIDADESHOST=:UNIDAD","Selección de unidades","S"),
+               COMBOX("CLISTAUNIDADESHOST")
+CAMPO=DECIMALES,TOOLTIP("Numero de decimales en la representación de cantidades")
+#,ESTILOCSS="prueba"
+CAMPO=SWTANULADO,TOOLTIP("Indica si el producto tiene preanulado el precio"),POSTCHANGE=FENRANGO("S,N,I","Debe introducir S(i) o N(o)o I(ndiferente)"),COMBOX("S","N","I")
+CAMPO=SWTGENERICO,TOOLTIP("Indica si el producto debe tomar designacion de comentarios en albaranes"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=SWTSTOCK,TOOLTIP("Indica si el producto controla stock"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=ORDENSAL,TOOLTIP("Orden de salida del articulo C(aducidad) F(ifo) R(etest) L(ote)"),POSTCHANGE=FVERIFICA("CFRL","Debe introducir C(aducidad) F(ifo) R(etest) L(ote)"),COMBOX("C","F","R","L")
+CAMPO=TRAZABULTO,TOOLTIP("Indica si el artículo precisa trazabilidad de bulto"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=SWTETIQ,TOOLTIP("Indica si se puede leer la etiqueta del producto"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=AGRUPALIN,TOOLTIP("Indica si la ubicación ha de agrupar las lineas con las mismas caracteristicas"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=UNIEMB,TOOLTIP("Unidades por embalaje"),CONVIERTE=FCONVIERTEFROMDB(":UNIDADES",":UNIDADESHOST");FCONVIERTE2DB(":UNIDADESHOST",":UNIDADES")
+CAMPO=EMBCONT,TOOLTIP("Embalajes por contenedor")
+CAMPO=EMBPISO,TOOLTIP("Embalajes por piso de paletización"),POSTCHANGE=FENRANGO("0-:EMBCONT","Debe introducir un número en el rango 0-:EMBCONT")
+CAMPO=CAJACUBETA,TOOLTIP("Número de embalajes que caben en una cubeta")
+CAMPO=TIPOEMBADEF,TOOLTIP("Tipo de embalaje por defecto"),POSTCHANGE=FDESIGNACION("CSELEMBADEF","No existe embalaje por defecto"),
+               CONTEXTUAL=FEJECUTAFORM("VDTIPOEMBA","N","","","TIPOEMBADEF=:TIPOEMBA","Selección de tipo de embalaje","S"),
+               COMBOX("CLISTAEMBA")
+CAMPO=TIPOCONTEDEF,TOOLTIP("Tipo de contenedor por defecto"),POSTCHANGE=FDESIGNACION("CSELCONTEDEF","No existe contenedor por defecto"),
+               CONTEXTUAL=FEJECUTAFORM("VDTIPOCONTE","N","","","TIPOCONTEDEF=:TIPOCONTE","Selección de tipo de contenedor","S"),
+               COMBOX("CLISTACONTE")
+CAMPO=TIPOCAJC,TOOLTIP("Tipo de caja completa"),POSTCHANGE=FDESIGNACION("CSELTIPOCAJC","No existe volumetría"),
+               CONTEXTUAL=FEJECUTAFORM("VDLISTACOMPLETAS","N","","TIPOVOL='COMPLETA'","TIPOCAJC=:TIPOCAJA","Selección de caja","S"),
+               COMBOX("CLISTATIPOCAJC")
+CAMPO=SWTPESACAJA,TOOLTIP("Indica si se han de pesar cajas completas en las instalación"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=LARGOCAJC,TOOLTIP("Longitud de la caja completa en mm.")
+CAMPO=ANCHOCAJC,TOOLTIP("Ancho de la caja completa en mm.")
+CAMPO=ALTOCAJC,TOOLTIP("Alto de la caja completa en mm.")
+CAMPO=PESOCAJCLLENA,AUXILIAR,TOOLTIP("Peso de la caja completa llena en gr."),POSTCHANGE=FDESIGNACION("-CPESOCAJCNEG","PESO DE CAJA VACIA MENOR QUE 0",
+                                                                                                      "+CPESOCAJC","")
+CAMPO=PESOCAJCAUX,AUXILIAR,TOOLTIP("Peso de la caja completa vacia en gr."),POSTCHANGE=FDESIGNACION("CPESOCAJCLLENA","ERROR CALCULANDO PESO DE CAJA LLENA")
+CAMPO=PESOCAJC,OCULTO,"#L,######.###"
+
+CAMPO=TIPOVOL,TOOLTIP("Código de la volumetría asociada al articulo"),POSTCHANGE=FDESIGNACION("CSELTIPOVOL","No existe volumetría"),
+               CONTEXTUAL=FEJECUTAFORM("VDVOLUMETRIA","N","","","TIPOVOL=:TIPOVOL","Selección de volumetría","S"),
+               COMBOX("CLISTATIPOVOL")
+CAMPO=TIPOVERIFCIEGA,TOOLTIP("Tipo de verificación ciega que se hará con este artículo:\n(C)iega: la pantalla no muestra nada referente a este artículo\n(S)emiciega: la pantalla muestra el artículo pero no la cantidad\n(N)ula: la pantalla lo muestra todo"),COMBOX("CTIPOVERIFCIEGA")
+CAMPO=TPCVERIF,TOOLTIP("Porcentaje de bultos con el producto que han de pasar por verificación"),POSTCHANGE=FENRANGO("0-100","Debe introducir un numero entre 0 y 100")
+CAMPO=TPCMARGENPESO,TOOLTIP("Porcentaje (TantoPorCiento) de Margen de error en bascula"),POSTCHANGE=FENRANGO("0-100","Debe introducir un numero entre 0 y 100")
+CAMPO=SWTTUMBABLE,TOOLTIP("Indica si el producto se considera tumbable en la volumetria"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=LARGOUNI,TOOLTIP("Largo de la unidad en mm.")
+CAMPO=ANCHOUNI,TOOLTIP("Ancho de la unidad en mm.")
+CAMPO=ALTOUNI,TOOLTIP("Alto de la unidad en mm.")
+CAMPO=PESOUNI,TOOLTIP("Peso de la unidad en gramos")
+CAMPO=COEFUNI,TOOLTIP("Coeficiente de volumetría"),POSTCHANGE=FENRANGO("0-100","Debe introducir un numero entre 0 y 100")
+CAMPO=UNIPAQ,TOOLTIP("Unidades por paquete")
+CAMPO=LARGOPAQ,TOOLTIP("Largo del paquete en mm.")
+CAMPO=ANCHOPAQ,TOOLTIP("Ancho del paquete en mm.")
+CAMPO=ALTOPAQ,TOOLTIP("Alto del paquete en mm.")
+CAMPO=PESOPAQ,TOOLTIP("Peso del paquete en gramos")
+CAMPO=COEFPAQ,TOOLTIP("Coeficiente de ajuste de volumetría del paquete"),POSTCHANGE=FENRANGO("0-100","Debe introducir un numero entre 0 y 100")
+CAMPO=SWTANALISIS,TOOLTIP("Indica si el producto esta sujeto a analisis en entradas"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S"),OCULTO,"_"
+CAMPO=SWTLOTE,TOOLTIP("Indica si el producto controla lote"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S"),OCULTO,"_"
+CAMPO=TCADUC,TOOLTIP("Fecha de caducidad a partir de la actual al crear un nuevo lote automatico"),OCULTO,"¿D-MM-Y.YY"
+CAMPO=UNICADUC,TOOLTIP("Unidades en las que se mide el tiempo de caducidad puede ser D(ias) o M(eses)"),
+               POSTCHANGE=FENRANGO("D,M","Debe introducir D(ias) o M(eses)"),COMBOX("M","D"),OCULTO,"_"
+CAMPO=MUESTROTECA,TOOLTIP("Area donde se llevarán las muestras"),OCULTO,"_10"
+CAMPO=FORMATOLOTE,TOOLTIP("Formato de lote generado automaticamente puede ser U(nico) E(ntrada) A(ño) M(es)"),
+               POSTCHANGE=FVERIFICA("UEAM ","Debe introducir U(nico) E(ntrada) A(ño) M(es) o blanco"),COMBOX("U","E","A","M"," "),OCULTO,"_"
+CAMPO=TRETEST,TOOLTIP("Fecha de retest al crear un nuevo lote automatico"),OCULTO,"@L@"
+CAMPO=UNIRETEST,TOOLTIP("Unidades en las que se mide el tiempo de retest puede ser D(ias) o M(eses)"),
+               POSTCHANGE=FENRANGO("D,M","Debe introducir D(ias) o M(eses)"),COMBOX("M","D"),OCULTO,"_"
+CAMPO=NUMMUESTRAS,TOOLTIP("Unidades a muestrear"),OCULTO,"@"
+CAMPO=TAVISA,TOOLTIP("Fecha de aviso antes de que un producto entre en retest"),OCULTO,"¿D-MM-Y.YY"
+CAMPO=UNIAVISA,TOOLTIP("Unidades en las que se mide el tiempo de aviso puede ser D(ias) o M(eses)"),
+               POSTCHANGE=FENRANGO("D,M","Debe introducir D(ias) o M(eses)"),COMBOX("M","D"),OCULTO,"_"
+CAMPO=PEDMULTIPLO,TOOLTIP("El producto ha de ser pedido en multiplos de esta cantidad")
+CAMPO=TIPOAJUSTE,TOOLTIP("Indica como se han de ajustar los pedidos que no vengan en multiplos\nD(efecto) E(xceso) R(edondeo) N(o ajustar)"),POSTCHANGE=FENRANGO("D,E,R,N","Debe introducir D(efecto) E(xceso) R(edondeo) N(o ajustar)"),COMBOX("D","E","R","N")
+CAMPO=MINPENDIENTE,TOOLTIP("Mínimo a partir del cual no se genera nuevo pedido si queda pendiente")
+CAMPO=MAXUNI,TOOLTIP("Maximo a servir por unidades")
+CAMPO=MINPAL,TOOLTIP("Mínimo numero de cajas que deben ser consideradas como un palet completo")
+#,POSTCHANGE=FEJECUTA("CVERIFMINPAL","EL VALOR DE MINPAL NO PUEDE SER MAYOR O IGUAL QUE EMBCONT (MAXIMO EMBCONT-1)")
+CAMPO=PICKINV,TOOLTIP("Si se sirve por picking inverso (S O P), o (N)o\n (S)i: picking inverso y genera restos\n (P)repicking: picking inverso sin generar restos"),COMBOX("N","S","P"),WPOSX=-10
+CAMPO=SWTNUMEROSERIE,TOOLTIP("Indicador de si el artículo tiene número de serie o no. Posibles valores S o N"),CHECKBOX("N","S")
+CAMPO=INVCONT,TOOLTIP("Indica si el articulo ha de ser sometido a inventario continuo"),CHECKBOX("N","S"),WPOSX=-16,OCULTO,"_"
+CAMPO=PETINICAJA,TOOLTIP("Al finalizar una caja o palet que se ha de comprobar: A(rticulo) L(ote) o C(etiqueta caja)"),COMBOX("A","L","C"),WPOSX=-16,OCULTO,"_"
+CAMPO=CONFPICKING,TOOLTIP("La confirmación de fin de caja se ha de realizar por B(oton), L(ector) o N(inguno, por no ser necesaria la confirmación)"),COMBOX("B","L","N"),WPOSX=-16,OCULTO,"_"
+CAMPO=PVPVIGENTE,TOOLTIP("Precio vigente"),OCULTO,"#L,#####"
+CAMPO=PVPNUEVO,TOOLTIP("Precio nuevo"),OCULTO,"#L,#####"
+CAMPO=PVPANTIGUO,TOOLTIP("Precio antiguo"),OCULTO,"#L,#####"
+CAMPO=FECVIGNP,TOOLTIP("Fecha de entrada en vigor del nuevo precio"),OCULTO,"¿D-MM-Y.YY"
+CAMPO=PVDVIGENTE,TOOLTIP("Precio de venta al distribuidor vigente"),OCULTO,"#L,#####"
+CAMPO=PVDNUEVO,TOOLTIP("Precio de venta al distribuidor nuevo"),OCULTO,"#L,#####"
+CAMPO=PVDANTIGUO,TOOLTIP("Precio de venta al distribuidor antiguo"),OCULTO,"#L,#####"
+CAMPO=PVPIVAVIGENTE,TOOLTIP("Precio con IVA vigente"),OCULTO,"#L,#####"
+CAMPO=PVPIVANUEVO,TOOLTIP("Precio con IVA nuevo"),OCULTO,"#L,#####"
+CAMPO=PVPIVAANTIGUO,TOOLTIP("Precio con IVA antiguo"),OCULTO,"#L,#####"
+CAMPO=FAMILIA,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='FAMILIA' AND LINCOMEN=1 AND COMENTARIO=:FAMILIA);
+CAMPO=LINEA1,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='LINEA' AND LINCOMEN=1 AND COMENTARIO=:LINEA1);
+CAMPO=LINEA2,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='LINEA' AND LINCOMEN=2 AND COMENTARIO=:LINEA2);
+CAMPO=LINEA3,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='LINEA' AND LINCOMEN=3 AND COMENTARIO=:LINEA3);
+CAMPO=LINEA4,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='LINEA' AND LINCOMEN=4 AND COMENTARIO=:LINEA4);
+CAMPO=TIPOART,AUXILIAR,NOENTER,WHERE=CODCOMEN IN (SELECT CODCOMEN FROM VDCOMEN WHERE TIPOCOMEN='TIPOART' AND LINCOMEN=1 AND COMENTARIO=:TIPOART);
+CAMPO=SWTACTIVO,TOOLTIP("Indica si el producto esta activo"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=CODCOMEN,TOOLTIP("Código de comentario asociado al producto")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizO la última modificación"),COMBOX("CALENDARIO")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+
+CURSOR=CLISTATIPOVOL SELECT TIPOVOL,DESVOL FROM VDVOLUMETRIA ORDER BY TIPOVOL;
+CURSOR=CLISTATIPOCAJC SELECT TIPOVOL, TIPOCAJA, DESCAJA, TIPOEMBA FROM VDCAJAS ORDER BY TIPOVOL, TIPOCAJA;
+
+CURSOR=CTIPOVERIFCIEGA SELECT * FROM
+                            ( SELECT 'C' T,'Ciega' FROM DUAL UNION
+                              SELECT 'S' T,'Semiciega' FROM DUAL UNION
+                              SELECT 'N' T,'En la pantalla se muestra todo' FROM DUAL)
+                       ORDER BY DECODE(T,'N',0,'S',1,'C',2);
+
+
+
+CURSOR=CLISTACONTE SELECT TIPOCONTE, DESTIPOCONTE FROM VDTIPOCONTE ORDER BY TIPOCONTE;
+
+CURSOR=CLISTAEMBA SELECT TIPOEMBA, DESTIPOEMBA FROM VDTIPOEMBA ORDER BY TIPOEMBA;
+
+CURSOR=CLISTADIV SELECT CODDIV FROM VDDIVIS ORDER BY CODDIV;
+
+CURSOR=CLISTAUNIDADESHOST SELECT DISTINCT UNIDADORIGEN UNIDADESHOST FROM VDCONVERSIONES;
+
+CURSOR=CLISTAUNIDADES SELECT DISTINCT UNIDADDESTINO UNIDADES FROM VDCONVERSIONES;
+
+CURSOR=CVERIFMINPAL SELECT :MINPAL FROM DUAL WHERE :MINPAL < :EMBCONT;
+
+CURSOR=CPESOCAJCNEG SELECT :PESOCAJCLLENA FROM DUAL WHERE :PESOCAJCLLENA>0 AND (:PESOCAJCLLENA - (:UNIEMB * :PESOUNI))<0;
+
+CURSOR=CPONPESOCAJC SELECT :PESOCAJC PESOCAJCAUX FROM DUAL;
+
+CURSOR=CDAMEPESOCAJC SELECT :PESOCAJCAUX PESOCAJC FROM DUAL;
+
+CURSOR=CPESOCAJCLLENA SELECT :PESOCAJCAUX + (:UNIEMB * :PESOUNI) PESOCAJCLLENA FROM DUAL;
+
+CURSOR=CPESOCAJC SELECT :PESOCAJCLLENA - (:UNIEMB * :PESOUNI) PESOCAJCAUX FROM DUAL WHERE :PESOCAJCLLENA>0;
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF,VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CSELDIVIS SELECT DESDIV FROM VDDIVIS WHERE CODDIV=:CODDIV;
+
+CURSOR=CSELUNIDADES SELECT UNIDAD UNIDADES FROM VDUNIDADES WHERE UNIDAD=:UNIDADES;
+CURSOR=CSELUNIDADESHOST SELECT UNIDAD UNIDADESHOST FROM VDUNIDADES WHERE UNIDAD=:UNIDADESHOST;
+
+CURSOR=CSELEMBADEF SELECT :TIPOEMBADEF FROM DUAL WHERE :TIPOEMBADEF IS NULL OR :TIPOEMBADEF IN (SELECT TIPOEMBA FROM VDTIPOEMBA);
+CURSOR=CSELCONTEDEF SELECT :TIPOCONTEDEF FROM DUAL WHERE :TIPOCONTEDEF IS NULL OR :TIPOCONTEDEF IN (SELECT TIPOCONTE FROM VDTIPOCONTE);
+
+CURSOR=CSELTIPOVOL SELECT :TIPOVOL FROM VDVOLUMETRIA WHERE TIPOVOL=:TIPOVOL;
+
+CURSOR=CSELTIPOCAJC SELECT :TIPOCAJC FROM VDCAJAS WHERE TIPOVOL='COMPLETA' AND TIPOCAJA=:TIPOCAJC
+                     UNION
+                    SELECT :TIPOCAJC FROM DUAL WHERE :TIPOCAJC IS NULL;
+
+TECLA=SF10,FLEEMENU("VDARTIC.ZOO")

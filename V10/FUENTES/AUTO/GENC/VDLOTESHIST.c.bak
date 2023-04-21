@@ -1,0 +1,375 @@
+// Modulo generado automaticamente a partir de VDLOTESHIST.DEF
+//# M¢dulo : VDLOTESHIST.DEF                                                        
+//# Función: Generación automatica de rutinas C tabla VDLOTESHIST
+//#                        
+//# Autor	 : FGS
+//# Revisado por: 
+//# Fecha  : 2-07-2008                                              
+//#********************************************************************************
+//# Histórico de cambios
+//# ====================
+//# =================================================================================
+//#
+//TABLE=LOH
+//
+//EXTRA=COMENLOH,V10CADENA,1024
+//
+//RECORRE=STATUS,STATUS
+//
+//UPDATE=TRATADO, STATUS,FECFIN,HORAFIN,MODULOFIN,ACCIONFIN;
+//
+//LOCK
+
+#include "VD.H"
+#define SELLOHSTATUS "SELECT VDLOTESHIST.ROWID,VDLOTESHIST.SEQ,VDLOTESHIST.CODART, "\
+                    " VDLOTESHIST.CODLOT,VDLOTESHIST.CADUCIACTUAL,VDLOTESHIST.RETESTACTUAL, "\
+                    " VDLOTESHIST.BLOQLOTEACTUAL,VDLOTESHIST.CADUCINUEVO,VDLOTESHIST.RETESTNUEVO, "\
+                    " VDLOTESHIST.BLOQLOTENUEVO,VDLOTESHIST.STATUS,VDLOTESHIST.CODOPEINS, "\
+                    " VDLOTESHIST.MODULOINS,VDLOTESHIST.ACCIONINS,VDLOTESHIST.FECINS, "\
+                    " VDLOTESHIST.HORAINS,VDLOTESHIST.MODULOFIN,VDLOTESHIST.ACCIONFIN, "\
+                    " VDLOTESHIST.FECFIN,VDLOTESHIST.HORAFIN,VDLOTESHIST.CODCOMEN, "\
+                    " VDLOTESHIST.VDEXTRA,VDLOTESHIST.CODDOCUMENTO,VDLOTESHIST.CODOPEMODIF, "\
+                    " VDLOTESHIST.FECMODIF,VDLOTESHIST.HORAMODIF "\
+        " FROM VDLOTESHIST"\
+        " WHERE "\
+               " VDLOTESHIST.STATUS=:STATUS "
+static v10cursors *vdsellohstatus;
+
+#define SELLOHVDLOTESHIST "SELECT VDLOTESHIST.ROWID,VDLOTESHIST.SEQ,VDLOTESHIST.CODART, "\
+                    " VDLOTESHIST.CODLOT,VDLOTESHIST.CADUCIACTUAL,VDLOTESHIST.RETESTACTUAL, "\
+                    " VDLOTESHIST.BLOQLOTEACTUAL,VDLOTESHIST.CADUCINUEVO,VDLOTESHIST.RETESTNUEVO, "\
+                    " VDLOTESHIST.BLOQLOTENUEVO,VDLOTESHIST.STATUS,VDLOTESHIST.CODOPEINS, "\
+                    " VDLOTESHIST.MODULOINS,VDLOTESHIST.ACCIONINS,VDLOTESHIST.FECINS, "\
+                    " VDLOTESHIST.HORAINS,VDLOTESHIST.MODULOFIN,VDLOTESHIST.ACCIONFIN, "\
+                    " VDLOTESHIST.FECFIN,VDLOTESHIST.HORAFIN,VDLOTESHIST.CODCOMEN, "\
+                    " VDLOTESHIST.VDEXTRA,VDLOTESHIST.CODDOCUMENTO,VDLOTESHIST.CODOPEMODIF, "\
+                    " VDLOTESHIST.FECMODIF,VDLOTESHIST.HORAMODIF "\
+        " FROM VDLOTESHIST"\
+        " WHERE "\
+               " VDLOTESHIST.SEQ=:SEQ "
+static v10cursors *vdsellohvdloteshist;
+
+#define SELLOHROWIDLOCK "SELECT ROWID,SEQ,CODART,CODLOT,CADUCIACTUAL,RETESTACTUAL,BLOQLOTEACTUAL, "\
+                    " CADUCINUEVO,RETESTNUEVO,BLOQLOTENUEVO,STATUS,CODOPEINS,MODULOINS,ACCIONINS, "\
+                    " FECINS,HORAINS,MODULOFIN,ACCIONFIN,FECFIN,HORAFIN,CODCOMEN, "\
+                    " VDEXTRA,CODDOCUMENTO,CODOPEMODIF,FECMODIF,HORAMODIF "\
+        " FROM VDLOTESHIST "\
+        " WHERE ROWID=:MIROWID "\
+     " FOR UPDATE NOWAIT "
+static v10cursors *vdsellohrowidlock;
+
+#define UPDALOHTRATADO "UPDATE VDLOTESHIST SET  FECMODIF=VD.FECHASYS,  HORAMODIF=VD.HORASYS,  CODOPEMODIF=VDUSER.GETUSER,  "\
+               " STATUS=:STATUS , "\
+               " FECFIN=:FECFIN , "\
+               " HORAFIN=:HORAFIN , "\
+               " MODULOFIN=:MODULOFIN , "\
+               " ACCIONFIN=:ACCIONFIN  "\
+                     " WHERE ROWID=:MIROWID "
+static v10cursors *vdupdalohtratado;
+
+static vdloteshists svdloteshist;
+
+static diccols colvdloteshist[]={
+	{"ROWID",V10CADENA,(size_t)&svdloteshist.rowid,sizeof(svdloteshist.rowid)},
+	{"SEQ",V10LONG,(size_t)&svdloteshist.seq,sizeof(svdloteshist.seq)},
+	{"CODART",V10CADENA,(size_t)&svdloteshist.codart,sizeof(svdloteshist.codart)},
+	{"CODLOT",V10CADENA,(size_t)&svdloteshist.codlot,sizeof(svdloteshist.codlot)},
+	{"CADUCIACTUAL",V10CADENA,(size_t)&svdloteshist.caduciactual,sizeof(svdloteshist.caduciactual)},
+	{"RETESTACTUAL",V10CADENA,(size_t)&svdloteshist.retestactual,sizeof(svdloteshist.retestactual)},
+	{"BLOQLOTEACTUAL",V10CADENA,(size_t)&svdloteshist.bloqloteactual,sizeof(svdloteshist.bloqloteactual)},
+	{"CADUCINUEVO",V10CADENA,(size_t)&svdloteshist.caducinuevo,sizeof(svdloteshist.caducinuevo)},
+	{"RETESTNUEVO",V10CADENA,(size_t)&svdloteshist.retestnuevo,sizeof(svdloteshist.retestnuevo)},
+	{"BLOQLOTENUEVO",V10CADENA,(size_t)&svdloteshist.bloqlotenuevo,sizeof(svdloteshist.bloqlotenuevo)},
+	{"STATUS",V10LONG,(size_t)&svdloteshist.status,sizeof(svdloteshist.status)},
+	{"CODOPEINS",V10CADENA,(size_t)&svdloteshist.codopeins,sizeof(svdloteshist.codopeins)},
+	{"MODULOINS",V10CADENA,(size_t)&svdloteshist.moduloins,sizeof(svdloteshist.moduloins)},
+	{"ACCIONINS",V10CADENA,(size_t)&svdloteshist.accionins,sizeof(svdloteshist.accionins)},
+	{"FECINS",V10LONG,(size_t)&svdloteshist.fecins,sizeof(svdloteshist.fecins)},
+	{"HORAINS",V10CADENA,(size_t)&svdloteshist.horains,sizeof(svdloteshist.horains)},
+	{"MODULOFIN",V10CADENA,(size_t)&svdloteshist.modulofin,sizeof(svdloteshist.modulofin)},
+	{"ACCIONFIN",V10CADENA,(size_t)&svdloteshist.accionfin,sizeof(svdloteshist.accionfin)},
+	{"FECFIN",V10LONG,(size_t)&svdloteshist.fecfin,sizeof(svdloteshist.fecfin)},
+	{"HORAFIN",V10CADENA,(size_t)&svdloteshist.horafin,sizeof(svdloteshist.horafin)},
+	{"CODCOMEN",V10LONG,(size_t)&svdloteshist.codcomen,sizeof(svdloteshist.codcomen)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdloteshist.vdextra,sizeof(svdloteshist.vdextra)},
+	{"CODDOCUMENTO",V10LONG,(size_t)&svdloteshist.coddocumento,sizeof(svdloteshist.coddocumento)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdloteshist.codopemodif,sizeof(svdloteshist.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdloteshist.fecmodif,sizeof(svdloteshist.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdloteshist.horamodif,sizeof(svdloteshist.horamodif)},
+	{"COMENLOH",V10CADENA,(size_t)&svdloteshist.comenloh,sizeof(svdloteshist.comenloh)}
+	};
+static diccionarios dvdloteshist[]={
+    {colvdloteshist,27}
+};
+diccionario dloh={dvdloteshist,1};
+
+static char msglogLOH[LCADENA];
+static char msgdebugLOH[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_loh(void)
+{
+if (vdsellohstatus) {
+    liberacursor(vdsellohstatus);
+    vdsellohstatus = NULL;
+}
+if (vdsellohvdloteshist) {
+    liberacursor(vdsellohvdloteshist);
+    vdsellohvdloteshist = NULL;
+}
+if (vdsellohrowidlock) {
+    liberacursor(vdsellohrowidlock);
+    vdsellohrowidlock = NULL;
+}
+if (vdupdalohtratado) {
+    liberacursor(vdupdalohtratado);
+    vdupdalohtratado = NULL;
+}
+}
+static void init_sellohstatus(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdloteshist[0].numcol;nc++) dvdloteshist[0].c[nc].offset-=(size_t)&svdloteshist;
+    vdsellohstatus=abrecursordebug(SELLOHSTATUS,1280);
+    definetodo(vdsellohstatus,svdloteshist.rowid,sizeof(svdloteshist.rowid),V10CADENA,
+                          &svdloteshist.seq,sizeof(svdloteshist.seq),V10LONG,
+                          svdloteshist.codart,sizeof(svdloteshist.codart),V10CADENA,
+                          svdloteshist.codlot,sizeof(svdloteshist.codlot),V10CADENA,
+                          svdloteshist.caduciactual,sizeof(svdloteshist.caduciactual),V10CADENA,
+                          svdloteshist.retestactual,sizeof(svdloteshist.retestactual),V10CADENA,
+                          svdloteshist.bloqloteactual,sizeof(svdloteshist.bloqloteactual),V10CADENA,
+                          svdloteshist.caducinuevo,sizeof(svdloteshist.caducinuevo),V10CADENA,
+                          svdloteshist.retestnuevo,sizeof(svdloteshist.retestnuevo),V10CADENA,
+                          svdloteshist.bloqlotenuevo,sizeof(svdloteshist.bloqlotenuevo),V10CADENA,
+                          &svdloteshist.status,sizeof(svdloteshist.status),V10LONG,
+                          svdloteshist.codopeins,sizeof(svdloteshist.codopeins),V10CADENA,
+                          svdloteshist.moduloins,sizeof(svdloteshist.moduloins),V10CADENA,
+                          svdloteshist.accionins,sizeof(svdloteshist.accionins),V10CADENA,
+                          &svdloteshist.fecins,sizeof(svdloteshist.fecins),V10LONG,
+                          svdloteshist.horains,sizeof(svdloteshist.horains),V10CADENA,
+                          svdloteshist.modulofin,sizeof(svdloteshist.modulofin),V10CADENA,
+                          svdloteshist.accionfin,sizeof(svdloteshist.accionfin),V10CADENA,
+                          &svdloteshist.fecfin,sizeof(svdloteshist.fecfin),V10LONG,
+                          svdloteshist.horafin,sizeof(svdloteshist.horafin),V10CADENA,
+                          &svdloteshist.codcomen,sizeof(svdloteshist.codcomen),V10LONG,
+                          svdloteshist.vdextra,sizeof(svdloteshist.vdextra),V10CADENA,
+                          &svdloteshist.coddocumento,sizeof(svdloteshist.coddocumento),V10LONG,
+                          svdloteshist.codopemodif,sizeof(svdloteshist.codopemodif),V10CADENA,
+                          &svdloteshist.fecmodif,sizeof(svdloteshist.fecmodif),V10LONG,
+                          svdloteshist.horamodif,sizeof(svdloteshist.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdsellohstatus,"STATUS",&svdloteshist.status,sizeof(svdloteshist.status),V10LONG,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_loh);
+        init = 1;
+    }
+}
+
+static void init_sellohvdloteshist(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdloteshist[0].numcol;nc++) dvdloteshist[0].c[nc].offset-=(size_t)&svdloteshist;
+    vdsellohvdloteshist=abrecursordebug(SELLOHVDLOTESHIST,1280);
+    definetodo(vdsellohvdloteshist,svdloteshist.rowid,sizeof(svdloteshist.rowid),V10CADENA,
+                          &svdloteshist.seq,sizeof(svdloteshist.seq),V10LONG,
+                          svdloteshist.codart,sizeof(svdloteshist.codart),V10CADENA,
+                          svdloteshist.codlot,sizeof(svdloteshist.codlot),V10CADENA,
+                          svdloteshist.caduciactual,sizeof(svdloteshist.caduciactual),V10CADENA,
+                          svdloteshist.retestactual,sizeof(svdloteshist.retestactual),V10CADENA,
+                          svdloteshist.bloqloteactual,sizeof(svdloteshist.bloqloteactual),V10CADENA,
+                          svdloteshist.caducinuevo,sizeof(svdloteshist.caducinuevo),V10CADENA,
+                          svdloteshist.retestnuevo,sizeof(svdloteshist.retestnuevo),V10CADENA,
+                          svdloteshist.bloqlotenuevo,sizeof(svdloteshist.bloqlotenuevo),V10CADENA,
+                          &svdloteshist.status,sizeof(svdloteshist.status),V10LONG,
+                          svdloteshist.codopeins,sizeof(svdloteshist.codopeins),V10CADENA,
+                          svdloteshist.moduloins,sizeof(svdloteshist.moduloins),V10CADENA,
+                          svdloteshist.accionins,sizeof(svdloteshist.accionins),V10CADENA,
+                          &svdloteshist.fecins,sizeof(svdloteshist.fecins),V10LONG,
+                          svdloteshist.horains,sizeof(svdloteshist.horains),V10CADENA,
+                          svdloteshist.modulofin,sizeof(svdloteshist.modulofin),V10CADENA,
+                          svdloteshist.accionfin,sizeof(svdloteshist.accionfin),V10CADENA,
+                          &svdloteshist.fecfin,sizeof(svdloteshist.fecfin),V10LONG,
+                          svdloteshist.horafin,sizeof(svdloteshist.horafin),V10CADENA,
+                          &svdloteshist.codcomen,sizeof(svdloteshist.codcomen),V10LONG,
+                          svdloteshist.vdextra,sizeof(svdloteshist.vdextra),V10CADENA,
+                          &svdloteshist.coddocumento,sizeof(svdloteshist.coddocumento),V10LONG,
+                          svdloteshist.codopemodif,sizeof(svdloteshist.codopemodif),V10CADENA,
+                          &svdloteshist.fecmodif,sizeof(svdloteshist.fecmodif),V10LONG,
+                          svdloteshist.horamodif,sizeof(svdloteshist.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdsellohvdloteshist,"SEQ",&svdloteshist.seq,sizeof(svdloteshist.seq),V10LONG,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_loh);
+        init = 1;
+    }
+}
+
+static void init_sellohrowidlock(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdloteshist[0].numcol;nc++) dvdloteshist[0].c[nc].offset-=(size_t)&svdloteshist;
+    vdsellohrowidlock=abrecursordebug(SELLOHROWIDLOCK,1280);
+    definetodo(vdsellohrowidlock,svdloteshist.rowid,sizeof(svdloteshist.rowid),V10CADENA,
+                          &svdloteshist.seq,sizeof(svdloteshist.seq),V10LONG,
+                          svdloteshist.codart,sizeof(svdloteshist.codart),V10CADENA,
+                          svdloteshist.codlot,sizeof(svdloteshist.codlot),V10CADENA,
+                          svdloteshist.caduciactual,sizeof(svdloteshist.caduciactual),V10CADENA,
+                          svdloteshist.retestactual,sizeof(svdloteshist.retestactual),V10CADENA,
+                          svdloteshist.bloqloteactual,sizeof(svdloteshist.bloqloteactual),V10CADENA,
+                          svdloteshist.caducinuevo,sizeof(svdloteshist.caducinuevo),V10CADENA,
+                          svdloteshist.retestnuevo,sizeof(svdloteshist.retestnuevo),V10CADENA,
+                          svdloteshist.bloqlotenuevo,sizeof(svdloteshist.bloqlotenuevo),V10CADENA,
+                          &svdloteshist.status,sizeof(svdloteshist.status),V10LONG,
+                          svdloteshist.codopeins,sizeof(svdloteshist.codopeins),V10CADENA,
+                          svdloteshist.moduloins,sizeof(svdloteshist.moduloins),V10CADENA,
+                          svdloteshist.accionins,sizeof(svdloteshist.accionins),V10CADENA,
+                          &svdloteshist.fecins,sizeof(svdloteshist.fecins),V10LONG,
+                          svdloteshist.horains,sizeof(svdloteshist.horains),V10CADENA,
+                          svdloteshist.modulofin,sizeof(svdloteshist.modulofin),V10CADENA,
+                          svdloteshist.accionfin,sizeof(svdloteshist.accionfin),V10CADENA,
+                          &svdloteshist.fecfin,sizeof(svdloteshist.fecfin),V10LONG,
+                          svdloteshist.horafin,sizeof(svdloteshist.horafin),V10CADENA,
+                          &svdloteshist.codcomen,sizeof(svdloteshist.codcomen),V10LONG,
+                          svdloteshist.vdextra,sizeof(svdloteshist.vdextra),V10CADENA,
+                          &svdloteshist.coddocumento,sizeof(svdloteshist.coddocumento),V10LONG,
+                          svdloteshist.codopemodif,sizeof(svdloteshist.codopemodif),V10CADENA,
+                          &svdloteshist.fecmodif,sizeof(svdloteshist.fecmodif),V10LONG,
+                          svdloteshist.horamodif,sizeof(svdloteshist.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdsellohrowidlock,"MIROWID",svdloteshist.rowid,sizeof(svdloteshist.rowid),V10CADENA,NULL);
+    if (init == 0) {
+        atexit(fin_vd_loh);
+        init = 1;
+    }
+}
+
+static void init_updalohtratado(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdloteshist[0].numcol;nc++) dvdloteshist[0].c[nc].offset-=(size_t)&svdloteshist;
+    vdupdalohtratado=abrecursordebug(UPDALOHTRATADO,1280);
+    bindtodo(vdupdalohtratado,"STATUS",&svdloteshist.status,sizeof(svdloteshist.status),V10LONG,
+                          "FECFIN",&svdloteshist.fecfin,sizeof(svdloteshist.fecfin),V10LONG,
+                          "HORAFIN",svdloteshist.horafin,sizeof(svdloteshist.horafin),V10CADENA,
+                          "MODULOFIN",svdloteshist.modulofin,sizeof(svdloteshist.modulofin),V10CADENA,
+                          "ACCIONFIN",svdloteshist.accionfin,sizeof(svdloteshist.accionfin),V10CADENA,
+                          "MIROWID",svdloteshist.rowid,sizeof(svdloteshist.rowid),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_loh);
+        init = 1;
+    }
+}
+
+diccionario *LOHdamediccionario(void)
+{
+     return(&dloh);
+}
+
+int LOHbuscastatus(long status,vdloteshists *loh)
+{
+  int vdret;
+  memset(&svdloteshist,0,sizeof(svdloteshist));
+  svdloteshist.status=status;
+  if (vdsellohstatus==NULL) init_sellohstatus();
+  vdret=ejefetchcursor(vdsellohstatus);
+  if (vdret==0) {
+     *loh=svdloteshist;
+    v10log(LOGDEBUGAPI,"Encontrado primero %s vdsellohstatus. vdret %d. \n",LOHlog(&svdloteshist),vdret);
+     return(0);
+   }
+  return(VD_EERRORACLE);
+}
+
+int LOHnextstatus(vdloteshists *loh)
+{
+  int vdret;
+  vdret=fetchcursor(vdsellohstatus);
+  if (vdret==0) {
+     *loh=svdloteshist;
+    v10log(LOGDEBUGAPI,"Siguiente %s vdsellohstatus. vdret %d. \n",LOHlog(&svdloteshist),vdret);
+     return(0);
+   }
+  if (vdret!=NOFOUND) cursordebug(vdsellohstatus);
+  return(VD_EERRORACLE);
+}
+
+int LOHselvdloteshist(long seq,vdloteshists *loh)
+{
+  int vdret;
+  if (vdsellohvdloteshist==NULL) init_sellohvdloteshist();
+  memset(&svdloteshist,0,sizeof(svdloteshist));
+  svdloteshist.seq=seq;
+  vdret=ejefetchcursor(vdsellohvdloteshist);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdsellohvdloteshist. vdret %d. \n",LOHlog(&svdloteshist),vdret);
+    return(VD_EERRORACLE);
+   }
+  *loh=svdloteshist;
+  return(vdret);
+}
+
+int LOHlock(vdloteshists *loh,int wait,int verificar,...)
+{
+    int vdret;
+    va_list arg;
+    svdloteshist=*loh;
+    if (vdsellohrowidlock==NULL) init_sellohrowidlock();
+    savepoint("lockvdloteshist");
+    while (1) {
+        vdret=ejefetchcursor(vdsellohrowidlock);
+        if (vdret==0) break;
+        if (vdret==BLOQUEADO && wait) {
+           Sleep(1000);
+           if (hay_tecla()) if (tecla()==esc) return(VD_EERRBLOQUEO);
+           continue;
+         } else {
+           if (wait==0) return(VD_EERRBLOQUEO);
+         }
+    }
+    if (vdret) return(VD_EERRORACLE);
+    if (verificar==0) return(vdret);
+    va_start(arg,verificar);
+    vdret=vverificacampos(loh,&svdloteshist,&dvdloteshist[0],arg);
+    va_end(arg);
+    if (vdret!=0) rollbacksavepoint("lockvdloteshist");
+    return(vdret);
+}
+
+int LOHactualizatratado(vdloteshists *loh,int error)
+{
+  int vdret = 0;
+    v10log(LOGDEBUGAPI,"Actualizando LOHactualizatratado:  %s .  \n",LOHlog(&svdloteshist));
+  if (vdupdalohtratado==NULL) init_updalohtratado();
+  svdloteshist=*loh;
+  vdret=ejecutacursor(vdupdalohtratado);
+  if (vdret) {
+     char mensajeerror[MAXCADENA]="";
+     if (error==1) cursordebug(vdupdalohtratado);
+     getcurerrornombre(vdupdalohtratado->nombre,mensajeerror);
+     v10log(LOGERROR,"%s\n",mensajeerror);
+     return(VD_EERRORACLE);
+  }
+  if (procesadascursor(vdupdalohtratado)!=1) return(VD_EERRORACLE);
+  return(0);
+}
+
+char * LOHlog(vdloteshists *loh)
+{
+    sprintf(msglogLOH, "VDLOTESHIST: seq %ld ",loh->seq);
+    return(msglogLOH);
+}
+
+char * LOHdebug(vdloteshists *loh)
+{
+    debugestruct(&dloh,loh,msgdebugLOH);
+    return(msgdebugLOH);
+}
+

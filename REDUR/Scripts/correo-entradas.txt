@@ -1,0 +1,6 @@
+DECLARE
+  MSJERROR VARCHAR2(1024);
+  RET NUMBER:=0;
+BEGIN
+  VDCORREOS.CORREO('PRUEBAENT','SMMX-V10','Prueba de entradas','Recibido en la orden 1234 el articulo AB con 1250 unidades',NULL,NULL,1,'TEXT/HTML',NULL,NULL,MSJERROR,RET);
+END; 

@@ -1,0 +1,84 @@
+CURSOR=CSELCERRADA SELECT MENSAJE
+                   FROM ( SELECT 'Z' || TO_NUMBER(ZON.CODZONA) || ' CERRADO ' || NVL(COUNT(DISTINCT BUC.CODBULTO),0)  || '$0,0,2,2,2,0' MENSAJE
+                          FROM VDZONAS ZON, VDINFODISP IDI, VDBULTOCAB BUC
+                          WHERE ZON.CODZONA = :CODZONA AND ZON.CODZONA = IDI.CODZONA AND IDI.IDINFOPICK = BUC.IDINFOPICK AND
+                                IDI.NUMDISP = BUC.NUMDISP AND BUC.STATUS < VDST.FBUCPREPARADO
+                          GROUP BY ZON.CODOPE,ZON.CODZONA
+                         UNION
+                          SELECT 'Z' || TO_NUMBER(:CODZONA) || ' CERRADO ' || 0 || '$0,0,0,0,0,0' MENSAJE FROM VDZONAS WHERE CODZONA = :CODZONA
+                         ORDER BY MENSAJE DESC)
+                   WHERE ROWNUM = 1;
+
+
+CURSOR=CSELABIERTA SELECT MENSAJE
+                   FROM ( SELECT 'Z' || TO_NUMBER(ZON.CODZONA) || ' ' || ZON.CODOPE ||' '|| NVL(COUNT(BUC.CODBULTO),0) || '$0,0,2,2,2,1' MENSAJE
+                          FROM VDZONAS ZON, VDINFODISP IDI, VDBULTOCAB BUC
+                          WHERE ZON.CODZONA = :CODZONA AND ZON.CODZONA = IDI.CODZONA AND IDI.IDINFOPICK = BUC.IDINFOPICK AND
+                                IDI.NUMDISP = BUC.NUMDISP AND BUC.STATUS < VDST.FBUCPREPARADO
+                          GROUP BY ZON.CODOPE,ZON.CODZONA
+                         UNION
+                          SELECT 'Z' || TO_NUMBER(:CODZONA) || ' ' || ZON.CODOPE || ' ' || 0  || '$0,0,0,0,0,1' MENSAJE FROM VDZONAS ZON WHERE CODZONA = :CODZONA               
+                         ORDER BY MENSAJE DESC) 
+                   WHERE ROWNUM = 1;
+
+CURSOR=CSELCONBULTO SELECT DECODE(SUBSTR(CODMAT||' '||LPAD(SUM(NUMLINEAS),2,'0')||'/'||LPAD(SUM(CANTPEDIDA),3,'0')||NS,-16),
+                                  NULL, CODMAT||' '||LPAD(SUM(NUMLINEAS),2,'0')||'/'||LPAD(SUM(CANTPEDIDA),3,'0')||NS,
+                                  SUBSTR(CODMAT||' '||LPAD(SUM(NUMLINEAS),2,'0')||'/'||LPAD(SUM(CANTPEDIDA),3,'0')||NS,-16))||
+                                  DECODE(NS, 'NS', '$0,0,3,0,3,1', '$*') TITZONA
+                      FROM (SELECT BPC.CODMAT,DECODE(ART.SWTNUMEROSERIE,'S','NS',NULL) NS,
+                                   SUM( DECODE( BPL.STATUS, VDST.FBPLASERVIR,BPL.CANTPEDIDA,0)) CANTPEDIDA,
+                                   COUNT( DISTINCT DECODE( BPL.STATUS, VDST.FBPLASERVIR, IDI.NUMDISP, NULL)) NUMLINEAS 
+                              FROM VDBULTOZONA BZO, VDBULTOLINPINV BPL, VDBULTOCABPINV BPC, VDINFODISP IDI, VDARTIC ART
+                             WHERE BZO.CODZONA = :CODZONA
+                               AND BPC.CODBULTO = BZO.CODBULTO
+                               AND BPL.CODBULTO = BPC.CODBULTO
+                               AND BPL.IDINFOPICK = IDI.IDINFOPICK                     
+                               AND BPL.NUMDISP = IDI.NUMDISP
+                               AND IDI.CODZONA = BZO.CODZONA
+                               AND BPL.CODART  = ART.CODART
+                               AND BPL.STATUS  = VDST.FBPLASERVIR                                     
+                             GROUP BY BPC.CODMAT, ART.SWTNUMEROSERIE) 
+                     GROUP BY CODMAT, NS;   
+
+CURSOR=CSELFINBULTO  SELECT DECODE (SIGN(STATUS - 4999),1,'FIN' ,DECODE(CANTIDAD, 0, 'FIN', DECODE(ZONAS,NULL, 'RESTOS '||CANTIDAD, VDPICKINVLUCES.DAMELADO(:CODZONA,ZONAS) || ' ' ||CANTIDAD)))  || '$*' TITZONA                   
+                       FROM (SELECT BPC.STATUS,VDPICKINVLUCES.DAMEZONASPDTESDEBULTO(BZO.CODBULTO) ZONAS, LPAD(SUM(DECODE(BLP.STATUS,VDST.FBPLANULADA,0,BLP.CANTPEDIDA)-BLP.CANTSERVIDA),4,'0') CANTIDAD
+                                 FROM VDBULTOZONA BZO, VDBULTOLINPINV BLP, VDBULTOCABPINV BPC
+                                 WHERE BZO.CODZONA = :CODZONA AND BZO.CODBULTO = BLP.CODBULTO AND BPC.CODBULTO=BZO.CODBULTO 
+                                       GROUP BY BZO.CODBULTO,BPC.STATUS);
+
+                          
+#CURSOR=CSELRESTOS SELECT  'RESTOS '||CANTIDAD  || '$0,0,0,0,0,1*' TITZONA
+#                    FROM (SELECT SUM(CANTIDAD) CANTIDAD
+#                          FROM VDBULTOZONA BZO, VDBULTOCABPINV BPC, VDSTOCK STK
+#                          WHERE BZO.CODZONA = :CODZONA AND BZO.CODBULTO = BPC.CODBULTO  AND BPC.CODMAT=STK.CODMAT
+#                          GROUP BY BZO.CODBULTO);                                                  
+
+CURSOR=CSELRESTOS  SELECT  DECODE(CANTIDAD,0,'VALIDE FIN','RESTOS '||CANTIDAD  || '$0,0,0,0,0,1*') TITZONA
+                    FROM (SELECT NVL(SUM(CANTIDAD),0) CANTIDAD
+                          FROM VDBULTOZONA BZO, VDBULTOCABPINV BPC, VDSTOCK STK
+                          WHERE BZO.CODZONA = :CODZONA AND BZO.CODBULTO = BPC.CODBULTO  AND BPC.CODMAT=STK.CODMAT(+)
+                          GROUP BY BZO.CODBULTO);
+                          
+CURSOR=CSELLEEOLD SELECT 'LEA ORIGEN$*' FROM DUAL WHERE :CODZONA > 0;
+
+CURSOR=CSELLEENUEVO SELECT 'LEA DESTINO$*' FROM DUAL WHERE :CODZONA > 0;
+
+CURSOR=CCANCELAR SELECT 'CANCELAR$*' FROM DUAL WHERE :CODZONA > 0;
+
+CURSOR=CSELCONCEPTOS- SELECT TAREA, PARAM 
+                     FROM (SELECT 'AJU-' TAREA, 'AJU-' PARAM FROM DUAL
+                           UNION
+                           SELECT 'REG-' TAREA, 'REG-' PARAM FROM DUAL)
+                     WHERE :CODZONA = :CODZONA;
+
+CURSOR=CSELCONCEPTOS+ SELECT TAREA, PARAM 
+                     FROM (SELECT 'AJU+' TAREA, 'AJU+' PARAM FROM DUAL
+                           UNION
+                           SELECT 'REG+' TAREA, 'REG+' PARAM FROM DUAL)
+                     WHERE :CODZONA = :CODZONA;
+
+#CURSOR=CSELTIPOCAJA SELECT SUBSTR(VDCOM.DAMECOMEN(CODCOMEN,'MATERIAL',1),2)||' - '||TIPOCAJA, TIPOCAJA
+#                    FROM VDCAJAS
+#                    WHERE :CODZONA = :CODZONA
+#                    ORDER BY VDCOM.DAMECOMEN(CODCOMEN,'MATERIAL',1), LARGOCAJA*ANCHOCAJA*ALTOCAJA DESC;
+#                                              

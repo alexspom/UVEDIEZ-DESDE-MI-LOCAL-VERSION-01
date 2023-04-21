@@ -1,0 +1,19 @@
+#***
+# VDINTERFASELIN.c - Generación automática del código c para la tabla de la descripción de interfases                                                  
+# 
+# Propósito: Funciones de acceso a la tabla VDINTERFASELIN
+#           
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 14-04-2008                                             
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=INTL
+
+PRIMARIA=TIPOINTERFASE,FORMATO,CAMPO,TABLA
+RECORRE=TIPOFORMATO,TIPOINTERFASE,FORMATO;ORDERBY=ORDEN;
+#RECORRE=SELPK, TIPOINTERFASE,FORMATO,PK;
+
+#RECORRE=CAMPOSPK, TIPOINTERFASE,FORMATO, SWTPK;ORDERBY=ORDEN;
+

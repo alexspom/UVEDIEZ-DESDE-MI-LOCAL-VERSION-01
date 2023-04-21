@@ -1,0 +1,946 @@
+#include "vdpedidos.h"
+
+#define TERMINFASE1         60 //
+#define TERMINFASE2         50 //
+#define TERMINFASE3         40 //
+#define TERMINFASE4         30 //
+#define TERMINFASE5         20 //
+#define TERMINFASE6         10 //
+
+
+typedef struct LINARTS {
+  char codart[LCODART];
+  char codlot[LCODLOT];
+  long seqlinea;
+  long codmov;
+  long ordenmovim;
+  long codzona;
+  double pedida;
+  long largouni;
+  long anchouni;
+  long altouni;
+  double volumenuni; 
+  double pesouni;
+  double coefuni;
+  long unipaq;
+  long largopaq;
+  long anchopaq;
+  long altopaq;
+  double volumenpaq;
+  long altura;
+  double pesopaq;
+  double coefpaq;
+  long nbultos;     // Número de bultos de unibulto 
+  double unibulto;  // Unidades por bulto, en sueltas o paquetes 
+  double paqbulto;  // Paquetes por bulto 
+  double npaquetes; // Paquetes del pico
+  double nsueltas;  // Unidades del pico 
+  double volpico;   // Volumen total del pico 
+  double volbulto;  // Volumen total del bulto completo
+  double pesopico;  // Peso total del pico
+  double numuni;    // Total de unidades del bulto 
+  long maxlargo;
+  long maxancho;
+  long maxalto;
+  char swttumbable[LSWTTUMBABLE];
+  int homogeneo;    // Indicador de pico homogeneo 
+  int genera;
+  struct LINARTS *sig;
+  int npicos;
+  int terminada;
+  int bulto;
+  int ncompletos;
+} linarts;
+
+
+
+static int maxlinbu;
+static int nlineas=0;
+static int ncajas=0;
+static int terminadas=0;
+static long primerbultouni;
+static double pesopedido;
+static double volumenpedido;
+static double numuni=0L;
+static double volumen=0L;
+static char minimizacajaszona[LSWITCH];
+static char trataordenmovim[LSWITCH];
+static vdcajavols ptr_cajas[MAXCAJAS];
+static linarts slinart;
+static linarts *ptr_lineas;
+static linarts **ptr_ptrs;
+
+static int dummy(void) { return 0; }
+
+
+static int funcionsort(const void *a,const void *b) 
+{
+  return(*(long *)a<*(long *)b);
+}
+
+static void ordena(long *largo,long *ancho,long *alto) 
+{
+  long dimcaja[3];
+  dimcaja[0]=*largo;
+  dimcaja[1]=*ancho;
+  dimcaja[2]=*alto;
+  qsort(dimcaja,3,sizeof(long),funcionsort);
+  *largo=dimcaja[0];
+  *ancho=dimcaja[1];
+  *alto=dimcaja[2];
+}
+
+static int leecajas(vdpedidocabs *pec,vdbultocabs *buc) 
+{
+    int ret;
+    memset(ptr_cajas,0,sizeof(ptr_cajas));
+    ncajas=0;
+	ret=CAJAVOLbuscademayoramenor(buc->tipovol,&ptr_cajas[ncajas]);
+    if(ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"leecajas - ERROR Volumetria %s de bulto %s no tiene cajas /n",buc->tipovol,buc->codbulto);
+        return(FAILURE);
+    }
+    do {
+        ptr_cajas[ncajas].altura=ptr_cajas[ncajas].altocaja;
+        ordena(&ptr_cajas[ncajas].largocaja,&ptr_cajas[ncajas].anchocaja,&ptr_cajas[ncajas].altocaja);
+        ptr_cajas[ncajas].volumencaj=(double)ptr_cajas[ncajas].altocaja*(double)ptr_cajas[ncajas].largocaja*(double)ptr_cajas[ncajas].anchocaja;
+        if (++ncajas>=MAXCAJAS) {
+			v10logcomen(LOGERROR,pec->comenpec,"leecajas - ERROR Alcanzado límite de %ld cajas en volumetría %s de bulto %s /n",MAXCAJAS,buc->tipovol,buc->codbulto);
+			return(FAILURE);
+        }
+    }while(CAJAVOLnextdemayoramenor(&ptr_cajas[ncajas])==SUCCESS);
+
+    return(SUCCESS);
+}
+
+#define CDAMEZONAART "SELECT VDART.DAMEZONAART(:CODMOV) FROM DUAL"
+v10cursors *vddamezonaart;
+
+int damezonaart(long codmov)
+{
+	static long scodmov;
+	static int scodzon;
+	int ret;
+	if (vddamezonaart == NULL) {
+		vddamezonaart = abrecursor(CDAMEZONAART);
+		definetodo(vddamezonaart, &scodzon, sizeof(scodzon), V10INT,
+			NULL);
+		bindtodo(vddamezonaart, "CODMOV", &scodmov, sizeof(scodmov), V10LONG,
+			NULL);
+	}
+	scodmov = codmov;
+	ret=ejefetchcursor(vddamezonaart);
+	if (ret) return(0);
+	return(scodzon);
+}
+
+
+
+static int tomadatos(vdpedidocabs *pec,vdbultocabs *buc) 
+{
+    int ret;
+	long ordenmovim=0;
+    vdcajavols *ptr=ptr_cajas;
+    vdartics art;
+	vdbultos bulto;
+    v10log(LOGNORMAL,"tomadatos -     Leyendo artículos de bulto para volumetría %s \n",buc->tipovol);
+    if((ret=BULTObuscabultolinordenmovim(buc->codbulto,&bulto))!=0) {
+		v10logcomen(LOGERROR,pec->comenpec,"tomadatos - ERROR Bulto %s no tiene líneas /n",buc->codbulto);
+        return(FAILURE);
+    }
+    nlineas=0;
+    terminadas=0;
+    numuni=0;
+    volumen=0;
+    do {
+        memset(&slinart, 0, sizeof(slinart));
+        strcpy(slinart.codart, bulto.codart);
+        strcpy(slinart.codlot, bulto.codlot);
+        slinart.seqlinea = bulto.seqlinea;
+        slinart.codmov = bulto.codmov;
+        slinart.codzona = damezonaart(bulto.codmov);
+        ret = ARTselcodart(bulto.codart, &art);
+        if (ret) {
+            v10log(LOGERROR, "tomadatos - ERROR Seleccionando artículo %s de bulto %s /n", bulto.codart, buc->codbulto);
+            return(FAILURE);
+        }
+        slinart.unipaq = art.unipaq;
+        slinart.pesouni = art.pesouni;
+        slinart.pedida = bulto.cantpedida;
+        slinart.numuni = slinart.pedida;
+        slinart.altura = (long)art.altouni;
+        slinart.largouni = (long)art.largouni;
+        slinart.anchouni = (long)art.anchouni;
+        slinart.altouni = (long)art.altouni;
+        ordena(&slinart.largouni, &slinart.anchouni, &slinart.altouni);
+        if (*art.swttumbable == 'S') {
+            slinart.altura = slinart.altouni;
+        }
+        if (!art.coefuni) slinart.coefuni = ptr->maxllenado;
+        else slinart.coefuni = art.coefuni;
+        slinart.volumenuni = (double)art.altouni*art.anchouni*art.largouni*100.0 / slinart.coefuni;
+        //PAQUETES
+        if (slinart.unipaq) {
+            slinart.altura = art.altopaq;
+            slinart.largopaq = art.largopaq;
+            slinart.anchopaq = art.anchopaq;
+            slinart.altopaq = art.altopaq;
+            ordena(&slinart.largopaq, &slinart.anchopaq, &slinart.altopaq);
+            if (*art.swttumbable == 'S') {
+                slinart.altura = slinart.altopaq;
+            }
+            if (!art.coefpaq) slinart.coefpaq = ptr->maxllenado;
+            else slinart.coefpaq = art.coefpaq;
+            slinart.volumenpaq = (double)art.altopaq*art.anchopaq*art.largopaq*100.0 / slinart.coefpaq;
+            if (slinart.volumenpaq == 0) {
+                v10logcomen(LOGERROR, pec->comenpec, "tomadatos - ERROR Artículo %s tiene paquetes y el volumen del paquete es 0 /n", bulto.codart);
+                return(FAILURE);
+            }
+            slinart.paqbulto = floor(ptr->volumencaj / slinart.volumenpaq);
+            slinart.pesopaq = art.pesopaq;
+            if (slinart.paqbulto*slinart.pesopaq > ptr->maxpeso) {
+                slinart.paqbulto = floor(ptr->maxpeso / slinart.pesopaq);
+            }
+            if (slinart.paqbulto == 0) slinart.paqbulto = 1;
+            slinart.volbulto = slinart.paqbulto*slinart.volumenpaq;
+            slinart.pedida = slinart.numuni;
+            slinart.unibulto = slinart.paqbulto*slinart.unipaq;
+            slinart.npaquetes = floor(slinart.pedida / slinart.unipaq);
+            slinart.nsueltas = fmod(slinart.pedida, slinart.unipaq);
+        } else {
+            //UNIDADES
+            slinart.volumenpaq = 0;
+            slinart.paqbulto = 0;
+            if (slinart.volumenuni == 0) {
+                v10logcomen(LOGERROR, pec->comenpec, "tomadatos - ERROR Artículo %s tiene volúmen de unidad 0 /n", bulto.codart);
+                return(FAILURE);
+            }
+            if (slinart.pesouni == 0) {
+                v10logcomen(LOGERROR, pec->comenpec, "tomadatos - ERROR Artículo %s tiene peso de unidad 0 /n", bulto.codart);
+                return(FAILURE);
+            }
+            slinart.unibulto = floor(ptr->volumencaj / slinart.volumenuni);
+            if (slinart.unibulto*slinart.pesouni > ptr->maxpeso) {
+                slinart.unibulto = floor(ptr->maxpeso / slinart.pesouni);
+            }
+            if (slinart.unibulto == 0) slinart.unibulto = 1;
+            slinart.npaquetes = 0;
+            slinart.nsueltas = slinart.pedida;
+            slinart.volbulto = slinart.unibulto*slinart.volumenuni;
+        }
+
+        if (slinart.nsueltas) {
+            slinart.maxlargo = slinart.largouni;
+            slinart.maxancho = slinart.anchouni;
+            slinart.maxalto = slinart.altouni;
+        }
+        if (slinart.npaquetes) {
+           slinart.maxlargo = slinart.largopaq;
+           slinart.maxancho = slinart.anchopaq;
+           slinart.maxalto = slinart.altopaq;
+        } else {
+           if (slinart.unipaq > 0)
+              slinart.altura = slinart.altouni;
+        }
+        if ((slinart.npaquetes*slinart.volumenpaq+slinart.nsueltas*slinart.volumenuni)> ptr->volumencaj ||
+            (slinart.npaquetes * slinart.pesopaq + slinart.nsueltas* slinart.pesouni )> ptr->maxpeso ) {
+            slinart.nbultos=(long)floor(slinart.pedida/slinart.unibulto);
+            slinart.numuni-=slinart.nbultos*slinart.unibulto;
+            if (slinart.npaquetes) slinart.npaquetes-=slinart.nbultos*slinart.paqbulto;
+            else slinart.nsueltas-=slinart.nbultos*slinart.unibulto;
+        } else {
+            slinart.nbultos=0;
+        }
+        numuni+=slinart.numuni;
+        if (slinart.npaquetes || slinart.nsueltas) {
+            if ((slinart.npaquetes*slinart.volumenpaq+slinart.nsueltas*slinart.volumenuni)>((ptr->volumencaj/100)*ptr->minllenado)/(ptr->maxllenado/100.0)) {
+                slinart.homogeneo=1;
+                slinart.volpico=0;
+                slinart.terminada=TERMINFASE1+1;
+                terminadas++;
+            } else {
+                slinart.homogeneo=0;
+                slinart.volpico=slinart.npaquetes*slinart.volumenpaq+slinart.nsueltas*slinart.volumenuni;
+                slinart.pesopico=slinart.npaquetes*slinart.pesopaq+slinart.nsueltas*slinart.pesouni;
+                slinart.terminada=0;
+                volumen+=slinart.volpico;
+            }
+        } else {
+            slinart.homogeneo=1;
+            slinart.volpico=0;
+            slinart.terminada=TERMINFASE1+1;
+            terminadas++;
+        }
+        slinart.npicos=1;
+        if (ptr->maxpicos==1) {
+            slinart.terminada=TERMINFASE1;
+            terminadas++;
+        }
+        slinart.sig=NULL;
+        slinart.genera=1;
+        slinart.bulto=nlineas+1;
+		slinart.ordenmovim=ordenmovim++;
+        if (slinart.nbultos>0) slinart.ncompletos=1;
+        ptr_lineas[nlineas]=slinart;
+        nlineas++;
+        if (nlineas>=maxlinbu) {
+			v10logcomen(LOGERROR,pec->comenpec,"tomadatos - ERROR Alcanzado máximo número de líneas por bulto (%ld) para bulto %s /n",MAXLINBU,buc->codbulto);
+            return(FAILURE);
+        }
+	    v10log(LOGNORMAL,"tomadatos - Determinados %ld bultos de unidades completos, %lf paquetes y %lf unidades sueltas para artículo %s zona %ld\n",slinart.nbultos,slinart.npaquetes,slinart.nsueltas,slinart.codart,slinart.codzona);
+    } while(BULTOnextbultolinordenmovim(&bulto)==SUCCESS);
+
+    return(SUCCESS);
+}
+
+static int fcompara(const void *a,const void *b) 
+{
+    const linarts * const *l1=a;
+    const linarts * const *l2=b;
+    if ((*l1)->terminada<(*l2)->terminada) return(1);
+    if ((*l1)->terminada>(*l2)->terminada) return(-1);
+	if (!strcmp(trataordenmovim,"S")) {
+       if ((*l1)->ordenmovim<(*l2)->ordenmovim) return(-1);
+       if ((*l1)->ordenmovim>(*l2)->ordenmovim) return(1);
+	}
+    if (((*l1)->nbultos+(*l1)->homogeneo)<((*l2)->nbultos+(*l2)->homogeneo)) return(1);
+    if (((*l1)->nbultos+(*l1)->homogeneo)>((*l2)->nbultos+(*l2)->homogeneo)) return(-1);
+    if ((*l1)->volpico<(*l2)->volpico) return(1);
+    if ((*l1)->volpico>(*l2)->volpico) return(-1);
+    if ((*l1)->pedida<(*l2)->pedida) return(-1);
+    return(1);
+}
+
+static void calculapico(int i,int j,int fase) 
+{
+    linarts *nuevo;
+    if (ptr_ptrs[i]->sig!=NULL) {
+        nuevo=ptr_ptrs[i]->sig;
+        while(nuevo->sig!=NULL) 
+			nuevo=nuevo->sig;
+        nuevo->sig=ptr_ptrs[j];
+    } else {
+        ptr_ptrs[i]->sig=ptr_ptrs[j];
+    }
+
+    ptr_ptrs[i]->pesopico+=ptr_ptrs[j]->pesopico;
+    ptr_ptrs[i]->volpico+=ptr_ptrs[j]->volpico;
+    ptr_ptrs[i]->numuni+=ptr_ptrs[j]->numuni;
+    ptr_ptrs[i]->npicos++;
+    ptr_ptrs[i]->ncompletos+=ptr_ptrs[j]->ncompletos;
+    if (ptr_ptrs[i]->npicos>=ptr_cajas[0].maxpicos ) {
+        ptr_ptrs[i]->terminada=fase;
+        terminadas++;
+    }
+	if (ptr_ptrs[i]->nbultos && ptr_ptrs[j]->nbultos) {
+        ptr_ptrs[i]->terminada=fase;
+        terminadas++;
+    }
+    if (ptr_ptrs[j]->maxlargo>ptr_ptrs[i]->maxlargo) ptr_ptrs[i]->maxlargo=ptr_ptrs[j]->maxlargo;
+    if (ptr_ptrs[j]->maxancho>ptr_ptrs[i]->maxancho) ptr_ptrs[i]->maxancho=ptr_ptrs[j]->maxancho;
+    if (ptr_ptrs[j]->maxalto>ptr_ptrs[i]->maxalto) ptr_ptrs[i]->maxalto=ptr_ptrs[j]->maxalto;
+    if (ptr_ptrs[j]->altura>ptr_ptrs[i]->altura) ptr_ptrs[i]->altura=ptr_ptrs[j]->altura;
+    ptr_ptrs[j]->maxlargo=0;
+    ptr_ptrs[j]->maxancho=0;
+    ptr_ptrs[j]->maxalto=0;
+    ptr_ptrs[j]->genera=0;
+    ptr_ptrs[j]->bulto=ptr_ptrs[i]->bulto;
+    ptr_ptrs[j]->terminada=fase+2;
+    terminadas++;
+    ptr_ptrs[j]->volpico=0;
+    ptr_ptrs[j]->numuni=0;
+}
+
+static int calculabultosaux(vdpedidocabs *pec,int *ult_terminadas,int terminadafase,int bultosi,int bultosj,int mismazona) {
+    int i,j;
+
+    if (terminadas>=nlineas) 
+		return(SUCCESS);
+    qsort((void *)(ptr_ptrs+*ult_terminadas),nlineas-*ult_terminadas,sizeof(linarts *),fcompara);
+    *ult_terminadas=terminadas;
+
+    for(i=0;i<nlineas;i++) {
+		if (ptr_ptrs[i]->terminada) 
+			continue;
+        if ((ptr_ptrs[i]->nbultos && bultosi) || (ptr_ptrs[i]->nbultos==0 && bultosi==0)) {
+		    v10log(LOGNORMAL,"calculabultosaux - Tratando referencia %s con %ld bultos de %lf unidades y %f unidades sueltas\n",
+                              ptr_ptrs[i]->codart,ptr_ptrs[i]->nbultos,ptr_ptrs[i]->unibulto,ptr_ptrs[i]->nsueltas);
+            if (!ptr_ptrs[i]->volpico) {
+				v10logcomen(LOGERROR,pec->comenpec,"calculabultosaux - ERROR Volúmen del pico es 0 /n");
+		        return(FAILURE);
+            }
+            for(j=i+1;j<nlineas ;j++) {
+                if (ptr_ptrs[i]->ncompletos>1 && ptr_ptrs[j]->ncompletos) continue;
+				if (ptr_ptrs[j]->terminada) 
+					continue;
+				if (mismazona==1 && ptr_ptrs[i]->codzona!=ptr_ptrs[j]->codzona) 
+					continue;
+                if ((ptr_ptrs[j]->nbultos && bultosj) || (ptr_ptrs[j]->nbultos==0 && bultosj==0)) {
+					if ((ptr_ptrs[i]->volpico+ptr_ptrs[j]->volpico)<=ptr_cajas[0].volumencaj &&
+                        (ptr_ptrs[i]->pesopico+ptr_ptrs[j]->pesopico)<=ptr_cajas[0].maxpeso) {
+					   v10log(LOGNORMAL,"calculabultosaux - Tratando referencia %s con  %f unidades sueltas\n",
+					                     ptr_ptrs[j]->codart,ptr_ptrs[j]->numuni);
+                       calculapico(i,j,terminadafase);
+                       if (ptr_ptrs[i]->terminada) 
+						   break;
+					}
+                }
+            }
+
+        }
+    }
+    return(SUCCESS);
+}
+
+static int calculabultos(vdpedidocabs *pec) 
+{
+    int ret,i,ult_terminadas = 0;
+    for(i=0;i<nlineas;i++) 
+		ptr_ptrs[i]=ptr_lineas+i;
+    switch (atoi(minimizacajaszona)) {
+		case 1: if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE2,1,0,0))!=0)return(ret);
+			    if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE3,1,1,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,0))!=0)return(ret);
+				break;
+		case 2: if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE2,1,0,1))!=0)return(ret);
+			    if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE4,1,0,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE3,1,1,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE5,1,1,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,0))!=0)return(ret);
+				break;
+		case 3: if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE2,1,0,1))!=0)return(ret);
+			    if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE3,1,1,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE4,1,0,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE5,1,1,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,0))!=0)return(ret);
+				break;
+		case 4:	if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE2,1,0,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE3,1,1,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,1))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE4,1,0,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE5,1,1,0))!=0)return(ret);
+				if ((ret=calculabultosaux(pec,&ult_terminadas,TERMINFASE6,0,0,0))!=0)return(ret);
+				break;
+	}
+    for(i=0;i<nlineas;i++){
+        if (!ptr_ptrs[i]->terminada && !ptr_ptrs[i]->genera) {
+		    v10log(LOGNORMAL,"calculabultos - Se fuerza generación de bulto. Linea de bulto para artículo %s sin terminar \n",ptr_ptrs[i]->codart);
+            ptr_ptrs[i]->genera=1;
+        }
+    }
+
+    return(SUCCESS);
+}
+
+static int rellenacabecera(vdbultocabs *bucnuevo,vdbultocabs *buc,vdbultolins *bulnuevo)
+{
+	int ret=0;
+	char digitoean[2]="";
+	vdbultos bulto;
+
+    memset(bucnuevo,0,sizeof(vdbultocabs));
+    strcpy(bucnuevo->coddiv,buc->coddiv);
+    bucnuevo->anoped=buc->anoped;
+    strcpy(bucnuevo->codped,buc->codped);
+    bucnuevo->seqped=buc->seqped;
+    strcpy(bucnuevo->tipobulto,buc->tipobulto);
+    strcpy(bucnuevo->tipovol,buc->tipovol);
+    strcpy(bucnuevo->swtanular,buc->swtanular);
+    bucnuevo->pesoteorico=buc->pesoteorico;
+    bucnuevo->pesoreal = 0;
+    strcpy(bucnuevo->termografo, buc->termografo);
+    bucnuevo->status=STBUCPDTEETIQ;
+	strncpy(digitoean,buc->codbulto,1);
+    ret=BULTObuscacodbulto(digitoean,buc->coddiv,&bulto);
+	if (ret) 
+        return(ret);
+    strcpy(bucnuevo->codbulto,bulto.codbulto);
+    strcpy(bulnuevo->codbulto,bulto.codbulto);
+    bucnuevo->feccreado=damedate();
+    cent2a(gettime(),0,':',bucnuevo->horacreado);
+
+	return(0);
+}
+
+static int rellenalinea(char *codbulto,vdbultolins *ptr_bultolin,linarts *ptr,double cantidad)
+{
+    int flag=0;
+    int ret=0;
+	char limpiamov[2]="S";
+    vdbultolins bulaux,blin;
+	vdbultos bulto;
+	vdmovauxs movim;
+
+    memset(ptr_bultolin,0,sizeof(vdbultolins));
+    strcpy(ptr_bultolin->codbulto,codbulto);
+    strcpy(ptr_bultolin->codart,ptr->codart);
+    strcpy(ptr_bultolin->codlot,ptr->codlot);
+    ret=BULTObuscasecuencia(codbulto,&bulto);
+	if (ret) {
+		v10log(LOGERROR,"rellenalinea - ERROR Obteniendo siguiente secuencial de linea de bulto para bulto\n",codbulto);
+        return(ret);
+	}
+	ptr_bultolin->seqlinea=bulto.secuencia;
+	ptr_bultolin->cantpedida=conviertearticulo2v10(cantidad,ptr->codart);
+    ret=BULbuscacodmov(ptr->codmov,&bulaux);
+    savepoint("rellenalinea");
+    do {
+			ret=MOVAUXprocpartemov(bulaux.codmov,bulaux.cantpedida-ptr_bultolin->cantpedida,ptr_bultolin->codmov,limpiamov,&movim);
+            if (ret) {
+				v10log(LOGNORMAL,"rellenalinea - ERROR ORACLE %ld No puedo crear movimiento independiente para artículo %s en bulto %s \n",ret,ptr_bultolin->codart,codbulto);
+                return(ret);
+            } else {
+				ptr_bultolin->codmov=movim.nuevomov;
+                flag=1;
+			}
+            ret=BULbuscacodmov(ptr_bultolin->codmov,&blin);
+            if (ret) {
+                v10log(LOGERROR,"rellenalinea - No existe linea con el nuevo movimiento %ld\n",ptr_bultolin->codmov);
+                return(ret);
+            }
+            BULdel(&blin,0);
+    } while (BULnextcodmov(&bulaux)==SUCCESS);
+
+    if (!flag) 
+		ptr_bultolin->codmov=ptr->codmov;
+    ptr_bultolin->cantservida=0;
+    ptr_bultolin->status=STBULASERVIR;
+	v10log(LOGNORMAL,"rellenalinea - Introduciendo en bulto %s, %lf unidades de la referencia %s \n",codbulto,ptr_bultolin->cantpedida,ptr->codart);
+    return(0);
+}
+
+static int damecaja(double volumen,double peso,long maxlargo,long maxancho,long maxalto,long altura)
+{
+    int ret = -1;
+    int indice ;
+    for(indice=0;indice<ncajas;indice++){
+         if (ptr_cajas[indice].volumencaj>=volumen && ptr_cajas[indice].maxpeso>=peso &&
+             ptr_cajas[indice].largocaja>=maxlargo && ptr_cajas[indice].anchocaja>=maxancho &&
+             ptr_cajas[indice].altocaja>=maxalto && ptr_cajas[indice].altura>=altura) 
+			ret=indice;
+    }
+    return(ret);
+}
+
+static int insertacompletos(vdpedidocabs *pec,vdbultocabs *buc,linarts *ptr)
+{
+    int ret=0;
+    int numerocaja;
+    long cuantos=ptr->nbultos;
+    double volumen,
+		   peso_sueltas;
+	char digitoean[2]="";
+    vdbultocabs buc1;
+    vdbultolins bul1;
+	vdbultos bulto;
+
+    ret=rellenacabecera(&buc1,buc,&bul1);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertacompletos - ERROR Obteniendo nuevo código de bulto para bulto %s \n",buc->codbulto);
+        return(ret);
+	}
+    if (ptr->paqbulto) {
+        volumen=ptr->paqbulto*ptr->volumenpaq;
+        peso_sueltas=ptr->paqbulto*ptr->pesopaq;
+    } else {
+        volumen=ptr->unibulto*ptr->volumenuni;
+        peso_sueltas=ptr->unibulto*ptr->pesouni;
+    }
+    if (ptr->npaquetes){
+  	   numerocaja=damecaja(volumen,peso_sueltas,ptr->largopaq,ptr->anchopaq,ptr->altopaq,ptr->altopaq);
+  	 } else {
+  	   numerocaja=damecaja(volumen,peso_sueltas,ptr->largouni,ptr->anchouni,ptr->altouni,ptr->altouni);
+	 }
+    numerocaja=damecaja(volumen,peso_sueltas,ptr->maxlargo,ptr->maxancho,ptr->maxalto,ptr->altura);
+    if (numerocaja!=-1) {
+        strcpy(buc1.tipocaja,ptr_cajas[numerocaja].tipocaja);
+        buc1.pesoteorico=ptr_cajas[numerocaja].pesocaja+ptr_cajas[numerocaja].pesorelleno+peso_sueltas;
+        buc1.volumen=(double)ptr_cajas[numerocaja].altocaja * (double)ptr_cajas[numerocaja].largocaja * (double)ptr_cajas[numerocaja].anchocaja /1000.0;
+    } else {
+		v10logcomen(LOGERROR,pec->comenpec,"insertacompletos - ERROR Referencia %s demasiado grande. Volumetría %s de bulto %s no tiene cajas para este tamaño.\n",ptr->codart,buc->tipovol,buc->codbulto);
+        return(FAILURE);
+    }
+    while (cuantos) {
+        buc1.nbulto=primerbultouni++;
+		ret=BUCinsert(&buc1,NOVERIFICA);
+		if (ret) {
+ 			v10logcomen(LOGERROR,pec->comenpec,"insertacompletos - ERROR ORACLE %ld Insertando bulto %s \n",ret,buc1.codbulto);
+			return(ret);
+		}
+        v10log(LOGNORMAL,"insertacompletos -      Bulto completo  %s, Volumetria %s Caja %s  Anular precintos %s \n",buc1.codbulto,buc1.tipovol,buc1.tipocaja,buc1.swtanular);
+        pesopedido+=buc1.pesoteorico;
+		volumenpedido+=buc1.volumen;
+        ret=rellenalinea(buc1.codbulto,&bul1,ptr,ptr->unibulto);
+        if (ret) return(ret);
+		ret=BULinsert(&bul1,NOVERIFICA);
+        if (ret) {
+			v10logcomen(LOGERROR,pec->comenpec,"insertacompletos - ERROR ORACLE %ld Insertando líneas de bulto %s y artículo %s \n",ret,bul1.codbulto,bul1.codart);
+            return(ret);
+        }
+        if (--cuantos) {
+			strncpy(digitoean,buc->codbulto,1);
+			ret=BULTObuscacodbulto(digitoean,buc->coddiv,&bulto);
+			if (ret) {
+				v10logcomen(LOGERROR,pec->comenpec,"insertacompletos - ERROR Obteniendo nuevo código de bulto para bulto\n",buc->codbulto);
+				return(ret);
+			}
+			strcpy(buc1.codbulto,bulto.codbulto);
+		}
+    }
+    return(ret);
+}
+
+static int insertahomogeneo(vdpedidocabs *pec,vdbultocabs *buc,linarts *ptr)
+{
+    int ret;
+    vdbultocabs buc1;
+    vdbultolins bul1;
+    double volumen;
+    double peso_sueltas;
+    int numerocaja;
+    ret=rellenacabecera(&buc1,buc,&bul1);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertahomogeneo - ERROR Obteniendo nuevo código de bulto para bulto %s \n",buc->codbulto);
+        return(ret);
+	}
+    buc1.nbulto=primerbultouni++;
+    volumen=ptr->nsueltas*ptr->volumenuni+ptr->npaquetes*ptr->volumenpaq;
+    peso_sueltas=ptr->nsueltas*ptr->pesouni+ptr->npaquetes*ptr->pesopaq;
+    numerocaja=damecaja(volumen,peso_sueltas,ptr->maxlargo,ptr->maxancho,ptr->maxalto,ptr->altura);
+    if (numerocaja!=-1) {
+        strcpy(buc1.tipocaja,ptr_cajas[numerocaja].tipocaja);
+        buc1.pesoteorico=ptr_cajas[numerocaja].pesocaja+ptr_cajas[numerocaja].pesorelleno+peso_sueltas;
+        buc1.volumen=(double)ptr_cajas[numerocaja].altocaja * (double)ptr_cajas[numerocaja].largocaja * (double)ptr_cajas[numerocaja].anchocaja /1000.0;
+    } else {
+		v10log(LOGERROR,"insertahomogeneo - ERROR Referencia %s demasiado grande. Volumetría %s de bulto %s no tiene cajas para este tamaño.\n",ptr->codart,buc->tipovol,buc->codbulto);
+        return(FAILURE);
+    }
+    ret=rellenalinea(buc1.codbulto,&bul1,ptr,ptr->nsueltas+ptr->npaquetes*ptr->unipaq);
+    if (ret) return(ret);
+	ret=BUCinsert(&buc1,NOVERIFICA);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertahomogeneo - ERROR ORACLE %ld Insertando bulto %s \n",ret,buc1.codbulto);
+		return(ret);
+	}
+    v10log(LOGNORMAL,"insertahomogeneo -      Bulto homogéneo %s, Volumetria %s Caja %s  Anular precintos %s \n",buc1.codbulto,buc1.tipovol,buc1.tipocaja,buc1.swtanular);
+    pesopedido+=buc1.pesoteorico;
+	volumenpedido +=buc1.volumen;
+	ret=BULinsert(&bul1,NOVERIFICA);
+    if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertahomogeneo - ERROR ORACLE %ld Insertando líneas de bulto %s y artículo %s \n",ret,bul1.codbulto,bul1.codart);
+        return(ret);
+    }
+    return(ret);
+}
+
+static int insertapico(vdpedidocabs *pec,vdbultocabs *buc,linarts *ptr)
+{
+    vdbultocabs buc1;
+    vdbultolins bul1;
+    linarts *ptr_actual,*ptr_completos=NULL;
+    double peso_sueltas=0.0;
+    int numerocaja;
+    int ret;
+    ret=rellenacabecera(&buc1,buc,&bul1);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertapico - ERROR Obteniendo nuevo código de bulto para bulto %s \n",buc->codbulto);
+        return(ret);
+	}
+    buc1.nbulto=primerbultouni++;
+    numerocaja=damecaja(ptr->volpico,ptr->pesopico,ptr->maxlargo,ptr->maxancho,ptr->maxalto,ptr->altura);
+    if (numerocaja==-1) {
+		v10log(LOGERROR,"insertapico - ERROR Referencia %s demasiado grande. Volumetría %s de bulto %s no tiene cajas para este tamaño.\n",ptr->codart,buc->tipovol,buc->codbulto);
+        return(FAILURE);
+    }
+    strcpy(buc1.tipocaja,ptr_cajas[numerocaja].tipocaja);
+    buc1.pesoteorico=ptr_cajas[numerocaja].pesocaja+ptr_cajas[numerocaja].pesorelleno;
+    buc1.volumen=(double)ptr_cajas[numerocaja].altocaja * (double)ptr_cajas[numerocaja].largocaja * (double)ptr_cajas[numerocaja].anchocaja /1000.0;
+	ret=BUCinsert(&buc1,NOVERIFICA);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"insertapico - ERROR ORACLE %ld Insertando bulto %s \n",ret,buc1.codbulto);
+		return(ret);
+	}
+    v10log(LOGNORMAL,"insertapico -      Bulto pico %s, Volumetria %s Caja %s  Anular precintos %s \n",buc1.codbulto,buc1.tipovol,buc1.tipocaja,buc1.swtanular);
+	volumenpedido+=buc1.volumen;
+    for (ptr_actual=ptr;ptr_actual;ptr_actual=ptr_actual->sig) {
+		if (ptr_actual->nbultos && ptr_actual!=ptr) {
+			if (ptr_completos) {
+				v10log(LOGERROR,"%s","insertapico - ERROR Mas de dos picos con bultos completos \n");
+				return(-1);
+			} else 
+				ptr_completos=ptr_actual;
+		}
+        peso_sueltas+=ptr_actual->nsueltas*ptr_actual->pesouni+ptr_actual->npaquetes*ptr_actual->pesopaq;
+        ret=rellenalinea(buc1.codbulto,&bul1,ptr_actual,ptr_actual->nsueltas+ptr_actual->npaquetes*ptr_actual->unipaq);
+        if (ret) return(ret);
+		ret=BULinsert(&bul1,NOVERIFICA);
+        if (ret) {
+			v10logcomen(LOGERROR,pec->comenpec,"insertapico - ERROR ORACLE %ld Insertando líneas de bulto %s y artículo %s \n",ret,bul1.codbulto,bul1.codart);
+            return(ret);
+        }
+    }
+	ret=BUCselvdbultocab(buc1.codbulto,&buc1);
+	if (ret){
+		v10logcomen(LOGERROR,pec->comenpec,"insertapico - ERROR ORACLE %ld Seleccionando datos de bulto %s \n",ret,buc1.codbulto);
+		return(ret);
+	}
+	buc1.pesoteorico+=peso_sueltas;
+	pesopedido+=buc1.pesoteorico;
+
+	ret=BUCactualizavolumenypeso(&buc1,NOVERIFICA);
+	if (ret){
+		v10logcomen(LOGERROR,pec->comenpec,"insertapico - ERROR ORACLE %ld Actualizando volumen y peso de bulto %s \n",ret,buc1.codbulto);
+		return(ret);
+	}
+	if (ptr_completos)  {
+		ret=insertacompletos(pec,buc,ptr_completos);
+		if (ret) return(ret);
+	}
+	return(0);
+}
+
+static int creabultos(vdpedidocabs *pec,vdbultocabs *buc)
+{
+    int ret;
+    int i ;
+    for(i=0;i<nlineas;i++) {
+        if (ptr_ptrs[i]->genera==0) continue;
+        if (ptr_ptrs[i]->nbultos){
+            if ((ret=insertacompletos(pec,buc,ptr_ptrs[i]))!=0) return(ret);
+        }
+        if (ptr_ptrs[i]->homogeneo) {
+            if (ptr_ptrs[i]->nsueltas || ptr_ptrs[i]->npaquetes) {
+                if ((ret=insertahomogeneo(pec,buc,ptr_ptrs[i]))!=0) return(ret);
+            }
+        } else {
+            if (ptr_ptrs[i]->volpico) {
+                if ((ret=insertapico(pec,buc,ptr_ptrs[i]))!=0) return(ret);
+            } else {
+				v10logcomen(LOGERROR,pec->comenpec,"creabultos - ERROR Linea tratada sin bultos que crear/n");
+		        return(FAILURE);
+            }
+        }
+    }
+    return(0);
+}
+
+static int calculavolumetriabulto(vdpedidocabs *pec,vdbultocabs *buc) 
+{
+    int ret;
+	vdbultos bulto;
+    ret=BULTObuscalineabulto(buc->codbulto,&bulto);
+	maxlinbu=ret==0?bulto.lineabulto:MAXLINBU;
+    v10log(LOGNORMAL,"calculavolumetriabulto - Bulto %s con tipo de volumetria %s\n",buc->codbulto,buc->tipovol);
+    v10log(LOGNORMAL,"calculavolumetriabulto - \t\tLeyendo cajas de tipo de volumetria %s\n",buc->tipovol);
+    ret=leecajas(pec,buc);
+	if(ret) return(ret);
+    ptr_lineas=(linarts *)calloc(maxlinbu,sizeof(linarts));
+    if (!ptr_lineas){
+        v10log(LOGERROR,"calculavolumetriabulto - ERROR Obteniendo memoria para bulto %s /n",buc->codbulto);
+        return(FAILURE);
+    }
+    ret=tomadatos(pec,buc);
+    if (!ret) {
+        ptr_ptrs=(linarts **)calloc(nlineas,sizeof(linarts *));
+        if (!ptr_ptrs){
+            v10log(LOGERROR,"calculavolumetriabulto - ERROR Obteniendo memoria para bulto %s y líneas %ld /n",buc->codbulto,nlineas);
+            free(ptr_lineas);
+            ptr_lineas=NULL;
+            return(FAILURE);
+        }
+        ret=calculabultos(pec);
+        if (!ret) ret=creabultos(pec,buc);
+        free(ptr_ptrs);
+        ptr_ptrs=NULL;
+    }
+    free(ptr_lineas);
+    ptr_lineas=NULL;
+    return(ret);
+}
+
+static int actualizabultounivoldinamica(vdpedidocabs *pec,vdbultocabs *buc,vdcajavols *vol) 
+{
+    int ret=0;
+	char digitoean[2]="";
+    vdbultocabs bucnuevo;
+    vdbultolins bul,bulnuevo;
+	vdbultos bulto;
+    ret=BULbuscalinbulto(buc->codbulto,&bul);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR Bulto %s sin líneas \n",buc->codbulto);
+        return(ret);
+    }
+    buc->volumen=(double)vol->altocaja*vol->largocaja*vol->anchocaja/1000; // calculado en centímetros cúbicos
+    bucnuevo=*buc;
+    strcpy(bucnuevo.tipocaja,vol->tipocaja);
+    bucnuevo.status=STBUCPDTEETIQ;
+    bucnuevo.nbulto=primerbultouni++;
+	strncpy(digitoean,buc->codbulto,1);
+    ret=BULTObuscacodbulto(digitoean,buc->coddiv,&bulto);
+	if (ret) {
+		v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR Obteniendo nuevo código de bulto para bulto\n",buc->codbulto);
+        return(ret);
+	}
+	strcpy(bucnuevo.codbulto,bulto.codbulto);
+	ret=BUCinsert(&bucnuevo,NOVERIFICA);
+    if (ret) {
+ 		v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR ORACLE %ld Insertando bulto %s \n",ret,bucnuevo.codbulto);
+        return(ret);
+    }
+    do {
+        bulnuevo=bul;
+        strcpy(bulnuevo.codbulto,bucnuevo.codbulto);
+		ret=BULdel(&bul,NOVERIFICA);
+        if (ret) {
+			v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR ORACLE %ld Borrando linea de bulto %s \n",ret,buc->codbulto);
+            return(ret);
+        }
+		ret=BULinsert(&bulnuevo,NOVERIFICA);
+        if (ret) {
+			v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR ORACLE %ld Insertando líneas de bulto %s y artículo %s \n",ret,bulnuevo.codbulto,bulnuevo.codart);
+            return(ret);
+        }
+    } while(BULnextlinbulto(&bul)==SUCCESS);
+    if ((ret=BUCdel(buc,NOVERIFICA))!=0){
+		v10logcomen(LOGERROR,pec->comenpec,"actualizabultounivoldinamica - ERROR ORACLE %ld Borrando bulto %s \n",ret,buc->codbulto);
+    }
+    return(ret);    
+}
+
+// Calcula volumetría de los bultos de un pedido
+// PARAM1: Estructura del pedido al que calcular volumetría de bultos. 
+// PARAM2: Indicador para calcular peso de caja completa y contenedor. 
+// PARAM3: Indicador para calcular volumen de caja completa y contenedor. 
+// PARAM4: Indicador para minimizar el número de entradas en zona de los 
+//         bultos de picking de unidades.
+// PARAM5: Indicador para tener en cuenta el campo ordenmovim de la ubicación
+//         en el cálculo de la volumetría de los bultos de unidades.
+VDEXPORT int vdcalculovolumetria(void *ptr,char *param) 
+{
+	int ret;
+	vdpedidocabs *pec=ptr;
+	vdbultocabs buc;
+	vdcolcambiovols ccv;
+	vdbultos bulto,bultoemba,bultocnt;	
+    vdstatuss staped;
+    char chequeabultos[LSWITCH];
+	v10log(LOGNORMAL,"vdcalculovolumetria: Procesando volumetria para pedido. %s \n",PEClog(pec));
+    ret=BUCbuscabultosdeunpedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&buc);
+    if (ret) {
+		v10log(LOGERROR,"vdcalculovolumetria: No se encuentran bultos para pedido. %s \n",PEClog(pec));
+        return(ret);
+    }
+    pesopedido=0.0;
+	volumenpedido=0.0;
+	//Comprobar parámetros recibidos
+	ret=numpieces(param,"#");
+    if (ret < 4) {
+        v10log(LOGERROR,"vdcalculovolumetria: Número de parámetros incorrecto, recibe %d necesita 4\n", ret);
+		return(0);
+	}
+   	piece(param,minimizacajaszona,"#",1);
+	piece(param,trataordenmovim,"#",2);
+	piece(param,chequeabultos,"#",3);
+    if ((ret=damestabreviada("vdcalculovolumetria",param, 4, "#",NULL, "PEC", &staped, STPECPREPARANDO))!=0) {
+		v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR Status PEC %s de pedido no existe para algoritmo vdcalculovolumetria \n",staped.dabstatus);
+		return(ret);
+	}
+
+    savepoint("vdcalculovolumetria");
+    ret=BULTOprocrenumerabultos(pec->coddiv,pec->anoped,pec->codped,pec->seqped,
+		                        BULCNT,BULCNT,BULEMBA,0,&bulto);
+    if (bulto.ret) {
+		v10log(LOGERROR,"vdcalculovolumetria - ERROR Renumerando bultos de contenedores para pedido. %s \n",PEClog(pec));
+        rollbacksavepoint("vdcalculovolumetria");
+        return(bulto.ret);
+    }
+	ret=BULTObuscaultimobulto(pec->coddiv,pec->anoped,pec->codped,pec->seqped,"C",&bultocnt);
+	if (ret){
+		v10log(LOGERROR,"vdcalculovolumetria - ERROR Buscando último bulto de contenedores existente para pedido. %s \n",PEClog(pec));
+        rollbacksavepoint("vdcalculovolumetria");
+        return(ret);
+	}
+    ret=BULTOprocrenumerabultos(pec->coddiv,pec->anoped,pec->codped,pec->seqped,
+		                        BULEMBA-bultocnt.ultimobulto,BULEMBA,BULUNI,0,&bulto);
+    if (bulto.ret) {
+		v10log(LOGERROR,"vdcalculovolumetria - ERROR Renumerando bultos de embalajes para pedido. %s \n",PEClog(pec));
+        rollbacksavepoint("vdcalculovolumetria");
+        return(bulto.ret);
+    }
+	ret=BULTObuscaultimobulto(pec->coddiv,pec->anoped,pec->codped,pec->seqped,"E",&bultoemba);
+	if (ret){
+		v10log(LOGERROR,"vdcalculovolumetria - ERROR Buscando último bulto de embalajes existente para pedido. %s \n",PEClog(pec));
+        rollbacksavepoint("vdcalculovolumetria");
+        return(ret);
+	}
+ 	if (bultocnt.ultimobulto>bultoemba.ultimobulto)
+		primerbultouni=bultocnt.ultimobulto+1;
+	else
+		primerbultouni=bultoemba.ultimobulto+1;		
+	do {
+        if (*buc.tipobulto!='U') {
+            BULTOprocvolumetriacajasycnt(buc.codbulto,0,&bulto);
+			if (bulto.ret) {
+				v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR No se puede calcular volumen y peso del bulto %s para pedido. %s \n",buc.codbulto,PEClog(pec));
+		        return(FAILURE);
+			}
+            continue;
+        }
+        if (*buc.tipovol==0) {
+			v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR Bulto %s sin volumetría para pedido. %s \n",buc.codbulto,PEClog(pec));
+            return(FAILURE);
+        }
+		if (!es_blanco(pec->colcambiovol)) {
+			ret=CCVbuscatipovolorig(pec->colcambiovol,buc.tipovol,&ccv);
+			if (ret==0) {
+				strcpy(buc.tipovol,ccv.tipovoldest);
+				v10log(LOGNORMAL,"vdcalculovolumetria - Reemplazando volumetría origen %s por volumetría %s\n",ccv.tipovolorig,ccv.tipovoldest);
+			}
+		}
+        if(CAJAVOLbuscademayoramenor(buc.tipovol,&ptr_cajas[0])){
+ 			v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR Volumetría %s de bulto %s no tiene cajas para pedido. %s \n",buc.tipovol,buc.codbulto,PEClog(pec));
+            return(FAILURE);
+        }
+        if (*ptr_cajas[0].voldinamica=='S') {
+            v10log(LOGNORMAL,"vdcalculovolumetria - Detectada volumetría %s dinámica en bulto %s\n",buc.tipovol,buc.codbulto);
+            if ((ret=actualizabultounivoldinamica(pec,&buc,&ptr_cajas[0]))!=0) {
+                rollbacksavepoint("vdcalculovolumetria");
+                return(ret);
+            }
+            continue;
+        }
+        ret=calculavolumetriabulto(pec,&buc);
+        if(!ret) {
+            BULTOprocborracabeceraylineas(buc.codbulto,0,&bulto);
+            if (bulto.ret) {
+	 			v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR Borrando cabecera y líneas de bulto %s para pedido. %s \n",buc.codbulto,PEClog(pec));
+				ret=bulto.ret;
+			}
+        }
+        if (ret) {
+            rollbacksavepoint("vdcalculovolumetria");
+			v10log(LOGERROR,"vdcalculovolumetria - ERROR Calculando volumetría de bulto %s para pedido. %s \n",buc.codbulto,PEClog(pec));
+            return(ret);
+        }
+    } while(BUCnextbultosdeunpedido(&buc)==SUCCESS);
+    if (*chequeabultos !='N' && *chequeabultos !='n'){             
+		ret=BULTOselchequeavolumetria(pec->coddiv,pec->anoped,pec->codped,pec->seqped,&bulto);
+        if (!ret){
+ 			v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR No se ha generado correctamente la volumetría para el artículo %s. Cantidad a servir no cuadra con cantidad en bultos para pedido. %s \n",bulto.codart,PEClog(pec));
+            rollbacksavepoint("vdcalculovolumetria");
+            return(FAILURE);
+        }
+    }
+    pec->pesopedido+=pesopedido;
+    pec->volumenpedido+=volumenpedido;
+    ret=PECactualizavolumenypeso(pec,NOVERIFICA);
+	if (ret){
+		v10logcomen(LOGERROR,pec->comenpec,"vdcalculovolumetria - ERROR ORACLE %ld Actualizando volumen y peso para pedido. %s \n",ret,PEClog(pec));
+        rollbacksavepoint("vdcalculovolumetria");
+		return(ret);
+	}
+    pec->status=staped.status;
+    return(ret);
+}

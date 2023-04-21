@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<link rel="stylesheet" type="text/css" href="ayuda.css" media="screen"/>
+<script>
+	function tratatecla(mitecla) {
+		if (mitecla==13) 	parent.navigate(milista.options[window.event.srcElement.selectedIndex].miref)
+	}
+</script>
+</head>
+
+<body class="bd" onload="{milista.selectedIndex=0;milista.focus();}">
+<table  background="../img/ayuda/fondo.png" width="180" height="104" style="margin-top:-35px;margin-left:12px;"><tr><td>
+<div class="home" style="position:absolute;top:15px;left:5px;cursor:hand;width:48px;height:48px;border-style:outset;border-width:2px;background:url('../img/ayuda/home.png') no-repeat; border:none;width:36px;height:50px;" onclick="parent.navigate('./ayuda.html&Bienvenido_a_V10.htm')"></div>
+    
+    <input id="filtro" title="Busqueda por patrones( (*)cadena (?)carácter )"value="" style="position:absolute;top:38px;left:60px;width:120px" onkeyup="if (event.keyCode==13) filtrar.click();"/>
+    <input id="filtrar" type="button" onclick="{navigate('./ayudaindice.html&'+filtro.value);}" style="position:absolute;top:40px;left:195px;width:25px;height:25px;background:url('../img/ayuda/lupa.png') no-repeat; border:none;width:17px;height:18px;"/></td></tr></table>
+    
+<table  background="../img/ayuda/topico.png" width="230" height="510" style="margin-top:-25px;margin-left:-30px;"><tr><td>
+    <select SIZE="27" id="milista" style="position:absolute;top:105px;left:9px;width:210px;font-size:9pt" onchange="mizoom.innerHTML=milista.options[window.event.srcElement.selectedIndex].text;" onmousedown="" onkeydown="tratatecla(window.event.keyCode);"onclick="" ondblclick="{parent.navigate(milista.options[window.event.srcElement.selectedIndex].miref); }">
+    	<!--V10TOPICS-->
+    </select>	</td></tr></table>
+    <span id='mizoom' style="position:absolute;left:15px;top:520px;width:200px;background-color:transparent;color:darkblue;font-weight:bold;font-style:Tahoma"><span></body>
+  </html>

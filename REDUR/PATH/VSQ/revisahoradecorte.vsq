@@ -1,0 +1,6 @@
+# Selecciona pedidos en estado 600 (pendiente de revisión de hora de corte)
+# Si cumplen con la hora de corte se actualizan a estado 1000 (pendinete de incluir en serie)
+# Si no cumplen con la hora de corte se actualizan a estado 650 (retenido por hora de corte)
+CURSOR=CREVISAHC BEGIN
+                   RDRPKG.REVISAHORADECORTE;
+                 END;@

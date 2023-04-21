@@ -1,0 +1,149 @@
+#***
+# VDSTOCK.DEF - Generación automática del código c SOLOQUERY sobre la tablas VDDEMANDACAB y VDDEMANDALIN                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 06-03-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=DEM;
+EXTRA=AGRUPALINEAS,V10CADENA,1
+EXTRA=LINEASINSERTADAS,V10LONG
+EXTRA=STATUSINI,V10LONG
+EXTRA=STDEMLFINAL,V10LONG
+EXTRA=STDEMCFINAL,V10LONG
+EXTRA=REABRIRDEML,V10CADENA,1
+EXTRA=STDEMLREABRIR,V10LONG
+EXTRA=STDEMCREABRIR,V10LONG
+EXTRA=RET,V10LONG
+EXTRA=ANULABLE,V10LONG
+
+CURSOR=DEMLANULABLE, SELECT VDDEM.DEMLANULABLE(:VDDEMANDALIN.CODDEMANDA,:VDDEMANDALIN.TIPODEMANDA,:VDDEMANDALIN.LINDEMANDA) ANULABLE FROM DUAL;
+
+CURSOR=DEMCANULABLE, SELECT VDDEM.DEMCANULABLE(:VDDEMANDALIN.CODDEMANDA,:VDDEMANDALIN.TIPODEMANDA) ANULABLE FROM DUAL;
+
+PROCEDURE=ANULADEML,BEGIN                       
+                       VDDEM.ANULADEML(:VDDEMANDALIN.CODDEMANDA,:VDDEMANDALIN.TIPODEMANDA,:VDDEMANDALIN.LINDEMANDA,:RET); 
+                   END;@    
+                   
+PROCEDURE=ANULADEMC,BEGIN                       
+                       VDDEM.ANULADEMC(:VDDEMANDALIN.CODDEMANDA,:VDDEMANDALIN.TIPODEMANDA,:RET); 
+                   END;@    
+
+
+PROCEDURE=FINALIZADEML,BEGIN                       
+                       VDDEM.FINALIZADEML(:VDDEMANDALIN.CODDEMANDA,:VDDEMANDALIN.TIPODEMANDA,:VDDEMANDALIN.LINDEMANDA, 
+                        :STATUSINI,:STDEMLFINAL,:STDEMCFINAL,:REABRIRDEML,:STDEMLREABRIR,:STDEMCREABRIR,:RET); 
+                   END;@    
+                      
+PROCEDURE=CREADEMANDAPEDIDO,BEGIN
+                        VDDEM.CREADEMANDAPEDIDO(:VDPEDIDOCAB.CODDIV,:VDPEDIDOCAB.ANOPED,:VDPEDIDOCAB.CODPED,:VDPEDIDOCAB.SEQPED,
+                                                :VDDEMANDACAB.BACKORDER, :VDDEMANDACAB.TIPODEMANDA, :VDDEMANDACAB.STATUS,
+                                                :VDUBICA.CODUBI, :AGRUPALINEAS, :LINEASINSERTADAS, :VDDEMANDACAB.CODDEMANDA);
+                      END;@    
+
+PROCEDURE=CREADEMANDARECARGA,BEGIN
+                        VDDEM.CREADEMANDARECARGA(:VDUBICA.CODUBI,:VDDEMANDALIN.UNIAGRUPA,:VDDEMANDALIN.CANTIDAD,:VDDEMANDALIN.TIPOREDONDEO,
+                                                 :VDDEMANDALIN.CODART,:VDDEMANDACAB.TIPODEMANDA, :VDDEMANDACAB.STATUS,:LINEASINSERTADAS, :VDDEMANDACAB.CODDEMANDA);
+                      END;@  
+                      
+CURSOR=LISTACODCOMEN, SELECT VDDEM.DAMECODCOMENDEM(:VDDEMANDACAB.CODDEMANDA,:VDDEMANDACAB.TIPODEMANDA) VDEXTRA FROM DUAL;
+                      
+%%h
+VDEXPORT int creademandapedido(vdpedidocabs *pec,char *tipodemanda,long status,char *codubiexped,char *backorder,char *agrupalineas,char *coddemanda);
+VDEXPORT int creademandarecarga(vdrecargas *rec,char *tipodemanda,long status,char *coddemanda);
+VDEXPORT int finalizademl(vddemandalins *deml, long statusini,long stdemlfinal, long stdemcfinal, char *reabrir, long stdemlreabrir, long stdemcreabrir);
+VDEXPORT int anulademl(vddemandalins *deml);
+VDEXPORT int anulademc(vddemandacabs *demc);
+
+%%c
+
+VDEXPORT int finalizademl(vddemandalins *deml, long statusini,long stdemlfinal, long stdemcfinal, char *reabrir, long stdemlreabrir, long stdemcreabrir) {
+	int ret,miret;
+	vddems dem;
+	
+	miret=0;
+	ret=DEMprocfinalizademl(deml->coddemanda,deml->tipodemanda,deml->lindemanda,statusini,stdemlfinal,stdemcfinal,reabrir,stdemlreabrir,stdemcreabrir,miret,&dem);
+	if (ret) {
+		v10log(LOGERROR,"finalizademl: Error al ejecutar PLSQL DEMprocfinalizademl\n");
+		return(ret);
+	} else {
+		return(dem.ret);
+	}
+}
+
+
+VDEXPORT int creademandapedido(vdpedidocabs *pec,char *tipodemanda,long status,char *codubiexped,char *backorder,char *agrupalineas,char *coddemanda) {
+	int ret;
+	long lineasinsertadas=0;
+	vddems dem;
+ 
+	ret=DEMproccreademandapedido(pec->coddiv,pec->anoped,pec->codped,pec->seqped,backorder,tipodemanda,status,codubiexped,agrupalineas,lineasinsertadas,coddemanda,&dem);
+	if (ret) {
+		v10log(LOGERROR,"creademandapedido: Error al ejecutar PLSQL DEMproccreademandapedido\n");
+		return(ret);
+	} else {
+		if (*dem.coddemanda==0) {
+			v10log(LOGERROR,"creademandapedido: No se ha podido generar demanda del tipo %s para pedido. %s\n",
+						    tipodemanda, PEClog(pec));
+			return(-1);
+		} 
+	}
+ 
+	strcopia(coddemanda,dem.coddemanda,strlen(dem.coddemanda));
+	v10log(LOGNORMAL,"creademandapedido: generadas %ld lineas de demandas en demanda %s %s\n",dem.lineasinsertadas,tipodemanda,dem.coddemanda);
+	return(0);
+}
+
+VDEXPORT int creademandarecarga(vdrecargas *rec,char *tipodemanda,long status,char *coddemanda) {
+	int ret;
+	long lineasinsertadas=0;
+	vddems dem;
+ 
+	ret=DEMproccreademandarecarga(rec->codubi, rec->uniagrupademl, rec->cantidad, rec->tiporedondeo,rec->codart, tipodemanda,status,lineasinsertadas,coddemanda,&dem);
+	if (ret) {
+		v10log(LOGERROR,"creademandarecarga: Error al ejecutar PLSQL DEMproccreademandarecarga\n");
+		return(ret);
+	} else {
+		if (*dem.coddemanda==0) {
+			v10log(LOGERROR,"creademandarecarga: No se ha podido generar demanda del tipo %s para recarga de ubicación %s\n",
+						    tipodemanda, rec->codubi);
+			return(-1);
+		} 
+	} 
+	strcopia(coddemanda,dem.coddemanda,strlen(dem.coddemanda));
+	v10log(LOGNORMAL,"creademandarecarga: generadas %ld lineas de demandas en demanda %s %s\n",dem.lineasinsertadas,tipodemanda,dem.coddemanda);
+	return(0);
+}
+
+VDEXPORT int anulademl(vddemandalins *deml) {
+	int ret,miret;
+	vddems dem;
+	
+	miret=0;
+	ret=DEMprocanulademl(deml->coddemanda,deml->tipodemanda,deml->lindemanda,miret,&dem);
+	if (ret) {
+		v10log(LOGERROR,"anulademl: Error al ejecutar PLSQL DEMprocanulademl\n");
+		return(ret);
+	} else {
+		return(dem.ret);
+	}
+}
+
+VDEXPORT int anulademc(vddemandacabs *demc) {
+	int ret,miret;
+	vddems dem;
+	
+	miret=0;
+	ret=DEMprocanulademc(demc->coddemanda,demc->tipodemanda,miret,&dem);
+	if (ret) {
+		v10log(LOGERROR,"anulademc: Error al ejecutar PLSQL DEMprocanulademc\n");
+		return(ret);
+	} else {
+		return(dem.ret);
+	}
+}
+

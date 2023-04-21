@@ -1,0 +1,124 @@
+# Módulo   : VDUBICA.PAN
+# Función  : Mantenimiento de ubicaciones
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# Histórico de cambios:
+MANTENIMIENTO DE UBICACIONES
+
+ Ubicación _20_________ Area _20_________ _40_____________________________________
+ Artículo  _40___________________ _100__________________________________________
+
+ Zona _3N   Planta @L@@   Pasillo @L@@    Columna @L@@    Altura @L@@   Prof. @L@@
+ ÏÄÄÄÄÄÄÄÄ Comportamiento ÄÄÄÄÄÄË  ÏÄÄÄÄÄ Ordenes  ÄÄÄÄË  ÏÄÄÄÄÄÄÄÄÄ Capacidad ÄÄÄÄÄÄÄÄÄË 
+ ³ Tipo _          Etiqueta _   ³  ³ Entrada @L@@@@@@@ ³  ³ Agrupación entrada   _1_    ³  
+ ³ Agrupa líneas _ Stock    _   ³  ³ Salida  @L@@@@@@@ ³  ³ Agrupación capacidad _1_    ³
+ ³ Multiartículo _ Tránsito _   ³  ³ Movto   @L@@@@@@@ ³  ³ Stock máximo   #L#######    ³
+ ³ Multiformato  _ Recargar _   ³  ³                   ³  ³ Stock Mínimo   #L#######    ³
+ ³ Bloq.Entrada  _ Bloq.Salida _³  ³                   ³  ³ Stock Urgente  #L#######    ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                                                          Unidades     Emb     Cont 
+ Extra _255_______________________________________ Stk:  #L#,###,##   @,@L@   @,@@L@
+ Comentario @L@@@@@@@                              Ord:  #L#,###,##   @,@@L   @L,@L@
+ Ult.Modif. _32________ ¿D-MM-Y.YY ________        Res:  #L#,###,##   @,@@L   @,@@L@
+|                                                      
+TABLA=VDUBICA                                          
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+POSTQUERY=FEJECUTA("CSELSTOCK","")
+#,                   "CCOLORES","") 
+
+
+CAMPO=CODUBI,NOUPDATE,TOOLTIP("Código de la ubicación"),INCLUDECSS="border-style:ridge;background-color:#F7BE81;"
+CAMPO=CODAREA,TOOLTIP("Código del area al que pertenece la ubicación"),POSTCHANGE=FDESIGNACION("CSELAREA","No existe area"),COMBOX("CSELAREAS")
+#                         CONTEXTUAL=FEJECUTAFORM("VDSELAREA","N","","","CODAREA=:CODAREA","Selección de area","S"),
+CAMPO=DESAREA,AUXILIAR,NOENTER,TOOLTIP("Designación del área")
+CAMPO=CODART,TOOLTIP("Articulo asociado a la ubicación"),POSTCHANGE=FDESIGNACION("CSELARTIC","No existe artículo"),INCLUDECSS="border-style:ridge;background-color:#F7BE81;"
+#CONTEXTUAL=FEJECUTAFORM("VDSELART","N","","","CODART=:CODART","Selección de artículo","S"),
+CAMPO=DESART,AUXILIAR,NOENTER,TOOLTIP("Designación del artículo asociado a la ubicacion")
+CAMPO=CODZONA,TOOLTIP("Código de la zona")
+CAMPO=PLANTA,TOOLTIP("Planta")
+CAMPO=PASILLO,TOOLTIP("Pasillo")
+CAMPO=COLUMNA,TOOLTIP("Columna")
+CAMPO=ALTURA,TOOLTIP("Altura")
+CAMPO=PROFUNDIDAD,TOOLTIP("Profundidad")
+CAMPO=TIPOUBI,TOOLTIP("Indica si la ubicación es R(eal) o V(irtual)"),POSTCHANGE=FVERIFICA("RV","Debe introducir R(eal) o V(irtual)")
+CAMPO=SWTETIQ,TOOLTIP("Indica si la ubicación tiene etiqueta"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=ORDENENTRADA,TOOLTIP("Orden de la ubicación para entradas")
+CAMPO=UNIAGRUPAE,TOOLTIP("Unidad de agrupacion para entradas"),POSTCHANGE=FVERIFICA("UEC","Debe introducir U(nidades) E(mbalajes) C(ontenedores)"),COMBOX("C - Contenedores","E - Embalajes","U - Unidades")
+CAMPO=AGRUPALIN,TOOLTIP("Indica si la ubicación ha de agrupar las lineas con las mismas caracteristicas"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=STOCK,TOOLTIP("Indica si la ubicación guarda stock o actua como sumidero/manantial"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=ORDENSALIDA,TOOLTIP("Orden de la ubicación para salidas")
+CAMPO=UNICAPAC,TOOLTIP("Unidad de agrupación para medir la capacidad"),POSTCHANGE=FVERIFICA("UEC","Debe introducir U(nidades) E(mbalajes) C(ontenedores)"),COMBOX("C - Contenedores","E - Embalajes","U - Unidades")
+CAMPO=MULTIARTICULO,TOOLTIP("Indica si la ubicación puede contener más de un artículo"),CHECKBOX("N","S")
+CAMPO=TRANSITO,TOOLTIP("Indica si la ubicación es de transito"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=ORDENMOVIM,TOOLTIP("Orden de la ubicación para movimientos")
+CAMPO=STKMAX,TOOLTIP("Stock máximo en la ubicación medida en la unidades de capacidad de la ubicacion")
+CAMPO=MULTIFORMATO,TOOLTIP("Indica si la ubicacion puede contener mas de un formato o lote"),POSTCHANGE=FVERIFICA("SNL","Debe introducir S(i), N(o) o L(ote)")
+CAMPO=RECARGAR,TOOLTIP("Indica si la ubicacion ha de ser recargada por el programa automático\nPuede valer S Si F Rellena a saturación"),POSTCHANGE=FVERIFICA("SF ","Debe introducir S(i) o  F a saturación")
+CAMPO=STKMIN,TOOLTIP("Stock mínimo en la ubicación medida en la unidades de capacidad de la ubicacion")
+CAMPO=BLOQUEOSE,TOOLTIP("Indica si la ubicación esta bloqueada para entradas"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+CAMPO=BLOQUEOSS,TOOLTIP("Indica si la ubicación esta bloqueada para salidas"),POSTCHANGE=FVERIFICA("SN","Debe introducir S(i) o N(o)"),CHECKBOX("N","S")
+
+CAMPO=STKURG,TOOLTIP("Stock urgente en la ubicación medida en la unidades de capacidad de la ubicacion")
+CAMPO=VDEXTRA,TOOLTIP("Campo extra disponible para el implantador")
+
+CAMPO=STOCKUNI,AUXILIAR,NOENTER
+CAMPO=STOCKEMBA,AUXILIAR,NOENTER
+CAMPO=STOCKCONTE,AUXILIAR,NOENTER
+CAMPO=CODCOMEN,TOOLTIP("Código de comentario asociado al producto")
+
+CAMPO=ORDENUNI,AUXILIAR,NOENTER
+CAMPO=ORDENEMBA,AUXILIAR,NOENTER
+CAMPO=ORDENCONTE,AUXILIAR,NOENTER
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizó la última modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro"),COMBOX("CALENDARIO")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CAMPO=RESUNI,AUXILIAR,NOENTER
+CAMPO=RESEMBA,AUXILIAR,NOENTER
+CAMPO=RESCONTE,AUXILIAR,NOENTER
+
+
+
+CURSOR=CSELAREAS SELECT CODAREA,DESAREA,CODALM FROM VDAREA ORDER BY CODALM,CODAREA;
+
+CURSOR=CSELSTOCK SELECT VDSTK.UBISTOCK(:CODUBI, 'U',NULL, NULL,0, NULL,1) STOCKUNI,
+                        VDSTK.UBISTOCK(:CODUBI, 'E') STOCKEMBA,
+                        VDSTK.UBISTOCK(:CODUBI, 'C') STOCKCONTE,
+                        VDUBI.UBIORDENADO(:CODUBI,'U',1) ORDENUNI,
+                        VDUBI.UBIORDENADO(:CODUBI,'E') ORDENEMBA,
+                        VDUBI.UBIORDENADO(:CODUBI,'C') ORDENCONTE,
+                        VDUBI.UBIRESERVADO(:CODUBI,'U',NULL,NULL,1) RESUNI,
+                        VDUBI.UBIRESERVADO(:CODUBI,'E') RESEMBA,
+                        VDUBI.UBIRESERVADO(:CODUBI,'C') RESCONTE FROM DUAL;
+
+CURSOR=CCOLORES SELECT DECODE(:ORDENUNI,0,-1,19)  ORDENUNI__COLOR, 
+                       DECODE(:ORDENUNI,0,-1,19)  ORDENEMBA__COLOR, 
+                       DECODE(:ORDENUNI,0,-1,19)  ORDENCONTE__COLOR, 
+                       DECODE(:RESUNI,0,-1,18)  RESUNI__COLOR,
+                       DECODE(:RESUNI,0,-1,18)  RESEMBA__COLOR,
+                       DECODE(:RESUNI,0,-1,18)  RESCONTE__COLOR FROM DUAL;
+ 
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF,VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CSELAREA SELECT DESAREA FROM VDAREA WHERE CODAREA=:CODAREA;
+
+CURSOR=CSELARTIC SELECT DESART FROM VDARTIC WHERE CODART=:CODART
+                   UNION
+                 SELECT '' DESART FROM DUAL WHERE :CODART IS NULL;
+
+
+#TECLA=SF7,FEJECUTAFORM("VDCOMEN","S","","CODCOMEN=:CODCOMEN","","COMENTARIOS DE CODCOMEN :CODCOMEN","S")
+
+CURSOR=CCLEAR BEGIN
+                CLEARMINI(:CODUBI);
+              END;@
+
+TECLA=SF8,FEJECUTA("CCLEAR","",FCOMMIT,"")
+
+
+
+

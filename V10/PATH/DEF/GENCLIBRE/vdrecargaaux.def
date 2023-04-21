@@ -1,0 +1,17 @@
+#***
+# VDRECARGAR.DEF - Generación automática del código c SOLOQUERY para Recargas
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 11-03-2008                                          
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=RECARGA;
+EXTRA=LISTAALMAS,V10CADENA,1024
+EXTRA=LISTAAREAS,V10CADENA,1024
+
+
+CURSOR=UBIS, SELECT * FROM TABLE(VDRECARGA.DAMEUBIRECARGAR(:LISTAAREAS,:LISTAALMAS));

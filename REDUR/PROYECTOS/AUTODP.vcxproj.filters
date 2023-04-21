@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a5453bdc-826e-4b9b-97ba-08e789ee973a}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\LIBs">
+      <UniqueIdentifier>{839aaad7-69c9-4e68-a5d9-75c714e2d952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AUTO">
+      <UniqueIdentifier>{6ecd5a0a-0795-4f99-acb4-731ab8516843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AUTO\GENCLIBRE">
+      <UniqueIdentifier>{1abc94fd-f1f8-45e9-a5ed-04ad2179a5ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AUTO\GENC">
+      <UniqueIdentifier>{69593fbe-7d45-4d85-a23a-facaba5c5e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{064edeb1-f4b7-46fb-bdc5-e7a4b1898b58}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{b9a598f5-c9c4-42c7-b8f6-8b57a15fd0a7}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\V10LIB\BINWin32\V10ORA.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10LIB\BINWin32\V10WIN.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\VDAUTO.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\VDDICCIONARIO.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\vdkernel.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\AUTO\GENCLIBRE\XVDDP.c">
+      <Filter>Source Files\AUTO\GENCLIBRE</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

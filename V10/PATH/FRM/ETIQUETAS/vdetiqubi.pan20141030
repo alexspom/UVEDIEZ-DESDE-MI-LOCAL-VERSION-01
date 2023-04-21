@@ -1,0 +1,78 @@
+# MOdulo   : VDETIQUBI.PAN
+# Función  : ImpresiOn de etiquetas de ubicación. SelecciO de criterios
+#
+# Creación : 05-08-2008
+# Autor    : JCSR
+###########################################
+# HistOrico de cambios:
+SELECCION DE UBICACIONES PARA IMPRESION DE ETIQUETAS
+
+  ÏÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄË  
+  ³                                                     ³ 
+  ³                      Desde            Hasta         ³ 
+  ³ Ubicación            ____________     ____________  ³ 
+  ³ Zona                 @L@              @L@           ³ 
+  ³ Planta               @L@@             @L@@          ³ 
+  ³ Pasillo              @L@@             @L@@          ³ 
+  ³ Columna              @L@@             @L@@          ³ 
+  ³ Altura               @L@@             @L@@          ³ 
+  ³ Profundidad          @L@@             @L@@          ³ 
+  ³ Orden de entrada     @L@@@@@@@        @L@@@@@@@     ³ 
+  ³ Orden de salida      @L@@@@@@@        @L@@@@@@@     ³ 
+  ³ Orden de movimiento  @L@@@@@@@        @L@@@@@@@     ³ 
+  ³                                                     ³ 
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ 
+                                                            
+  Artículo _20___________________ 
+           _40____________________________________ 
+
+      Area _10_______ 
+           _40____________________________________ 
+           
+  Número de etiquetas que queremos imprimir @L@
+      
+|
+
+
+TABLA=DUAL
+
+
+CAMPO=CODUBIDESDE, AUXILIAR, TOOLTIP("Ubicación desde la cual \nqueremos hacer la impresiOn de etiquetas")
+CAMPO=CODUBIHASTA, AUXILIAR, TOOLTIP("Ubicación hasta la cual \nqueremos hacer la impresiOn de etiquetas")
+CAMPO=ZONADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuya zona se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")
+CAMPO=ZONAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuya zona se encuentra \nen un intervalo que termina \ncon el valor de este campo.")
+CAMPO=PLANTADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuya planta se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=PLANTAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuya planta se encuentra \nen un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=PASILLODESDE, AUXILIAR, TOOLTIP("Ubicaciones cuyo pasillo se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=PASILLOHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuyo pasillo se encuentra \nen un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=COLUMNADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuya columna se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=COLUMNAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuya columna se encuentra \nen un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=ALTURADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuya altura se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=ALTURAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuya altura se encuentra \nen un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=PROFUNDIDADDESDE, AUXILIAR, TOOLTIP("Ubicaciones cuya  profundidad se encuentra \nen un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=PROFUNDIDADHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuya profundidad se encuentra \nen un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=ORDENENTRADADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de entrada \nse encuentra en un intervalo que \ncomienza con el valor de este campo.")       
+CAMPO=ORDENENTRADAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de entrada \nse encuentra en un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=ORDENSALIDADESDE, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de salida \nse encuentra en un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=ORDENSALIDAHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de salida \nse encuentra en un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=ORDENMOVIMIENTODESDE, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de movimiento \nse encuentra en un intervalo que comienza \ncon el valor de este campo.")       
+CAMPO=ORDENMOVIMIENTOHASTA, AUXILIAR, TOOLTIP("Ubicaciones cuyo Orden de movimiento \nse encuentra en un intervalo que termina \ncon el valor de este campo.")        
+CAMPO=CODART, AUXILIAR,TOOLTIP("Artículo asociado a la ubicación"),POSTCHANGE=FDESIGNACION("CSELARTIC","No existe artículo"),
+                         CONTEXTUAL=FEJECUTAFORM("VDSELART","N","","","CODART=:CODART","Selección de artículo","S")
+CAMPO=DESART, AUXILIAR, TOOLTIP("")
+CAMPO=CODAREAREQ, AUXILIAR,TOOLTIP("Código del área al que pertenece la ubicación"),POSTCHANGE=FDESIGNACION("CSELAREA","No existe area"),
+                         CONTEXTUAL=FEJECUTAFORM("VDSELAREA","N","","","CODAREA=:CODAREA","Selección de area","S")
+CAMPO=DESAREA, AUXILIAR, TOOLTIP("")
+CAMPO=NUMETIQAIMPRIMIR, AUXILIAR, TOOLTIP("Número de etiquetas que vamos a querer imprimir")
+                         
+
+CURSOR=CSELAREA SELECT DESAREA FROM VDAREA WHERE CODAREA=:CODAREAREQ
+                   UNION
+                 SELECT '' DESAREA FROM DUAL WHERE :CODAREAREQ IS NULL;
+
+CURSOR=CSELARTIC SELECT DESART FROM VDARTIC WHERE CODART=:CODART
+                   UNION
+                 SELECT '' DESART FROM DUAL WHERE :CODART IS NULL;
+
+
+

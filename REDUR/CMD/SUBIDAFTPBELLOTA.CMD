@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\WinSCP\winscp.exe" /command "open ftp://V10:29BRGuzk@redlab.redur.es" "cd //PROD/in" "lcd D:\V10\V10DATOS\SUBIR\BELLOTA" "option batch continue" "option confirm off" "put "*.TXT" -delete -nopermissions"  "exit" /log="D:\V10\V10DATOS\LOG\FTP_subir_%fecha%.log"

@@ -1,0 +1,478 @@
+// Modulo generado automaticamente a partir de VDORDRECLIN.DEF
+//# M¢dulo : VDORDRECLIN.DEF                                                        
+//# Función: Generación automatica de rutinas C tabla VDORDRECLIN
+//#                        
+//# Autor	 : ICC
+//# Revisado por: 
+//# Fecha  : 05-05-2008                                              
+//#********************************************************************************
+//# Histórico de cambios
+//# ====================
+//# =================================================================================
+//#
+//TABLE=ORL
+//
+//
+//CLAVE=CLAVE,CODORDREC,CODDIV,SECLINORD
+//
+//INTERFASE
+//UPDATE
+//DELETE
+//INSERT
+
+#include "VD.H"
+#define SELORLCLAVE "SELECT VDORDRECLIN.ROWID,VDORDRECLIN.CODORDREC,VDORDRECLIN.CODDIV, "\
+                    " VDORDRECLIN.SECLINORD,VDORDRECLIN.CLAVEEXT,VDORDRECLIN.CODART, "\
+                    " VDORDRECLIN.FECRECPRE,VDORDRECLIN.CANTIDAD,VDORDRECLIN.UNIDADESHOST, "\
+                    " VDORDRECLIN.CODLOT,VDORDRECLIN.TIPOLOTE,VDORDRECLIN.CADUCI, "\
+                    " VDORDRECLIN.VDEXTRA,VDORDRECLIN.TOLEREXC,VDORDRECLIN.TOLERDEF, "\
+                    " VDORDRECLIN.STATUS,VDORDRECLIN.CODCOMEN,VDORDRECLIN.CODOPEMODIF, "\
+                    " VDORDRECLIN.FECMODIF,VDORDRECLIN.HORAMODIF,VDORDRECLIN.MOTIVO, "\
+                    " VDORDRECLIN.DVD_IN,VDORDRECLIN.DVD_IN_ORDEN,VDORDRECLIN.HU_STATUS, "\
+                    " VDORDRECLIN.CODMAT,VDORDRECLIN.PESO,VDORDRECLIN.ALTO, "\
+                    " VDORDRECLIN.ANCHO,VDORDRECLIN.LARGO,VDORDRECLIN.CODBULTO "\
+        " FROM VDORDRECLIN"\
+        " WHERE "\
+               " VDORDRECLIN.CODORDREC=:CODORDREC "\
+               " AND VDORDRECLIN.CODDIV=:CODDIV "\
+               " AND VDORDRECLIN.SECLINORD=:SECLINORD "
+static v10cursors *vdselorlclave;
+
+#define SELORLVDORDRECLIN "SELECT VDORDRECLIN.ROWID,VDORDRECLIN.CODORDREC,VDORDRECLIN.CODDIV, "\
+                    " VDORDRECLIN.SECLINORD,VDORDRECLIN.CLAVEEXT,VDORDRECLIN.CODART, "\
+                    " VDORDRECLIN.FECRECPRE,VDORDRECLIN.CANTIDAD,VDORDRECLIN.UNIDADESHOST, "\
+                    " VDORDRECLIN.CODLOT,VDORDRECLIN.TIPOLOTE,VDORDRECLIN.CADUCI, "\
+                    " VDORDRECLIN.VDEXTRA,VDORDRECLIN.TOLEREXC,VDORDRECLIN.TOLERDEF, "\
+                    " VDORDRECLIN.STATUS,VDORDRECLIN.CODCOMEN,VDORDRECLIN.CODOPEMODIF, "\
+                    " VDORDRECLIN.FECMODIF,VDORDRECLIN.HORAMODIF,VDORDRECLIN.MOTIVO, "\
+                    " VDORDRECLIN.DVD_IN,VDORDRECLIN.DVD_IN_ORDEN,VDORDRECLIN.HU_STATUS, "\
+                    " VDORDRECLIN.CODMAT,VDORDRECLIN.PESO,VDORDRECLIN.ALTO, "\
+                    " VDORDRECLIN.ANCHO,VDORDRECLIN.LARGO,VDORDRECLIN.CODBULTO "\
+        " FROM VDORDRECLIN"\
+        " WHERE "\
+               " VDORDRECLIN.CODORDREC=:CODORDREC "\
+               " AND VDORDRECLIN.CODDIV=:CODDIV "\
+               " AND VDORDRECLIN.SECLINORD=:SECLINORD "
+static v10cursors *vdselorlvdordreclin;
+
+#define UPDAORL "UPDATE VDORDRECLIN SET  FECMODIF=VD.FECHASYS,  HORAMODIF=VD.HORASYS,  CODOPEMODIF=VDUSER.GETUSER,  "\
+               " CODORDREC=:CODORDREC , "\
+               " CODDIV=:CODDIV , "\
+               " SECLINORD=:SECLINORD , "\
+               " CLAVEEXT=:CLAVEEXT , "\
+               " CODART=:CODART , "\
+               " FECRECPRE=:FECRECPRE , "\
+               " CANTIDAD=:CANTIDAD , "\
+               " UNIDADESHOST=:UNIDADESHOST , "\
+               " CODLOT=:CODLOT , "\
+               " TIPOLOTE=:TIPOLOTE , "\
+               " CADUCI=:CADUCI , "\
+               " VDEXTRA=:VDEXTRA , "\
+               " TOLEREXC=:TOLEREXC , "\
+               " TOLERDEF=:TOLERDEF , "\
+               " STATUS=:STATUS , "\
+               " CODCOMEN=:CODCOMEN , "\
+               " MOTIVO=:MOTIVO , "\
+               " DVD_IN=:DVD_IN , "\
+               " DVD_IN_ORDEN=:DVD_IN_ORDEN , "\
+               " HU_STATUS=:HU_STATUS , "\
+               " CODMAT=:CODMAT , "\
+               " PESO=:PESO , "\
+               " ALTO=:ALTO , "\
+               " ANCHO=:ANCHO , "\
+               " LARGO=:LARGO , "\
+               " CODBULTO=:CODBULTO  "\
+                     " WHERE ROWID=:MIROWID "
+static v10cursors *vdupdaorlvdordreclin;
+
+#define INSORL "INSERT INTO VDORDRECLIN (CODORDREC,CODDIV,SECLINORD,CLAVEEXT,CODART,FECRECPRE, "\
+                    " CANTIDAD,UNIDADESHOST,CODLOT,TIPOLOTE,CADUCI,VDEXTRA,TOLEREXC, "\
+                    " TOLERDEF,STATUS,CODCOMEN,CODOPEMODIF,FECMODIF,HORAMODIF,MOTIVO, "\
+                    " DVD_IN,DVD_IN_ORDEN,HU_STATUS,CODMAT,PESO,ALTO,ANCHO, "\
+                    " LARGO,CODBULTO "\
+       " ) VALUES ( "\
+                    " :CODORDREC,:CODDIV,:SECLINORD,:CLAVEEXT,:CODART,:FECRECPRE, "\
+                    " :CANTIDAD,:UNIDADESHOST,:CODLOT,:TIPOLOTE,:CADUCI,:VDEXTRA,:TOLEREXC, "\
+                    " :TOLERDEF,:STATUS,:CODCOMEN,VDUSER.GETUSER,VD.FECHASYS,VD.HORASYS,:MOTIVO, "\
+                    " :DVD_IN,:DVD_IN_ORDEN,:HU_STATUS,:CODMAT,:PESO,:ALTO,:ANCHO, "\
+                    " :LARGO,:CODBULTO) "
+static v10cursors *vdinsorl;
+
+#define DELORL "DELETE VDORDRECLIN WHERE ROWID=:MIROWID "
+static v10cursors *vddelorl;
+
+static vdordreclins svdordreclin;
+
+static diccols colvdordreclin[]={
+	{"ROWID",V10CADENA,(size_t)&svdordreclin.rowid,sizeof(svdordreclin.rowid)},
+	{"CODORDREC",V10CADENA,(size_t)&svdordreclin.codordrec,sizeof(svdordreclin.codordrec)},
+	{"CODDIV",V10CADENA,(size_t)&svdordreclin.coddiv,sizeof(svdordreclin.coddiv)},
+	{"SECLINORD",V10LONG,(size_t)&svdordreclin.seclinord,sizeof(svdordreclin.seclinord)},
+	{"CLAVEEXT",V10CADENA,(size_t)&svdordreclin.claveext,sizeof(svdordreclin.claveext)},
+	{"CODART",V10CADENA,(size_t)&svdordreclin.codart,sizeof(svdordreclin.codart)},
+	{"FECRECPRE",V10LONG,(size_t)&svdordreclin.fecrecpre,sizeof(svdordreclin.fecrecpre)},
+	{"CANTIDAD",V10DOUBLE,(size_t)&svdordreclin.cantidad,sizeof(svdordreclin.cantidad)},
+	{"UNIDADESHOST",V10CADENA,(size_t)&svdordreclin.unidadeshost,sizeof(svdordreclin.unidadeshost)},
+	{"CODLOT",V10CADENA,(size_t)&svdordreclin.codlot,sizeof(svdordreclin.codlot)},
+	{"TIPOLOTE",V10CADENA,(size_t)&svdordreclin.tipolote,sizeof(svdordreclin.tipolote)},
+	{"CADUCI",V10CADENA,(size_t)&svdordreclin.caduci,sizeof(svdordreclin.caduci)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdordreclin.vdextra,sizeof(svdordreclin.vdextra)},
+	{"TOLEREXC",V10DOUBLE,(size_t)&svdordreclin.tolerexc,sizeof(svdordreclin.tolerexc)},
+	{"TOLERDEF",V10DOUBLE,(size_t)&svdordreclin.tolerdef,sizeof(svdordreclin.tolerdef)},
+	{"STATUS",V10LONG,(size_t)&svdordreclin.status,sizeof(svdordreclin.status)},
+	{"CODCOMEN",V10LONG,(size_t)&svdordreclin.codcomen,sizeof(svdordreclin.codcomen)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdordreclin.codopemodif,sizeof(svdordreclin.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdordreclin.fecmodif,sizeof(svdordreclin.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdordreclin.horamodif,sizeof(svdordreclin.horamodif)},
+	{"MOTIVO",V10LONG,(size_t)&svdordreclin.motivo,sizeof(svdordreclin.motivo)},
+	{"DVD_IN",V10CADENA,(size_t)&svdordreclin.dvd_in,sizeof(svdordreclin.dvd_in)},
+	{"DVD_IN_ORDEN",V10CADENA,(size_t)&svdordreclin.dvd_in_orden,sizeof(svdordreclin.dvd_in_orden)},
+	{"HU_STATUS",V10CADENA,(size_t)&svdordreclin.hu_status,sizeof(svdordreclin.hu_status)},
+	{"CODMAT",V10CADENA,(size_t)&svdordreclin.codmat,sizeof(svdordreclin.codmat)},
+	{"PESO",V10LONG,(size_t)&svdordreclin.peso,sizeof(svdordreclin.peso)},
+	{"ALTO",V10LONG,(size_t)&svdordreclin.alto,sizeof(svdordreclin.alto)},
+	{"ANCHO",V10LONG,(size_t)&svdordreclin.ancho,sizeof(svdordreclin.ancho)},
+	{"LARGO",V10LONG,(size_t)&svdordreclin.largo,sizeof(svdordreclin.largo)},
+	{"CODBULTO",V10CADENA,(size_t)&svdordreclin.codbulto,sizeof(svdordreclin.codbulto)}
+	};
+static diccionarios dvdordreclin[]={
+    {colvdordreclin,30}
+};
+diccionario dorl={dvdordreclin,1};
+
+static char msglogORL[LCADENA];
+static char msgdebugORL[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_orl(void)
+{
+if (vdselorlclave) {
+    liberacursor(vdselorlclave);
+    vdselorlclave = NULL;
+}
+if (vdselorlvdordreclin) {
+    liberacursor(vdselorlvdordreclin);
+    vdselorlvdordreclin = NULL;
+}
+if (vdupdaorlvdordreclin) {
+    liberacursor(vdupdaorlvdordreclin);
+    vdupdaorlvdordreclin = NULL;
+}
+if (vdinsorl != NULL) {
+    liberacursor(vdinsorl);
+    vdinsorl = NULL;
+}
+if (vddelorl != NULL) {
+    liberacursor(vddelorl);
+    vddelorl = NULL;
+}
+}
+static void init_selorlclave(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordreclin[0].numcol;nc++) dvdordreclin[0].c[nc].offset-=(size_t)&svdordreclin;
+    vdselorlclave=abrecursordebug(SELORLCLAVE,1280);
+    definetodo(vdselorlclave,svdordreclin.rowid,sizeof(svdordreclin.rowid),V10CADENA,
+                          svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          &svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          svdordreclin.claveext,sizeof(svdordreclin.claveext),V10CADENA,
+                          svdordreclin.codart,sizeof(svdordreclin.codart),V10CADENA,
+                          &svdordreclin.fecrecpre,sizeof(svdordreclin.fecrecpre),V10LONG,
+                          &svdordreclin.cantidad,sizeof(svdordreclin.cantidad),V10DOUBLE,
+                          svdordreclin.unidadeshost,sizeof(svdordreclin.unidadeshost),V10CADENA,
+                          svdordreclin.codlot,sizeof(svdordreclin.codlot),V10CADENA,
+                          svdordreclin.tipolote,sizeof(svdordreclin.tipolote),V10CADENA,
+                          svdordreclin.caduci,sizeof(svdordreclin.caduci),V10CADENA,
+                          svdordreclin.vdextra,sizeof(svdordreclin.vdextra),V10CADENA,
+                          &svdordreclin.tolerexc,sizeof(svdordreclin.tolerexc),V10DOUBLE,
+                          &svdordreclin.tolerdef,sizeof(svdordreclin.tolerdef),V10DOUBLE,
+                          &svdordreclin.status,sizeof(svdordreclin.status),V10LONG,
+                          &svdordreclin.codcomen,sizeof(svdordreclin.codcomen),V10LONG,
+                          svdordreclin.codopemodif,sizeof(svdordreclin.codopemodif),V10CADENA,
+                          &svdordreclin.fecmodif,sizeof(svdordreclin.fecmodif),V10LONG,
+                          svdordreclin.horamodif,sizeof(svdordreclin.horamodif),V10CADENA,
+                          &svdordreclin.motivo,sizeof(svdordreclin.motivo),V10LONG,
+                          svdordreclin.dvd_in,sizeof(svdordreclin.dvd_in),V10CADENA,
+                          svdordreclin.dvd_in_orden,sizeof(svdordreclin.dvd_in_orden),V10CADENA,
+                          svdordreclin.hu_status,sizeof(svdordreclin.hu_status),V10CADENA,
+                          svdordreclin.codmat,sizeof(svdordreclin.codmat),V10CADENA,
+                          &svdordreclin.peso,sizeof(svdordreclin.peso),V10LONG,
+                          &svdordreclin.alto,sizeof(svdordreclin.alto),V10LONG,
+                          &svdordreclin.ancho,sizeof(svdordreclin.ancho),V10LONG,
+                          &svdordreclin.largo,sizeof(svdordreclin.largo),V10LONG,
+                          svdordreclin.codbulto,sizeof(svdordreclin.codbulto),V10CADENA,
+                          NULL);
+    bindtodo(vdselorlclave,"CODORDREC",svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          "CODDIV",svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          "SECLINORD",&svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_orl);
+        init = 1;
+    }
+}
+
+static void init_selorlvdordreclin(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordreclin[0].numcol;nc++) dvdordreclin[0].c[nc].offset-=(size_t)&svdordreclin;
+    vdselorlvdordreclin=abrecursordebug(SELORLVDORDRECLIN,1280);
+    definetodo(vdselorlvdordreclin,svdordreclin.rowid,sizeof(svdordreclin.rowid),V10CADENA,
+                          svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          &svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          svdordreclin.claveext,sizeof(svdordreclin.claveext),V10CADENA,
+                          svdordreclin.codart,sizeof(svdordreclin.codart),V10CADENA,
+                          &svdordreclin.fecrecpre,sizeof(svdordreclin.fecrecpre),V10LONG,
+                          &svdordreclin.cantidad,sizeof(svdordreclin.cantidad),V10DOUBLE,
+                          svdordreclin.unidadeshost,sizeof(svdordreclin.unidadeshost),V10CADENA,
+                          svdordreclin.codlot,sizeof(svdordreclin.codlot),V10CADENA,
+                          svdordreclin.tipolote,sizeof(svdordreclin.tipolote),V10CADENA,
+                          svdordreclin.caduci,sizeof(svdordreclin.caduci),V10CADENA,
+                          svdordreclin.vdextra,sizeof(svdordreclin.vdextra),V10CADENA,
+                          &svdordreclin.tolerexc,sizeof(svdordreclin.tolerexc),V10DOUBLE,
+                          &svdordreclin.tolerdef,sizeof(svdordreclin.tolerdef),V10DOUBLE,
+                          &svdordreclin.status,sizeof(svdordreclin.status),V10LONG,
+                          &svdordreclin.codcomen,sizeof(svdordreclin.codcomen),V10LONG,
+                          svdordreclin.codopemodif,sizeof(svdordreclin.codopemodif),V10CADENA,
+                          &svdordreclin.fecmodif,sizeof(svdordreclin.fecmodif),V10LONG,
+                          svdordreclin.horamodif,sizeof(svdordreclin.horamodif),V10CADENA,
+                          &svdordreclin.motivo,sizeof(svdordreclin.motivo),V10LONG,
+                          svdordreclin.dvd_in,sizeof(svdordreclin.dvd_in),V10CADENA,
+                          svdordreclin.dvd_in_orden,sizeof(svdordreclin.dvd_in_orden),V10CADENA,
+                          svdordreclin.hu_status,sizeof(svdordreclin.hu_status),V10CADENA,
+                          svdordreclin.codmat,sizeof(svdordreclin.codmat),V10CADENA,
+                          &svdordreclin.peso,sizeof(svdordreclin.peso),V10LONG,
+                          &svdordreclin.alto,sizeof(svdordreclin.alto),V10LONG,
+                          &svdordreclin.ancho,sizeof(svdordreclin.ancho),V10LONG,
+                          &svdordreclin.largo,sizeof(svdordreclin.largo),V10LONG,
+                          svdordreclin.codbulto,sizeof(svdordreclin.codbulto),V10CADENA,
+                          NULL);
+    bindtodo(vdselorlvdordreclin,"CODORDREC",svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          "CODDIV",svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          "SECLINORD",&svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_orl);
+        init = 1;
+    }
+}
+
+static void init_updaorlvdordreclin(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordreclin[0].numcol;nc++) dvdordreclin[0].c[nc].offset-=(size_t)&svdordreclin;
+    vdupdaorlvdordreclin=abrecursordebug(UPDAORL,1280);
+    bindtodo(vdupdaorlvdordreclin,"CODORDREC",svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          "CODDIV",svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          "SECLINORD",&svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          "CLAVEEXT",svdordreclin.claveext,sizeof(svdordreclin.claveext),V10CADENA,
+                          "CODART",svdordreclin.codart,sizeof(svdordreclin.codart),V10CADENA,
+                          "FECRECPRE",&svdordreclin.fecrecpre,sizeof(svdordreclin.fecrecpre),V10LONG,
+                          "CANTIDAD",&svdordreclin.cantidad,sizeof(svdordreclin.cantidad),V10DOUBLE,
+                          "UNIDADESHOST",svdordreclin.unidadeshost,sizeof(svdordreclin.unidadeshost),V10CADENA,
+                          "CODLOT",svdordreclin.codlot,sizeof(svdordreclin.codlot),V10CADENA,
+                          "TIPOLOTE",svdordreclin.tipolote,sizeof(svdordreclin.tipolote),V10CADENA,
+                          "CADUCI",svdordreclin.caduci,sizeof(svdordreclin.caduci),V10CADENA,
+                          "VDEXTRA",svdordreclin.vdextra,sizeof(svdordreclin.vdextra),V10CADENA,
+                          "TOLEREXC",&svdordreclin.tolerexc,sizeof(svdordreclin.tolerexc),V10DOUBLE,
+                          "TOLERDEF",&svdordreclin.tolerdef,sizeof(svdordreclin.tolerdef),V10DOUBLE,
+                          "STATUS",&svdordreclin.status,sizeof(svdordreclin.status),V10LONG,
+                          "CODCOMEN",&svdordreclin.codcomen,sizeof(svdordreclin.codcomen),V10LONG,
+                          "MOTIVO",&svdordreclin.motivo,sizeof(svdordreclin.motivo),V10LONG,
+                          "DVD_IN",svdordreclin.dvd_in,sizeof(svdordreclin.dvd_in),V10CADENA,
+                          "DVD_IN_ORDEN",svdordreclin.dvd_in_orden,sizeof(svdordreclin.dvd_in_orden),V10CADENA,
+                          "HU_STATUS",svdordreclin.hu_status,sizeof(svdordreclin.hu_status),V10CADENA,
+                          "CODMAT",svdordreclin.codmat,sizeof(svdordreclin.codmat),V10CADENA,
+                          "PESO",&svdordreclin.peso,sizeof(svdordreclin.peso),V10LONG,
+                          "ALTO",&svdordreclin.alto,sizeof(svdordreclin.alto),V10LONG,
+                          "ANCHO",&svdordreclin.ancho,sizeof(svdordreclin.ancho),V10LONG,
+                          "LARGO",&svdordreclin.largo,sizeof(svdordreclin.largo),V10LONG,
+                          "CODBULTO",svdordreclin.codbulto,sizeof(svdordreclin.codbulto),V10CADENA,
+                          "MIROWID",svdordreclin.rowid,sizeof(svdordreclin.rowid),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_orl);
+        init = 1;
+    }
+}
+
+static void init_insorl(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordreclin[0].numcol;nc++) dvdordreclin[0].c[nc].offset-=(size_t)&svdordreclin;
+    vdinsorl=abrecursordebug(INSORL,1280);
+    bindtodo(vdinsorl,"CODORDREC",svdordreclin.codordrec,sizeof(svdordreclin.codordrec),V10CADENA,
+                          "CODDIV",svdordreclin.coddiv,sizeof(svdordreclin.coddiv),V10CADENA,
+                          "SECLINORD",&svdordreclin.seclinord,sizeof(svdordreclin.seclinord),V10LONG,
+                          "CLAVEEXT",svdordreclin.claveext,sizeof(svdordreclin.claveext),V10CADENA,
+                          "CODART",svdordreclin.codart,sizeof(svdordreclin.codart),V10CADENA,
+                          "FECRECPRE",&svdordreclin.fecrecpre,sizeof(svdordreclin.fecrecpre),V10LONG,
+                          "CANTIDAD",&svdordreclin.cantidad,sizeof(svdordreclin.cantidad),V10DOUBLE,
+                          "UNIDADESHOST",svdordreclin.unidadeshost,sizeof(svdordreclin.unidadeshost),V10CADENA,
+                          "CODLOT",svdordreclin.codlot,sizeof(svdordreclin.codlot),V10CADENA,
+                          "TIPOLOTE",svdordreclin.tipolote,sizeof(svdordreclin.tipolote),V10CADENA,
+                          "CADUCI",svdordreclin.caduci,sizeof(svdordreclin.caduci),V10CADENA,
+                          "VDEXTRA",svdordreclin.vdextra,sizeof(svdordreclin.vdextra),V10CADENA,
+                          "TOLEREXC",&svdordreclin.tolerexc,sizeof(svdordreclin.tolerexc),V10DOUBLE,
+                          "TOLERDEF",&svdordreclin.tolerdef,sizeof(svdordreclin.tolerdef),V10DOUBLE,
+                          "STATUS",&svdordreclin.status,sizeof(svdordreclin.status),V10LONG,
+                          "CODCOMEN",&svdordreclin.codcomen,sizeof(svdordreclin.codcomen),V10LONG,
+                          "MOTIVO",&svdordreclin.motivo,sizeof(svdordreclin.motivo),V10LONG,
+                          "DVD_IN",svdordreclin.dvd_in,sizeof(svdordreclin.dvd_in),V10CADENA,
+                          "DVD_IN_ORDEN",svdordreclin.dvd_in_orden,sizeof(svdordreclin.dvd_in_orden),V10CADENA,
+                          "HU_STATUS",svdordreclin.hu_status,sizeof(svdordreclin.hu_status),V10CADENA,
+                          "CODMAT",svdordreclin.codmat,sizeof(svdordreclin.codmat),V10CADENA,
+                          "PESO",&svdordreclin.peso,sizeof(svdordreclin.peso),V10LONG,
+                          "ALTO",&svdordreclin.alto,sizeof(svdordreclin.alto),V10LONG,
+                          "ANCHO",&svdordreclin.ancho,sizeof(svdordreclin.ancho),V10LONG,
+                          "LARGO",&svdordreclin.largo,sizeof(svdordreclin.largo),V10LONG,
+                          "CODBULTO",svdordreclin.codbulto,sizeof(svdordreclin.codbulto),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_orl);
+        init = 1;
+    }
+}
+
+static void init_delorl(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdordreclin[0].numcol;nc++) dvdordreclin[0].c[nc].offset-=(size_t)&svdordreclin;
+    vddelorl=abrecursordebug(DELORL,1280);
+    bindtodo(vddelorl,"MIROWID",svdordreclin.rowid,sizeof(svdordreclin.rowid),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_orl);
+        init = 1;
+    }
+}
+
+diccionario *ORLdamediccionario(void)
+{
+     return(&dorl);
+}
+
+int ORLselclave(char *codordrec,char *coddiv,long seclinord,vdordreclins *orl)
+{
+  int vdret;
+  if (vdselorlclave==NULL) init_selorlclave();
+  memset(&svdordreclin,0,sizeof(svdordreclin));
+  strcpy(svdordreclin.codordrec,codordrec);
+  strcpy(svdordreclin.coddiv,coddiv);
+  svdordreclin.seclinord=seclinord;
+  vdret=ejefetchcursor(vdselorlclave);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselorlclave. vdret %d. \n",ORLlog(&svdordreclin),vdret);
+    return(VD_EERRORACLE);
+   }
+  *orl=svdordreclin;
+  return(vdret);
+}
+
+int ORLselvdordreclin(char *codordrec,char *coddiv,long seclinord,vdordreclins *orl)
+{
+  int vdret;
+  if (vdselorlvdordreclin==NULL) init_selorlvdordreclin();
+  memset(&svdordreclin,0,sizeof(svdordreclin));
+  strcpy(svdordreclin.codordrec,codordrec);
+  strcpy(svdordreclin.coddiv,coddiv);
+  svdordreclin.seclinord=seclinord;
+  vdret=ejefetchcursor(vdselorlvdordreclin);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselorlvdordreclin. vdret %d. \n",ORLlog(&svdordreclin),vdret);
+    return(VD_EERRORACLE);
+   }
+  *orl=svdordreclin;
+  return(vdret);
+}
+
+int ORLactualizavdordreclin(vdordreclins *orl,int error)
+{
+  int vdret = 0;
+    v10log(LOGDEBUGAPI,"Actualizando ORLactualizavdordreclin:  %s .  \n",ORLlog(&svdordreclin));
+  if (vdupdaorlvdordreclin==NULL) init_updaorlvdordreclin();
+  svdordreclin=*orl;
+  vdret=ejecutacursor(vdupdaorlvdordreclin);
+  if (vdret) {
+     char mensajeerror[MAXCADENA]="";
+     if (error==1) cursordebug(vdupdaorlvdordreclin);
+     getcurerrornombre(vdupdaorlvdordreclin->nombre,mensajeerror);
+     v10log(LOGERROR,"%s\n",mensajeerror);
+     return(VD_EERRORACLE);
+  }
+  if (procesadascursor(vdupdaorlvdordreclin)!=1) return(VD_EERRORACLE);
+  return(0);
+}
+
+int ORLinsert(vdordreclins *orl,int error)
+{
+  int vdret;
+  if (!vdinsorl) init_insorl();
+    v10log(LOGDEBUGAPI,"Insertando %s .  \n",ORLlog(&svdordreclin));
+  svdordreclin=*orl;
+  vdret=ejecutacursor(vdinsorl);
+  if (vdret) {
+     char mensajeerror[MAXCADENA]="";
+     if (error==1) cursordebug(vdinsorl);
+     getcurerrornombre(vdinsorl->nombre,mensajeerror);
+     v10log(LOGERROR,"%s\n",mensajeerror);
+     return(VD_EERRORACLE);
+  }
+  return(0);
+}
+
+int ORLdel(vdordreclins *orl,int error)
+{
+  int vdret;
+  svdordreclin=*orl;
+  if (vddelorl==NULL) init_delorl();
+    v10log(LOGDEBUGAPI,"Borrando %s .  \n",ORLlog(&svdordreclin));
+  vdret=ejecutacursor(vddelorl);
+  if (vdret) {
+     char mensajeerror[MAXCADENA]="";
+     if (error==1) cursordebug(vddelorl);
+     getcurerrornombre(vddelorl->nombre,mensajeerror);
+     v10log(LOGERROR,"%s\n",mensajeerror);
+     return(VD_EERRORACLE);
+  }
+  return(0);
+}
+
+int ORLinter(vdordreclins *orl)
+{
+  int vdret = 0;
+  if (vdselorlvdordreclin==NULL) init_selorlvdordreclin();
+  memset(&svdordreclin,0,sizeof(svdordreclin));
+  strcpy(svdordreclin.codordrec,orl->codordrec);
+  strcpy(svdordreclin.coddiv,orl->coddiv);
+  svdordreclin.seclinord = orl->seclinord;
+  vdret=ejefetchcursor(vdselorlvdordreclin);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselorlvdordreclin. vdret %d. \n",ORLlog(&svdordreclin),vdret);
+    return(VD_EERRORACLE);
+  }
+
+  *orl=svdordreclin;
+  return(vdret);
+}
+
+char * ORLlog(vdordreclins *orl)
+{
+    sprintf(msglogORL, "VDORDRECLIN: codordrec %s coddiv %s seclinord %ld ",orl->codordrec,orl->coddiv,orl->seclinord);
+    return(msglogORL);
+}
+
+char * ORLdebug(vdordreclins *orl)
+{
+    debugestruct(&dorl,orl,msgdebugORL);
+    return(msgdebugORL);
+}
+

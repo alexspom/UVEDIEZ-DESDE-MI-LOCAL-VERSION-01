@@ -1,0 +1,16 @@
+# M¢dulo : VDRECURSO.DEF
+# Función: Generación automatica de rutinas C tabla VDRECURSO
+#
+# Autor	 : EAA
+# Revisado por:
+# Fecha  : 10-10-2007
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=RET
+
+PRIMARIA=CODRECURSO,CODPERFIL
+
+RECORRE=CODRECURSO,CODRECURSO,WHERE ACTIVA='S';ORDERBY=PRIOTAREA;

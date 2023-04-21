@@ -1,0 +1,54 @@
+DECLARE
+ MIMIRROR NUMBER;
+ MIIDMIRROR NUMBER;
+ MITEXTO VARCHAR2(1000);
+ MIZONAT2 VARCHAR2(1000);
+BEGIN
+ DELETE VDINFODISP;
+ DELETE VDINFOHARDDISP;
+ DELETE VDUBICA WHERE CODUBI LIKE 'D%';
+ FOR I IN 1..4 loop
+     MIZONAT2:='PI'||CASE I WHEN 1 THEN '205' WHEN 2 THEN '206' WHEN 3 THEN '200' ELSE '202' END; 
+     UPDATE VDZONAS SET IDINFOPICK=1,NUMDISP=43 WHERE CODZONA=I;
+     FOR J IN 1..72 LOOP
+         IF J=43 THEN 
+            MIMIRROR:=I*1000+58;
+            MIIDMIRROR:=0;
+          ELSE
+            MIIDMIRROR:=0; 
+            MIMIRROR:=0;
+         END IF;
+         IF J IN (43,58) THEN MITEXTO:='ZONA '||I;
+          ELSE 
+            MITEXTO:=/**/CASE WHEN J<15 THEN J+200
+                                         WHEN J<29 THEN 129-J
+                                         WHEN J<43 THEN 500+J-28
+                                         WHEN J<57 THEN 314+44-J
+                                         WHEN J=57 THEN 301
+                                         ELSE 401-59+J END;
+         END IF;
+         INSERT INTO VDINFOHARDDISP (IDINFOPICK, NUMDISP, IDINFOGEST,TEXTO, LUCES, TECLAS, STATUS, VDEXTRA, CODOPEMODIF, 
+                                     FECMODIF, HORAMODIF, IDINFOPICKM, NUMDISPM, CODCOMEN, ESTADOBOT)
+                               VALUES( 1,I*1000+J,1,MITEXTO,'1,1,1','',200,'','X',
+                                      VD.FECHASYS,VD.HORASYS,MIIDMIRROR,MIMIRROR,0,0);
+         IF J NOT IN (43,58) THEN
+            INSERT INTO VDUBICA (CODUBI, CODZONA, CODAREA, TRANSITO, PLANTA, PASILLO,COLUMNA, ALTURA, PROFUNDIDAD,ORDENENTRADA, ORDENSALIDA, ORDENMOVIM, 
+                                 BLOQUEOSE, BLOQUEOSS, MULTIARTICULO,MULTIFORMATO, UNIAGRUPAE, UNICAPAC,SWTETIQ, STKMAX, STKMIN,STKURG, CODART, STOCK, 
+                                 RECARGAR, AGRUPALIN, CONFPICKING,TIPOUBI, VDEXTRA, CODCOMEN,CODOPEMODIF, FECMODIF, HORAMODIF, 
+                                 FECULTINVEN, FECULTMOV, SWTUBIMARCADA,TIPOASIG, DATEENTRADA, DATESALIDA,ACERA, SWTCANDADO) 
+                       VALUES (MIZONAT2||MITEXTO,I,'DEVOLUCION','N',1,I,SUBSTR(MITEXTO,-2),1,0,0,0,0,
+                               'N','N','S','S','U','C','S',1,0,0,'','S',
+                               '','S','S','R','',0,'X',VD.FECHASYS,VD.HORASYS,
+                               0,0,'N','M',NULL,NULL,0,'N');
+            INSERT INTO VDINFODISP (IDINFOPICK, NUMDISP, CODZONA,IDINFOPICKPADRE, DPADRE, IDINFOPICKLUZ,NUMLUZ, ORDENDISP, NEXTTICK, 
+                                    CODUBI, CANTPEDIDADISP, CANTVALIDADADISP, STATUS, VDEXTRA, CODOPEMODIF, FECMODIF, HORAMODIF, CODCOMEN, 
+                                    CODMOV, IDINFOPICKALT, CODMAT)
+                             VALUES(1,I*1000+J,I,1,I*1000+J,1,I*1000+J,J,NULL,
+                                    MIZONAT2||MITEXTO,0,0,0,'','X',VD.FECHASYS,VD.HORASYS,0,
+                                    0,0,'');
+          END IF;
+     END LOOP;
+ END LOOP;
+END;                                 
+
+SELECT * FROM VDINFODISP;

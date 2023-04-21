@@ -1,0 +1,47 @@
+CURSOR=CCARGAARTICULOS DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE ARTICULOS Y CODARTALT EN  V10INTERIN_RDRD');
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('ARTICULOS', 'V10INTERIN_RDRD');
+                  
+				  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE ARTICULOS DE BELLOTA' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE ARTICULOS DE BELLOTA FINALIZADA CORRECTAMENTE.' );
+                  END IF;
+				  
+                  RESULT := VDINTERFAZ.VDCARGAFICHERO('ARTICULOSBOL', 'V10INTERIN_RDRD');
+				  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE ARTICULOS DE BOLTON' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE ARTICULOS DE BOLTON FINALIZADA CORRECTAMENTE.' );
+                  END IF;
+                  
+				  RESULT := VDINTERFAZ.VDCARGAFICHERO('CODARTALT', 'V10INTERIN_RDRD');
+                  
+				  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE COD ALTER' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CORRECTAMENTE CARGA DE CODARTALT' );
+                  END IF;
+				  
+				  RESULT := VDINTERFAZ.VDCARGAFICHERO('ADR', 'V10INTERIN_RDRD');
+                  
+				  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE COD ALTER' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CORRECTAMENTE CARGA DE ADR' );
+                  END IF;
+				  
+				  RESULT := VDINTERFAZ.VDCARGAFICHERO('CODARTMULTIIDIOMA', 'V10INTERIN_RDRD');
+                  
+				  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE COD ALTER' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CORRECTAMENTE CARGA DE DESCRIPCIÓN DE ARTÍCULO MULTIIDIOMA' );
+                  END IF;
+				  
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO ARTICULOS Y CODARTALT' );
+                 END;@

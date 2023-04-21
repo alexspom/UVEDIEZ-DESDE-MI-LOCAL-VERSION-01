@@ -1,0 +1,1760 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js" lang="es" class="fixchrome"> <!--<![endif]-->
+<HEAD>
+<title>Librería javascript V10</title>
+<!--<META http-equiv="Content-Type"content="text/html;charset=utf-8">-->
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+<script languaje="javascript">
+var w;
+var enlectura;
+var menuscreados=0;
+var blactual;//bloque actual
+var salirme;//exit
+var fuerzocierre;//closebyme
+var httppostenviado;//Esperandopostback
+var ctrl;
+var shift;
+var alt;
+var autoenter;
+var loaded= false;
+var menucont;
+var campoactual;
+var v10clipboard = '';
+var visibleporboton;
+var debug=0;
+var mensajeonline1,mensajeonline2,mensajeonline3,indexonline,timeoutonline;
+//foco
+var idactivo;
+var objactivo;
+var valorinicial;
+var valoractivo;
+var filaactiva,columactiva,maxfila,maxcol;
+var bloquemonoregistro;
+var bloqueentrable;
+var bloqueshijos;
+var nbloqueactivo;
+//zooms
+var opczoom;
+var ventzoom;
+var ventwhere;
+var iwhere;
+var eventozoom;
+var extselect=0;
+var clearmensaje=0;
+var btimeout=0,ttimeout;
+var timeoutact=0,ttimeoutact;
+var modocombox;
+var antbackgroundcolor;
+var antcolor;
+var antclassname;
+var miscrollleft=0;
+var antnbloqueactivo=-1;
+var ultenvio=0;
+var desplazacu=0;
+var timeoutkeyup;
+var nsem=0;
+var inittimeout=0;
+// gestion de teclado virtual
+var virtctrl,virtshift,virtalt,virttecla,modotecvirt=0; // datos de la tecla capturada para ser tratada en v10lib
+var actual="tec1",tecvisible=0,vtposx=270,vtposy=400;
+var modocombctrl=0,modocombalt=0,modocombshift=0,elecombctrl=0,elecombalt=0,elecombshift=0,elebak,tteclavirt;
+var ultcar;
+var escaneando=0;
+var isExtended = 0;
+var muestratecladovirt;
+var modomodal;
+var modozoom;
+var cadena;
+var cadescaneda;
+var tipoev;
+var objeto;
+var topic;
+var zoo;
+var filactiva;
+var suleft;
+var v10bjeto;
+var targetEl;
+var monthMaxDays;
+var monthMaxDaysLeap;
+var hideSelectTags;
+var continu;
+var firstRow;
+var trs;
+var startYear, endYear;
+var y;
+var ActiveXObject;
+
+
+//DevuelveElementoporID
+function v10ele(miid) {"use strict"; return w.document.getElementById(miid); }
+function v10elelib(miid) {"use strict"; return window.document.getElementById(miid); }
+// Objeto del evento
+function v10srcele() {"use strict"; return (w.event.srcElement); }
+//FuncionesONLOAD
+function showtime() {"use strict"; if (tecvisible > 0 && v10ele(actual)) { tecvisible = 0; muestratecladovirt(); }
+                      var exd = new Date(), refrescar = 0;
+                      if (ultenvio > 0) { refrescar = 1;
+ ultenvio= exd.getTime() - ultenvio;
+                                         try {v10ele('imgrelojar').style.visibility = 'hidden'; } catch (ignore) {}
+                      if (refrescar) { try {v10ele('timeenvio').innerHTML = ultenvio / 1000; } catch (ignore) {}
+                                         try {v10ele('timeenvio').style.visibility = 'visible'; } catch (ignore) {} } }}
+function loadinit(v10ventana){
+if (timeoutact>0) clearTimeout(ttimeoutact);
+w=v10ventana;
+//v10clipboard='';
+desplazacu=0;
+enlectura=0;
+menuscreados=0;
+menucont=0;
+blactual=null;
+fuerzocierre=false;
+httppostenviado=false;
+topic='teclasespeciales';
+ctrl=false;
+shift=false;
+alt=false;
+zoo=0;
+salirme=0;
+autoenter=0;
+debug=0;
+indexonline=0;
+mensajeonline1='';
+mensajeonline2='';
+mensajeonline3='';
+visibleporboton=0;
+idactivo = '';
+objactivo='';
+valorinicial='';
+valoractivo='';
+filactiva=0;
+columactiva=0;
+bloquemonoregistro=0;
+bloqueentrable=0;
+bloqueshijos=0;
+modomodal=0;
+modozoom=0;
+modocombox=0;
+clearmensaje=0;
+btimeout=0;
+timeoutact=0;
+nsem=0;}
+ultcar=0;
+escaneando=0;
+
+function valorobjactivo()
+{
+  if (objactivo.tagName=='INPUT' || objactivo.tagName=='TEXTAREA') {
+     if (objactivo.getAttribute("iftrue")) {
+        if (objactivo.value=='X') valoractivo=objactivo.getAttribute("iftrue");
+         else valoractivo=objactivo.getAttribute("iffalse");
+     } else valoractivo=objactivo.value;
+   } else {
+     valoractivo=objactivo.innerText;
+   }
+}
+function setobjactivo(miobjeto)
+{
+  objactivo=miobjeto;
+  idactivo=objactivo.id;
+  valorobjactivo();
+  valorinicial=valoractivo;
+}
+
+function quitafoco()
+{
+  objactivo.style.backgroundColor=antbackgroundcolor;
+  objactivo.style.color=antcolor;
+  objactivo.className=antclassname;
+}
+
+function buscacampoenfila(_nbloque,funccontador, funclimite, enfoco)
+{
+  var objeto;
+  var idNext;
+  var salir=0;
+  while (1) {
+    idNext='bl'+_nbloque+'f'+filaactiva+'c'+columactiva;
+    objeto=v10ele(idNext);
+    if (objeto!==null) {
+       if(objeto.tagName=='INPUT' && objeto.type=="image" && enfoco===0) return('');
+       if (objeto.tagName=='INPUT' || objeto.tagName=='TEXTAREA' ) {
+          if (objeto.nent&&bloqueentrable>0){}
+           else return(idNext);
+        }
+    }
+   idNext='tdbl'+_nbloque+'f'+filaactiva+'c'+columactiva;
+   objeto=v10ele(idNext);
+   if (objeto!==null&&objeto.tagName=='TD'){
+      if (objeto.getAttribute("iselect")&&objeto.getAttribute("iselect")=="1")return('');
+      if (objeto.nent&&bloqueentrable>0){}
+       else return(idNext);
+    }
+   eval(funccontador);
+   eval(funclimite);
+   if(salir==1)return('');
+  }
+}
+
+function resetact()
+{
+  if (timeoutact>0){
+     clearTimeout(ttimeoutact);
+     ttimeoutact=setTimeout(function () {"use strict";finactividad();},timeoutact*1000);
+   }
+}
+
+function pontimeout(_btimeout,_timeoutact)
+{
+  if (inittimeout>0) return;
+  inittimeout=1;
+  if (timeoutact>0) clearTimeout(ttimeoutact);
+  btimeout=_btimeout;timeoutact=_timeoutact;
+  if (btimeout>0) ttimeout=setTimeout(function () {"use strict"; mandaevento(idactivo.id,'timeout','');},btimeout*10);  
+  if (timeoutact>0) ttimeoutact=setTimeout(function () {"use strict";finactividad();},timeoutact*1000);
+}
+
+function ponfoco(_nbloque,_fila,_col,_monoregistro,_entrable,_maxfila,_maxcol,_bloqueshijos,_modomodal,_clearmensaje,_btimeout,_timeoutact){
+var objeto;
+var idNext;
+w.status=' ';
+var movido=0;
+nbloqueactivo=_nbloque;
+if (nbloqueactivo == antnbloqueactivo && miscrollleft>0 ) {
+    try{v10ele('fsbl' + nbloqueactivo).scrollLeft=miscrollleft;movido=1;}catch(E){}
+    if (movido==1) {
+        if (v10ele('miv10c')) {
+            suleft=v10ele('miv10c').style.left.substr(0,v10ele('miv10c').style.left.length-2);
+            v10ele('miv10c').style.left = (suleft - miscrollleft) + 'px';
+        }
+        if (v10ele('calenderTable')) {
+            suleft=v10ele('calenderTable').style.left.substr(0,v10ele('calenderTable').style.left.length-2);
+            v10ele('calenderTable').style.left = (suleft - miscrollleft) + 'px';
+        }
+    }
+} else miscrollleft=0;
+bloquemonoregistro=_monoregistro;
+//w.alert(bloqueentrable);
+bloqueentrable=_entrable;
+if (_entrable===0 && _col>1) _col=1;
+maxfila=_maxfila;
+maxcol=_maxcol;
+bloqueshijos=_bloqueshijos;
+if (_modomodal==1) modomodal=1;
+if (_modomodal==2) modocombox=1;
+filaactiva= _fila;
+columactiva= _col;
+clearmensaje=_clearmensaje;
+opczoom=0;
+iwhere=0;
+ventwhere = null;
+ventzoom= null;
+pontimeout(_btimeout,_timeoutact);
+if (modomodal==1){
+ ventzoom=v10ele('msgzoom');
+ if(ventzoom){
+  eventozoom='zoom';
+    selopcionzoom(1);
+    return;}
+ ventzoom=v10ele('msgselwhere');
+ if(ventzoom){
+  eventozoom='selwhere';
+  selopcionzoom(1);
+  return;}
+ ventwhere=v10ele('msgwhere');
+ if(ventwhere){setinputwhere(1);return;}
+ return;}
+idNext=buscacampoenfila(_nbloque,"columactiva++","if (columactiva>=maxcol)  salir=1",1);
+if(idNext!==''){
+ objeto=v10ele(idNext);
+ if (objeto.getAttribute("tipo")=="num" && (objeto.tagName=='INPUT'||objeto.tagName=='TEXTAREA')) {
+    if(objeto.value=='0'){
+       objeto.value='';
+       objeto.setAttribute("sinceros", "1");
+      }
+   objeto.setAttribute("primera","1");
+ }
+ if(bloqueentrable>0){
+  antbackgroundcolor=objeto.style.backgroundColor;
+  antcolor=objeto.style.color;
+  antclassname = objeto.className;
+  if ((antbackgroundcolor.length==0&&(antclassname=='ipt' || antclassname=='cipt'))||antbackgroundcolor=="#ffc000" ) {
+    if (bloquemonoregistro>0) antbackgroundcolor="white";
+    else antbackgroundcolor="#C3F2EE";
+  }
+  if ((antcolor.length==0&&(antclassname=='ipt' || antclassname=='cipt'))||antcolor=="darkblue") antcolor="black";
+  objeto.style.backgroundColor='#ffc000';
+  objeto.style.color='darkblue';
+ }
+ try{
+    var input;
+    input=w.document.getElementById("inputcombox");
+    if (input) input.focus();
+      else objeto.focus();
+    setobjactivo(objeto);
+    //setTimeout(function () {"use strict";objactivo.focus();},5);
+ }catch(e){}
+ extselect=0;}
+}
+//CamposFormularioyAyuda
+function v10html(cadenahtml){w.document.write(cadenahtml);}
+function generavars(ventana,sesion){
+  w=ventana;
+  v10html("<FORM name='v10form' tabindex='0' method='post' id='v10form'>");
+  v10html("<input name='sesion' tabindex='1' id='sesion' type='hidden' value='"+sesion+"'/>");
+  v10html("<input name='idobjeto' tabindex='2' id='objeto' type='hidden'/>");
+  v10html("<input name='evento' tabindex='4' id='evento' type='hidden' />");
+  v10html("<input name='valor' tabindex='5' id='valor' type='hidden' />");
+  v10html("<input name='antid' tabindex='6' id='antid' type='hidden' />");
+  v10html("<input name='antvalor' tabindex='7' id='antvalor' type='hidden' />");
+  v10html("</FORM>");
+}
+//function v10ayudahtml(sesion,path,x,y,width,height){ayudax=x;ayuday=y;ayudawidth=width;ayudaheight=height;ayudapath=path;}
+function fonhelp(){
+  if (w.event.stopPropagation) w.event.stopPropagation;
+  else w.event.cancelBubble===true;
+  if (w.event.preventDefault) w.event.preventDefault();
+  else w.event.returnValue===false;
+return;
+}
+function finactividad(){fuerzocierre=true;mandaevento('','Reiniciar','');/*w.alert('Sesi\u00f3n Caducada por tiempo de inactividad');w.navigate("http://www.grupov10.com");*/}
+function fonunload(){
+  if (fuerzocierre===false){
+    httppostenviado===false;
+    mandaevento(objactivo,'Salir','');
+    //se corrige porque al cerrar sesión el Chrome no se enviaba el evento al forms - 05/05/2015 pibe
+    w.alert('Sesi\u00f3n Finalizada');
+  }
+}
+//AyudaOnline
+function nuevotip(tip){
+
+if(mensajeonline1.length+tip.length+11<500)
+ mensajeonline1=mensajeonline1+' '+tip+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+else if(mensajeonline2.length+tip.length+11<500)
+ mensajeonline2=mensajeonline2+' '+tip+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+else mensajeonline3=mensajeonline3+' '+tip+'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+}
+function ayudaonline(){
+
+var miayudaonline=v10ele("ayudaonline");
+try {
+indexonline++;
+switch (indexonline){
+case 1: miayudaonline.innerHTML=mensajeonline1;break;
+case 2: miayudaonline.innerHTML=mensajeonline2 ;break;
+case 3:miayudaonline.innerHTML =  mensajeonline3;break;}
+if(indexonline==3)indexonline=0;
+if(indexonline===1 && mensajeonline2.length===0)indexonline=0;
+if(indexonline===2 && mensajeonline3.length===0)indexonline=0;
+timeoutonline=setTimeout(function () {
+    "use strict";
+    ayudaonline();
+}, 3000);  
+//timeoutonline=setTimeout('ayudaonline()',3000);
+} catch (E) {}
+}
+//Zooms
+function selopcionzoom(nuevaop){
+    var isIE = navigator.appName;
+var tbzoom=v10ele("tbmsgzoom");
+    if (isIE == "Microsoft Internet Explorer") {
+if(nuevaop==opczoom)return;
+if(nuevaop>tbzoom.childNodes[0].childNodes.length)return;
+if(nuevaop <= 0)return;
+if (opczoom>0){
+ if (tbzoom.childNodes[0].childNodes[opczoom-1].className!="opczoominact") {
+    tbzoom.childNodes[0].childNodes[opczoom-1].className = "opczoom";
+    tbzoom.childNodes[0].childNodes[opczoom-1].style.backgroundColor="transparent";
+  } else {
+    tbzoom.childNodes[0].childNodes[opczoom-1].style.backgroundColor="gray";
+  }
+}
+if (tbzoom.childNodes[0].childNodes[nuevaop-1].className=="opczoom") tbzoom.childNodes[0].childNodes[nuevaop-1].className = "opczoomact";
+tbzoom.childNodes[0].childNodes[nuevaop-1].style.backgroundColor="orange";
+opczoom = nuevaop;
+tbzoom.childNodes[0].childNodes[nuevaop-1].focus();
+    } else {
+    if (nuevaop == opczoom) return;
+        if (nuevaop > tbzoom.childNodes[1].childNodes.length) return;
+        if (nuevaop <= 0) return;
+        if (opczoom > 0) {
+            if (tbzoom.childNodes[1].childNodes[opczoom - 1].className != "opczoominact") {
+                tbzoom.childNodes[1].childNodes[opczoom - 1].className = "opczoom";
+                tbzoom.childNodes[1].childNodes[opczoom - 1].style.backgroundColor = "transparent";
+            } else {
+                tbzoom.childNodes[1].childNodes[opczoom - 1].style.backgroundColor = "gray";
+}
+        }
+        if (tbzoom.childNodes[1].childNodes[nuevaop - 1].className == "opczoom") tbzoom.childNodes[1].childNodes[nuevaop - 1].className = "opczoomact";
+        tbzoom.childNodes[1].childNodes[nuevaop - 1].style.backgroundColor = "#dedfde";
+        opczoom = nuevaop;
+        tbzoom.childNodes[1].childNodes[nuevaop - 1].focus();
+    }
+}
+
+  
+//EditarConsulta
+function annadetexto(mitexto){dameinputwhere(iwhere).value=dameinputwhere(iwhere).value+' '+mitexto+' ';}
+function dameinputwhere(whopcion){
+switch(whopcion){
+case 1:return(v10ele('where'));
+case 2:return(v10ele('order'));
+case 3:return(v10ele('having'));
+case 4:return(v10ele('titulowhere'));}
+}
+function setinputwhere(nuevaop){
+var nuevofoco;
+var listaact=v10ele("listacampos");
+if(nuevaop==iwhere)return;
+if(iwhere>0){
+dameinputwhere(iwhere).style.backgroundColor="white";
+dameinputwhere(iwhere).style.height="16px";}
+iwhere=nuevaop;
+if(iwhere<=0)iwhere=4;
+if(iwhere>4)iwhere=1;
+nuevofoco=dameinputwhere(iwhere);
+if(listaact)listaact.style.visibility="hidden";
+nuevofoco.style.backgroundColor="yellow";
+nuevofoco.focus();
+}
+//MoverObjetos
+var offsetX;var offsetY;var objetoDrag;
+function BeginDrag(miid){
+var eventid=v10srcele().id;
+if(miid)eventid=miid;
+try{objetoDrag=v10ele(eventid);}catch(e){w.alert('No encontrado id del evento: ' + eventid);return;}
+offsetX=w.event.clientX-parseInt(objetoDrag.style.left);
+offsetY=w.event.clientY-parseInt(objetoDrag.style.top);
+w.document.body.style.cursor='move';
+if (w.document.addEventListener){
+w.document.addEventListener("mousemove",Drag,true);
+w.document.addEventListener("mouseup",EndDrag,true);}
+else{w.document.attachEvent("onmousemove",Drag);
+w.document.attachEvent("onmouseup",EndDrag);}
+if(w.event.stopPropagation)w.event.stopPropagation;else w.event.cancelBubble=true;
+if(w.event.preventDefault)w.event.preventDefault();
+else w.event.returnValue=false;}
+
+function Drag(){
+var event=w.event;
+objetoDrag.style.top=event.clientY-offsetY;
+objetoDrag.style.left=event.clientX-offsetX;
+if (objetoDrag.idrel) {
+    v10ele(objetoDrag.idrel).style.top=(event.clientY+20)-offsetY;
+    v10ele(objetoDrag.idrel).style.left=(event.clientX+10)-offsetX;
+}
+if(event.stopPropagation)event.stopPropagation();
+else event.cancelBubble=true;
+}
+
+function EndDrag(){
+var event=w.event;
+w.document.body.style.cursor='default';
+if(w.document.removeEventListener){
+ w.document.removeEventListener("mousemove",Drag,true);
+ w.document.removeEventListener("mouseup",EndDrag,true);
+}else {w.document.detachEvent("onmousemove",Drag);
+ w.document.detachEvent("onmouseup",EndDrag);}
+if (event.stopPropagation) event.stopPropagation;else event.cancelBubble=true;
+if (w.event.srcElement.className == "vcab") {
+    vtposx =  w.event.clientX-offsetX;
+    vtposy =  w.event.clientY-offsetY;
+//  alert(vtposx + ' ' + vtposy);
+}}
+
+//MenúContextual
+function creamenucont(protegidoform){
+menuscreados=1;
+v10html("<table/>");
+v10html("<table id='tdsubmenuzoom' class='v10zoomsubmenu'><tr><td>");//submenus
+v10html("<textarea id='submenuzoom' style='background-color:yellow;color:darkblue' rows='5' cols='50'></textarea>");
+v10html("</td></tr></table>");
+v10html("<table id='menufrm' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' cellspacing='1px' cellspadding='0' class='v10submenueditapanfondo' style='position:absolute'>");
+v10html("<tr index='1'><td mihover='naveditapanarriba' align='center'>Editar Men&#250 Actual</td></tr>");
+v10html("<tr index='2'><td mihover='naveditapancentro'align='center'>Editar .PAN Actual</td></tr>");
+v10html("<tr index='3'><td mihover='naveditapancentro'align='center'>Editar .FRM Actual</td></tr>");
+v10html("<tr index='4'><td mihover='naveditapancentro'align='center'>Editar Todos Actual</td></tr>");
+v10html("<tr><td><hr class='hreditapan'/></td></tr>");
+v10html("<tr index='5'><td mihover='naveditapancentro'align='center'>(ESC) Atr&#225s</td></tr>");
+v10html("<tr index='6'><td mihover='naveditapancentro'align='center'>(S+F10) Men&#250</td></tr>");
+v10html("<tr index='7'><td mihover='naveditapancentro'align='center'>(Alt+D) Debug</td></tr>");
+v10html("<tr index='8'><td mihover='naveditapanabajo'align='center'>(Alt+F10) Salir</td></tr>");
+v10html("</table>");
+if(!v10ele('enfocar')){
+ v10html("<table id='menucampo' cellspacing='1px' cellspadding='0' onmouseover='v10lib.highlightmenu()' onmouseout='v10lib.lowlightmenu()' onclick='v10lib.selectsubmenu()' class='v10submenufondo' style='position:absolute;'>");
+ v10html("<tr index='9'><td mihover='navceldarriba'  align='center'>Cortar</td></tr>");
+ v10html("<tr index='10'><td mihover='navceldacentro' align='center'>Copiar</td></tr>");
+ v10html("<tr index='11'><td mihover='navceldacentro' align='center'>Pegar</td></tr>");
+ v10html("<tr index='12'><td mihover='navceldacentro' align='center'>Zoom</td></tr>");
+ //v10html(" <tr><td><hr class='hr'/></td></tr>");
+ //v10html("<tr index='13'><td  mihover='navceldacentro'align='center'>May&#250sculas</td></tr>");
+ //v10html("<tr index='14'><td  mihover='navceldacentro'align='center'>Min&#250sculas</td></tr>");
+ //v10html(" <tr><td><hr class='hr'/></td></tr>");
+ //v10html("<tr index='15'><td  mihover='navceldacentro'align='center'>Clipboard</td></tr>");
+ //v10html(" <tr><td><hr class='hr'/></td></tr>");
+ v10html("<tr index='16'><td  mihover='navceldabajo'align='center'>Ir...</td></tr>");
+ v10html("</table>");
+}
+ w.menufrm.style.visibility="hidden";
+ if(!v10ele('enfocar')) w.menucampo.style.visibility="hidden";
+}
+function fcolores(tipo,objeto) {
+    // 0, caso general; 1, caso particular
+    if (tipo===0) {
+        var ret=w.showModalDialog('v10selcolores.html',objactivo.value,'dialogLeft:125px;dialogTop:175px;dialogHeight:350px;dialogWidth:760px;status:no;unadorned:no;edge:sunken');
+        if (ret!==undefined) {
+                objactivo.value=ret;
+                if (objactivo && objactivo.getAttribute("miicolor")) v10ele(objactivo.getAttribute("miicolor")).style.backgroundColor=objactivo.value;
+        }
+        objactivo.focus();
+        if (w.event.stopPropagation) w.event.stopPropagation; else w.event.cancelBubble=true;
+    } else {
+        if (objeto.getAttribute("icolor") == idactivo) {
+            var ret=w.showModalDialog('v10selcolores.html',objeto.style.backgroundColor,'dialogLeft:125px;dialogTop:175px;dialogHeight:350px;dialogWidth:760px;status:no;unadorned:no;edge:sunken');
+            if (ret!==undefined) {
+                objactivo.value=ret;
+                objeto.style.backgroundColor=ret;
+            }
+            objactivo.focus();
+        if (w.event.stopPropagation) w.event.stopPropagation; else w.event.cancelBubble=true;
+        } else {
+            w.alert("Solo es posible seleccionar color en el campo con el foco");
+            objactivo.focus();
+        }
+    }
+}
+
+function showmenu(v10menu){
+if (v10menu) {
+ hidemenu();
+ actual=v10srcele();
+ //w.alert(v10menu);
+ var rightedge=w.document.body.clientWidth-w.event.clientX;
+ var bottomedge=w.document.body.clientHeight-w.event.clientY;
+ if(rightedge<v10menu.offsetWidth)v10menu.style.left=w.document.body.scrollLeft+w.event.clientX-v10menu.offsetWidth;
+ else v10menu.style.left=w.document.body.scrollLeft+w.event.clientX;
+ if (bottomedge<v10menu.offsetHeight) v10menu.style.top=w.document.body.scrollTop+w.event.clientY-v10menu.offsetHeight;
+ else v10menu.style.top=w.document.body.scrollTop+w.event.clientY;
+ v10menu.style.zIndex=2030;
+ v10menu.style.visibility="visible";}
+ return false;
+}
+function hidemenu(){
+if(w.menucampo)w.menucampo.style.visibility="hidden";
+if(w.menufrm)w.menufrm.style.visibility="hidden";
+if(w.botoneradef) {
+    w.botoneradef.style.visibility="hidden";
+    w.botoneradef.style.zIndex=-1;
+    visibleporboton=0;
+ }
+}
+function highlightmenu()
+{
+  if (v10srcele().getAttribute('mihover')){
+   v10srcele().className = v10srcele().getAttribute('mihover');}
+}
+function lowlightmenu(){if (v10srcele().tagName=='TD') v10srcele().className = 'sinhover';}
+
+function poxit() {
+    v10clipboard=w.event.srcElement.innerTEXT;
+    if(w.clipboardData && w.clipboardData.setData ) w.clipboardData.setData("text", v10clipboard);
+    else w.alert("Error al copiar en portapapeles");
+}
+
+//fix del copiar & pegar crossbrowser - EAG.
+
+function toclipboard() {
+               if (menucont==1) {
+                               if (campoactual.tagName=='INPUT') v10clipboard=campoactual.value;
+                               else { v10clipboard=campoactual.innerHTML;}
+                }
+                else {
+                               cadena=campoactual.innerHTML;
+                               //while(cadena.indexOf("&nbsp;")>-1)cadena=cadena.replace("&nbsp;"," ");
+                               v10clipboard=cadena;
+                }
+               try {v10ele('poxit').innerHTML=v10clipboard;} catch(E) {}
+ 
+    //detectamos el tipo de navegador ya que cada uno realiza la operación de copiado de formas diferentes.
+                
+    // es un ie
+    if (navigator.userAgent.search("MSIE") >= 0) {
+ 
+                               if(w.clipboardData && w.clipboardData.setData ) w.clipboardData.setData("text", v10clipboard);
+                               else w.alert("Error al copiar en portapapeles");
+                }
+    //es un chrome
+    else if (navigator.userAgent.search("Chrome") >= 0) {
+                               console.info('oh dios mio es un chrome');
+                               var copyText = w.document.getElementById(campoactual.id);
+                               copyText.select();
+                               w.document.execCommand("copy");
+    }
+}
+ 
+function fromclipboard() {
+                // es un ie
+    if (navigator.userAgent.search("MSIE") >= 0) {
+                               v10clipboard=w.clipboardData.getData("text")
+                }
+                //es un chrome
+    else if (navigator.userAgent.search("Chrome") >= 0) {
+                var copyText = w.document.getElementById(campoactual.id);
+                copyText.select();
+                w.document.execCommand("paste");
+				//importante sino el chrome sigue refrescando cuando hacemos botón derecho pegar.
+				w.event.cancelBubble=true;
+				w.event.returnValue=false;
+                } 
+if(!v10clipboard)return;
+campoactual.value='';
+campoactual.value=v10clipboard;
+}
+
+function submenunoentrable(){
+         if(campoactual.getAttribute('nent'))
+		 return(true);
+		 return(false);
+		 }
+		 
+function trataopcsubmenus(opcion) {
+var nevento=null;var ntecla='';var enfocame=false;
+/*if(opcion.tecla=='111'){
+ fonhelp();
+ return;}*/
+ switch (opcion){
+    case '1': // edita menu
+            mandaevento('','EditMenu','');
+            break;
+    case '2': // edita pan
+            if(v10ele('enfocar'))  {
+                w.alert('Opci\u00f3n no v\u00e1lida en men\u00fa ');
+                return;
+            } else mandaevento('','EditPan','');
+            break;
+    case '3': // edita frm
+            if(v10ele('enfocar'))  {
+                w.alert('Opci\u00f3n no v\u00e1lida en men\u00fa ');
+                return;
+            } else mandaevento('','EditFrm','');
+            break;
+    case '4': // edita todos
+            if(v10ele('enfocar'))  {
+                w.alert('Opci\u00f3n no v\u00e1lida en men\u00fa ');
+                return;
+            } else mandaevento('','EditTodo','');
+            break;
+    case '5': // escape
+            mandaevento('','onkeyup',27);
+            break;
+    case '6': // menú contextual
+            if(v10ele('enfocar'))  {
+                w.alert('Opci\u00f3n no v\u00e1lida en men\u00fa ');
+                return;
+            } else mandaevento('','onkeyup_shift',121);
+            break;
+    case '7': // debug
+            mandaevento('','onkeyup_alt',68);
+            break;
+    case '8': // salir
+            salirme=1;
+            mandaevento('','Salir','');
+            break;
+    case '9': // cortar
+      if (idactivo != campoactual.id) { w.alert('Solo se puede cortar en campo actual'); objactivo.focus(); break; }
+        if(submenunoentrable() || menucont==4){w.alert('No se puede cortar en campos no editables');break;}
+        toclipboard();
+        campoactual.value='';
+        objactivo.focus();
+        break;
+    case '10': // copiar
+        toclipboard();
+        objactivo.focus();
+        //enfocame=true;
+        break;
+    case '11': // pegar
+        if (idactivo != campoactual.id) { w.alert('Solo se puede pegar en campo actual'); objactivo.focus(); break; }
+        if(submenunoentrable() || menucont==4){w.alert('No se puede pegar en campos no editables');break;}
+        fromclipboard();
+        enfocame=true;
+        break;
+    case '12': // zoom
+        var txtzoom=v10ele('submenuzoom');
+        if(menucont==4){w.alert('No se puede hacer zoom en campos no editables');break;}
+        if (campoactual.id == objactivo.id) { txtzoom.readOnly=false; txtzoom.style.backgroundColor='yellow'; txtzoom.style.color='darkblue';}
+        else { txtzoom.readOnly=true; txtzoom.style.backgroundColor='#FDF19D'; txtzoom.style.color='black'; }
+        if (campoactual.tagName=='INPUT') txtzoom.value=campoactual.value;
+        else txtzoom.value=campoactual.innerHTML;
+        v10ele('tdsubmenuzoom').style.visibility='visible';
+        txtzoom.focus();
+        modomodal=1;
+        modozoom=1;
+        enfocame=true;
+        return;
+    case '13': // mayúsculas
+      if (idactivo != campoactual.id) { w.alert('Solo se puede modificar campo actual'); objactivo.focus(); break; }
+        if(submenunoentrable() || menucont==4){w.alert('No se puede modificar campos editables');break;}
+        campoactual.value=campoactual.value.toUpperCase();
+        enfocame=true;
+        break;
+    case '14': // minúsculas
+      if (idactivo != campoactual.id) { w.alert('Solo se puede modificar campo actual'); objactivo.focus(); break; }
+        if(submenunoentrable() || menucont==4){w.alert('No se puede modificar campos editables');break;}
+        campoactual.value=campoactual.value.toLowerCase();
+        enfocame=true;
+        break;
+    case '15': // clipboard
+        var txtzoom=v10ele('submenuzoom');
+        txtzoom.value=v10clipboard;
+        txtzoom.readOnly=false;
+        txtzoom.style.backgroundColor='white';
+        txtzoom.style.color='darkblue';
+        v10ele('tdsubmenuzoom').style.visibility='visible';
+        txtzoom.focus();
+        modomodal=1;
+        modozoom=2;
+        enfocame=true;
+        return;
+    case '16': // ir
+        w.alert('Opción Deshabilitada');
+        enfocame=true;
+        break;
+    default: break;}
+    if(enfocame)campoactual.focus();
+}
+function selectsubmenu(){
+ hidemenu();
+ if (v10srcele().tagName=='TD') trataopcsubmenus(v10srcele().parentNode.getAttribute("index"));
+ else if (v10srcele().tagName=='TR') trataopcsubmenus(v10srcele().getAttribute("index"));
+ desonkeyefectos(w.event);
+}
+//BotonerPorDefecto
+function dameobjetobotonera()
+{
+ var obj=v10srcele();
+ if(obj.parentNode.tagName=='TR')return(obj.parentNode);
+ if(obj.parentNode.parentNode.tagName=='TR')return(obj.parentNode.parentNode);
+}
+function fonclickbotonrea(){
+ var posbotonera;
+ if(w.botoneradef.style.visibility=='hidden')return;
+ posbotonera=dameobjetobotonera();
+ if (posbotonera.attributes.tecla.value=='I') w.print();
+  else if (posbotonera.attributes.tecla.value=='A') fonhelp();
+   else if (posbotonera.attributes.tecla.value=='C') fcolores(0,undefined);
+    else mandaevento('',posbotonera.attributes.teclaespecial.value,posbotonera.attributes.tecla.value);
+w.botoneradef.style.visibility='hidden';
+}
+function fbotoneraover(){
+var posbotonera;
+var ev;
+if(w.botoneradef.style.visibility=='hidden')return;
+ev=w.event.srcElement;
+if (ev.tagName=='TD' && ev.getAttribute("colspan")>2) return;
+posbotonera=dameobjetobotonera();
+if(posbotonera){posbotonera.style.backgroundColor='#858281';}
+}
+function fbotoneraout(){
+var posbotonera;
+var ev;
+if(w.botoneradef.style.visibility=='hidden')return;
+ev=w.event.srcElement;
+if (ev.tagName=='TD' && ev.getAttribute("colspan")>2) return;
+posbotonera=dameobjetobotonera();
+if(posbotonera){posbotonera.style.backgroundColor='#514d4c';}
+}
+
+function fmuestrabotonera(){
+var botdef=w.botoneradef;
+if(modomodal==1)return;
+hidemenu();
+if(w.botoneradef.style.visibility=='hidden'){
+ botdef.style.left="0px";
+ botdef.style.top="0px";
+ botdef.style.zIndex=2030;
+ botdef.style.visibility="visible";
+ visibleporboton=1;}else{
+ botdef.style.visibility='hidden';
+ botdef.style.zIndex=-1;
+ visibleporboton=0;}
+}//ManejoEventos
+function delespacios(objeto,tecla){
+if(!(((tecla>=65)&&(tecla<=90))||((tecla>=97)&&(tecla<=122))))return;
+if (objeto.value.length==1&&objeto.value.charCodeAt(0)==160)objeto.value='';
+}
+function fopcionmenu(evento,opcion){
+if(evento=="onclick"||evento.keyCode==113){mandaevento('','seleccion','opcion');}
+}
+function desonkeyefectos(mievento){
+try { mievento.keyCode=0; } catch (e) {}
+if(mievento.stopPropagation)mievento.stopPropagation;else mievento.cancelBubble=true;
+if(mievento.preventDefault)mievento.preventDefault();else mievento.returnValue=false;
+}
+
+function levantasem(tecla){nsem++;timeoutkeyup=setTimeout('mimensaje('+tecla+',false,false,false);',1000);}
+function bajasem(){if (nsem<=0) return;nsem--;clearTimeout(timeoutkeyup); }
+
+function teclavisible(tecla) {
+    if (tecla>=48 && tecla<=57) return(true);
+    if (tecla>=65 && tecla<=90) return(true);
+    if (tecla==189 || tecla==192) return(true);
+    return(false);
+}
+
+// 7E en unitech => 16 220
+function lecturasscan(tecla) 
+{
+   if (ultcar == 16 && tecla == 220 && (v10srcele().tagName=='TEXTAREA' ||v10srcele().tagName=='INPUT')) {
+      escaneando=1;
+      cadescaneda="";
+      ultcar=tecla;
+      desonkeyefectos(w.event);
+      return(true);
+    } else {
+      return(false);
+    }
+  if (escaneando == 1) {
+      if (tecla==13) { // final de la cadena
+         escaneando = 0;
+         v10srcele().value = cadescaneda;
+         v10srcele().value = cadescaneda;
+       } else { // añade la cadena
+         cadescaneda = cadescaneda + String.fromCharCode(tecla);
+         ultcar=tecla;
+         desonkeyefectos(w.event);
+         return(true);
+       }
+    }
+  ultcar=tecla;
+  return(false);
+}
+
+function fonkeyupinput(objeto,tipfonkeyupoev,tecla,forzado)
+{
+  if(objeto.tagName == "INPUT") delespacios(objeto,tecla);
+  if (w.validatecla(tecla)||forzado==1){
+     if (tecla==38||tecla==40){//nuevo
+       if (bloqueshijos==1 && bloquemonoregistro===0) { // tiene bloques hijos y es multiregistro
+           desplazacu=1;
+        }
+      } //fin nuevo
+     fonblur(objeto.id);
+     gestenvioeevento(objeto,tipoev,tecla);
+     if (tecla==38||tecla==40){
+        bajasem();levantasem(tecla);
+     }
+  } else{
+    if (tipoev=="onkeyup"){
+      if (objeto.modoinsert && tecla>=49)objeto.value=String.fromCharCode(tecla);
+      if (objeto.autoenter&& teclavisible(tecla) && objeto.value.length+1>=objeto.maxLength ) autoenter=1;
+    }
+  }
+}
+
+function getcaret(o) 
+{
+  if (o.createTextRange) {
+     var r = document.selection.createRange().duplicate();
+     r.moveEnd('character', o.value.length);
+     if (r.text === '') return o.value.length;
+     return o.value.lastIndexOf(r.text);
+  } else return o.selectionStart;
+}
+
+function fonkeydown()
+{
+ var mievento=w.event;var tecla;var objeto,entecladovirt=0;
+ if (httppostenviado) return;
+ resetact(); 
+ //Solución al efecto al leer un código bidi en el que el navegador hace zoom.
+if ((mievento.ctrlKey || mievento.altKey || mievento.shiftKey) && mievento.keyCode==187) {
+      objactivo.value=objactivo.value+']C1';
+      w.event.cancelBubble=true;
+      w.event.returnValue=false;
+      return w.event.returnValue;
+   }
+
+ //Solución para el checkbox, cuando el checkbox estaba a nulo y le dabamos a escape nos pedía confirmación de cambios. 23/07/2019 EAG
+if (mievento.keyCode==27){
+if ((objactivo.getAttribute("chkbox")=='si')) {
+	  mandaevento('','onkeyup',27);
+	}
+}
+ if (modomodal==1 || modocombox==1) {
+    if (modotecvirt>0) {
+       tecla=virttecla;
+       ctrl=virtctrl;
+       shift=virtshift;
+       alt=virtalt;
+       modotecvirt=0;
+       entecladovirt=1;
+    } else {
+       tecla=mievento.keyCode;
+       ctrl=mievento.ctrlKey;
+       shift=mievento.shiftKey;
+       alt=mievento.altKey;
+    }
+   if (modozoom>0) { // está mostrado textarea de zoom de campo o clipboard
+      if ((tecla>=112&&tecla<=123)||tecla==9||tecla==93) desonkeyefectos(mievento);
+      if (tecla==27){
+         v10ele('tdsubmenuzoom').style.visibility='hidden';
+         objactivo.focus();
+         modomodal=0;modozoom=0;
+      }
+     if (tecla==115){
+         if (modozoom==1) campoactual.value=v10ele('submenuzoom').value;
+         else {
+            v10clipboard=v10ele('submenuzoom').value;
+            if(w.clipboardData && w.clipboardData.setData ) w.clipboardData.setData("Text", v10clipboard);
+         }
+         v10ele('tdsubmenuzoom').style.visibility='hidden';
+         objactivo.focus();
+         modomodal=0;modozoom=0;
+       }
+     return;
+    }
+    w.fonkeyupmsj(mievento,tecla);
+    return;
+  }
+ if (modotecvirt>0) {tecla=virttecla;ctrl=virtctrl;shift=virtshift;alt=virtalt;modotecvirt=0;entecladovirt=1;}
+  else {tecla=mievento.keyCode;ctrl=mievento.ctrlKey;shift=mievento.shiftKey;alt=mievento.altKey;}
+ if (v10srcele().tagName=='TEXTAREA' && (tecla==13 || tecla==38 || tecla==40)) {return;}
+ if (tecla==27)hidemenu();
+ if (btimeout>0) {
+    clearTimeout(ttimeout);
+    btimeout=0;
+    inittimeout=0;
+  } //ojo eduardo
+  objeto=v10srcele();
+  if (objeto.getAttribute("tipo")=="num") {
+     if (tecla==32) {objeto.value=objeto.value.substring(0,getcaret(objeto));return false;}
+     if (((tecla<48 || tecla>57) && tecla>46 && tecla<96 && tecla!='.' && tecla!=',' && tecla!=93) || (shift && tecla>=48 && tecla<=57)) return false;
+     if (objeto.getAttribute("primera")=="1" && ((tecla>=48 && tecla<=57)||(tecla>=96 && tecla<=105))) objeto.value='';
+     objeto.setAttribute("primera","0");
+   }
+  if (objeto.getAttribute("tipo")=="date") {
+//Fix para solucionar el formato de fecha erroneo en chrome. 19/08/2015 EAG.
+    var hoy = new Date();
+    var dd = hoy.getDate();
+    var add = hoy.getDate()-1;
+    var mdd = hoy.getDate()+1;
+    var mm = hoy.getMonth()+1; 
+    var yyyy = hoy.getFullYear();
+    if (dd<10){
+        dd='0'+dd
+     }
+    if(add<10){
+        add='0'+add
+     }
+    if (add<1) {
+        add='01'
+     }  
+    if (mm<10){
+       mm='0'+mm
+     }  
+    var hoy = dd+'-'+mm+'-'+yyyy;
+    var ayer = add+'-'+mm+'-'+yyyy;
+    var manana = mdd+'-'+mm+'-'+yyyy;
+    var mifecha=new Date();
+    if (tecla==32) {objeto.value=objeto.value.substring(0,getcaret(objeto));return false;}
+    if (tecla==72 ) { //Hh
+       objeto.value=hoy;
+       return false;
+      }
+    if (tecla==65) { //Aa
+       var ayer=mifecha.getTime();
+       ayer-=24*60*60*1000;
+       mifecha.setTime(ayer);
+       objeto.value=mifecha.getDate()+'-'+(mifecha.getMonth()+1)+'-'+mifecha.getYear();
+       return false;
+     }
+    if (tecla==77) { //mM
+       var ayer=mifecha.getTime();
+       ayer+=24*60*60*1000;
+       mifecha.setTime(ayer);
+       objeto.value=mifecha.getDate()+'-'+(mifecha.getMonth()+1)+'-'+mifecha.getYear();
+       return false;
+     }
+    if (((tecla<48 || tecla>57) && tecla>46 && tecla<96 && tecla!='-' && tecla!='/') || (shift && tecla>=48 && tecla<=57)) return false;
+    if (objeto.getAttribute("primera")=="1" && tecla>=48 && tecla<=57) objeto.value='';
+    objeto.setAttribute("primera","0");
+  }  
+ if (lecturasscan(tecla)) return;// Tratamiento de lecturas de escaner
+ if (tecla==13){if(!v10srcele().iffalse) desonkeyefectos(mievento);else tecla=9;}
+ if ((tecla>=112&&tecla<=123)||tecla==9||tecla==38||tecla==40)desonkeyefectos(mievento);
+ if (tecla==93){desonkeyefectos(mievento);shift=true;tecla=121;}//Tecla Menu de Windows
+ tipoev="onkeyup";if(shift)tipoev="onkeyup_shift";if(ctrl)tipoev="onkeyup_ctrl";if(alt)tipoev="onkeyup_alt";
+ if (ctrl && shift && tecla==121){tipoev="ctrlcontextual";}
+ if (tecla==121&& alt){//AF10
+   salirme=1;mandaevento('','Salir','');
+   return;
+  }
+ if(v10ele('enfocar')) {return;}
+ if (entecladovirt>0) objeto=objactivo;
+ if (objeto.iftrue && tecla==32) {
+    fchkboxclick();
+    return;
+  }
+  switch(objeto.tagName) {
+      case'DIV':case'FIELDSET':case'LEGEND':case'LABEL':case'TABLE':case'TR':break;
+      case'TD':if(bloqueentrable===0&&w.validatecla(tecla))fonkeyupinput(objeto,tipoev,tecla,0);break;
+      case'INPUT':
+      case'TEXTAREA':
+         if (objeto.id!=idactivo && objeto.id!='poxit'){w.event.cancelBubble=true;w.event.returnValue=false;w.event.keyCode=0;return false;}
+         if (tecla==13&&objeto.getAttribute("iselect")) {mandaevento(objactivo.id,'abrecombox',''); return; }
+         fonkeyupinput(objeto,tipoev,tecla,0);
+         break;
+    }
+  return w.event.returnValue;
+}
+
+function llonkeyup(tecla,mictrl,mishift,mialt) {
+    var objeto;
+    bajasem();
+    if ((tecla==38||tecla==40) && desplazacu>0) {desplazacu=0;gestenvioeevento(objactivo,'onkeyup',0);/*'dummy',tecla*/} 
+    if (autoenter==1) {fonblur(v10srcele().id);autoenter=0;gestenvioeevento(v10srcele(),'onkeyup',9);}
+    if (objactivo && objactivo.getAttribute("miicolor")) {
+       if (objactivo.value.length!=7 || objactivo.value.substr(0,1)!='#') v10ele(objactivo.getAttribute("miicolor")).style.backgroundColor="";
+         else if (objactivo.value.length==7 && objactivo.value.substr(0,1)=='#')    v10ele(objactivo.getAttribute("miicolor")).style.backgroundColor=objactivo.value;
+    }
+}
+
+function mimensaje(tecla,mictrl,mishift,mialt) {llonkeyup(tecla,mictrl,mishift,mialt);}
+
+function fonkeyup(){
+var mievento=w.event;
+var tecla;
+tecla=mievento.keyCode;
+ctrl=mievento.ctrlKey;
+shift=mievento.shiftKey;
+alt=mievento.altKey;
+return llonkeyup(tecla,ctrl,shift,alt);
+}
+
+function fdummy(){desonkeyefectos(w.event);}
+function fondblclick(){
+  var objeto;
+  if (modomodal==1) {
+     if (ventzoom) {
+       objeto=v10srcele();
+       if (objeto.getAttribute("opc")){
+          var dblclkop=objeto.getAttribute("opc");selopcionzoom(dblclkop);mandaevento(' ',eventozoom,dblclkop);
+        }
+      }
+    }
+}
+
+function fclick(nombreev)
+{
+  var objeto;
+  var padre=v10srcele().parentNode.parentNode.parentNode;
+  if (modomodal==1) return;
+  if (modocombox==1) {
+     objeto=v10srcele();
+     if (objeto.tagName=='IMG'&&objeto.getAttribute("iselect")) {
+        if (objeto.getAttribute("comboxshowed")) mandaevento('','dummy','');
+        else mandaevento(objeto.getAttribute("iselect"),'abrecombox','');
+      }
+   }
+  if (v10ele('enfocar')) {resetact();hidemenu();return;}
+  objeto=v10srcele();
+  if (!objeto) return;
+  if (objeto.iftrue) return;
+  if (objeto.id=='botonera')return;
+  if (objeto.id=='ayudaonline'){mandaevento('','extonline','');return;}
+  if (objeto.tagName=='DIV' && objeto.className.indexOf("ejsc-")>=0) return(0);
+  switch(objeto.tagName){
+    case'DIV':case'FIELDSET':case'LEGEND':case'LABEL': case'TABLE':case'TR':case'TD':case'TH':
+      if (objeto.tagName=='FIELDSET' && objeto.getAttribute("dummy")) return;
+      if (objeto.tagName=='TD'&&modocombox==1&&padre.id=='tbcombox')return;
+      if (objeto.tagName=='TD'&&objeto.getAttribute('scr')) {mandaevento(objeto.id,nombreev,'scroll');return};
+      if (objeto.tagName=='TD'&&objeto.getAttribute('desplegar')) {mandaevento(objeto.id,nombreev,'desplegar');return;}
+      if (objeto.tagName=='TD'&&objeto.getAttribute('plegar')) {mandaevento(objeto.id,nombreev,'plegar');return;}
+      mandaevento(objeto.id,nombreev,'');
+      break;
+   case 'SPAN':
+      if (objeto.id) mandaevento(objeto.id,nombreev,'');
+       else  if (objeto.parentNode.id) mandaevento(objeto.parentNode.id,nombreev,'');
+      break;
+   case'IMG':
+      if (objeto.getAttribute("iselect")){mandaevento(objeto.getAttribute("iselect"),'abrecombox','');}
+      break;
+   case'SELECT':
+      if (objeto.getAttribute("ext")=="0")objeto.setAttribute("ext","1");else if(objeto.getAttribute("ext")=="1")objeto.setAttribute("ext","0");
+      break;
+   case'INPUT':
+      if (objeto.type=='button' && objeto.getAttribute("icolor")) { fcolores(1, objeto); return; }
+      if (objeto.className=='v10chk') return;
+      if (objeto.type=='file') return;
+      if (objeto.type=='image'||objeto.type=='button') {
+         if (objeto.getAttribute("disabled")) return;
+         objeto.style.borderStyle='groove';objeto.style.borderWidth=2;if (objeto.attributes.teclaespecial) {mandaevento(objeto.id,objeto.attributes.teclaespecial.value,objeto.attributes.tecla.value);return;}
+       }
+      //if (objactivo.id!=objeto.id || nombreev!='onclick')  mandaevento(objeto.id,nombreev,'');
+	  //evitamos que envíe un evento si le damos a la acción de submit. Se utiliza para recuperar información desde un script php (subida de ficheros).
+	  if (nombreev!='onclick' || objeto.type!='submit')  mandaevento(objeto.id,nombreev,'');
+      break;
+   case'TEXTAREA':
+      if (objactivo.id!=objeto.id)  mandaevento(objeto.id,nombreev,'');
+      break;
+  }
+}
+
+function fonclick() {fclick('onclick');}
+
+function fonbdclick() {fclick('ondblclick');}
+
+function valorpordefecto(value, defaultValue){
+   return (value === undefined) ? defaultValue : value;
+} 
+
+function fchkboxclick() 
+{
+    objeto=v10srcele();
+    if(!objeto)return;
+    if (objeto.id == idactivo) {
+	
+	//Arregla el problema del undefined. 22072019 EAG.
+	objeto.iffalse = valorpordefecto(objeto.iffalse, 'N');
+	objeto.iftrue = valorpordefecto(objeto.iftrue, 'S');	
+	
+	if (objeto.value=='X' || objeto.value=='x') {
+	   objeto.value='';
+	   valoractivo = objeto.iffalse;
+	   }
+
+        else {
+		objeto.value='X';
+		valoractivo = objeto.iftrue;
+
+		}
+    } else {
+	
+		//Arregla el problema del undefined. 22072019 EAG.
+	objeto.iffalse = valorpordefecto(objeto.iffalse, 'N');
+	objeto.iftrue = valorpordefecto(objeto.iftrue, 'S');
+	
+      if (objeto.value=='X' || objeto.value=='x') {
+	     if (bloquemonoregistro==1){
+		    mandaevento(objeto.id,'check',objeto.iftrue);
+	      } else {
+	        mandaevento(objeto.id,'check',objeto.iffalse);
+			
+	      }
+       } else {
+	     if (bloquemonoregistro==1){
+		 mandaevento(objeto.id,'check',objeto.iffalse);
+		 }
+		 else{
+		   mandaevento(objeto.id,'check',objeto.iftrue);
+		   }
+		 }
+    }
+}
+
+function fchkboxdblclick() 
+{
+    objeto=v10srcele();
+    if(!objeto)return;
+    if (objeto.id != idactivo && bloquemonoregistro==1) {
+	//Arregla el problema del undefined. 22072019 EAG.
+	objeto.iffalse = valorpordefecto(objeto.iffalse, 'N');
+	objeto.iftrue = valorpordefecto(objeto.iftrue, 'S');
+        if (objeto.value=='X') {mandaevento(objeto.id,'check',objeto.iffalse);}
+    else {mandaevento(objeto.id,'check',objeto.iftrue);}
+    }
+}
+
+function fonmouseover() {
+  if (modomodal==1) {
+     if (ventzoom){
+        var objeto=v10srcele();
+        if (objeto.getAttribute("opc")) {
+		   var dblclkop=objeto.getAttribute("opc");
+		   selopcionzoom(dblclkop);
+		 }
+	  }
+	}
+}
+
+function fonmouseout(){if(modomodal==1)return;}
+
+function fonmousedown()
+{
+ var v10objeto=v10srcele();
+ if (modomodal==1)return;
+ if (w.event.button=='2') {
+    v10ele('tdsubmenuzoom').style.left=w.event.clientX;
+    v10ele('tdsubmenuzoom').style.top=w.event.clientY;
+    if (v10ele('enfocar')) {
+	   menucont=3;
+	 } else {
+       if (v10objeto.type=='button'||v10objeto.type=='image') {
+	      menucont=2;campoactual=v10srcele();
+		} else {
+		  if ((v10objeto.tagName=='INPUT'&&(v10objeto.type=='text'||v10bjeto.type=='password')) || v10objeto.tagName!='TEXTAREA') {
+		     menucont=1;campoactual=v10srcele();
+		   } else {
+		     if (v10objeto.tagName=='TD'&&v10objeto.parentNode.parentNode.parentNode.className=='v10tabla') {
+			    menucont=1;campoactual=v10srcele();
+			  } 
+			  else {
+			    if (v10objeto.tagName=='FIELDSET'||v10objeto.tagName=='LABEL'||(v10objeto.tagName=='TD'&&v10objeto.parentNode.parentNode.parentNode.getAttribute('tbbloque'))) menucont=3;
+				  else menucont=2;
+			  }
+		   }
+		}
+	 }
+    w.event.cancelBubble=true;
+    w.event.returnValue=false;
+    foncontextmenu();
+  }
+}
+
+function fconfirma(){mandaevento('','dumy','');}
+
+function foncontextmenu(){
+  if (modomodal==1) return;
+  w.event.cancelBubble=true;
+  w.event.returnValue=false;
+  if (menucont==1||menucont==4)showmenu(w.menucampo);
+  if (menucont==2) showmenu(w.botoneradef);
+  if (menucont==3) showmenu(w.menufrm);
+}
+
+function fonblur(id)
+{
+ if (modomodal==1)return;
+ if (objactivo.tagName=="INPUT" || objactivo.tagName=="TEXTAREA") {
+    if(objactivo.iftrue) {
+      if (objactivo.value=='X') valoractivo=objactivo.iftrue;
+       else valoractivo=objactivo.iffalse;
+     } else valoractivo=objactivo.value;
+  } else valoractivo=objactivo.innerHTML;
+ if (objactivo.style.textTransform&&objactivo.style.textTransform=="uppercase") valoractivo=valoractivo.toUpperCase();
+ if (objactivo.style.textTransform&&objactivo.style.textTransform=="lowercase") valoractivo=valoractivo.toLowerCase();
+ if (!valoractivo) valoractivo="";
+}
+//Manejo Postback
+function value2HTML(cad) 
+{
+  while (cad.indexOf ( " " ) > -1) cad=cad.replace(" ","&nbsp;");
+  if (cad==="" && bloquemonoregistro===0) cad="&nbsp;";
+  return cad;
+}
+
+function HTML2value(cad) 
+{
+  while (cad.indexOf ( "&nbsp;" ) > -1)   cad=cad.replace("&nbsp;"," ");
+  while (cad.indexOf ( "&gt;" ) > -1) cad=cad.replace("&gt;",">");
+  while (cad.indexOf ( "&lt;" ) > -1) cad=cad.replace("&lt;","<");
+  if (cad==" ") cad="";
+  return cad;
+}
+
+function asteriscos(cad) 
+{
+  var ptr="";
+  for(var i=0; i<cad.length;i++) ptr+="*";
+  return ptr;
+}
+
+function mueveinputfilas(antcelda, newcelda, antinput, newid) 
+{
+  var newinput=w.document.createElement("INPUT");
+  antinput.id="";
+  newinput.id=newid;
+  newinput.type=antinput.type;
+  newinput.title=antinput.title;
+  newinput.style.textTransform=antinput.style.textTransform;
+  newinput.style.textAlign=antinput.style.textAlign;
+  newinput.style.width=antinput.style.width;
+  newinput.style.height=antinput.style.height;
+  newinput.setAttribute("maxLength", antinput.getAttribute('maxLength'));
+  newinput.setAttribute("modoinsert", antinput.getAttribute('modoinsert'));
+  newinput.setAttribute("autoenter", antinput.getAttribute('autoenter'));
+  newinput.setAttribute("nent", antinput.getAttribute('nent'));
+  newinput.setAttribute("tipo", antinput.getAttribute('tipo'));
+  if (antinput.getAttribute("READONLY")) newinput.setAttribute("READONLY");
+  newinput.classorig=newinput.className;
+  newinput.className=antinput.className;
+  antinput.className=antinput.classorig;
+  newinput.onblur=new Function("fonblur('"+ newid +"');");
+  /*newinput.value=HTML2value(newcelda.innerHTML);
+  antcelda.removeChild(antinput);
+  newcelda.innerHTML= "";
+  antcelda.innerHTML=value2HTML(antinput.value);*/
+  if (newcelda.childNodes[0].tagName==='INPUT') {
+     newinput.value=new HTML2value(newcelda.innerHTML);
+     antcelda.removeChild(antinput);
+     newcelda.innerHTML= "";
+     antcelda.innerHTML=value2HTML(antinput.value);
+   } else {
+     newinput.value=newcelda.innerText;
+     antcelda.removeChild(antinput);
+     newcelda.innerText= "";
+     antcelda.innerHTML='<span style="white-space: pre;text-overflow: clip;">'+antinput.value+'</span>';
+     if (newinput.type==='password') {
+        antcelda.innerHTML='<span style="white-space: pre;text-overflow: clip;visibility:hidden">'+antinput.value+'</span>';
+        newcelda.style.visibility='visible';
+       } else {
+         antcelda.innerHTML='<span style="white-space: pre;text-overflow: clip;visibility=visible">'+antinput.value+'</span>';
+       }
+   }
+  newcelda.appendChild(newinput);
+}
+
+function switchfilas(antTR, newTR) 
+{
+    var nbtd;
+    var antcelda, newcelda;
+    if (antTR.tagName=='TD') antTR=antTR.parentNode;
+    if (newTR.tagName=='TD') newTR=newTR.parentNode;
+    try {
+     for (nbtd=0; nbtd < antTR.childNodes.length; nbtd++ ) {
+         antcelda=antTR.childNodes[nbtd];
+         newcelda=newTR.childNodes[nbtd];
+         if (bloqueentrable===0) {
+            var miclase = newcelda.className;
+            newcelda.classorig = newcelda.className;
+            newcelda.className = antcelda.className;
+            antcelda.className = antcelda.classorig;
+          } else {
+            if (antcelda.childNodes[0] && antcelda.childNodes[0].tagName=="INPUT") {
+               var newid = "bl"+ nbloqueactivo + "f" + filaactiva+ "c" + (nbtd+1);
+               if (antcelda.childNodes[0].iftrue) {
+                  //alert(newid+antcelda.childNodes[0].style.backgroundColor+antcelda.childNodes[0].style.color);
+                  antcelda.childNodes[0].style.backgroundColor='#D7F9F7';
+                  antcelda.childNodes[0].style.color='black';
+                } else mueveinputfilas(antcelda, newcelda, antcelda.childNodes[0], newid);
+             }
+            var miclase = newcelda.className;
+            newcelda.classorig = newcelda.className;
+            newcelda.className = antcelda.className;
+            antcelda.className = antcelda.classorig;
+         }
+      }
+    } catch (E) {}
+   return(true);
+}
+
+function siguienteCampo(funccontador, funclimite) 
+{
+	var idNext;
+	var objeto;
+	var debemandarevento=1;
+	var antfilaactiva=filaactiva;
+	var antcolvactiva=columactiva;
+	eval(funccontador);
+	if (bloquemonoregistro>0) {
+	  idNext = buscacampoenfila(nbloqueactivo, funccontador, funclimite,0);
+	  if (idNext!=='') debemandarevento===0;
+  } else {
+  	idNext = buscacampoenfila(nbloqueactivo, funccontador, funclimite,0);
+  	if (idNext!=='') debemandarevento===0;
+  }
+
+	if (debemandarevento===0) {
+		 resetact();
+		 if (objactivo.tagName=="INPUT" && objactivo.value.length===0 && objactivo.getAttribute("sinceros")=="1") objactivo.value="0";
+		 if (antfilaactiva!==filaactiva) {
+		   if (bloqueentrable===0) columactiva=1;
+		   if (objactivo.tagName=="INPUT" && objactivo.iftrue) {
+		   	  if (v10ele(idNext).parentNode.parentNode.parentNode.childNodes[filaactiva-1].attributes.tohost ||
+		   	      v10ele(idNext).parentNode.parentNode.parentNode.childNodes[antfilaactiva-1].attributes.tohost) return(1);
+		    	var ret=switchfilas(v10ele(idNext).parentNode.parentNode.parentNode.childNodes[antfilaactiva-1],
+		   	  			   						v10ele(idNext).parentNode.parentNode.parentNode.childNodes[filaactiva-1]);
+
+		   } else {
+		   	  if (v10ele(idNext).parentNode.parentNode.childNodes[antfilaactiva-1].attributes.tohost ||
+		   	      v10ele(idNext).parentNode.parentNode.childNodes[filaactiva-1].attributes.tohost) return(1);
+		    	var ret=switchfilas(v10ele(idNext).parentNode.parentNode.childNodes[antfilaactiva-1],
+		   	  			   						v10ele(idNext).parentNode.parentNode.childNodes[filaactiva-1]);
+		   }
+		   //if (ret==false) return(debemandarevento);
+		 }  else quitafoco(idactivo);
+		ponfoco(nbloqueactivo,filaactiva,columactiva,bloquemonoregistro,bloqueentrable,maxfila,maxcol,bloqueshijos,modomodal,0,btimeout,timeoutact);
+	}
+	return(debemandarevento);
+}
+
+
+function campoSiguiente()
+{
+    if (bloqueshijos==1) return(siguienteCampo("columactiva++","if (columactiva>maxcol)  salir=1"));
+    if (bloquemonoregistro==1)  return(siguienteCampo("columactiva++","if (columactiva>maxcol)  columactiva=1"));
+    return(siguienteCampo("columactiva++","if (columactiva>maxcol)  {filaactiva++;columactiva=1;} if (filaactiva>=maxfila)  salir=1"));
+}
+
+function campoAnterior()
+{
+    if (bloquemonoregistro==1 || bloqueshijos==1) return(siguienteCampo("columactiva--","if (columactiva<=0)  salir=1"));
+    else return(siguienteCampo("columactiva--","if (columactiva<=0)  {filaactiva--;columactiva=maxcol;} if (filaactiva<=0)  salir=1"));
+}
+
+function filaSiguiente()
+{
+    return siguienteCampo("filaactiva++;","if (filaactiva>=maxfila)  salir=1");
+}
+
+function filaAnterior()
+{
+    return siguienteCampo("filaactiva--","if (filaactiva<=0)  salir=1");
+}
+
+function gestenvioeevento(objeto,tipoev,tecla)
+{
+    var debemandarevento=1;
+    if (valorinicial != valoractivo) {
+       mandaevento(objeto.id,tipoev,tecla);
+       return;
+    }
+   /*if (objeto.tagName=='INPUT' && bloquemonoregistro==0 && objeto.iftrue) { // checkbox
+            antid=objeto.id;
+            if (objeto.value=='X') valoractivo=objeto.iftrue;
+            else  valoractivo=objeto.iffalse;
+            mandaevento(objeto.id,tipoev,tecla);
+            return;
+        }*/
+    if (clearmensaje===0) {
+       switch (tecla) {
+            case 9:
+                     if (bloqueentrable>0) {
+                            if (tipoev=="onkeyup_shift") debemandarevento=campoAnterior();
+                                    else debemandarevento=campoSiguiente();
+                             }
+                             break;
+            case 13: if (bloqueentrable>0) debemandarevento=campoSiguiente();
+                             break;
+            case 38: if ((bloqueshijos===0 && bloquemonoregistro===0) || desplazacu==1) { debemandarevento=filaAnterior(); }  // no hay bloques hijos
+                             break;
+            case 40: if ((bloqueshijos===0 && bloquemonoregistro===0) || desplazacu==1) { debemandarevento=filaSiguiente(); } // no hay bloques hijos
+                             break;
+          }
+        }
+    if (debemandarevento==1) mandaevento(objeto.id,tipoev,tecla);
+}
+
+function mandaevento(obj, ev, evdt)
+{
+  desplazacu=0;
+  bajasem();
+  //if (v10ele('timeenvio')) v10ele('timeenvio').innerHTML='tOFF';
+  if (httppostenviado) return;
+  miscrollleft=0;
+  if (evdt=='scroll') miscrollleft=0;else try{miscrollleft=v10ele('fsbl' + nbloqueactivo).scrollLeft;}catch(E){}
+  antnbloqueactivo = nbloqueactivo;
+  w.document.all.idobjeto.value=obj;
+  w.document.all.evento.value=ev;
+  w.document.all.valor.value=evdt;
+  w.document.all.antid.value=idactivo;
+  w.document.all.antvalor.value=valoractivo;
+  w.document.all.antvalor.value=w.document.all.antvalor.value+'&FINPOST&';
+  fuerzocierre=true;
+  httppostenviado=true;
+  clearTimeout(timeoutonline);
+  if (btimeout>0)  clearTimeout(ttimeout);
+  if (timeoutact>0) clearTimeout(ttimeoutact);
+  inittimeout=0;
+  w.status="v10form Response Sent";
+  var exd=new Date();
+  ultenvio=exd.getTime();
+  w.v10form.submit();
+  resetact();
+  try{v10ele('timeenvio').style.visibility='hidden';}catch(E){};
+  try{v10ele('imgrelojar').style.visibility='visible';}catch(E){};
+  if (salirme)  {
+      w.alert('Sesi\u00f3n abortada por el usuario');
+      w.navigate("http://www.grupov10.com");
+  }
+}
+// gestión del calendario
+monthMaxDays    = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+monthMaxDaysLeap= [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+hideSelectTags = [];
+function getRealYear(dateObj) {return (dateObj.getYear() % 100) + (((dateObj.getYear() % 100) < 39) ? 2000 : 1900);}
+function getDaysPerMonth(month, year){if ((year % 4) === 0){if ((year % 100) === 0 && (year % 400) !== 0)return monthMaxDays[month];return monthMaxDaysLeap[month];}else return monthMaxDays[month];}
+
+function createCalender(year, month, day){// current Date
+var curDate = new Date();
+var curDay = curDate.getDate();
+var curMonth = curDate.getMonth();
+var curYear = getRealYear(curDate);
+var setID;
+var setTitle;
+var styleClass;
+// if a date already exists, we calculate some values here
+if (!year){var year = curYear;var month = curMonth;}
+var yearFound = 0;
+for (var i=0; i<w.document.getElementById('selectYear').options.length;i++){if (w.document.getElementById('selectYear').options[i].value == year){w.document.getElementById('selectYear').selectedIndex = i;yearFound = true;break;}}
+if (!yearFound){w.document.getElementById('selectYear').selectedIndex = 0;year =w.document.getElementById('selectYear').options[0].value;}
+
+//29-12-2016 Se corrige problema con fecha en enero y octubre 2017. Pibe.
+
+w.document.getElementById('selectMonth').selectedIndex = month;
+var fristDayOfMonthObj = new Date(year, month, 0);
+var firstDayOfMonth = fristDayOfMonthObj.getDay();
+continu     = true;firstRow = true;
+var x   = 0;var d   = 0;var trs = []
+var ti = 0;
+while (d <= getDaysPerMonth(month, year)){
+ if (firstRow){trs[ti] = w.document.createElement("TR");if (firstDayOfMonth > 0){while (x < firstDayOfMonth){trs[ti].appendChild(w.document.createElement("TD"));x++;}}firstRow = false;var d = 1;}
+ if (x % 7 == 0){ti++;trs[ti] = w.document.createElement("TR");}
+ if (day && d == day){var setID = 'calenderChoosenDay';var styleClass = 'choosenDay';var setTitle = 'this day is currently selected';}
+ else if (d == curDay && month == curMonth && year == curYear){var setID = 'calenderToDay';var styleClass = 'toDay';var setTitle = 'this day today';}
+           else{var setID = false;var styleClass = 'normalDay';var setTitle = false;}
+ var td = w.document.createElement("TD");td.className = styleClass;
+ if (setID){td.id = setID;}
+ if (setTitle){td.title = setTitle; }
+ td.onmouseover = new Function('highLiteDay(this)');
+ td.onmouseout = new Function('deHighLiteDay(this)');
+ if (targetEl)td.onclick = new Function('pickDate('+year+', '+month+', '+d+')');
+ else td.style.cursor = 'default';
+ td.appendChild(w.document.createTextNode(d));
+ trs[ti].appendChild(td);
+ x++;
+ d++;}
+ return trs;}
+
+function showCalender(tgtEl){
+ setYears(2000, 2050);
+ targetEl = false;
+ if (w.document.getElementById(tgtEl)){targetEl = w.document.getElementById(tgtEl);}
+ var calTable = w.document.getElementById('calenderTable');
+ calTable.style.display='block';
+ var matchDate = new RegExp('^([0-9]{2})-([0-9]{2})-([0-9]{4})$');
+ var m = matchDate.exec(targetEl.value);
+ if (m === null){trs = createCalender(false, false, false);showCalenderBody(trs);}
+ else{if (m[1].substr(0, 1) === 0)m[1] = m[1].substr(1, 1);if (m[2].substr(0, 1) === 0)m[2] = m[2].substr(1, 1);m[2] = m[2] - 1;trs = createCalender(m[3], m[2], m[1]);showCalenderBody(trs);}
+ hideSelect(w.document.body, 1);
+}
+
+function showCalenderBody(trs){
+    var calTBody = w.document.getElementById('calender');
+    while (calTBody.childNodes[0])
+    {calTBody.removeChild(calTBody.childNodes[0]);}
+    for (var i in trs){calTBody.appendChild(trs[i]);}
+}
+
+function setYears(sy, ey){// current Date
+ var curDate = new Date();
+ var curYear = getRealYear(curDate);
+ if (sy)startYear = curYear;
+ if (ey)endYear = curYear;
+ w.document.getElementById('selectYear').options.length = 0;
+ var j = 0;
+ for (y=ey; y>=sy; y--) w.document.getElementById('selectYear')[j++] = new Option(y, y);
+}
+
+function hideSelect(el, superTotal)
+{
+ if (superTotal >= 100) return;
+ var totalChilds = el.childNodes.length;
+ for (var c=0; c<totalChilds; c++) { 
+    var thisTag = el.childNodes[c];
+    if (thisTag.tagName == 'SELECT') {
+     if (thisTag.id != 'selectMonth' && thisTag.id != 'selectYear') {
+        var calenderEl = w.document.getElementById('calenderTable');
+        var positions = [0,0];
+        //var positions = getParentOffset(thisTag, positions);  // nieuw
+        var thisLeft    = positions[0];
+        var thisRight   = positions[0] + thisTag.offsetWidth;
+        var thisTop = positions[1];
+        var thisBottom  = positions[1] + thisTag.offsetHeight;
+        var calLeft = calenderEl.offsetLeft;
+        var calRight    = calenderEl.offsetLeft + calenderEl.offsetWidth;
+        var calTop  = calenderEl.offsetTop;
+        var calBottom   = calenderEl.offsetTop + calenderEl.offsetHeight;
+        if (((thisLeft >= calLeft && thisLeft <= calRight)||(thisRight <= calRight && thisRight >= calLeft)||(thisLeft <= calLeft && thisRight >= calRight))
+            &&((thisTop >= calTop && thisTop <= calBottom)||(thisBottom <= calBottom && thisBottom >= calTop)||(thisTop <= calTop && thisBottom >= calBottom))) {
+            hideSelectTags[hideSelectTags.length] = thisTag;thisTag.style.display = 'none';
+        }
+      }
+     } else {
+        if(thisTag.childNodes.length > 0) hideSelect(thisTag, (superTotal+1));
+     }
+  }
+}
+
+function closeCalender(){
+    for (var i=0; i<hideSelectTags.length; i++){hideSelectTags[i].style.display = 'block';}
+    hideSelectTags.length = 0;w.document.getElementById('calenderTable').style.display='none';
+  modomodal=0;
+  modocombox=0;
+  targetEl.focus();
+}
+
+function highLiteDay(el){el.className = 'hlDay';}
+
+function deHighLiteDay(el){if (el.id == 'calenderToDay') el.className = 'toDay';    else if (el.id == 'calenderChoosenDay') el.className = 'choosenDay'; else   el.className = 'normalDay';}
+
+function pickDate(year, month, day)
+{
+ month++;
+ day    = day < 10 ? '0'+day : day;
+ month  = month < 10 ? '0'+month : month;
+ if (!targetEl){alert('target for date is not set yet');}
+ else{targetEl.value= day+'-'+month+'-'+year;closeCalender();}
+ desonkeyefectos(w.event);
+ fonblur(targetEl.id);
+ mandaevento(objactivo.id,'onclick','');
+}
+
+function getParentOffset(el, positions)
+{
+ positions[0] += el.offsetLeft;
+ positions[1] += el.offsetTop;
+ if (el.offsetParent) positions = getParentOffset(el.offsetParent, positions);
+ return positions;
+}
+
+// gestion de etclado virtual para Tables PCs
+
+function marcamodocomb(miele){miele.style.borderStyle="inset";miele.style.backgroundColor="darkgray";miele.style.fontStyle="italic";}
+function resetmodocomb(miele){miele.style.borderStyle="solid";miele.style.backgroundColor="f4efe3";miele.style.fontStyle="normal";}
+function fintecla(){var ele=w.event.srcElement;try{clearTimeout(tteclavirt);}catch(E){}if(ele.tagName!="A")return;ele.style.borderStyle="solid";}
+
+function muestratecladovirt() 
+{
+ var ele;
+ ele=v10ele(actual);
+ if (ele) {
+    if (tecvisible===0) {
+       tecvisible=1;
+       ele.style.top = vtposy;
+       ele.style.left = vtposx;
+       ele.style.zIndex = 9001;
+       ele.style.visibility="visible";
+       try {objactivo.focus();} catch (E) {}
+     } else {
+       tecvisible=0;
+       ele.style.zIndex = 0;
+       ele.style.visibility="hidden";
+       objactivo.focus();
+     }
+  }
+}
+
+function pontecla(repet,mibutton) {
+ var nuevo,ele;
+ if (repet>0) ele = elebak; else {  ele = w.event.srcElement;   elebak = ele;   }
+ if (mibutton!=1) return;
+ try { if (ele.tagName!="A")    return;  } catch (E) {return;}// solo tabla click en A
+ ele.style.borderStyle="inset";
+ if (ele.vtipotec) {            // switch entre tipos de teclado
+    w.document.getElementById("tec1").style.visibility="hidden";
+    w.document.getElementById("tec2").style.visibility="hidden";
+    w.document.getElementById("tec3").style.visibility="hidden";
+    w.document.getElementById("tec1").style.zIndex=0;
+    w.document.getElementById("tec2").style.zIndex=0;
+    w.document.getElementById("tec3").style.zIndex=0;
+    if (ele.vtipotec>0) nuevo="tec" + ele.vtipotec;
+    w.document.getElementById(nuevo).style.top= parseInt(w.document.getElementById(actual).style.top);
+    w.document.getElementById(nuevo).style.left=parseInt(w.document.getElementById(actual).style.left);
+    w.document.getElementById(nuevo).style.zIndex = 9001;
+    w.document.getElementById(nuevo).style.visibility="visible";
+    actual=nuevo;
+    // resetea modo combinado de las teclas
+    if (modocombctrl+modocombalt+modocombshift>0) {
+    if (modocombctrl==1) resetmodocomb(elecombctrl);
+    if (modocombalt==1) resetmodocomb(elecombalt);
+    if (modocombshift==1) resetmodocomb(elecombshift);
+    modocombctrl=modocombalt=modocombshift=0;}
+    objactivo.focus();
+    return;
+  }
+ virtshift=virtctrl=virtalt=false;
+ if(ele.virtv||modocombctrl+modocombalt+modocombshift>0){// tecla virtual   o en combinacion de teclas
+  if(ele.virtcomb){// teclas combinacion de 2: SFX, CFX,AFX ....
+     if(ele.virtcomb==1)virtctrl=true;if (ele.virtcomb==2)virtalt=true;if(ele.virtcomb==3)virtshift=true;
+     virttecla=ele.virtv; modotecvirt=1;fonkeydown();
+     return;}
+ // combinacion de 2 o mas teclas
+ if(ele.virtv==17||ele.virtv==18||ele.virtv==20){
+  if(ele.virtv==17){if (modocombctrl===0){elecombctrl=ele;marcamodocomb(ele);modocombctrl=1;}else{resetmodocomb(elecombctrl);modocombctrl=0;}}
+    if(ele.virtv==18){if (modocombalt===0){elecombalt=ele;marcamodocomb(ele);modocombalt=1;}else{resetmodocomb(elecombalt);modocombalt=0;}}
+    if(ele.virtv==20){if (modocombshift===0){elecombshift=ele;marcamodocomb(ele);modocombshift=1;}else {resetmodocomb(elecombshift);modocombshift=0;}}
+  return;}
+ virttecla=parseInt(ele.virtv);
+ if (modocombctrl+modocombalt+modocombshift>0){// no muestra en pantalla, solo genera combinacion de las 2 teclas
+ if(modocombctrl==1){virtctrl=true; resetmodocomb(elecombctrl);}
+ if(modocombalt==1){virtalt=true; resetmodocomb(elecombalt);}
+ if(modocombshift==1){virtshift=true; resetmodocomb(elecombshift);}
+ if(ele.virtv)virttecla=ele.virtv;else{virttecla = ele.innerHTML;}
+ modotecvirt=1;fonkeydown();modocombctrl=modocombalt=modocombshift=0;
+ } else { // aqui hace acciones correspondientes a teclas raras
+ if (virttecla!=9 && virttecla!=13) tteclavirt=setTimeout("pontecla(1,1)",200);
+ if(virttecla==8){if (objactivo.value.length >0) objactivo.value = objactivo.value.substr(0,objactivo.value.length-1);}
+ else if(virttecla==32){objactivo.value=objactivo.value + " ";}
+ else if(virttecla==38||virttecla==60||virttecla==62||virttecla==241||virttecla==209||virttecla==191){objactivo.value=objactivo.value+String.fromCharCode(virttecla);}
+ else if(virttecla==1026)objactivo.value=objactivo.value+ele.innerHTML;
+ else if(virttecla==1027)objactivo.value=objactivo.value+ele.innerHTML;
+ else if(virttecla==1024){modotecvirt=1;virttecla=38;fonkeydown();}
+ else if(virttecla==1025){modotecvirt=1;virttecla=40;fonkeydown();}
+ else{modotecvirt=1; fonkeydown();}}
+ }else{tteclavirt=setTimeout(function () {"use strict";pontecla(1,1);}, 200);objactivo.value=objactivo.value + ele.innerHTML;}
+ try {objactivo.focus();}catch(E){}
+ }
+ 
+function objAJAX(){
+  var obj;
+  if(w.XMLHttpRequest) { // no es IE
+    obj = new XMLHttpRequest();
+  } else { // Es IE o no tiene el objeto
+    try{obj = new ActiveXObject("Microsoft.XMLHTTP");}
+    catch (e){w.alert('El navegador utilizado no está soportado');}
+  }
+  return obj;
+}
+
+function loadtabs() 
+{
+  // get tab container
+    var container = document.getElementById("tabContainer");
+    var tabcon = document.getElementById("tabscontent");
+        //alert(tabcon.childNodes.item(1));
+    // set current tab
+    var navitem = document.getElementById("tabHeader_001");
+    //store which tab we are on
+    var ident = navitem.id.split("_")[1];
+        //alert(ident);
+    navitem.parentNode.setAttribute("data-current",ident);
+    //set current tab with class of activetabheader
+    navitem.setAttribute("class","tabActiveHeader");
+    //hide two tab contents we don't need
+    var pages = tabcon.getElementsByTagName("div");
+    for (var i = 1; i < pages.length; i++) {
+         pages.item(i).style.display="none";
+     }
+    //this adds click event to tabs
+    var tabs = container.getElementsByTagName("li");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].onclick=displayPage;
+     }
+}
+
+// on click of one of tabs
+function displayPage() 
+{
+  var current = this.parentNode.getAttribute("data-current");
+  //remove class of activetabheader and hide old contents
+  document.getElementById("tabHeader_" + current).removeAttribute("class");
+  document.getElementById("tabpage_" + current).style.display="none";
+  var ident = this.id.split("_")[1];
+  //add class of activetabheader to new active tab and show contents
+  this.setAttribute("class","tabActiveHeader");
+  document.getElementById("tabpage_" + ident).style.display="block";
+  this.parentNode.setAttribute("data-current",ident);
+}
+</script>
+
+</HEAD>
+<BODY language="javascript" onload="loaded=true" onunload="fonunload()" onbeforeunload="fonunload()">
+</BODY>
+</HTML>

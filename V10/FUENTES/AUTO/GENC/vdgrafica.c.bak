@@ -1,0 +1,168 @@
+// Modulo generado automaticamente a partir de VDGRAFICA.DEF
+//# M¢dulo : VDGRAFICA.DEF                                                        
+//# Función: Definición de gráficas Web
+//#                        
+//# Autor	 : FGS
+//# Revisado por: 
+//# Fecha  : 18-01-2010                                              
+//#********************************************************************************
+//# Histórico de cambios
+//# ====================
+//# =================================================================================
+//#
+//TABLE=GRA;
+//CLAVE=NOMBREGRAF,NOMBREGRAF;
+
+#include "VD.H"
+#define SELGRANOMBREGRAF "SELECT VDGRAFICA.ROWID,VDGRAFICA.NOMBREGRAF,VDGRAFICA.DESGRAFICA, "\
+                    " VDGRAFICA.TITULOGRAF,VDGRAFICA.LEYENDAGRAF,VDGRAFICA.LEYENDAESTADO, "\
+                    " VDGRAFICA.CAMPOX,VDGRAFICA.VDEXTRA,VDGRAFICA.CODCOMEN, "\
+                    " VDGRAFICA.CODOPEMODIF,VDGRAFICA.FECMODIF,VDGRAFICA.HORAMODIF "\
+        " FROM VDGRAFICA"\
+        " WHERE "\
+               " VDGRAFICA.NOMBREGRAF=:NOMBREGRAF "
+static v10cursors *vdselgranombregraf;
+
+#define SELGRAVDGRAFICA "SELECT VDGRAFICA.ROWID,VDGRAFICA.NOMBREGRAF,VDGRAFICA.DESGRAFICA, "\
+                    " VDGRAFICA.TITULOGRAF,VDGRAFICA.LEYENDAGRAF,VDGRAFICA.LEYENDAESTADO, "\
+                    " VDGRAFICA.CAMPOX,VDGRAFICA.VDEXTRA,VDGRAFICA.CODCOMEN, "\
+                    " VDGRAFICA.CODOPEMODIF,VDGRAFICA.FECMODIF,VDGRAFICA.HORAMODIF "\
+        " FROM VDGRAFICA"
+static v10cursors *vdselgravdgrafica;
+
+static vdgraficas svdgrafica;
+
+static diccols colvdgrafica[]={
+	{"ROWID",V10CADENA,(size_t)&svdgrafica.rowid,sizeof(svdgrafica.rowid)},
+	{"NOMBREGRAF",V10CADENA,(size_t)&svdgrafica.nombregraf,sizeof(svdgrafica.nombregraf)},
+	{"DESGRAFICA",V10CADENA,(size_t)&svdgrafica.desgrafica,sizeof(svdgrafica.desgrafica)},
+	{"TITULOGRAF",V10CADENA,(size_t)&svdgrafica.titulograf,sizeof(svdgrafica.titulograf)},
+	{"LEYENDAGRAF",V10CADENA,(size_t)&svdgrafica.leyendagraf,sizeof(svdgrafica.leyendagraf)},
+	{"LEYENDAESTADO",V10LONG,(size_t)&svdgrafica.leyendaestado,sizeof(svdgrafica.leyendaestado)},
+	{"CAMPOX",V10CADENA,(size_t)&svdgrafica.campox,sizeof(svdgrafica.campox)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdgrafica.vdextra,sizeof(svdgrafica.vdextra)},
+	{"CODCOMEN",V10LONG,(size_t)&svdgrafica.codcomen,sizeof(svdgrafica.codcomen)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdgrafica.codopemodif,sizeof(svdgrafica.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdgrafica.fecmodif,sizeof(svdgrafica.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdgrafica.horamodif,sizeof(svdgrafica.horamodif)}
+	};
+static diccionarios dvdgrafica[]={
+    {colvdgrafica,12}
+};
+diccionario dgra={dvdgrafica,1};
+
+static char msglogGRA[LCADENA];
+static char msgdebugGRA[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_gra(void)
+{
+if (vdselgranombregraf) {
+    liberacursor(vdselgranombregraf);
+    vdselgranombregraf = NULL;
+}
+if (vdselgravdgrafica) {
+    liberacursor(vdselgravdgrafica);
+    vdselgravdgrafica = NULL;
+}
+}
+static void init_selgranombregraf(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdgrafica[0].numcol;nc++) dvdgrafica[0].c[nc].offset-=(size_t)&svdgrafica;
+    vdselgranombregraf=abrecursordebug(SELGRANOMBREGRAF,1280);
+    definetodo(vdselgranombregraf,svdgrafica.rowid,sizeof(svdgrafica.rowid),V10CADENA,
+                          svdgrafica.nombregraf,sizeof(svdgrafica.nombregraf),V10CADENA,
+                          svdgrafica.desgrafica,sizeof(svdgrafica.desgrafica),V10CADENA,
+                          svdgrafica.titulograf,sizeof(svdgrafica.titulograf),V10CADENA,
+                          svdgrafica.leyendagraf,sizeof(svdgrafica.leyendagraf),V10CADENA,
+                          &svdgrafica.leyendaestado,sizeof(svdgrafica.leyendaestado),V10LONG,
+                          svdgrafica.campox,sizeof(svdgrafica.campox),V10CADENA,
+                          svdgrafica.vdextra,sizeof(svdgrafica.vdextra),V10CADENA,
+                          &svdgrafica.codcomen,sizeof(svdgrafica.codcomen),V10LONG,
+                          svdgrafica.codopemodif,sizeof(svdgrafica.codopemodif),V10CADENA,
+                          &svdgrafica.fecmodif,sizeof(svdgrafica.fecmodif),V10LONG,
+                          svdgrafica.horamodif,sizeof(svdgrafica.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdselgranombregraf,"NOMBREGRAF",svdgrafica.nombregraf,sizeof(svdgrafica.nombregraf),V10CADENA,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_gra);
+        init = 1;
+    }
+}
+
+static void init_selgravdgrafica(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdgrafica[0].numcol;nc++) dvdgrafica[0].c[nc].offset-=(size_t)&svdgrafica;
+    vdselgravdgrafica=abrecursordebug(SELGRAVDGRAFICA,1280);
+    definetodo(vdselgravdgrafica,svdgrafica.rowid,sizeof(svdgrafica.rowid),V10CADENA,
+                          svdgrafica.nombregraf,sizeof(svdgrafica.nombregraf),V10CADENA,
+                          svdgrafica.desgrafica,sizeof(svdgrafica.desgrafica),V10CADENA,
+                          svdgrafica.titulograf,sizeof(svdgrafica.titulograf),V10CADENA,
+                          svdgrafica.leyendagraf,sizeof(svdgrafica.leyendagraf),V10CADENA,
+                          &svdgrafica.leyendaestado,sizeof(svdgrafica.leyendaestado),V10LONG,
+                          svdgrafica.campox,sizeof(svdgrafica.campox),V10CADENA,
+                          svdgrafica.vdextra,sizeof(svdgrafica.vdextra),V10CADENA,
+                          &svdgrafica.codcomen,sizeof(svdgrafica.codcomen),V10LONG,
+                          svdgrafica.codopemodif,sizeof(svdgrafica.codopemodif),V10CADENA,
+                          &svdgrafica.fecmodif,sizeof(svdgrafica.fecmodif),V10LONG,
+                          svdgrafica.horamodif,sizeof(svdgrafica.horamodif),V10CADENA,
+                          NULL);
+    bindtodo(vdselgravdgrafica,NULL);
+    if (init == 0) {
+        atexit(fin_vd_gra);
+        init = 1;
+    }
+}
+
+diccionario *GRAdamediccionario(void)
+{
+     return(&dgra);
+}
+
+int GRAselnombregraf(char *nombregraf,vdgraficas *gra)
+{
+  int vdret;
+  if (vdselgranombregraf==NULL) init_selgranombregraf();
+  memset(&svdgrafica,0,sizeof(svdgrafica));
+  strcpy(svdgrafica.nombregraf,nombregraf);
+  vdret=ejefetchcursor(vdselgranombregraf);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselgranombregraf. vdret %d. \n",GRAlog(&svdgrafica),vdret);
+    return(VD_EERRORACLE);
+   }
+  *gra=svdgrafica;
+  return(vdret);
+}
+
+int GRAselvdgrafica(vdgraficas *gra)
+{
+  int vdret;
+  if (vdselgravdgrafica==NULL) init_selgravdgrafica();
+  memset(&svdgrafica,0,sizeof(svdgrafica));
+  vdret=ejefetchcursor(vdselgravdgrafica);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdselgravdgrafica. vdret %d. \n",GRAlog(&svdgrafica),vdret);
+    return(VD_EERRORACLE);
+   }
+  *gra=svdgrafica;
+  return(vdret);
+}
+
+char * GRAlog(vdgraficas *gra)
+{
+    sprintf(msglogGRA, "VDGRAFICA: ");
+    return(msglogGRA);
+}
+
+char * GRAdebug(vdgraficas *gra)
+{
+    debugestruct(&dgra,gra,msgdebugGRA);
+    return(msgdebugGRA);
+}
+

@@ -1,0 +1,500 @@
+#include "v10.h"
+
+//int precalculaficheros=0;
+mouseposs mousepos;
+int v10versionweb=0;
+int xinvalido=0;
+int statuscursor=0;
+int reusaexcel;
+
+
+void v10limpiatooltip(HWND hwnd)
+{
+}
+
+void destruyetooltip(HWND hwnd)
+{
+}
+
+void creatooltip(HWND hwnd)
+{
+}
+
+void mueveratontooltip(HWND hwnd,int x,int y)
+{
+}
+
+
+void wset_cursor(HWND hwnd,int modo)
+{
+  extrawins *t=dameextrawin(hwnd);
+  t->modocursor=statuscursor=modo;
+  presentacursor(hwnd);
+}
+
+
+void  InvalidateRect(HWND hwnd,RECT *r,int nose)
+{
+    xinvalido=1;
+    hwnd->invalido=1;
+}
+
+
+void GetWindowRect(HWND hwnddefecto,RECT *rect)
+{
+    extrawins *t=dameextrawin(hwnddefecto);
+	Window root;
+	int left, top;
+	unsigned int width, heigth, borde, prof;
+	XGetGeometry(xwindisplay, hwnddefecto->win, &root, &left, &top, &width, &heigth, &borde, &prof);
+	rect->left = left;
+	rect->top = top;
+	rect->right = left + width;
+	rect->bottom = top + heigth;
+}
+
+void InitializeCriticalSection(CRITICAL_SECTION *crit)
+{
+	pthread_mutexattr_t Attr;
+
+	pthread_mutexattr_init(&Attr);
+	pthread_mutexattr_settype(&Attr, PTHREAD_MUTEX_RECURSIVE);
+	pthread_mutex_init(crit, &Attr);
+}
+void EnterCriticalSection(CRITICAL_SECTION *crit)
+{
+     pthread_mutex_lock(crit);
+}
+void LeaveCriticalSection(CRITICAL_SECTION *crit)
+{
+    pthread_mutex_unlock(crit);
+}
+void DeleteCriticalSection(CRITICAL_SECTION *crit)
+{
+    pthread_mutex_destroy(crit);
+}
+
+
+void mete_en_clipboard(char *cadena)
+{
+}
+
+void creamenuclipboard(int x,int y,int copiar,int pegar)
+{
+}
+
+void apilaclipboard(int estiponum,int formato)
+{
+}
+void cambiafontdefecto(char*cadena,int alto,int ancho)
+{
+}
+
+HMODULE LoadLibrary(char *nombre)
+{
+    char destino[MAXPATH];
+    HMODULE ret;
+    if (strchr(nombre,'.')==NULL) sprintf(destino,"%s.so",nombre);
+    else strcpy(destino,nombre);
+    v10log(LOGNORMAL,"Cargando libreria %s\n",destino);
+    ret=dlopen(destino,RTLD_LAZY);
+    v10log(LOGNORMAL, "Cargando libreria %s %p\n", destino,ret);
+    return ret;
+}
+
+void *GetProcAddress(HMODULE library,char *nombre)
+{
+    return dlsym(library,nombre);
+}
+
+int FreeLibrary(HMODULE library)
+{
+    return dlclose(library);
+}
+
+
+static void rellenafinddata(char *path,char *name,WIN32_FIND_DATA *data)
+{
+    char fichero[MAXPATH];
+    struct stat64 buf;
+    int ret;
+    strcpy(data->cFileName,name);
+    sprintf(fichero,"%s/%s",path,name);
+    ret=stat64(fichero,&buf);
+    if (ret!=0) {
+       v10log(LOGDEBUG,"Fichero %s stat %d errno %d %s\n",fichero,ret,errno,strerror(errno));
+        //v10log(LOGDEBUG,"%s\n" ,explain_errno_stat(fichero,buf));
+    }
+    data->dwFileAttributes=buf.st_mode;
+    data->ftLastAccessTime=buf.st_atime;
+    data->ftLastWriteTime=buf.st_mtime;
+    data->size=buf.st_size;
+}
+
+void FindClose(midir *dir)
+{
+    closedir(dir->dir);
+    free(dir->path);
+    free(dir);
+}
+
+midir *FindFirstFile(char *path,WIN32_FIND_DATA *data)
+{
+    midir *ret;
+    struct dirent *primero;
+    char *ext;
+    ext=path+strlen(path)-1;
+    while (ext>path) {
+        if (*ext==BACKSLASH) {
+            *ext=0;
+            break;
+        }
+        ext--;
+    }
+    ret=calloc(1,sizeof(*ret));
+    ret->dir=opendir(path);
+    if (ret->dir==NULL) {
+        free(ret);
+        return(NULL);
+    }
+    primero=readdir(ret->dir);
+    if (primero==NULL) {
+        FindClose(ret);
+        return(NULL);
+     }
+    ret->path=strdup(path);
+    rellenafinddata(path,primero->d_name,data);
+    return(ret);
+}
+
+int FindNextFile(midir *dir,WIN32_FIND_DATA *data)
+{
+    struct dirent *siguiente;
+    siguiente=readdir(dir->dir);
+    if (siguiente==NULL) return(0);
+    rellenafinddata(dir->path,siguiente->d_name,data);
+    return(1);
+}
+
+
+void SetWindowText(HWND hwnd,char *titulo)
+{
+	if (singrafico == 0) XStoreName(xwindisplay, hwnd->win,titulo);
+}
+
+void Sleep(int mili)
+{
+    struct timespec t1,t2;
+    if (mili<11) mili=12;
+    t1.tv_sec=mili/1000;
+    t1.tv_nsec=(mili%1000)*1000*1000;
+    nanosleep(&t1,&t2);
+   // usleep(mili*1000);
+}
+
+HANDLE _beginthread (void *start,int pila,void *param)
+{
+    pthread_t ret;
+    int err;
+    err=pthread_create(&ret,0,start,param);
+    if (err) return 0;
+    return((void *)ret);
+
+}
+
+HANDLE CreateThread(void *security,int pila,void *rutina,void *param,int creacion,int *pid)
+{
+    pthread_t ret;
+    int err;
+    err=pthread_create(&ret,0,rutina,param);
+    if (err) return 0;
+    return((void *)ret);
+}
+
+void TerminateThread(HANDLE thread,int dummy)
+{
+    pthread_cancel((pthread_t)thread);
+}
+
+void SuspendThread(HANDLE thread)
+{
+}
+
+void ResumeThread(HANDLE thread)
+{
+}
+
+void DestroyWindow(HWND hwnd)
+{
+    XDestroyWindow(xwindisplay,hwnd->win);
+    hwnd->usado=0;
+    free(hwnd->t);
+}
+
+#define MAXARGUMENTOS 255
+
+static void eliminacomillas(char *cadena)
+{
+    char *aux;
+    while ((aux=strchr(cadena,'"'))!=0) strcpy(aux,aux+1);
+}
+
+int ejecutacomando(char *cadena, char flags, char *dirini)
+{
+  int ret;
+  char *fichero;
+  char **argumentos;
+  int nargumentos;
+  char *aux,*fin;
+  v10log(LOGNORMAL,"Ejecuto proceso %s\n",cadena);
+  ret=fork();
+  if (ret>0) {
+	  //printf("Ejecutando comando %s\n",cadena);
+	  return(ret);
+  }
+  if (ret==-1) {
+      v10log(LOGERROR,"No puedo ejecutar proceso %s\n",cadena);
+      return(-1);
+  }
+  argumentos=calloc(MAXARGUMENTOS,sizeof(char*));
+  nargumentos=0;
+  aux=strdup(cadena);
+  fin=strchr(aux,' ');
+  if (fin) *fin=0;
+  argumentos[0]=fichero=aux;
+  nargumentos++;
+  if (fin) {
+      aux=fin+1;
+      while (*aux) {
+            ltrim(aux);
+          if (*aux=='"') {
+              aux++;
+              fin=strchr(aux,'"');
+          } else {
+              fin=strchr(aux,' ');
+          }
+          if (fin) *fin=0;
+          argumentos[nargumentos++]=aux;
+          eliminacomillas(aux);
+          if (fin) aux=fin+1;
+             else break;
+      }
+  }
+  eliminacomillas(fichero);
+  //printf ("fichero %s argc %d 0 %s 1 %s 2 %s\n",fichero,nargumentos,argumentos[0],argumentos[1],argumentos[2]);
+  argumentos[nargumentos]=NULL;
+  ret=execvp(fichero,argumentos);
+  //printf("Error al ejecutar %d %d\n",ret,errno);
+  abort();
+}
+
+int WinExec(char *cadena,int flags)
+{
+	int ret;
+    ret=ejecutacomando(cadena,0,NULL);
+	if (ret <= 0) return (-1);
+	return 0;
+}
+
+int CreateProcess(char *app, char *cmd, SECURITY_ATTRIBUTES *procatr, SECURITY_ATTRIBUTES *threatr, int hereda, int flags, void *entorno, char *directorio, STARTUPINFO *sti, PROCESS_INFORMATION *pi)
+{
+	char proceso[MAXCADENA];
+	if (app) sprintf(proceso, "%s %s", app, cmd); else strcpy(proceso, cmd);
+	pi->dwProcessId = ejecutacomando(proceso, flags, directorio);
+	pi->hProcess =(void *)pi->dwProcessId;
+}
+
+
+int GetExitCodeProcess(HANDLE pid, DWORD *err)
+{
+	int status, ret;
+	ret = waitpid((size_t)pid, &status, WNOHANG);
+	if (ret == 0) {
+		*err = STILL_ACTIVE;
+		return *err;
+	}
+	if (WIFEXITED(status)) {
+		v10log(LOGNORMAL, "El proceso %d ha terminado status %x\n", (size_t)pid, status);
+		*err = 0;
+		return (0);
+	}
+	if (WIFSIGNALED(status)) {
+		v10log(LOGNORMAL, "El proceso %d ha sido matado %x\n", (size_t)pid, status);
+		*err = 0;
+		return (0);
+	}
+	*err = STILL_ACTIVE;
+	return STILL_ACTIVE;
+}
+
+int TerminateProcess(HANDLE pid, int *status)
+{
+	kill((size_t)pid, SIGKILL);
+}
+
+int pidetermina(HANDLE pid, int *status)
+{
+	kill((size_t)pid, SIGTERM);
+}
+                  
+                  
+                  
+
+
+void SetPriorityClass(int pid,int prio)
+{
+}
+
+int memicmp(void *origen,void *destino,int lon)
+{
+    return(strnicmp(origen,destino,lon));
+}
+
+void v10initssl(int ssl, char *_keyfile, char *_password, char *_dhfile, char *_ca_list )
+{
+}
+
+char* ltoa(long value, char* result, int base)
+{
+    // check that the base if valid
+    if (base < 2 || base > 36) { *result = '\0'; return result; }
+    char* ptr = result, *ptr1 = result, tmp_char;
+    long tmp_value;
+    do {
+      tmp_value = value;
+      value /= base;
+      *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
+    } while ( value );
+
+    // Apply negative sign
+    if (tmp_value < 0) *ptr++ = '-';
+    *ptr-- = '\0';
+    while(ptr1 < ptr) {
+      tmp_char = *ptr;
+      *ptr--= *ptr1;
+      *ptr1++ = tmp_char;
+    }
+    return result;
+}
+
+char* ultoa(unsigned long value, char* result, int base)
+{
+    // check that the base if valid
+    if (base < 2 || base > 36) { *result = '\0'; return result; }
+    char* ptr = result, *ptr1 = result, tmp_char;
+    long tmp_value;
+    do {
+      tmp_value = value;
+      value /= base;
+      *ptr++ = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * base)];
+    } while ( value );
+
+    // Apply negative sign
+    if (tmp_value < 0) *ptr++ = '-';
+    *ptr-- = '\0';
+    while(ptr1 < ptr) {
+      tmp_char = *ptr;
+      *ptr--= *ptr1;
+      *ptr1++ = tmp_char;
+    }
+    return result;
+}
+
+char *strcpyoverlap(char *destino,char *origen)
+{
+    memmove(destino,origen,strlen(origen)+1);
+    return(destino);
+}
+
+long GetCurrentProcessId(void)
+{
+  return((long)getpid());
+}
+
+
+void ShowWindow(HWND hwnddefecto,int showtype)
+{
+}
+
+int FormatMessage(int Flags,char *source,int err,int language,char *donde,int len,void *arg)
+{
+    return(0);
+}
+
+int WSAGetLastError(void)
+{
+    return(0);
+}
+
+
+
+int sndPlaySound(char *nombre,int flags)
+{
+    return(0);
+}
+
+int v10ponayuda(char *cadena)
+{
+    return(0);
+}
+
+void v10quitaayuda(void)
+{
+}
+
+char file_help[MAXPATH];
+void pintaonline(char *cadena)
+{
+}
+
+void borraonline(void)
+{
+}
+
+void *ponfunciontooltip(void *funcion)
+{
+    return NULL;
+}
+
+int v10tooltip(mouseposs *raton,char *texto)
+{
+    return(0);
+}
+
+void initolefrm(void)
+{
+}
+
+char *(*traducecamposole)(char *nombre,int dir);
+
+DWORD GetTempPath(int lon,char *buffer)
+{
+    strcpy(buffer,"./");
+    return(0);
+}
+
+int sql2excel(char *sql,char *plantilla,char *destino,int salir)
+{
+    return(0);
+}
+
+void confexcel2fichero(char *_user,int _puerto, char *_rutaxls, void (* mifunc)(char *) )
+{
+}
+
+static int inittermina;
+static void ejecutasigtermina(int dummyt)
+{
+	exit(0);
+}
+
+void tratasigtermina(void)
+{
+	struct sigaction action;
+	if (inittermina) return;
+	inittermina = 1;
+	memset(&action, 0, sizeof(struct sigaction));
+	action.sa_handler = ejecutasigtermina;
+	sigaction(SIGTERM, &action, NULL);
+}
+

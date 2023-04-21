@@ -1,0 +1,8 @@
+1. CONSULTA DEL ARTICULO,FEJECUTAFORM("VDARTIC","S","CODART=:CODART")
+2. CONSULTA REGULARIZACIONES,FEJECUTAFORM("SMLISTAMOVIM","S","CODMOV IN ( "
+                                               "SELECT CODMOV "
+                                                " FROM VDMOVIM MOV,VDUBICA UBIO,VDUBICA UBID "
+                                                " WHERE VD.CONTIENE(VD.GETPROP('CONCREG'),CODCONCE)>0 AND MOV.CODART=:CODART AND "
+                                                      " FECFINMOV BETWEEN TO_CHAR(TRUNC(TO_DATE(:ANO,'YYYY'),'YYYY'),'J') AND TO_CHAR(TRUNC(TO_DATE(:ANO+1,'YYYY'),'YYYY'),'J')-1 AND"
+                                                      " MOV.CODUBIORI=UBIO.CODUBI AND MOV.CODUBIDEST=UBID.CODUBI AND "
+                                                      " (UBIO.STOCK='N' OR UBID.STOCK='N') AND (UBIO.STOCK='S' OR UBID.STOCK='S'))")

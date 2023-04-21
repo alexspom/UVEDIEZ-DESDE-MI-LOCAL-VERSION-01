@@ -1,0 +1,22 @@
+# MOdulo   : VDINVENTARIOS.FRM
+# Función  : Monitor de conteos de inventario
+#
+# Creación : 03-02-2010
+# Autor    : ICC
+###########################################
+# HistOrico de cambios:
+#
+BEGINBLOQUE=VDINVENTARIO1.PAN
+  PREREGISTRO=PRESEHIJO
+	REGPAG=8
+  POSX=1
+  POSY=1
+ENDBLOQUE
+BEGINBLOQUE=VDINVENTARIO2.PAN
+  PADRE=VDINVENTARIO1.PAN
+  PREQUERY=QUERYHIJO
+  PREREGISTRO=PRESEHIJO
+	REGPAG=30
+  POSX=1
+  POSY=14
+ENDBLOQUE

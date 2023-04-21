@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PRUEBAARTIC" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb84effd-14f8-49a3-bb5f-1ea5ad06b611">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ORACLE"/>
+	<parameter name="CODDIV" class="java.lang.String">
+		<parameterDescription><![CDATA[DIVISION]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM "VDARTIC"
+WHERE 
+	rownum<100 AND CODDIV= $P{CODDIV} 
+ORDER BY CODART]]>
+	</queryString>
+	<field name="CODART" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODART"/>
+	</field>
+	<field name="CODDIV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODDIV"/>
+	</field>
+	<field name="CODARTDIV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODARTDIV"/>
+	</field>
+	<field name="CODNAC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODNAC"/>
+	</field>
+	<field name="CODEAN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODEAN"/>
+	</field>
+	<field name="DESART" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESART"/>
+	</field>
+	<field name="DESARTALT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DESARTALT"/>
+	</field>
+	<field name="UNIEMB" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="UNIEMB"/>
+	</field>
+	<field name="EMBCONT" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="EMBCONT"/>
+	</field>
+	<field name="EMBPISO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="EMBPISO"/>
+	</field>
+	<field name="TIPOEMBADEF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOEMBADEF"/>
+	</field>
+	<field name="TIPOCONTEDEF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOCONTEDEF"/>
+	</field>
+	<field name="UNIDADES" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIDADES"/>
+	</field>
+	<field name="UNIDADESHOST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIDADESHOST"/>
+	</field>
+	<field name="ORDENSAL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ORDENSAL"/>
+	</field>
+	<field name="TRAZABULTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TRAZABULTO"/>
+	</field>
+	<field name="DECIMALES" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="DECIMALES"/>
+	</field>
+	<field name="TIPOVOL" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOVOL"/>
+	</field>
+	<field name="LARGOUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LARGOUNI"/>
+	</field>
+	<field name="ANCHOUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ANCHOUNI"/>
+	</field>
+	<field name="ALTOUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ALTOUNI"/>
+	</field>
+	<field name="COEFUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COEFUNI"/>
+	</field>
+	<field name="PESOUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PESOUNI"/>
+	</field>
+	<field name="UNIPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="UNIPAQ"/>
+	</field>
+	<field name="LARGOPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LARGOPAQ"/>
+	</field>
+	<field name="ANCHOPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ANCHOPAQ"/>
+	</field>
+	<field name="ALTOPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ALTOPAQ"/>
+	</field>
+	<field name="COEFPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COEFPAQ"/>
+	</field>
+	<field name="PESOPAQ" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PESOPAQ"/>
+	</field>
+	<field name="INVCONT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="INVCONT"/>
+	</field>
+	<field name="PETINICAJA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PETINICAJA"/>
+	</field>
+	<field name="CONFPICKING" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CONFPICKING"/>
+	</field>
+	<field name="FECVIGNP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="FECVIGNP"/>
+	</field>
+	<field name="PVPVIGENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPVIGENTE"/>
+	</field>
+	<field name="PVPNUEVO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPNUEVO"/>
+	</field>
+	<field name="PVPANTIGUO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPANTIGUO"/>
+	</field>
+	<field name="PVDVIGENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVDVIGENTE"/>
+	</field>
+	<field name="PVDNUEVO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVDNUEVO"/>
+	</field>
+	<field name="PVDANTIGUO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVDANTIGUO"/>
+	</field>
+	<field name="PVPIVAVIGENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPIVAVIGENTE"/>
+	</field>
+	<field name="PVPIVANUEVO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPIVANUEVO"/>
+	</field>
+	<field name="PVPIVAANTIGUO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PVPIVAANTIGUO"/>
+	</field>
+	<field name="SWTTUMBABLE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTTUMBABLE"/>
+	</field>
+	<field name="SWTANULADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTANULADO"/>
+	</field>
+	<field name="SWTETIQ" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTETIQ"/>
+	</field>
+	<field name="AGRUPALIN" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="AGRUPALIN"/>
+	</field>
+	<field name="TPCVERIF" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TPCVERIF"/>
+	</field>
+	<field name="SWTANALISIS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTANALISIS"/>
+	</field>
+	<field name="SWTGENERICO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTGENERICO"/>
+	</field>
+	<field name="SWTSTOCK" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTSTOCK"/>
+	</field>
+	<field name="SWTLOTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTLOTE"/>
+	</field>
+	<field name="TRETEST" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TRETEST"/>
+	</field>
+	<field name="UNIRETEST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIRETEST"/>
+	</field>
+	<field name="TAVISA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TAVISA"/>
+	</field>
+	<field name="UNIAVISA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIAVISA"/>
+	</field>
+	<field name="FORMATOLOTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="FORMATOLOTE"/>
+	</field>
+	<field name="MUESTROTECA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MUESTROTECA"/>
+	</field>
+	<field name="NUMMUESTRAS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="NUMMUESTRAS"/>
+	</field>
+	<field name="TCADUC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TCADUC"/>
+	</field>
+	<field name="UNICADUC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNICADUC"/>
+	</field>
+	<field name="PEDMULTIPLO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PEDMULTIPLO"/>
+	</field>
+	<field name="TIPOAJUSTE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOAJUSTE"/>
+	</field>
+	<field name="MINPENDIENTE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MINPENDIENTE"/>
+	</field>
+	<field name="MAXUNI" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MAXUNI"/>
+	</field>
+	<field name="MINPAL" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MINPAL"/>
+	</field>
+	<field name="TIPOCAJC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOCAJC"/>
+	</field>
+	<field name="PESOCAJC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PESOCAJC"/>
+	</field>
+	<field name="LARGOCAJC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="LARGOCAJC"/>
+	</field>
+	<field name="ANCHOCAJC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ANCHOCAJC"/>
+	</field>
+	<field name="ALTOCAJC" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ALTOCAJC"/>
+	</field>
+	<field name="SWTPESACAJA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTPESACAJA"/>
+	</field>
+	<field name="TPCMARGENPESO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="TPCMARGENPESO"/>
+	</field>
+	<field name="MARGENPESOSUP" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MARGENPESOSUP"/>
+	</field>
+	<field name="MARGENPESOINF" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MARGENPESOINF"/>
+	</field>
+	<field name="PICKINV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="PICKINV"/>
+	</field>
+	<field name="SWTNUMEROSERIE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTNUMEROSERIE"/>
+	</field>
+	<field name="SWTACTIVO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTACTIVO"/>
+	</field>
+	<field name="TIPOVERIFCIEGA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOVERIFCIEGA"/>
+	</field>
+	<field name="CODCOMEN" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CODCOMEN"/>
+	</field>
+	<field name="CODOPEMODIF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODOPEMODIF"/>
+	</field>
+	<field name="FECMODIF" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="FECMODIF"/>
+	</field>
+	<field name="HORAMODIF" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="HORAMODIF"/>
+	</field>
+	<field name="CAJACUBETA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CAJACUBETA"/>
+	</field>
+	<field name="MAXLONGNS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MAXLONGNS"/>
+	</field>
+	<field name="MINLONGNS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MINLONGNS"/>
+	</field>
+	<field name="SWTHOST" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTHOST"/>
+	</field>
+	<field name="CUBETACAJA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CUBETACAJA"/>
+	</field>
+	<field name="TIPOABC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TIPOABC"/>
+	</field>
+	<field name="VDEXTRA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="VDEXTRA"/>
+	</field>
+	<field name="PORCPESADO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PORCPESADO"/>
+	</field>
+	<field name="PORCPESOVAR" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PORCPESOVAR"/>
+	</field>
+	<field name="SWTFMD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="SWTFMD"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="98" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="390" height="30" uuid="968814e8-9eba-4725-bb8c-396c4b088629"/>
+				<textElement>
+					<font fontName="Arial" size="23" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LISTADO DE ARTICULOS "+ $P{CODDIV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="100" height="30" uuid="80a8944b-9dd8-45a9-b991-7095685f2299"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="0" width="100" height="30" uuid="6b48ba4b-6fe1-4c35-b589-104adf37f5cf"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["/" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="69" y="20" width="100" height="20" uuid="3d47bace-1356-46c7-8277-4dbb2ac6c56c"/>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="211" y="17" width="100" height="30" uuid="9d74c0c4-2b74-4e9e-b2b2-79e7e0f701dd"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="68" y="0" width="72" height="17" uuid="bdb4d2ae-ca1e-4a44-8db9-9dd15b4f75c8"/>
+				<textFieldExpression><![CDATA[$F{CODART}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="0" width="100" height="17" uuid="7261b1f1-c189-4ce6-a5b2-8835fdea1b92"/>
+				<textFieldExpression><![CDATA[$F{DESART}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="0" width="100" height="17" uuid="0b541a1f-e047-4fe1-b422-bd6664cf51c7"/>
+				<textFieldExpression><![CDATA[$F{CODEAN}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="460" y="0" width="100" height="22" uuid="2f6a43de-a058-482d-a9f7-cf38d022a11e"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{CODEAN}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

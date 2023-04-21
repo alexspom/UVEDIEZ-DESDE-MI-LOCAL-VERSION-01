@@ -1,0 +1,9 @@
+#CURSOR=CCREAINVENDIARIO DECLARE
+#                          RET NUMBER;
+#                        BEGIN
+#                          RET:=SMINVEN.CREAINVENDIARIO;
+#                        END;@
+                        
+CURSOR=CPROCESAINVEN BEGIN
+                       SMINVEN.PROCESAINVENTARIOS;
+                     END;@                        

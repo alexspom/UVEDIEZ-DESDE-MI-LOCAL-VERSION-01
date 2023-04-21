@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Ventana de Confirmaci&oacute;n</title>
+    <link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen" />
+ <style>
+	  .button {
+    border: none;
+    display: block;
+    background: #00535f;
+    height: 40px;
+    width: 80px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    /*box-shadow: 0px 3px 1px #2075aa;*/
+  	-webkit-transition: all 0.15s linear;
+	  -moz-transition: all 0.15s linear;
+	  transition: all 0.15s linear;
+	  margin-top:10px;
+	  font-size:15px;
+}
+
+.button:hover {
+  background: #078a9e;
+  /*box-shadow: 0 3px 1px #237bb2;*/
+}
+
+.button:active {
+  background: #00535f;
+  /*box-shadow: 0 3px 1px #0f608c;*/
+}
+	  </style>
+	</head>
+
+<body>
+    <!--V10INCLUDEDATA-->
+    <script defer>
+        function fonkeyupmsj(mievento, tecla) {
+            var objventana = window.document.getElementById('msgalert');
+            switch (tecla) {
+                case 27:
+                case 13:
+                    objventana.style.visibility = 'hidden';
+                    v10lib.desonkeyefectos(mievento);
+                    v10lib.mandaevento('', 'finmsg', '');
+                    break;
+                case 112:
+                    if (mievento.altKey) objventana.style.visibility = 'hidden';
+                    v10lib.desonkeyefectos(mievento);
+                    v10lib.mandaevento('', 'debugmsg', '');
+                    break;
+                default:
+                    v10lib.desonkeyefectos(mievento);
+            }
+        }
+    </script>
+
+    <table id='msgalert' class="borderedrojo" border="0" cellspacing="0" cellpadding="0" style="z-index:98;position:absolute;top:250px;left:375px;border-collapse: collapse;border-spacing: 0;">
+        <thead>
+		<tr onmousedown="v10lib.BeginDrag('borderedrojo')">
+            <th> </th>
+            <th>Mensaje de Confirmaci&oacute;n</th>
+            <th> </th>
+        </tr>
+		</thead>
+        <tr>
+            <td> </td>
+            <td>
+                <p align="center">
+				<br />
+                     <span class="v10textomensajehtml3">&nbsp;&nbsp;&nbsp;<!--V10TEXTOMENSAJE-->&nbsp;&nbsp;&nbsp;</span><br /><br />
+                      <input id="botonsi" type="button" onclick="{window.document.getElementById('msgalert').style.visibility='hidden';v10lib.mandaevento('','finmsg','');}" class="button" value="Aceptar" />
+                </p>
+            </td>
+            <td> </td>
+        </tr>
+    </table>
+     <!--V10ENDINCLUDEDATA-->
+</body>
+
+</html>

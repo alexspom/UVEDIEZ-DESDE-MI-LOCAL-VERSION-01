@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body>
+<!--V10INCLUDEDATA-->
+<style>
+.dpar{background-color:white;color:darkblue;}
+.dimpar{background-color:lightyellow;color:darkblue;}
+.actual{background-color:yellow;color:red;font-weight:bold;}
+</style>
+<script>
+function meteenclipboard(cadena){
+window.status="A Clipboard cadena: "+cadena;
+
+//fix. 8/10/2019 - detectamos el tipo de navegador ya que cada uno realiza la operación de copiado de formas diferentes.eag.
+                
+    // es un ie
+    if (navigator.userAgent.search("MSIE") >= 0) {
+ 
+                               if(clipboardData && clipboardData.setData ) clipboardData.setData("text", cadena);
+                               else alert("Error al copiar en portapapeles");
+                }
+    //es un chrome
+    else if (navigator.userAgent.search("Chrome") >= 0) {
+		 
+		 var elmnt = w.document.getElementsByTagName(cadena.id)[0];
+		 var cln = elmnt.cloneNode(true);
+		 document.body.appendChild(cln); 
+		 cln.select();
+         document.execCommand("copy");
+		
+    }
+	
+}
+var filaact=0;
+function fonkeyupmsj(mievento,tecla){	  
+var objventana=window.document.getElementById('msgcampos'); 
+switch(tecla){
+case 38:v10lib.desonkeyefectos(mievento);ponfila(filaact-1);break;
+case 40:v10lib.desonkeyefectos(mievento);ponfila(filaact+1);break;
+case 27:case 13:v10lib.desonkeyefectos(mievento);objventana.style.visibiltiy='hidden';v10lib.mandaevento('','dummy','');break;
+default:if (tecla>112 && tecla<123) v10lib.desonkeyefectos(mievento);}}  	
+var oculto=0;
+function oculta(){
+var mitabla=window.event.srcElement.parentNode.parentNode.parentNode;
+if(window.event.srcElement.tagName=="SPAN")return;
+if(oculto==0){mitabla.childNodes[0].childNodes[1].style.visibility='hidden';mitabla.childNodes[0].childNodes[2].style.visibility='hidden';oculto=1;}
+else{mitabla.childNodes[0].childNodes[1].style.visibility='visible';mitabla.childNodes[0].childNodes[2].style.visibility='visible';oculto=0;}}	  
+function ponfila(nfila){
+var mitb=window.document.getElementById("tbcampos");				
+if(nfila==filaact){return;}
+if(nfila>mitb.childNodes[1].childNodes.length)return;if(nfila<=0)return;		
+if(filaact>0){if (filaact%2==0) mitb.childNodes[1].childNodes[filaact-1].className = "dpar";else  mitb.childNodes[1].childNodes[filaact-1].className = "dimpar";}
+if (nfila>0){mitb.childNodes[1].childNodes[nfila-1].className = "actual";filaact=nfila;}
+mitb.childNodes[1].childNodes[filaact-1].focus();}
+function fonclickmsj(){
+var miele;miele=window.event.srcElement;if(miele.tagName=='TR')ponfila(parseInt(miele.getAttribute("fila")));if(miele.tagName=='TD')ponfila(parseInt(miele.parentNode.getAttribute("fila")));}
+</script>
+<table id='msgcampos'border="0"cellspacing="0"cellpadding="0"style="z-index:98;position:absolute;top:10px;left:10px;">
+<tr class="v10ventarribaizq"><td></td><td onmousedown="v10lib.BeginDrag('msgcampos')" class="v10ventarribamed"><span class="v10titulomens"><!--V10TITULO--></span></td><td onclick="oculta()" class="v10ventarribaderm"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed"><br/><p align="center"><div class="v10textomens" style="height:500px;width:900px;overflow:auto">
+<!--V10TEXTOMENSAJE-->
+</div><input id="botonsi" type="image" src="../img/botonsi.png"onmouseover="window.event.srcElement.src='../img/botonsiover.png'"onmouseout="window.event.srcElement.src='../img/botonsi.png'"onclick="{window.document.getElementById('msgcampos').style.visibility='hidden'; fonkeyupmsj(window.event,27);}" class="botonaceptarmensajegen"/>         	
+</p></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table><script>ponfila(1);</script>
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,155 @@
+#
+GESTION DE BULB
+_10_______ _10_______
+CAJA COMPLETA                    
+
+ARTICULO: _20___________
+           
+UBI: ____________________
+     ____________________
+
+|
+
+PREQUERY=FEJECUTA(FIF("-CMOVTOPDTES",FPOSICIONABLOQUE("VDPICKCCNOMOV.PAN"),FSUCCESS),"\n NO HAY \n MOVIMIENTOS\n PENDIENTES",
+                  FIF("SELMATCAJA",FSUCCESS,FPOSICIONABLOQUE("BULBCEMAT.PAN")),"\n ERROR \n CONSULTANDO MATRICULA \n DE RECURSO",
+                  "CCONGELAMOVS","\n ERROR CONGELANDO\n MOVIMIENTOS DE\n UBICACION :CODUBIORIGT",
+                  FCOMMIT,"",
+                  FIF("-CMOVCONGELADOS",FEJECUTA("+CSELUBI","",+FPOSICIONABLOQUE("VDPICKCCERRCONGELA.PAN"),""),FSUCCESS),"\n NO HAY\n MOVIMIENTOS\n CONGELADOS",
+                  "+CSELDECIMALES","","+CLIMPIAUBI","",
+                  FPOSICIONACAMPO(FSUCCESS,"CODUBIR"),"")
+
+POSTQUERY=FEJECUTA(FIF("CSELUBINULL",FEJECUTA(FCARGAFORM(""),"\n ERROR\n VOLVIENDO AL MENU"),
+                                     FSUCCESS),"",
+                   "CVERIFICAUBI","\n UBICACION INCORRECTA", 
+                   FPOSICIONABLOQUE("BULBCE2.PAN"),"")
+
+# DEFINICION DE CAMPOS
+CAMPO=CODRECURSO,VIRTUAL,NOENTER
+CAMPO=CODOPE,VIRTUAL,NOENTER
+CAMPO=CODTERBLOQ,OCULTO,"_10_"
+CAMPO=CODARTT,NOENTER
+CAMPO=DESARTT,OCULTO,"_30_"
+CAMPO=CODMATT,OCULTO,"_18_"
+CAMPO=PINTAUBI,NOENTER
+CAMPO=CODUBIORIGT,OCULTO,"_12_"
+CAMPO=CODMAT,OCULTO,"_18_"
+CAMPO=CODUBIR,SCAN,AUTOENTER,POSTCHANGE=FEJECUTA(FFUERZASCAN("UBI"),"\n DEBE LEER\n UBICACION")
+CAMPO=CODBULTO,OCULTO,"_18_"
+CAMPO=CODDIV,OCULTO,"____"
+CAMPO=ANOPED,OCULTO,"@L@@"
+CAMPO=SEQPED,OCULTO,"@L@"
+CAMPO=CODPED,OCULTO,"_20_"
+CAMPO=NBULTO,OCULTO,"@L@@@"
+CAMPO=UNIEMB,OCULTO,"@L@@@@@"
+CAMPO=CAJAS,OCULTO,"@L@@@@@"
+CAMPO=CANTIDAD,OCULTO,"@L@@@@@"
+CAMPO=STSOLICITADO,OCULTO,"@L@@"
+CAMPO=STACABADO,OCULTO,"@L@@"
+CAMPO=STENPUERTO,OCULTO,"@L@@"
+CAMPO=FIELDDUMMY,OCULTO,"@L@@"
+CAMPO=CERO,OCULTO,"_"
+CAMPO=NBACABADOS,OCULTO,"@L@@@"
+CAMPO=PUERTO,OCULTO,"@L"
+CAMPO=CTRLCALIDAD,OCULTO,"_"
+CAMPO=CODIMPRE,OCULTO,"________________"
+CAMPO=VERIFECI,OCULTO,"_"
+CAMPO=CODUBIDEST,OCULTO,"_12____"
+CAMPO=CODLOT,OCULTO,"_20_"
+CAMPO=CODPREPARACION,OCULTO,"@L@@@@@@@"
+CAMPO=DOBLEUBI,OCULTO,"@L"
+CAMPO=CODARTANT,OCULTO,"_20_"
+CAMPO=DESARTT1,OCULTO,"_30_"
+CAMPO=CODAREAORI,OCULTO,"_20_"
+CAMPO=CODUBI,OCULTO,"_20_"
+CAMPO=MATCAJA,OCULTO,"_20_"
+
+
+
+CURSOR=CLIMPIAUBI SELECT '' CODUBIR FROM DUAL;
+
+CURSOR=CMOVTOPDTES SELECT 'N' CERO,MOV.CODUBIORI CODUBIORIGT,VDCLIPKG.PINTAUBICA(MOV.CODUBIORI) PINTAUBI,MOV.CODMATORI CODMATT,MOV.CODMATORI CODMAT,
+                          MOV.CODUBIDEST CODUBIDEST,MOV.CODART CODARTT,MOV.UNIEMB,ART.CODEAN CODARTANT,MOV.CODPREPARACION,
+                          VD.DIVIDEXBUSQUEDA(1,ART.DESART,' ',30,0) DESARTT,VD.DIVIDEXBUSQUEDA(2,ART.DESART,' ',30,0) DESARTT1, UBI.CODAREA CODAREAORI
+                     FROM VDMOVIM MOV,VDARTIC ART, VDUBICA UBI
+                    WHERE MOV.STATUS IN (VDST.FMOVASIGNADO,VDST.FMOVPRESENTADO) 
+                          AND MOV.CODRECURSO = :CODRECURSO 
+                          AND MOV.TAREA LIKE 'PEDEMBA%'
+                          AND ART.CODART = MOV.CODART
+                          AND MOV.CODUBIORI = UBI.CODUBI
+                          AND MOV.CODMOV IN (SELECT BUL.CODMOV FROM VDBULTOCAB BUC,VDBULTOLIN BUL
+                                              WHERE BUC.CODBULTO=BUL.CODBULTO AND BUC.STATUS=VDST.FBUCBULABAN)
+                    ORDER BY UBI.ORDENSALIDA,MOV.CODPREPARACION,DECODE(MOV.STATUS,VDST.FMOVPRESENTADO,0,1);
+
+CURSOR=CCONGELAMOVS DECLARE
+                      CURSOR C1 IS SELECT MOV.* 
+                                     FROM VDMOVIM MOV
+                                    WHERE MOV.TAREA LIKE 'PEDEMBA%' 
+                                      AND MOV.STATUS = VDST.FMOVASIGNADO
+                                      AND MOV.CODRECURSO = :CODRECURSO                                                      
+                                      AND MOV.CODUBIORI  = :CODUBIORIGT 
+                                      AND MOV.CODUBIDEST = :CODUBIDEST 
+                                      AND MOV.CODMATORI  = :CODMATT 
+                                      AND MOV.CODART     = :CODARTT 
+                                      AND MOV.UNIEMB     = :UNIEMB 
+                                      AND MOV.CODPREPARACION = :CODPREPARACION
+                                   ORDER BY DECODE(NVL(NUMEROSERIE,'-'),'-',1,0),
+                                            DECODE(NVL(BULTO,'-'),'-',1,0),
+                                            DECODE(PRECIOUNI,0,1,0),
+                                            DECODE(NVL(TIPOEMBA,'-'),'-',1,0),
+                                            DECODE(NVL(CODRECEP,'-'),'-',1,0),
+                                            DECODE(NVL(MARCASTK,'-'),'-',1,0),
+                                            DECODE(NVL(BLOQUEOSORI,'-'),'-',1,0),
+                                            DECODE(NVL(CODLOT,'-'),'-',1,0);
+                     CONGELADOS NUMBER;                                   
+                   BEGIN
+                     UPDATE VDMOVIM SET STATUS=VDST.FMOVASIGNADO,CODOPEMODIF=:CODOPE,FECMODIF=VD.FECHASYS,HORAMODIF=VD.HORASYS 
+                      WHERE STATUS=VDST.FMOVPRESENTADO AND CODRECURSO=:CODRECURSO;                                            
+                     CONGELADOS:=0;
+                     FOR I IN C1 LOOP                                       
+                       IF (VDMOV.CONGELA(I.CODMOV)=0) THEN
+                         CONGELADOS:=CONGELADOS+1;
+                         VDLOG.PONMENSAJE('BULBCE1','CCONGELAMOVS: CONGELADO MOVTO ' || I.CODMOV);
+                         UPDATE VDMOVIM SET STATUS=VDST.FMOVPRESENTADO,CODOPEMODIF=:CODOPE,FECMODIF=VD.FECHASYS,HORAMODIF=VD.HORASYS WHERE CODMOV=I.CODMOV;
+                       ELSE
+                         VDLOG.PONERROR('BULBCE1','CCONGELAMOVS: NO SE PUEDE CONGELAR MOVTO ' || I.CODMOV);
+                         UPDATE VDMOVIM SET STATUS=VDST.FMOVPDTESTOCK,CODOPEMODIF=:CODOPE,FECMODIF=VD.FECHASYS,HORAMODIF=VD.HORASYS WHERE CODMOV=I.CODMOV; 
+                       END IF;
+                     END LOOP;                      
+                     UPDATE VDMOVIM SET STATUS=VDST.FMOVPDTESTOCK,CODOPEMODIF=:CODOPE,FECMODIF=VD.FECHASYS,HORAMODIF=VD.HORASYS 
+                      WHERE STATUS=VDST.FMOVASIGNADO 
+                        AND CODRECURSO = :CODRECURSO                                                        
+                        AND CODUBIORI  = :CODUBIORIGT 
+                        AND CODUBIDEST = :CODUBIDEST 
+                        AND CODMATORI  = :CODMATT 
+                        AND CODART     = :CODARTT 
+                        AND UNIEMB     = :UNIEMB
+                        AND CODPREPARACION = :CODPREPARACION;                    
+                   END;@       
+
+CURSOR=CMOVCONGELADOS SELECT SUM(CANTIDAD/UNIEMB) CAJAS,CODLOT,UNIEMB 
+                        FROM VDMOVIM MOV
+                       WHERE MOV.TAREA LIKE 'PEDEMBA%' 
+                         AND MOV.STATUS = VDST.FMOVPRESENTADO
+                         AND MOV.CODRECURSO = :CODRECURSO                                                       
+                         AND MOV.CODUBIORI  = :CODUBIORIGT 
+                         AND MOV.CODUBIDEST = :CODUBIDEST 
+                         AND MOV.CODMATORI  = :CODMATT 
+                         AND MOV.CODART     = :CODARTT
+                         AND MOV.UNIEMB     = :UNIEMB
+                         AND MOV.CODLOT IS NOT NULL
+                         AND MOV.CODPREPARACION = :CODPREPARACION
+                       GROUP BY CODLOT,UNIEMB; 
+
+CURSOR=CSELUBI SELECT :CODUBIORIGT CODUBI FROM DUAL;
+
+CURSOR=CSELDECIMALES SELECT ART.DECIMALES UNIEMB__DECIMALES FROM VDARTIC ART WHERE CODART = :CODARTT;
+                       
+CURSOR=CVERIFICAUBI SELECT :CODUBIR FROM DUAL WHERE :CODUBIR=:CODUBIORIGT;
+
+CURSOR=CSELUBINULL SELECT :CODUBIR
+                     FROM DUAL
+                    WHERE :CODUBIR IS NULL;
+                    
+CURSOR=SELMATCAJA SELECT CNT.CODMAT MATCAJA
+                   FROM VDRECURSO REC,VDCONTE CNT WHERE CODRECURSO=:CODRECURSO AND CNT.CODMAT=REC.CODMAT;                    
+

@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\WinSCP\winscp.exe" /command "open ftp://V10:29BRGuzk@redlab.redur.es" "cd //PROD/IN/PDF" "lcd D:\V10\V10DATOS\ALBARANES" "option batch continue" "option confirm off" "put "*.PDF" -delete -nopermissions"  "exit" /log="D:\V10\V10DATOS\LOG\FTP_ALBARANES_%fecha%.log"

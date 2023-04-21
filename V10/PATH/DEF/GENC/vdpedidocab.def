@@ -1,0 +1,34 @@
+#***
+# VDPEDIDOCAB.c - Generación automática del código c para la tabla de Cabecera de Pedidos                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDPEDIDOCAB
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 3-03-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=PEC
+EXTRA=COMENPEC,V10CADENA,1025     
+EXTRA=CODBULTO,V10CADENA,18
+
+CLAVE=CODBULTO;TABLE=VDBULTOCAB;WHERE=VDBULTOCAB.CODBULTO = :CODBULTO 
+                                  AND VDBULTOCAB.CODPED = VDPEDIDOCAB.CODPED
+                                  AND VDBULTOCAB.ANOPED = VDPEDIDOCAB.ANOPED
+                                  AND VDBULTOCAB.CODDIV = VDPEDIDOCAB.CODDIV
+                                  AND VDBULTOCAB.SEQPED = VDPEDIDOCAB.SEQPED;
+
+RECORRE=STATUS,STATUS;
+RECORRE=STATUSMENOR,CODDIV,ANOPED,CODPED,WHERE=STATUS<ABS(:STATUS);
+RECORRE=STATUSMAYOR,CODDIV,ANOPED,CODPED,WHERE=STATUS>ABS(:STATUS);
+
+UPDATE=STATUSYDEMANDA,STATUS,CODDEMANDA,TIPODEMANDA
+UPDATE=STATUS,STATUS;
+UPDATE=RESERVA,FECRESERVA,HORARESERVA;
+UPDATE=CODAGE,CODAGE;
+UPDATE=VOLUMENYPESO,VOLUMENPEDIDO,PESOPEDIDO
+
+LOCK
+INSERT
+DELETE

@@ -1,0 +1,17 @@
+#***
+# VDCORRSMTP.DEF - Generación automática del código c para la tabla de envío de correos
+#                        
+# Propósito: Funciones de acceso a la tabla VDCORRSMT
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 09-07-2008
+#************************************************************************************
+# Modificaciones
+#***
+
+EXTRA=COMEN,V10CADENA,1025
+
+TABLE=SMTP
+RECORRE=STATUS,STATUS;WHERE=(NVL(FECPLANIF,0)=0 OR (VD.FECHASYS>FECPLANIF AND VD.HORASYS>FECPLANIF));
+UPDATE=ENVIADO,STATUS,FECENVIO,HORAENVIO

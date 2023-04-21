@@ -1,0 +1,6 @@
+
+CURSOR=TRANSFORMAR_ORDENES BEGIN
+                               VDLOG.PONMENSAJE('TRANSFORMAR_ORDENES', 'INICIO DE LA TRANSFORMACION DE ORDENES');
+                               VDKITS.TRANSFORMARORDENESPROD;
+                           END;@   
+          

@@ -1,0 +1,131 @@
+/****
+* VDDICCIONARIO - Módulo donde estan implementadas las funciones de diccionario
+* 
+* Propósito: Funciones de acceso y manejo del diccionario de campos de una tabla.
+*           
+* Autor	   : MGM
+* Fecha    : 24-10-2007
+****
+* Modificaciones:
+***/
+
+#include "vd.h"
+
+#define ALINEAMIENTO    (sizeof(SALTO)-sizeof(double))
+
+// Función que recalcula el offset
+static int alineardatos(int longvar,int acumulado)
+{
+ 	int alinear,salto;
+
+    salto=min(longvar,ALINEAMIENTO);
+    alinear=acumulado  % salto;
+    if(alinear) acumulado += salto-alinear;
+
+    return(acumulado);
+}
+
+// Funcion que calcula el offset de un campo del diccionario
+static int DICdamecampo(diccionarios *dic,char *campo,long *offsetrelativo, long offsetdic)
+{
+	int i;
+    int longvar;
+
+    *offsetrelativo=offsetdic;
+	for (i=0;i<dic->numcol;i++) {
+        switch (dic->c[i].tipo){
+            case V10INT:
+                longvar=sizeof(int);
+                break;
+            case V10LONG:
+                longvar=sizeof(long);
+                break;
+             case V10FLOAT:
+                 longvar=sizeof(float );
+                 break;
+            case V10DOUBLE:
+                 longvar=sizeof(double );
+                 break;
+             case V10CADENA:
+                 longvar=sizeof(char);
+                 break;
+             default:
+                 return(-1);
+        }
+
+        *offsetrelativo = alineardatos(longvar,*offsetrelativo);
+        if (!strcmp(dic->c[i].nombre,campo)) return(i);
+        *offsetrelativo += dic->c[i].lon;
+    }
+    return(-1);
+}
+
+
+
+// Funcion que calcula el offset de todos los campos de un diccionario
+void DICdameoffset(diccionario *dic, void *estruc)
+{
+    int n, i, j, numdic;
+    long offsetrelativo=0, offsetdic=0;
+
+    numdic = dic->numdic;
+
+	for(i=0;i<=numdic-1;i++){
+	    for (j=0;j<=dic->d[i].numcol;j++) {
+            diccols *d=dic->d[i].c+j;
+            n=DICdamecampo(&dic->d[i],d->nombre,&offsetrelativo,offsetdic);
+            if (n==-1) {
+                offsetdic=offsetdic + offsetrelativo;
+                offsetdic = alineardatos(ALINEAMIENTO,offsetdic);
+                continue;
+            }
+            d->offset=offsetrelativo;
+        }
+    }
+}
+
+// Función que obtiene a partir de las posiciones determinadas por inicio, lon y decimales en el bufferin 
+// el valor del campo definido en el diccionario dic de la estructura que se haya pasado en objeto=tabla.
+VDEXPORT void DICbuff2tabla(diccionario *dic,char *campo,int inicio,int lon, int decimales, char *defecto, char *bufferin,void *objeto)
+{
+    char buff[MAXCADENA];
+    char *ptrobj=(char *)objeto;
+    long offsetrelativo, offsetdic=0;
+    int n,i,numdic;
+
+    DICdameoffset(dic, objeto);
+	numdic = dic->numdic;
+   
+	for(i=0;i<=numdic-1;i++){
+		n=DICdamecampo(&dic->d[i],campo,&offsetrelativo,offsetdic);
+		if (n==-1){
+            offsetdic = offsetdic + offsetrelativo;
+            offsetdic = alineardatos(ALINEAMIENTO,offsetdic);
+			continue;
+		}
+		memcpy(buff,bufferin + inicio-1,lon);
+	    buff[lon]=0;
+		trim(buff);
+		if (*buff==0) strcpy(buff,defecto);
+	    switch (dic->d[i].c[n].tipo){
+		    case V10INT:
+                *(int *)(ptrobj+offsetrelativo)=atoi(buff);
+	            break;
+		    case V10LONG:
+			    *(long *)(ptrobj+offsetrelativo)=atol(buff);
+		        break;
+			case V10DOUBLE:
+		        *(double *)(ptrobj+offsetrelativo)=atof(buff)/pow(10,decimales);
+			    break;
+			case V10FLOAT:
+				*(float *)(ptrobj+offsetrelativo)=(float)(atof(buff)/pow(10.0,decimales));
+				break;
+			case V10CADENA:
+				strcpy(ptrobj+offsetrelativo,buff);
+		        break;
+			default:
+				break;
+		}
+	}
+}
+

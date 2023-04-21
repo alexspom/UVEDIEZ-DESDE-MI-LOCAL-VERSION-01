@@ -1,0 +1,14 @@
+
+CURSOR=sirvebultos DECLARE
+                     RET NUMBER;
+                   BEGIN
+                     FOR BUC IN (SELECT CODBULTO
+                                   FROM VDBULTOCAB
+                                  WHERE STATUS = VDST.FBUCPREPARADO) LOOP
+                       VDBULTO.SIRVEBULTO(BUC.CODBULTO ,RET);
+                       IF RET = 0 THEN
+                         COMMIT;
+                       END IF;
+                    END LOOP;
+                   END;@
+   

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\RES\VDRADIO.res">
+      <Filter>Resource Files</Filter>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\fuentes\vdarticaux.c" />
+    <ClCompile Include="..\FUENTES\vdconversionesaux.c" />
+    <ClCompile Include="..\FUENTES\FORMS\vddefbloqueaux.c" />
+    <ClCompile Include="..\FUENTES\FORMS\vddefcampoaux.c" />
+    <ClCompile Include="..\fuentes\forms\vdformuser.c" />
+    <ClCompile Include="..\FUENTES\FORMS\vdfortrig.c" />
+    <ClCompile Include="..\fuentes\vdlog.c" />
+    <ClCompile Include="..\fuentes\vdpass.c" />
+    <ClCompile Include="..\fuentes\forms\vdprotect.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradfrm.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradmain.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradprese.C" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradscan.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradtelnetaux.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradtelnetcon.C" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradtelnettick.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradtrata.c" />
+    <ClCompile Include="..\fuentes\RADIOS\vdradtrig.c" />
+  </ItemGroup>
+</Project>

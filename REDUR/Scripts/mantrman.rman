@@ -1,0 +1,5 @@
+run {
+crosscheck backup;
+delete expired backup completed before 'sysdate-7';
+resync catalog;
+}

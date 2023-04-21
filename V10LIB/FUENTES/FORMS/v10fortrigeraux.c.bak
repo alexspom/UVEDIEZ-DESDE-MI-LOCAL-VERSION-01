@@ -1,0 +1,280 @@
+/*
+* Módulo : V10TRIGERAUX.C                                             
+* Objeto:  Funciones auxiliares para la gestion de los trigers
+* 
+* 
+* Autor	 : Eduardo Alsina Alvarez
+* Fecha  : 10-10-2007
+
+* MODIFICACIONES
+* ---------------------------
+*/
+
+#include "v10form.h"
+int formsuena=0;
+void ejecuta_fponaccion(bloques *b,int tipo,ftrigers *f);
+void ejecuta_fponaccioncursor(bloques *b,ftrigers *f,char *nombrecursor);
+#define ALTURAMENSAJE 8
+
+#define MAXTRIGERS 500
+
+#define LNOMBRESTRIGER  26
+static char *nombrestriger[LNOMBRESTRIGER]={
+    "PREINSERT",
+    "POSTINSERT",
+    "PREUPDATE",
+    "POSTUPDATE",
+    "PREDELETE",
+    "POSTDELETE",
+    "PREQUERY",
+    "POSTQUERY",
+    "FINQUERY",
+    "PREREGISTRO",
+    "POSTREGISTRO",
+    "PREBLOQUE",
+    "POSTBLOQUE",
+    "PREFORM",
+    "POSTFORM",
+    "PRECOMMIT",
+    "POSTCOMMIT",
+    "PREROLLBACK",
+    "POSTROLLBACK",
+    "POSTCHANGE",
+    "PREFIELD",
+    "PPOSTFIELD",
+    "PPREPINTA",
+    "PPOSTPINTA",
+    "PONPINTA",
+    "WEBEVENTO"
+};
+static ftrigers ftriger[MAXTRIGERS];
+static int ntriger;
+
+
+static void formponaccion(bloques *b,int tipo,ftrigers *f)
+{
+    char modulo[MAXCADENA],accion[MAXCADENA];
+    if (tipo<0 || tipo>=LNOMBRESTRIGER) return;
+    sprintf(modulo,"FORM: %s/%s",*b->form->nombre? b->form->nombre : "",b->fichero);
+    sprintf(accion,"%s-%s",nombrestriger[tipo],f->nombre);
+    setmodule(modulo,accion);
+}
+
+static void formquitaaccion(bloques *b)
+{
+    char modulo[MAXCADENA];
+    sprintf(modulo,"FORM: %s/%s",*b->form->nombre? b->form->nombre : "",b->fichero);
+    setmodule(modulo,"");
+}
+
+static void fintriger(void)
+{
+  int n;
+  for (n=0;n<ntriger;n++) {
+      if (ftriger[n].nombre) free(ftriger[n].nombre);
+      if (ftriger[n].param) liberatrigermsg(ftriger+n);
+    }
+  ntriger=0;
+}
+
+ftrigers *declaratriger(char *nombre,int (*fun)(bloques *b,ftrigers *ft),char *msg)
+{
+  ftrigers *ret;
+  if (ntriger==MAXTRIGERS-1) final(("Demasiados trigers %s",nombre));
+  if (ntriger==0) atexit(fintriger);
+  ret=ftriger+ntriger;
+  ftriger[ntriger].nombre=strdup(nombre);
+  ftriger[ntriger].fun=fun;
+  if (msg) {
+     if (ftriger[ntriger].param) free(ftriger[ntriger].param);
+     if (ftriger[ntriger].tipoparam) free(ftriger[ntriger].tipoparam);
+     ftriger[ntriger].param=calloc(1,sizeof(void *));
+     ftriger[ntriger].tipoparam=calloc(1,sizeof(int));
+     ftriger[ntriger].nparam=1;
+     *ftriger[ntriger].param=strdup(msg);
+     *ftriger[ntriger].tipoparam=PARAMCADENA;
+     ftriger[ntriger].msg=*ftriger[ntriger].param;
+   } else {
+     ftriger[ntriger].nparam=0;
+     ftriger[ntriger].param=NULL;
+     ftriger[ntriger].tipoparam=NULL;
+   }
+  ntriger++;
+  return(ret);
+}
+
+void liberatrigermsg(ftrigers *f)
+{
+  int np;
+  if (f->param==NULL) return;
+  for (np=0;np<f->nparam;np++) {
+      switch (f->tipoparam[np]) {
+         case PARAMCADENA:if (f->param[np]) free(f->param[np]);
+                          break;
+         case PARAMTRIGER:liberatriger((ftrigers *)(f->param[np]));
+                          break;
+         default:         final(("En triger %s param %d tipo desconicido",f->nombre,np));
+                          break;
+       }
+   }
+  free(f->tipoparam);
+  free(f->param);
+}
+
+void liberatriger(ftrigers *f)
+{
+  if (f==NULL) return;
+  free(f->nombre);
+  liberatrigermsg(f);
+  free(f);
+}
+
+ftrigers *duplicatriger(bloques *b,ftrigers *source)
+{
+  ftrigers *ret;
+  int np;
+  if (source==NULL) return(NULL);
+  ret=calloc(1,sizeof(ftrigers));
+  memcpy(ret,source,sizeof(ftrigers));
+  ret->b=b;
+  ret->nombre=strdup(source->nombre);
+  if (ret->param) {
+     ret->param=calloc(source->nparam,sizeof(void *));
+     ret->tipoparam=calloc(source->nparam,sizeof(int));
+     for (np=0;np<source->nparam;np++) {
+         switch(source->tipoparam[np]) {
+            case PARAMCADENA:if (source->param[np]) ret->param[np]=strdup(source->param[np]);
+                              else                ret->param[np]=NULL;
+                             break;
+            case PARAMTRIGER:ret->param[np]=(void *)duplicatriger(b,(ftrigers *)(source->param[np]));
+                             break;
+            default:         final(("En triger %s param %d tipo desconicido",source->nombre,np));
+                             break;
+          }
+         ret->tipoparam[np]=source->tipoparam[np];
+       }
+    }
+  return(ret);
+}
+
+ftrigers *dametriger(char *nombre)
+{
+  int nt;
+  for (nt=0;nt<ntriger;nt++) {
+      if (stricmp(nombre,ftriger[nt].nombre)==0) return(ftriger+nt);
+    }
+  return(NULL);
+}
+
+ftrigers *cambiafuntriger(char *nombre,void *fun)
+{
+    ftrigers *ft;
+    ft=dametriger(nombre);
+    if (ft!=NULL) {
+        ft->fun=fun;
+    }
+    return(ft);
+}
+
+void wmensajeform(bloques *b,char *msg,...)
+{
+  char destino[MAXCADENA],destino1[MAXCADENA],destino2[MAXCADENA];
+  int salir=0;
+  va_list arg;
+  va_start(arg,msg);
+  vsprintf(destino,msg,arg);
+  sustituyevariablessc(b,destino,destino1);
+  if (formsuena) sndPlaySound("formmensaje.vaw",SND_ASYNC);
+  debugmsg=0;
+  while (!salir) {
+	  switch (debugmsg) {
+		  case 0: // muestra mensaje normal
+			  if (b->form->mensaje){ b->form->mensaje(b->form,destino1); salir=1; }
+				 else               mensajefcm(ALTURAMENSAJE,destino1);
+				break;
+		  case 1: { // muestra mensaje debug de error
+				int ncampo=damecampo(b,"V10ERROR");
+                *destino = 0;
+				strcopia(destino,direccampo(b,ncampo),b->c[ncampo].lon);
+				if (strlen(destino)==0) strcpy(destino,"SIN INFORMACION DE DEBUG");	
+				sprintf(destino2," DEBUG MENSAJE ERROR: \n\n %s ",destino);
+				mensajefcm(ALTURAMENSAJE,destino2);
+				break;
+			}
+		  case -1: salir=1;	
+		}
+	}
+}
+
+int wconfirmaform(bloques *b,char *msg)
+{
+  char *destino;
+  int ret;
+  destino=calloc(1,MAXCADENA);
+  sustituyevariablessc(b,msg,destino);
+  ret=confirmasnfc(ALTURAMENSAJE,destino);
+  free(destino);
+  if (ret==1) return(SUCCESS);
+     else     return(IGNORAR);
+}
+
+int resultadotriger(bloques *b,int ret,long opcion,char *msg)
+{
+  if (opcion & CINVERSO) ret=!ret;
+  if ((opcion & CIGNORE) && ret) ret = IGNORAR;
+  if (opcion & CSUCCESS) ret=0;
+  if ((opcion & CPREGUNTA) && ret && msg) {
+     ret=wconfirmaform(b,msg);
+   }
+  if ((opcion & CSOLOMEN) && ret && msg) {
+     wmensajeform(b,msg);
+     ret=0;
+   }
+  return(ret);
+}
+
+
+int ejecutaftriger(bloques *b,int tipo,ftrigers *f,fcampos *c)
+{
+  int ret=0;
+  forms *form=FORM(b);
+  form->binput=b;
+  form->cinput=c;
+
+  //formponaccion(b,tipo,f); 
+  if (f->fun) {
+     form->oraerr=0;
+     ret=f->fun(b,f);
+   }
+  ret=resultadotriger(b,ret,f->opciones,f->msg);
+  //formquitaaccion(b);    
+  form->formerr=ret;
+  if (ret && ret!=IGNORAR) {
+     int antpul=ult_pul;
+     form->tipotriger=tipo;
+     form->berror=b;
+     form->cerror=c;
+     form->terror=f;
+     if (f->msg &&!es_blanco(f->msg)) {
+         char buff[MAXCADENA];
+		 sprintf(buff,"%s\n%s",f->msg,dameultimoerrorbloque());
+		 wmensajeform(b,buff);
+      }
+     ult_pul=antpul;
+   }
+  return(ret);
+}
+
+int ejecutapostchange(bloques *b)
+{
+  int nc,error=0;
+  for (nc=0;nc<b->ncamp;nc++) {
+      fcampos *c=b->c+nc;
+      if (c->change) {
+         b->form->cinput=c;
+         *FERROR(b,c)=ejecutaftriger(b,PPOSTCHANGE,c->change,c);
+         if (*FERROR(b,c)) error=*FERROR(b,c);
+       }
+   }
+  return(error);
+}

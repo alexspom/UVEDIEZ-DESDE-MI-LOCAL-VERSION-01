@@ -1,0 +1,478 @@
+/****
+* VDIMPRESION.C
+*                                                    
+* Propósito: Módulo de impresión de etiquetas e informes, selección de impresoras, etc.                                                      
+*                                                                              
+*                                                                              
+* Autor  : FGS                                                          
+* Fecha  : 07-05-2008                                                         
+******
+*  Modificaciones:
+****/
+#include "vdimpresion.h"
+
+// punteros a función para imprimir etiquetas
+static int (*pvimprimeetiqueta)(char *driver,idatos **idatoetiq,char *cursor,char *fichgen,char *salida,int verificastatus,int tipoconex,char *dirip,int puerto,int velocidad,int numetiq,char *msjerror,char *params)=NULL;
+// punteros a función para imprimir informes/listados
+static int (*pvdcargainforme)(char *orausr, char *orapwd, char *oradb, char *informe, void **ptr, char *msjerror)=NULL;
+static int (*pvdbindinforme)(char *variables, void **ptr, char *msjerror)=NULL;
+static int (*pvdwhereinforme)(char *where, void **ptr, char *msjerror)=NULL;
+static int (*pvdimprimeinforme)(char *codimpre, char *salida, int copias, void **ptr, char *msjerror)=NULL;
+static int (*pvdexportainforme)(char *fichero,   int abrir, void **ptr, char *msjerror)=NULL;
+static int (*pvdcierrainforme)(void **ptr,char *msjerror)=NULL;
+
+
+static int cargadriverimpre(char *tipoimpre)
+{
+    char dlletiqs[32]="",dllinformes[32]="";
+    if (strcmp(tipoimpre,"ETIQ")==0) {
+        if (pvimprimeetiqueta==NULL) {
+        strcpy(dlletiqs,damepropcadena("DLLETIQS"));
+
+        if (*dlletiqs==0) strcpy(dlletiqs,"VDETIQ.DLL");
+
+            pvimprimeetiqueta=damefundll(dlletiqs,"vimprimeetiqueta");
+            if (pvimprimeetiqueta==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vimprimeetiqueta\" en dll %s\n",dlletiqs);
+                return(-1);
+            }
+        }
+    }
+    if (strcmp(tipoimpre,"INFORME")==0) {
+        if (pvdcargainforme==NULL) {
+            strcpy(dllinformes,damepropcadena("DLLINFORMES"));
+            if (*dllinformes==0) strcpy(dllinformes,"VDCR10.DLL");
+            pvdcargainforme=damefundll(dllinformes,"vdcargainforme");
+            if (pvdcargainforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdcargainforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }
+
+            pvdbindinforme=damefundll(dllinformes,"vdbindinforme");
+            if (pvdbindinforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdbindinforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }         
+
+            pvdwhereinforme=damefundll(dllinformes,"vdwhereinforme");
+            if (pvdwhereinforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdwhereinforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }
+            pvdimprimeinforme=damefundll(dllinformes,"vdimprimeinforme");
+            if (pvdimprimeinforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdimprimeinforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }
+
+            pvdexportainforme=damefundll(dllinformes,"vdexportainforme");
+            if (pvdexportainforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdexportainforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }
+            pvdcierrainforme=damefundll(dllinformes,"vdcierrainforme");
+            if (pvdcierrainforme==NULL) {
+                v10log(LOGERROR,"cargapunteros: No encontrada función  \"vdcierrainforme\" en dll %s\n",dllinformes);
+                return(-1);
+            }         
+        }
+    }
+    return(0);
+}
+
+
+VDEXPORT int dameimpresora(char *codimpre,vdimpresorass *impr,vdimpregrupos *imgr, char *msjerror)  {
+    
+    if (IMPRselvdimpresoras(codimpre,impr)) {
+        sprintf(msjerror,"vdimprime: impresora forzada %s no existe",codimpre);
+        return(-1);  
+    }
+    
+    if (*impr->activo!='S') {
+        sprintf(msjerror,"vdimprime: impresora forzada  %s no está activa",codimpre);
+        return(-1);
+    }
+    
+    // chequea el grupo de impresión
+    if (IMGRselvdimpregrupo(impr->grupoimpre,imgr)) {
+        sprintf(msjerror,"vdimprime: grupo %s al que pertenece la impresora forzada %s no existe",impr->grupoimpre, codimpre);
+        return(-1);      
+    }
+    
+    if (*imgr->activo!='S') {
+        sprintf(msjerror,"vdimprime: grupo %s al que pertenece la impresora forzada %s no activo",impr->grupoimpre, codimpre);
+        return(-1);      
+    }
+
+    return(0);
+}
+
+
+VDEXPORT int dametipoimpre(char *tipoimpre, vdimpretipos *imtp, 
+                            char *documento, char *fichero,  
+                            char *fichetiqueta,char *fichvsq,char *ncursor,char *midocumento,
+                            char *msjerror)  {
+    
+  // verifica el tipo de impresión
+    if (IMTPselvdimpretipo(tipoimpre,imtp)) {
+        sprintf(msjerror,"vdimprime: tipo de impresion %s no encontrado",tipoimpre);
+        return(-1);
+    }
+
+    if (*imtp->activo!='S') {
+        sprintf(msjerror,"vdimprime: tipo de impresion %s no activo",tipoimpre);
+        return(-1);
+    }
+
+    // solo se puede exportar a fichero informes, no etiquetas 
+ /*   if (fichero && *fichero && *imtp->tipodoc=='E') {
+        sprintf(msjerror,"vdimprime: Tipo impresion %s.\n Solo se pueden exportar a fichero informes !!",imtp->tipoimpre);
+        return(-1);      
+        
+    }*/
+    // coprueba que se especifica el formato del fichero a generar
+    if (fichero && *fichero && strchr(fichero,'.')==NULL && *imtp->tipodoc=='I') {
+        sprintf(msjerror,"vdimprime: no se ha especificado extensión del fichero a generar en la cadena pasada %s",fichero);    
+        return(-1);
+    }
+    
+    // si es de etiquetas, troceo el documento en sus 3 componentes
+    if (*imtp->tipodoc=='E') {
+        if (numpieces(documento,";")<3) {
+            sprintf(msjerror,"vdimprime: Tipo de Impresión %s.\n Se requiere como nombre del documento: FICHERO GEN#FICHERO VSQ#NOMBRE DE CURSOR",tipoimpre);
+            return(-1);  
+        }
+        piece(documento,fichetiqueta,";",1);
+        piece(documento,fichvsq,";",2);
+        piece(documento,ncursor,";",3);     
+        strcpy(midocumento,fichetiqueta);
+    } else
+        strcopia(midocumento,documento,strlen(documento));
+ 
+    return(0);
+}
+
+
+VDEXPORT int dameasignacion(char *tipoimpre, char *midocumento, char *codimpre, vdimpreasigs *imas,int desdespool, char *msjerror) {
+
+    char ordenador[LORDENADOR]="";       
+	int ret;
+        
+    memset(ordenador,0,sizeof(ordenador));
+    strcpy(ordenador,damehostname());
+
+    if (!codimpre || *codimpre==0) { // no tiene impresora forzada, determina la impresora para el informe, si la hay
+		if (desdespool==0) { // se imprime desde pantalla
+			vdimpres impre;
+			IMPREbuscaccuentaasiguser(ordenador,tipoimpre,midocumento,&impre);
+			if (impre.numasig>1) {	// este usuario tiene asignada (concretamente) mas de una impresora para estos criterios	
+				vdimpreasigs imasaux;
+				menulistas *m=crea_menulista("Seleccion de impresora",30);
+				ret=IMASbuscaimpresorauser(ordenador,tipoimpre,midocumento,&imasaux);
+				while (ret==0) {
+					mete_en_menulista(m,imasaux.codimpre);
+					ret=IMASnextimpresorauser(&imasaux);
+				}
+				ret=saca_menu(m,50,15);
+				if (ret==-1) {
+					sprintf(msjerror,"dameasignacion: cancelada la selección de impresora");				
+					libera_menulista(m);
+					return(-1);
+				}
+				else strcpy(codimpre, valor_menulista(m,ret));
+				libera_menulista(m);
+				return(0);
+			}
+		} 
+		if (IMASbuscaimpresora(ordenador,tipoimpre,midocumento,imas)) {
+            sprintf(msjerror,"vdimprime: no existe asignación activa de impresora para\nORDENADOR=%s\nTIPOIMPRE=%s\nDOCUMENTO=%s",
+                ordenador,tipoimpre,midocumento);
+            return(-1); 
+        }
+        strcopia(codimpre, imas->codimpre, strlen(imas->codimpre));
+    }
+
+    return(0);
+}
+
+
+
+static int vdimprimetiqueta(char *fichetiqueta, char *fichvsq, char *ncursor, char *params, char *fichero,char *codimpre, long copias,  
+                            int modospool,              
+                            char *msjerror) 
+{
+    int ret;
+	FILE *f;
+    vdimpresorass impr;
+    vdimpregrupos imgr;
+    idatos  *datoetiq=NULL;
+    v10cursors *curetiq=NULL;
+    char *ptr;
+    char ficherodest[MAXPATH];
+    ret=cargadriverimpre("ETIQ");
+    if (ret) return(ret);
+
+    ret= dameimpresora(codimpre,&impr,&imgr,msjerror);
+    if (ret) return(ret);
+    curetiq=damevsq(ncursor);
+    if (curetiq==NULL) leevsq(fichvsq);
+
+    // le concateno al nombre del fichero de etiqueta, la extensión del driver de la etiquetadora por la que imprime
+    ptr=strchr(fichetiqueta,'.');
+    if (ptr) *ptr=0;
+    strcat(fichetiqueta,".");
+    strcat(fichetiqueta,impr.driver);
+
+	// si no existe el específico del driver, lo coge como .GEN
+	f=fopenpath(fichetiqueta,"r");
+	if (!f) {
+		ptr=strchr(fichetiqueta,'.');
+		if (ptr) *ptr=0;
+		strcat(fichetiqueta,".GEN");
+	} else fclose(f);
+    if (es_blanco(fichero)) strcpy(fichero,impr.fichero);
+    traduceentorno(fichero,ficherodest);
+    ret=pvimprimeetiqueta(impr.driver,&datoetiq,ncursor,fichetiqueta,
+					      ficherodest,1,
+		                  impr.tipoconex, // 0 sin conex, 1 tcpip, 2 rs232, 3 tcpalive
+						  impr.dirip,
+						  impr.tipoconex>0?impr.puertoconex:-1,
+						  impr.baudios,
+						  copias,msjerror,params);
+    free(datoetiq);
+    return(ret);
+}
+
+
+
+// imprime en una impresora un informe
+// a traves del driver actualmente seleccionado
+static int vdimprimeinforme(char *informe, char *params, char *codimpre, long copias,  char *fichero, 
+                            int modospool,
+                            char *msjerror ) {
+    
+    int ret;
+    vdimpregrupos imgr;    
+    vdimpresorass impr;
+    char variables[MAXCADENA]="",where[MAXCADENA]="",*ptr;
+    void *objinf=NULL;
+  
+    ret=cargadriverimpre("INFORME");
+    if (ret) return(ret);
+
+    ret= dameimpresora(codimpre,&impr,&imgr,msjerror);
+	if (ret) {
+		v10log(LOGNORMAL,"Error al asignar impresora %s\n",msjerror);
+		return(ret);
+	}
+    ret=pvdcargainforme(ORAUSR,ORAPWD,ORADB,informe,&objinf,msjerror);
+	if (ret) {
+		v10log(LOGNORMAL,"Error al cargar el informe %s\n",msjerror);
+		return(ret);
+	}
+    strmay(params);
+    if ((ptr=strstr(params,"WHERE"))) {
+        memset(variables,0,sizeof(variables));
+        memset(where,0,sizeof(where));
+        memcpy(variables,params,ptr-params);
+        trim(variables);
+        ptr=ptr+strlen("WHERE");
+        memcpy(where,ptr,strlen(ptr));        
+    } else strcopia (variables, params, strlen(params));
+
+    // aquí tratará los parámetros del  "CAMPO=:VALOR;CAMPO=:VALOR;CAMPO=:VALOR;..." 
+    ret=pvdbindinforme(variables, &objinf,msjerror);
+    if (ret) return(ret); 
+    
+    if (*where) { // si añade where, modifica el where del informe
+        ret=pvdwhereinforme(where, &objinf,msjerror);
+        if (ret) return(ret); 
+    }
+    
+    if (fichero && *fichero) ret=pvdexportainforme(fichero, modospool, &objinf,msjerror);
+        else      ret=pvdimprimeinforme(codimpre, impr.fichero, copias, &objinf, msjerror);
+    if (ret) return(ret);   
+
+    ret=pvdcierrainforme(&objinf,msjerror);
+    return(ret);
+}
+
+
+static int impresoranoconectada(vdimpresorass *impr,char *msjerror) 
+{
+    FILE *f;
+
+    if (*impr->fichero) {        
+        char ficherodest[MAXPATH];
+        int esred=0;
+        traduceentorno(impr->fichero,ficherodest);
+        esred=strstr(ficherodest,"\\\\http")==NULL?0:1;
+        if (esred) return(0);
+        f=fopenlog(ficherodest,"w");
+        if (f==NULL) return(-1);
+        else fclose(f);
+    }
+
+    return(0);
+}
+
+int vdimprimeprn(char *documento,char *params,long copias,char *fichero,char *msjerror)
+{
+    FILE *entrada,*salida;
+    int ch;
+    entrada=fopenpath(documento,"rb");
+    if (entrada==NULL) {
+        sprintf(msjerror,"Fichero %s no existe",documento);
+        return(-1);
+    }
+    salida=fopen(fichero,"wb");
+    if (salida==NULL) {
+        fclose(entrada);
+        sprintf(msjerror,"No puedo abrir destino %s",fichero);
+        return(-1);
+    }
+    while ((ch=fgetc(entrada))!=EOF) {
+        fputc(ch,salida);
+    }
+    fclose(entrada);
+    fclose(salida);
+    return(0);
+}
+
+static int vdimprimeadobe(char *documento, char *params, long copias, char *fichero, char *msjerror)
+{
+    char comando[LCADENABIG];
+    STARTUPINFO siStartupInfo;
+    PROCESS_INFORMATION piProcessInfo;
+    char reader[LVALOR], parfich[LVALOR], parimpre[LVALOR];
+    int timeout = 10;
+
+
+    memset(&siStartupInfo, 0, sizeof(siStartupInfo));
+    memset(&piProcessInfo, 0, sizeof(piProcessInfo));
+
+    strcpy(reader, damepropcadena("ACROREADER"));
+    strcpy(parfich, damepropcadena("ACROREADERFICHPAR"));
+    strcpy(parimpre, damepropcadena("ACROREADERIMPPAR"));
+    timeout = damepropentero("ACROREADERTIMEOUT");
+    //    sprintf(comando, "\"%s\" /t \"%s\" %s", damepropcadena("ACROREADER"), params, fichero);
+    sprintf(comando, "\"%s\" %s \"%s\" %s %s", reader, parfich, params, parimpre, fichero);
+    v10log(LOGNORMAL, "Ejecutando comando %s\n", comando);
+    CreateProcess(NULL, comando, NULL, NULL, FALSE, HIGH_PRIORITY_CLASS, NULL, NULL, &siStartupInfo, &piProcessInfo);
+#ifndef __LINUX__
+     WaitForSingleObject(piProcessInfo.hProcess, timeout * 1000);
+#endif
+    //stespera=WaitForSingleObject( piProcessInfo.hProcess, INFINITE );
+    return(0);
+}
+
+
+int vdimprimedesdespool(char *tipoimpre,char *documento,char *params,long copias,char *codimpre,char *fichero,char *msjerror,char *tipocorreo,char *asunto,char *cuerpo,int prioridad) 
+{
+    int ret=0;
+    char fichetiqueta[MAXPATH]="",fichvsq[MAXPATH],ncursor[MAXCADENA]="";
+    char midocumento[LDOCUMENTO]="";    
+    vdimpretipos imtp;
+    vdimpresorass impr;
+    vdimpregrupos imgr; 
+    vdimpreasigs imas;
+    
+    ret=dametipoimpre(tipoimpre, &imtp, documento, fichero, fichetiqueta, fichvsq, ncursor, midocumento, msjerror);
+    if (ret) {
+        return(ret);
+    }
+    ret=dameasignacion(tipoimpre,midocumento,codimpre,&imas,1,msjerror);
+    if (ret) {
+        return(ret);
+    }
+    ret=dameimpresora(codimpre,&impr,&imgr,msjerror);
+    if (ret) {
+        return(ret);
+    }    
+    switch (*imtp.tipodoc) {            
+        case 'E':
+            if (impresoranoconectada(&impr,msjerror)) return(IMPRENOCONECTADA);
+            ret=vdimprimetiqueta(fichetiqueta,fichvsq,ncursor, params,fichero, impr.codimpre,copias,0,msjerror);
+            break;
+        case 'I':
+            // si va a imprimir desde spool, por uno de esto, no puede
+            if (/*!strcmp(impr.codimpre,PREVISUALIZA) || */
+                !strcmp(impr.codimpre,SELECCIONA) ||
+                (!strcmp(impr.codimpre,EXPORTAFICHERO) && (!fichero || *fichero==0))) {               
+                  v10log(LOGNORMAL,"vdimprimedesdespool: Anulada al no puede imprirse desde spool a la impresora %s\n",impr.codimpre);
+                  return(IMPRESORANOSPOOL);
+            }
+            ret=vdimprimeinforme(documento,params,impr.codimpre, copias,fichero,0,msjerror );
+            if (!ret && fichero && strlen(fichero) && *tipocorreo) {
+                char *ptr,dircorreo[MAXPATH]="",fichcorreo[MAXPATH]="";
+                ptr=strrchr(fichero,'\\');
+                if (ptr) {
+                    strncpy(dircorreo,fichero,((int)ptr-(int)fichero)+1);
+                    strcpy(fichcorreo,ptr+1);
+                }
+                else strcpy(fichcorreo,fichero);
+                ret=vdcorreo(tipocorreo,asunto,cuerpo,"","ADJUNTOS",fichcorreo,prioridad,0,"",msjerror);
+            }
+            //si hay fichero (not null) , y debe enviar correo, lo envía
+            break;
+        case 'P':ret=vdimprimeprn(documento,params,copias,impr.fichero,msjerror);
+               break;
+        case 'A':ret=vdimprimeadobe(documento,params,copias,impr.fichero,msjerror);
+               break;
+        default:
+            sprintf(msjerror,"vdimprime: error, tipo de documento %s del tipo de impresion %s no existe",imtp.tipodoc, imtp.tipoimpre);
+            return(-1);
+    }
+
+    return(ret);
+
+}
+
+
+
+int vdimprime(char *tipoimpre,char *documento,char *params,long copias,char *codimpre,char *fichero, 
+              long modospool, // modospool: 0. crear, 1. crear y abrir, 2. vía spool
+              char *msjerror) 
+{
+    int ret=0;
+    char fichetiqueta[MAXPATH]="",fichvsq[MAXPATH],ncursor[MAXCADENA]="";
+    char midocumento[LDOCUMENTO]="";
+    vdimpretipos imtp;
+    vdimpresorass impr;
+    vdimpregrupos imgr; 
+    vdimpreasigs imas;
+
+    ret=dametipoimpre(tipoimpre, &imtp, documento, fichero, fichetiqueta, fichvsq, ncursor, midocumento, msjerror);
+    if (ret) return(ret);
+
+    ret=dameasignacion(tipoimpre,midocumento,codimpre,&imas,0,msjerror);
+    if (ret) return(ret);
+
+    // comprueba que la impresora existe y está activa
+    ret=dameimpresora(codimpre,&impr,&imgr,msjerror);
+    if (ret) return(ret);
+  
+    // determina si debe de insertarla en el spool,
+    if (*impr.spool=='S' || modospool==2) {         
+        if (imprimeporspool(tipoimpre,impr.codimpre,fichero,documento,params,copias,0,NULL)) {
+            sprintf(msjerror,"vdimprime: error insertando en vdimprespool");
+            return(-1);          
+        }
+    } else {  // si no, llama ya a las funciones de arriba
+        switch (*imtp.tipodoc) {            
+            case 'E':
+                    ret=vdimprimetiqueta(fichetiqueta,fichvsq,ncursor, params, fichero,impr.codimpre,copias,modospool,msjerror);
+                    auditaimpre(tipoimpre,impr.codimpre,fichero, documento,params,copias);
+                    break;
+            case 'I':
+                    ret=vdimprimeinforme(documento,params,impr.codimpre, copias,fichero,modospool,msjerror );
+                    auditaimpre(tipoimpre,impr.codimpre,fichero, documento,params,copias);
+                    break;
+            default:
+                   sprintf(msjerror,"vdimprime: error, tipo de documento %s del tipo de impresion %s no existe",imtp.tipodoc, imtp.tipoimpre);
+                   return(-1);
+        }
+    }
+
+    return(ret);
+}

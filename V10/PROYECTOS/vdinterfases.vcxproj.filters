@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ENTRADAS">
+      <UniqueIdentifier>{961cda5d-4d4a-4e34-8545-b5ad86d4be14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SALIDAS">
+      <UniqueIdentifier>{ddc700c5-91a7-46b7-a817-96c0c093e968}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdinterent.c">
+      <Filter>ENTRADAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdinterfasescarga.c">
+      <Filter>ENTRADAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdinterfuncstd.c">
+      <Filter>ENTRADAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdcambiawhere.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vddefbloqueaux.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vddefcampoaux.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdform.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdformcolor.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdformuser.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdfortrig.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdinterfrm.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdintersal.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\INTERFASE\vdintertrig.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\vdpass.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\vdprotect.c">
+      <Filter>SALIDAS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\VERTIS\vdtrigboton.c" />
+    <ClCompile Include="..\FUENTES\VERTIS\VDTRIGEXCEL.C" />
+  </ItemGroup>
+</Project>

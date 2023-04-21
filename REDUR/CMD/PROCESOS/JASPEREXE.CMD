@@ -1,0 +1,3 @@
+SET CLASSBASE=D:\PRUEBAS\PRUEBAS\JASPER\JASPER
+SET CLASSPATH=%CLASSBASE%\bin;%CLASSBASE%\lib\commons-beanutils-1.9.4.jar;%CLASSBASE%\lib\commons-collections-3.2.2.jar;%CLASSBASE%\lib\commons-digester-2.1.jar;%CLASSBASE%\lib\commons-logging-1.1.1.jar;%CLASSBASE%\lib\groovy-all-2.4.16.jar;%CLASSBASE%\lib\itext-2.1.7.js7.jar;%CLASSBASE%\lib\jasperreports-6.11.0.jar;%CLASSBASE%\lib\ojdbc8.jar;%CLASSBASE%\lib\org.apache.commons.commons-collections4_4.4.0.jar;%CLASSBASE%\lib\barbecue-1.5-beta1.jar
+java jasper.jasper -LM9 -LNPRUEBA -OTC:\oracle\product\19.0.0\client_1\network\admin -OURDRD/Z4pATa2020#-@RDRD -IGCLIENTE

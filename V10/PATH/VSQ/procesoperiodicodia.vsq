@@ -1,0 +1,13 @@
+#PROCESO QUE SOLO SE EJECUTAN REPETIDAMENTE EN EL DIA
+#
+#
+CURSOR=CSEMAFORO BEGIN
+                   VDSEM.LIBERASESION;
+                 END;@
+
+#Procedimiento que se encarga de tratar todos los pedidos originales grabados en la base de datos para comprobar la existencia del cliente asociado al mismo.
+#En el caso que exista el cliente o se cree correctamente, el pedido original se actualizará a estado 200 (VALIDADO)
+#En caso de error, el pedido original se actualizará a estado -170 (ERROR REVISANDO CLIENTE)
+CURSOR=CREVISACLI BEGIN 
+                    VDCLIPKG.REVISACLIENTEPEDIDO;
+                  END;@

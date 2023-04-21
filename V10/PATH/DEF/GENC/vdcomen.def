@@ -1,0 +1,28 @@
+#***
+# VDCOMEN.c - Generación automática del código c para la tabla VDCOMEN                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDCOMEN
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 13-11-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=COM
+
+SECUENCIA=VDSECCOMEN,CODCOMEN
+RECORRE=TIPOCOMEN,TIPOCOMEN;ORDERBY=CODCOMEN,LINCOMEN;
+RECORRE=COMEN,CODCOMEN;ORDERBY=TIPOCOMEN,LINCOMEN;
+RECORRE=COMENYTIPO,CODCOMEN,TIPOCOMEN;ORDERBY=LINCOMEN;
+RECORRE=PORNOTIFICAR,NOTIFICAR;WHERE=NOTIFICAR IS NOT NULL;ORDERBY=FECMODIF,HORAMODIF;
+
+
+UPDATE=NOTIFICAR,NOTIFICAR
+UPDATE=COMENTARIO,COMENTARIO
+UPDATE=COMENTARIOYNOTIFICAR,COMENTARIO,NOTIFICAR
+
+INTERFASE
+UPDATE
+INSERT
+DELETE

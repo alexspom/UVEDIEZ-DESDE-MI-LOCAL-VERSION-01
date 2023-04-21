@@ -1,0 +1,25 @@
+# Módulo   : VDINFINCIFACT.PAN
+# Función  : 
+#
+# Creación : 
+# Autor    : 
+# Fichero generado por el Asistente de Generación de Pantallas V10 
+###########################################
+# Histórico de cambios:
+DATOS ACERCA DE LOS CUALES BUSCAR
+CLIENTE                   DESDE...    HASTA.... 
+_50______ _50____________ ¿D-MM-Y.YY  ¿D-MM-Y.YY
+|
+
+NOQUERY
+REGPAG=2
+
+POSTQUERY=FEJECUTA(FPULSATECLAS("F6", "F2"), "")
+
+CAMPO = NOMBRE, AUXILIAR, TOOLTIP("NOMBRE COMERCIAL")
+#, POSTCHANGE = FDESIGNACION("CSELCLIENTE", ""), TITULO("CONSIGNATARIO")
+CAMPO = CODCLIENTE, TOOLTIP ( "CÓDIGO DEL CONSIGNATARIO" )
+CAMPO = FECINI, AUXILIAR, TITULO("Desde...")
+CAMPO = FECFIN, AUXILIAR, TITULO("Hasta")
+
+CURSOR = CSELCLIENTE SELECT CODCLI CODCLIENTE FROM VDCLIENTES WHERE NOMBRE = :NOMBRE;

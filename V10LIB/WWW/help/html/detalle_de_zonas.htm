@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+ <META http-equiv="content-type" content="text/html; charset=utf-8">
+ <TITLE>Detalle de zonas</TITLE>
+ <META NAME="generator" CONTENT="Adobe RoboHelp - www.adobe.com">
+ <LINK rel="StyleSheet" href="../ficheroayudav10.css"><SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../ehlpdhtm.js"></SCRIPT>
+</HEAD>
+<BODY>
+ <H1>Detalle de zonas</H1>
+ <P>Desde este bloque se mantiene la configuración detallada de la zona seleccionada en el bloque superior.</P>
+ <P>Las operaciones que se pueden realizar desde este bloque son altas y bajas, siempre que se posea el privilegio de “ADMINISTRADOR” y modificaciones con privilegio de “UBICACIONES”</P>
+ <P>Las teclas de función son:</P>
+ <P style="text-indent:30.25pt;">{F1} Ayuda  {F2} Consulta  {F4} Confirmar Cambios  {F5} Borrar Pantalla</P>
+ <P style="margin-top:0;margin-bottom:0">        &nbsp;{F9} Borrar Registro  {Esc} Salir     {May+F10} Menú contextual.&nbsp;</P>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P>Con la combinación de teclas <FONT style="color:blue; " >May+F10</FONT> se accede al <FONT style="color:blue; " >menú contextual</FONT>: <FONT style="background-color:blue; " >VDZONAS</FONT></P>
+ <P><IMG src="../image/ebx_-1665342309.jpg" border=0 height=396 width=793 alt="image\ebx_-1665342309.jpg"></P>
+ <P>Accede a la tabla VDZONAS.</P>
+ <P>Los campos son:</P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P>Activa: Indica si la zona esta activa o no. Sus valores (S)i, (N)o.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Zona: consta de dos campos, el primero indica el código de la zona y el segundo la descripción de la misma.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Tipo: Tiene dos campos, el primero es el tipo y el segundo la descripción del tipo de picking a realizar en la zona. <BR>Sus valores son:</P></LI>
+  <UL type=circle>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;"> U: Picking directo de unidades con displays.&nbsp;</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">I: Picking inverso de unidades con displays.</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">E: Picking cajas con displays</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">R: No tiene picking</P></LI>
+  </UL>
+  <LI style="font-size:10pt; ">
+  <P>Prioridad: Es la prioridad de la zona.</P></LI>
+ </UL>
+ <P>Configuración para picking</P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P>Ident. Del controlador: Consta de 3 campos, el primero es el Identificador de gestor de displays, el segundo es Identificador de programa de picking hardware y el tercero es el número de display del controlador de zona <BR>Con la combinación de teclas <FONT style="color:blue; " >May+F10</FONT> se accede a la pantalla de <FONT style="background-color:lime; " >Mantenimiento del hardware de displays</FONT>, en cualquiera de los tres campos</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Tiempo OK: Tiempo que permanece OK en pantalla en milisegundos. Si vale 0 (cero), indica que se ha de validar.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Tiempo FIN: Tiempo que permanece FIN en pantalla en milisegundos. Si vale 0 (cero),  indica que se ha de validar.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Máximo Núm. Displays simultáneos: Es el máximo número de displays iluminados simultáneamente .</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Máximo número de operarios simultáneamente: es el máximo número de operarios por zona.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Red de scanners: indica la red de escáneres a la que pertenece el escáner asociado. Con la combinación de teclas <FONT style="color:blue; " >May+F10</FONT> se accede a la pantalla de <A href="Mantenimiento_de_lecturas_de_escáner.htm">Mantenimiento de lecturas de scanner</A>.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Scanner: Es el número de escáner o puerto asociado a la zona. Con la combinación de teclas <FONT style="color:blue; " >May+F10</FONT> se accede a la pantalla de <A href="Mantenimiento_de_lecturas_de_escáner.htm">Mantenimiento de lecturas de scanner</A>.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Máximo número de bultos por operario: Es el número máximo de bultos que podrá realizar simultáneamente un operario en la zona.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Capacidad máxim a de cajas en la zona: Representa la capacidad máxima por encima de la cual no entrarán mas cajas en la zona.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Autoapertura: Indica la autoapertura de la zona. Los valores que puede tomar son:</P></LI>
+  <UL type=circle>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">S: La zona se activa con la lectura de bultos</P></LI>
+   <LI style="font-size:10pt; ">
+   <P style="margin-left:42.00pt;">N: La zona se activa cuando un operario se identifica.</P></LI>
+  </UL>
+  <LI style="font-size:10pt; ">
+  <P>Privilegios picking: Privilegios necesarios para hacer picking en la zona (admite rangos).</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Proceso zona: Es el proceso que controla la zona, o gestiona las teclas de la misma.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Proceso Disp: Tarea que esta controlando los displays o que gestiona las teclas de los displays de la zona.</P></LI>
+ </UL>
+ <P>Estado Actual del Picking en la Zona</P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P>Menú: Es el menú que tiene cargado en el controlador de la zona. Con la combinación de teclas <FONT style="color:blue; " >May+F10</FONT> se accede a la pantalla de Menús de picking.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Operario: Es el código del operario identificado en la zona. Sólo si la autoapertura vale ’.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Próximo Tick: Es el tiempo en milésimas de segundo del próximo tick o refresco a la zona.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Estado: Consta de dos campos, el primer es el estado de la zona y el segundo la descripción del estado.</P></LI>
+ </UL>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P>Comentario: Es el código de comentario asociado a la zona.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Extra: Campo de información extra, disponible para el implantador.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P>Ultima modificación: consta de tres campos, el primero almacena quién realiza la modificación, bien sea un usuario o un procedimiento, el segundo y el tercero almacenan la fecha y la hora respectivamente, en la que se realizó la última modificación.</P></LI>
+ </UL>
+ <P style="margin-top:0;margin-bottom:0">&nbsp;</P>
+ <P><BR>Ir a: &nbsp;<A href="Configuración_de_las_zonas.htm">Configuración de las zonas</A> </P>
+ <P>&nbsp;<A href="Detalle_de_zonas.htm">Detalle de zonas</A> </P>
+ <P>&nbsp;<FONT style="color:green; text-decoration:underline;" >Mantenimiento de zonas</FONT></P>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+00 08:37:30:206 Fichero de log abierto PID 18080
+
+02 08:37:30:206 Intentando abrir fichero v10.ini
+02 08:37:30:208 Cargando driver v10oracle funcion damedriveroracle
+00 08:37:52:492 Error al conectar ORA-12170: TNS:Se ha producido un timeout de conexión
+00 08:37:52:492 Error de conexion -1
+00 08:38:34:066 Fichero de log abierto PID 15576
+
+02 08:38:34:066 Intentando abrir fichero v10.ini
+02 08:38:34:068 Cargando driver v10oracle funcion damedriveroracle
+00 08:38:55:498 Error al conectar ORA-12170: TNS:Se ha producido un timeout de conexión
+00 08:38:55:498 Error de conexion -1
+00 08:41:29:787 Fichero de log abierto PID 15224
+
+02 08:41:29:787 Intentando abrir fichero v10.ini
+02 08:41:29:791 Cargando driver v10oracle funcion damedriveroracle
+02 08:41:29:902 Conectado a base de datos
+02 08:41:31:308 Asignando ACCESO a V10LOGIN
+02 08:41:31:310 Asignando NIVELLOG a 2
+02 08:41:31:310 Asignando PROTEGIDO a 500
+02 08:41:31:311 Asignando DEBUGHTTP a 1
+02 08:41:31:312 Asignando VISIBLEEXE a 1
+02 08:41:31:312 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 08:41:31:312 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 08:41:31:313 Asignando SERVIDOR a HTTP://127.0.0.1
+02 08:41:31:317 Asignando SERVERPORTFILES a 1235
+02 08:41:31:317 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 08:41:31:318 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 08:41:31:320 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 08:41:31:321 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 08:41:31:321 Asignando FILEEXPIRED a 3600
+02 08:41:31:322 Asignando TIEMPOESPERA a 240
+02 08:41:31:328 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 08:41:31:330 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 08:41:31:331 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 08:41:31:331 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 08:41:31:332 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 08:41:31:332 Asignando COMPRIMIR a 1
+02 08:41:31:337 Escuchando en puerto 1234 con protocolo HTTP
+02 08:41:36:236 Sesion 0: Inicio hebra
+02 08:41:36:237 Sesion 1: Inicio hebra
+02 08:41:36:237 Conexion 00A377CC recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 08:41:36:238 Tratapeticion: Server cambia de valor de 00000000 a 00A377CC
+02 08:41:36:238 Se captura HOST en URL del cliente NINO 
+02 08:41:36:240 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=4lFHPVRHQ7SLVqB0C34418RWPPvcL3 -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 08:41:36:372 Sesion 1: Arrancado Proceso v10form
+02 08:41:36:372 Sesion 1: Intentando conectar con v10form en puerto 20000
+02 08:41:36:372 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 08:41:36:380 Encontrado host 127.0.0.1
+02 08:41:36:380 Encontrado servicio 20000
+02 08:41:37:885 Sesión con v10form establecida
+02 08:41:38:886 Envio un total de 0.00 KB
+02 08:41:38:887 Enviada la respuesta a socket 00A377CC
+02 08:41:38:887 Sesion 1: Sesión rota
+02 08:41:38:887 Libera a377cc
+02 08:41:38:887 Sesion 1: Fin hebra
+02 08:42:31:345 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 08:42:53:282 Sesion 0: Sesión rota
+02 08:42:53:282 Libera a37724
+02 08:42:53:282 Sesion 0: Fin hebra
+
+00 08:45:51:097 Fichero de log cerrado.
+

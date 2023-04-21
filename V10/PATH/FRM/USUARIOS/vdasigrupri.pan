@@ -1,0 +1,31 @@
+# Módulo   : VDASIUSUGRU.PAN
+# Función  : Asignación de privilegios a un grupo
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# Histórico de cambios:
+ASIGNACION PRIVILEGIOS A GRUPO
+Privilegio           Ultima modificación
+____________________ _32_______ ¿D-MM-Y.YY _8________
+|
+
+TABLA=VDPRIVGRU
+
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR INSERTANDO ULTIMA MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR ACTUALIZANDO ULTIMA MODIFICACION")
+
+CAMPO=CODGRUPO,VIRTUAL,OCULTO
+CAMPO=PRIVILEGIO,POSTCHANGE=FDESIGNACION("CSELPRI","No existe privilegio"),TOOLTIP("Privilegio del usuario"),
+              TITULO("Privilegio"),COMBOX("CLISTAPRIV")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizó la última modificación"),TITULO("Ultima modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CLISTAPRIV SELECT PRIVILEGIO, COMENTARIO FROM VDPRIVILEGIO ORDER BY PRIVILEGIO;
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF, VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+CURSOR=CSELPRI SELECT :PRIVILEGIO FROM VDPRIVILEGIO WHERE PRIVILEGIO=:PRIVILEGIO;
+
+

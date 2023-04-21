@@ -1,0 +1,87 @@
+# Etiqueta BASE PARA LA DE PRODUCTO Y LADE PICKING INVERSO 
+# 9-02-2007. OGE
+# (2) 09-01-2007.Posicionar Caducidad más a la derecha para que no se solape con lel lote.ECF.
+# (3) 04-03-2008.Codi de barras més llarg per més lectures.ECF.
+# (4) 11-03-2008.Projectar les ubicacions del magatzem.ECF
+$X1570-930$
+$E1-1$
+$F0$
+$D0$
+
+
+#Designacion articulo
+$T20-20$
+$P100-240$
+$I%T_DESART1%$
+$P100-330$
+$I%T_DESART2%$
+
+$T30-30$
+$P100-450$
+$I%T_CODART--40%$
+
+#C.NACIONAL
+$T12-12$
+$P100-510$
+$IC.N: %T_CODNAC%$
+
+#EAN
+$P700-510$
+$IEAN: %T_CODEAN%$
+
+$P400-610$
+$ILOTE$
+$P400-680$
+$T18-14$
+$I%T_CODLOT%$
+
+$P800-610$
+$ICADUCIDAD$
+
+$P800-680$
+$I%T_CADUCI2%$
+
+#$P1150-610$
+#$IPCN$
+#$P1150-680$
+#$I%T_PCN%$
+
+$P300-720$
+$B9-80-250-2-]C1240%T_CODART%]C110%T_CODLOT%]C117%T_CADUCI%$
+
+$T20-20$
+$P100-800$
+$I%_UBICACION%$
+$P100-950$
+$I%_VENTA%$
+
+##CODIGO DE BARRAS ORDEN
+#$T10-10$
+#$P950-850$
+#$IORDEN:$
+#$P1150-850$
+#$B8-40-50-2-%_CODORDREC%$
+#$T6-6$
+#$P1150-870$
+#$I%_CODORDREC%$
+#$T10-10$
+
+##CODIGO DE BARRAS ACTIVIDAD
+#$T10-10$
+#$P700-400$
+#$IACTIVIDAD:$
+#$P950-400$
+#$B8-40-50-2-%_CODENSAYO%$
+#$T6-6$
+#$P950-420$
+#$I%_CODENSAYO%$
+#$T10-10$
+
+#CODIGO DE BARRAS EN EAN128
+#$P100-950$
+#$B9-60-250-2-¿240%T_CODART%¿10%T_CODLOT%¿17%T_CADUCI%$
+
+#LO MISMO EN HUMANO
+#$P350-980$
+#$T10-10$
+#$I(240)%T_CODART%(10)%T_CODLOT%(17)%T_CADUCI2%$

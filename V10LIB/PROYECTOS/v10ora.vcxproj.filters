@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FORMS">
+      <UniqueIdentifier>{1dd4d54a-f9e7-4c39-84b4-4fbd14a533b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ORACLE">
+      <UniqueIdentifier>{47d78597-330e-4937-8e99-d2813ca7661f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\FORMS\bison.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forbloque.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forboton.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forcampos.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forcommit.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forcontex.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forcsv.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forcursor.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10fordialog.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forejecuta.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forform.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forgenera.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forlex.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10formenu.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10formpdf.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10formsg.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forole.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forparseaux.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forpidevar.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forpunteros.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forsel.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\V10FORSELTABLA.C">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10fortemporal.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10fortriger.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10fortrigeraux.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\FORMS\v10forvariable.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10excel2ora.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10oraargv.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10oracledebug.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10oraexcel.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10oramodulo.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\oracle\v10oraword.c">
+      <Filter>ORACLE</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\v10export.c" />
+    <ClCompile Include="..\FUENTES\v10import.c" />
+    <ClCompile Include="..\FUENTES\v10leesql.c" />
+    <ClCompile Include="..\FUENTES\ORACLE\v10dbll.c" />
+    <ClCompile Include="..\FUENTES\FORMS\v10forasxlsx.c">
+      <Filter>FORMS</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

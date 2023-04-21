@@ -1,0 +1,157 @@
+$C$
+$X1760-1080$
+$F0$
+$D0$
+
+###### Cuadro Exterior
+$P1245-1140$
+$L1195-915-40-1$
+
+###### Cuadro Codigo de barras de ChronoExpres
+$P1245-1020$
+$L350-380-40-1$
+
+###### Cuadro Remitente
+$P550-645$
+$L500-320-40-1$
+
+###### Cuadro extra datos cliente
+$P1245-645$
+$L700-120-40-1$
+
+###### Cuadro ChronoExpres
+$P550-1630$
+$L500-425-40-1$
+
+###### Cuadro extra datos cliente
+$P950-645$
+$L250-120-40-1$
+
+
+######################DATOS DEL REMITENTE
+$T12-12$
+$P060-140$
+$IRemitente:$
+#Descripción de la division
+$T18-8$
+$P060-200$
+$I%T_DESDIV-1-40%$
+#Dirección de la división
+$T8-8$
+$P060-240$
+$I%T_DIV_DIRECCION%$
+#Población de la division
+$P060-270$
+$I%T_DIV_POBLACION%$
+#DP y descripción de la Población
+$P060-300$
+$I%T_DIV_DP% - %T_DIV_PROVINCIA%$
+
+
+######################DATOS DEL DESTINATARIO
+$T12-12$
+$P555-140$
+$IDestinatario:$
+##Descripción del destinatario
+$T8-8$
+$P555-200$
+$I%T_PC_DESCLIENTE%%T_PC_DESCLIENTE1%$
+$T8-8$
+$P555-240$
+$IATT: %T_CONTACTO%$
+##Dirección del destinatario
+$P555-270$
+$I%T_PC_DIRECCION-1-30% %T_PC_DIRECCION1-1-22%$
+$P555-300$
+$I%T_PC_DIRECCION1-23-6% %T_PC_DIRECCION2-1-30%$
+##Datos destino Chonoexpres
+$T8-8$
+$P555-320$
+$I%T_PC_DP%$
+$T8-8$
+$P555-350$
+$I%T_CHRDATOSDEST%$
+$T8-8$
+$P555-380$
+$I%T_PC_PROVINCIA%$
+$T8-8$
+$P555-400$
+$IObservaciones :%T_PC_OBSERVACIONES-1-37%$
+$P555-450$
+$I%T_PC_OBSERVACIONES-38-52%$
+$P555-480$
+$I%T_PC_OBSERVACIONES-90-52%$
+
+###################### CHRONOEXPRES Y SERVICIO
+$T8-8$
+$P060-450$
+$IEntrega: %T_CODPED%$
+$T8-8$
+$P060-480$
+$ISerie: %T_CODPED%$
+$T8-8$
+$P360-450$
+$IBulto: %i_NBULTO% / %T_TOTALBULTOS%$ 
+$T8-8$
+$P360-480$
+$IPeso (kg): %i_PESOTEORICO%$
+
+
+########Datos de la agencia
+$T15-13$
+$P060-580$
+$I%_DESAGE-1-18%$
+$T15-13$
+$P060-630$
+$IGROUPING XXX$
+#fecha de expedicion
+
+##################### Datos Extra para la agencia
+
+$T10-8$
+$P555-580$
+$IEmbalaje$
+$P555-610$
+$I%T_TIPOCAJA%$
+#$P730-580$
+#$IPeso (kg): $
+#$T10-8$
+#$P730-610$
+#$I%i_PESOTEORICO%$
+$P710-580$
+$IPedido cliente$
+$P710-610$
+$I%T_PEDIDOCLIENTE%$
+$P990-580$
+$IUnidades$
+$P990-610$
+$I%i_NLINEAS%$
+$P1200-580$
+#$IBulto$
+#$P1200-610$
+#$I%i_NBULTO% / %T_TOTALBULTOS%$ 
+
+################Derecha del codigo de barras
+$T10-8$
+$P900-700$
+$IZonas: %T_ZONASPICKING%$
+$P900-730$
+$ITipo de bulto: %T_TIPOBULTO%$
+
+################## Codigo de barras 1: Codigo de barras de ChronoExpress
+
+$T10-12$
+$P60-680$
+$IEXP: %T_CHRCODBARRAS-1-20%$
+
+$P120-920$
+$B8-60-220-2-%T_CHRCODBARRAS-1-20%$
+
+#######################################CODIGO DE BARRAS DE BULTO
+$D270$
+$P1400-1180$
+$B8-50-150-4-¿00%T_CODBULTO%$
+#LO MISMO EN HUMANO
+$P1430-980$
+$T9-9$
+$ISSCC (00)%T_CODBULTO%$ 

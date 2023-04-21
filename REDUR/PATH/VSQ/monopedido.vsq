@@ -1,0 +1,6 @@
+
+#Informa si un pedido se servirá como monopedido.
+CURSOR=CASIGNAMONOPEDIDO BEGIN
+                           RDRPKG.ASIGNARMONOPEDIDO(VDST.FPECPDTMONO, VDST.FPECPDTERHC);
+                         END;@
+   

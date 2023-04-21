@@ -1,0 +1,25 @@
+#***
+# VDPEDIDORIGCAB.c - Generación automática del código c para la tabla de Cabecera de Pedidos originales                                                      
+# 
+# Propósito: Funciones de acceso a la tabla VDPEDIDOCAB
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 13-03-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=POC
+EXTRA=COMEN,V10CADENA,1025
+
+
+RECORRE=STATUS,STATUS;
+
+UPDATE=STATUS,STATUS;
+
+LOCK
+INTERFASE
+ROWID
+UPDATE
+INSERT
+DELETE

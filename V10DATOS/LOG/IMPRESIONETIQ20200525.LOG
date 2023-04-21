@@ -1,0 +1,315 @@
+00 10:08:39:202 Fichero de log abierto PID 12224
+
+02 10:08:39:202 Intentando abrir fichero v10.ini
+02 10:08:39:206 Cargando driver v10oracle funcion damedriveroracle
+02 10:08:39:262 Conectado a base de datos
+02 10:08:39:311 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 10:08:39:312 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 7A5C2520
+02 10:08:39:312 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 10:08:39:312 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 7A5C2520
+02 10:08:39:348 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 10:08:39:450 vdprocesaspool: Tratando impresión 1471 de tipo ETIQ a impresora N15LAN
+02 10:08:39:880 Encontrado fichero vdetiqbu#aredur.gen
+00 10:08:39:880 Se ha formado nombre de documento vdetiqbu#aredur.gen;VDETIQUETAS.VSQ;CSELBULTO
+02 10:08:39:892 vdprocesaspool: Fin de impresión 1471 de tipo ETIQ a impresora N15LAN
+
+02 10:08:39:902 vdprocesaspool: Tratando impresión 1471 de tipo ETIQ a impresora N15LAN
+02 10:08:40:246 Analizado cursor CSELBULTO
+02 10:08:40:252 Analizado cursor CBULTOPINV
+02 10:08:40:253 Analizado cursor MATRICULA
+02 10:08:40:253 Leidos 3 cursores
+02 10:08:40:257 Leyendo 34 campos del cursor CSELBULTO
+02 10:08:40:257 CAMPO : DESCLIENTE TIPO : 1 LONGITUD :60  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DIRECCION TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DIRECCION1 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DIRECCION2 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DIRECCION3 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DP TIPO : 1 LONGITUD :10  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : CODPROV TIPO : 1 LONGITUD :5  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : ANOPED TIPO : 2 LONGITUD :22  PRECISION : 4  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : SEQPED TIPO : 2 LONGITUD :22  PRECISION : 3  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : CODDIV TIPO : 1 LONGITUD :20  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : CODPED TIPO : 1 LONGITUD :20  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : CODPAIS3 TIPO : 1 LONGITUD :3  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : TRACKIN TIPO : 1 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : CODBARRASREDUR TIPO : 1 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : PIECODBARRASREDUR TIPO : 1 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : KILOS TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : PORTES TIPO : 1 LONGITUD :1  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : PLAZA TIPO : 1 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : NUMALBA TIPO : 2 LONGITUD :22  PRECISION : 3  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : NBULTOS TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : NBULTO TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : FECSERVICIO TIPO : 1 LONGITUD :10  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DESDIV TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:258 CAMPO : DIVDIR1 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : DIVDIR2 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : DIVDIR3 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : DIVDIR4 TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : DIVDP TIPO : 1 LONGITUD :10  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : DIVPOBLACION TIPO : 1 LONGITUD :40  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : MENHOST TIPO : 1 LONGITUD :255  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : PEDIDOCLIENTE TIPO : 1 LONGITUD :60  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : CODBULTO TIPO : 1 LONGITUD :2000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : CODALB TIPO : 1 LONGITUD :20  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:260 CAMPO : EMPTELEFONO2 TIPO : 1 LONGITUD :20  PRECISION : 0  ESCALA : 0 RET=0
+02 10:08:40:473 vdprocesaspool: Fin de impresión 1471 de tipo ETIQ a impresora N15LAN
+
+02 10:09:54:762 vdprocesaspool: Tratando impresión 1471 de tipo ETIQ a impresora ZPLPRUEBAS
+02 10:09:54:773 Leyendo 34 campos del cursor CSELBULTO
+02 10:09:54:785 vdprocesaspool: Fin de impresión 1471 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 10:10:02:542 Fichero de log cerrado.
+
+00 10:22:40:858 Fichero de log abierto PID 20264
+
+02 10:22:40:858 Intentando abrir fichero v10.ini
+02 10:22:40:862 Cargando driver v10oracle funcion damedriveroracle
+02 10:22:40:923 Conectado a base de datos
+02 10:22:40:926 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 10:22:40:927 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 7A5C2520
+02 10:22:40:927 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 10:22:40:927 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 7A5C2520
+02 10:22:40:929 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 10:22:40:991 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 10:22:41:001 Analizado cursor CSELETIQEXPE
+02 10:22:41:001 Leidos 1 cursores
+02 10:22:41:002 Leyendo 1 campos del cursor CSELETIQEXPE
+02 10:22:41:002 CAMPO : COMANDOOUT TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 10:22:41:027 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 10:25:42:920 Fichero de log cerrado.
+
+00 11:25:19:801 Fichero de log abierto PID 1432
+
+02 11:25:19:801 Intentando abrir fichero v10.ini
+02 11:25:19:807 Cargando driver v10oracle funcion damedriveroracle
+02 11:25:20:083 Conectado a base de datos
+02 11:25:20:083 Intentando abrir fichero v10.ini
+00 11:25:21:098 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:21:098 Error de conexion -1
+00 11:25:22:290 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:22:290 Error de conexion -1
+00 11:25:23:473 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:23:473 Error de conexion -1
+00 11:25:24:655 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:24:655 Error de conexion -1
+00 11:25:25:837 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:25:837 Error de conexion -1
+00 11:25:26:997 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:26:997 Error de conexion -1
+00 11:25:28:167 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:25:28:167 Error de conexion -1
+
+00 11:25:28:175 Fichero de log cerrado.
+
+00 11:29:24:766 Fichero de log abierto PID 16728
+
+02 11:29:24:766 Intentando abrir fichero v10.ini
+02 11:29:24:770 Cargando driver v10oracle funcion damedriveroracle
+02 11:29:24:907 Conectado a base de datos
+02 11:29:24:907 Intentando abrir fichero v10.ini
+00 11:29:25:211 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:25:211 Error de conexion -1
+00 11:29:26:393 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:26:393 Error de conexion -1
+00 11:29:27:572 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:27:572 Error de conexion -1
+00 11:29:28:747 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:28:747 Error de conexion -1
+00 11:29:29:917 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:29:917 Error de conexion -1
+00 11:29:31:083 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:31:083 Error de conexion -1
+00 11:29:32:250 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:32:250 Error de conexion -1
+00 11:29:33:417 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:33:417 Error de conexion -1
+00 11:29:34:587 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:34:587 Error de conexion -1
+00 11:29:35:767 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:35:767 Error de conexion -1
+00 11:29:36:953 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:36:953 Error de conexion -1
+00 11:29:38:150 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:38:150 Error de conexion -1
+00 11:29:39:318 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:39:318 Error de conexion -1
+00 11:29:40:506 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:40:506 Error de conexion -1
+00 11:29:41:701 Error al conectar ORA-12560: TNS:error del adaptador de protocolo
+00 11:29:41:701 Error de conexion -1
+
+00 11:29:41:705 Fichero de log cerrado.
+
+00 11:30:54:708 Fichero de log abierto PID 15080
+
+02 11:30:54:708 Intentando abrir fichero v10.ini
+02 11:30:54:713 Cargando driver v10oracle funcion damedriveroracle
+02 11:30:54:831 Conectado a base de datos
+02 11:30:54:835 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 11:30:54:836 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 11:30:54:836 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 11:30:54:836 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 11:30:54:840 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 11:31:35:090 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+00 11:35:08:672 Fichero de log abierto PID 21904
+
+02 11:35:08:672 Intentando abrir fichero v10.ini
+02 11:35:08:677 Cargando driver v10oracle funcion damedriveroracle
+02 11:35:08:793 Conectado a base de datos
+02 11:35:08:796 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 11:35:08:797 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 11:35:08:797 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 11:35:08:797 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 11:35:08:800 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 11:35:08:868 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 11:35:32:916 Analizado cursor CSELETIQEXPE
+02 11:35:32:917 Leidos 1 cursores
+02 12:10:42:109 Leyendo 1 campos del cursor CSELETIQEXPE
+02 12:10:42:110 CAMPO : COMANDOOUT TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+00 12:40:43:167 Fichero de log abierto PID 12492
+
+02 12:40:43:167 Intentando abrir fichero v10.ini
+02 12:40:43:169 Cargando driver v10oracle funcion damedriveroracle
+02 12:40:44:862 Conectado a base de datos
+02 12:40:44:865 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 12:40:44:867 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 12:40:44:867 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 12:40:44:867 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 12:40:44:872 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 12:40:45:057 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 12:40:45:109 Analizado cursor CSELETIQEXPE
+02 12:40:45:109 Leidos 1 cursores
+02 12:40:45:112 Leyendo 5 campos del cursor CSELETIQEXPE
+02 12:40:45:112 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:40:45:114 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:40:45:114 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:40:45:114 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:40:45:114 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:40:45:229 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 12:41:34:080 Fichero de log cerrado.
+
+00 12:58:36:564 Fichero de log abierto PID 13416
+
+02 12:58:36:564 Intentando abrir fichero v10.ini
+02 12:58:36:565 Cargando driver v10oracle funcion damedriveroracle
+02 12:58:36:625 Conectado a base de datos
+02 12:58:36:627 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 12:58:36:627 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 12:58:36:627 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 12:58:36:627 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 12:58:36:629 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 12:58:36:690 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 12:58:36:700 Analizado cursor CSELETIQEXPE
+02 12:58:36:700 Leidos 1 cursores
+02 12:58:36:702 Leyendo 5 campos del cursor CSELETIQEXPE
+02 12:58:36:702 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:58:36:702 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:58:36:702 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:58:36:702 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:58:36:702 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 12:58:36:747 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 13:10:10:145 Fichero de log cerrado.
+
+00 13:10:31:299 Fichero de log abierto PID 5116
+
+02 13:10:31:299 Intentando abrir fichero v10.ini
+02 13:10:31:302 Cargando driver v10oracle funcion damedriveroracle
+02 13:10:31:355 Conectado a base de datos
+02 13:10:31:357 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 13:10:31:357 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:10:31:357 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 13:10:31:357 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:10:31:360 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 13:10:31:420 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 13:10:31:429 Analizado cursor CSELETIQEXPE
+02 13:10:31:429 Leidos 1 cursores
+02 13:10:31:430 Leyendo 5 campos del cursor CSELETIQEXPE
+02 13:10:31:430 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:10:31:430 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:10:31:430 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:10:31:430 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:10:31:430 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:10:31:502 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 13:10:39:167 Fichero de log cerrado.
+
+00 13:14:07:652 Fichero de log abierto PID 17376
+
+02 13:14:07:652 Intentando abrir fichero v10.ini
+02 13:14:07:655 Cargando driver v10oracle funcion damedriveroracle
+02 13:14:07:719 Conectado a base de datos
+02 13:14:07:720 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 13:14:07:720 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:14:07:720 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 13:14:07:720 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:14:07:723 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 13:14:07:785 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 13:14:07:794 Analizado cursor CSELETIQEXPE
+02 13:14:07:795 Leidos 1 cursores
+02 13:14:07:797 Leyendo 5 campos del cursor CSELETIQEXPE
+02 13:14:07:797 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:07:797 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:07:797 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:07:797 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:07:797 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+00 13:14:08:037 Formato erroneo en linea 1
+
+00 13:14:17:962 Fichero de log cerrado.
+
+00 13:14:44:815 Fichero de log abierto PID 17780
+
+02 13:14:44:817 Intentando abrir fichero v10.ini
+02 13:14:44:819 Cargando driver v10oracle funcion damedriveroracle
+02 13:14:44:875 Conectado a base de datos
+02 13:14:44:877 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 13:14:44:877 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:14:44:877 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 13:14:44:877 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:14:44:880 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 13:14:44:937 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 13:14:44:945 Analizado cursor CSELETIQEXPE
+02 13:14:44:945 Leidos 1 cursores
+02 13:14:44:947 Leyendo 5 campos del cursor CSELETIQEXPE
+02 13:14:44:949 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:44:949 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:44:949 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:44:949 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:44:949 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:14:44:959 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 13:18:38:292 Fichero de log cerrado.
+
+00 13:18:58:464 Fichero de log abierto PID 21248
+
+02 13:18:58:464 Intentando abrir fichero v10.ini
+02 13:18:58:467 Cargando driver v10oracle funcion damedriveroracle
+02 13:18:58:525 Conectado a base de datos
+02 13:18:58:527 Proceso SPOOLIMPREETIQ encontrado en tabla VDPROCESOS
+02 13:18:58:527 Proceso SPOOLIMPREETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:18:58:527 Proceso SPOOLFICHEROETIQ encontrado en tabla VDPROCESOS
+02 13:18:58:527 Proceso SPOOLFICHEROETIQ cargado con función vdprocesaspool (Librería VDKERNEL.DLL) direccion 78652520
+02 13:18:58:529 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 25-05-2020
+02 13:18:58:582 vdprocesaspool: Tratando impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+02 13:18:58:592 Analizado cursor CSELETIQEXPE
+02 13:18:58:592 Leidos 1 cursores
+02 13:18:58:595 Leyendo 5 campos del cursor CSELETIQEXPE
+02 13:18:58:595 CAMPO : COMANDOOUT1 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:18:58:595 CAMPO : COMANDOOUT2 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:18:58:595 CAMPO : COMANDOOUT3 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:18:58:595 CAMPO : COMANDOOUT4 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:18:58:595 CAMPO : COMANDOOUT5 TIPO : 112 LONGITUD :4000  PRECISION : 0  ESCALA : 0 RET=0
+02 13:18:58:667 vdprocesaspool: Fin de impresión 1470 de tipo ETIQ a impresora ZPLPRUEBAS
+
+
+00 13:19:01:327 Fichero de log cerrado.
+

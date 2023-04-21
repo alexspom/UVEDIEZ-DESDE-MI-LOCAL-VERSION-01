@@ -1,0 +1,23 @@
+# M¢dulo : VDSERVICIOS.DEF
+# Función: Generación automatica de rutinas C tabla VDSERVICIOS
+#
+# Autor	 : EAA
+# Revisado por:
+# Fecha  : 12-06-2008
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=SER
+
+PRIMARIA=CODGRUPOSERV,CODSERVICIO
+
+CLAVE=CODSERVICIO,CODGRUPOSERV,CODSERVICIO
+CLAVE=PID,PID
+RECORRE=CODGRUPOSERV,CODGRUPOSERV
+
+UPDATE=SID,SID,SERIAL
+UPDATE=DESCINMEDIATA,EJECUTAR
+UPDATE=ESTADO,STATUS,PID,SID,FECARRANQUE
+UPDATE=PLANIF,STATUS,PID,FECULTEJEC,HORAULTEJEC,FECEJEC,HORAEJEC,EJECUTAR

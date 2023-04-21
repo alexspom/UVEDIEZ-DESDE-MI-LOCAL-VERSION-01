@@ -1,0 +1,449 @@
+/****
+* VDDEMANDAS.C
+*                                                    
+* Propósito: Procesos y Ejecutadores de Algoritmos en C para la resolución/reserva de demandas de traslado
+*            Tb analiza backorder de las demandas.                                
+* Autor  : FGS
+* Fecha  : 6-3-2008                                                        
+******
+*  Modificaciones:
+****/
+
+#include "execproc/vdexec.h"
+
+// actualiza la fecha de inicio de la reserva de una linea de demanda
+// y la de la cabecera si es NULL
+static void ponfeciniciolindemanda(vddemandalins *deml) {
+    
+    vddemandacabs demc;
+
+    DEMCselvddemandacab(deml->tipodemanda,deml->coddemanda,&demc);
+
+    if (deml->fecini==0) {
+        
+        deml->fecini=damedate();
+        cent2a(gettime(),0,':',deml->horaini);
+        DEMLactualizafechainicio(deml,NOVERIFICA);
+        
+        if (demc.fecini==0) {
+            demc.fecini=deml->fecini;
+            strcopia(demc.horaini,deml->horaini,strlen(deml->horaini));
+            DEMCactualizafechainicio(&demc,NOVERIFICA);
+        }
+    }
+}
+
+
+// actualiza la fecha de finalización de una línea de demanda
+// y la de la cabecera, si no hay mas líneas por finalizar
+// chequear en el ACTSTKDEST que si finaliza un movto con línea de demanda asociada,
+// que finalice dicha línea de demanda si no hay mas movtos de la misma pendientes
+static void ponfecfinallindemanda(vddemandalins *deml) {
+    
+    vddemandacabs demc;
+
+    DEMCselvddemandacab(deml->tipodemanda,deml->coddemanda,&demc);
+
+    deml->fecfin=damedate();
+    cent2a(gettime(),0,':',deml->horafin);
+    DEMLactualizafechafinal(deml,NOVERIFICA);
+    
+    if (demc.fecfin==0 && DEMCbuscasinlineasporfinalizar(demc.coddemanda,demc.tipodemanda,&demc)==0) {
+        demc.fecfin=deml->fecfin;
+        strcopia(demc.horafin,deml->horafin,strlen(deml->horafin));
+        DEMCactualizafechafinal(&demc,NOVERIFICA);
+    }
+    
+}
+
+
+//COMENTARIOS: se guarda los comentarios de las líneas de demanda en otra sesión
+static void DEMLgrabacomentario(procesos *proceso, char *comen,char *tipocomen,vddemandalins *deml) {
+    
+    vdcomens com;
+    char msjerror[MAXCADENA]="";
+    
+    memset(&com,0,sizeof(com));
+    
+    if (*comen) {
+        if (*tipocomen==0) v10log(LOGDEBUG,"%s: NO SE PUEDEN TRATAR COMENTARIOS de la Línea de Demanda. %s\n\tNO SE HA INDICADO TIPO\n",proceso->proc.proceso,DEMLlog(deml));            
+        else {
+            if (deml->codcomen==0) v10log(LOGERROR,"%s: NO SE PUEDEN TRATAR COMENTARIOS de tipo %s de la linea de demanda. %s\n\tCODCOMEN del pedido es 0\n",proceso->proc.proceso,tipocomen,DEMLlog(deml));            
+            else {
+                strcopia(com.comentario,comen,strlen(comen));
+                v10comenrelogin("VDDEMANDALIN",deml->codcomen,tipocomen,0,com.comentario,msjerror);                 
+            }
+        }
+    }    
+}
+
+// establece el estado al que pasa una cabecera de demanda en función de su backorder
+// y el estado de las líneas de la misma.
+int analizabackorderdemanda(vddemandacabs *demc)
+{
+    int ret=0;
+    
+    switch (*demc->backorder){
+        case 'P':
+        case 'T':
+            // mira si la demanda no tiene líneas pendientes
+            if (DEMCbuscasinlineaspdtes(demc->coddemanda,demc->tipodemanda,demc)==0) demc->status=STDECRESERVADA;
+            else demc->status=STDECPROCESANDO;
+            break;
+        default:
+            demc->status=-demc->status;
+            break;
+    }
+    
+    return(ret);
+}
+
+
+// analiza el backorder de una línea, para determinar si se ha reservado correctamente 
+// si es así se pone a estado EJECUTADO (sustituir por RESERVADA)
+int analizabackorderlineademanda(vddemandalins *deml)
+{
+    int ret=0;
+    
+    if (*deml->backorder=='E' ){ // backorder exacto
+        
+        if ((*deml->tiporedondeo=='B' || // redonde a bulto
+            *deml->tiporedondeo=='E' || // a embalaje por exceso
+            *deml->tiporedondeo=='C')   // a contenedor 
+            && deml->reservado <deml->cantidad ) {
+            ret=-1;
+        }
+        // intenta reserva embalajes por defecto
+        if (*deml->tiporedondeo=='D' && deml->reservado <=0.0)  ret=-1;
+        if ((*deml->tiporedondeo == 'N' || *deml->tiporedondeo == 0) && deml->reservado != deml->cantidad) ret=-1;
+        
+        
+        if (ret) v10log(LOGWARNING,"analizabackorderlineademanda: No se cumple reserva en linea %s, articulo %s por tener reservado %lf de %lf con Tiporedondea a %s\n",
+            DEMLlog(deml),deml->codart, deml->reservado,deml->cantidad,deml->tiporedondeo);
+        else
+            deml->status=STDELRESERVADA;
+    }  else // backorder parcial
+        if (deml->reservado > 0.0) deml->status=STDELRESERVADA;   
+    
+    // ya se habrá marcado el stock, y almacenado la cantidad reservada en deml->reservado
+        if (*deml->marcastkorigen) {
+            ponfecfinallindemanda(deml);
+            deml->status=STDELMVFINAL;
+        }
+    return(ret);
+}
+
+
+// ALGORITMO. Finaliza una línea de demanda, con movtos finalizados,o anulada
+// PARAM 1: Estado de la línea de demanda, al finalizarse
+// PARAM 2: Estado de la cabecera de demanda, al finalizarse
+// PARAM 3: Si a 'S', se reabre la línea de demanda, si la cantidad reservada para ella no llega a la solicitada,
+//          en el caso de que la línea de demanda no se haya anulado, y el backorder sea 'E', con un tipo de redondeo 
+//          que no sea por deefcto ('D'). Al reabrirse se intenta reservar la diferencia entre lo solicitado en la línea
+//          de demanda, y lo que ya haya reservado.  
+// PARAM 4: Estado en el que se reabre la línea de demanda
+// PARAM 5: Estado en el que se reabre la cabecera de demanda
+
+VDEXPORT int vdfinalizademl(void *ptr,char *param) {
+    int ret;
+    vddemandalins *deml=ptr;
+    vdstatuss stdemlfinal,stdemcfinal;
+    vdstatuss stdemlreabrir,stdemcreabrir;    
+    char reabrir[2]="";
+   
+
+    if ( (ret=damestabreviada("vdfinalizademl",param, 1, "#", NULL, "DEL", &stdemlfinal, STDELFINALIZADA))) return(ret);    
+    if ( (ret=damestabreviada("vdfinalizademl",param, 2, "#", NULL, "DEC", &stdemcfinal, STDECFINALIZADA))) return(ret);    
+    piece(param,reabrir,"#",3);
+    if (*reabrir==0) *reabrir='N';
+    if ( (ret=damestabreviada("vdfinalizademl",param, 4, "#", NULL, "DEL", &stdemlreabrir, STDELPDTERESERV))) return(ret);    
+    if ( (ret=damestabreviada("vdfinalizademl",param, 5, "#", NULL, "DEC", &stdemcreabrir, STDECPDTERESERV))) return(ret);    
+
+    return(finalizademl(deml, deml->status,stdemlfinal.status, stdemcfinal.status, reabrir, stdemlreabrir.status, stdemcreabrir.status));
+}
+
+
+// ejecuta los algoritmos para resolver una línea de demanda
+static int ejecutaalglindemanda(procesos *proceso,vddemandalins *deml,vdclaseartics *cla) {
+    
+    int ret;
+    vdareas areori,aredest;
+    vdress reservademl;
+   
+    memset(&areori,0,sizeof(areori));
+    memset(&aredest,0,sizeof(aredest));
+ 
+    AREselvdarea(deml->codareaori,&areori);
+    AREselvdarea(deml->codareadest,&aredest);
+    *cla->codclase=0;
+
+    if (*cla->codclasif && CLAselcodartclasif(deml->codart,cla->codclasif,cla)) {
+        v10log(LOGERROR,"ejecutaalglindemanda: Articulo %s no clasificado en Clasificación %s\n",
+            deml->codart,cla->codclasif);         
+    }
+
+    if ((ret=DEMLlock(deml,NOWAIT,NOVALIDA))) {
+        sprintf(deml->comendeml,"%s,ejecutaalglindemanda: Error bloqueado linea %s, articulo %s\n",proceso->proc.proceso,DEMLlog(deml),deml->codart);
+        v10log(LOGERROR,"%s\n",deml->comendeml);
+        return(VD_EERRBLOQUEO);
+    }  
+
+    if (RESbuscareservadodeml(deml->coddemanda,deml->tipodemanda,deml->lindemanda,deml->uniagrupa,&reservademl)==0) {
+        deml->cantidad-=reservademl.cantidad;
+        if (deml->cantidad<=0) return(0);
+    } 
+    
+    ret= VDEXECejecuta( proceso,deml,"#","%s#%s#%s#%s#%s#%s#%s#%s#%s#%ld", 
+        deml->tipodemanda,
+        deml->codareaori,areori.codalm,
+        deml->codubidest,
+        deml->codareadest,aredest.codalm,
+        deml->bloqueos,deml->codart,cla->codclase,deml->status);
+    return(ret);
+    
+}
+
+
+// recorre las líneas de una demanda, ejecutando los algoritmos para la resolución de las mismas
+// puede detenerse en la primera línea que no pueda reservar, o bien evaluar todas 
+// para recoger los comentarios de faltas de stock para todas ellas.
+static int ejecutaalgdemanda(procesos *proceso,vddemandacabs *demc,vdclaseartics *cla,char *tipocomen,char *evaluarcompleta) {
+    int ret,retdemc=0;  // código de retorno de la Cabecera de demanda al completo
+    vddemandalins deml;
+      
+    if (DEMLbuscademandastatus(demc->tipodemanda,demc->coddemanda,STDELPDTERESERV,&deml)) return(0);
+    do {
+             
+        *deml.comendeml=0;
+        deml.reservado=0;
+        ret=ejecutaalglindemanda(proceso,&deml,cla);        
+        // guarda el comentario de cada línea de demanda, en otra sesión                    
+        DEMLgrabacomentario(proceso, deml.comendeml,tipocomen,&deml);        
+        if (ret) {
+            //if (ret==VD_ESINALG) return(ret);
+            if (retdemc==0) retdemc=ret;
+            if (*evaluarcompleta!='S') return(ret);
+        } else {
+            if ((ret=analizabackorderlineademanda(&deml))==0) {
+                ponfeciniciolindemanda(&deml);
+                DEMLactualizastatus(&deml,NOVERIFICA);
+            } else { // no se ha servido correctamente la línea, y backorder es TOTAL,
+                // entonces se sale, si no evalua todo al completo
+                if (*demc->backorder=='T') {
+                    if (retdemc==0) retdemc=ret;
+                    if (*evaluarcompleta=='S') continue; 
+                    return(ret);      
+                }
+            } 
+        }
+    }  while (DEMLnextdemandastatus(&deml)==0);
+    
+    return(retdemc);
+}
+
+
+
+// ejecución de algoritmos (por discriminnate) de un proceso dado para una línea de demanda, desde un trigger síncrono
+VDEXPORT int triggerdemlsync(char *nomproceso,vddemandalins *deml) {
+    int ret;
+    procesos *miproceso;
+    vdareas areori, aredest;
+    vdclaseartics cla;
+    
+    if (cargaproceso(nomproceso)==0) {  
+        miproceso=buscaproceso(nomproceso);
+        if (!miproceso) return(-1);
+    } else return(-1);
+    
+    memset(&cla,0,sizeof(cla));
+    piece(miproceso->proc.param,cla.codclasif,"#",3);
+    
+    AREselvdarea(deml->codareaori,&areori);
+    AREselvdarea(deml->codareadest,&aredest);            
+    ret= VDEXECejecuta( miproceso,deml,"#","%s#%s#%s#%s#%s#%s#%s#%s#%s#%s#%s#%s", 
+        deml->tipodemanda,
+        deml->codareaori,areori.codalm,
+        deml->codubidest,
+        deml->codareadest,aredest.codalm,
+        deml->bloqueos,deml->codart,cla.codclase,deml->backorder,
+        deml->tiporedondeo,deml->uniagrupa);            
+    return(ret);    
+}
+
+
+
+// PROCESO. busca una cabecera de demanda pasada y la procesa
+// PARAM 1: codigo de la demanda
+// PARAM 2: tipo de la demanda
+// PARAM 3: commit al final
+// PARAM 4: evaluar todas las lineas de la demanda
+// PARAM 5: tipo de comentario
+// PARAM 6: código de clasif. para montar con la clase del artículo el discriminante 
+VDEXPORT void vdbuscademc(procesos *proceso)
+{
+    int ret;
+    char commitfinal[2]="",evaluarcompleta[2]="";
+    vdclaseartics cla;
+    vdcomens com;
+    vddemandacabs demc;
+
+    memset(&com,0,sizeof(com));
+    memset(&cla,0,sizeof(cla));
+    
+    piece(proceso->proc.param,demc.coddemanda,"#",1);
+    piece(proceso->proc.param,demc.tipodemanda,"#",2);
+    piece(proceso->proc.param,commitfinal,"#",3);
+    piece(proceso->proc.param,evaluarcompleta,"#",4);
+    piece(proceso->proc.param,com.tipocomen,"#",5);
+    piece(proceso->proc.param,cla.codclasif,"#",6);
+    
+    if (DEMCselvddemandacab(demc.tipodemanda,demc.coddemanda,&demc)) {
+        v10log(LOGERROR,"%s: Cabecera de Demanda no existe. %s\n",proceso->proc.proceso,DEMClog(&demc));
+        return;
+    }
+    
+    v10log(LOGNORMAL,"%s: Tratando Cabecera de Demanda %s\n",proceso->proc.proceso,DEMClog(&demc));
+    savepoint("vdbuscademc");   
+    *demc.comendemc=0;
+    ret=ejecutaalgdemanda(proceso,&demc,&cla,com.tipocomen,evaluarcompleta);
+    if (ret) {
+        rollbacksavepoint("vdbuscademc");
+        if (ret==VD_ESINALG) {
+            v10log(LOGERROR,"%s: Proceso %s no encuentra algoritmo para cabecera de demanda. %s\n",proceso->proc.proceso,DEMClog(&demc));           
+        } else 
+            if (ret!=VD_EERRBLOQUEO) 
+                demc.status=-demc.status;         
+    } else analizabackorderdemanda(&demc);
+    
+    ret=DEMCactualizastatus(&demc,0);
+    if (ret) {
+        rollbacksavepoint("vdbuscademc");
+        v10log(LOGERROR,"%s: Error actualizando estado de demanda %s a %ld\n",proceso->proc.proceso, DEMClog(&demc),demc.status);
+        return;
+    }    
+   
+    if (*commitfinal=='S') commit();
+    v10log(LOGNORMAL,"%s: Finalizado procesamiento de Demanda. %s\n",proceso->proc.proceso,DEMClog(&demc));
+}
+
+
+
+// PROCESO. busca las cabeceras de demandas en un estado dado, de diversos tipos
+// PARAM 1: tipos de demandas a tratar
+// PARAM 2: estado de la demandas
+// PARAM 3: evaluar todas las lineas de la demanda
+// PARAM 4: tipo de comentario
+// PARAM 5: código de clasif. para montar con la clase del artículo el discriminante 
+VDEXPORT void vdbuscademctipost(procesos *proceso)
+{
+    int ret,numtipos=0,i;
+    char listatipos[MAXCADENA]="",tipodemanda[LTIPODEMANDA]="",evaluarcompleta[2]="";
+    char paramorig[MAXCADENA]="";
+    vdstatuss stdemc;
+    vdclaseartics cla;
+    vdcomens com; 
+    vddemandacabs demc;
+
+    memset(&com,0,sizeof(com));
+    memset(&cla,0,sizeof(cla));
+
+    piece(proceso->proc.param,listatipos,"#",1);    
+    if ((ret=damestabreviada("vdbuscademctipost",proceso->proc.param, 2, "#", NULL, "DEC", &stdemc, 0))) return;
+    piece(proceso->proc.param,evaluarcompleta,"#",3);
+    piece(proceso->proc.param,com.tipocomen,"#",4);
+    piece(proceso->proc.param,cla.codclasif,"#",5);
+  
+    numtipos=numpieces(listatipos,"$");
+    for (i=1;i<=numtipos;i++) {
+	    piece(listatipos,tipodemanda,"$",i);
+        if ((ret=DEMCbuscatipoystatus(tipodemanda,stdemc.status,&demc))) continue;
+        do {
+            strcopia(paramorig,proceso->proc.param,strlen(proceso->proc.param));
+            sprintf(proceso->proc.param,"%s#%s#%s#%s#%s#%s#",
+                demc.coddemanda,demc.tipodemanda,"S",evaluarcompleta,com.tipocomen,cla.codclasif);
+            vdbuscademc(proceso);
+            strcopia(proceso->proc.param,paramorig,strlen(paramorig));            
+        } while (DEMCnexttipoystatus(&demc)==0);
+    }
+}
+
+
+
+// PROCESO. busca las líneas de demanda en un estado dado
+// PARAM 1: estado de las líneas de demanda
+// PARAM 2: tipo de comentario
+// PARAM 3: código de clasif. para montar con la clase del artículo el discriminante 
+VDEXPORT void vdbuscademlst(procesos *proceso)
+{
+    int ret;
+    vdstatuss stdeml;    
+    vdclaseartics cla;
+    vdcomens com; 
+    vddemandalins deml;
+    vdareas areori, aredest;
+
+    memset(&com,0,sizeof(com));
+    memset(&cla,0,sizeof(cla));
+    memset(&areori,0,sizeof(areori));
+    memset(&aredest,0,sizeof(aredest));
+    
+    if ((ret=damestabreviada("vdbuscademlst",proceso->proc.param, 1, "#", NULL, "DEL", &stdeml, 0))) return;
+    piece(proceso->proc.param,com.tipocomen,"#",2);
+    piece(proceso->proc.param,cla.codclasif,"#",3);
+    
+    
+    ret=DEMLbuscastatus(stdeml.status,&deml);
+    while (ret==0) {        
+        v10log(LOGNORMAL,"Encontrada línea de demanda %s\n",DEMLlog(&deml));
+        if (*cla.codclasif && CLAselcodartclasif(deml.codart,cla.codclasif,&cla)) {
+            v10log(LOGERROR,"vdbuscademlst: Articulo %s no clasificado en Clasificación %s\n",
+                deml.codart,cla.codclasif);         
+        }
+        
+        *deml.comendeml=0;        
+        savepoint("vdbuscademlst");        
+        if ((ret=DEMLlock(&deml,NOWAIT,NOVALIDA))) {
+            sprintf(deml.comendeml,"vdbuscademlst: Error bloqueado linea %s, articulo %s\n",DEMLlog(&deml),deml.codart);            
+            v10log(LOGERROR,"%s\n",deml.comendeml);
+            rollbacksavepoint("vdbuscademlst");
+        } else {
+            AREselvdarea(deml.codareaori,&areori);
+            AREselvdarea(deml.codareadest,&aredest);            
+            ret= VDEXECejecuta( proceso,&deml,"#","%s#%s#%s#%s#%s#%s#%s#%s#%s#%s#%s#%s", 
+                deml.tipodemanda,
+                deml.codareaori,areori.codalm,
+                deml.codubidest,
+                deml.codareadest,aredest.codalm,
+                deml.bloqueos,deml.codart,cla.codclase,deml.backorder,
+                deml.tiporedondeo,deml.uniagrupa);            
+            if (ret) {
+                rollbacksavepoint("vdbuscademlst");
+                deml.status=-deml.status; 
+                ret=DEMLactualizastatus(&deml,0);
+                if (ret) {
+                    rollback();
+                    v10log(LOGERROR,"vdbuscademlst: deml %s actualizado a estado %ld\n",DEMLlog(&deml),deml.status);
+                }
+                v10log(LOGERROR,"vdbuscademlst: ERROR %ld procesando demanda %s \n",ret,DEMLlog(&deml));            
+            }
+        }
+        
+        if (*deml.comendeml) {
+            if (*com.tipocomen==0) v10log(LOGERROR,"vdbuscademlst: NO SE PUEDEN TRATAR COMENTARIOS de la linea de demanda. %s\n\tNO SE HA INDICADO TIPO DE COMENTARIO\n",DEMLlog(&deml));            
+            else {
+                if (deml.codcomen==0) v10log(LOGERROR,"vdbuscademlst: NO SE PUEDEN TRATAR COMENTARIOS de tipo %s de la linea de demanda. %s\n\tCODCOMEN de la línea de demanda es 0\n",com.tipocomen,DEMLlog(&deml));            
+                else v10comen("VDDEMANDALIN",deml.codcomen,com.tipocomen,0,deml.comendeml,NULL); 
+            }
+        }    
+
+        v10log(LOGNORMAL,"Fin de procesamiento de línea de demanda %s\n",DEMLlog(&deml));              
+        commit();
+        ret=DEMLnextstatus(&deml);
+    } 
+}
+
+
+
+
+
+

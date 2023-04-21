@@ -1,0 +1,19 @@
+#***
+# VDSERIEPREP.c - Generación automática del código c para la tabla VDSERIEPREP                                                        
+# 
+# Propósito: Funciones de acceso a la tabla VDSERIEPREP
+#           
+# Autor	 : RFD
+# Revisado por: 
+# Fecha  : 16-06-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+TABLE=SPR
+EXTRA=COMENSPR,V10CADENA,1025
+
+RECORRE=STATUS,STATUS;
+UPDATE=STATUS,STATUS;
+LOCK
+
+

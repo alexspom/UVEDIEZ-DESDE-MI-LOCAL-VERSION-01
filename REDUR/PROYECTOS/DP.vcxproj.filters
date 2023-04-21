@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{df1d4c4e-23bb-42a5-a1aa-f2ac8977f702}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\LIBs">
+      <UniqueIdentifier>{0e8bc558-8839-4e4c-8ccd-074ee178737f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8ebf9c3a-f77a-4a4c-b614-2c3380f41eef}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{cf7c855d-ef72-4352-ab13-c0803656b687}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\FUENTES\vdpedidosfestivos.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\vdpedidoshoracorte.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\xvdasignatracking.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\xvdbultosfmd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FUENTES\xvdfortriggers.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\V10LIB\BINWin32\V10ORA.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10LIB\BINWin32\V10WIN.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\VDDICCIONARIO.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\vdkernel.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\VDAUTO.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\..\V10\BINWin32\vdpedidos.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+    <Library Include="..\bin\AUTODP.lib">
+      <Filter>Source Files\LIBs</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

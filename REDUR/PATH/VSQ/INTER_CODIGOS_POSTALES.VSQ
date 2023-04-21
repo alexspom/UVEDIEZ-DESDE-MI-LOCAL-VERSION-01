@@ -1,0 +1,14 @@
+CURSOR=CCARGAARTICULOS DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE CODIGOS POSTALES EN  V10INTERIN_RDRT');
+                   RESULT := VDINTERFAZ.VDCARGACODIGOSPOSTALES('V10INTERIN_RDRT');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE CODIGOS POSTALES' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CODIGOS POSTALES FINALIZADA CORRECTAMENTE.' );
+                       END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO CODIGOS POSTALES' );
+                 END;@

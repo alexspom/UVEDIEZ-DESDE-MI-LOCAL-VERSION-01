@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+ <META http-equiv="content-type" content="text/html; charset=utf-8">
+ <TITLE>Mantenimiento de flujos</TITLE>
+ <META NAME="generator" CONTENT="Adobe RoboHelp - www.adobe.com">
+ <LINK rel="StyleSheet" href="../ficheroayudav10.css"><SCRIPT LANGUAGE="JavaScript" TITLE="BSSC Special Effects" SRC="../ehlpdhtm.js"></SCRIPT>
+</HEAD>
+<BODY>
+ <H1>Mantenimiento de flujos</H1>
+ <P>Desde éste bloque se accede directamente a la tabla VDFLUJOPARAM, que es una tabla de flujos permitidos entre áreas según clases de artículos y patrones de estado.</P>
+ <P style="margin-left:28.35pt;">&nbsp;</P>
+ <P><IMG src="../image/ebx_-815726236.jpg" border=0 height=94 width=1025 alt="image\ebx_-815726236.jpg"><FONT style="font-weight:bold; " ><BR></FONT>Tiene los siguientes campos:<FONT style="font-weight:bold; " ><BR></FONT></P>
+ <UL>
+  <LI style="font-size:10pt; ">
+  <P style="margin-right:6.75pt;margin-top:0.00pt;">Código: Es el código del flujo y es la clave única que identifica cada registro.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-right:6.75pt;margin-top:0.00pt;">Área orig.: es el código del área origen del flujo del movimiento.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Área dest.: es el código del área alfanumérico del área destino permitida desde el origen especificado.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Clase: es el código de cada clase de los artículos sobre los que se define el flujo.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Pat. Estado: indica el patrón de estados posibles en que puede estar la mercancía en el flujo.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Pri. Es el nivel de prioridad del flujo cuando hay alternativas. A igualdad de PRIOFLUJO se considera como una única área. </P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Subp.: indica el segundo nivel de prioridad del flujo. A igualdad de PRIOFLUJO se tiene en cuenta la subprioridad.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Pri. mv.: indica la prioridad del movimiento gestionado por esta línea de flujo.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Camino: indica el camino que deben seguir los movimientos generados por este flujo. Pulsando <FONT style="color:blue; " >{</FONT><FONT style="color:blue; " >May+F10</FONT><FONT style="color:blue; " >}</FONT> nos muestra en modo consulta, el <A href="Mantenimiento_de_caminos.htm">Mantenimiento de caminos</A>.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Status: descripción abreviada del status. Debe existir en la tabla IPSTATUS. Pulsando <FONT style="color:blue; " >{</FONT><FONT style="color:blue; " >May+F10</FONT><FONT style="color:blue; " >}</FONT><FONT style="color:blue; " > </FONT>nos muestra en modo consulta, el Mantenimiento de estados </P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Concepto: Concepto que se registrará en los movimientos generados automáticamente por este flujo.</P></LI>
+  <LI style="font-size:10pt; ">
+  <P style="margin-top:0.00pt;">Última modificación: consta de tres campos, el primero almacena quién realiza la modificación, bien sea un usuario o un procedimiento, el segundo y el tercero almacenan la fecha y la hora respectivamente, en la que se realizó la última modificación.</P></LI>
+ </UL>
+</BODY>
+</HTML>

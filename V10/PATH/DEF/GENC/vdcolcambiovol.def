@@ -1,0 +1,19 @@
+#***
+# VDCOLCAMBIOVOL.DEF - Generación automática del código c para la tabla de 
+#                      colección de cambio de volumetria                                                       
+# 
+# Propósito: Funciones de acceso a la tabla VDCOLCAMBIOVOL
+#           
+# Autor	 : FPD
+# Revisado por: 
+# Fecha  : 24-04-2008
+#************************************************************************************
+# Modificaciones
+#***
+TABLE=CCV
+
+CLAVE=CODCOLCAMBIOVOL,CODCOLCAMBIOVOL;
+RECORRE=TIPOVOLORIG,CODCOLCAMBIOVOL,TIPOVOLORIG;
+
+INSERT 
+DELETE

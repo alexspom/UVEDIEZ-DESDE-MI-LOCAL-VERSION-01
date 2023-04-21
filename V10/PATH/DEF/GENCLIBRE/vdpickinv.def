@@ -1,0 +1,157 @@
+#***
+# VDPICKINV.DEF - Generación automática del código c SOLOQUERY para Picking inverso                                                       
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 02-09-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=PICKINV;
+
+EXTRA=RET,V10LONG;
+EXTRA=NUEVOESTATUS,V10LONG;
+EXTRA=STPDTEEQUILI,V10LONG;
+EXTRA=STPDTEBULINV,V10LONG;
+EXTRA=STPICKINV,V10LONG;
+EXTRA=HAYPICKINV,V10LONG;
+EXTRA=UBIRESTOS,V10CADENA,12;
+EXTRA=MITAREARESTOS,V10CADENA,32;
+EXTRA=MITAREAUNI,V10CADENA,32;
+EXTRA=MITAREAEMBA,V10CADENA,32;
+EXTRA=MICODCONCERESTOS,V10CADENA,10;
+EXTRA=STATUS1,V10LONG;
+EXTRA=STATUS2,V10LONG;
+EXTRA=LECTURA,V10CADENA,256;
+EXTRA=TEXTO, V10CADENA,20;
+EXTRA=ENCENDIDOS, V10LONG;
+EXTRA=DIFERIDO,V10CADENA,1;
+EXTRA=CODUBIDEST,V10CADENA,12;
+EXTRA=CODUBIRESERVA,V10CADENA,12;
+EXTRA=CODUBICODCONCE,V10CADENA,12;
+EXTRA=OBSERV,V10CADENA,1024;
+EXTRA=NUEVOCODMOV,V10DOUBLE;
+EXTRA=MAXBULTOS,V10LONG;
+EXTRA=FORZARREENGANCHE,V10CADENA,1;
+EXTRA=EJECMOVEMBA,V10CADENA,1;
+EXTRA=FORZARPICKINV,V10CADENA,1;
+EXTRA=MSJERROR,V10CADENA,1024;
+EXTRA=STATUSBUL,V10LONG
+EXTRA=STATUSBPL,V10LONG
+EXTRA=NUMEROSERIE,V10CADENA,60;
+
+
+CURSOR=CDISPENCENDIDOS, SELECT NVL(COUNT(*),0) ENCENDIDOS FROM VDINFODISP WHERE CODZONA=:VDINFODISP.CODZONA AND STATUS>:VDINFODISP.STATUS;
+
+PROCEDURE=DAMETEXTOZONA, BEGIN
+ 															VDPICKINVLUCES.DAMETEXTODISPZONA(:VDINFODISP.IDINFOPICK,:VDZONAS.CODZONA, :LECTURA, :TEXTO);
+ 												END;@
+ 													
+PROCEDURE=FINVOLUMETRIA,BEGIN 
+                           VDPICKINV.FINVOLUMETRIA(:VDPEDIDOCAB.CODDIV,
+                                                   :VDPEDIDOCAB.ANOPED,
+                                                   :VDPEDIDOCAB.CODPED,
+                                                   :VDPEDIDOCAB.SEQPED,
+                                                   :FORZARPICKINV,
+                                                   :HAYPICKINV,
+                                                   :RET);
+                        END;@
+                        
+PROCEDURE=EQUILIBRASERIE,BEGIN
+                            VDEQUILIBRA.EQUILIBRASERIE(:VDSERIEPREP.CODSERIEPREP,:STATUS1,:STATUS2,
+                                                     :STPDTEEQUILI,:STPDTEBULINV,:STPICKINV,
+                                                     :NUEVOESTATUS,:FORZARREENGANCHE,:RET);
+                          END;@
+                          
+PROCEDURE=REENGANCHAPINV, BEGIN
+                           VDPICKINV.REENGANCHAPINV(:VDSERIEPREP.CODSERIEPREP, :VDARTIC.CODART, :MITAREAUNI, :RET);
+                          END;@
+                          
+PROCEDURE=REENGANCHAEMBA, BEGIN
+                           VDPICKINV.REENGANCHAEMBA(:VDSERIEPREP.CODSERIEPREP, :VDARTIC.CODART, :MITAREAEMBA, :EJECMOVEMBA, :RET);
+                          END;@                          
+                          
+PROCEDURE=REENGANCHASPRPINV, BEGIN
+                              VDPICKINV.REENGANCHASPRPINV(:VDSERIEPREP.CODSERIEPREP, :STPDTEEQUILI,:STPDTEBULINV,:STPICKINV,
+                                                          :DIFERIDO, :MITAREAUNI, :MITAREAEMBA, :NUEVOESTATUS, :EJECMOVEMBA, :RET);
+                             END;@
+
+
+PROCEDURE=CREABULTOSPINVCONTE, BEGIN
+                                VDPICKINV.CREABULTOSPINVCONTE(:VDCONTE.CODMAT,:VDRECURSO.CODRECURSO,:VDMOVIM.TAREA,                             
+                                                              :STATUS1,:VDUBICA.CODUBI, :MITAREARESTOS, :MICODCONCERESTOS, :MAXBULTOS, :RET);
+                             END;@
+                
+CURSOR=COPEPICKINV SELECT CODOPE FROM VDUSUARIO WHERE CODOPE=:VDUSUARIO.CODOPE;                                   
+                     
+                                
+PROCEDURE=REGULARIZABPC, BEGIN
+                                VDPICKINV.REGULARIZABPC(:VDBULTOCABPINV.CODBULTO,
+                                                        :VDCONTE.CODMAT,
+                                                        :VDARTIC.CODART,
+                                                        :VDSTOCK.CODLOT,
+                                                        :VDSTOCK.UNIEMB,
+                                                        :CODUBIDEST,
+                                                        :CODUBIRESERVA,
+                                                        :VDSTOCK.CANTIDAD, 
+                                                        :VDMOVIM.CODCONCE,
+                                                        :CODUBICODCONCE,
+                                                        :OBSERV,
+                                                        :VDCOMEN.COMENTARIO,
+                                                        :RET);
+                           END;@         
+                           
+
+PROCEDURE=REGULARIZASTKPINV,BEGIN 
+                                VDPICKINV.REGULARIZASTKPINV(:VDCONTE.CODMAT, 
+                                                            :VDSTOCK.ORDENSTK,
+                                                            :VDCONCEPTO.CODCONCE,
+                                                            :CODUBICODCONCE,
+                                                            :VDSTOCK.CANTIDAD, 
+                                                            :OBSERV,
+                                                            :NUEVOCODMOV,
+                                                            :CODUBIDEST,
+                                                            :VDCOMEN.COMENTARIO,
+                                                            :RET);
+                            END;@
+                           
+                                                         
+PROCEDURE=PARTEMOVPINV, BEGIN
+                             VDPICKINV.PARTEMOVPINV(:VDMOVIM.CODMOV, 
+                                                    :CODUBIDEST,
+                                                    :VDCONTE.CODMAT,
+                                                    :NUEVOCODMOV,
+                                                    :VDCOMEN.COMENTARIO,
+                                                    :RET);
+                       END;@
+                       
+PROCEDURE=CREABPC, BEGIN
+                      VDPICKINV.CREABPC(:VDCONTE.CODMAT,:STATUS1,:MSJERROR);
+                   END;@                       
+
+## TRATAMIENTO DE NÚMEROS DE SERIE ##
+
+# BUSCA LAS LÍNEAS DE LOS BULTOS QUE TODAVÍA NO SE HAN PREPARADO
+CURSOR=LINSINPREP, SELECT BUL.CODBULTO, BUL.SEQLINEA, BUL.CANTPEDIDA, BUL.CODMOV                         
+                     FROM VDBULTOCAB BUC, VDBULTOLIN BUL, VDBULTOLINPINV BPL, VDBULTOCABPINV BPC
+                    WHERE BUC.CODPED   = :VDBULTOCAB.CODPED
+                      AND BUC.CODDIV   = :VDBULTOCAB.CODDIV
+                      AND BUC.SEQPED   = :VDBULTOCAB.SEQPED
+                      AND BUC.CODBULTO = BUL.CODBULTO
+                      AND BUL.CODART   = :VDBULTOLIN.CODART
+                      AND BUL.STATUS   = :STATUSBUL
+                      AND BUL.CODMOV   = BPL.CODMOV
+                      AND BPL.STATUS   = :STATUSBPL
+                      AND BPL.CODBULTO = BPC.CODBULTO
+                      AND BPC.STATUS  <= :VDBULTOCABPINV.STATUS
+                    ORDER BY BUL.CANTPEDIDA DESC;
+
+CURSOR=YALEIDONS, SELECT 'ERR NS YA SERVID' MSJERROR
+                    FROM VDBULTOLIN BUL
+                   WHERE BUL.NUMEROSERIE = :NUMEROSERIE
+                UNION
+                  SELECT 'ERR NS YA LEIDO, MATRICULA '||CODMAT MSJERROR
+                    FROM VDSCANNUMSERIE 
+                   WHERE NUMEROSERIE=:NUMEROSERIE;

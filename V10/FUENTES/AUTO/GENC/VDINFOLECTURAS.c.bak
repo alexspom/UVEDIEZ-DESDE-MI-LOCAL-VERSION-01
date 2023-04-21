@@ -1,0 +1,128 @@
+// Modulo generado automaticamente a partir de VDINFOLECTURAS.DEF
+//# Modulo : VDINFOLECTURAS.DEF                                                        
+//# Función: Generación automatica de rutinas C tabla VDINFOLECTURAS
+//#                        
+//# Autor	 : MGM
+//# Revisado por: 
+//# Fecha  : 10-02-2008                                              
+//#********************************************************************************
+//# Histórico de cambios
+//# ====================
+//# =================================================================================
+//#
+//TABLE=ILT
+
+#include "VDLECTURAS.H"
+#define SELILTVDINFOLECTURAS "SELECT VDINFOLECTURAS.ROWID,VDINFOLECTURAS.IDINFOLECTURA,VDINFOLECTURAS.DIRIP, "\
+                    " VDINFOLECTURAS.PUERTOTCP,VDINFOLECTURAS.PUERTO232,VDINFOLECTURAS.VELOCIDAD, "\
+                    " VDINFOLECTURAS.CHSTX,VDINFOLECTURAS.CHETX,VDINFOLECTURAS.CHSOH, "\
+                    " VDINFOLECTURAS.LONIDSCAN,VDINFOLECTURAS.LONDATA,VDINFOLECTURAS.LIBPROCESO, "\
+                    " VDINFOLECTURAS.VDEXTRA,VDINFOLECTURAS.CODOPEMODIF,VDINFOLECTURAS.FECMODIF, "\
+                    " VDINFOLECTURAS.HORAMODIF,VDINFOLECTURAS.CODCOMEN "\
+        " FROM VDINFOLECTURAS"\
+        " WHERE "\
+               " VDINFOLECTURAS.IDINFOLECTURA=:IDINFOLECTURA "
+static v10cursors *vdseliltvdinfolecturas;
+
+static vdinfolecturass svdinfolecturas;
+
+static diccols colvdinfolecturas[]={
+	{"ROWID",V10CADENA,(size_t)&svdinfolecturas.rowid,sizeof(svdinfolecturas.rowid)},
+	{"IDINFOLECTURA",V10LONG,(size_t)&svdinfolecturas.idinfolectura,sizeof(svdinfolecturas.idinfolectura)},
+	{"DIRIP",V10CADENA,(size_t)&svdinfolecturas.dirip,sizeof(svdinfolecturas.dirip)},
+	{"PUERTOTCP",V10CADENA,(size_t)&svdinfolecturas.puertotcp,sizeof(svdinfolecturas.puertotcp)},
+	{"PUERTO232",V10LONG,(size_t)&svdinfolecturas.puerto232,sizeof(svdinfolecturas.puerto232)},
+	{"VELOCIDAD",V10LONG,(size_t)&svdinfolecturas.velocidad,sizeof(svdinfolecturas.velocidad)},
+	{"CHSTX",V10CADENA,(size_t)&svdinfolecturas.chstx,sizeof(svdinfolecturas.chstx)},
+	{"CHETX",V10CADENA,(size_t)&svdinfolecturas.chetx,sizeof(svdinfolecturas.chetx)},
+	{"CHSOH",V10CADENA,(size_t)&svdinfolecturas.chsoh,sizeof(svdinfolecturas.chsoh)},
+	{"LONIDSCAN",V10LONG,(size_t)&svdinfolecturas.lonidscan,sizeof(svdinfolecturas.lonidscan)},
+	{"LONDATA",V10LONG,(size_t)&svdinfolecturas.londata,sizeof(svdinfolecturas.londata)},
+	{"LIBPROCESO",V10CADENA,(size_t)&svdinfolecturas.libproceso,sizeof(svdinfolecturas.libproceso)},
+	{"VDEXTRA",V10CADENA,(size_t)&svdinfolecturas.vdextra,sizeof(svdinfolecturas.vdextra)},
+	{"CODOPEMODIF",V10CADENA,(size_t)&svdinfolecturas.codopemodif,sizeof(svdinfolecturas.codopemodif)},
+	{"FECMODIF",V10LONG,(size_t)&svdinfolecturas.fecmodif,sizeof(svdinfolecturas.fecmodif)},
+	{"HORAMODIF",V10CADENA,(size_t)&svdinfolecturas.horamodif,sizeof(svdinfolecturas.horamodif)},
+	{"CODCOMEN",V10LONG,(size_t)&svdinfolecturas.codcomen,sizeof(svdinfolecturas.codcomen)}
+	};
+static diccionarios dvdinfolecturas[]={
+    {colvdinfolecturas,17}
+};
+diccionario dilt={dvdinfolecturas,1};
+
+static char msglogILT[LCADENA];
+static char msgdebugILT[LCADENABIG];
+static int init=0;
+
+
+static void fin_vd_ilt(void)
+{
+if (vdseliltvdinfolecturas) {
+    liberacursor(vdseliltvdinfolecturas);
+    vdseliltvdinfolecturas = NULL;
+}
+}
+static void init_seliltvdinfolecturas(void)
+{
+    int nc;
+
+    if (init == 0) for (nc=0;nc<dvdinfolecturas[0].numcol;nc++) dvdinfolecturas[0].c[nc].offset-=(size_t)&svdinfolecturas;
+    vdseliltvdinfolecturas=abrecursordebug(SELILTVDINFOLECTURAS,1280);
+    definetodo(vdseliltvdinfolecturas,svdinfolecturas.rowid,sizeof(svdinfolecturas.rowid),V10CADENA,
+                          &svdinfolecturas.idinfolectura,sizeof(svdinfolecturas.idinfolectura),V10LONG,
+                          svdinfolecturas.dirip,sizeof(svdinfolecturas.dirip),V10CADENA,
+                          svdinfolecturas.puertotcp,sizeof(svdinfolecturas.puertotcp),V10CADENA,
+                          &svdinfolecturas.puerto232,sizeof(svdinfolecturas.puerto232),V10LONG,
+                          &svdinfolecturas.velocidad,sizeof(svdinfolecturas.velocidad),V10LONG,
+                          svdinfolecturas.chstx,sizeof(svdinfolecturas.chstx),V10CADENA,
+                          svdinfolecturas.chetx,sizeof(svdinfolecturas.chetx),V10CADENA,
+                          svdinfolecturas.chsoh,sizeof(svdinfolecturas.chsoh),V10CADENA,
+                          &svdinfolecturas.lonidscan,sizeof(svdinfolecturas.lonidscan),V10LONG,
+                          &svdinfolecturas.londata,sizeof(svdinfolecturas.londata),V10LONG,
+                          svdinfolecturas.libproceso,sizeof(svdinfolecturas.libproceso),V10CADENA,
+                          svdinfolecturas.vdextra,sizeof(svdinfolecturas.vdextra),V10CADENA,
+                          svdinfolecturas.codopemodif,sizeof(svdinfolecturas.codopemodif),V10CADENA,
+                          &svdinfolecturas.fecmodif,sizeof(svdinfolecturas.fecmodif),V10LONG,
+                          svdinfolecturas.horamodif,sizeof(svdinfolecturas.horamodif),V10CADENA,
+                          &svdinfolecturas.codcomen,sizeof(svdinfolecturas.codcomen),V10LONG,
+                          NULL);
+    bindtodo(vdseliltvdinfolecturas,"IDINFOLECTURA",&svdinfolecturas.idinfolectura,sizeof(svdinfolecturas.idinfolectura),V10LONG,
+                          NULL);
+    if (init == 0) {
+        atexit(fin_vd_ilt);
+        init = 1;
+    }
+}
+
+diccionario *ILTdamediccionario(void)
+{
+     return(&dilt);
+}
+
+int ILTselvdinfolecturas(long idinfolectura,vdinfolecturass *ilt)
+{
+  int vdret;
+  if (vdseliltvdinfolecturas==NULL) init_seliltvdinfolecturas();
+  memset(&svdinfolecturas,0,sizeof(svdinfolecturas));
+  svdinfolecturas.idinfolectura=idinfolectura;
+  vdret=ejefetchcursor(vdseliltvdinfolecturas);
+  if (vdret) {
+    v10log(LOGDEBUGAPI,"Ejefetch %s vdseliltvdinfolecturas. vdret %d. \n",ILTlog(&svdinfolecturas),vdret);
+    return(VD_EERRORACLE);
+   }
+  *ilt=svdinfolecturas;
+  return(vdret);
+}
+
+char * ILTlog(vdinfolecturass *ilt)
+{
+    sprintf(msglogILT, "VDINFOLECTURAS: idinfolectura %ld ",ilt->idinfolectura);
+    return(msglogILT);
+}
+
+char * ILTdebug(vdinfolecturass *ilt)
+{
+    debugestruct(&dilt,ilt,msgdebugILT);
+    return(msgdebugILT);
+}
+

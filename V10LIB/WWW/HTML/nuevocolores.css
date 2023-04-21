@@ -1,0 +1,331 @@
+ html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font: 10px Verdana, Arial, sans-serif;
+    color: #333333;
+    background-color: #FFFFFF;
+    background-image: url(../img/grid-bg.gif);
+}
+
+.fixchrome {
+    margin: 0;
+    font: 10px Verdana, Arial, sans-serif;
+    color: #333333;
+    background-color: #FFFFFF;
+    background-image: url(../img/grid-bg.gif);
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+/* definicion de los objetos de la cabecera y contenido */
+
+/*Hago que el menu cambie de tamaño automagicamente - pibe */
+
+.contenido {
+    background-color: #FFFFFF;
+}
+.cabecera {} .title {
+    float: left;
+    padding: 28px 0 0 76px;
+}
+.title h1 {
+    color: #FFF;
+    font: normal 2em Verdana, sans-serif;
+}
+
+
+.container {
+    min-height: 100%;
+    position: relative;
+}
+
+.header {} 
+
+.body1 {
+    padding-top: 5px;
+    padding-bottom: 60px;
+}
+
+.wrapper {
+    position: relative;
+}
+.right,
+.left {
+    width: 10%;
+    position: absolute;
+}
+.right {
+    right: 0;
+}
+.left {
+    left: 0;
+}
+.wrapper1 {
+    position: relative;
+}
+.right1,
+.left {
+    width: 10%;
+    position: absolute;
+}
+.right1 {
+    right: 0;
+}
+.left1 {
+    left: 0;
+}
+.wrapper2 {
+    position: relative;
+}
+.right2,
+.left {
+    width: 10%;
+    position: absolute;
+}
+.right2 {
+    right: 0;
+}
+.left2 {
+    left: 0;
+}
+
+.logov10soluciones {
+    color: #FFFFFF;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+.textoempresa {
+    color: #d4d4d4;
+    font-family: Verdana, Geneva;
+    font-size: 70px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.barrita {
+    background: rgb(59, 103, 158);
+    /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNiNjc5ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzJiODhkOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzIwN2NjYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3ZGI5ZTgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, rgba(59, 103, 158, 1) 0%, rgba(43, 136, 217, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%);
+    /* FF3.6+ */
+    
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(59, 103, 158, 1)), color-stop(50%, rgba(43, 136, 217, 1)), color-stop(51%, rgba(32, 124, 202, 1)), color-stop(100%, rgba(125, 185, 232, 1)));
+    /* Chrome,Safari4+ */
+    
+    background: -webkit-linear-gradient(top, rgba(59, 103, 158, 1) 0%, rgba(43, 136, 217, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    
+    background: -o-linear-gradient(top, rgba(59, 103, 158, 1) 0%, rgba(43, 136, 217, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%);
+    /* Opera 11.10+ */
+    
+    background: -ms-linear-gradient(top, rgba(59, 103, 158, 1) 0%, rgba(43, 136, 217, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%);
+    /* IE10+ */
+    
+    background: linear-gradient(to bottom, rgba(59, 103, 158, 1) 0%, rgba(43, 136, 217, 1) 50%, rgba(32, 124, 202, 1) 51%, rgba(125, 185, 232, 1) 100%);
+    /* W3C */
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#7db9e8', GradientType=0);
+    /* IE6-8 */
+    
+    width: 2000px;
+    height: 5px;
+}
+
+
+/* estilos del login */
+
+.flat-form {
+  background: #e8e8e8;
+  margin-top: 15px;
+  margin-left: 10px;
+  width: 390px;
+  height: 340px;
+  position: relative;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight:normal;
+}
+
+.flat-form h1{
+  font-size:25px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-weight:normal;
+}
+
+.tabs {
+  background: #cccccc;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+.tabs li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+.tabs a {
+  background: #b0b0b0;
+  display: block;
+  float: left;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  padding: 12px 22px 12px 22px;
+  /*border-right: 1px solid @tab-border;*/
+
+}
+.tabs li:last-child a {
+  border-right: none;
+  width: 174px;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+.tabs a.active {
+  background: #ffb700;
+  border-right: none;
+  -webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+}
+.form-action {
+  padding: 0 20px;
+  position: relative;
+}
+
+.form-action h1 {
+  font-size: 42px;
+  padding-bottom: 10px;
+}
+.form-action p {
+  font-size: 12px;
+  padding-bottom: 10px;
+  line-height: 25px;
+}
+form {
+  padding-right: 20px !important;
+}
+form input[type=text],
+form input[type=password],
+form input[type=submit] {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+.inputform {
+  width: 100%;
+  height:30px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  background: #fff;
+  border: none;
+  color: #e74c3c;
+  outline: none;
+  font-size:20px;
+}
+
+.dark-box {
+  background: #5e0400;
+  box-shadow: 1px 3px 3px #3d0100 inset;
+  height: 40px;
+  width: 50px;
+}
+.form-action .dark-box.bottom {
+  position: absolute;
+  right: 0;
+  bottom: -24px;
+}
+.tabs + .dark-box.top {
+  position: absolute;
+  right: 0;
+  top: 0px;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+.button {
+            border: none;
+            display: block;
+            background: #00535f;
+            height: 40px;
+            width: 80px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 5px;
+            /*box-shadow: 0px 3px 1px #2075aa;*/
+            -webkit-transition: all 0.15s linear;
+            -moz-transition: all 0.15s linear;
+            transition: all 0.15s linear;
+            margin-top: 10px;
+}
+        
+.button:hover {
+            background: #078a9e;
+            /*box-shadow: 0 3px 1px #237bb2;*/
+}
+        
+.button:active {
+            background: #00535f;
+            /*box-shadow: 0 3px 1px #0f608c;*/
+}
+
+::-webkit-input-placeholder {
+  color: #e74c3c;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #e74c3c;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #e74c3c;
+}
+:-ms-input-placeholder {
+  color: #e74c3c;
+}
+
+
+#Date { font-family:'verdana';font-size:13px; font-weight:bold;text-align:center; text-shadow:0 0 5px #cccccc; margin-top:-100px;margin-right:30px;white-space: nowrap;}
+#point { position:relative; -moz-animation:mymove 1s ease infinite; -webkit-animation:mymove 1s ease infinite; padding-left:10px; padding-right:10px; }
+
+@-webkit-keyframes mymove 
+{
+0% {opacity:1.0; text-shadow:0 0 20px #cccccc;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #cccccc; }	
+}
+
+
+@-moz-keyframes mymove 
+{
+0% {opacity:1.0; text-shadow:0 0 20px #cccccc;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #cccccc; }	
+}

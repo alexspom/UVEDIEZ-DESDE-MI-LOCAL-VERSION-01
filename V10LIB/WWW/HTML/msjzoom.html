@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body>
+<!--V10INCLUDEDATA-->
+<script DEFER>
+function fonkeyupmsj(mievento,tecla){
+var objventana=window.document.getElementById('msgzoom');
+switch (tecla){
+case 27:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('',v10lib.eventozoom,0);break;
+case 13:objventana.style.visibility='hidden';v10lib.desonkeyefectos(mievento);v10lib.mandaevento('',v10lib.eventozoom,v10lib.opczoom);break;
+case 40://cuu
+v10lib.desonkeyefectos(mievento);v10lib.selopcionzoom(v10lib.opczoom+1);break;
+case 38://cua
+v10lib.desonkeyefectos(mievento);v10lib.selopcionzoom(v10lib.opczoom-1);break;
+default:v10lib.desonkeyefectos(mievento);}}
+</script>
+<table id='msgzoom'ondblclick="v10lib.fondblclick()"onclick="v10lib.fondblclick()"border="0"cellspacing="0"cellpadding="0"style="z-index:98;position:absolute;top:60px;left:5px;">
+<tr onmousedown="v10lib.BeginDrag('msgzoom')"class="v10ventarribaizq"><td></td><td class="v10ventarribamed"><span class="v10titulomens"><!--V10TITULO--></span></td><td class="v10ventarribader"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed"><br/>
+<table style="cursor:hand;"id="tbmsgzoom"onmouseover="fonmouseover()"width="300"class="v10opczooms"border="0"cellspacing="0"cellpadding="0">
+<!--V10TEXTOMENSAJE-->
+</table></td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table>
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>
+
+ 	

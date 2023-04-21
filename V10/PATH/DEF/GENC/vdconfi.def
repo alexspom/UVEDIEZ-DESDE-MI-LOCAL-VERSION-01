@@ -1,0 +1,15 @@
+# M¢dulo : VDCONFI.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDCONFI
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 18-12-2007                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=CONF;
+CLAVE=PROPIEDAD,PROPIEDAD;WHERE=ACTIVO='S';
+
+ORADEBUG=0

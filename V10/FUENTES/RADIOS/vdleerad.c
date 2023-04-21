@@ -1,0 +1,213 @@
+#include "vd.h"
+
+FILE *entrada;
+char codrecurso[LCODRECURSO]="";
+char hora[10];
+int inipantalla;
+static char dirlog[MAXPATH+1];
+static char buffer[MAXCADENA];
+static windows wpantalla,wcampos,wmensajes,wbusca;
+static v10dialogs vibusca;
+v10horas inihora,finhora;
+static char busca[MAXCADENA]="";
+static char nombrefich[MAXPATH];
+
+int abrefichero(char *nombre)
+{	
+    char nfich[MAXPATH];
+    if (es_blanco(dirlog)) {
+        char *aux;
+        if ((aux=getenv("DIRLOG"))!=NULL) strcpy(dirlog,aux);
+        else strcpy(dirlog,".\\");
+    }	
+    sprintf(nfich,"%s%s%s",dirlog,dirlog[strlen(dirlog)-1]=='\\'?"":"\\",nombre);
+	entrada=fopen(nfich,"rb");
+	if (entrada==NULL) return(-1);
+	return(0);
+}
+
+static void cierrafichero(void)
+{
+	if (entrada) fclose(entrada);
+}
+
+static void sigpantalla(void)
+{
+	char *ret;
+	char cadenainicio[MAXCADENA];
+	fseek(entrada,inipantalla,SEEK_SET);
+	sprintf(cadenainicio,"%s Inicio de pantalla",codrecurso);
+	while ((ret=fgetss(buffer,sizeof(buffer),entrada))!=NULL) {
+		if (strstr(buffer,cadenainicio)!=NULL) {
+        	fseek(entrada,0,SEEK_CUR);
+			inipantalla=ftell(entrada);
+			return;
+		}
+	}
+	return;
+}
+
+static void antpantalla(void)
+{
+	int off,leidos,bytes;
+	static char buffer[MAXCADENA+1];
+	char *ptr;
+	static char cadenainicio[MAXCADENA];
+	sprintf(cadenainicio,"%s Inicio de pantalla",codrecurso);
+	off=inipantalla-sizeof(buffer)+1;
+	if (off<0) {
+		off=0;
+		bytes=inipantalla-10;
+	} else bytes=MAXCADENA-10;
+	fseek(entrada,off,SEEK_SET);
+	leidos=fread(buffer,1,bytes,entrada);
+	buffer[bytes]=0;
+	for (ptr=buffer+inipantalla-off-10;ptr>buffer;ptr--) {
+		if (*ptr=='\n') {
+			if (strstr(ptr+1,cadenainicio)!=NULL) {
+				inipantalla=off+(ptr-buffer)+1;
+				return;
+			}
+		}
+	}
+	if (off>0) {
+		inipantalla=off;
+		antpantalla();
+	} else inipantalla=off;
+	return;
+}
+
+
+static void funcbusca(void)
+{
+	char *ret;
+	dialoginputpres(&vibusca);
+	muestradialog(&vibusca,0);
+	actualizadialog(&vibusca);
+	sigpantalla();
+	while ((ret=fgetss(buffer,sizeof(buffer),entrada))!=NULL) {
+		if (*buffer!='0' || strcmp(buffer+3,hora)<0) continue;
+		inipantalla=ftell(entrada);
+		if (strstr(buffer,busca)!=NULL) {
+			antpantalla();
+			sigpantalla();
+			return;
+		}
+	}
+}
+
+static void presentapantalla(void)
+{
+	char cadenafin[MAXCADENA];
+	char cadenainicio[MAXCADENA];
+	char cadenacampo[MAXCADENA];
+	char cadenaterm[MAXCADENA];
+	sprintf(cadenainicio,"%s Inicio de pantalla",codrecurso);
+    clv(&wpantalla);
+    clv(&wcampos);
+    clv(&wmensajes);
+	sprintf(cadenafin,"%s Fin de pantalla",codrecurso);
+	sprintf(cadenacampo,"%s me devuelve campo",codrecurso);
+	sprintf(cadenaterm,"%s",codrecurso);
+	fseek(entrada,inipantalla,SEEK_SET);
+	while (fgetss(buffer,sizeof(buffer),entrada)!=NULL) {
+		if (strstr(buffer,cadenafin)!=NULL) {
+			break;
+		}
+		if (strstr(buffer,cadenaterm)!=NULL) v10printf(&wpantalla,"%s\n",strstr(buffer,cadenaterm)+strlen(cadenaterm));
+	}
+	while (fgetss(buffer,sizeof(buffer),entrada)!=NULL) {
+		if (strstr(buffer,cadenainicio)!=NULL) {
+			break;
+		}
+		if (strstr(buffer,cadenacampo)!=NULL) {
+		   v10printf(&wcampos,"%s\n",buffer);
+		}
+		if (strstr(buffer,cadenaterm)!=NULL) v10printf(&wmensajes,"%s\n",buffer);
+	}
+}
+
+char pbusca[][82]={"Terminal __________ Hora ________ Cadena _100____________________________________"};
+
+static initvdleerad(void)
+{
+	initdian(&vibusca,pbusca,"Busqueda",1,1,"PANTALLA");
+	asignadialog(&vibusca,codrecurso,hora,busca,NULL);
+	initvn(&wpantalla,1,5,50,29,"LOGS");
+    enmarca(&wpantalla,0," PANTALLA ");
+	initvn(&wcampos,53,5,150,29,"LOGS");
+    enmarca(&wcampos,0," CAMPOS ");
+	initvn(&wmensajes,1,32,150,62,"LOGS");
+    enmarca(&wmensajes,0," MENSAJES ");
+	muestradialog(&vibusca,0);
+	actualizadialog(&vibusca);
+	pintaonline("{ARRIBA} Anterior pantalla {ABAJO} Siguiente pantalla {B} Buscar {AF10} Salir");
+}
+
+
+int trataparamleerad(char *cadena)
+{
+    switch (toupper(*cadena)) {
+		  case 'R' :switch (toupper(cadena[1])) {
+                       case 'F': strcpy(nombrefich,cadena+2);
+                                 break;
+                    }
+                    break;
+    }
+    return(0);
+}
+
+
+int main(int argc,char *argv[])
+{
+	int ret,salir=0;
+	initvdleerad();
+    trataparamstd(argc,argv,trataparamleerad,NULL);
+	if (es_blanco(nombrefich)) {
+		char mifecha[20];
+		jul2a(damedate(),"Y.YYMMDD",mifecha);
+		sprintf(nombrefich,"RADIOS%s.LOG",mifecha);
+	}
+	if (abrefichero(nombrefich)!=0) final(("No puedo abrir fichero %s",nombrefich));
+	sigpantalla();
+    presentapantalla();
+	while (!salir) {
+		ret=tecla();
+		switch (toupper(ret)) {
+		case cuu:antpantalla();
+				 sigpantalla();
+			break;
+		case cua:sigpantalla();
+			break;
+		case home:inipantalla=0;
+			      sigpantalla();
+				  break;
+		case end: fseek(entrada,0,SEEK_END);
+			      inipantalla=ftell(entrada);
+				  break;
+		case A_F(10): salir=1;
+			         break;
+		case 'B' :funcbusca();
+			      break;
+		}
+		presentapantalla();
+	}
+	cierrafichero();
+    return(0);
+}
+
+int PASCAL WinMain(HINSTANCE hinst, HINSTANCE hprev,
+                   LPSTR cmd, int cmdshow)
+{
+    int ret;
+    v10hinst=hinst;
+    v10hprev=hprev;
+    onexit(ejecutaexit);
+	trataparamstd(__argc,__argv,trataparampremain,NULL);
+	
+	initapptxt(hinst,hprev,SW_SHOWMAXIMIZED,TITULOVENTANA,CW_USEDEFAULT,CW_USEDEFAULT,
+        0,0,COLUMNASPANTALLA,LINEASPANTALLA,ESTILOV10,0,NULL,0,0,NULL);
+    trataparamstd(__argc,__argv,trataparammain,trataparamoracle,NULL); 
+    ret=main(__argc,__argv);
+    return(ret);
+}

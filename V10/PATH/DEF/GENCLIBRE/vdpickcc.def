@@ -1,0 +1,72 @@
+#***
+# VDPICKCC.DEF - Generación automática del código c SOLOQUERY para Picking inverso                                                       
+# 
+# Propósito: idem.
+#           
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 01-02-2010                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=PICKCC;
+
+EXTRA=TAREADEF,V10CADENA,50;
+EXTRA=STBUCPENDIENTE,V10LONG; 
+EXTRA=TEXTO, V10CADENA,20;
+EXTRA=MODOREG,V10CADENA,2; 
+EXTRA=ERROR,V10LONG;
+
+
+CURSOR=DISPAENCENDERENZONA, SELECT DISTINCT IDI.IDINFOPICK, IDI.NUMDISP, IDI.ORDENDISP  
+                            FROM VDINFODISP IDI,
+                                 (SELECT IDI.IDINFOPICK, IDI.NUMDISP
+                                  FROM VDMOVIM MOV, VDUBICA UBI, VDZONAS ZON, VDINFOPARAMCC IPC, VDINFODISP IDI 
+                                  WHERE VD.DAMENUMEROPIEZA (NVL(VD.PIECE(IPC.PARAM,'#',1),:TAREADEF), MOV.TAREA,',')>0 AND 
+                                        MOV.STATUS = :VDSTATUS.STATUS AND
+                                        UBI.CODUBI = MOV.CODUBIORI AND UBI.CODZONA = ZON.CODZONA AND ZON.CODZONA = :VDZONAS.CODZONA AND 
+                                        IPC.CODZONA(+) = ZON.CODZONA AND IDI.CODUBI = UBI.CODUBI AND 
+                                        MOV.CODMOV NOT IN (SELECT CODMOV FROM VDBULTOCAB BUC, VDBULTOLIN BUL 
+                                                           WHERE BUC.TIPOBULTO = 'E' AND BUC.STATUS = :STBUCPENDIENTE AND 
+                                                                 BUC.CODBULTO = BUL.CODBULTO AND BUL.STATUS = VDST.FBULASERVIR)                           
+                                 UNION 
+                                  SELECT IDI.IDINFOPICK, IDI.NUMDISP
+                                  FROM VDMOVIM MOV, VDUBICA UBI, VDZONAS ZON, VDINFOPARAMCC IPC, VDBULTOLIN BUL, VDBULTOCAB BUC, 
+                                       VDPEDIDOCAB PED, VDSERIEPREP SPR, VDINFODISP IDI
+                                  WHERE VD.DAMENUMEROPIEZA (NVL(VD.PIECE(IPC.PARAM,'#',1),:TAREADEF),  MOV.TAREA,',')>0 AND 
+                                        MOV.STATUS = :VDSTATUS.STATUS  AND
+                                        UBI.CODUBI = MOV.CODUBIORI AND UBI.CODZONA = ZON.CODZONA AND ZON.CODZONA = :VDZONAS.CODZONA AND 
+                                        IPC.CODZONA(+) = ZON.CODZONA AND MOV.CODMOV = BUL.CODMOV AND BUL.STATUS = VDST.FBULASERVIR AND 
+                                        BUL.CODBULTO = BUC.CODBULTO AND BUC.STATUS = :STBUCPENDIENTE AND
+                                        BUC.CODPED = PED.CODPED AND BUC.CODDIV = PED.CODDIV AND BUC.ANOPED = PED.ANOPED AND BUC.SEQPED = PED.SEQPED AND 
+                                        (PED.CODAGE = VD.PIECE(IPC.PARAM,'#',2) OR VD.PIECE(IPC.PARAM,'#',2) IS NULL) AND 
+                                        PED.CODSERIEPREP = SPR.CODSERIEPREP AND SPR.PRIORIDAD <= NVL(TO_NUMBER(VD.PIECE(IPC.PARAM,'#',3)),9999) AND
+                                        IDI.CODUBI = UBI.CODUBI) DISPLUCES
+                            WHERE IDI.IDINFOPICK = DISPLUCES.IDINFOPICK AND
+                                  IDI.NUMDISP = DISPLUCES.NUMDISP
+                            ORDER BY IDI.ORDENDISP; 
+
+CURSOR=PICKPDTE, SELECT CODMOV FROM VDCONTE CNT, TABLE(VDPICKCCLUCES.DAMEMOVSCC(:VDZONAS.CODZONA,CNT.CODMAT)) 
+                 WHERE CNT.CODUBI = :VDUBICA.CODUBI
+                 ORDER BY CNT.POSCONTE;
+                            
+PROCEDURE=AGRUPAMOVYBUL, BEGIN
+                         VDPICKCCLUCES.AGRUPAMOVYBUL (:VDUBICA.CODUBI, :VDZONAS.CODZONA, :ERROR); 
+ 		                     END;@
+											                            
+PROCEDURE=DAMECOMPBOCACANAL, BEGIN
+                                VDPICKCCLUCES.DAMECOMPBOCACANAL (:VDZONAS.CODZONA, :VDCONTE.CODMAT, :TEXTO, :ERROR);
+                             END;@
+
+
+SELECT=DAMECANTPDTEMAT, SELECT SUM(TRUNC(CANTIDAD/UNIEMB)) BULTOS FROM TABLE(VDPICKCCLUCES.DAMEMOVSCC(:VDZONAS.CODZONA,:VDCONTE.CODMAT));                                                                                       	
+
+PROCEDURE=REGULARIZADISP BEGIN
+                         VDPICKCCLUCES.REGULARIZADISP (:VDINFODISP.IDINFOPICK, :VDINFODISP.NUMDISP, :VDMOVIM.CANTIDAD, :VDMOVIM.CODCONCE, :VDUBICA.CODUBI, :MODOREG, :ERROR);
+          END;@  
+          
+PROCEDURE=EJECUTAMOV,BEGIN
+                         VDPICKCCLUCES.EJECUTAMOV (:VDMOVIM.CODMOV, :ERROR);
+                      END;@
+
+  

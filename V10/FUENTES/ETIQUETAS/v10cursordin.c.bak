@@ -1,0 +1,159 @@
+#include "v10etiqueta.h"
+
+
+#define DEFAULT_PREC	18
+#define DEFAULT_SCALE	6
+static int validabuffer(idatos *idat,char *buffer)
+{
+   idatos *lpidat;
+  	for (lpidat=idat+1;lpidat->inicio;lpidat++) {
+       if (buffer[lpidat->inicio-2]!='|') {
+          lpidat--;
+          v10log(LOGNORMAL,"Campo %s tiene la longitud incorrecta\n",lpidat->nombre);
+          return(-1);
+        }
+    }
+   return(0);
+}
+
+static char *genbuffer2campos(v10cursors *cur)
+{
+   campooras *c;
+	int n,len ;
+   if (!cur)   return(NULL);
+   for (n=len=0,c=cur->def;n <cur->ndef;c++,n++) {
+        switch (c->tipo) {
+        	case V10DOUBLE:
+              len += (c->scale==0 && c->prec==0) ? DEFAULT_PREC  :
+                       (c->prec >DEFAULT_PREC) ? DEFAULT_PREC : c->prec;
+              len++; //añadimos punto decimal
+              len += (c->scale > 0) ? c->scale : DEFAULT_SCALE;
+              len++;
+              break;
+         case V10ULONG:
+         case V10LONG:
+              len +=c->prec + 1;
+              break;
+         default:
+              len +=c->oralen+2;
+              break;
+        }
+    }
+   len++;
+   return((char *)calloc(1,len));
+}
+
+static int gencampos2idatos(v10cursors *cur,idatos **idat)
+{
+    campooras *c;
+    int n,len ;
+    idatos *lpidat;
+    if (!idat) return(-1);
+    if (!cur)   return(-1);
+    *idat=calloc(cur->ndef + 1,sizeof(idatos));
+    for (lpidat=*idat,n=len=0,c=cur->def;n <cur->ndef;c++,n++,lpidat++) {
+       switch (c->tipo) {
+        	case V10DOUBLE:
+              lpidat->lon=(c->scale==0 && c->prec==0) ? DEFAULT_PREC :
+                				(c->prec >DEFAULT_PREC) ? DEFAULT_PREC : c->prec ;
+              lpidat->lon +=(c->scale > 0) ? c->scale : DEFAULT_SCALE;
+              lpidat->lon++;
+              break;
+         case V10ULONG:
+         case V10LONG:
+              lpidat->lon =c->prec ;
+              break;
+         default:
+              lpidat->lon =c->oralen;
+              break;
+       }
+       strcpy(lpidat->nombre,c->nombre);
+       lpidat->inicio =len+1;
+       len +=lpidat->lon + 1;
+    }
+    return(0);
+}
+
+static void campos2buffer(v10cursors *cur, char *buffer)
+{
+    int n;
+    campooras *c;
+    int len ;
+    for (n=len=0,c=cur->def;n <cur->ndef;c++,n++) {
+        switch (c->tipo) {
+        	case V10DOUBLE:
+              len +=sprintf(buffer+len,"%0*.*lf|",
+                			(c->scale==0 && c->prec==0) ? DEFAULT_PREC +  DEFAULT_SCALE +1 :
+                               			(c->prec >DEFAULT_PREC) ?
+                               				DEFAULT_PREC + ((c->scale > 0) ? c->scale : DEFAULT_SCALE) + 1 :
+                               				c->prec + ((c->scale > 0) ? c->scale : DEFAULT_SCALE)+1 ,
+                        (c->scale > 0) ? c->scale : DEFAULT_SCALE,
+                        *(double *)c->dato);
+                break;
+          case V10ULONG:
+            	len +=sprintf(buffer+len,"%0*u|",c->prec,*(unsigned long *) c->dato);
+               break;
+          case V10LONG:
+            	len +=sprintf(buffer+len,"%0*ld|",c->prec,*(long *) c->dato);
+            	break;
+            default:
+            	len +=sprintf(buffer+len,"%-*.*s|",c->oralen,c->oralen,(char *)c->dato);
+				break;
+        }
+    }
+}
+
+char *vgeneraetiqueta(idatos **lplpidatos,v10cursors *cur,va_list arg)
+{
+    campooras *c;
+    int lon;
+    char *buffer;
+    void *ptr;
+    if (!lplpidatos) return(NULL);
+    if (!cur) return(NULL);
+    while (1) {
+        char *nombre;
+        nombre=va_arg(arg,char *);
+        if (nombre==NULL) break;
+        ptr=va_arg(arg,void *);
+        lon=(int)strlen(ptr)+1;
+        c=campobind(cur,nombre);
+        if (c==NULL) continue;
+        if (c->tipo!=V10CADENA || c->lon!=lon) {
+            if (c->meminterna==0 && c->dato) {
+                v10log(LOGERROR,"Campo dinamico %s en cursor %s no esta asignado dinamicamente",nombre,cur->nombre);
+                return(NULL);
+            }
+            if (c->dato) free(c->dato);
+            if (binddinamico(cur,V10CADENA,lon,nombre)) {
+                va_end(arg);
+                return(NULL);
+            }
+        }
+        strcpy(c->dato,(char *)ptr);
+    }
+    if (*lplpidatos==NULL) {
+        if (definetododinamico(cur)) return(NULL);
+        if (gencampos2idatos(cur,lplpidatos)) return(NULL);
+    }
+    ejecutacursor(cur);
+    if (fetchcursor(cur)) return(NULL);
+    buffer=genbuffer2campos(cur);
+    if (!buffer) return(NULL);
+    campos2buffer(cur,buffer);
+    if (validabuffer(*lplpidatos,buffer)) {
+        free(buffer);
+        return(NULL);
+    }
+    return (buffer);
+}
+
+char *generaetiqueta(idatos **lplpidatos,v10cursors *cur,...)
+{
+    char *ret;
+    va_list arg;
+    va_start(arg,cur);
+    ret=vgeneraetiqueta(lplpidatos,cur,arg);
+    va_end(arg);
+    return (ret);
+}

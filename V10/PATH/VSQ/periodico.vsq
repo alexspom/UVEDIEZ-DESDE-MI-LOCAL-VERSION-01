@@ -1,0 +1,7 @@
+CURSOR=PERIODICO DECLARE
+                   I NUMBER;
+                 BEGIN
+                   FOR I IN 1..1000 LOOP
+                     VDLOG.LOG(1,'LINEA OPEIPIWEPOEWIPEO POEIE POIEWPOIEWPO IEPOEIW POEIWPOEI EWPOIEW '||I);
+                   END LOOP;
+                  END;@

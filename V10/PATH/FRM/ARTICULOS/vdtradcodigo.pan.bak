@@ -1,0 +1,46 @@
+# MOdulo   : VDTRADCódigo.PAN
+# Función  : Mantenimiento de traducciones de Códigos
+#
+# Creación : 01-10-2007
+# Autor    : EAA
+###########################################
+# HistOrico de cambios:
+CODE ARTICLE ALTERNATIF
+Artículo             Designación               Alternativo              A Coment    Ultima modificación
+_20_________________ _40______________________ _40_____________________ _ @L@@@@@@@ _32________ ¿D-MM-Y.YY  ________
+|
+
+POSX=6
+POSY=5
+REGPAG=30
+
+TABLA=VDTRADCCODIGO
+TITULO=CODE ARTICLE ALTERNATIF
+
+
+
+PREINSERT=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+PREUPDATE=FEJECUTA("CSELMODIF","ERROR EN FECHA DE MODIFICACION")
+
+
+
+
+CAMPO=CODART,NOUPDATE,TOOLTIP("Código del artículo"),POSTCHANGE=FDESIGNACION("CSELDESART","No existe artículo"),
+                CONTEXTUAL=FEJECUTAFORM("VDSELART","N","","","CODART=:CODART","Selección de artículos","N"),TITULO("Artículo")
+CAMPO=DESART,AUXILIAR,NOENTER,TOOLTIP("Designación del artículo"),TITULO("Designación")
+CAMPO=CODARTALT,TOOLTIP("Código alternativo para el producto"),TITULO("Alternativo")
+CAMPO=SWTACTIVO,TOOLTIP("Indica si el Código alternativo esta activo"),POSTCHANGE=FENRANGO("S,N","Debe introducir S(i) o N(o)"),TITULO("A"),CHECKBOX("N","S")
+CAMPO=CODCOMEN,NOUPDATE,TOOLTIP("Código de comentario asociado al producto"),TITULO("Comen")
+CAMPO=CODOPEMODIF,NOENTER,TOOLTIP("Operario que realizO la última modificación"),TITULO("Ultima modificación")
+CAMPO=FECMODIF,NOENTER,TOOLTIP("Fecha en que se modificaron los datos del registro")
+CAMPO=HORAMODIF,NOENTER,TOOLTIP("Hora en que se modificaron a los datos del registro")
+
+CURSOR=CSELMODIF SELECT VDUSER.GETUSER CODOPEMODIF,VD.FECHASYS FECMODIF,VD.HORASYS HORAMODIF FROM DUAL;
+
+CURSOR=CSELDESART SELECT DESART FROM VDARTIC WHERE CODART=:CODART;
+
+
+ONLINE=     {F4} Enregistrer          {F9} Effacer {CF5} Menu;
+
+
+

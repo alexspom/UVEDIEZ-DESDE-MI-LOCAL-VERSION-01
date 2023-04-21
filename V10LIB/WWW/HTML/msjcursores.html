@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Ventana de mensaje</title>
+<link rel="stylesheet" type="text/css" href="../html/colores.css" media="screen"/>
+</head>
+<body>
+<!--V10INCLUDEDATA-->
+<style>	
+.v10tbcursores{border-width:1px 1px 0px 0px;border-style:inset outset outset inset;border-color: white;color:darkblue;vertical-align:middle;font-family:Verdana,Geneva,sans-serif;font-size:11px;height:18px;}
+.v10tbcursores th{border-width:1px 2px 2px 1px;border-style:inset outset outset inset;border-color:white;background-color:darkblue;color:yellow;font-weight:bold;}
+.v10tbcursores td{border-width:1px 1px 1px 1px;border-style: solid solid solid solid;border-color:white;height:15px;overflow:auto;}
+.dpar{background-color:white;color:darkblue;}
+.dimpar{background-color:lightyellow;color:darkblue;}
+.actual{background-color:yellow;color:red;font-weight:bold;}
+</style>
+<script DEFER>
+function meteenclipboard(cadena){
+window.status="A Clipboard cadena: "+cadena;
+
+//fix. 8/10/2019 - detectamos el tipo de navegador ya que cada uno realiza la operación de copiado de formas diferentes.eag.
+                
+    // es un ie
+    if (navigator.userAgent.search("MSIE") >= 0) {
+ 
+                               if(clipboardData && clipboardData.setData ) clipboardData.setData("text", cadena);
+                               else alert("Error al copiar en portapapeles");
+                }
+    //es un chrome
+    else if (navigator.userAgent.search("Chrome") >= 0) {
+		 
+		 var elmnt = w.document.getElementsByTagName(cadena.id)[0];
+		 var cln = elmnt.cloneNode(true);
+		 document.body.appendChild(cln); 
+		 cln.select();
+         document.execCommand("copy");
+		
+    }
+	
+}
+var filaact=0;
+function fonkeyupmsj(mievento,tecla){
+var objventana=window.document.getElementById('tbcursores');
+switch(tecla){
+case'0':case'1':case'2':case'3':case'4':case'5':case'6':case'7':case'8':case'9':case 27:case 68:
+v10lib.desonkeyefectos(mievento);objventana.style.visibiltiy='hidden';v10lib.mandaevento(filaact-1,'poscursor',tecla);break;
+case 38:v10lib.desonkeyefectos(mievento);ponfila(filaact-1);break;
+case 40:v10lib.desonkeyefectos(mievento);ponfila(filaact+1);break;
+default:if (tecla>112 && tecla<123) v10lib.desonkeyefectos(mievento);}}
+var oculto=0;
+function oculta(){
+var mitabla=window.event.srcElement.parentNode.parentNode.parentNode;
+if (window.event.srcElement.tagName=="SPAN") return;
+if (oculto==0){mitabla.childNodes[0].childNodes[1].style.visibility='hidden';	mitabla.childNodes[0].childNodes[2].style.visibility='hidden';oculto=1;}
+else{mitabla.childNodes[0].childNodes[1].style.visibility='visible';mitabla.childNodes[0].childNodes[2].style.visibility='visible';oculto=0;}}
+function ponfila(nfila){
+var mitb=window.document.getElementById("tbcursores");
+if(nfila==filaact){return;}
+if(nfila>mitb.childNodes[1].childNodes.length)return;
+if(nfila <= 0)return;
+if (filaact>0){if(filaact%2==0)mitb.childNodes[1].childNodes[filaact-1].className="dpar";else mitb.childNodes[1].childNodes[filaact-1].className="dimpar";}
+if (nfila>0){mitb.childNodes[1].childNodes[nfila-1].className="actual";filaact=nfila;}
+mitb.childNodes[1].childNodes[filaact-1].focus();}
+function fonclickmsj(){
+var miele;miele=window.event.srcElement;
+if(miele.tagName=='TR')ponfila(parseInt(miele.getAttribute("fila")));if(miele.tagName=='TD')ponfila(parseInt(miele.parentNode.getAttribute("fila")));}
+</script>
+<table id='msgcursores'border="0"cellspacing="0"cellpadding="0"style="z-index:98;position:absolute;top:10px;left:10px">
+<tr class="v10ventarribaizq"><td></td><td onmousedown="v10lib.BeginDrag('msgcursores')" class="v10ventarribamed"><span class="v10titulomens"><!--V10TITULO--></span></td><td onclick="oculta()" class="v10ventarribaderm"></td></tr>
+<tr><td class="v10ventmedioizq"></td><td class="v10ventmediomed" style="height:340px;width:540px;"><br/><div class="v10textomens" style="height:300px;width:500px;overflow:auto">
+<!--V10TEXTOMENSAJE-->
+</div>
+<input type="button" class="v10button" value="(D) Debug" style="position:relative;left:382px;top:-310px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,68);}"/>
+<input type="button" class="v10button" value="(0) Parse" style="position:relative;left:298px;top:-280px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'0');}"/>
+<input type="button" class="v10button" value="(1) Bind" style="position:relative;left:213px;top:-250px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'1');}"/>
+<input type="button" class="v10button" value="(2) Define" style="position:relative;left:128px;top:-220px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'2');}"/>
+<input type="button" class="v10button" value="(3) Exec" style="position:relative;left:43px;top:-190px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'3');}"/>
+<input type="button" class="v10button" value="(4) Fetch" style="position:relative;left:-42px;top:-160px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'4');}"/>
+<input type="button" class="v10button" value="(5) Prelog" style="position:relative;left:383px;top:-152px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'5');}"/>
+<input type="button" class="v10button" value="(6) Postlog" style="position:relative;left:298px;top:-120px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'6');}"/>
+<input type="button" class="v10button" value="(7) Macro" style="position:relative;left:213px;top:-90px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'7');}"/>
+<input type="button" class="v10button" value="(8) Defecto" style="position:relative;left:128px;top:-60px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'8');}"/>
+<input type="button" class="v10button" value="(9) Toad" style="position:relative;left:43px;top:-30px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,'9');}"/>
+<input type="button" class="v10button" value="(Esc) Salir" style="position:relative;left:-42px;top:0px;width:80px;height:23px" onclick="{fonkeyupmsj(window.event,27);}"/>
+</td><td class="v10ventmedioder"></td></tr>
+<tr><td class="v10ventabajoizq"></td><td class="v10ventabajomed"></td><td class="v10ventabajoder"></td></tr>
+</table><script>ponfila(1);</script>
+<!--V10ENDINCLUDEDATA-->
+</body>
+</html>

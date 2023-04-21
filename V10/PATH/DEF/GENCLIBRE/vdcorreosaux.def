@@ -1,0 +1,53 @@
+#***
+# VDCORREOS.DEF - Generación automática del código c SOLOQUERY sobre la tablas de correos
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 09-07-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=CORREOS;
+EXTRA=RET,V10LONG
+#EXTRA=CCO,V10CADENA,1000
+
+PROCEDURE=CORREODET,BEGIN 
+                       VDCORREOS.CORREODET(:VDCORRSMTP.ORDENADOR,
+                                           :VDCORRSMTP.CUENTA,
+                                           :VDCORRSMTP.PARA,
+                                           :VDCORRSMTP.CC,
+                                           :VDCORRSMTP.CCO,
+                                           :VDCORRSMTP.ASUNTO, 
+                    										   :VDCORRSMTP.CUERPO,                     										   
+                    										   :VDCORRSMTP.DIRECTORIO, 
+                    										   :VDCORRSMTP.FICHERO, 
+                    										   :VDCORRSMTP.PRIORIDAD, 
+                    										   :VDCORRSMTP.MIME,                     										                       										   
+                    										   :VDCORRSMTP.FECPLANIF, 
+                    										   :VDCORRSMTP.HORAPLANIF,
+                    										   :VDCOMEN.COMENTARIO,
+                                           :RET); 
+                   END;@    
+                   
+PROCEDURE=CORREO,BEGIN                       
+                       VDCORREOS.CORREO(:VDCORRSMTP.TIPOCORREO,
+                       									:VDCORRSMTP.ORDENADOR,
+                    										:VDCORRSMTP.ASUNTO, 
+                    										:VDCORRSMTP.CUERPO, 
+                    										:VDCORRSMTP.DIRECTORIO, 
+                    										:VDCORRSMTP.FICHERO, 
+                    										:VDCORRSMTP.PRIORIDAD, 
+                    										:VDCORRSMTP.MIME,                     										   
+                    										:VDCORRSMTP.FECPLANIF, 
+                    										:VDCORRSMTP.HORAPLANIF,
+                    										:VDCOMEN.COMENTARIO,
+                    										:RET); 
+                   END;@    
+                   
+PROCEDURE=ENVIACORREO,BEGIN                   
+															VDCORREOS.ENVIACORREO(:VDCORRSMTP.IDMSG,:VDCOMEN.COMENTARIO,:RET);
+											END;@                   
+                 
+                   

@@ -1,0 +1,16 @@
+# Modulo : VDINFOOPECOLOR.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFOOPECOLOR
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 20-01-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=IOC;
+EXTRA=CODZONA,V10LONG;
+
+RECORRE=COLOR,CODOPE,WHERE=NOT EXISTS (SELECT CODZONA FROM VDBULTOZONA WHERE CODZONA=:CODZONA AND COLOROPE=VDINFOOPECOLOR.COLOROPE) ORDER BY PRIORIDAD;
+RECORRE=COLOROPE,CODOPE,ORDERBY=PRIORIDAD;

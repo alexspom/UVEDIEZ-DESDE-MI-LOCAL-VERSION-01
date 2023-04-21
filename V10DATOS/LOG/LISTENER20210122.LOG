@@ -1,0 +1,83 @@
+00 09:26:37:081 Fichero de log abierto PID 15916
+
+02 09:26:37:081 Intentando abrir fichero v10.ini
+02 09:26:37:085 Cargando driver v10oracle funcion damedriveroracle
+02 09:26:39:306 Conectado a base de datos
+02 09:26:39:311 Asignando ACCESO a V10LOGIN
+02 09:26:39:312 Asignando NIVELLOG a 2
+02 09:26:39:312 Asignando PROTEGIDO a 500
+02 09:26:39:312 Asignando DEBUGHTTP a 1
+02 09:26:39:313 Asignando VISIBLEEXE a 1
+02 09:26:39:313 Asignando FICHEROEXE a VDFORM.EXE -OR1
+02 09:26:39:315 Asignando CONEXIONBD a REDUR/REDUR@LOCAL
+02 09:26:39:316 Asignando SERVIDOR a HTTP://127.0.0.1
+02 09:26:39:317 Asignando SERVERPORTFILES a 1235
+02 09:26:39:318 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+02 09:26:39:321 Asignando SERVERIMG a HTTP://127.0.0.1:1235/img
+02 09:26:39:322 Asignando SERVERXLS a HTTP://127.0.0.1:1235/xls
+02 09:26:39:322 Asignando SERVERPDF a HTTP://127.0.0.1:1235/pdf
+02 09:26:39:322 Asignando FILEEXPIRED a 3600
+02 09:26:39:323 Asignando TIEMPOESPERA a 240
+02 09:26:39:331 Asignando RUTAZIP a E:\V10\productos\REDUR20200430\V10LIB/ZIP
+02 09:26:39:331 Asignando RUTAHELP a E:\V10\productos\REDUR20200430\V10LIB\WWW/help/html
+02 09:26:39:332 Asignando RUTAPLANTILLAS a E:\V10\productos\REDUR20200430\V10LIB\WWW/html
+02 09:26:39:332 Asignando RUTAXLS a E:\V10\productos\REDUR20200430\V10LIB\WWW/xls
+02 09:26:39:333 Asignando RUTAPDF a E:\V10\productos\REDUR20200430\V10LIB\WWW/pdf
+02 09:26:39:333 Asignando COMPRIMIR a 1
+02 09:26:39:340 Escuchando en puerto 1234 con protocolo HTTP
+02 09:26:43:801 Sesion 0: Inicio hebra
+02 09:26:43:801 Conexion 0073579C recibe petición
+GET /v10LOGIN/&HOST=NINO&EXTRA=NINO& HTTP/1.1
+Accept: */*
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Host: 127.0.0.1:1234
+Connection: Keep-Alive
+
+02 09:26:43:801 Tratapeticion: Server cambia de valor de 00000000 a 0073579C
+02 09:26:43:801 Se captura HOST en URL del cliente NINO 
+02 09:26:43:802 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=98eEr326vbmMa8Vy8PUEp5M3NRXBDR -FWPUERTO=20000 -FWHOST=NINO -FWTECLADO=0 NINO
+02 09:26:43:872 Sesion 0: Arrancado Proceso v10form
+02 09:26:43:872 Sesion 0: Intentando conectar con v10form en puerto 20000
+02 09:26:43:872 Conectando con 127.0.0.1 servicio 20000 protocolo tcp
+02 09:26:43:881 Encontrado host 127.0.0.1
+02 09:26:43:881 Encontrado servicio 20000
+02 09:26:44:383 Sesión con v10form establecida
+02 09:26:45:386 Envio un total de 0.00 KB
+02 09:26:45:386 Enviada la respuesta a socket 0073579C
+02 09:26:45:386 Sesion 0: Sesión rota
+02 09:26:45:387 Libera 73579c
+02 09:26:45:387 Sesion 0: Fin hebra
+02 09:26:51:048 Sesion 0: Inicio hebra
+02 09:26:51:048 Conexion 007356BC recibe petición
+GET /V10LOGIN&HOST=NINO& HTTP/1.1
+Accept: image/gif, image/jpeg, image/pjpeg, application/x-ms-application, application/xaml+xml, application/x-ms-xbap, */*
+Referer: http://127.0.0.1:20000/v10login
+Accept-Language: es-ES
+UA-CPU: AMD64
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.2; Win64; x64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)
+Connection: Keep-Alive
+Cache-Control: no-cache
+Host: 127.0.0.1:1234
+
+02 09:26:51:050 Tratapeticion: Server cambia de valor de 0073579C a 007356BC
+02 09:26:51:050 Se captura HOST en URL del cliente NINO 
+02 09:26:51:050 Ejecutando VDFORM.EXE -OR1 -OUREDUR/REDUR@LOCAL -LNFORM.LOG -LM2 -FWFICHERO=V10LISTENERNINO -FWVISIBLE=1 -FWSESION=0o1cb33q052oLT7sbGxU9XO40O68Vm -FWPUERTO=20001 -FWHOST=NINO -FWTECLADO=0 
+02 09:26:51:057 Sesion 0: Arrancado Proceso v10form
+02 09:26:51:058 Sesion 0: Intentando conectar con v10form en puerto 20001
+02 09:26:51:058 Conectando con 127.0.0.1 servicio 20001 protocolo tcp
+02 09:26:51:060 Encontrado host 127.0.0.1
+02 09:26:51:060 Encontrado servicio 20001
+02 09:26:51:566 Sesión con v10form establecida
+02 09:26:52:567 Envio un total de 0.00 KB
+02 09:26:52:568 Enviada la respuesta a socket 007356BC
+02 09:26:52:568 Sesion 0: Sesión rota
+02 09:26:52:568 Libera 7356bc
+02 09:26:52:568 Sesion 0: Fin hebra
+02 09:27:39:347 Asignando SERVERHTML a HTTP://127.0.0.1:1235/html
+
+00 11:12:24:396 Fichero de log cerrado.
+

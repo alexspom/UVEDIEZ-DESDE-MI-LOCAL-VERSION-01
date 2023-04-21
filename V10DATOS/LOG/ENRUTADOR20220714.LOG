@@ -1,0 +1,184 @@
+00 09:42:00:857 Fichero de log abierto PID 17572
+
+02 09:42:00:857 Intentando abrir fichero v10.ini
+02 09:42:00:863 Cargando driver v10oracle funcion damedriveroracle
+02 09:42:01:367 Conectado a base de datos
+02 09:42:01:368 Proceso ASIGNAFLUJO encontrado en tabla VDPROCESOS
+02 09:42:01:371 Proceso ASIGNAFLUJO cargado con función vdbuscamovst (Librería VDKERNEL.DLL) direccion 70041560
+02 09:42:01:371 Proceso ENRUTADOR encontrado en tabla VDPROCESOS
+02 09:42:01:371 Proceso ENRUTADOR cargado con función vdbuscamovst (Librería VDKERNEL.DLL) direccion 70041560
+02 09:42:01:371 Proceso REVISAENRUTADOR encontrado en tabla VDPROCESOS
+02 09:42:01:371 Proceso REVISAENRUTADOR cargado con función vdbuscamovst (Librería VDKERNEL.DLL) direccion 70041560
+02 09:42:01:372 PLSQL: INICIALIZADO PAQUETE DE LOG EL DIA 14-07-2022
+02 09:42:01:382 Actualizado SID 137 SERIAL 20842 del proceso con PID 17572
+02 09:42:01:433 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:01:511 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:01:532 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:01:873 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:01:873 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:01:911 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:01:912 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:01:912 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:01:959 PLSQL: DAMEUBILIBRE :  IDQUERY  1645819  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:02:287 PLSQL: DAMEUBILIBRE :  IDQUERY  1645819   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:02:292 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:02:292 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:02:297 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:02:392 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:02:393 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:02:393 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:02:394 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:02:393 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:02:393 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:02:396 PLSQL: DAMEUBILIBRE :  IDQUERY  1645820  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:02:420 PLSQL: DAMEUBILIBRE :  IDQUERY  1645820   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:02:422 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:02:422 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:02:422 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+02 09:42:06:530 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:06:535 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:06:547 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:06:550 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:06:550 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:06:550 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:06:551 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:06:551 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:06:554 PLSQL: DAMEUBILIBRE :  IDQUERY  1645836  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:06:560 PLSQL: DAMEUBILIBRE :  IDQUERY  1645836   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:06:561 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:06:561 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:06:562 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:06:573 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:06:575 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:06:575 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:06:575 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:06:577 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:06:577 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:06:578 PLSQL: DAMEUBILIBRE :  IDQUERY  1645837  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:06:586 PLSQL: DAMEUBILIBRE :  IDQUERY  1645837   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:06:587 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:06:587 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:06:587 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+02 09:42:11:550 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:11:555 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:11:581 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:11:582 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:11:582 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:11:583 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:11:582 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:11:583 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:11:585 PLSQL: DAMEUBILIBRE :  IDQUERY  1645838  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:11:592 PLSQL: DAMEUBILIBRE :  IDQUERY  1645838   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:11:592 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:11:592 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:11:592 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:11:600 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:11:601 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:11:601 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:11:601 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:11:601 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:11:601 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:11:603 PLSQL: DAMEUBILIBRE :  IDQUERY  1645839  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:11:608 PLSQL: DAMEUBILIBRE :  IDQUERY  1645839   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:11:608 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:11:608 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:11:608 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+02 09:42:16:567 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:16:577 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:16:615 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:16:618 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:16:618 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:16:619 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:16:621 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:16:621 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:16:623 PLSQL: DAMEUBILIBRE :  IDQUERY  1645840  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:16:629 PLSQL: DAMEUBILIBRE :  IDQUERY  1645840   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:16:631 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:16:631 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:16:632 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:16:641 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:16:642 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:16:642 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:16:642 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:16:642 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:16:642 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:16:644 PLSQL: DAMEUBILIBRE :  IDQUERY  1645841  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:16:650 PLSQL: DAMEUBILIBRE :  IDQUERY  1645841   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:16:652 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:16:652 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:16:652 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+02 09:42:21:600 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:21:606 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:21:662 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:21:666 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:21:666 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:21:667 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:21:667 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:21:667 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:21:671 PLSQL: DAMEUBILIBRE :  IDQUERY  1645842  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:21:678 PLSQL: DAMEUBILIBRE :  IDQUERY  1645842   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:21:681 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:21:681 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:21:682 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:21:695 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:21:697 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:21:697 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:21:698 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:21:698 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:21:698 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:21:701 PLSQL: DAMEUBILIBRE :  IDQUERY  1645843  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:21:707 PLSQL: DAMEUBILIBRE :  IDQUERY  1645843   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:21:710 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:21:710 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:21:710 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+02 09:42:26:625 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:26:640 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:26:702 vdbuscamovst: Procesando movimiento 16733 
+02 09:42:26:707 llvdenrutamov: Movimiento 16733, calculando ruta para ir desde M001009601 a EXPN1415
+02 09:42:26:707 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16733
+02 09:42:26:707 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN15  A  CACHEN15  TRAMOFINAL:  N 
+02 09:42:26:708 vdcargatramos: Cargado tramo i=0 de HRN15 a CACHEN15 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:26:708 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16733
+00 09:42:26:712 PLSQL: DAMEUBILIBRE :  IDQUERY  1645844  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000685743  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN15' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:26:719 PLSQL: DAMEUBILIBRE :  IDQUERY  1645844   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000685743' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN15' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:26:722 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN15 con uniagrupa C para el movto 16733
+02 09:42:26:722 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16733 desde área HRN15
+02 09:42:26:722 vdcaminosdepicking: Movimiento a intentar reenganchar es 16733
+02 09:42:26:736 vdbuscamovst: Procesando movimiento 16738 
+02 09:42:26:738 llvdenrutamov: Movimiento 16738, calculando ruta para ir desde N004003001 a EXPN1415
+02 09:42:26:738 vdcargatramos: Cargando opciones para el siguiente tramo del movto 16738
+02 09:42:26:739 PLSQL: DAMETRAMOSMOV :  TRAMO 'VALIDO'  DE  HRN14  A  CACHEN14  TRAMOFINAL:  N 
+02 09:42:26:740 vdcargatramos: Cargado tramo i=0 de HRN14 a CACHEN14 con prioridad 10 y muevepalet S, mueveparcial S, fuerzapalet , tramofinal = N
+02 09:42:26:740 vdcargatramos: Fin de carga opciones para el siguiente tramo del movto 16738
+00 09:42:26:742 PLSQL: DAMEUBILIBRE :  IDQUERY  1645845  BUSCANDO UBICACIONES PARA LLEVAR CONTENEDOR  357070362000691416  CON ARTICULO   ,LOTE   
+ ' BLOQUEOS ' ' AREA 'CACHEN14' Y CANTIDAD 0 ,UNIAGRUPA FORZADA 'C' Y PASILLO FORZADO '0'
+00 09:42:26:747 PLSQL: DAMEUBILIBRE :  IDQUERY  1645845   NO ENCONTRADA UBICACION CON COMPATIBILIDAD PARA MATRICULA:'357070362000691416' ARTICULO:''
+ CON PARAMETROS AREA 'CACHEN14' MIPASILLO: '0' UNIAGRUPA: 'C'
+00 09:42:26:751 llvddamemovimtramo: No se encuentran ubicaciones en el área CACHEN14 con uniagrupa C para el movto 16738
+02 09:42:26:751 llvdenrutamov: No se encuentra tramo alguno para avanzar movto 16738 desde área HRN14
+02 09:42:26:751 vdcaminosdepicking: Movimiento a intentar reenganchar es 16738
+
+00 09:42:30:115 Fichero de log cerrado.
+

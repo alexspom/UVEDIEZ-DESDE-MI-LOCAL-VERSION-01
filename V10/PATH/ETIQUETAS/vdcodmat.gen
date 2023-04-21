@@ -1,0 +1,22 @@
+#
+# Base de etiqueta de MATRICULA
+# 23-12-2016. DZG
+#
+
+$C$
+$X250-1102$
+$E1-3$
+$F2$
+$D90$
+
+#Literal Fecha
+$T24-24$
+$P100-560$
+
+$I%_CODMAT%$
+#Codigo de barras EAN128
+$P50-150$
+$B8-40-190-2-%t_CODMAT%$
+
+
+$A$

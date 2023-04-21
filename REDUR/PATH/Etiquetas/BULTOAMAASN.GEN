@@ -1,0 +1,40 @@
+$C$
+$X1500-1000$
+
+#####Etiqueta sin barcode 1
+
+$F0$
+
+$D270$
+
+#####CONSIGNATARIO
+$T10-10$
+$P100-1065$
+$IShip to:$
+
+
+$P150-1065$
+$I%T_DESCLIENTE%$
+
+$P200-1065$
+$I%T_DIRECCION%$
+
+$P250-1065$
+$I%T_DIRECCION1%$
+
+$P300-1065$
+$I%T_DESPAIS%, %T_DP%$
+
+$T20-20$
+$P600-1350$
+$IASN$
+$P800-1300$
+$I%T_CODPED%$
+
+
+######CODIGOS 1
+$P1300-1165$
+$B8-60-400-2-00%_CODPED%$
+
+
+$A$

@@ -1,0 +1,218 @@
+#include "v10wwwform.h"
+int muestracombox=0;
+#define MAXDEFINESCOMBOX 10
+#define MAXANCHOCOMBOX 600
+static int ndefines;
+static int anchostd[MAXDEFINESCOMBOX]={0,0,0,0,0,0,0,0,0,0};
+static char nombrecampo[MAXDEFINESCOMBOX][MAXNOMBREV10];
+
+static int cargaopciones(bloques *b,char *opcion,char **listavalores,int *nvalores ) 
+{
+  fcursores *fcur;
+  int ret,i;
+  int nuevoancho;
+  char cadenatotal[MAXCADENA]="";
+  char cadenadef[MAXDEFINESCOMBOX][1024];
+  char error[MAXERRORORACLE]="";
+	v10log(LOGNORMAL, "%s", "Empiezo la carga de valores del combox\n");
+  if ((fcur=buscafcursor(b,opcion))==NULL) {
+     listavalores[0]=strdup(opcion);
+	 *nvalores=1;
+	 return(0);
+   }
+  if (fcur->cur==NULL) fcur->cur=bindbloque(b,fcur->sql,opcion);
+  if (fcur->cur==NULL) {
+	 getlastdberror(error);
+	 ponultimoerrorbloque("ERROR ABRIENDO\nCURSOR %s\n%s",opcion,error);
+     sprintf(cadenadef[0],"Error cursor: %s\n",opcion);
+     listavalores[0]=strdup(cadenadef[0]);
+     strcpy(nombrecampo[0], "fijo");
+	 *nvalores=1;
+	 return(0);
+  } else ponultimoerrorbloque("");
+  ndefines=fcur->cur->ndef;
+  if (ndefines>MAXDEFINESCOMBOX) {
+	 sprintf(cadenadef[0],"Error cursor: %s; Superado número máximo de defines (%d)\n",opcion,MAXDEFINESCOMBOX);
+     listavalores[0]=strdup(cadenadef[0]);
+	 *nvalores=1;
+	 return(0);
+  }
+  for (i = 0; i<MAXDEFINESCOMBOX; i++) anchostd[i] = 0;
+  for (i=0;i<ndefines;i++) {
+	  if (definecursor(fcur->cur,i+1,cadenadef[i],fcur->cur->def[i].oralen+1,V10CADENA)) {
+		getlastdberror(error);
+		ponultimoerrorbloque("ERROR EN DEFINE DEL\nCURSOR %s\n%s",opcion,error);
+		sprintf(cadenadef[i],"Error Define cursor: %s\n",opcion);
+		listavalores[0]=strdup(cadenadef[i]);
+		*nvalores=1;
+		return(0);  
+	}
+      strcpy(nombrecampo[i], fcur->cur->def[i].nombre);
+      nuevoancho = v10x2pxsm(strlen(nombrecampo[i]) + 1, damepxcol(b));
+      if (nuevoancho>MAXANCHOCOMBOX) nuevoancho = MAXANCHOCOMBOX;
+      if (nuevoancho>anchostd[i]) anchostd[i] = nuevoancho;
+  }
+  if (funcioncursor(fcur->cur)==FSELECT) {
+    //  preparaarrayfetch(fcur->cur,100);
+     ret=ejecutacursor(fcur->cur);
+	 if (ret!=SUCCESS) {
+	    sprintf(cadenadef[0],"Error Ejecutando cursor: %s\n",opcion);
+		listavalores[0]=strdup(cadenadef[0]);
+		*nvalores=1;
+		return(0);  
+	  }  	  
+	 while (fetchcursor(fcur->cur)==SUCCESS) {
+		  *cadenatotal=0;	
+		  for(i=0;i<ndefines;i++) {
+			  trim(cadenadef[i]);
+			  nuevoancho=v10x2pxsm(strlen(cadenadef[i])+1,damepxcol(b));
+              if (nuevoancho>MAXANCHOCOMBOX) nuevoancho=MAXANCHOCOMBOX;
+			  if (nuevoancho>anchostd[i]) anchostd[i]=nuevoancho;
+              if (i>0) strcat(cadenatotal,"##");
+			  strcat(cadenatotal,cadenadef[i]);
+		  }
+	      listavalores[(*nvalores)]=strdup(cadenatotal);
+		  (*nvalores)++;		
+	  }	
+   } else {
+     listavalores[0]=strdup(opcion);
+	 *nvalores=1;
+	 return(0);
+  }
+	v10log(LOGNORMAL, "%s", "Termino la carga valores del combox\n");
+  return(ret);
+}
+
+static void cargacombox(int nbloque,int fila, int ncol, bloques *b,fcampos *c,int incluyevalores,char **opciones,int *nopcion,int *index) 
+{
+	char valoract[MAXCADENA]="",micampo[1024];
+	int i,nvalores=0,ret;
+	v10log(LOGNORMAL, "%s", "Empiezo la carga del combox\n");
+	ndefines=0;
+	*index=c->combox.index;
+	for (i=c->combox.nopc-1;i>=0;i--) {
+		nvalores=0;
+	    ret=cargaopciones(b,c->combox.opc[i],opciones+(*nopcion),&nvalores);
+		*nopcion+=nvalores;
+    }
+	if (nbloque>=0) { // no estamos en una plantilla
+	    v10ora2campo(1,nbloque,b,c, fila,c->nombre, 1, valoract);
+		if (strlen(valoract)==0) return;
+		else {
+			for (i=0;i<*nopcion;i++) {
+                piece(opciones[i] , micampo, "##", 1);
+				if (!strncmp(trim(micampo),valoract,c->tipo==V10CADENA?c->lon-1:strlen(valoract))) {
+					*index=i;   
+					return;
+				}
+			}
+		}
+		//opciones[(*nopcion)++]=strdup(valoract);
+		//*index=(*nopcion)-1;	
+	}
+	v10log(LOGNORMAL, "%s", "Termino la carga del combox\n");
+}
+
+static void v10modificadorescombox(char *ptrout,int nbloque,int fila,int col,bloques *b,fcampos *c, int noenter)
+{
+	if (c->v->formato&FORMATOUPPER) strcat(ptrout,"text-transform:uppercase;");
+	else if (c->v->formato&FORMATOLOWER) strcat(ptrout,"text-transform:lowercase;");
+	sprintf(ptrout+strlen(ptrout),"\" maxlength=%d ",c->v->lvar);
+	sprintf(ptrout+strlen(ptrout),"onblur=\"fonblur(\'bl%df%dc%d\')\"",nbloque,fila,col);
+}
+
+void v10combox2html(char *ptrout,int nbloque,int multireg,int fila, int ncol,int sutop,int suleft, bloques *b,fcampos *c,int incluyevalores) 
+{
+	int i,j,nopcion=0,index=0;
+	int anchodiv=0,top,left;	
+	int leftb,topb,anchob,largob;
+	char tooltiphtml[MAXCADENA]="",textocombox[MAXCADENAHTML]="",micampo[1024],valoract[MAXCADENA]="";
+	char *opciones[MAXCADENA];
+	if (muestracombox==0) return;
+	muestracombox=0;
+	// muestra un calendario
+	if (!strcmp(c->combox.opc[0],"CALENDARIO")) {
+		v10calendario2html(ptrout,nbloque,multireg,fila,ncol,sutop,suleft,b,c);
+		return;
+	}    
+	v10log(LOGNORMAL, "%s", "Empiezo a definir el combox\n");
+	cargacombox(nbloque,fila,ncol,b,c,incluyevalores,opciones,&nopcion,&index);
+	v10damedimensionesbloque(b, &leftb, &topb, &anchob, &largob);	
+	if (multireg) {		
+		top=topb+sutop+24+(fila*14);
+		left=leftb+suleft+v10x2pxsm(c->v->posx,damepxcol(b));  	
+	} else {
+		left=suleft+leftb;
+		top=sutop+topb+36;
+	}
+	if (formglobal->b[nbloque]->wtipomarco>0) {
+		top-=22;
+		left-=3;
+	}
+	if (ndefines==0) { // no son cursores
+		long nuevoancho,milpan;
+		anchostd[0]=0;
+		for (i=0;i<nopcion;i++) {
+			if (strlen(opciones[i]) < c->v->lpan) milpan=c->v->lpan + 1;
+			else milpan = strlen(opciones[i]) + 1;	
+			nuevoancho=v10x2pxsm(milpan,damepxcol(b));
+            if (nuevoancho>MAXANCHOCOMBOX) nuevoancho=MAXANCHOCOMBOX;
+			if (nuevoancho>anchostd[0]) anchostd[0]=nuevoancho;
+		}
+		anchodiv=anchostd[0];
+		ndefines=1;
+    } else for (i = 0; i<ndefines; i++) anchodiv += anchostd[i];
+    if (c->combox.multiple) anchodiv += 21;
+    if (left+anchodiv+20>v10maxpxX) left=v10maxpxX-anchodiv-20;
+    c->combox.regpag = nopcion;
+    if (nopcion * 16>v10maxpxY / 2) {
+        c->combox.regpag = (v10maxpxY / 2) / 16;
+    }
+    if (top + c->combox.regpag * 16 > v10maxpxY) {
+        top = v10maxpxY - c->combox.regpag * 16;
+    }
+	sprintf(textocombox,"<div id=\"miv10ctit\" class=\"v10divcombox\" style=\"left:%dpx;top:%dpx;",left,top);
+	if (nopcion > c->combox.regpag)	sprintf(textocombox+strlen(textocombox),"width:%dpx;\">",anchodiv+20);
+	else sprintf(textocombox+strlen(textocombox),"width:%dpx;\">",anchodiv);
+    sprintf(textocombox + strlen(textocombox), "<input id=\"inputcombox\" type=\"text\" onclick=\"{return fonclickmsj();}\"onkeyup=\"filtra()\"><label id=\"labelcombox\" style=\"color:black;\"> Reg: %ld</label>", nopcion);
+    strcat(textocombox, "<table id=\"titulocombox\"class=\"v10comboxtit\" onclick=\"{return fonclickmsj();}\" border=\"0\" cellspacing=\"0\" cellpadding=\"5\"><tr>");
+    if (c->combox.multiple) {
+        strcat(textocombox, "<td style=\"width:20px\">SEL</td>");
+    }
+    for (j = 0; j<ndefines; j++) {
+        strcat(textocombox, "<td ");
+        sprintf(textocombox + strlen(textocombox), "style=\"width:%dpx\" ", anchostd[j]);
+        sprintf(textocombox + strlen(textocombox), ">%s</td>\n", nombrecampo[j]);
+    }
+    strcat(textocombox, "</tr></table></div>");
+    sprintf(textocombox+strlen(textocombox), "<div id=\"miv10c\" class=\"v10divcombox\" style=\"left:%dpx;top:%dpx;", left, top+40);
+    if (nopcion > c->combox.regpag)	sprintf(textocombox + strlen(textocombox), "width:%dpx;height:%dpx;overflow-y:scroll;\"", anchodiv + 20, (16 * c->combox.regpag));
+    else sprintf(textocombox + strlen(textocombox), "width:%dpx;\"", anchodiv);
+    strcat(textocombox, "onmousewheel=\"return ftratarueda()\">");
+    strcat(textocombox, "<table id=\"tbcombox\"onclick=\"fonclickmsj()\"ondblclick=\"fondblclickmsj()\" class=\"v10combox\" border=\"0\" cellspacing=\"0\" cellpadding=\"5\">");
+	v10ora2campo(1,nbloque,b,c, fila,c->nombre, 1, valoract);	
+	for (i=0;i<nopcion;i++) {
+		sprintf(textocombox+strlen(textocombox),"<tr fila=%d class=\"%s\">",i+1,(i%2==0)?"dpar":"dimpar");
+		if (c->combox.multiple) {
+            strcat(textocombox, "<td multsel=1 class=\"marca\"");
+            sprintf(textocombox + strlen(textocombox), "style=\"width:%dpx\" ",20);
+			//if (i==0) strcat(textocombox,"style=\"width:16px\"");
+			strcat(textocombox,">");
+            piece(opciones[i],micampo,"##",1);
+			if (strlen(valoract)>0 && contiene(valoract,micampo))  strcat(textocombox,"X");
+			strcat(textocombox,"</td>");
+		}
+		for (j=0;j<ndefines;j++) {
+			strcat(textocombox,"<td ");
+			/*if (i==0) */sprintf(textocombox+strlen(textocombox),"style=\"width:%dpx\" ",anchostd[j]);
+            piece(opciones[i] , micampo, "##", j+1);
+			sprintf(textocombox+strlen(textocombox),">%s</td>",micampo);
+		}
+		strcat(textocombox,"</tr>");
+		free(opciones[i]);
+	}	
+	strcat(textocombox,"</table>\n</div>");
+	sprintf(textocombox+strlen(textocombox),"<script DEFER>ponfilaini(%d);</script>",index+1);
+	v10wwwmensajecombox(textocombox,c->combox.multiple);    
+	v10log(LOGNORMAL, "%s", "Termino de definir el combox\n");
+}

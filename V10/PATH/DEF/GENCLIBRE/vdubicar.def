@@ -1,0 +1,108 @@
+#***
+# UBICAR.DEF - Generación automática del código c SOLOQUERY para ubicador
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 11-12-2007                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=UBICAR;
+EXTRA=CUANTOS,V10LONG;
+EXTRA=VERIFICACOMP,V10CADENA,2;
+EXTRA=VEFIFICAFLP,V10CADENA,2;
+
+CURSOR=CONTEAUBICAR, SELECT CNT.CODMAT FROM VDCONTE CNT,VDUBICA UBI,  VDTIPOCONTE TCNT, VDAREA ARE   
+                         WHERE
+                            UBI.CODUBI = CNT.CODUBI AND
+                            UBI.TRANSITO='S' AND
+                            CNT.STATUS=0 AND
+                            CNT.TIPOCONTE = TCNT.TIPOCONTE AND
+                            TCNT.MOVIBLE='S' AND
+                            UBI.CODAREA = ARE.CODAREA AND
+                            ARE.CODALM=:VDALMA.CODALM AND
+                            VDSTK.CNTRESERVADO(CNT.CODMAT)=0;
+
+
+
+PROCEDURE=REUBICONTE,BEGIN 
+                       VDUBI.REUBICONTE(:VDCONTE.CODMAT, :VDFLUJOPARAM.TAREA, :VDMOVIM.CODMOV, :VDAREA.CODAREA, :VDUBICA.PASILLO, :VDUBICA.UNIAGRUPAE); 
+                     END;@
+
+PROCEDURE=REUBISTK,BEGIN 
+                         VDUBI.REUBISTK(:VDCONTE.CODMAT, :VDFLUJOPARAM.TAREA, :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB,:VDSTOCK.BLOQUEOS,:VDSTOCK.CANTIDAD, :VDMOVIM.CODMOV, :VDAREA.CODAREA, :VDUBICA.PASILLO, :VDUBICA.UNIAGRUPAE); 
+                       END;@
+
+
+PROCEDURE=CAMBIOUBICONTE,BEGIN 
+                           VDUBI.CAMBIOUBICONTE(:VDCONTE.CODMAT,:VDUBICA.CODUBI,:VDFLUJOPARAM.TAREA,:VDMOVIM.CODMOV,:VEFIFICAFLP,:VERIFICACOMP,:VDMOVIM.CODCONCE,
+                                                :VDMOVIM.PRIOMOV,:VDMOVIM.STATUS,:VDMOVIM.CODRECURSO);
+                         END;@
+                         
+PROCEDURE=CAMBIOUBISTK,BEGIN 
+                           VDUBI.CAMBIOUBISTK(:VDCONTE.CODMAT,:VDUBICA.CODUBI,:VDMOVIM.CODMATDEST,:VDFLUJOPARAM.TAREA,
+                                              :VDSTOCK.CODART, :VDSTOCK.CODLOT,:VDSTOCK.UNIEMB,:VDSTOCK.BLOQUEOS,:VDSTOCK.CANTIDAD,
+                                              :VDMOVIM.CODMOV,:VEFIFICAFLP,:VERIFICACOMP,:VDMOVIM.CODCONCE,
+                                              :VDMOVIM.PRIOMOV,:VDMOVIM.STATUS,:VDMOVIM.CODRECURSO);
+                       END;@
+
+PROCEDURE=CREAIDQUERY,BEGIN
+                       VDFLP.CREAIDQUERYDUMMY(:VDCONTE.CODMAT,:VDAREA.CODAREA,:VDAREATMP.IDQUERY);
+                      END;@     
+
+
+
+CURSOR=CONTEPARCIAL,SELECT CODMAT FROM VDCONTE CNT, VDTIPOCONTE TCO 
+                     WHERE CODUBI=:VDUBICA.CODUBI AND
+                           CNT.TIPOCONTE = TCO.TIPOCONTE AND   
+                           TCO.MOVIBLE='N'
+                     ORDER BY CNT.POSCONTE; 
+
+CURSOR=UBILIBRE,SELECT CODUBI FROM TABLE(VDUBI.DAMEUBILIBRE(:VDAREATMP.IDQUERY, :VDCONTE.CODMAT, :VDSTOCK.CODART, :VDSTOCK.CODLOT, :VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS,
+                                                         :VDSTOCK.CANTIDAD,:VDAREA.CODAREA, :VDUBICA.PASILLO, :VDUBICA.UNIAGRUPAE,9999));
+
+CURSOR=UBICOMPATIBLE,SELECT VDCOMP.ESCOMPATIBLE(:VDCONTE.CODMAT,:VDUBICA.CODUBI,:VDSTOCK.CODART, :VDSTOCK.CODLOT, :VDSTOCK.UNIEMB, :VDSTOCK.BLOQUEOS, :VDSTOCK.CANTIDAD) COMPATIBLE FROM DUAL;
+
+
+%%h
+VDEXPORT int UBIdameubiarealibre(char *codmat,char *codarea,char *codart,char *codlot,double uniemb,char *bloqueos,double cantidad,int pasillo,char *uniagrupa,vdubicars *ubicar);
+VDEXPORT int UBIdameubiareaconte(char *codmat,char *codarea,int pasillo, char uniagrupa, char *codubi);
+VDEXPORT int UBIdameubiareastk(char *codmat,char *codart,char *codlot,double uniemb,char *bloqueos,double cantidad,char *codarea,int pasillo, char uniagrupa,char *codubi);
+
+%%c      
+VDEXPORT int UBIdameubiarealibre(char *codmat,char *codarea,char *codart,char *codlot,double uniemb,char *bloqueos,double cantidad,int pasillo,char *uniagrupa,vdubicars *ubicar)
+{   
+   int ret;
+   ret=UBICARproccreaidquery(codmat,codarea,0,ubicar); 
+   if (ret==0) ret=UBICARbuscaubilibre(ubicar->idquery,codmat,codart,codlot,uniemb,bloqueos,cantidad,codarea,pasillo,uniagrupa,ubicar); 
+   return(ret);
+}  
+
+// devuelve una ubicacion libre para una matrícula,articulo,lote,cantidad en un área
+VDEXPORT int UBIdameubiareaconte(char *codmat,char *codarea,int pasillo, char uniagrupa, char *codubi) {
+  int ret;
+  vdubicars ubicar;
+
+  ret=UBIdameubiarealibre(codmat,codarea,NULL,NULL,0,NULL,0,pasillo,&uniagrupa,&ubicar);
+
+  if (ret) v10log(LOGNORMAL,"dameubiconte: No se encuentra ubicacion para contenedor %lf en area %s\n",codmat,codarea);
+  else v10log(LOGNORMAL,"dameubiconte: Encontrada ubicacion %s para contenedor %lf en area %s\n",ubicar.codubi,codmat,codarea);
+  if (ret==0) strcopia(codubi,ubicar.codubi,strlen(ubicar.codubi));
+  return(ret);
+}
+
+
+// devuelve una ubicacion libre para el stock de una matrícula,articulo,lote,cantidad en un área
+VDEXPORT int UBIdameubiareastk(char *codmat,char *codart,char *codlot,double uniemb,char *bloqueos,double cantidad,char *codarea,int pasillo, char uniagrupa,char *codubi) {
+  int ret;
+  vdubicars ubicar;
+
+  ret=UBIdameubiarealibre(codmat,codarea,codart,codlot,uniemb,bloqueos,cantidad,pasillo,&uniagrupa,&ubicar);
+ 
+  if (ret) v10log(LOGNORMAL,"dameubistk: No se encuentra ubicacion para contenedor %lf,articulo %s,lote %s y cantidad %ld en area %s\n",codmat,codart,codlot,cantidad,codarea);
+  else v10log(LOGNORMAL,"dameubistk: Encontrada ubicacion %s para contenedor %lf,articulo %s,lote %s y cantidad %ld en area %s\n",ubicar.codubi,codmat,codart,codlot,cantidad,codarea);
+  if (ret==0) strcopia(codubi,ubicar.codubi,strlen(ubicar.codubi));
+  return(ret);  
+}

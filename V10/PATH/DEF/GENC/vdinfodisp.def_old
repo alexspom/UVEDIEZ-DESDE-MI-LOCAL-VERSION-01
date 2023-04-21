@@ -1,0 +1,24 @@
+# Modulo : VDINFODISP.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDINFODISP
+#                        
+# Autor	 : MGM
+# Revisado por: 
+# Fecha  : 20-01-2008                                              
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=IDI;
+EXTRA=IDINFOGEST,V10LONG
+
+CLAVE=CODBULTO,CODBULTO;
+RECORRE=TICK,IDINFOGEST,TABLE=VDZONAS;WHERE=VDINFODISP.CODZONA=VDZONAS.CODZONA AND 
+                                                VDZONAS.IDINFOGEST=:IDINFOGEST AND 
+                                                VDINFODISP.NEXTTICK IS NOT NULL AND VDINFODISP.NEXTTICK<=VD.FECHASEC;
+
+#RECORRE=BULTOENZONA,CODBULTO,CODZONA,WHERE=CODUBI<>NVL(:CODUBI,'0');
+RECORRE=STATUSZONA,STATUS,CODZONA;
+RECORRE=DISPLAYSZONA,CODZONA;
+UPDATE=STATUS,STATUS
+UPDATE=CODBULTOYCANTIDADES,CODBULTO,CANTPEDIDADISP,CANTVALIDADADISP

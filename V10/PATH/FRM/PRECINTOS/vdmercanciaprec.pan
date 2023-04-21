@@ -1,0 +1,28 @@
+LISTA DE PRECINTOS EXISTENTES
+
+                      Precinto  Tipo                    Ubicación    Estado                           
+                      _________ _______________________ _20_________ @L@@@ _30___________________
+|
+
+TABLA=VDPRECINTO
+WHERE=STATUS IN (VDVST.FPRCABIERTO,VDVST.FPRCCERRADO);
+ORDERBY=STATUS DESC;
+NOUPDATE
+NOINSERT
+NODELETE
+
+
+CAMPO=CODPRECINTO,TECLA=CR,FPULSATECLAS("F2"),TITULO("Precinto")
+#,POSTCHANGE=FEJECUTA("CTIPOPRECINTO","")
+CAMPO=TIPOPRECINTO,NOENTER,TITULO("Tipo de Precinto")
+CAMPO=CODUBI,TITULO("Ubicación")
+CAMPO=STATUS,NOENTER,TITULO("Estado"),POSTCHANGE=FEJECUTA("CDESSTATUS","")
+CAMPO=DESSTATUS,NOENTER,AUXILIAR
+
+CURSOR=CTIPOPRECINTO SELECT VDDEVOL.DAMETIPOPRECINTO(:CODPRECINTO) TIPOPRECINTO FROM DUAL;
+
+
+CURSOR=CDESSTATUS SELECT DESSTATUS FROM VDSTATUS WHERE STATUS=:STATUS AND TIPOSTATUS='PRC';
+                       
+BOTON=SALIR,960,90,120,120,"Confirmar Protocolo",vertis\vertissalir.png,ESC,"Salir de la pantalla",INCLUDECSS="border-style:outset;background-color:transparent"
+ONLINE={F4} Confirmar {Esc} Salir;

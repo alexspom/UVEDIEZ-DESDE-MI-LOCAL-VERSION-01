@@ -1,0 +1,15 @@
+# Módulo : VDPROCESOS.def                                                         
+#
+# Propósito: Funciones de acceso a la tabla VDPROCESOS
+#
+# Autor	 : JCSR
+# Revisado por:
+# Fecha  : 24-01-2008
+#********************************************************************************
+# Modificaciones
+#***
+
+TABLE=PRO
+UPDATE=EJECUTAINMEDIATO,EJECUTAINMEDIATO
+
+CLAVE=EJECUTAINMEDIATO,PROCESO,WHERE=VDPROCESOS.EJECUTAINMEDIATO IS NOT NULL;

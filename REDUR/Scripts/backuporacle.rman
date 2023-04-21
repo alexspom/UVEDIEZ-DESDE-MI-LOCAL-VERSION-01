@@ -1,0 +1,7 @@
+run {
+crosscheck archivelog all;
+backup database plus archivelog;
+delete noprompt archivelog all completed before 'SYSDATE -3';
+resync catalog;
+delete noprompt backup completed before 'sysdate-2';
+}

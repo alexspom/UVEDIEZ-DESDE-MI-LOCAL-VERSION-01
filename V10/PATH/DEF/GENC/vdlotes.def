@@ -1,0 +1,23 @@
+# M¢dulo : VDLOTES.DEF                                                        
+# Función: Generación automatica de rutinas C tabla VDLOTES
+#                        
+# Autor	 : ICC
+# Revisado por: 
+# Fecha  : 05-05-2008
+#********************************************************************************
+# Histórico de cambios
+# ====================
+# =================================================================================
+#
+TABLE=LOT
+EXTRA=STATUS,V10LONG
+
+
+CLAVE=CODLOTARTORDR, CODLOT,CODART,WHERE= (CODART, CODLOT) NOT IN (SELECT CODART,CODLOT
+                                                                 FROM VDORDRECLIN
+                                                                WHERE STATUS = :STATUS);
+
+INTERFASE
+UPDATE
+DELETE
+INSERT

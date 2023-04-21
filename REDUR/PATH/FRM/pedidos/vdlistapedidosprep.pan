@@ -1,0 +1,83 @@
+# Módulo   : VDLISTADOPEDIDOS.PAN
+# Función  : Listado de pedidos Preparados
+#
+# Creación : 03/04/2023
+# Autor    : infmansu
+###########################################
+# Histórico de cambios:
+Pedidos Preparados 
+DIV CODPED      LIN. CODALB        FECHAGRAB  HOR.GRAB FECHATERM  HOR.TERM OTIF I DESSTATUS DESAGE     TRACKING  BULTOS PESO   VOLUMEN DESCLIENTE              C.P.   DESPAIS       DIRECCION             
+_3_ _20________ @@@@ _20__________ ¿D-MM-Y.YY ________ ¿D-MM-Y.YY ________ ____ _ _30______ _40_______ _14______ @L@@@@ @L@@@@ @L@@@@@ _30____________________ _10___ _20__________ _122__________________
+|
+
+SOLOQUERY
+TABLA=Q
+SELECT=Select Q.FECGRABACION, Q.HORAGRABACION, Q.FECTERMIN, Q.HORATERMIN, Q.OTIF, Q.CODPED, 
+              Q.CODDIV, Q.CODALB, 
+              Q.DESCLIENTE, Q.DIRECCION, Q.COD_POSTAL, Q.DESPAIS, 
+              Q.DESSTATUS, Q.PESOPEDIDO, Q.VOLUMENPEDIDO, Q.DESAGE, Q.TRACKING,
+              (Select Count(1) 
+                 From VDPEDIDOLIN LP 
+                Where LP.CODDIV=Q.CODDIV 
+                  And LP.ANOPED=Q.ANOPED 
+                  And LP.CODPED=Q.CODPED 
+                  And LP.SEQPED=Q.SEQPED) LINEAS_PEDIDO,
+              (SELECT COUNT(1) FROM VDBULTOCAB BC
+               WHERE BC.CODPED = Q.CODPED	
+			   AND BC.CODDIV = Q.CODDIV
+			   AND BC.ANOPED = Q.ANOPED
+			   AND BC.SEQPED = Q.SEQPED) BULTOS,
+               'S' IMPUTABLE			   
+      From (SELECT A.FECGRABACION, a.horagrabacion, a.fectermin, horatermin,  decode(a.fectermin,a.fecreserva,1,0) OTIF, 
+                   A.CODPED, A.CODDIV, A.ANOPED, A.SEQPED, CODALB, PEDIDOCLIENTE, CODCLIENTE, DESCLIENTE, 
+                   A.DIRECCION||' '||A.DIRECCION1||' '||A.DIRECCION2 DIRECCION, A.DP COD_POSTAL, A.CODPAIS, P.DESPAIS, 
+                   A.CONTACTO, C.DESSTATUS, A.PESOPEDIDO, A.VOLUMENPEDIDO, AG.DESAGE,
+                   DV.CODDIVEMP|| LPAD(A.TRACKINGAGE, 8,'0') Tracking
+              FROM VDPEDIDOCAB A, VDSTATUS C, VDPAIS P, VDBULTOCAB B, VDAGENCIA AG, VDDIVIS DV
+             WHERE A.CODPED = B.CODPED(+)
+               AND C.TIPOSTATUS = 'PEC'
+               AND A.STATUS = C.STATUS
+               AND P.CODPAIS = A.CODPAIS
+               AND AG.CODAGE = A.CODAGE
+               And DV.CODDIV = A.CODDIV
+               And A.STATUS > VDST.FPECPREPARANDO) Q
+      WHERE 1 = 1;
+	  
+WHERE = FECGRABACION >= DECODE(:FECHA_D,0,FECGRABACION,:FECHA_D) AND FECGRABACION <= DECODE(:FECHA_H,0,FECGRABACION,:FECHA_H);
+REGPAG=40   
+WLONX=1600   
+   
+CAMPO=FECHA_D,VIRTUAL,AUXILIAR,OCULTO   
+CAMPO=FECHA_H,VIRTUAL,AUXILIAR,OCULTO   
+
+CAMPO=CODDIV,TITULO("Div"),WLONX=3
+CAMPO=CODPED,TITULO("Pedido"),WLONX=20
+CAMPO=LINEAS_PEDIDO,TITULO("Lin.."),TOOLTIP("Lineas del Pedido")
+CAMPO=CODALB,TITULO("Albaran"),WLONX=10
+CAMPO=FECGRABACION,TITULO("Fec. Alta"),TOOLTIP("Fecha de alta")
+CAMPO=HORAGRABACION,TITULO("H. Alta"),TOOLTIP("Hora de alta")
+CAMPO=FECTERMIN,TITULO("Fec.Term."),TOOLTIP("Fecha Terminacion")
+CAMPO=HORATERMIN,TITULO("H. Term."),TOOLTIP("Hora Terminacion")
+CAMPO=OTIF,TITULO("OTIF"),TOOLTIP("Indicador de alta y preparacion en el dia")
+CAMPO=IMPUTABLE,TITULO("I."),TOOLTIP("Imputable")
+CAMPO=DESSTATUS,TITULO("Estado"),COMBOX("CSTATUS"),WLONX=30 
+CAMPO=DESAGE,TITULO("Agencia"),COMBOX("CAGENCIA"),WLONX=40
+CAMPO=TRACKING,TITULO("Tracking"),WLONX=14
+CAMPO=BULTOS,TITULO("Bultos"),WLONX=15 
+CAMPO=PESOPEDIDO,TITULO("Peso"),WLONX=15 
+CAMPO=VOLUMENPEDIDO,TITULO("Volumen"),WLONX=15 
+CAMPO=DESCLIENTE,TITULO("Nombre Cliente")
+CAMPO=COD_POSTAL,TITULO("C.Postal"),WLONX=10
+CAMPO=DESPAIS,TITULO("Pais"),COMBOX("CPAIS"),WLONX=30 
+CAMPO=DIRECCION,TITULO("Direccion"),WLONX=40
+
+###CURSORES
+
+CURSOR=CSTATUS select DESSTATUS from VDSTATUS WHERE TIPOSTATUS = 'PEC';
+CURSOR=CAGENCIA select DESAGE from VDAGENCIA;
+CURSOR=CPAIS select DESPAIS from VDPAIS;
+
+###TECLAS
+
+CONTEXTUAL=FEJECUTAFORM("VDPEDIDOS","S","CODPED=:CODPED","","","CONSULTA PEDIDO :CODPED","S")
+ONLINE={F1} Ayuda  {F4} Aplicar Filtro y refrescar consulta {Shift+F10} Consulta Pedido ;

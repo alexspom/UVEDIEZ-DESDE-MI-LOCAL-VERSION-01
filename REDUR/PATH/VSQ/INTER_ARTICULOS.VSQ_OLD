@@ -1,0 +1,22 @@
+CURSOR=CCARGAARTICULOS DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE ARTICULOS Y CODARTALT EN  V10INTERIN_RDRP');
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('ARTICULOS', 'V10INTERIN_RDRP');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE ARTICULOS' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE ARTICULOS FINALIZADA CORRECTAMENTE.' );
+                  END IF;
+				  
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('CODARTALT', 'V10INTERIN_RDRP');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE COD ALTER' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CORRECTAMENTE CARGA DE CODARTALT' );
+                  END IF;
+				  
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO ARTICULOS Y CODARTALT' );
+                 END;@

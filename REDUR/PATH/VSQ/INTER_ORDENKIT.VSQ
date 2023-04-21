@@ -1,0 +1,14 @@
+CURSOR=CCARGAORDENKIT DECLARE
+                   RESULT NUMBER;
+                 BEGIN
+                   VDLOG.LOG(1,'INICIANDO CARGA DE ORDENKIT EN  V10INTERIN_RDRT');
+                   RESULT := VDINTERFAZ.VDCARGAFICHERO('ORDENKIT', 'V10INTERIN_RDRT');
+                  IF RESULT = -1 THEN   
+                            VDLOG.LOG(1,'ERROR EN CARGA DE ORDENKIT' );
+                   ELSE
+                            VDLOG.LOG(1,'FINALIZADA CARGA DE ORDENKIT FINALIZADA CORRECTAMENTE.' );
+                       END IF;
+                EXCEPTION  
+                   WHEN OTHERS THEN
+                            VDLOG.LOG(1,'ERROR CARGANDO ORDENKIT' );
+                 END;@

@@ -1,0 +1,104 @@
+#***
+# VDSTOCK.DEF - Generación automática del código c SOLOQUERY sobre la tabla VDMOVIM                                                    
+# 
+# Propósito: idem.
+#           
+# Autor	 : FGS
+# Revisado por: 
+# Fecha  : 18-04-2008                                               
+#********************************************************************************
+# Modificaciones
+#***
+NOMBRE=MOVAUX;
+EXTRA=RET,V10LONG
+EXTRA=STFINALIZADO,V10LONG
+EXTRA=STREVISION,V10LONG
+EXTRA=STPDTEINTER,V10LONG
+EXTRA=STSININTER,V10LONG
+EXTRA=STDEMLMVFINAL,V10LONG
+EXTRA=STDEMCMVFINAL,V10LONG
+EXTRA=NUEVOMOV,V10LONG
+EXTRA=LIMPIAR,V10CADENA,1
+EXTRA=AVANZA,V10LONG
+EXTRA=RESERVADO,V10DOUBLE
+
+PROCEDURE=PARTEMOV,DECLARE RET NUMBER;
+                   BEGIN
+                      RET:=VDMOV.PARTEMOV(:VDMOVIM.CODMOV,:VDMOVIM.CANTIDAD,:NUEVOMOV,:LIMPIAR);
+                      IF RET!=0 THEN RAISE NO_DATA_FOUND; END IF;
+                   END;@
+PROCEDURE=ANULAMOV,BEGIN
+                      VDMOV.ANULAMOV(:VDMOVIM.CODMOV,:RET);
+                   END;@      
+
+PROCEDURE=FINALIZAMOV,BEGIN
+                        VDMOV.FINALIZAMOV(:VDMOVIM.CODMOV,:STFINALIZADO,:STDEMLMVFINAL,:STDEMCMVFINAL,:RET);
+                      END;@   
+                      
+PROCEDURE=INTERFASAMOV,BEGIN
+                        VDMOV.INTERFASAMOV(:VDMOVIM.CODMOV,:STREVISION,:STPDTEINTER,:STSININTER,:RET);
+                      END;@                             
+                  
+PROCEDURE=AVANZAPDTESTOCK, BEGIN
+                             VDMOV.AVANZAPDTESTOCK(:VDMOVIM.CODMOV, :AVANZA);                                         
+                           END;@
+                           
+PROCEDURE=RESERVAMOV, BEGIN
+                             VDRESMOV.RESERVAMOVDIF(:VDMOVIM.CODMOV, :VDSTATUS.STATUS, :RESERVADO);                                       
+                           END;@                          
+                         
+%%h
+VDEXPORT int MOVfinalizamov(void *ptr, long stfinalizado, long stdemlmvfinal, long stdemcmvfinal);
+VDEXPORT int MOVinterfasamov(void *ptr,long strevision, long stpdteinter, long stsininter);
+VDEXPORT int MOVanulamov(void *ptr);
+
+%%c    
+
+// Anula un movto, y los que le esperan
+VDEXPORT int MOVanulamov(void *ptr) {
+  int ret=0;
+  vdmovims *mov=ptr;
+  vdmovauxs movaux;
+   
+  ret=MOVAUXprocanulamov(mov->codmov,ret,&movaux);
+  if (ret) {
+    *mov->comen=0;   
+  	strcpy(mov->comen,"MOVanulamov: error ejecutando algoritmo PLSQL VDMOV.ANULAMOV\n");
+    v10log(LOGERROR,mov->comen);
+  	return(-1);
+  }
+  return(movaux.ret);
+}  
+  
+//Finaliza un movto, y lo deja en un estado finalizado
+VDEXPORT int MOVfinalizamov(void *ptr,long stfinalizado, long stdemlmvfinal, long stdemcmvfinal) {
+  int ret=0;
+  vdmovims *mov=ptr;   
+  vdmovauxs movaux;
+   
+  ret=MOVAUXprocfinalizamov(mov->codmov,stfinalizado,stdemlmvfinal,stdemcmvfinal,ret,&movaux);
+  if (ret) {
+    *mov->comen=0;   
+  	strcpy(mov->comen,"MOVfinalizamov: error ejecutando algoritmo PLSQL VDMOV.FINALIZAMOV\n");
+    v10log(LOGERROR,mov->comen);
+  	return(-1);
+  }
+  return(movaux.ret);
+}  
+
+
+//Interfasa un movto, y lo deja en un estado,revision, pdteinter o sininter
+VDEXPORT int MOVinterfasamov(void *ptr,long strevision, long stpdteinter, long stsininter) {
+  int ret=0;
+  vdmovims *mov=ptr;   
+  vdmovauxs movaux;
+   
+  ret=MOVAUXprocinterfasamov(mov->codmov,strevision,stpdteinter,stsininter,ret,&movaux);
+  if (ret) {
+    *mov->comen=0;   
+  	strcpy(mov->comen,"MOVinterfasamov: error ejecutando algoritmo PLSQL VDMOV.INTERFASAMOV\n");
+    v10log(LOGERROR,mov->comen);
+  	return(-1);
+  }
+  return(movaux.ret);
+}  
