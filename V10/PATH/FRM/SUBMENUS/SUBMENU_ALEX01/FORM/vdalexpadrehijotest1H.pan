@@ -1,5 +1,5 @@
 # Módulo   : vdalexpadrehijotest1H.PAN
-# Función  : Listado de articulos REDUR
+# Función  : Listado de articulos REDUR prueba
 #
 # Creación : 28-03-2020
 # Autor    : infanahe
